@@ -5,6 +5,7 @@ void EnumHelper::createNewEnum(string name,vector<string>idsList,SymbolTable* sy
 	EnumType *enumType=new EnumType(name);
 	for(int i=0;i<idsList.size();i++)
 	{
+		//fuck
 		Variable * var=new Variable(idsList.at(i),symbolTable->getType("int"));
 		var->setIsConst(true);
 		if(enumType->getVariableItems()->get_variable(var->get_name())!=NULL)
