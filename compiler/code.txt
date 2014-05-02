@@ -19,7 +19,7 @@ y=8;
 
 -(int) a2go:(int)y
 {
-
+[self go:x:5 ];
 
 }
 -(int) ecjgo2:(int)y

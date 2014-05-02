@@ -9,6 +9,7 @@
 	#include "ast\node.h"
 	#include "ST\SymbolTable.h"
 	#include "ast\ConstantNode.h"
+	#include "CallNode.h"
 		#include "ast\IdentifierNode.h"
 				#include "ast\BinaryOperationNode.h"
 				#include "ast\CastNode.h"
@@ -61,6 +62,7 @@
 	list<pair<string,Node*> > declarationList;
 	FunctionNode* functionNode;
 	ClassNode* classNode;
+	CallNode* callNode;
 Method* nodeXX;
 	class Parser{
 		public:
@@ -156,6 +158,8 @@ Method* nodeXX;
 %nonassoc expr_1
 %nonassoc STRING_VAL INT_VAL FLOAT_VAL CLOSE_ARR CHAR_VAL
 %nonassoc p_type_expr_prec
+%nonassoc DOUBLEPLUS
+%nonassoc DOUBLEMINUS
 %left PLUS MINUS
 %left MULTI DIV
 %nonassoc long_id_prec
@@ -982,7 +986,10 @@ assign_expr:
 ;
 long_id:
 	long_id DOT IDENTIFIER					{cout<<"long_id: long_id.IDENTIFIER\n";LongIdHelper::addIdentifier($<r.text>1);}
-	|message_call							{cout<<"long_id: long_id.message_call\n";}
+	|message_call							{
+												cout<<"long_id: long_id.message_call\n";
+												$<r.node>$=$<r.node>1;
+											}
 	|IDENTIFIER								%prec long_id_prec{
 																LongIdHelper::addIdentifier($<r.text>1); 
 																$<r.node>$=new IdentifierNode($<r.text>1,scoop);
@@ -1007,7 +1014,7 @@ simple_expr:
 										$<r.node>$=new ConstantNode(yylval.r.char_val,scoop);
 									}
 	|long_id						{cout<<"simple_expr:long_id\n";
-									//$<r.node>$=new ConstantNode(yylval.r.char_val,scoop);
+									$<r.node>$=$<r.node>1;
 									}
 	|simple_expr PLUS simple_expr	{
 										cout<<"simple_expr:expr PLUS expr\n";
@@ -1035,28 +1042,53 @@ simple_expr:
 																$<r.node>$=new CastNode(scoop,type,$<r.node>2);
 															}//casting
 ;
+message_call2:
+OPEN_ARR				 {
+							cout<<"message_call2: OPEN_ARR\n";
+							callNode=new CallNode(scoop);
+						 }
+;
 message_call:
-	OPEN_ARR sender message CLOSE_ARR		{cout<<"message_call: OPEN_ARR sender message CLOSE_ARR\n";}
+	 message_call2 sender message CLOSE_ARR		{
+												cout<<"message_call: OPEN_ARR sender message CLOSE_ARR\n";
+												callNode->setSender($<r.node>2);
+												callNode->setMessage($<r.node>3);
+												$<r.node>$=callNode;
+												}
 ;
 sender:
-	message_call							{cout<<"sender: message_call\n";}
+	message_call							{cout<<"sender: message_call\n";
+											 $<r.node>$=$<r.node>1;
+											}
 	|IDENTIFIER								{cout<<"sender: IDENTIFIER\n";
 											$<r.node>$=new IdentifierNode($<r.text>1,scoop);
 											}
 ;
 message:
 	IDENTIFIER								{cout<<"message: IDENTIFIER\n";
-											$<r.node>$=new IdentifierNode($<r.text>1,scoop);	
+											$<r.node>$=new IdentifierNode($<r.text>1,scoop);
+												
 											}
-	|IDENTIFIER SEMI_COLUMN argument_list	{cout<<"message: IDENTIFIER SEMI_COLUMN argument_list\n";}
+	|IDENTIFIER SEMI_COLUMN argument_list	{
+											cout<<"message: IDENTIFIER SEMI_COLUMN argument_list\n";
+											$<r.node>$=new IdentifierNode($<r.text>1,scoop);
+											}
 ;
 argument_list:
 	argument_list argument					{cout<<"argument_list: argument_list argument\n";}
 	|argument								{cout<<"argument_list: argument\n";}
 ;
 argument:
-	SEMI_COLUMN expr						{cout<<"argument: SEMI_COLUMN expr\n";}
-	|IDENTIFIER SEMI_COLUMN expr			{cout<<"argument: IDENTIFIER SEMI_COLUMN expr\n";}
+	 expr									{
+											cout<<"argument: SEMI_COLUMN expr\n";
+											$<r.node>$=$<r.node>1;
+											callNode->addArgument($<r.node>1,"");
+											}
+	|IDENTIFIER SEMI_COLUMN expr			{
+											 cout<<"argument: IDENTIFIER SEMI_COLUMN expr\n";
+											 callNode->addArgument($<r.node>3,$<r.text>1);
+											 $<r.node>$=$<r.node>3;
+											}
 ;
 while_loop:
 	while_loop_header statement			{
