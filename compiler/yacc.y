@@ -1225,7 +1225,9 @@ freopen("code.txt","r",stdin);
 	Program::printErrors();
 	ofs<<".globl main\nmain:\n";
 	//ConstantNode * temp =new ConstantNode(5,NULL);
-	method->getF()->generate_code();
+	//method->getF()->generate_code();
+	symbolTable->generateCode();
+
 //	functionNode->toString();
 	//functionNode->generate_code();
 }
