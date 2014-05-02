@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Parser" Collapsed="true">
+    <Position X="27" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>yacc.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Array" Collapsed="true">
+    <Position X="19.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAABAAAAAAAQAAAAAAgAAAAAQA=</HashCode>
+      <FileName>ST\Array.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMember" Collapsed="true">
+    <Position X="19.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ST\DataMember.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Implementation" Collapsed="true">
+    <Position X="1.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAACAAAAAAQAAAAAAAAAAAAAAQAAEAAA=</HashCode>
+      <FileName>ST\Implementation.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Interface" Collapsed="true">
+    <Position X="8" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAABAAAAAARAAAJADCAAAAAAAAAABACAAAAEAAA=</HashCode>
+      <FileName>ST\Interface.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Method" Collapsed="true">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBAAQAwAhABAAEEAAAIgDABQAAAQARACAAAAAACAUAA=</HashCode>
+      <FileName>ST\Method.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Protocol" Collapsed="true">
+    <Position X="12.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAEBAAAAAgQAAAAABABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ST\Protocol.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Scoop" Collapsed="true">
+    <Position X="17" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBABAQAAAAAAAQBAAAAIHAAAAAAACAAAAAAAAIBAAAA=</HashCode>
+      <FileName>ST\scoop.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Symbol" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAACIAACAA=</HashCode>
+      <FileName>ST\Symbol.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SymbolTable" Collapsed="true">
+    <Position X="21.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQBAAQAQgAAACAAAAAAAIAAAA=</HashCode>
+      <FileName>ST\SymbolTable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Type" Collapsed="true">
+    <Position X="11.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAIIABAACAAAQAAAAABQAAAAAABEAAAQAAQAAAAAA=</HashCode>
+      <FileName>ST\Type.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Variable" Collapsed="true">
+    <Position X="19.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAABAIAARABAAAAAAQAAAAAYAA=</HashCode>
+      <FileName>ST\variable.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VariableHelper" Collapsed="true">
+    <Position X="23.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ST\VariableHelper.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnumHelper" Collapsed="true">
+    <Position X="21.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAEAAAAAAAgAA=</HashCode>
+      <FileName>EnumHelper.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnumType" Collapsed="true">
+    <Position X="10.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgBAAAABAAAAAAAAAAAABAAAIAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>EnumType.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Error" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAABAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Error.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InterfaceHelper" Collapsed="true">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAIAAAAAAAAAAAAAAAAAABIAAEAAAAAABAAA=</HashCode>
+      <FileName>InterfaceHelper.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LongIdHelper" Collapsed="true">
+    <Position X="25.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAgA=</HashCode>
+      <FileName>LongIdHelper.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Program" Collapsed="true">
+    <Position X="21.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIACAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Program.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ProtocolHelper" Collapsed="true">
+    <Position X="23.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAIAAEAAAAAAAAAA=</HashCode>
+      <FileName>ProtocolHelper.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScoopHelper" Collapsed="true">
+    <Position X="25.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ScoopHelper.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Selector" Collapsed="true">
+    <Position X="5.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIBAAAAAAAAAAAAAAgAAAACAAAAEAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Selector.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SemanticError" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAARAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SemanticError.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Struct" Collapsed="true">
+    <Position X="14.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAABAAAAAAAgAAAADAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Struct.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StructHelper" Collapsed="true">
+    <Position X="27" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAEAAAAAAAAAA=</HashCode>
+      <FileName>StructHelper.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="yy_buffer_state" Collapsed="true">
+    <Position X="4.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACEAEAAAAAAAAAAABAAAAAEAAAAAAAAAIBAWAA=</HashCode>
+      <FileName>lex.yy.cc</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Typedef Name="YY_BUFFER_STATE" Collapsed="true">
+    <Position X="4.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>lex.yy.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="yy_size_t" Collapsed="true">
+    <Position X="23.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>lex.yy.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="YY_CHAR" Collapsed="true">
+    <Position X="21.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>lex.yy.cc</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="yytype_uint8" Collapsed="true">
+    <Position X="23.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>yacc.cpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="yytype_int8" Collapsed="true">
+    <Position X="27" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>yacc.cpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="yytype_uint16" Collapsed="true">
+    <Position X="21.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>yacc.cpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="yytype_int16" Collapsed="true">
+    <Position X="25.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>yacc.cpp</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Enum Name="yytokentype" Collapsed="true">
+    <Position X="25.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>jABEIATCKOKFqAAAUMMiKAkCQBMICAsyAADEaBAoAAA=</HashCode>
+      <FileName>yacc.cpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="AccessModifier" Collapsed="true">
+    <Position X="21.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAEAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>ST\Type.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="completness" Collapsed="true">
+    <Position X="23.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAEAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ST\Type.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,36 @@
+
+
+@interface vv{float set1;}@end
+@protocol v1
+
+
+
+@end
+struct tv{
+    int x;
+    float array[3][5];
+};
+@interface mYInterface :vv<v1>
+{
+
+ooo* x;
+  
+}
+-(void)get:(int)x with:( int)y ;
+
+@end
+enum power{cda};
+@implementation mYInterface :vv1
+
+-(void)get:(int)x with:(int)y{
+enum power set=5;
+const struct tv x1;
+ }
+@end
+enum power1;
+
+enum power2{jjj,aaa};
+
+
+
+

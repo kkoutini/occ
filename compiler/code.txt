@@ -1,0 +1,34 @@
+
+
+
+@interface wessam
+{
+@public
+NSString str1;
+}
+-(int) go:(int)y;
+
+@end
+@implementation wessam
+
+-(int) go:(int)y
+{
+y=8;
+
+}
+
+-(int) a2go:(int)y
+{
+
+
+}
+-(int) ecjgo2:(int)y
+{
+y=8;
+int i=7;
+if(i>=7){
+if(y>10)
+	y=24;
+}else y=15;
+}
+@end

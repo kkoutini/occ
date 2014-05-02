@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D83AAE06-4A35-4685-BF0D-1052A5AC5B4E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>compiler</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="lex.l" />
+    <None Include="yacc.output" />
+    <None Include="yacc.y" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ast\mips_asm.cpp" />
+    <ClCompile Include="EnumHelper.cpp" />
+    <ClCompile Include="EnumType.cpp" />
+    <ClCompile Include="Error.cpp" />
+    <ClCompile Include="InterfaceHelper.cpp" />
+    <ClCompile Include="lex.yy.cc" />
+    <ClCompile Include="LongIdHelper.cpp" />
+    <ClCompile Include="MethodItems.cpp" />
+    <ClCompile Include="Program.cpp" />
+    <ClCompile Include="ProtocolHelper.cpp" />
+    <ClCompile Include="ScoopHelper.cpp" />
+    <ClCompile Include="Selector.cpp" />
+    <ClCompile Include="SemanticError.cpp" />
+    <ClCompile Include="Struct.cpp" />
+    <ClCompile Include="StructHelper.cpp" />
+    <ClCompile Include="ST\Array.cpp" />
+    <ClCompile Include="ST\Interface.cpp" />
+    <ClCompile Include="ST\Method.cpp" />
+    <ClCompile Include="ST\Protocol.cpp" />
+    <ClCompile Include="ST\scoop.cpp" />
+    <ClCompile Include="ST\Symbol.cpp" />
+    <ClCompile Include="ST\SymbolTable.cpp" />
+    <ClCompile Include="ST\Type.cpp" />
+    <ClCompile Include="ST\variable.cpp" />
+    <ClCompile Include="ST\VariableHelper.cpp" />
+    <ClCompile Include="VariableItems.cpp" />
+    <ClCompile Include="yacc.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ast\AssignNode.h" />
+    <ClInclude Include="ast\BinaryOperationNode.h" />
+    <ClInclude Include="ast\CastNode.h" />
+    <ClInclude Include="ast\mips_asm.h" />
+    <ClInclude Include="ast\ConstantNode.h" />
+    <ClInclude Include="ast\DeclerationNode.h" />
+    <ClInclude Include="ast\ForNode.h" />
+    <ClInclude Include="ast\FunctionNode.h" />
+    <ClInclude Include="ast\IdentifierNode.h" />
+    <ClInclude Include="ast\IfNode.h" />
+    <ClInclude Include="ast\Node.h" />
+    <ClInclude Include="ast\ReturnNode.h" />
+    <ClInclude Include="ast\ScoopNode.h" />
+    <ClInclude Include="ast\TypeChecker.h" />
+    <ClInclude Include="ast\UnaryNode.h" />
+    <ClInclude Include="ast\WhileNode.h" />
+    <ClInclude Include="CallNode.h" />
+    <ClInclude Include="ClassNode.h" />
+    <ClInclude Include="DoWhileNode.h" />
+    <ClInclude Include="ElseNode.h" />
+    <ClInclude Include="EnumHelper.h" />
+    <ClInclude Include="EnumType.h" />
+    <ClInclude Include="Error.h" />
+    <ClInclude Include="InterfaceHelper.h" />
+    <ClInclude Include="LongIdHelper.h" />
+    <ClInclude Include="MethodItems.h" />
+    <ClInclude Include="Program.h" />
+    <ClInclude Include="ProtocolHelper.h" />
+    <ClInclude Include="ReturnNode.h" />
+    <ClInclude Include="ScoopHelper.h" />
+    <ClInclude Include="Selector.h" />
+    <ClInclude Include="SemanticError.h" />
+    <ClInclude Include="Struct.h" />
+    <ClInclude Include="StructHelper.h" />
+    <ClInclude Include="ST\Array.h" />
+    <ClInclude Include="ST\Interface.h" />
+    <ClInclude Include="ST\Method.h" />
+    <ClInclude Include="ST\Protocol.h" />
+    <ClInclude Include="ST\scoop.h" />
+    <ClInclude Include="ST\Symbol.h" />
+    <ClInclude Include="ST\SymbolTable.h" />
+    <ClInclude Include="ST\Type.h" />
+    <ClInclude Include="ST\variable.h" />
+    <ClInclude Include="ST\VariableHelper.h" />
+    <ClInclude Include="SwitchNode.h" />
+    <ClInclude Include="VariableItems.h" />
+    <ClInclude Include="yacc.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="code.txt" />
+    <Text Include="codeold.txt" />
+    <Text Include="test.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
