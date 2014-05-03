@@ -34,15 +34,22 @@ public:
 		cout<<"Not implmented yet!!!!!!!!!!\n";
 		return true;
 	}
+
+	/**
+	*	generate type for the node based on it's children 
+	*	SHOULD be overriden
+	*/
 	virtual Type* generateType(){
 		
 		//cout<<"Not getType implmented yet!!!!!!!!!!\n";
 		return type;
 	}
+	/**
+	*	if type isn't gerated yet generate it and cach it
+	*/
 	virtual Type* getType(){
 		if (type != NULL)
 			return type;
-		//cout<<"Not getType implmented yet!!!!!!!!!!\n";
 		return type=generateType();
 	}
 
