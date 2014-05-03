@@ -504,16 +504,16 @@ goto find_rule; \
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-#line 1 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
+#line 1 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
 #define INITIAL 0
-#line 2 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
+#line 2 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
 	#include "yacc.hpp"
 	#include <iostream>
 	#include <istream>
 	#include <ostream>
 	#include <stdlib.h>
-	int lineNum=1;
-	int colNum=0;
+	 extern int lineNum=1;
+	extern int colNum=0;
 	
 
 #define comment 1
@@ -645,7 +645,7 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 19 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
+#line 19 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
 
 #line 649 "lex.yy.cc"
 
@@ -740,347 +740,347 @@ do_action:	/* This label is used only to access EOF actions. */
 	{ /* beginning of action switch */
 case 1:
 YY_RULE_SETUP
-#line 20 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=2;	yylval.r.colNo=colNum;	BEGIN(comment);}
+#line 20 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=2;		BEGIN(comment);}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 21 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{lineNum+=1;	yylval.r.lineNo=lineNum;	BEGIN(comment);}
+#line 21 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{lineNum+=1;		BEGIN(comment);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 22 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=strlen(yytext);	yylval.r.colNo=colNum;}
+#line 22 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=strlen(yytext);	}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 23 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=strlen(yytext);	yylval.r.colNo=colNum;}
+#line 23 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=strlen(yytext);	}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 24 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{ colNum+=strlen(yytext);	yylval.r.colNo=colNum; BEGIN(INITIAL);}
+#line 24 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{ colNum+=strlen(yytext);	 BEGIN(INITIAL);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 26 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=10;	yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;	yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);	return AT_INTERFACE;}
+#line 26 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=10;		yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);	return AT_INTERFACE;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 27 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=9;	yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;				    		return AT_PROTOCOL;}
+#line 27 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=9;					    		return AT_PROTOCOL;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 28 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=1;	yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;							return SEMI_COLUMN;}
+#line 28 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=1;									return SEMI_COLUMN;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 29 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=8;	yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;	yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);						return NSSTRING;}
+#line 29 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=8;			yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);						return NSSTRING;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 30 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=5;	yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;		yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);					return FLOAT;}
+#line 30 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=5;				yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);					return FLOAT;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 31 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=4;  yylval.r.colNo=colNum;   yylval.r.lineNo=lineNum;		yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);						return CHAR;}
+#line 31 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=4;     		yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);						return CHAR;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 32 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=4;  yylval.r.colNo=colNum;   yylval.r.lineNo=lineNum;			yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);					return BOOL;}
+#line 32 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=4;     			yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);					return BOOL;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 33 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=3;	yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;	yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);						return INT;}
+#line 33 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=3;			yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);						return INT;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 34 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=1;	yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;								return SEMI_COMA;}
+#line 34 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=1;										return SEMI_COMA;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 35 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=2;	yylval.r.colNo=colNum;		yylval.r.lineNo=lineNum;								return ID;}
+#line 35 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=2;											return ID;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 36 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=7;	yylval.r.colNo=colNum;		yylval.r.lineNo=lineNum;		yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);				return AT_PUBLIC;}
+#line 36 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=7;					yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);				return AT_PUBLIC;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 37 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=10;yylval.r.colNo=colNum;		yylval.r.lineNo=lineNum;		yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);					return AT_PROTECTED;}
+#line 37 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=10;				yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);					return AT_PROTECTED;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 38 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=8;	yylval.r.colNo=colNum;		yylval.r.lineNo=lineNum;		yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);				return AT_PRIVATE;}
+#line 38 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=8;					yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);				return AT_PRIVATE;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 39 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum++;	yylval.r.colNo=colNum;			yylval.r.lineNo=lineNum;					return OPEN_S;}
+#line 39 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum++;									return OPEN_S;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 40 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum++;	yylval.r.colNo=colNum;			yylval.r.lineNo=lineNum;						return CLOSE_S;}
+#line 40 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum++;										return CLOSE_S;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 41 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum++;	yylval.r.colNo=colNum;		yylval.r.lineNo=lineNum;							return COMMA;}
+#line 41 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum++;										return COMMA;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 42 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum++;	yylval.r.colNo=colNum;		yylval.r.lineNo=lineNum;						return LESS_THAN;}
+#line 42 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum++;									return LESS_THAN;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 43 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum++;	yylval.r.colNo=colNum;		yylval.r.lineNo=lineNum;						return MORE_THAN;}
+#line 43 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum++;									return MORE_THAN;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 44 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=4;	yylval.r.colNo=colNum;			yylval.r.lineNo=lineNum;						return AT_END;}
+#line 44 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=4;										return AT_END;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 45 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=5;	yylval.r.colNo=colNum;			yylval.r.lineNo=lineNum;					return CONST;}
+#line 45 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=5;									return CONST;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 46 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{	colNum+=4;	yylval.r.colNo=colNum;		yylval.r.lineNo=lineNum;	yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);				return VOID;}
+#line 46 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{	colNum+=4;				yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);				return VOID;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 47 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum++;	yylval.r.colNo=colNum;			yylval.r.lineNo=lineNum;					return PLUS;}
+#line 47 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum++;									return PLUS;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 48 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum++;	yylval.r.colNo=colNum;			yylval.r.lineNo=lineNum;						return MINUS;}
+#line 48 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum++;										return MINUS;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 49 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum++;	yylval.r.colNo=colNum;			yylval.r.lineNo=lineNum;						return OPEN_P;}
+#line 49 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum++;										return OPEN_P;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 50 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum++;	yylval.r.colNo=colNum;			yylval.r.lineNo=lineNum;							return CLOSE_P;}
+#line 50 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum++;											return CLOSE_P;}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 51 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=15;yylval.r.colNo=colNum;				yylval.r.lineNo=lineNum;				return AT_IMPLEMENTATION;}
+#line 51 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=15;								return AT_IMPLEMENTATION;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 52 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=2;	yylval.r.colNo=colNum;				yylval.r.lineNo=lineNum;						return AND_AND;}
+#line 52 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=2;											return AND_AND;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 53 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{	colNum+=2;yylval.r.colNo=colNum;				yylval.r.lineNo=lineNum;					return OR_OR;}
+#line 53 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{	colNum+=2;									return OR_OR;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 54 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=2;		yylval.r.colNo=colNum;				yylval.r.lineNo=lineNum;				return LESS_OR_EQUAL;}
+#line 54 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=2;										return LESS_OR_EQUAL;}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 55 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=2;	yylval.r.colNo=colNum;					yylval.r.lineNo=lineNum;					return MORE_OR_EQUAL;}
+#line 55 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=2;											return MORE_OR_EQUAL;}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 56 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum++;	yylval.r.colNo=colNum;					yylval.r.lineNo=lineNum;					return MULTI;}
+#line 56 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum++;											return MULTI;}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 58 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=2;	yylval.r.colNo=colNum;					yylval.r.lineNo=lineNum;					return EQUAL_EQUAL;}
+#line 58 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=2;											return EQUAL_EQUAL;}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 59 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=2;	yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;									return NOT_EQUAL;}
+#line 59 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=2;											return NOT_EQUAL;}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 60 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=3;	yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;									return FOR;}
+#line 60 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=3;											return FOR;}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 61 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{	colNum++;yylval.r.colNo=colNum;yylval.r.lineNo=lineNum;									return EQUAL;}
+#line 61 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{	colNum++;									return EQUAL;}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 62 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum++;	yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;								return DIV;}
+#line 62 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum++;										return DIV;}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 63 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{		colNum+=5;	yylval.r.colNo=colNum;yylval.r.lineNo=lineNum;							return WHILE;}
+#line 63 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{		colNum+=5;								return WHILE;}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 64 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{	colNum+=2;yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;									return IF;}
+#line 64 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{	colNum+=2;										return IF;}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 65 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{   colNum+=2;yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;									return ELSE;}
+#line 65 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{   colNum+=2;										return ELSE;}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 66 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{  colNum+=2;  yylval.r.colNo=colNum; yylval.r.lineNo=lineNum;                                     return DO;}
+#line 66 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{  colNum+=2;                                        return DO;}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 67 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{  colNum+=6;  yylval.r.colNo=colNum;  yylval.r.lineNo=lineNum;                                  return SWITCH;}
+#line 67 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{  colNum+=6;                                      return SWITCH;}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 68 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{   colNum+=4;  yylval.r.colNo=colNum;    yylval.r.lineNo=lineNum;                               return CASE;}
+#line 68 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{   colNum+=4;                                     return CASE;}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 69 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{   colNum+=7;   yylval.r.colNo=colNum;   yylval.r.lineNo=lineNum;                             return DEFAULT;}
+#line 69 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{   colNum+=7;                                   return DEFAULT;}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 70 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{   colNum+=5; yylval.r.colNo=colNum;     yylval.r.lineNo=lineNum;                           return BREAK;}
+#line 70 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{   colNum+=5;                                 return BREAK;}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 71 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{   colNum+=4;  yylval.r.colNo=colNum;   yylval.r.lineNo=lineNum;                            return ENUM;}
+#line 71 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{   colNum+=4;                                 return ENUM;}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 72 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{	colNum++;	yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;								return OPEN_ARR;}
+#line 72 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{	colNum++;										return OPEN_ARR;}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 73 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{	colNum++;yylval.r.colNo=colNum;		yylval.r.lineNo=lineNum;							return CLOSE_ARR;}
+#line 73 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{	colNum++;									return CLOSE_ARR;}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 74 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{	colNum+=4;yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;								return TRUE;}
+#line 74 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{	colNum+=4;									return TRUE;}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 75 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{	colNum+=5;	yylval.r.colNo=colNum;		yylval.r.lineNo=lineNum;					return FALSE;}
+#line 75 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{	colNum+=5;								return FALSE;}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 76 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{		colNum+=6;	yylval.r.colNo=colNum;		yylval.r.lineNo=lineNum;	return STRUCT;}
+#line 76 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{		colNum+=6;				return STRUCT;}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 77 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{		colNum+=6;	yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;						return RETURN;}
+#line 77 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{		colNum+=6;								return RETURN;}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 78 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{  colNum+=strlen(yytext);yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum; yylval.r.int_val=atoi(yytext);		return INT_VAL;}
+#line 78 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{  colNum+=strlen(yytext);	 yylval.r.int_val=atoi(yytext);		return INT_VAL;}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 79 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{	colNum+=strlen(yytext);	yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;			return FLOAT_VAL;}
+#line 79 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{	colNum+=strlen(yytext);					return FLOAT_VAL;}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 80 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{	colNum+=strlen(yytext);yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;		return CHAR_VAL;}
+#line 80 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{	colNum+=strlen(yytext);			return CHAR_VAL;}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 81 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{  colNum+=strlen(yytext);yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;		return DOUBLEPLUS;}
+#line 81 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{  colNum+=strlen(yytext);			return DOUBLEPLUS;}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 82 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{  colNum+=strlen(yytext);yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;		return DOUBLEMINUS;}
+#line 82 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{  colNum+=strlen(yytext);			return DOUBLEMINUS;}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 83 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{		colNum+=strlen(yytext);	yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;		return STRING_VAL;}
+#line 83 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{		colNum+=strlen(yytext);				return STRING_VAL;}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 84 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{		colNum+=strlen(yytext);	yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);		return IDENTIFIER;}
+#line 84 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{		colNum+=strlen(yytext);		yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);		return IDENTIFIER;}
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 85 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{		colNum+=strlen(yytext);	yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;		    }
+#line 85 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{		colNum+=strlen(yytext);				    }
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 86 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{		colNum+=strlen(yytext);	yylval.r.colNo=colNum;yylval.r.lineNo=lineNum;		   }
+#line 86 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{		colNum+=strlen(yytext);			   }
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 87 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{ lineNum++; yylval.r.lineNo=lineNum; colNum=0;}
+#line 87 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{ lineNum++;  colNum=0;}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 88 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=1;	yylval.r.colNo=colNum;	yylval.r.lineNo=lineNum;		return DOT;}
+#line 88 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=1;				return DOT;}
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 89 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
-{colNum+=strlen(yytext);	yylval.r.colNo=colNum;yylval.r.lineNo=lineNum; }
+#line 89 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
+{colNum+=strlen(yytext);	 }
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 90 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
+#line 90 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
 ECHO;
 	YY_BREAK
 #line 1085 "lex.yy.cc"
@@ -1889,5 +1889,5 @@ int main()
 	return 0;
 	}
 #endif
-#line 90 "C:\\Users\\pc\\Desktop\\compile wessr\\compiler\\compiler\\lex.l"
+#line 90 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\lex.l"
 
