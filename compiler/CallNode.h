@@ -27,7 +27,7 @@ public:
 		this->_message=new Node(message);
 	}
 	void addArgument(Node* argumentNode,string name){
-		this->arguments.push_back(make_pair(name,argumentNode));
+		this->arguments.push_back({ name, argumentNode });
 	}
 	virtual void generate_code(){
 	//	Interface* type=obj->getType();
