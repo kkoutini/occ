@@ -43,7 +43,7 @@ public:
 		 _rightExp->toString();
 		 _leftExp->toString();
 	 }
-	virtual bool type_check()
+	virtual bool typeCheck()
 	{
 		
 		if(TypeChecker::canCast(_rightExp->get_type(),_leftExp->get_type())==1)

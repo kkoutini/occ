@@ -17,7 +17,7 @@ public:
 		 void generate_code (){
 			 this->_returnexp->generate_code();
 		}
-	 bool type_check()
+	virtual bool typeCheck()
 	{
 		if (_method->get_return_type()==_returnexp->get_type())
 		{

@@ -16,7 +16,7 @@ public:
 	{
 	}
 
-	 bool type_check()
+	virtual bool typeCheck()
 	{
 		Type* boolType=symbolTable->getType("bool");
 		if (_condition->get_type()==boolType)

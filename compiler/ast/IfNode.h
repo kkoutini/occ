@@ -17,7 +17,7 @@ IfNode(Node* condition,Node* statment,ScoopNode* scoop,Node* elseNode):Node(scoo
 		
 	}
 
-	 bool type_check()
+	virtual bool typeCheck()
 	{
 		Type* boolType=symbolTable->getType("bool");
 		if (_condtion->get_type()==boolType)

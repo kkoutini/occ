@@ -29,7 +29,7 @@ public:
 	virtual void generate_code (){
 		cout<<"Not implmented yet!!!!!!!!!!\n";
 	}
-	virtual bool type_check()
+	virtual bool typeCheck()
 	{
 		cout<<"Not implmented yet!!!!!!!!!!\n";
 		return true;
@@ -39,6 +39,7 @@ public:
 		//cout<<"Not get_type implmented yet!!!!!!!!!!\n";
 		return type;
 	}
+
 	virtual ~Node(void)
 	{
 	}

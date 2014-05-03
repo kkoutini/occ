@@ -120,7 +120,7 @@ cout<<"end scooooooooooooop\n";
 			(*i)->generate_code();
 		}
 	}
-	virtual bool type_check()
+	virtual bool typeCheck()
 	{
 		return 1;
 	}	

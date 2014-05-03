@@ -23,7 +23,7 @@ public:
 	void addCase(Node* expr,Node* statement){
 		_cases.push_back(make_pair(expr,statement));
 	}
-	bool type_check()
+	virtual bool typeCheck()
 	{
 		
 

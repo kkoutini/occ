@@ -19,7 +19,7 @@ public:
 	}
 	
 
-	bool type_check()
+	virtual bool typeCheck()
 	{
 
 		Type* boolType=symbolTable->getType("bool");
@@ -35,7 +35,7 @@ public:
 		}
 
 
-		if (_increment->type_check()==true)
+		if (_increment->typeCheck()==true)
 		{
 			return	true;
 		}else
