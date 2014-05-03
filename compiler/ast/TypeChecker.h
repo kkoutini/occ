@@ -27,7 +27,7 @@ public:
 		initCell("int","char",1);
 		initCell("int","bool",1);
 		initCell("int","NSString",0);
-		initCell("int", "type_error", 1);
+		initCell("int", "error_type", 1);
 		initCell("int", "id", 1);
 
 		initCell("float","int",2);
@@ -35,7 +35,7 @@ public:
 		initCell("float","char",0);
 		initCell("float","bool",0);
 		initCell("float","NSString",0);
-		initCell("float", "type_error", 1);
+		initCell("float", "error_type", 1);
 		initCell("float", "id", 1);
 
 		initCell("NSString","int",0);
@@ -43,7 +43,7 @@ public:
 		initCell("NSString","char",0);
 		initCell("NSString","bool",0);
 		initCell("NSString","NSString",1);
-		initCell("NSString", "type_error", 1);
+		initCell("NSString", "error_type", 1);
 		initCell("NSString", "id", 1);
 
 		initCell("char","int",1);
@@ -51,7 +51,7 @@ public:
 		initCell("char","char",1);
 		initCell("char","bool",0);
 		initCell("char","NSString",0);
-		initCell("char", "type_error", 1);
+		initCell("char", "error_type", 1);
 		initCell("char", "id", 1);
 
 		initCell("bool","int",1);
@@ -59,7 +59,7 @@ public:
 		initCell("bool","char",0);
 		initCell("bool","bool",1);
 		initCell("bool","NSString",0);
-		initCell("bool", "type_error", 1);
+		initCell("bool", "error_type", 1);
 		initCell("bool", "id", 1);
 
 		
