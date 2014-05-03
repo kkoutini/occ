@@ -46,11 +46,7 @@ public:
 		value.char_val=val;
 		type=symbolTable->getType("char");
 	}
-	virtual Type* get_type(){
-		
-		return this->get_type();
-	}
-		virtual void generate_code (){
+		virtual void generateCode (){
 			MIPS_ASM::li("t9",this->value.int_val);
 			//ofs<<"li $a0,"<<this->value.int_val<<"\n";
 			MIPS_ASM::push("t9");

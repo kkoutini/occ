@@ -113,11 +113,11 @@ for(auto i=_nodes.begin();i!=_nodes.end();i++){
 cout<<"end scooooooooooooop\n";
 
 }
-	virtual void generate_code()
+	virtual void generateCode()
 	{
 		MIPS_ASM::reserveStack(getFrameSize());
 		for(auto i=_nodes.begin();i!=_nodes.end();i++){
-			(*i)->generate_code();
+			(*i)->generateCode();
 		}
 	}
 	virtual bool typeCheck()

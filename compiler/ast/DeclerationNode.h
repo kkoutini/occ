@@ -16,9 +16,9 @@ public:
 	void add(string name,Node* node){
 		_identifires.push_back(make_pair(name,node));
 	}
-	void generate_code(){
+	void generateCode(){
 		for(auto i=_identifires.begin();i!=_identifires.end();i++){
-			(*i).second->generate_code();
+			(*i).second->generateCode();
 		}
 	}
 	DeclerationNode(list<pair<string,Node*> > identifires,ScoopNode* scoop,string typeName):Node(scoop),_identifires(identifires)

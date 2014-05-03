@@ -29,7 +29,7 @@ public:
 	void addArgument(Node* argumentNode,string name){
 		this->arguments.push_back({ name, argumentNode });
 	}
-	virtual void generate_code(){
+	virtual void generateCode(){
 	//	Interface* type=obj->getType();
 	//	type->getMethodByName
 	}

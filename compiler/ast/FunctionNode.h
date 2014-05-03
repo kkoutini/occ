@@ -24,14 +24,14 @@ for(auto i=_nodes.begin();i!=_nodes.end();i++)
 	Method* getMethod(){
 		return _method;
 	}
-	virtual void generate_code(){
+	virtual void generateCode(){
 		MIPS_ASM::label(_method->getLabel());
 		MIPS_ASM::move("fp","sp");
 		
-	//_method->get_Scoop()->generate_code();
+	//_method->get_Scoop()->generateCode();
 		//////////////////////////////////////////////////////////////////////////
 		////deal with params
-		ScoopNode::generate_code();
+		ScoopNode::generateCode();
 	};
 	virtual ~FunctionNode(void)
 	{

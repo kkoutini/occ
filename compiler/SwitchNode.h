@@ -31,7 +31,7 @@ public:
 		bool f = true;
 		for(;itr<_cases.end();itr++)
 		{
-			if((*itr).first->get_type==_expr->get_type)
+			if((*itr).first->getType==_expr->getType)
 			{
 
 			}

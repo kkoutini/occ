@@ -122,7 +122,7 @@ void Interface::generateCode(){
 	{
 		MIPS_ASM::printComment(string( "generating code for Method:")+ i->first);
 		if (i->second->getF() != NULL){
-			i->second->getF()->generate_code();
+			i->second->getF()->generateCode();
 		}
 		else{
 			MIPS_ASM::printComment(string("Something wrong this method's node is NULL :") + i->first);

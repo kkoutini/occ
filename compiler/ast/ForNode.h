@@ -23,7 +23,7 @@ public:
 	{
 
 		Type* boolType=symbolTable->getType("bool");
-		if (_condition->get_type()==boolType)
+		if (_condition->getType()==boolType)
 		{
 			return true;
 		}else
@@ -53,7 +53,7 @@ public:
 		if(statement!=NULL)
 			this->_statment=statement;
 	}
-	virtual void generate_code (){
+	virtual void generateCode (){
 		
 		string cc  = "";
 		cc=std::to_string(ForNode::for_label++);
@@ -69,14 +69,14 @@ public:
 
 		MIPS_ASM::printComment("Begin Initializer\n");
 		if(_initlizer!=NULL)
-			_initlizer->generate_code();
+			_initlizer->generateCode();
 		MIPS_ASM::printComment("End Initializer\n");
 
 		MIPS_ASM::label(ccc);
 
 		MIPS_ASM::printComment("Begin Condition\n");
 		if(_condition!=NULL)
-			_condition->generate_code();
+			_condition->generateCode();
 			MIPS_ASM::printComment("End Condition\n");
 
 		MIPS_ASM::pop("t0");
@@ -84,11 +84,11 @@ public:
 
 		MIPS_ASM::printComment("Begin Statement\n");
 		if(_statment!=NULL)
-			_statment->generate_code();
+			_statment->generateCode();
 			MIPS_ASM::printComment("End Statement\n");
 				MIPS_ASM::printComment("Begin Increment\n");
 		if(_increment!=NULL)
-			_increment->generate_code();
+			_increment->generateCode();
 			MIPS_ASM::printComment("End Increment\n");
 		MIPS_ASM::jump(ccc);
 		MIPS_ASM::label(ccc2);
