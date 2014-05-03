@@ -130,3 +130,8 @@ void Interface::generateCode(){
 		}
 	}
 }
+
+Method* Interface::getMethod(string name, vector<string> selectors, vector<Type*> types, bool isStatic)
+{
+	return methodsItem->getMethod(name, selectors, types, isStatic);
+}

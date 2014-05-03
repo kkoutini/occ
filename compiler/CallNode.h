@@ -3,7 +3,10 @@
 #include <vector>
 #include "Selector.h"
 #include "ST\Interface.h"
- 
+
+#include "ST/SymbolTable.h"
+extern SymbolTable* symbolTable;
+#include "ST/Type.h"
 class CallNode :
 	public Node
 {
@@ -18,7 +21,7 @@ public:
 	}
 	CallNode(ScoopNode* scoop):Node(scoop)
 	{
-
+		 
 	}
 	void setSender(Node* sender){
 		this->_sender=new Node(sender);
@@ -32,6 +35,11 @@ public:
 	virtual void generateCode(){
 	//	Interface* type=obj->getType();
 	//	type->getMethodByName
+		_sender->generateCode();
+		Type* senderType = _sender->getType();
+
+		//TODO: check if sender isn't interface
+		(dynamic_cast<Interface*>(senderType));
 	}
 	virtual ~CallNode(void)
 	{

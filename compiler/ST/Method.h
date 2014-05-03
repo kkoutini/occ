@@ -11,7 +11,7 @@ class Variable;
 class ScoopNode;
 class FunctionNode;
 class Method:public Symbol{
-private:
+public:
 
 	Type* return_type;
 	ScoopNode* scoopBody;

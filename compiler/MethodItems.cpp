@@ -35,6 +35,7 @@ bool MethodItems::addMethod(Method* S)
 MethodItems::MethodItems(MethodItems* methodItems){
 	this->methods=methodItems->methods;
 }
+
 Method* MethodItems::getMethod(string name,Type* type ,vector<Selector*>parameter,bool isStatic)
 	{
 		multimap<const string, Method*>::iterator it = this->methods.find(name);
@@ -51,6 +52,35 @@ Method* MethodItems::getMethod(string name,Type* type ,vector<Selector*>paramete
 	if (it==this->methods.end()){
 		return NULL;
 	}
+}
+
+Method* MethodItems::getMethod(string name, vector<string> selectors, vector<Type*> types, bool isStatic)
+{
+	auto it = this->methods.find(name);
+	while (it != this->methods.end()){
+		Method& m =*( it->second);
+		int i = 0;
+		if (m.parameters.size()==selectors.size())
+		{
+			bool match = true;
+			for (auto p : m.parameters){
+
+				if (p->get_name() != selectors[i])
+				{
+					match = false;
+					break;
+				}
+				++i;
+
+			}
+			if (match)
+				return it->second;
+		}
+	}
+	if (it == this->methods.end()){
+		return NULL;
+	}
+
 }
 MethodItems::~MethodItems(void)
 {

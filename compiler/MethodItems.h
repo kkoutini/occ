@@ -13,6 +13,7 @@ public:
 	bool addMethod(Method*);
 	void setMethods(multimap<const string,Method*>);
 	Method* getMethod(string name,Type* type ,vector<Selector*>,bool isStatic);
+	Method* MethodItems::getMethod(string name, vector<string> selectors, vector<Type*> types, bool isStatic);
 	void toString();
 	~MethodItems(void);
 };
