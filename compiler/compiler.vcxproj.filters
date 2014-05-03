@@ -175,9 +175,6 @@
     <ClInclude Include="LongIdHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="InterfaceHelper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="StructHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -214,9 +211,6 @@
     <ClInclude Include="ast\ScoopNode.h">
       <Filter>Header Files\AST</Filter>
     </ClInclude>
-    <ClInclude Include="ReturnNode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ast\WhileNode.h">
       <Filter>Header Files\AST</Filter>
     </ClInclude>
@@ -251,13 +245,19 @@
       <Filter>Header Files\AST</Filter>
     </ClInclude>
     <ClInclude Include="DoWhileNode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ElseNode.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\AST</Filter>
     </ClInclude>
     <ClInclude Include="ClassNode.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfaceHelper.h">
+      <Filter>Header Files\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="ReturnNode.h">
+      <Filter>Header Files\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="ElseNode.h">
+      <Filter>Header Files\AST</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
