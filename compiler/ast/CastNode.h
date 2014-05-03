@@ -14,9 +14,10 @@ public:
 	CastNode(ScoopNode* scoop,Type* toType,Node* node):Node(scoop),_toType(toType),_node(node)
 	{
 	}
-	virtual Type* get_type()
+	
+	virtual Type* generateType()
 	{
-		int res=TypeChecker::canCast(_node->get_type(),_toType);
+		int res=TypeChecker::canCast(_node->getType(),_toType);
 		if(res==1)
 			return _toType;
 		else if(res==2)

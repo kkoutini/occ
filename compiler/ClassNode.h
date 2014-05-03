@@ -24,7 +24,7 @@ for(auto i=_nodes.begin();i!=_nodes.end();i++)
 	Interface* getInterface(){
 		return _interface;
 	}
-	virtual void generate_code(){
+	virtual void generateCode(){
 	
 	};
 	virtual ~ClassNode(void)

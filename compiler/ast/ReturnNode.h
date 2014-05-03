@@ -14,12 +14,12 @@ public:
 	ReturnNode(ScoopNode* scope,Node* returnexp):Node(scope),_returnexp(returnexp)
 	{
 	}
-		 void generate_code (){
-			 this->_returnexp->generate_code();
+		 void generateCode (){
+			 this->_returnexp->generateCode();
 		}
-	 bool type_check()
+	virtual bool typeCheck()
 	{
-		if (_method->get_return_type()==_returnexp->get_type())
+		if (_method->get_return_type()==_returnexp->getType())
 		{
 			return true;
 		}

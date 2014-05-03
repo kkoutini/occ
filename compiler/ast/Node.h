@@ -26,19 +26,33 @@ public:
 		Node(node->_scoop);
 		this->type=node->type;
 	}
-	virtual void generate_code (){
+	virtual void generateCode (){
 		cout<<"Not implmented yet!!!!!!!!!!\n";
 	}
-	virtual bool type_check()
+	virtual bool typeCheck()
 	{
 		cout<<"Not implmented yet!!!!!!!!!!\n";
 		return true;
 	}
-	virtual Type* get_type(){
+
+	/**
+	*	generate type for the node based on it's children 
+	*	SHOULD be overriden
+	*/
+	virtual Type* generateType(){
 		
-		//cout<<"Not get_type implmented yet!!!!!!!!!!\n";
+		//cout<<"Not getType implmented yet!!!!!!!!!!\n";
 		return type;
 	}
+	/**
+	*	if type isn't gerated yet generate it and cach it
+	*/
+	virtual Type* getType(){
+		if (type != NULL)
+			return type;
+		return type=generateType();
+	}
+
 	virtual ~Node(void)
 	{
 	}

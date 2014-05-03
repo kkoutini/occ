@@ -13,7 +13,7 @@ ScoopNode* ScoopHelper::createNewScoop(ScoopNode* parentScoop,Method* method){
 		method->set_scoop(scoop);
 			//functionNode=new FunctionNode(scoop,method);
 			 method->setFunctionNode(new FunctionNode(scoop,method));
-			// method->getF()->generate_code();
+			// method->getF()->generateCode();
 	}
 	else{
 		scoop=new ScoopNode(parentScoop,NULL);

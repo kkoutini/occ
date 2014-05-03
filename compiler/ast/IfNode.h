@@ -17,10 +17,10 @@ IfNode(Node* condition,Node* statment,ScoopNode* scoop,Node* elseNode):Node(scoo
 		
 	}
 
-	 bool type_check()
+	virtual bool typeCheck()
 	{
 		Type* boolType=symbolTable->getType("bool");
-		if (_condtion->get_type()==boolType)
+		if (_condtion->getType()==boolType)
 		{
 			return true;
 		}else
@@ -33,7 +33,7 @@ IfNode(Node* condition,Node* statment,ScoopNode* scoop,Node* elseNode):Node(scoo
 
 	}
 
-	  void generate_code ()
+	  void generateCode ()
 	  {
 		
 	string i = "";
@@ -44,16 +44,16 @@ IfNode(Node* condition,Node* statment,ScoopNode* scoop,Node* elseNode):Node(scoo
 	endif+=i;
 	end+=i;
 
-	_condtion->generate_code();
+	_condtion->generateCode();
 
 	MIPS_ASM::pop("t0");
 	MIPS_ASM::beq("t0","0",endif);
 	
-	_statment->generate_code();
+	_statment->generateCode();
 	MIPS_ASM::jump(end);
 	MIPS_ASM::label(endif);
 	if(_elseNode!=NULL)
-		_elseNode->generate_code();
+		_elseNode->generateCode();
 	MIPS_ASM::label(end);
 	}
 	virtual ~IfNode(void)

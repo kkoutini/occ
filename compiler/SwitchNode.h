@@ -23,7 +23,7 @@ public:
 	void addCase(Node* expr,Node* statement){
 		_cases.push_back(make_pair(expr,statement));
 	}
-	bool type_check()
+	virtual bool typeCheck()
 	{
 		
 
@@ -31,7 +31,7 @@ public:
 		bool f = true;
 		for(;itr<_cases.end();itr++)
 		{
-			if((*itr).first->get_type==_expr->get_type)
+			if((*itr).first->getType==_expr->getType)
 			{
 
 			}

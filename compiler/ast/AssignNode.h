@@ -15,17 +15,17 @@ public:
 	 void setLeftExp(Node * leftExp){
 		 this->_leftExp=leftExp;
 	}
-	 void generate_code(){
+	 void generateCode(){
 		 string t1="t1";
 		  string t0="t0";
 		 string mem_addr="sp";
-		  _rightExp->generate_code();
+		  _rightExp->generateCode();
 		 
 		
 		 MIPS_ASM::pop(t1);
 		// lw $t1, 0($sp)
 	//add $sp,$sp,4
-		 _leftExp->generate_code();
+		 _leftExp->generateCode();
 		 MIPS_ASM::pop(t0);
 	//lw $t0, 0($sp)
 	//add $sp,$sp,4
@@ -43,14 +43,14 @@ public:
 		 _rightExp->toString();
 		 _leftExp->toString();
 	 }
-	virtual bool type_check()
+	virtual bool typeCheck()
 	{
 		
-		if(TypeChecker::canCast(_rightExp->get_type(),_leftExp->get_type())==1)
+		if(TypeChecker::canCast(_rightExp->getType(),_leftExp->getType())==1)
 			{
 				return true;
 			}
-		else if(TypeChecker::canCast(_rightExp->get_type(),_leftExp->get_type())==2)
+		else if(TypeChecker::canCast(_rightExp->getType(),_leftExp->getType())==2)
 			{
 				
 				////////////////////////////////////////////////////////////

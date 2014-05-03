@@ -22,14 +22,14 @@ public:
 	void setLeftExp(Node* leftExp){
 		this->_leftExp=leftExp;
 	}
-	virtual void generate_code (){
+	virtual void generateCode (){
 		string t0="t0";
 string t1="t1";
-_leftExp->generate_code();
+_leftExp->generateCode();
 MIPS_ASM::pop(t0);
 //ofs<<"\nlw $t0, 0($sp)\n";
 //ofs<<"add $sp,$sp,4\n";
-_rightExp->generate_code();
+_rightExp->generateCode();
 //ofs<<"lw $t1, 0($sp)\n";
 //ofs<<"add $sp,$sp,4\n";
 //
@@ -150,7 +150,7 @@ if(_op==MORE_OR_EQUAL)
 	}
 	
 	
-	virtual Type* get_type()
+	virtual Type* generateType()
 	{
 		cout<<"DFffdfasdasdasdas\nsdsds\n\n\n\n";
 		Type* intType=symbolTable->getType("int");
@@ -162,17 +162,17 @@ if(_op==MORE_OR_EQUAL)
 		case DIV:
 		case PLUS:
 		case MINUS:
-			if(TypeChecker::canCast(_rightExp->get_type(),_leftExp->get_type())==1)
+			if(TypeChecker::canCast(_rightExp->getType(),_leftExp->getType())==1)
 			{
-				return _leftExp->get_type();
-			}else if(TypeChecker::canCast(_rightExp->get_type(),_leftExp->get_type())==2)
+				return _leftExp->getType();
+			}else if(TypeChecker::canCast(_rightExp->getType(),_leftExp->getType())==2)
 			{
-				if(TypeChecker::canCast(_leftExp->get_type(),_rightExp->get_type())==1)
-					return _rightExp->get_type();
+				if(TypeChecker::canCast(_leftExp->getType(),_rightExp->getType())==1)
+					return _rightExp->getType();
 				////////////////////////////////////////////////////////////
 				//////TO DO THROW WARNING
 				///////////////////////////////////////////////////////////
-				return _leftExp->get_type();
+				return _leftExp->getType();
 
 			}else{
 				////////////////////////////////////////////////////////////

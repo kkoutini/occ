@@ -17,10 +17,10 @@ public:
 	{
 	}
 
-	 bool type_check()
+	virtual bool typeCheck()
 	{
 		//Type* boolType=symbolTable->getType("bool");
-		//if (_condition->get_type()==boolType)
+		//if (_condition->getType()==boolType)
 		//{
 		//	return true;
 		//}else
@@ -33,7 +33,7 @@ public:
 		return 1;
 	}
 
-	 	 virtual void generate_code (){
+	 	 virtual void generateCode (){
 		
 		// 	strcpy(this->loop_end,"");
 
@@ -55,9 +55,9 @@ ccc+=cc;
 
 
 
-	this->_statment->generate_code();
+	this->_statment->generateCode();
 		if(this->_condition != NULL)
-		this->_condition->generate_code();
+		this->_condition->generateCode();
 
 	MIPS_ASM::pop("t0");
 

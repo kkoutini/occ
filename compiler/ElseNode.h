@@ -16,10 +16,10 @@ static	int 	Else_label;
 		
 	}
 
-	 bool type_check()
+	virtual bool typeCheck()
 	{
 		//Type* boolType=symbolTable->getType("bool");
-		//if (_condtion->get_type()==boolType)
+		//if (_condtion->getType()==boolType)
 		//{
 		//	return true;
 		//}else
@@ -32,7 +32,7 @@ static	int 	Else_label;
 		return 1;
 	}
 
-	  void generate_code ()
+	  void generateCode ()
 	  {
 		
 	string i = "";
@@ -43,7 +43,7 @@ static	int 	Else_label;
 	endif+=i;
 	end+=i;
 	
-	_statment->generate_code();
+	_statment->generateCode();
 	}
 	virtual ~ElseNode(void)
 	{

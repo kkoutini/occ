@@ -18,7 +18,7 @@ public:
 	int getOffset(){
 		return this->_scoop->offset+this->_scoop->get_variable(_name)->offset;
 	}
-virtual void generate_code(){
+virtual void generateCode(){
 		MIPS_ASM::printComment("identifier "+_name);
 		MIPS_ASM::lw_fp("t9",this->_scoop->offset+this->_scoop->get_variable(_name)->offset);
 		MIPS_ASM::push("t9");
