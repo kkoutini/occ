@@ -9,6 +9,7 @@ NSString str1;
 -(int) go:(int)y;
 
 @end
+
 @implementation wessam
 
 -(int) go:(int)y
@@ -19,7 +20,8 @@ y=8;
 
 -(int) a2go:(int)y
 {
-[self go:x:5 ];
+//wessam aa;
+//[aa ecjgo2:5 ];
 
 }
 -(int) ecjgo2:(int)y
@@ -30,5 +32,30 @@ if(i>=7){
 if(y>10)
 	y=24;
 }else y=15;
+}
+@end
+
+@interface koko
+{
+@public
+NSString str1;
+}
+-(int) go:(int)y;
+
+@end
+
+@implementation koko
+
+-(int) ko:(int)y
+{
+y=8;
+
+}
+
+-(int) jjjj:(int)y
+{
+wessam aa;
+[aa ecjgo2:5 ];
+
 }
 @end
