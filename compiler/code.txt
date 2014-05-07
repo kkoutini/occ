@@ -33,6 +33,7 @@ if(y>10)
 	y=24;
 }else y=15;
 }
+
 @end
 
 @interface koko
@@ -40,7 +41,7 @@ if(y>10)
 @public
 NSString str1;
 }
--(int) go:(int)y;
+-(int) kokogo:(int)y;
 
 @end
 
@@ -54,8 +55,6 @@ y=8;
 
 -(int) jjjj:(int)y
 {
-wessam aa;
-[aa ecjgo2:5 ];
 
 }
 @end
