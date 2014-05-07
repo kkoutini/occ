@@ -18,7 +18,7 @@ public:
 		SwitchNode(temp->_expr,temp->_cases,temp->_scoop);
 	}
 	void setExpr(Node* expr){
-		this->_expr=new Node(expr);
+		this->_expr=expr;
 	}
 	void addCase(Node* expr,Node* statement){
 		_cases.push_back(make_pair(expr,statement));
