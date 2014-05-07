@@ -1052,7 +1052,7 @@ message_call:
 	 message_call2 sender message CLOSE_ARR		{
 												cout<<"message_call: OPEN_ARR sender message CLOSE_ARR\n";
 												callNode->setSender($<r.node>2);
-												callNode->setMessage($<r.node>3);
+												callNode->setMessage($<r.text>3);
 												$<r.node>$=callNode;
 												}
 ;
@@ -1066,12 +1066,12 @@ sender:
 ;
 message:
 	IDENTIFIER								{cout<<"message: IDENTIFIER\n";
-											$<r.node>$=new IdentifierNode($<r.text>1,scoop);
+											//$<r.node>$=$<r.text>1;
 												
 											}
 	|IDENTIFIER SEMI_COLUMN argument_list	{
 											cout<<"message: IDENTIFIER SEMI_COLUMN argument_list\n";
-											$<r.node>$=new IdentifierNode($<r.text>1,scoop);
+											//$<r.node>$=$<r.text>1;
 											}
 ;
 argument_list:
