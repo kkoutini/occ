@@ -22,10 +22,7 @@ public:
 		this->_col = ::colNum;
 
 	}
-	Node(Node* node){
-		Node(node->_scoop);
-		this->type=node->type;
-	}
+	
 	virtual void generateCode (){
 		cout<<"Not implmented yet!!!!!!!!!!\n";
 	}
