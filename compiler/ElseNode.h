@@ -45,6 +45,10 @@ static	int 	Else_label;
 	
 	_statment->generateCode();
 	}
+	 virtual Type* generateType()
+	 {
+	  return symbolTable->getType("void");
+	 }
 	virtual ~ElseNode(void)
 	{
 

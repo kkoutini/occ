@@ -33,6 +33,10 @@ for(auto i=_nodes.begin();i!=_nodes.end();i++)
 		////deal with params
 		ScoopNode::generateCode();
 	};
+	virtual Type* generateType()
+	{
+		return symbolTable->getType("void");
+	}
 	virtual ~FunctionNode(void)
 	{
 	}

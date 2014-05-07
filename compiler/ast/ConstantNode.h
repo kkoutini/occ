@@ -54,6 +54,10 @@ public:
 			//ofs<<"sw $a0, 0($sp)\n";
 			
 	}
+		virtual Type* generateType()
+		{
+			return type;
+		}
 	virtual ~ConstantNode(void)
 	{
 	}

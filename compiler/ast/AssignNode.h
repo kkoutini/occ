@@ -65,7 +65,12 @@ public:
 			return false;
 			}
 	}
+	virtual Type* generateType()
+	{
 
+		return _leftExp->getType();
+
+	}
 	virtual ~AssignNode(void)
 	{
 	}

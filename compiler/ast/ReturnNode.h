@@ -33,6 +33,10 @@ public:
 		}
 
 	}
+	virtual Type* generateType()
+	{
+		return symbolTable->getType("void");
+	}
 
 	virtual ~ReturnNode(void)
 	{

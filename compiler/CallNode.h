@@ -41,6 +41,10 @@ public:
 		//TODO: check if sender isn't interface
 		(dynamic_cast<Interface*>(senderType));
 	}
+	virtual Type* generateType()
+	{
+
+	}
 	virtual ~CallNode(void)
 	{
 	}

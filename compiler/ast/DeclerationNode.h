@@ -34,6 +34,10 @@ public:
 		cout<<"type:"<<_typename<<endl;
 	
 	}
+	virtual Type* generateType()
+	{
+		return symbolTable->getType("void");
+	}
 	virtual ~DeclerationNode(void)
 	{
 	}

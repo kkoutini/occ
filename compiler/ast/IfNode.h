@@ -56,7 +56,11 @@ IfNode(Node* condition,Node* statment,ScoopNode* scoop,Node* elseNode):Node(scoo
 		_elseNode->generateCode();
 	MIPS_ASM::label(end);
 	}
-	virtual ~IfNode(void)
+	  virtual Type* generateType()
+	  {
+		  return symbolTable->getType("void");
+	  }
+	  virtual ~IfNode(void)
 	{
 
 	}

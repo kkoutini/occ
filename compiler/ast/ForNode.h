@@ -1,5 +1,8 @@
 #pragma once
 #include "node.h"
+#include "../ST/SymbolTable.h"
+using std::string;
+extern SymbolTable* symbolTable;
 class ForNode :
 	public Node
 {
@@ -102,6 +105,10 @@ public:
 			_condition->toString();
 		if(_statment!=NULL)
 		_statment->toString();
+	}
+	virtual Type* generateType()
+	{
+		return symbolTable->getType("void") ;
 	}
 	virtual ~ForNode(void)
 	{

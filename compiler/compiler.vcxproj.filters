@@ -253,9 +253,6 @@
     <ClInclude Include="InterfaceHelper.h">
       <Filter>Header Files\AST</Filter>
     </ClInclude>
-    <ClInclude Include="ReturnNode.h">
-      <Filter>Header Files\AST</Filter>
-    </ClInclude>
     <ClInclude Include="ElseNode.h">
       <Filter>Header Files\AST</Filter>
     </ClInclude>
