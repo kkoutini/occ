@@ -99,6 +99,10 @@ public:
 		}
 		return true;
 	}
+	virtual Type* generateType()
+	{
+		return symbolTable->getType("void");
+	}
 
 	virtual ~ScoopNode(void)
 	{

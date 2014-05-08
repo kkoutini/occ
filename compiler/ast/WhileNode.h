@@ -66,6 +66,11 @@ ccc+=cc;
 	MIPS_ASM::label(ccc2);
 
 	}
+	 virtual Type* generateType()
+	 {
+
+		 return symbolTable->getType("void");
+    }
 
 
 	virtual ~WhileNode(void)

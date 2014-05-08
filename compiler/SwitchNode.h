@@ -46,6 +46,10 @@ public:
 		return f;*/
 		return false;
 	}
+	virtual Type* generateType()
+	{
+		return symbolTable->getType("void");
+	}
 	virtual ~SwitchNode(void)
 	{
 	}

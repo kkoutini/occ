@@ -13,6 +13,11 @@ public:
 	UnaryNode(ScoopNode* scoop,Node* exp,int op):Node(scoop),_exp(exp),_op(op)
 	{
 	}
+	virtual Type* generateType()
+	{
+
+		return _exp->getType();
+	}
 
 	virtual ~UnaryNode(void)
 	{
