@@ -65,6 +65,7 @@ public:
 			//ERROR no method
 		}
 
+		MIPS_ASM::printComment("CALLING A METHOD "+_message);
 		
 	}
 	virtual Type* generateType()

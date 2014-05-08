@@ -76,6 +76,7 @@ Method* MethodItems::getMethod(string name, vector<string> selectors, vector<Typ
 			if (match)
 				return it->second;
 		}
+		++it;
 	}
 	if (it == this->methods.end()){
 		return NULL;
