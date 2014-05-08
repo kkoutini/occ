@@ -260,6 +260,9 @@
     <ClInclude Include="Warning.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AsmNode.h">
+      <Filter>Header Files\AST</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="codeold.txt">

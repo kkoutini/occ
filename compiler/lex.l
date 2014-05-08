@@ -49,6 +49,8 @@ FLOAT						("+"|"-")?({digit}+\.{digit}+)
 "("					{colNum++;										return OPEN_P;}
 ")"					{colNum++;											return CLOSE_P;}
 "@implementation"	{colNum+=15;								return AT_IMPLEMENTATION;}
+"@asm"              {colNum+=4;                                 return AT_ASM;}
+"self"              {colNum+=4;                                 return SELF;}
 "&&"				{colNum+=2;											return AND_AND;}
 "||"				{	colNum+=2;									return OR_OR;}
 "<="				{colNum+=2;										return LESS_OR_EQUAL;}

@@ -26,6 +26,7 @@
 				#include "DoWhileNode.h"
 				#include "ElseNode.h"
 				#include "ClassNode.h"
+				#include "AsmNode.h"
 				#include <fstream>
 	using namespace std;
 
@@ -136,6 +137,8 @@ Method* nodeXX;
 %token TRY //try
 %token CATCH //catch
 %token FINALLY //finally
+%token AT_ASM  //@asm
+%token SELF   //self pointer
 %code requires {
 #include "ast\node.h"
 }
@@ -788,8 +791,19 @@ statement:
 												$<r.node>$=$<r.node>1;
 											}
 	|try_catch								{cout<<"statement: try_catch\n";}
+
+	|asm                                    {
+	                                            $<r.text>$="asm";
+												$<r.node>$=$<r.node>1;}
 	
 	
+;
+
+asm:
+	AT_ASM IDENTIFIER SEMI_COMA              {cout<<"@asm command \n";
+	                                         $<r.node>$=new AsmNode(scoop,$<r.text>2);
+											 }
+
 ;
 variable_declaration_block:
 	type variable_list	SEMI_COMA						{

@@ -40,7 +40,7 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 139 "C:\\Users\\Mac Win\\source\\repos\\compiler\\compiler\\yacc.y" /* yacc.c:1909  */
+#line 142 "C:\\Users\\Toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1909  */
 
 #include "ast\node.h"
 
@@ -113,11 +113,13 @@ extern int yydebug;
     TRY = 317,
     CATCH = 318,
     FINALLY = 319,
-    if_h = 320,
-    expr_1 = 321,
-    p_type_expr_prec = 322,
-    long_id_prec = 323,
-    try_prec = 324
+    AT_ASM = 320,
+    SELF = 321,
+    if_h = 322,
+    expr_1 = 323,
+    p_type_expr_prec = 324,
+    long_id_prec = 325,
+    try_prec = 326
   };
 #endif
 
@@ -126,7 +128,7 @@ extern int yydebug;
 typedef union YYSTYPE YYSTYPE;
 union YYSTYPE
 {
-#line 142 "C:\\Users\\Mac Win\\source\\repos\\compiler\\compiler\\yacc.y" /* yacc.c:1909  */
+#line 145 "C:\\Users\\Toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1909  */
 
 	
 	struct R {
@@ -141,7 +143,7 @@ union YYSTYPE
 			      }r;
 	   
 
-#line 145 "yacc.hpp" /* yacc.c:1909  */
+#line 147 "yacc.hpp" /* yacc.c:1909  */
 };
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1

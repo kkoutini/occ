@@ -115,6 +115,7 @@
     <ClCompile Include="yacc.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AsmNode.h" />
     <ClInclude Include="ast\AssignNode.h" />
     <ClInclude Include="ast\BinaryOperationNode.h" />
     <ClInclude Include="ast\CastNode.h" />
