@@ -67,6 +67,26 @@ public:
 
 		
 	}
+	virtual Type* generateType()
+	{
+		Type* senderType = _sender->getType();
+		Interface* sender_interface = (dynamic_cast<Interface*>(senderType));
+		if (sender_interface == NULL)
+		{
+			//throw error
+			string error = "ERROR in call NODE generate type in  line number ";
+			Program::addError(new SemanticError(error));
+			return false;
+		}
+		Method* method = sender_interface->getMethod(_message, _params, _types, false);
+		if (method == NULL)
+		{
+			//throw error
+			string error = "ERROR in call NODE generate type in  line number ";
+			Program::addError(new SemanticError(error));
+		}
+		return method->get_return_type();
+	}
 	virtual ~CallNode(void)
 	{
 	}

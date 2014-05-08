@@ -1,6 +1,8 @@
 #pragma once
 #include "Node.h"
 #include "TypeChecker.h"
+#include "../Warning.h"
+
 class AssignNode: public Node
 {
 public:
@@ -16,6 +18,11 @@ public:
 		 this->_leftExp=leftExp;
 	}
 	 void generateCode(){
+		 if (typeCheck()==true)
+		 {
+			 
+
+		 }
 		 string t1="t1";
 		  string t0="t0";
 		 string mem_addr="sp";
@@ -45,27 +52,39 @@ public:
 	 }
 	virtual bool typeCheck()
 	{
-		
-		if(TypeChecker::canCast(_rightExp->getType(),_leftExp->getType())==1)
-			{
-				return true;
-			}
-		else if(TypeChecker::canCast(_rightExp->getType(),_leftExp->getType())==2)
-			{
-				
-				////////////////////////////////////////////////////////////
-				//////TO DO THROW WARNING
-				///////////////////////////////////////////////////////////
-				return true;
-
-			}else{
-				////////////////////////////////////////////////////////////
-				//////TO DO THROW ERROR
-				///////////////////////////////////////////////////////////
+		if (_rightExp->getType() == NULL || _leftExp->getType()==NULL)
+		{
+			string error = "ERROR some type in assign Node is null  ";
+			Program::addError(new SemanticError(error));
 			return false;
+		}
+		else{
+			if (TypeChecker::canCast(_rightExp->getType(), _leftExp->getType()) == 1)
+			{
+				return true;
 			}
-	}
+			else if (TypeChecker::canCast(_rightExp->getType(), _leftExp->getType()) == 2)
+			{
+				//////THROW WARNING	
+				string error = "WARNING in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name() + " AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
+				Program::addWarning(new Warning(error));
+				return true;
 
+			}
+			else{
+				////// THROW ERROR
+				string error = "ERROR in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name() + " AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
+				Program::addError(new SemanticError(error));
+				return false;
+			}
+		}
+	}
+	virtual Type* generateType()
+	{
+
+		return _leftExp->getType();
+
+	}
 	virtual ~AssignNode(void)
 	{
 	}

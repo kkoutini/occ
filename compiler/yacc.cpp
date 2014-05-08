@@ -4376,11 +4376,13 @@ freopen("code.txt","r",stdin);
 	symbolTable->toString();
 	/*for(int i=0;i<scoopVector.size();i++)
 	scoopVector.at(i)->toString();*/
-	Program::printErrors();
+	
 	ofs<<".globl main\nmain:\n";
 	//ConstantNode * temp =new ConstantNode(5,NULL);
 	//method->getF()->generateCode();
 	symbolTable->generateCode();
+	Program::printErrors();
+	Program::printWarning();
 
 //	functionNode->toString();
 	//functionNode->generateCode();

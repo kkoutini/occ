@@ -17,9 +17,9 @@ public:
 		_identifires.push_back(make_pair(name,node));
 	}
 	void generateCode(){
-		for(auto i=_identifires.begin();i!=_identifires.end();i++){
-			(*i).second->generateCode();
-		}
+		/*for(auto i=_identifires.begin();i!=_identifires.end();i++){
+		(*i).second->generateCode();
+		}*/
 	}
 	DeclerationNode(list<pair<string,Node*> > identifires,ScoopNode* scoop,string typeName):Node(scoop),_identifires(identifires)
 	{
@@ -33,6 +33,10 @@ public:
 		cout<<"DeclarationNode\n";
 		cout<<"type:"<<_typename<<endl;
 	
+	}
+	virtual Type* generateType()
+	{
+		return symbolTable->getType("void");
 	}
 	virtual ~DeclerationNode(void)
 	{

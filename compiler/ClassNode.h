@@ -2,6 +2,8 @@
 
 #include "ast\scoopnode.h"
 #include "ST\Interface.h"
+#include "ST\SymbolTable.h"
+extern SymbolTable* symbolTable;
 class ClassNode :
 	public ScoopNode
 {
@@ -25,8 +27,12 @@ for(auto i=_nodes.begin();i!=_nodes.end();i++)
 		return _interface;
 	}
 	virtual void generateCode(){
-	
-	};
+		
+	}
+	virtual Type* generateType()
+	{
+		return symbolTable->getType("void");
+	}
 	virtual ~ClassNode(void)
 	{
 	}

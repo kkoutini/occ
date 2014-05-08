@@ -142,7 +142,6 @@
     <ClInclude Include="MethodItems.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="ProtocolHelper.h" />
-    <ClInclude Include="ReturnNode.h" />
     <ClInclude Include="ScoopHelper.h" />
     <ClInclude Include="Selector.h" />
     <ClInclude Include="SemanticError.h" />
@@ -160,6 +159,7 @@
     <ClInclude Include="ST\VariableHelper.h" />
     <ClInclude Include="SwitchNode.h" />
     <ClInclude Include="VariableItems.h" />
+    <ClInclude Include="Warning.h" />
     <ClInclude Include="yacc.hpp" />
   </ItemGroup>
   <ItemGroup>

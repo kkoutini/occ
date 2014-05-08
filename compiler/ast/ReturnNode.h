@@ -28,10 +28,15 @@ public:
 		//////////////////////////////////
 			/////////////
 			///////////////////////////////////
-		
+			string error = "ERROR return type mismatch  line number :" + std::to_string(_line) + " col number :" + std::to_string(_col);
+			Program::addError(new SemanticError(error));
 			return false;
 		}
 
+	}
+	virtual Type* generateType()
+	{
+		return symbolTable->getType("void");
 	}
 
 	virtual ~ReturnNode(void)

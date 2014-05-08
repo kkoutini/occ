@@ -17,23 +17,37 @@ public:
 	
 	virtual Type* generateType()
 	{
-		int res=TypeChecker::canCast(_node->getType(),_toType);
-		if(res==1)
-			return _toType;
-		else if(res==2)
+		if (_node->getType()==NULL)
 		{
-				//////////////////////////////////////
-			/////////WARNIONOGGNOONG
-			//////////////////////////////////
-				return _toType;
-		
-		}
-		else 
-		{
-			//////////////////////////////////////
-			/////////ERNONGNOGGNOONG
-			//////////////////////////////////
+			string error = "ERROR in cast NODE type is null  in  line number ";
+			Program::addError(new SemanticError(error));
 			symbolTable->getType("error_type");
+		}
+		else
+		{
+
+
+			int res = TypeChecker::canCast(_node->getType(), _toType);
+			if (res == 1)
+				return _toType;
+			else if (res == 2)
+			{
+				//////////////////////////////////////
+				/////////WARNIONOGGNOONG
+				//////////////////////////////////
+
+				string error = "Warning in cast NODE can't cast in  line number ";
+				Program::addWarning(new Warning(error));
+				return _toType;
+
+			}
+			else
+			{
+				//throw error
+				string error = "ERROR in cast NODE can't cast in  line number ";
+				Program::addError(new SemanticError(error));
+				symbolTable->getType("error_type");
+			}
 		}
 	}
 

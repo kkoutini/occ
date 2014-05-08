@@ -8,11 +8,15 @@ static class Program
 {
 private:
 	static vector<Error*>errorsList;
+	static vector<Error*>warningList;
 
 public:
-	
+
+	static	void printWarning();
 	static void printErrors();
 	static void addError(Error*);
+	static void addWarning(Error*);
+
 
 };
 

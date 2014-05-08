@@ -28,6 +28,10 @@ virtual void generateCode(){
 
 		//MIPS_ASM::sw("t0",0,"sp");
 	}
+  virtual Type* generateType()
+  {
+	 return this->_scoop->get_variable(_name)->getType();
+  }
 	virtual ~IdentifierNode(void)
 	{
 	}

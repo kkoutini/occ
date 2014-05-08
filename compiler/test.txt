@@ -1,23 +1,30 @@
 .globl main
 main:
- #generating code for Method:jjjj
+ #generating code for Method:jjjj
+
 __jjjj:
- #movesp to fp
+ #movesp to fp
+
 move $fp,$sp
- #reserving space in stack for scope variables
+ #reserving space in stack for scope variables
+
 addi $sp,$sp,4
- #generating code for Method:ko
+ #generating code for Method:ko
+
 __ko:
- #movesp to fp
+ #movesp to fp
+
 move $fp,$sp
- #reserving space in stack for scope variables
+ #reserving space in stack for scope variables
+
 addi $sp,$sp,4
 li $t9,8
 add $sp,$sp,4
 sw $t9, 0($sp)
 lw $t1, 0($sp)
 sub $sp,$sp,4
- #identifier y
+ #identifier y
+
 lw $t9,0($fp)
 add $sp,$sp,4
 sw $t9, 0($sp)
@@ -25,26 +32,35 @@ lw $t0, 0($sp)
 sub $sp,$sp,4
 add $t0,$0,$t1
 sw $t0,0($fp)
- #generating code for Method:kokogo
- #Something wrong this method's node is NULL :kokogo
- #generating code for Method:a2go
+ #generating code for Method:kokogo
+
+ #Something wrong this method's node is NULL :kokogo
+
+ #generating code for Method:a2go
+
 __a2go:
- #movesp to fp
+ #movesp to fp
+
 move $fp,$sp
- #reserving space in stack for scope variables
+ #reserving space in stack for scope variables
+
 addi $sp,$sp,4
- #generating code for Method:ecjgo2
+ #generating code for Method:ecjgo2
+
 __ecjgo2:
- #movesp to fp
+ #movesp to fp
+
 move $fp,$sp
- #reserving space in stack for scope variables
+ #reserving space in stack for scope variables
+
 addi $sp,$sp,8
 li $t9,8
 add $sp,$sp,4
 sw $t9, 0($sp)
 lw $t1, 0($sp)
 sub $sp,$sp,4
- #identifier y
+ #identifier y
+
 lw $t9,0($fp)
 add $sp,$sp,4
 sw $t9, 0($sp)
@@ -57,7 +73,8 @@ add $sp,$sp,4
 sw $t9, 0($sp)
 lw $t1, 0($sp)
 sub $sp,$sp,4
- #identifier i
+ #identifier i
+
 lw $t9,4($fp)
 add $sp,$sp,4
 sw $t9, 0($sp)
@@ -65,7 +82,8 @@ lw $t0, 0($sp)
 sub $sp,$sp,4
 add $t0,$0,$t1
 sw $t0,4($fp)
- #identifier i
+ #identifier i
+
 lw $t9,4($fp)
 add $sp,$sp,4
 sw $t9, 0($sp)
@@ -91,9 +109,11 @@ sw $t2, 0($sp)
 lw $t0, 0($sp)
 sub $sp,$sp,4
 beq $t0,$0,endif_0
- #reserving space in stack for scope variables
+ #reserving space in stack for scope variables
+
 addi $sp,$sp,0
- #identifier y
+ #identifier y
+
 lw $t9,0($fp)
 add $sp,$sp,4
 sw $t9, 0($sp)
@@ -115,7 +135,8 @@ add $sp,$sp,4
 sw $t9, 0($sp)
 lw $t1, 0($sp)
 sub $sp,$sp,4
- #identifier y
+ #identifier y
+
 lw $t9,0($fp)
 add $sp,$sp,4
 sw $t9, 0($sp)
@@ -133,7 +154,8 @@ add $sp,$sp,4
 sw $t9, 0($sp)
 lw $t1, 0($sp)
 sub $sp,$sp,4
- #identifier y
+ #identifier y
+
 lw $t9,0($fp)
 add $sp,$sp,4
 sw $t9, 0($sp)
@@ -142,5 +164,7 @@ sub $sp,$sp,4
 add $t0,$0,$t1
 sw $t0,0($fp)
 end_0:
- #generating code for Method:go
- #Something wrong this method's node is NULL :go
+ #generating code for Method:go
+
+ #Something wrong this method's node is NULL :go
+

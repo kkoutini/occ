@@ -1,11 +1,13 @@
 #pragma once
 #include "Node.h"
 #include "../yacc.hpp"
-#include "../ST/SymbolTable.h"
+
 #include "TypeChecker.h"
 #include "string"
 #include "mips_asm.h"
+#include "../Warning.h"
 using std::string;
+#include "../ST/SymbolTable.h"
 extern SymbolTable* symbolTable;
 class BinaryOperationNode:public Node
 {
@@ -152,9 +154,7 @@ if(_op==MORE_OR_EQUAL)
 	
 	virtual Type* generateType()
 	{
-		cout<<"DFffdfasdasdasdas\nsdsds\n\n\n\n";
-		Type* intType=symbolTable->getType("int");
-		Type* floatType=symbolTable->getType("float");
+		
 
 		switch (_op)
 		{
@@ -162,6 +162,12 @@ if(_op==MORE_OR_EQUAL)
 		case DIV:
 		case PLUS:
 		case MINUS:
+			if (_rightExp->getType() == NULL || _leftExp->getType()==NULL)
+			{
+				string error = "ERROR in cast in binary operation type is null  line number ";
+				Program::addError(new SemanticError(error));
+				return false;
+			}
 			if(TypeChecker::canCast(_rightExp->getType(),_leftExp->getType())==1)
 			{
 				return _leftExp->getType();
@@ -169,21 +175,32 @@ if(_op==MORE_OR_EQUAL)
 			{
 				if(TypeChecker::canCast(_leftExp->getType(),_rightExp->getType())==1)
 					return _rightExp->getType();
-				////////////////////////////////////////////////////////////
-				//////TO DO THROW WARNING
-				///////////////////////////////////////////////////////////
+
+				////// THROW WARNING
+				string error = "WARNING in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name() + " AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
+				Program::addWarning(new Warning(error));
+				return false;
 				return _leftExp->getType();
 
 			}else{
-				////////////////////////////////////////////////////////////
-				//////TO DO THROW ERROR
-				///////////////////////////////////////////////////////////
+				////// THROW ERROR
+				string error = "ERROR in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name() + " AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
+				Program::addError(new SemanticError(error));
+				return false;
 			
 			}
-			
-			////////////////////////////////////////////////////////////
-				//////TO DO <= >= ==  !=
-				///////////////////////////////////////////////////////////
+			//////TO DO <= >= ==  !=
+
+		case EQUAL_EQUAL:
+		case NOT_EQUAL:
+		case MORE_OR_EQUAL:
+		case LESS_OR_EQUAL:
+		case LESS_THAN:
+		case MORE_THAN:
+		{
+							  Type* t = symbolTable->getType("bool");
+							  return t;
+		}
 		default:
 			break;
 		} 
