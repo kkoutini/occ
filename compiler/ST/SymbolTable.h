@@ -30,6 +30,7 @@ class SymbolTable
 {
 private:
 	TypesMap types;
+	map<string, bool> declaredInterfaces;
 public:
 	SymbolTable(void);
 	~SymbolTable(void);
@@ -37,6 +38,9 @@ public:
 	//void addSymbol(Type*);
 	//Type* getSymbol(string);
 	Type* getType(string name);
+	bool getInterfaceState(string name);
+	void add_interfaceState(string, bool);
+	void set_interfaceState(string, bool);
 	void toString();
 	void add_type(Type*);
 	bool checkTypeExist(string name);

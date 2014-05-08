@@ -194,9 +194,24 @@ Interface* InterfaceHelper ::createNewInterface(string name,string inheritedInte
 			error.append("'.");
 			Program::addError(new SemanticError(error));
 		}
-		if(!symbolTable->checkTypeExist(name))
-			symbolTable->add_type(interface);
-		else {
+		bool interfaceState = false;
+		bool test = symbolTable->getInterfaceState(name);
+		if (symbolTable->getInterfaceState(name)==false)
+		{
+			symbolTable->set_interfaceState(name, true);
+			interfaceState = true;
+			bool test2 = symbolTable->getInterfaceState(name);
+		}
+
+		else if (symbolTable->getInterfaceState(name) == true)
+		{
+			interfaceState = false;
+		}
+      /*  if(!symbolTable->checkTypeExist(name)&&interfaceState==false)
+			symbolTable->add_type(interface);*/
+		//else
+		if (interfaceState==false)
+		{
 			string error="Duplicate interface difinition for class '";
 			error.append(name);
 			error.append("'.");

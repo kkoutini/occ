@@ -55,9 +55,14 @@ Type* SymbolTable::getType(string name)
 {
 
 	if((this!=NULL)){
-
+		if (types[name]!=NULL)
 		return types[name]; // even if it's not implemented yet it should return object with the default constructer expecting to be defined later (multiparse)
-	
+		else
+		{
+			Interface* interface = new Interface(name);
+			add_interfaceState(name, false);
+			return types[name] = interface;
+		}
 	}
 }
 bool SymbolTable::checkTypeExist(string name)
@@ -75,6 +80,20 @@ void SymbolTable::generateCode()
 		i->second->generateCode();
 	}
 }
+bool SymbolTable::getInterfaceState(string name)
+{
+	return declaredInterfaces[name];
+}
+void SymbolTable::add_interfaceState(string name, bool state)
+{
+	declaredInterfaces[name] = state;
+}
+void SymbolTable::set_interfaceState(string name, bool state)
+{
+	declaredInterfaces[name] = state;
+}
+
+
 //void SymbolTable::add(symbol* newItem)
 //{
 //	int index = GetIndex(newItem->get_name());     //////////////   we should use a getter

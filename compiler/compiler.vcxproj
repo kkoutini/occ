@@ -80,6 +80,7 @@
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="lex.l" />
     <None Include="yacc.output" />
     <None Include="yacc.y" />
