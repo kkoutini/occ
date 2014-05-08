@@ -16,7 +16,8 @@ public:
 	}
 	virtual void generateCode()
 	{
-
+		MIPS_ASM::printComment(string("asm node :") + _command);
+		MIPS_ASM::add_instruction(_command+"\n");
 	}
 	virtual Type* generateType()
 	{
