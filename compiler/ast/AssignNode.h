@@ -20,7 +20,7 @@ public:
 	 void generateCode(){
 		 if (typeCheck()==true)
 		 {
-			 cout << "dddd";
+			 
 
 		 }
 		 string t1="t1";
@@ -54,7 +54,7 @@ public:
 	{
 		if (_rightExp->getType() == NULL || _leftExp->getType()==NULL)
 		{
-			string error = "ERROR some type in assign Node is null at line ";
+			string error = "ERROR some type in assign Node is null  ";
 			Program::addError(new SemanticError(error));
 			return false;
 		}
@@ -65,20 +65,15 @@ public:
 			}
 			else if (TypeChecker::canCast(_rightExp->getType(), _leftExp->getType()) == 2)
 			{
-
-				////////////////////////////////////////////////////////////
-				//////THROW WARNING
-				///////////////////////////////////////////////////////////
-				string error = "Warning in cast line number ";
+				//////THROW WARNING	
+				string error = "WARNING in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name() + " AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
 				Program::addWarning(new Warning(error));
 				return true;
 
 			}
 			else{
-				////////////////////////////////////////////////////////////
 				////// THROW ERROR
-				///////////////////////////////////////////////////////////
-				string error = "ERROR in cast in assign  line number :" + std::to_string(_line)+" col number :"+std::to_string(_col);
+				string error = "ERROR in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name() + " AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
 				Program::addError(new SemanticError(error));
 				return false;
 			}

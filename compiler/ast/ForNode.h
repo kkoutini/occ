@@ -24,33 +24,35 @@ public:
 
 	virtual bool typeCheck()
 	{
-
-		Type* boolType=symbolTable->getType("bool");
-		if (_condition->getType()==boolType)
+		if (_condition->getType()==NULL)
 		{
-			return true;
-		}else
-		{
-			///////////////////////////////////////////////////
-			/////////// error 
-			///////////////////////////////////////////////
-			string error = "ERROR  condition type mismatch in for  line number :" + std::to_string(_line) + " col number :" + std::to_string(_col);
-			Program::addError(new SemanticError(error));
+			return false;
 		}
-
-
-		if (_increment->typeCheck()==true)
-		{
-			return	true;
-		}else
-		{
-			///////////////////////////////////////////////////
-			/////////// error 
-			///////////////////////////////////////////////
-			string error = "ERROR in increment in for  line number :" + std::to_string(_line) + " col number :" + std::to_string(_col);
-			Program::addError(new SemanticError(error));
+		else{
+			Type* boolType = symbolTable->getType("bool");
+			if (_increment->typeCheck() == true)
+			{
+				if (_condition->getType() == boolType)
+				{
+					return true;
+				}
+				else
+				{
+					/////////// error 
+					string error = "ERROR Cannot implicitly convert type " + _condition->getType()->get_name() + " to 'bool'  AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
+					Program::addError(new SemanticError(error));
+				}
+			}
+			else
+			{
+				return false;
+			}
+			/////////// error 	
+				//string error = "ERROR Cannot implicitly convert type " + _condition->getType()->get_name() + " to 'bool'  AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
+				//Program::addError(new SemanticError(error));
+			
 		}
-		return false;
+		
 	}
 
 
@@ -59,7 +61,7 @@ public:
 			this->_statment=statement;
 	}
 	virtual void generateCode (){
-		
+		typeCheck();
 		string cc  = "";
 		cc=std::to_string(ForNode::for_label++);
 

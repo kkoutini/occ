@@ -154,9 +154,7 @@ if(_op==MORE_OR_EQUAL)
 	
 	virtual Type* generateType()
 	{
-		cout<<"DFffdfasdasdasdas\nsdsds\n\n\n\n";
-		Type* intType=symbolTable->getType("int");
-		Type* floatType=symbolTable->getType("float");
+		
 
 		switch (_op)
 		{
@@ -167,7 +165,6 @@ if(_op==MORE_OR_EQUAL)
 			if (_rightExp->getType() == NULL || _leftExp->getType()==NULL)
 			{
 				string error = "ERROR in cast in binary operation type is null  line number ";
-				
 				Program::addError(new SemanticError(error));
 				return false;
 			}
@@ -178,28 +175,32 @@ if(_op==MORE_OR_EQUAL)
 			{
 				if(TypeChecker::canCast(_leftExp->getType(),_rightExp->getType())==1)
 					return _rightExp->getType();
-				////////////////////////////////////////////////////////////
+
 				////// THROW WARNING
-				///////////////////////////////////////////////////////////
-				string error = "warning in cast in binary operation in  line number ";
+				string error = "WARNING in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name() + " AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
 				Program::addWarning(new Warning(error));
 				return false;
 				return _leftExp->getType();
 
 			}else{
-				////////////////////////////////////////////////////////////
 				////// THROW ERROR
-				///////////////////////////////////////////////////////////
-				string error = "ERROR in cast in binary operation in  line number ";
-				//error += "col number :" + _col;
+				string error = "ERROR in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name() + " AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
 				Program::addError(new SemanticError(error));
 				return false;
 			
 			}
-			
-			////////////////////////////////////////////////////////////
-				//////TO DO <= >= ==  !=
-				///////////////////////////////////////////////////////////
+			//////TO DO <= >= ==  !=
+
+		case EQUAL_EQUAL:
+		case NOT_EQUAL:
+		case MORE_OR_EQUAL:
+		case LESS_OR_EQUAL:
+		case LESS_THAN:
+		case MORE_THAN:
+		{
+							  Type* t = symbolTable->getType("bool");
+							  return t;
+		}
 		default:
 			break;
 		} 
