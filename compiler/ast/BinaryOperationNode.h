@@ -5,6 +5,7 @@
 #include "TypeChecker.h"
 #include "string"
 #include "mips_asm.h"
+#include "../Warning.h"
 using std::string;
 #include "../ST/SymbolTable.h"
 extern SymbolTable* symbolTable;
@@ -163,6 +164,13 @@ if(_op==MORE_OR_EQUAL)
 		case DIV:
 		case PLUS:
 		case MINUS:
+			if (_rightExp->getType() == NULL || _leftExp->getType()==NULL)
+			{
+				string error = "ERROR in cast in binary operation type is null  line number ";
+				
+				Program::addError(new SemanticError(error));
+				return false;
+			}
 			if(TypeChecker::canCast(_rightExp->getType(),_leftExp->getType())==1)
 			{
 				return _leftExp->getType();
@@ -171,14 +179,21 @@ if(_op==MORE_OR_EQUAL)
 				if(TypeChecker::canCast(_leftExp->getType(),_rightExp->getType())==1)
 					return _rightExp->getType();
 				////////////////////////////////////////////////////////////
-				//////TO DO THROW WARNING
+				////// THROW WARNING
 				///////////////////////////////////////////////////////////
+				string error = "warning in cast in binary operation in  line number ";
+				Program::addWarning(new Warning(error));
+				return false;
 				return _leftExp->getType();
 
 			}else{
 				////////////////////////////////////////////////////////////
-				//////TO DO THROW ERROR
+				////// THROW ERROR
 				///////////////////////////////////////////////////////////
+				string error = "ERROR in cast in binary operation in  line number ";
+				//error += "col number :" + _col;
+				Program::addError(new SemanticError(error));
+				return false;
 			
 			}
 			

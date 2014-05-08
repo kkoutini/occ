@@ -18,18 +18,28 @@ public:
 
 	virtual bool typeCheck()
 	{
-		Type* boolType=symbolTable->getType("bool");
-		if (_condition->getType()==boolType)
+		Type* boolType = symbolTable->getType("bool");
+		if (_condition->getType() == NULL)
 		{
-			return true;
-		}else
-		{
-		///////////////////////////////////////////////////
-			/////////// error 
-			///////////////////////////////////////////////
-		
+			string error = "ERROR in condition in While NULL ERROR  line number :" + std::to_string(_line) + " col number :" + std::to_string(_col);
+			Program::addError(new SemanticError(error));
 		}
+		else{
+			if (_condition->getType() == boolType)
+			{
+				return true;
+			}
+			else
+			{
+				///////////////////////////////////////////////////
+				/////////// error 
+				///////////////////////////////////////////////
+				string error = "ERROR in condition in While  line number :" + std::to_string(_line) + " col number :" + std::to_string(_col);
+				Program::addError(new SemanticError(error));
+				return false;
+			}
 
+		}
 	}
 
 	 	 virtual void generateCode (){

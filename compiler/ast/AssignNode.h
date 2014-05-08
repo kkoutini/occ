@@ -52,28 +52,36 @@ public:
 	 }
 	virtual bool typeCheck()
 	{
-		if (TypeChecker::canCast(_rightExp->getType(), _leftExp->getType()) == 1)
+		if (_rightExp->getType() == NULL || _leftExp->getType()==NULL)
 		{
-			return true;
-		}
-		else if (TypeChecker::canCast(_rightExp->getType(), _leftExp->getType()) == 2)
-		{
-
-			////////////////////////////////////////////////////////////
-			//////TO DO THROW WARNING
-			///////////////////////////////////////////////////////////
-			string error = "Warning in cast";
-			Program::addWarning(new Warning(error));
-			return true;
-
-		}
-		else{
-			////////////////////////////////////////////////////////////
-			//////TO DO THROW ERROR
-			///////////////////////////////////////////////////////////
-			string error = "Error in cast";
+			string error = "ERROR some type in assign Node is null at line ";
 			Program::addError(new SemanticError(error));
 			return false;
+		}
+		else{
+			if (TypeChecker::canCast(_rightExp->getType(), _leftExp->getType()) == 1)
+			{
+				return true;
+			}
+			else if (TypeChecker::canCast(_rightExp->getType(), _leftExp->getType()) == 2)
+			{
+
+				////////////////////////////////////////////////////////////
+				//////THROW WARNING
+				///////////////////////////////////////////////////////////
+				string error = "Warning in cast line number ";
+				Program::addWarning(new Warning(error));
+				return true;
+
+			}
+			else{
+				////////////////////////////////////////////////////////////
+				////// THROW ERROR
+				///////////////////////////////////////////////////////////
+				string error = "ERROR in cast in assign  line number :" + std::to_string(_line)+" col number :"+std::to_string(_col);
+				Program::addError(new SemanticError(error));
+				return false;
+			}
 		}
 	}
 	virtual Type* generateType()

@@ -34,7 +34,8 @@ public:
 			///////////////////////////////////////////////////
 			/////////// error 
 			///////////////////////////////////////////////
-
+			string error = "ERROR  condition type mismatch in for  line number :" + std::to_string(_line) + " col number :" + std::to_string(_col);
+			Program::addError(new SemanticError(error));
 		}
 
 
@@ -46,7 +47,8 @@ public:
 			///////////////////////////////////////////////////
 			/////////// error 
 			///////////////////////////////////////////////
-
+			string error = "ERROR in increment in for  line number :" + std::to_string(_line) + " col number :" + std::to_string(_col);
+			Program::addError(new SemanticError(error));
 		}
 		return false;
 	}

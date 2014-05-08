@@ -20,6 +20,8 @@ IfNode(Node* condition,Node* statment,ScoopNode* scoop,Node* elseNode):Node(scoo
 	virtual bool typeCheck()
 	{
 		Type* boolType=symbolTable->getType("bool");
+		
+
 		if (_condtion->getType()==boolType)
 		{
 			return true;
@@ -28,7 +30,9 @@ IfNode(Node* condition,Node* statment,ScoopNode* scoop,Node* elseNode):Node(scoo
 		///////////////////////////////////////////////////
 			/////////// error 
 			///////////////////////////////////////////////
-		
+			string error = "ERROR in if NODE type mismatch  in  line number ";
+			Program::addError(new SemanticError(error));
+			return false;
 		}
 
 	}

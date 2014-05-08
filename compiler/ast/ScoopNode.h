@@ -1,7 +1,8 @@
 #pragma once
+#include "Node.h"
 #include "../ST/variable.h"
 
-#include "Node.h"
+
 class ScoopNode :
 	public Node
 {
@@ -99,10 +100,10 @@ public:
 		}
 		return true;
 	}
-	virtual Type* generateType()
-	{
-		return symbolTable->getType("void");
-	}
+	//virtual Type* generateType()
+	//{
+	//return symbolTable->getType("void");
+	//}
 
 	virtual ~ScoopNode(void)
 	{

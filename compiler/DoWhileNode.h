@@ -20,18 +20,21 @@ public:
 
 	virtual bool typeCheck()
 	{
-		//Type* boolType=symbolTable->getType("bool");
-		//if (_condition->getType()==boolType)
-		//{
-		//	return true;
-		//}else
-		//{
-		/////////////////////////////////////////////////////
-		//	/////////// error 
-		//	///////////////////////////////////////////////
-		//
-		//}
-		return 1;
+		Type* boolType=symbolTable->getType("bool");
+		if (_condition->getType()==boolType)
+		{
+			return true;
+		}else
+		{
+		///////////////////////////////////////////////////
+			/////////// error 
+			///////////////////////////////////////////////
+			string error = "ERROR in While NODE  in  line number ";
+			Program::addError(new SemanticError(error));
+			
+			return false;
+		}
+		
 	}
 
 	 	 virtual void generateCode (){
