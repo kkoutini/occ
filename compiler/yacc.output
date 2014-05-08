@@ -209,7 +209,7 @@ Grammar
 
   146 statement: loop_statement
   147          | conditional_statement
-  148          | expr SEMI_COMA
+  148          | assign_expr SEMI_COMA
   149          | variable_declaration_block
   150          | block_body
   151          | return_statement
@@ -585,10 +585,10 @@ logic_expr (136)
     on left: 180 181 182 183 184 185 186 187 188 189 190, on right:
     169 170 172 174 186 187 188 223 227
 expr (137)
-    on left: 191 192, on right: 38 39 104 148 162 169 170 171 175 177
-    178 180 181 182 183 184 185 220 221 236 237 238 250 251
+    on left: 191 192, on right: 38 39 104 162 169 170 171 175 177 178
+    180 181 182 183 184 185 220 221 236 237 238 250 251
 assign_expr (138)
-    on left: 193, on right: 191
+    on left: 193, on right: 148 191
 long_id (139)
     on left: 194 195 196, on right: 193 194 201
 simple_expr (140)
@@ -1910,65 +1910,55 @@ State 117
 
   140 block_body: block_body_header . block_body_statements
 
-    IDENTIFIER   shift, and go to state 168
-    NSSTRING     shift, and go to state 61
-    FLOAT        shift, and go to state 62
-    CHAR         shift, and go to state 63
-    BOOL         shift, and go to state 64
-    INT          shift, and go to state 65
-    OPEN_S       shift, and go to state 115
-    CLOSE_S      shift, and go to state 169
-    CONST        shift, and go to state 170
-    VOID         shift, and go to state 71
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    FOR          shift, and go to state 176
-    WHILE        shift, and go to state 177
-    IF           shift, and go to state 178
-    DO           shift, and go to state 179
-    SWITCH       shift, and go to state 180
-    ENUM         shift, and go to state 181
-    OPEN_ARR     shift, and go to state 182
-    RETURN       shift, and go to state 183
-    STRUCT       shift, and go to state 73
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-    TRY          shift, and go to state 186
+    IDENTIFIER  shift, and go to state 168
+    NSSTRING    shift, and go to state 61
+    FLOAT       shift, and go to state 62
+    CHAR        shift, and go to state 63
+    BOOL        shift, and go to state 64
+    INT         shift, and go to state 65
+    OPEN_S      shift, and go to state 115
+    CLOSE_S     shift, and go to state 169
+    CONST       shift, and go to state 170
+    VOID        shift, and go to state 71
+    FOR         shift, and go to state 171
+    WHILE       shift, and go to state 172
+    IF          shift, and go to state 173
+    DO          shift, and go to state 174
+    SWITCH      shift, and go to state 175
+    ENUM        shift, and go to state 176
+    OPEN_ARR    shift, and go to state 177
+    RETURN      shift, and go to state 178
+    STRUCT      shift, and go to state 73
+    TRY         shift, and go to state 179
 
-    type                        go to state 187
+    type                        go to state 180
     struct_type                 go to state 80
     enum_type                   go to state 81
     simple_type                 go to state 82
     complex_type                go to state 83
-    p_type                      go to state 188
-    block_body                  go to state 189
+    block_body                  go to state 181
     block_body_header           go to state 117
-    block_body_statements       go to state 190
-    statement_list              go to state 191
-    statement                   go to state 192
-    variable_declaration_block  go to state 193
-    return_statement            go to state 194
-    loop_statement              go to state 195
-    do_while                    go to state 196
-    do_header                   go to state 197
-    for_loop                    go to state 198
-    for_loop_header             go to state 199
-    expr                        go to state 200
-    assign_expr                 go to state 201
-    long_id                     go to state 202
-    simple_expr                 go to state 203
-    message_call2               go to state 204
-    message_call                go to state 205
-    while_loop                  go to state 206
-    while_loop_header           go to state 207
-    conditional_statement       go to state 208
-    if_header                   go to state 209
-    switch_header               go to state 210
-    enum                        go to state 211
-    try_catch                   go to state 212
+    block_body_statements       go to state 182
+    statement_list              go to state 183
+    statement                   go to state 184
+    variable_declaration_block  go to state 185
+    return_statement            go to state 186
+    loop_statement              go to state 187
+    do_while                    go to state 188
+    do_header                   go to state 189
+    for_loop                    go to state 190
+    for_loop_header             go to state 191
+    assign_expr                 go to state 192
+    long_id                     go to state 193
+    message_call2               go to state 194
+    message_call                go to state 195
+    while_loop                  go to state 196
+    while_loop_header           go to state 197
+    conditional_statement       go to state 198
+    if_header                   go to state 199
+    switch_header               go to state 200
+    enum                        go to state 201
+    try_catch                   go to state 202
 
 
 State 118
@@ -1990,7 +1980,7 @@ State 120
   106 interface_declaration_list: interface_declaration_list . interface_declaration
   244 protocol_body: protocol_reference_list interface_declaration_list . AT_END
 
-    AT_END  shift, and go to state 213
+    AT_END  shift, and go to state 203
     PLUS    shift, and go to state 31
     MINUS   shift, and go to state 32
 
@@ -2034,8 +2024,8 @@ State 125
   252          | IDENTIFIER .
   253          | IDENTIFIER . COMMA list_expr
 
-    COMMA  shift, and go to state 214
-    EQUAL  shift, and go to state 215
+    COMMA  shift, and go to state 204
+    EQUAL  shift, and go to state 205
 
     $default  reduce using rule 252 (list_expr)
 
@@ -2044,7 +2034,7 @@ State 126
 
   248 enum: ENUM IDENTIFIER OPEN_S list_expr . CLOSE_S SEMI_COMA
 
-    CLOSE_S  shift, and go to state 216
+    CLOSE_S  shift, and go to state 206
 
 
 State 127
@@ -2059,9 +2049,9 @@ State 128
    57 variable_declarationxx: CONST type . ids_list SEMI_COMA
 
     error       shift, and go to state 135
-    IDENTIFIER  shift, and go to state 217
+    IDENTIFIER  shift, and go to state 207
 
-    ids_list     go to state 218
+    ids_list     go to state 208
     data_member  go to state 138
 
 
@@ -2070,7 +2060,7 @@ State 129
    87 enum_type: ENUM IDENTIFIER .
    88          | ENUM IDENTIFIER . MULTI
 
-    MULTI  shift, and go to state 219
+    MULTI  shift, and go to state 209
 
     $default  reduce using rule 87 (enum_type)
 
@@ -2080,7 +2070,7 @@ State 130
    85 struct_type: STRUCT IDENTIFIER .
    86            | STRUCT IDENTIFIER . MULTI
 
-    MULTI  shift, and go to state 220
+    MULTI  shift, and go to state 210
 
     $default  reduce using rule 85 (struct_type)
 
@@ -2137,12 +2127,12 @@ State 135
    61 ids_list: error .
    64 data_member: error . array_tag
 
-    OPEN_ARR  shift, and go to state 221
+    OPEN_ARR  shift, and go to state 211
 
     $default  reduce using rule 61 (ids_list)
 
-    array_tag        go to state 222
-    array_first_tag  go to state 223
+    array_tag        go to state 212
+    array_first_tag  go to state 213
 
 
 State 136
@@ -2152,14 +2142,14 @@ State 136
    63            | IDENTIFIER .
    65            | IDENTIFIER . error
 
-    error     shift, and go to state 224
-    OPEN_ARR  shift, and go to state 221
+    error     shift, and go to state 214
+    OPEN_ARR  shift, and go to state 211
 
     SEMI_COMA  reduce using rule 63 (data_member)
     COMMA      reduce using rule 63 (data_member)
 
-    array_tag        go to state 225
-    array_first_tag  go to state 223
+    array_tag        go to state 215
+    array_first_tag  go to state 213
 
 
 State 137
@@ -2167,8 +2157,8 @@ State 137
    56 variable_declarationxx: type ids_list . SEMI_COMA
    59 ids_list: ids_list . COMMA data_member
 
-    SEMI_COMA  shift, and go to state 226
-    COMMA      shift, and go to state 227
+    SEMI_COMA  shift, and go to state 216
+    COMMA      shift, and go to state 217
 
 
 State 138
@@ -2189,7 +2179,7 @@ State 140
 
    34 ids_list_identifier: ids_list_identifier COMMA . IDENTIFIER
 
-    IDENTIFIER  shift, and go to state 228
+    IDENTIFIER  shift, and go to state 218
 
 
 State 141
@@ -2205,16 +2195,16 @@ State 142
 
     OPEN_P  shift, and go to state 87
 
-    p_type          go to state 229
-    parameter_list  go to state 230
-    parameter       go to state 231
+    p_type          go to state 219
+    parameter_list  go to state 220
+    parameter       go to state 221
 
 
 State 143
 
   116 p_type: OPEN_P type . CLOSE_P
 
-    CLOSE_P  shift, and go to state 232
+    CLOSE_P  shift, and go to state 222
 
 
 State 144
@@ -2222,8 +2212,8 @@ State 144
   110 class_method_declaration: PLUS p_type method_selector . SEMI_COMA
   112                         | PLUS p_type method_selector . error
 
-    error      shift, and go to state 233
-    SEMI_COMA  shift, and go to state 234
+    error      shift, and go to state 223
+    SEMI_COMA  shift, and go to state 224
 
 
 State 145
@@ -2244,7 +2234,7 @@ State 147
 
   114 instance_method_declaration: MINUS p_type method_selector . SEMI_COMA
 
-    SEMI_COMA  shift, and go to state 235
+    SEMI_COMA  shift, and go to state 225
 
 
 State 148
@@ -2266,7 +2256,7 @@ State 150
    24 class_interface_body: protocol_reference_list error interface_declaration_list . AT_END
   106 interface_declaration_list: interface_declaration_list . interface_declaration
 
-    AT_END  shift, and go to state 236
+    AT_END  shift, and go to state 226
     PLUS    shift, and go to state 31
     MINUS   shift, and go to state 32
 
@@ -2295,8 +2285,8 @@ State 153
    26                     | protocol_reference_list instance_variables interface_declaration_list . error
   106 interface_declaration_list: interface_declaration_list . interface_declaration
 
-    error   shift, and go to state 237
-    AT_END  shift, and go to state 238
+    error   shift, and go to state 227
+    AT_END  shift, and go to state 228
     PLUS    shift, and go to state 31
     MINUS   shift, and go to state 32
 
@@ -2345,8 +2335,8 @@ State 159
    76 struct: struct_header OPEN_S CLOSE_S error . SEMI_COMA
    80 entity: error . COMMA
 
-    SEMI_COMA  shift, and go to state 239
-    COMMA      shift, and go to state 240
+    SEMI_COMA  shift, and go to state 229
+    COMMA      shift, and go to state 230
 
 
 State 160
@@ -2354,7 +2344,7 @@ State 160
    78 entity: IDENTIFIER . COMMA entity
    79       | IDENTIFIER .
 
-    COMMA  shift, and go to state 241
+    COMMA  shift, and go to state 231
 
     $default  reduce using rule 79 (entity)
 
@@ -2371,8 +2361,8 @@ State 162
    70 struct: struct_header OPEN_S CLOSE_S entity . SEMI_COMA
    74       | struct_header OPEN_S CLOSE_S entity . error SEMI_COMA
 
-    error      shift, and go to state 242
-    SEMI_COMA  shift, and go to state 243
+    error      shift, and go to state 232
+    SEMI_COMA  shift, and go to state 233
 
 
 State 163
@@ -2382,11 +2372,11 @@ State 163
    75       | struct_header OPEN_S struct_variable_declaration CLOSE_S . entity error SEMI_COMA
    77       | struct_header OPEN_S struct_variable_declaration CLOSE_S . error SEMI_COMA
 
-    error       shift, and go to state 244
+    error       shift, and go to state 234
     IDENTIFIER  shift, and go to state 160
-    SEMI_COMA   shift, and go to state 245
+    SEMI_COMA   shift, and go to state 235
 
-    entity  go to state 246
+    entity  go to state 236
 
 
 State 164
@@ -2421,11 +2411,8 @@ State 168
 
    95 complex_type: IDENTIFIER . MULTI
   196 long_id: IDENTIFIER .
-  207 simple_expr: IDENTIFIER . DOUBLEPLUS
-  208            | IDENTIFIER . DOUBLEMINUS
 
-    DOUBLEPLUS   shift, and go to state 247
-    DOUBLEMINUS  shift, and go to state 248
+    MULTI  shift, and go to state 127
 
     $default  reduce using rule 196 (long_id)
 
@@ -2451,7 +2438,7 @@ State 170
     ENUM        shift, and go to state 72
     STRUCT      shift, and go to state 73
 
-    type          go to state 249
+    type          go to state 237
     struct_type   go to state 80
     enum_type     go to state 81
     simple_type   go to state 82
@@ -2459,69 +2446,6 @@ State 170
 
 
 State 171
-
-  116 p_type: OPEN_P . type CLOSE_P
-  206 simple_expr: OPEN_P . simple_expr CLOSE_P
-
-    IDENTIFIER   shift, and go to state 168
-    NSSTRING     shift, and go to state 61
-    FLOAT        shift, and go to state 62
-    CHAR         shift, and go to state 63
-    BOOL         shift, and go to state 64
-    INT          shift, and go to state 65
-    VOID         shift, and go to state 71
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    ENUM         shift, and go to state 72
-    OPEN_ARR     shift, and go to state 182
-    STRUCT       shift, and go to state 73
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    type           go to state 143
-    struct_type    go to state 80
-    enum_type      go to state 81
-    simple_type    go to state 82
-    complex_type   go to state 83
-    p_type         go to state 188
-    long_id        go to state 250
-    simple_expr    go to state 251
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 172
-
-  197 simple_expr: STRING_VAL .
-
-    $default  reduce using rule 197 (simple_expr)
-
-
-State 173
-
-  199 simple_expr: FLOAT_VAL .
-
-    $default  reduce using rule 199 (simple_expr)
-
-
-State 174
-
-  200 simple_expr: CHAR_VAL .
-
-    $default  reduce using rule 200 (simple_expr)
-
-
-State 175
-
-  198 simple_expr: INT_VAL .
-
-    $default  reduce using rule 198 (simple_expr)
-
-
-State 176
 
   169 for_loop_header: FOR . OPEN_P for_initializer SEMI_COMA logic_expr SEMI_COMA expr CLOSE_P
   170                | FOR . OPEN_P SEMI_COMA logic_expr SEMI_COMA expr CLOSE_P
@@ -2532,1000 +2456,840 @@ State 176
   175                | FOR . OPEN_P SEMI_COMA SEMI_COMA expr CLOSE_P
   176                | FOR . OPEN_P SEMI_COMA SEMI_COMA CLOSE_P
 
-    OPEN_P  shift, and go to state 252
+    OPEN_P  shift, and go to state 238
 
 
-State 177
+State 172
 
   223 while_loop_header: WHILE . OPEN_P logic_expr CLOSE_P
 
-    OPEN_P  shift, and go to state 253
+    OPEN_P  shift, and go to state 239
 
 
-State 178
+State 173
 
   227 if_header: IF . OPEN_P logic_expr CLOSE_P
 
-    OPEN_P  shift, and go to state 254
+    OPEN_P  shift, and go to state 240
 
 
-State 179
+State 174
 
   167 do_header: DO .
 
     $default  reduce using rule 167 (do_header)
 
 
-State 180
+State 175
 
   228 switch_header: SWITCH . OPEN_P IDENTIFIER CLOSE_P switch_body_block
 
-    OPEN_P  shift, and go to state 255
+    OPEN_P  shift, and go to state 241
 
 
-State 181
+State 176
 
    87 enum_type: ENUM . IDENTIFIER
    88          | ENUM . IDENTIFIER MULTI
   248 enum: ENUM . IDENTIFIER OPEN_S list_expr CLOSE_S SEMI_COMA
   249     | ENUM . IDENTIFIER SEMI_COMA
 
-    IDENTIFIER  shift, and go to state 256
+    IDENTIFIER  shift, and go to state 242
 
 
-State 182
+State 177
 
   212 message_call2: OPEN_ARR .
 
     $default  reduce using rule 212 (message_call2)
 
 
-State 183
+State 178
 
   162 return_statement: RETURN . expr SEMI_COMA
 
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
 
-    p_type         go to state 188
-    expr           go to state 258
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 184
-
-  209 simple_expr: DOUBLEPLUS . IDENTIFIER
-
-    IDENTIFIER  shift, and go to state 259
+    p_type         go to state 251
+    expr           go to state 252
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
 
 
-State 185
-
-  210 simple_expr: DOUBLEMINUS . IDENTIFIER
-
-    IDENTIFIER  shift, and go to state 260
-
-
-State 186
+State 179
 
   254 try_catch: TRY . statement catch_list finally_statement
   255          | TRY . statement catch_list
 
-    IDENTIFIER   shift, and go to state 168
-    NSSTRING     shift, and go to state 61
-    FLOAT        shift, and go to state 62
-    CHAR         shift, and go to state 63
-    BOOL         shift, and go to state 64
-    INT          shift, and go to state 65
-    OPEN_S       shift, and go to state 115
-    CONST        shift, and go to state 170
-    VOID         shift, and go to state 71
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    FOR          shift, and go to state 176
-    WHILE        shift, and go to state 177
-    IF           shift, and go to state 178
-    DO           shift, and go to state 179
-    SWITCH       shift, and go to state 180
-    ENUM         shift, and go to state 181
-    OPEN_ARR     shift, and go to state 182
-    RETURN       shift, and go to state 183
-    STRUCT       shift, and go to state 73
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-    TRY          shift, and go to state 186
+    IDENTIFIER  shift, and go to state 168
+    NSSTRING    shift, and go to state 61
+    FLOAT       shift, and go to state 62
+    CHAR        shift, and go to state 63
+    BOOL        shift, and go to state 64
+    INT         shift, and go to state 65
+    OPEN_S      shift, and go to state 115
+    CONST       shift, and go to state 170
+    VOID        shift, and go to state 71
+    FOR         shift, and go to state 171
+    WHILE       shift, and go to state 172
+    IF          shift, and go to state 173
+    DO          shift, and go to state 174
+    SWITCH      shift, and go to state 175
+    ENUM        shift, and go to state 176
+    OPEN_ARR    shift, and go to state 177
+    RETURN      shift, and go to state 178
+    STRUCT      shift, and go to state 73
+    TRY         shift, and go to state 179
 
-    type                        go to state 187
+    type                        go to state 180
     struct_type                 go to state 80
     enum_type                   go to state 81
     simple_type                 go to state 82
     complex_type                go to state 83
-    p_type                      go to state 188
-    block_body                  go to state 189
+    block_body                  go to state 181
     block_body_header           go to state 117
-    statement                   go to state 261
-    variable_declaration_block  go to state 193
-    return_statement            go to state 194
-    loop_statement              go to state 195
-    do_while                    go to state 196
-    do_header                   go to state 197
-    for_loop                    go to state 198
-    for_loop_header             go to state 199
-    expr                        go to state 200
-    assign_expr                 go to state 201
-    long_id                     go to state 202
-    simple_expr                 go to state 203
-    message_call2               go to state 204
-    message_call                go to state 205
-    while_loop                  go to state 206
-    while_loop_header           go to state 207
-    conditional_statement       go to state 208
-    if_header                   go to state 209
-    switch_header               go to state 210
-    enum                        go to state 211
-    try_catch                   go to state 212
+    statement                   go to state 256
+    variable_declaration_block  go to state 185
+    return_statement            go to state 186
+    loop_statement              go to state 187
+    do_while                    go to state 188
+    do_header                   go to state 189
+    for_loop                    go to state 190
+    for_loop_header             go to state 191
+    assign_expr                 go to state 192
+    long_id                     go to state 193
+    message_call2               go to state 194
+    message_call                go to state 195
+    while_loop                  go to state 196
+    while_loop_header           go to state 197
+    conditional_statement       go to state 198
+    if_header                   go to state 199
+    switch_header               go to state 200
+    enum                        go to state 201
+    try_catch                   go to state 202
 
 
-State 187
+State 180
 
   153 variable_declaration_block: type . variable_list SEMI_COMA
 
-    error       shift, and go to state 262
-    IDENTIFIER  shift, and go to state 263
+    error       shift, and go to state 257
+    IDENTIFIER  shift, and go to state 258
 
-    variable_list  go to state 264
-    variable       go to state 265
-
-
-State 188
-
-  211 simple_expr: p_type . simple_expr
-
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    long_id        go to state 250
-    simple_expr    go to state 266
-    message_call2  go to state 204
-    message_call   go to state 205
+    variable_list  go to state 259
+    variable       go to state 260
 
 
-State 189
+State 181
 
   150 statement: block_body .
 
     $default  reduce using rule 150 (statement)
 
 
-State 190
+State 182
 
   140 block_body: block_body_header block_body_statements .
 
     $default  reduce using rule 140 (block_body)
 
 
-State 191
+State 183
 
   142 block_body_statements: statement_list . CLOSE_S
   144 statement_list: statement_list . statement
 
-    IDENTIFIER   shift, and go to state 168
-    NSSTRING     shift, and go to state 61
-    FLOAT        shift, and go to state 62
-    CHAR         shift, and go to state 63
-    BOOL         shift, and go to state 64
-    INT          shift, and go to state 65
-    OPEN_S       shift, and go to state 115
-    CLOSE_S      shift, and go to state 267
-    CONST        shift, and go to state 170
-    VOID         shift, and go to state 71
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    FOR          shift, and go to state 176
-    WHILE        shift, and go to state 177
-    IF           shift, and go to state 178
-    DO           shift, and go to state 179
-    SWITCH       shift, and go to state 180
-    ENUM         shift, and go to state 181
-    OPEN_ARR     shift, and go to state 182
-    RETURN       shift, and go to state 183
-    STRUCT       shift, and go to state 73
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-    TRY          shift, and go to state 186
+    IDENTIFIER  shift, and go to state 168
+    NSSTRING    shift, and go to state 61
+    FLOAT       shift, and go to state 62
+    CHAR        shift, and go to state 63
+    BOOL        shift, and go to state 64
+    INT         shift, and go to state 65
+    OPEN_S      shift, and go to state 115
+    CLOSE_S     shift, and go to state 261
+    CONST       shift, and go to state 170
+    VOID        shift, and go to state 71
+    FOR         shift, and go to state 171
+    WHILE       shift, and go to state 172
+    IF          shift, and go to state 173
+    DO          shift, and go to state 174
+    SWITCH      shift, and go to state 175
+    ENUM        shift, and go to state 176
+    OPEN_ARR    shift, and go to state 177
+    RETURN      shift, and go to state 178
+    STRUCT      shift, and go to state 73
+    TRY         shift, and go to state 179
 
-    type                        go to state 187
+    type                        go to state 180
     struct_type                 go to state 80
     enum_type                   go to state 81
     simple_type                 go to state 82
     complex_type                go to state 83
-    p_type                      go to state 188
-    block_body                  go to state 189
+    block_body                  go to state 181
     block_body_header           go to state 117
-    statement                   go to state 268
-    variable_declaration_block  go to state 193
-    return_statement            go to state 194
-    loop_statement              go to state 195
-    do_while                    go to state 196
-    do_header                   go to state 197
-    for_loop                    go to state 198
-    for_loop_header             go to state 199
-    expr                        go to state 200
-    assign_expr                 go to state 201
-    long_id                     go to state 202
-    simple_expr                 go to state 203
-    message_call2               go to state 204
-    message_call                go to state 205
-    while_loop                  go to state 206
-    while_loop_header           go to state 207
-    conditional_statement       go to state 208
-    if_header                   go to state 209
-    switch_header               go to state 210
-    enum                        go to state 211
-    try_catch                   go to state 212
+    statement                   go to state 262
+    variable_declaration_block  go to state 185
+    return_statement            go to state 186
+    loop_statement              go to state 187
+    do_while                    go to state 188
+    do_header                   go to state 189
+    for_loop                    go to state 190
+    for_loop_header             go to state 191
+    assign_expr                 go to state 192
+    long_id                     go to state 193
+    message_call2               go to state 194
+    message_call                go to state 195
+    while_loop                  go to state 196
+    while_loop_header           go to state 197
+    conditional_statement       go to state 198
+    if_header                   go to state 199
+    switch_header               go to state 200
+    enum                        go to state 201
+    try_catch                   go to state 202
 
 
-State 192
+State 184
 
   145 statement_list: statement .
 
     $default  reduce using rule 145 (statement_list)
 
 
-State 193
+State 185
 
   149 statement: variable_declaration_block .
 
     $default  reduce using rule 149 (statement)
 
 
-State 194
+State 186
 
   151 statement: return_statement .
 
     $default  reduce using rule 151 (statement)
 
 
-State 195
+State 187
 
   146 statement: loop_statement .
 
     $default  reduce using rule 146 (statement)
 
 
-State 196
+State 188
 
   165 loop_statement: do_while .
 
     $default  reduce using rule 165 (loop_statement)
 
 
-State 197
+State 189
 
   166 do_while: do_header . statement while_loop_header SEMI_COMA
 
-    IDENTIFIER   shift, and go to state 168
-    NSSTRING     shift, and go to state 61
-    FLOAT        shift, and go to state 62
-    CHAR         shift, and go to state 63
-    BOOL         shift, and go to state 64
-    INT          shift, and go to state 65
-    OPEN_S       shift, and go to state 115
-    CONST        shift, and go to state 170
-    VOID         shift, and go to state 71
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    FOR          shift, and go to state 176
-    WHILE        shift, and go to state 177
-    IF           shift, and go to state 178
-    DO           shift, and go to state 179
-    SWITCH       shift, and go to state 180
-    ENUM         shift, and go to state 181
-    OPEN_ARR     shift, and go to state 182
-    RETURN       shift, and go to state 183
-    STRUCT       shift, and go to state 73
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-    TRY          shift, and go to state 186
+    IDENTIFIER  shift, and go to state 168
+    NSSTRING    shift, and go to state 61
+    FLOAT       shift, and go to state 62
+    CHAR        shift, and go to state 63
+    BOOL        shift, and go to state 64
+    INT         shift, and go to state 65
+    OPEN_S      shift, and go to state 115
+    CONST       shift, and go to state 170
+    VOID        shift, and go to state 71
+    FOR         shift, and go to state 171
+    WHILE       shift, and go to state 172
+    IF          shift, and go to state 173
+    DO          shift, and go to state 174
+    SWITCH      shift, and go to state 175
+    ENUM        shift, and go to state 176
+    OPEN_ARR    shift, and go to state 177
+    RETURN      shift, and go to state 178
+    STRUCT      shift, and go to state 73
+    TRY         shift, and go to state 179
 
-    type                        go to state 187
+    type                        go to state 180
     struct_type                 go to state 80
     enum_type                   go to state 81
     simple_type                 go to state 82
     complex_type                go to state 83
-    p_type                      go to state 188
-    block_body                  go to state 189
+    block_body                  go to state 181
     block_body_header           go to state 117
-    statement                   go to state 269
-    variable_declaration_block  go to state 193
-    return_statement            go to state 194
-    loop_statement              go to state 195
-    do_while                    go to state 196
-    do_header                   go to state 197
-    for_loop                    go to state 198
-    for_loop_header             go to state 199
-    expr                        go to state 200
-    assign_expr                 go to state 201
-    long_id                     go to state 202
-    simple_expr                 go to state 203
-    message_call2               go to state 204
-    message_call                go to state 205
-    while_loop                  go to state 206
-    while_loop_header           go to state 207
-    conditional_statement       go to state 208
-    if_header                   go to state 209
-    switch_header               go to state 210
-    enum                        go to state 211
-    try_catch                   go to state 212
+    statement                   go to state 263
+    variable_declaration_block  go to state 185
+    return_statement            go to state 186
+    loop_statement              go to state 187
+    do_while                    go to state 188
+    do_header                   go to state 189
+    for_loop                    go to state 190
+    for_loop_header             go to state 191
+    assign_expr                 go to state 192
+    long_id                     go to state 193
+    message_call2               go to state 194
+    message_call                go to state 195
+    while_loop                  go to state 196
+    while_loop_header           go to state 197
+    conditional_statement       go to state 198
+    if_header                   go to state 199
+    switch_header               go to state 200
+    enum                        go to state 201
+    try_catch                   go to state 202
 
 
-State 198
+State 190
 
   163 loop_statement: for_loop .
 
     $default  reduce using rule 163 (loop_statement)
 
 
-State 199
+State 191
 
   168 for_loop: for_loop_header . statement
 
-    IDENTIFIER   shift, and go to state 168
-    NSSTRING     shift, and go to state 61
-    FLOAT        shift, and go to state 62
-    CHAR         shift, and go to state 63
-    BOOL         shift, and go to state 64
-    INT          shift, and go to state 65
-    OPEN_S       shift, and go to state 115
-    CONST        shift, and go to state 170
-    VOID         shift, and go to state 71
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    FOR          shift, and go to state 176
-    WHILE        shift, and go to state 177
-    IF           shift, and go to state 178
-    DO           shift, and go to state 179
-    SWITCH       shift, and go to state 180
-    ENUM         shift, and go to state 181
-    OPEN_ARR     shift, and go to state 182
-    RETURN       shift, and go to state 183
-    STRUCT       shift, and go to state 73
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-    TRY          shift, and go to state 186
+    IDENTIFIER  shift, and go to state 168
+    NSSTRING    shift, and go to state 61
+    FLOAT       shift, and go to state 62
+    CHAR        shift, and go to state 63
+    BOOL        shift, and go to state 64
+    INT         shift, and go to state 65
+    OPEN_S      shift, and go to state 115
+    CONST       shift, and go to state 170
+    VOID        shift, and go to state 71
+    FOR         shift, and go to state 171
+    WHILE       shift, and go to state 172
+    IF          shift, and go to state 173
+    DO          shift, and go to state 174
+    SWITCH      shift, and go to state 175
+    ENUM        shift, and go to state 176
+    OPEN_ARR    shift, and go to state 177
+    RETURN      shift, and go to state 178
+    STRUCT      shift, and go to state 73
+    TRY         shift, and go to state 179
 
-    type                        go to state 187
+    type                        go to state 180
     struct_type                 go to state 80
     enum_type                   go to state 81
     simple_type                 go to state 82
     complex_type                go to state 83
-    p_type                      go to state 188
-    block_body                  go to state 189
+    block_body                  go to state 181
     block_body_header           go to state 117
-    statement                   go to state 270
-    variable_declaration_block  go to state 193
-    return_statement            go to state 194
-    loop_statement              go to state 195
-    do_while                    go to state 196
-    do_header                   go to state 197
-    for_loop                    go to state 198
-    for_loop_header             go to state 199
-    expr                        go to state 200
-    assign_expr                 go to state 201
-    long_id                     go to state 202
-    simple_expr                 go to state 203
-    message_call2               go to state 204
-    message_call                go to state 205
-    while_loop                  go to state 206
-    while_loop_header           go to state 207
-    conditional_statement       go to state 208
-    if_header                   go to state 209
-    switch_header               go to state 210
-    enum                        go to state 211
-    try_catch                   go to state 212
+    statement                   go to state 264
+    variable_declaration_block  go to state 185
+    return_statement            go to state 186
+    loop_statement              go to state 187
+    do_while                    go to state 188
+    do_header                   go to state 189
+    for_loop                    go to state 190
+    for_loop_header             go to state 191
+    assign_expr                 go to state 192
+    long_id                     go to state 193
+    message_call2               go to state 194
+    message_call                go to state 195
+    while_loop                  go to state 196
+    while_loop_header           go to state 197
+    conditional_statement       go to state 198
+    if_header                   go to state 199
+    switch_header               go to state 200
+    enum                        go to state 201
+    try_catch                   go to state 202
 
 
-State 200
+State 192
 
-  148 statement: expr . SEMI_COMA
+  148 statement: assign_expr . SEMI_COMA
 
-    SEMI_COMA  shift, and go to state 271
-
-
-State 201
-
-  191 expr: assign_expr .
-
-    $default  reduce using rule 191 (expr)
+    SEMI_COMA  shift, and go to state 265
 
 
-State 202
+State 193
 
   193 assign_expr: long_id . EQUAL simple_expr
   194 long_id: long_id . DOT IDENTIFIER
-  201 simple_expr: long_id .
 
-    EQUAL  shift, and go to state 272
-    DOT    shift, and go to state 273
-
-    $default  reduce using rule 201 (simple_expr)
+    EQUAL  shift, and go to state 266
+    DOT    shift, and go to state 267
 
 
-State 203
-
-  192 expr: simple_expr .
-  202 simple_expr: simple_expr . PLUS simple_expr
-  203            | simple_expr . MINUS simple_expr
-  204            | simple_expr . MULTI simple_expr
-  205            | simple_expr . DIV simple_expr
-
-    PLUS   shift, and go to state 274
-    MINUS  shift, and go to state 275
-    MULTI  shift, and go to state 276
-    DIV    shift, and go to state 277
-
-    $default  reduce using rule 192 (expr)
-
-
-State 204
+State 194
 
   213 message_call: message_call2 . sender message CLOSE_ARR
 
-    IDENTIFIER  shift, and go to state 278
-    OPEN_ARR    shift, and go to state 182
+    IDENTIFIER  shift, and go to state 268
+    OPEN_ARR    shift, and go to state 177
 
-    message_call2  go to state 204
-    message_call   go to state 279
-    sender         go to state 280
+    message_call2  go to state 194
+    message_call   go to state 269
+    sender         go to state 270
 
 
-State 205
+State 195
 
   195 long_id: message_call .
 
     $default  reduce using rule 195 (long_id)
 
 
-State 206
+State 196
 
   164 loop_statement: while_loop .
 
     $default  reduce using rule 164 (loop_statement)
 
 
-State 207
+State 197
 
   222 while_loop: while_loop_header . statement
 
-    IDENTIFIER   shift, and go to state 168
-    NSSTRING     shift, and go to state 61
-    FLOAT        shift, and go to state 62
-    CHAR         shift, and go to state 63
-    BOOL         shift, and go to state 64
-    INT          shift, and go to state 65
-    OPEN_S       shift, and go to state 115
-    CONST        shift, and go to state 170
-    VOID         shift, and go to state 71
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    FOR          shift, and go to state 176
-    WHILE        shift, and go to state 177
-    IF           shift, and go to state 178
-    DO           shift, and go to state 179
-    SWITCH       shift, and go to state 180
-    ENUM         shift, and go to state 181
-    OPEN_ARR     shift, and go to state 182
-    RETURN       shift, and go to state 183
-    STRUCT       shift, and go to state 73
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-    TRY          shift, and go to state 186
+    IDENTIFIER  shift, and go to state 168
+    NSSTRING    shift, and go to state 61
+    FLOAT       shift, and go to state 62
+    CHAR        shift, and go to state 63
+    BOOL        shift, and go to state 64
+    INT         shift, and go to state 65
+    OPEN_S      shift, and go to state 115
+    CONST       shift, and go to state 170
+    VOID        shift, and go to state 71
+    FOR         shift, and go to state 171
+    WHILE       shift, and go to state 172
+    IF          shift, and go to state 173
+    DO          shift, and go to state 174
+    SWITCH      shift, and go to state 175
+    ENUM        shift, and go to state 176
+    OPEN_ARR    shift, and go to state 177
+    RETURN      shift, and go to state 178
+    STRUCT      shift, and go to state 73
+    TRY         shift, and go to state 179
 
-    type                        go to state 187
+    type                        go to state 180
     struct_type                 go to state 80
     enum_type                   go to state 81
     simple_type                 go to state 82
     complex_type                go to state 83
-    p_type                      go to state 188
-    block_body                  go to state 189
+    block_body                  go to state 181
     block_body_header           go to state 117
-    statement                   go to state 281
-    variable_declaration_block  go to state 193
-    return_statement            go to state 194
-    loop_statement              go to state 195
-    do_while                    go to state 196
-    do_header                   go to state 197
-    for_loop                    go to state 198
-    for_loop_header             go to state 199
-    expr                        go to state 200
-    assign_expr                 go to state 201
-    long_id                     go to state 202
-    simple_expr                 go to state 203
-    message_call2               go to state 204
-    message_call                go to state 205
-    while_loop                  go to state 206
-    while_loop_header           go to state 207
-    conditional_statement       go to state 208
-    if_header                   go to state 209
-    switch_header               go to state 210
-    enum                        go to state 211
-    try_catch                   go to state 212
+    statement                   go to state 271
+    variable_declaration_block  go to state 185
+    return_statement            go to state 186
+    loop_statement              go to state 187
+    do_while                    go to state 188
+    do_header                   go to state 189
+    for_loop                    go to state 190
+    for_loop_header             go to state 191
+    assign_expr                 go to state 192
+    long_id                     go to state 193
+    message_call2               go to state 194
+    message_call                go to state 195
+    while_loop                  go to state 196
+    while_loop_header           go to state 197
+    conditional_statement       go to state 198
+    if_header                   go to state 199
+    switch_header               go to state 200
+    enum                        go to state 201
+    try_catch                   go to state 202
 
 
-State 208
+State 198
 
   147 statement: conditional_statement .
 
     $default  reduce using rule 147 (statement)
 
 
-State 209
+State 199
 
   224 conditional_statement: if_header . statement
   225                      | if_header . statement ELSE statement
 
-    IDENTIFIER   shift, and go to state 168
-    NSSTRING     shift, and go to state 61
-    FLOAT        shift, and go to state 62
-    CHAR         shift, and go to state 63
-    BOOL         shift, and go to state 64
-    INT          shift, and go to state 65
-    OPEN_S       shift, and go to state 115
-    CONST        shift, and go to state 170
-    VOID         shift, and go to state 71
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    FOR          shift, and go to state 176
-    WHILE        shift, and go to state 177
-    IF           shift, and go to state 178
-    DO           shift, and go to state 179
-    SWITCH       shift, and go to state 180
-    ENUM         shift, and go to state 181
-    OPEN_ARR     shift, and go to state 182
-    RETURN       shift, and go to state 183
-    STRUCT       shift, and go to state 73
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-    TRY          shift, and go to state 186
+    IDENTIFIER  shift, and go to state 168
+    NSSTRING    shift, and go to state 61
+    FLOAT       shift, and go to state 62
+    CHAR        shift, and go to state 63
+    BOOL        shift, and go to state 64
+    INT         shift, and go to state 65
+    OPEN_S      shift, and go to state 115
+    CONST       shift, and go to state 170
+    VOID        shift, and go to state 71
+    FOR         shift, and go to state 171
+    WHILE       shift, and go to state 172
+    IF          shift, and go to state 173
+    DO          shift, and go to state 174
+    SWITCH      shift, and go to state 175
+    ENUM        shift, and go to state 176
+    OPEN_ARR    shift, and go to state 177
+    RETURN      shift, and go to state 178
+    STRUCT      shift, and go to state 73
+    TRY         shift, and go to state 179
 
-    type                        go to state 187
+    type                        go to state 180
     struct_type                 go to state 80
     enum_type                   go to state 81
     simple_type                 go to state 82
     complex_type                go to state 83
-    p_type                      go to state 188
-    block_body                  go to state 189
+    block_body                  go to state 181
     block_body_header           go to state 117
-    statement                   go to state 282
-    variable_declaration_block  go to state 193
-    return_statement            go to state 194
-    loop_statement              go to state 195
-    do_while                    go to state 196
-    do_header                   go to state 197
-    for_loop                    go to state 198
-    for_loop_header             go to state 199
-    expr                        go to state 200
-    assign_expr                 go to state 201
-    long_id                     go to state 202
-    simple_expr                 go to state 203
-    message_call2               go to state 204
-    message_call                go to state 205
-    while_loop                  go to state 206
-    while_loop_header           go to state 207
-    conditional_statement       go to state 208
-    if_header                   go to state 209
-    switch_header               go to state 210
-    enum                        go to state 211
-    try_catch                   go to state 212
+    statement                   go to state 272
+    variable_declaration_block  go to state 185
+    return_statement            go to state 186
+    loop_statement              go to state 187
+    do_while                    go to state 188
+    do_header                   go to state 189
+    for_loop                    go to state 190
+    for_loop_header             go to state 191
+    assign_expr                 go to state 192
+    long_id                     go to state 193
+    message_call2               go to state 194
+    message_call                go to state 195
+    while_loop                  go to state 196
+    while_loop_header           go to state 197
+    conditional_statement       go to state 198
+    if_header                   go to state 199
+    switch_header               go to state 200
+    enum                        go to state 201
+    try_catch                   go to state 202
 
 
-State 210
+State 200
 
   226 conditional_statement: switch_header . switch_body
 
-    CLOSE_S  shift, and go to state 283
-    CASE     shift, and go to state 284
-    DEFAULT  shift, and go to state 285
+    CLOSE_S  shift, and go to state 273
+    CASE     shift, and go to state 274
+    DEFAULT  shift, and go to state 275
 
-    switch_body   go to state 286
-    list_of_case  go to state 287
-    case_body     go to state 288
-    default_case  go to state 289
+    switch_body   go to state 276
+    list_of_case  go to state 277
+    case_body     go to state 278
+    default_case  go to state 279
 
 
-State 211
+State 201
 
   155 variable_declaration_block: enum .
 
     $default  reduce using rule 155 (variable_declaration_block)
 
 
-State 212
+State 202
 
   152 statement: try_catch .
 
     $default  reduce using rule 152 (statement)
 
 
-State 213
+State 203
 
   244 protocol_body: protocol_reference_list interface_declaration_list AT_END .
 
     $default  reduce using rule 244 (protocol_body)
 
 
-State 214
+State 204
 
   253 list_expr: IDENTIFIER COMMA . list_expr
 
     IDENTIFIER  shift, and go to state 125
 
-    list_expr  go to state 290
+    list_expr  go to state 280
 
 
-State 215
+State 205
 
   250 list_expr: IDENTIFIER EQUAL . expr COMMA list_expr
   251          | IDENTIFIER EQUAL . expr
 
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
 
-    p_type         go to state 188
-    expr           go to state 291
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
+    p_type         go to state 251
+    expr           go to state 281
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
 
 
-State 216
+State 206
 
   248 enum: ENUM IDENTIFIER OPEN_S list_expr CLOSE_S . SEMI_COMA
 
-    SEMI_COMA  shift, and go to state 292
+    SEMI_COMA  shift, and go to state 282
 
 
-State 217
+State 207
 
    62 data_member: IDENTIFIER . array_tag
    63            | IDENTIFIER .
    65            | IDENTIFIER . error
 
-    error     shift, and go to state 224
-    OPEN_ARR  shift, and go to state 221
+    error     shift, and go to state 214
+    OPEN_ARR  shift, and go to state 211
 
     SEMI_COMA  reduce using rule 63 (data_member)
     COMMA      reduce using rule 63 (data_member)
 
-    array_tag        go to state 293
-    array_first_tag  go to state 223
+    array_tag        go to state 283
+    array_first_tag  go to state 213
 
 
-State 218
+State 208
 
    57 variable_declarationxx: CONST type ids_list . SEMI_COMA
    59 ids_list: ids_list . COMMA data_member
 
-    SEMI_COMA  shift, and go to state 294
-    COMMA      shift, and go to state 227
+    SEMI_COMA  shift, and go to state 284
+    COMMA      shift, and go to state 217
 
 
-State 219
+State 209
 
    88 enum_type: ENUM IDENTIFIER MULTI .
 
     $default  reduce using rule 88 (enum_type)
 
 
-State 220
+State 210
 
    86 struct_type: STRUCT IDENTIFIER MULTI .
 
     $default  reduce using rule 86 (struct_type)
 
 
-State 221
+State 211
 
   100 array_first_tag: OPEN_ARR . INT_VAL CLOSE_ARR
   101                | OPEN_ARR . CLOSE_ARR
 
-    INT_VAL    shift, and go to state 295
-    CLOSE_ARR  shift, and go to state 296
+    INT_VAL    shift, and go to state 285
+    CLOSE_ARR  shift, and go to state 286
 
 
-State 222
+State 212
 
    64 data_member: error array_tag .
 
     $default  reduce using rule 64 (data_member)
 
 
-State 223
+State 213
 
    96 array_tag: array_first_tag . array_tag_list
 
     $default  reduce using rule 98 (array_tag_list)
 
-    array_tag_list  go to state 297
+    array_tag_list  go to state 287
 
 
-State 224
+State 214
 
    65 data_member: IDENTIFIER error .
 
     $default  reduce using rule 65 (data_member)
 
 
-State 225
+State 215
 
    58 variable_declarationxx: type IDENTIFIER array_tag . error
    62 data_member: IDENTIFIER array_tag .
 
-    error  shift, and go to state 298
+    error  shift, and go to state 288
 
     SEMI_COMA  reduce using rule 62 (data_member)
     COMMA      reduce using rule 62 (data_member)
 
 
-State 226
+State 216
 
    56 variable_declarationxx: type ids_list SEMI_COMA .
 
     $default  reduce using rule 56 (variable_declarationxx)
 
 
-State 227
+State 217
 
    59 ids_list: ids_list COMMA . data_member
 
-    error       shift, and go to state 299
-    IDENTIFIER  shift, and go to state 217
+    error       shift, and go to state 289
+    IDENTIFIER  shift, and go to state 207
 
-    data_member  go to state 300
+    data_member  go to state 290
 
 
-State 228
+State 218
 
    34 ids_list_identifier: ids_list_identifier COMMA IDENTIFIER .
 
     $default  reduce using rule 34 (ids_list_identifier)
 
 
-State 229
+State 219
 
   122 parameter: p_type . IDENTIFIER
 
-    IDENTIFIER  shift, and go to state 301
+    IDENTIFIER  shift, and go to state 291
 
 
-State 230
+State 220
 
   117 method_selector: IDENTIFIER SEMI_COLUMN parameter_list .
   119 parameter_list: parameter_list . SEMI_COLUMN parameter
   120               | parameter_list . IDENTIFIER SEMI_COLUMN parameter
 
-    IDENTIFIER   shift, and go to state 302
-    SEMI_COLUMN  shift, and go to state 303
+    IDENTIFIER   shift, and go to state 292
+    SEMI_COLUMN  shift, and go to state 293
 
     $default  reduce using rule 117 (method_selector)
 
 
-State 231
+State 221
 
   121 parameter_list: parameter .
 
     $default  reduce using rule 121 (parameter_list)
 
 
-State 232
+State 222
 
   116 p_type: OPEN_P type CLOSE_P .
 
     $default  reduce using rule 116 (p_type)
 
 
-State 233
+State 223
 
   112 class_method_declaration: PLUS p_type method_selector error .
 
     $default  reduce using rule 112 (class_method_declaration)
 
 
-State 234
+State 224
 
   110 class_method_declaration: PLUS p_type method_selector SEMI_COMA .
 
     $default  reduce using rule 110 (class_method_declaration)
 
 
-State 235
+State 225
 
   114 instance_method_declaration: MINUS p_type method_selector SEMI_COMA .
 
     $default  reduce using rule 114 (instance_method_declaration)
 
 
-State 236
+State 226
 
    24 class_interface_body: protocol_reference_list error interface_declaration_list AT_END .
 
     $default  reduce using rule 24 (class_interface_body)
 
 
-State 237
+State 227
 
    26 class_interface_body: protocol_reference_list instance_variables interface_declaration_list error .
 
     $default  reduce using rule 26 (class_interface_body)
 
 
-State 238
+State 228
 
    15 class_interface_body: protocol_reference_list instance_variables interface_declaration_list AT_END .
 
     $default  reduce using rule 15 (class_interface_body)
 
 
-State 239
+State 229
 
    76 struct: struct_header OPEN_S CLOSE_S error SEMI_COMA .
 
     $default  reduce using rule 76 (struct)
 
 
-State 240
+State 230
 
    80 entity: error COMMA .
 
     $default  reduce using rule 80 (entity)
 
 
-State 241
+State 231
 
    78 entity: IDENTIFIER COMMA . entity
 
-    error       shift, and go to state 304
+    error       shift, and go to state 294
     IDENTIFIER  shift, and go to state 160
 
-    entity  go to state 305
+    entity  go to state 295
 
 
-State 242
+State 232
 
    74 struct: struct_header OPEN_S CLOSE_S entity error . SEMI_COMA
 
-    SEMI_COMA  shift, and go to state 306
+    SEMI_COMA  shift, and go to state 296
 
 
-State 243
+State 233
 
    70 struct: struct_header OPEN_S CLOSE_S entity SEMI_COMA .
 
     $default  reduce using rule 70 (struct)
 
 
-State 244
+State 234
 
    77 struct: struct_header OPEN_S struct_variable_declaration CLOSE_S error . SEMI_COMA
    80 entity: error . COMMA
 
-    SEMI_COMA  shift, and go to state 307
-    COMMA      shift, and go to state 240
+    SEMI_COMA  shift, and go to state 297
+    COMMA      shift, and go to state 230
 
 
-State 245
+State 235
 
    73 struct: struct_header OPEN_S struct_variable_declaration CLOSE_S SEMI_COMA .
 
     $default  reduce using rule 73 (struct)
 
 
-State 246
+State 236
 
    71 struct: struct_header OPEN_S struct_variable_declaration CLOSE_S entity . SEMI_COMA
    75       | struct_header OPEN_S struct_variable_declaration CLOSE_S entity . error SEMI_COMA
 
-    error      shift, and go to state 308
-    SEMI_COMA  shift, and go to state 309
+    error      shift, and go to state 298
+    SEMI_COMA  shift, and go to state 299
 
 
-State 247
-
-  207 simple_expr: IDENTIFIER DOUBLEPLUS .
-
-    $default  reduce using rule 207 (simple_expr)
-
-
-State 248
-
-  208 simple_expr: IDENTIFIER DOUBLEMINUS .
-
-    $default  reduce using rule 208 (simple_expr)
-
-
-State 249
+State 237
 
   154 variable_declaration_block: CONST type . variable_list SEMI_COMA
 
-    error       shift, and go to state 262
-    IDENTIFIER  shift, and go to state 263
+    error       shift, and go to state 257
+    IDENTIFIER  shift, and go to state 258
 
-    variable_list  go to state 310
-    variable       go to state 265
-
-
-State 250
-
-  194 long_id: long_id . DOT IDENTIFIER
-  201 simple_expr: long_id .
-
-    DOT  shift, and go to state 273
-
-    $default  reduce using rule 201 (simple_expr)
+    variable_list  go to state 300
+    variable       go to state 260
 
 
-State 251
-
-  202 simple_expr: simple_expr . PLUS simple_expr
-  203            | simple_expr . MINUS simple_expr
-  204            | simple_expr . MULTI simple_expr
-  205            | simple_expr . DIV simple_expr
-  206            | OPEN_P simple_expr . CLOSE_P
-
-    PLUS     shift, and go to state 274
-    MINUS    shift, and go to state 275
-    CLOSE_P  shift, and go to state 311
-    MULTI    shift, and go to state 276
-    DIV      shift, and go to state 277
-
-
-State 252
+State 238
 
   169 for_loop_header: FOR OPEN_P . for_initializer SEMI_COMA logic_expr SEMI_COMA expr CLOSE_P
   170                | FOR OPEN_P . SEMI_COMA logic_expr SEMI_COMA expr CLOSE_P
@@ -3536,75 +3300,75 @@ State 252
   175                | FOR OPEN_P . SEMI_COMA SEMI_COMA expr CLOSE_P
   176                | FOR OPEN_P . SEMI_COMA SEMI_COMA CLOSE_P
 
-    IDENTIFIER  shift, and go to state 312
-    INT         shift, and go to state 313
-    SEMI_COMA   shift, and go to state 314
+    IDENTIFIER  shift, and go to state 301
+    INT         shift, and go to state 302
+    SEMI_COMA   shift, and go to state 303
 
-    for_initializer  go to state 315
+    for_initializer  go to state 304
 
 
-State 253
+State 239
 
   223 while_loop_header: WHILE OPEN_P . logic_expr CLOSE_P
 
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 316
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    NOT_EQUAL    shift, and go to state 317
-    OPEN_ARR     shift, and go to state 182
-    TRUE         shift, and go to state 318
-    FALSE        shift, and go to state 319
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 305
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    NOT_EQUAL    shift, and go to state 306
+    OPEN_ARR     shift, and go to state 177
+    TRUE         shift, and go to state 307
+    FALSE        shift, and go to state 308
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
 
-    p_type         go to state 188
-    logic_expr     go to state 320
-    expr           go to state 321
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
+    p_type         go to state 251
+    logic_expr     go to state 309
+    expr           go to state 310
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
 
 
-State 254
+State 240
 
   227 if_header: IF OPEN_P . logic_expr CLOSE_P
 
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 316
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    NOT_EQUAL    shift, and go to state 317
-    OPEN_ARR     shift, and go to state 182
-    TRUE         shift, and go to state 318
-    FALSE        shift, and go to state 319
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 305
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    NOT_EQUAL    shift, and go to state 306
+    OPEN_ARR     shift, and go to state 177
+    TRUE         shift, and go to state 307
+    FALSE        shift, and go to state 308
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
 
-    p_type         go to state 188
-    logic_expr     go to state 322
-    expr           go to state 321
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
+    p_type         go to state 251
+    logic_expr     go to state 311
+    expr           go to state 310
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
 
 
-State 255
+State 241
 
   228 switch_header: SWITCH OPEN_P . IDENTIFIER CLOSE_P switch_body_block
 
-    IDENTIFIER  shift, and go to state 323
+    IDENTIFIER  shift, and go to state 312
 
 
-State 256
+State 242
 
    87 enum_type: ENUM IDENTIFIER .
    88          | ENUM IDENTIFIER . MULTI
@@ -3613,12 +3377,12 @@ State 256
 
     SEMI_COMA  shift, and go to state 58
     OPEN_S     shift, and go to state 59
-    MULTI      shift, and go to state 219
+    MULTI      shift, and go to state 209
 
     $default  reduce using rule 87 (enum_type)
 
 
-State 257
+State 243
 
   196 long_id: IDENTIFIER .
   207 simple_expr: IDENTIFIER . DOUBLEPLUS
@@ -3627,681 +3391,693 @@ State 257
     $default  reduce using rule 196 (long_id)
 
 
-State 258
-
-  162 return_statement: RETURN expr . SEMI_COMA
-
-    SEMI_COMA  shift, and go to state 324
-
-
-State 259
-
-  209 simple_expr: DOUBLEPLUS IDENTIFIER .
-
-    $default  reduce using rule 209 (simple_expr)
-
-
-State 260
-
-  210 simple_expr: DOUBLEMINUS IDENTIFIER .
-
-    $default  reduce using rule 210 (simple_expr)
-
-
-State 261
-
-  254 try_catch: TRY statement . catch_list finally_statement
-  255          | TRY statement . catch_list
-
-    CATCH  shift, and go to state 325
-
-    catch_list  go to state 326
-
-
-State 262
-
-  161 variable: error . array_tag initializer
-
-    OPEN_ARR  shift, and go to state 221
-
-    array_tag        go to state 327
-    array_first_tag  go to state 223
-
-
-State 263
-
-  159 variable: IDENTIFIER . array_tag initializer
-  160         | IDENTIFIER . main_initializer
-
-    EQUAL     shift, and go to state 328
-    OPEN_ARR  shift, and go to state 221
-
-    $default  reduce using rule 105 (main_initializer)
-
-    array_tag         go to state 329
-    array_first_tag   go to state 223
-    main_initializer  go to state 330
-
-
-State 264
-
-  153 variable_declaration_block: type variable_list . SEMI_COMA
-  156 variable_list: variable_list . COMMA variable
-  158              | variable_list . error variable
-
-    error      shift, and go to state 331
-    SEMI_COMA  shift, and go to state 332
-    COMMA      shift, and go to state 333
-
-
-State 265
-
-  157 variable_list: variable .
-
-    $default  reduce using rule 157 (variable_list)
-
-
-State 266
-
-  202 simple_expr: simple_expr . PLUS simple_expr
-  203            | simple_expr . MINUS simple_expr
-  204            | simple_expr . MULTI simple_expr
-  205            | simple_expr . DIV simple_expr
-  211            | p_type simple_expr .
-
-    PLUS   shift, and go to state 274
-    MINUS  shift, and go to state 275
-    MULTI  shift, and go to state 276
-    DIV    shift, and go to state 277
-
-    $default  reduce using rule 211 (simple_expr)
-
-
-State 267
-
-  142 block_body_statements: statement_list CLOSE_S .
-
-    $default  reduce using rule 142 (block_body_statements)
-
-
-State 268
-
-  144 statement_list: statement_list statement .
-
-    $default  reduce using rule 144 (statement_list)
-
-
-State 269
-
-  166 do_while: do_header statement . while_loop_header SEMI_COMA
-
-    WHILE  shift, and go to state 177
-
-    while_loop_header  go to state 334
-
-
-State 270
-
-  168 for_loop: for_loop_header statement .
-
-    $default  reduce using rule 168 (for_loop)
-
-
-State 271
-
-  148 statement: expr SEMI_COMA .
-
-    $default  reduce using rule 148 (statement)
-
-
-State 272
-
-  193 assign_expr: long_id EQUAL . simple_expr
-
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    long_id        go to state 250
-    simple_expr    go to state 335
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 273
-
-  194 long_id: long_id DOT . IDENTIFIER
-
-    IDENTIFIER  shift, and go to state 336
-
-
-State 274
-
-  202 simple_expr: simple_expr PLUS . simple_expr
-
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    long_id        go to state 250
-    simple_expr    go to state 337
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 275
-
-  203 simple_expr: simple_expr MINUS . simple_expr
-
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    long_id        go to state 250
-    simple_expr    go to state 338
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 276
-
-  204 simple_expr: simple_expr MULTI . simple_expr
-
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    long_id        go to state 250
-    simple_expr    go to state 339
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 277
-
-  205 simple_expr: simple_expr DIV . simple_expr
-
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    long_id        go to state 250
-    simple_expr    go to state 340
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 278
-
-  215 sender: IDENTIFIER .
-
-    $default  reduce using rule 215 (sender)
-
-
-State 279
-
-  214 sender: message_call .
-
-    $default  reduce using rule 214 (sender)
-
-
-State 280
-
-  213 message_call: message_call2 sender . message CLOSE_ARR
-
-    IDENTIFIER  shift, and go to state 341
-
-    message  go to state 342
-
-
-State 281
-
-  222 while_loop: while_loop_header statement .
-
-    $default  reduce using rule 222 (while_loop)
-
-
-State 282
-
-  224 conditional_statement: if_header statement .
-  225                      | if_header statement . ELSE statement
-
-    ELSE  shift, and go to state 343
-
-    $default  reduce using rule 224 (conditional_statement)
-
-
-State 283
-
-  233 switch_body: CLOSE_S .
-
-    $default  reduce using rule 233 (switch_body)
-
-
-State 284
-
-  236 case_body: CASE . expr SEMI_COLUMN statement BREAK SEMI_COMA
-  237          | CASE . expr SEMI_COLUMN statement
-  238          | CASE . expr SEMI_COLUMN BREAK SEMI_COMA
-
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    expr           go to state 344
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 285
-
-  239 default_case: DEFAULT . SEMI_COLUMN statement BREAK SEMI_COMA
-  240             | DEFAULT . SEMI_COLUMN statement
-  241             | DEFAULT . SEMI_COLUMN BREAK SEMI_COMA
-
-    SEMI_COLUMN  shift, and go to state 345
-
-
-State 286
-
-  226 conditional_statement: switch_header switch_body .
-
-    $default  reduce using rule 226 (conditional_statement)
-
-
-State 287
-
-  230 switch_body: list_of_case . default_case CLOSE_S
-  231            | list_of_case . CLOSE_S
-  234 list_of_case: list_of_case . case_body
-
-    CLOSE_S  shift, and go to state 346
-    CASE     shift, and go to state 284
-    DEFAULT  shift, and go to state 285
-
-    case_body     go to state 347
-    default_case  go to state 348
-
-
-State 288
-
-  235 list_of_case: case_body .
-
-    $default  reduce using rule 235 (list_of_case)
-
-
-State 289
-
-  232 switch_body: default_case . CLOSE_S
-
-    CLOSE_S  shift, and go to state 349
-
-
-State 290
-
-  253 list_expr: IDENTIFIER COMMA list_expr .
-
-    $default  reduce using rule 253 (list_expr)
-
-
-State 291
-
-  250 list_expr: IDENTIFIER EQUAL expr . COMMA list_expr
-  251          | IDENTIFIER EQUAL expr .
-
-    COMMA  shift, and go to state 350
-
-    $default  reduce using rule 251 (list_expr)
-
-
-State 292
-
-  248 enum: ENUM IDENTIFIER OPEN_S list_expr CLOSE_S SEMI_COMA .
-
-    $default  reduce using rule 248 (enum)
-
-
-State 293
-
-   62 data_member: IDENTIFIER array_tag .
-
-    $default  reduce using rule 62 (data_member)
-
-
-State 294
-
-   57 variable_declarationxx: CONST type ids_list SEMI_COMA .
-
-    $default  reduce using rule 57 (variable_declarationxx)
-
-
-State 295
-
-  100 array_first_tag: OPEN_ARR INT_VAL . CLOSE_ARR
-
-    CLOSE_ARR  shift, and go to state 351
-
-
-State 296
-
-  101 array_first_tag: OPEN_ARR CLOSE_ARR .
-
-    $default  reduce using rule 101 (array_first_tag)
-
-
-State 297
-
-   96 array_tag: array_first_tag array_tag_list .
-   97 array_tag_list: array_tag_list . OPEN_ARR INT_VAL CLOSE_ARR
-   99               | array_tag_list . OPEN_ARR error CLOSE_ARR
-
-    OPEN_ARR  shift, and go to state 352
-
-    $default  reduce using rule 96 (array_tag)
-
-
-State 298
-
-   58 variable_declarationxx: type IDENTIFIER array_tag error .
-
-    $default  reduce using rule 58 (variable_declarationxx)
-
-
-State 299
-
-   64 data_member: error . array_tag
-
-    OPEN_ARR  shift, and go to state 221
-
-    array_tag        go to state 222
-    array_first_tag  go to state 223
-
-
-State 300
-
-   59 ids_list: ids_list COMMA data_member .
-
-    $default  reduce using rule 59 (ids_list)
-
-
-State 301
-
-  122 parameter: p_type IDENTIFIER .
-
-    $default  reduce using rule 122 (parameter)
-
-
-State 302
-
-  120 parameter_list: parameter_list IDENTIFIER . SEMI_COLUMN parameter
-
-    SEMI_COLUMN  shift, and go to state 353
-
-
-State 303
-
-  119 parameter_list: parameter_list SEMI_COLUMN . parameter
-
-    OPEN_P  shift, and go to state 87
-
-    p_type     go to state 229
-    parameter  go to state 354
-
-
-State 304
-
-   80 entity: error . COMMA
-
-    COMMA  shift, and go to state 240
-
-
-State 305
-
-   78 entity: IDENTIFIER COMMA entity .
-
-    $default  reduce using rule 78 (entity)
-
-
-State 306
-
-   74 struct: struct_header OPEN_S CLOSE_S entity error SEMI_COMA .
-
-    $default  reduce using rule 74 (struct)
-
-
-State 307
-
-   77 struct: struct_header OPEN_S struct_variable_declaration CLOSE_S error SEMI_COMA .
-
-    $default  reduce using rule 77 (struct)
-
-
-State 308
-
-   75 struct: struct_header OPEN_S struct_variable_declaration CLOSE_S entity error . SEMI_COMA
-
-    SEMI_COMA  shift, and go to state 355
-
-
-State 309
-
-   71 struct: struct_header OPEN_S struct_variable_declaration CLOSE_S entity SEMI_COMA .
-
-    $default  reduce using rule 71 (struct)
-
-
-State 310
-
-  154 variable_declaration_block: CONST type variable_list . SEMI_COMA
-  156 variable_list: variable_list . COMMA variable
-  158              | variable_list . error variable
-
-    error      shift, and go to state 331
-    SEMI_COMA  shift, and go to state 356
-    COMMA      shift, and go to state 333
-
-
-State 311
-
-  206 simple_expr: OPEN_P simple_expr CLOSE_P .
-
-    $default  reduce using rule 206 (simple_expr)
-
-
-State 312
-
-  178 for_initializer: IDENTIFIER . EQUAL expr
-  179                | IDENTIFIER .
-
-    EQUAL  shift, and go to state 357
-
-    $default  reduce using rule 179 (for_initializer)
-
-
-State 313
-
-  177 for_initializer: INT . IDENTIFIER EQUAL expr
-
-    IDENTIFIER  shift, and go to state 358
-
-
-State 314
-
-  170 for_loop_header: FOR OPEN_P SEMI_COMA . logic_expr SEMI_COMA expr CLOSE_P
-  174                | FOR OPEN_P SEMI_COMA . logic_expr SEMI_COMA CLOSE_P
-  175                | FOR OPEN_P SEMI_COMA . SEMI_COMA expr CLOSE_P
-  176                | FOR OPEN_P SEMI_COMA . SEMI_COMA CLOSE_P
-
-    IDENTIFIER   shift, and go to state 257
-    SEMI_COMA    shift, and go to state 359
-    OPEN_P       shift, and go to state 316
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    NOT_EQUAL    shift, and go to state 317
-    OPEN_ARR     shift, and go to state 182
-    TRUE         shift, and go to state 318
-    FALSE        shift, and go to state 319
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    logic_expr     go to state 360
-    expr           go to state 321
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 315
-
-  169 for_loop_header: FOR OPEN_P for_initializer . SEMI_COMA logic_expr SEMI_COMA expr CLOSE_P
-  171                | FOR OPEN_P for_initializer . SEMI_COMA SEMI_COMA expr CLOSE_P
-  172                | FOR OPEN_P for_initializer . SEMI_COMA logic_expr SEMI_COMA CLOSE_P
-  173                | FOR OPEN_P for_initializer . SEMI_COMA SEMI_COMA CLOSE_P
-
-    SEMI_COMA  shift, and go to state 361
-
-
-State 316
+State 244
 
   116 p_type: OPEN_P . type CLOSE_P
-  186 logic_expr: OPEN_P . logic_expr CLOSE_P
   206 simple_expr: OPEN_P . simple_expr CLOSE_P
 
-    IDENTIFIER   shift, and go to state 168
+    IDENTIFIER   shift, and go to state 315
     NSSTRING     shift, and go to state 61
     FLOAT        shift, and go to state 62
     CHAR         shift, and go to state 63
     BOOL         shift, and go to state 64
     INT          shift, and go to state 65
     VOID         shift, and go to state 71
-    OPEN_P       shift, and go to state 316
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    NOT_EQUAL    shift, and go to state 317
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
     ENUM         shift, and go to state 72
-    OPEN_ARR     shift, and go to state 182
-    TRUE         shift, and go to state 318
-    FALSE        shift, and go to state 319
+    OPEN_ARR     shift, and go to state 177
     STRUCT       shift, and go to state 73
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
 
     type           go to state 143
     struct_type    go to state 80
     enum_type      go to state 81
     simple_type    go to state 82
     complex_type   go to state 83
-    p_type         go to state 188
-    logic_expr     go to state 362
-    expr           go to state 321
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 363
-    message_call2  go to state 204
-    message_call   go to state 205
+    p_type         go to state 251
+    long_id        go to state 316
+    simple_expr    go to state 317
+    message_call2  go to state 194
+    message_call   go to state 195
 
 
-State 317
+State 245
+
+  197 simple_expr: STRING_VAL .
+
+    $default  reduce using rule 197 (simple_expr)
+
+
+State 246
+
+  199 simple_expr: FLOAT_VAL .
+
+    $default  reduce using rule 199 (simple_expr)
+
+
+State 247
+
+  200 simple_expr: CHAR_VAL .
+
+    $default  reduce using rule 200 (simple_expr)
+
+
+State 248
+
+  198 simple_expr: INT_VAL .
+
+    $default  reduce using rule 198 (simple_expr)
+
+
+State 249
+
+  209 simple_expr: DOUBLEPLUS . IDENTIFIER
+
+    IDENTIFIER  shift, and go to state 318
+
+
+State 250
+
+  210 simple_expr: DOUBLEMINUS . IDENTIFIER
+
+    IDENTIFIER  shift, and go to state 319
+
+
+State 251
+
+  211 simple_expr: p_type . simple_expr
+
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    long_id        go to state 316
+    simple_expr    go to state 320
+    message_call2  go to state 194
+    message_call   go to state 195
+
+
+State 252
+
+  162 return_statement: RETURN expr . SEMI_COMA
+
+    SEMI_COMA  shift, and go to state 321
+
+
+State 253
+
+  191 expr: assign_expr .
+
+    $default  reduce using rule 191 (expr)
+
+
+State 254
+
+  193 assign_expr: long_id . EQUAL simple_expr
+  194 long_id: long_id . DOT IDENTIFIER
+  201 simple_expr: long_id .
+
+    EQUAL  shift, and go to state 266
+    DOT    shift, and go to state 267
+
+    $default  reduce using rule 201 (simple_expr)
+
+
+State 255
+
+  192 expr: simple_expr .
+  202 simple_expr: simple_expr . PLUS simple_expr
+  203            | simple_expr . MINUS simple_expr
+  204            | simple_expr . MULTI simple_expr
+  205            | simple_expr . DIV simple_expr
+
+    PLUS   shift, and go to state 322
+    MINUS  shift, and go to state 323
+    MULTI  shift, and go to state 324
+    DIV    shift, and go to state 325
+
+    $default  reduce using rule 192 (expr)
+
+
+State 256
+
+  254 try_catch: TRY statement . catch_list finally_statement
+  255          | TRY statement . catch_list
+
+    CATCH  shift, and go to state 326
+
+    catch_list  go to state 327
+
+
+State 257
+
+  161 variable: error . array_tag initializer
+
+    OPEN_ARR  shift, and go to state 211
+
+    array_tag        go to state 328
+    array_first_tag  go to state 213
+
+
+State 258
+
+  159 variable: IDENTIFIER . array_tag initializer
+  160         | IDENTIFIER . main_initializer
+
+    EQUAL     shift, and go to state 329
+    OPEN_ARR  shift, and go to state 211
+
+    $default  reduce using rule 105 (main_initializer)
+
+    array_tag         go to state 330
+    array_first_tag   go to state 213
+    main_initializer  go to state 331
+
+
+State 259
+
+  153 variable_declaration_block: type variable_list . SEMI_COMA
+  156 variable_list: variable_list . COMMA variable
+  158              | variable_list . error variable
+
+    error      shift, and go to state 332
+    SEMI_COMA  shift, and go to state 333
+    COMMA      shift, and go to state 334
+
+
+State 260
+
+  157 variable_list: variable .
+
+    $default  reduce using rule 157 (variable_list)
+
+
+State 261
+
+  142 block_body_statements: statement_list CLOSE_S .
+
+    $default  reduce using rule 142 (block_body_statements)
+
+
+State 262
+
+  144 statement_list: statement_list statement .
+
+    $default  reduce using rule 144 (statement_list)
+
+
+State 263
+
+  166 do_while: do_header statement . while_loop_header SEMI_COMA
+
+    WHILE  shift, and go to state 172
+
+    while_loop_header  go to state 335
+
+
+State 264
+
+  168 for_loop: for_loop_header statement .
+
+    $default  reduce using rule 168 (for_loop)
+
+
+State 265
+
+  148 statement: assign_expr SEMI_COMA .
+
+    $default  reduce using rule 148 (statement)
+
+
+State 266
+
+  193 assign_expr: long_id EQUAL . simple_expr
+
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    long_id        go to state 316
+    simple_expr    go to state 336
+    message_call2  go to state 194
+    message_call   go to state 195
+
+
+State 267
+
+  194 long_id: long_id DOT . IDENTIFIER
+
+    IDENTIFIER  shift, and go to state 337
+
+
+State 268
+
+  215 sender: IDENTIFIER .
+
+    $default  reduce using rule 215 (sender)
+
+
+State 269
+
+  214 sender: message_call .
+
+    $default  reduce using rule 214 (sender)
+
+
+State 270
+
+  213 message_call: message_call2 sender . message CLOSE_ARR
+
+    IDENTIFIER  shift, and go to state 338
+
+    message  go to state 339
+
+
+State 271
+
+  222 while_loop: while_loop_header statement .
+
+    $default  reduce using rule 222 (while_loop)
+
+
+State 272
+
+  224 conditional_statement: if_header statement .
+  225                      | if_header statement . ELSE statement
+
+    ELSE  shift, and go to state 340
+
+    $default  reduce using rule 224 (conditional_statement)
+
+
+State 273
+
+  233 switch_body: CLOSE_S .
+
+    $default  reduce using rule 233 (switch_body)
+
+
+State 274
+
+  236 case_body: CASE . expr SEMI_COLUMN statement BREAK SEMI_COMA
+  237          | CASE . expr SEMI_COLUMN statement
+  238          | CASE . expr SEMI_COLUMN BREAK SEMI_COMA
+
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    expr           go to state 341
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
+
+
+State 275
+
+  239 default_case: DEFAULT . SEMI_COLUMN statement BREAK SEMI_COMA
+  240             | DEFAULT . SEMI_COLUMN statement
+  241             | DEFAULT . SEMI_COLUMN BREAK SEMI_COMA
+
+    SEMI_COLUMN  shift, and go to state 342
+
+
+State 276
+
+  226 conditional_statement: switch_header switch_body .
+
+    $default  reduce using rule 226 (conditional_statement)
+
+
+State 277
+
+  230 switch_body: list_of_case . default_case CLOSE_S
+  231            | list_of_case . CLOSE_S
+  234 list_of_case: list_of_case . case_body
+
+    CLOSE_S  shift, and go to state 343
+    CASE     shift, and go to state 274
+    DEFAULT  shift, and go to state 275
+
+    case_body     go to state 344
+    default_case  go to state 345
+
+
+State 278
+
+  235 list_of_case: case_body .
+
+    $default  reduce using rule 235 (list_of_case)
+
+
+State 279
+
+  232 switch_body: default_case . CLOSE_S
+
+    CLOSE_S  shift, and go to state 346
+
+
+State 280
+
+  253 list_expr: IDENTIFIER COMMA list_expr .
+
+    $default  reduce using rule 253 (list_expr)
+
+
+State 281
+
+  250 list_expr: IDENTIFIER EQUAL expr . COMMA list_expr
+  251          | IDENTIFIER EQUAL expr .
+
+    COMMA  shift, and go to state 347
+
+    $default  reduce using rule 251 (list_expr)
+
+
+State 282
+
+  248 enum: ENUM IDENTIFIER OPEN_S list_expr CLOSE_S SEMI_COMA .
+
+    $default  reduce using rule 248 (enum)
+
+
+State 283
+
+   62 data_member: IDENTIFIER array_tag .
+
+    $default  reduce using rule 62 (data_member)
+
+
+State 284
+
+   57 variable_declarationxx: CONST type ids_list SEMI_COMA .
+
+    $default  reduce using rule 57 (variable_declarationxx)
+
+
+State 285
+
+  100 array_first_tag: OPEN_ARR INT_VAL . CLOSE_ARR
+
+    CLOSE_ARR  shift, and go to state 348
+
+
+State 286
+
+  101 array_first_tag: OPEN_ARR CLOSE_ARR .
+
+    $default  reduce using rule 101 (array_first_tag)
+
+
+State 287
+
+   96 array_tag: array_first_tag array_tag_list .
+   97 array_tag_list: array_tag_list . OPEN_ARR INT_VAL CLOSE_ARR
+   99               | array_tag_list . OPEN_ARR error CLOSE_ARR
+
+    OPEN_ARR  shift, and go to state 349
+
+    $default  reduce using rule 96 (array_tag)
+
+
+State 288
+
+   58 variable_declarationxx: type IDENTIFIER array_tag error .
+
+    $default  reduce using rule 58 (variable_declarationxx)
+
+
+State 289
+
+   64 data_member: error . array_tag
+
+    OPEN_ARR  shift, and go to state 211
+
+    array_tag        go to state 212
+    array_first_tag  go to state 213
+
+
+State 290
+
+   59 ids_list: ids_list COMMA data_member .
+
+    $default  reduce using rule 59 (ids_list)
+
+
+State 291
+
+  122 parameter: p_type IDENTIFIER .
+
+    $default  reduce using rule 122 (parameter)
+
+
+State 292
+
+  120 parameter_list: parameter_list IDENTIFIER . SEMI_COLUMN parameter
+
+    SEMI_COLUMN  shift, and go to state 350
+
+
+State 293
+
+  119 parameter_list: parameter_list SEMI_COLUMN . parameter
+
+    OPEN_P  shift, and go to state 87
+
+    p_type     go to state 219
+    parameter  go to state 351
+
+
+State 294
+
+   80 entity: error . COMMA
+
+    COMMA  shift, and go to state 230
+
+
+State 295
+
+   78 entity: IDENTIFIER COMMA entity .
+
+    $default  reduce using rule 78 (entity)
+
+
+State 296
+
+   74 struct: struct_header OPEN_S CLOSE_S entity error SEMI_COMA .
+
+    $default  reduce using rule 74 (struct)
+
+
+State 297
+
+   77 struct: struct_header OPEN_S struct_variable_declaration CLOSE_S error SEMI_COMA .
+
+    $default  reduce using rule 77 (struct)
+
+
+State 298
+
+   75 struct: struct_header OPEN_S struct_variable_declaration CLOSE_S entity error . SEMI_COMA
+
+    SEMI_COMA  shift, and go to state 352
+
+
+State 299
+
+   71 struct: struct_header OPEN_S struct_variable_declaration CLOSE_S entity SEMI_COMA .
+
+    $default  reduce using rule 71 (struct)
+
+
+State 300
+
+  154 variable_declaration_block: CONST type variable_list . SEMI_COMA
+  156 variable_list: variable_list . COMMA variable
+  158              | variable_list . error variable
+
+    error      shift, and go to state 332
+    SEMI_COMA  shift, and go to state 353
+    COMMA      shift, and go to state 334
+
+
+State 301
+
+  178 for_initializer: IDENTIFIER . EQUAL expr
+  179                | IDENTIFIER .
+
+    EQUAL  shift, and go to state 354
+
+    $default  reduce using rule 179 (for_initializer)
+
+
+State 302
+
+  177 for_initializer: INT . IDENTIFIER EQUAL expr
+
+    IDENTIFIER  shift, and go to state 355
+
+
+State 303
+
+  170 for_loop_header: FOR OPEN_P SEMI_COMA . logic_expr SEMI_COMA expr CLOSE_P
+  174                | FOR OPEN_P SEMI_COMA . logic_expr SEMI_COMA CLOSE_P
+  175                | FOR OPEN_P SEMI_COMA . SEMI_COMA expr CLOSE_P
+  176                | FOR OPEN_P SEMI_COMA . SEMI_COMA CLOSE_P
+
+    IDENTIFIER   shift, and go to state 243
+    SEMI_COMA    shift, and go to state 356
+    OPEN_P       shift, and go to state 305
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    NOT_EQUAL    shift, and go to state 306
+    OPEN_ARR     shift, and go to state 177
+    TRUE         shift, and go to state 307
+    FALSE        shift, and go to state 308
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    logic_expr     go to state 357
+    expr           go to state 310
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
+
+
+State 304
+
+  169 for_loop_header: FOR OPEN_P for_initializer . SEMI_COMA logic_expr SEMI_COMA expr CLOSE_P
+  171                | FOR OPEN_P for_initializer . SEMI_COMA SEMI_COMA expr CLOSE_P
+  172                | FOR OPEN_P for_initializer . SEMI_COMA logic_expr SEMI_COMA CLOSE_P
+  173                | FOR OPEN_P for_initializer . SEMI_COMA SEMI_COMA CLOSE_P
+
+    SEMI_COMA  shift, and go to state 358
+
+
+State 305
+
+  116 p_type: OPEN_P . type CLOSE_P
+  186 logic_expr: OPEN_P . logic_expr CLOSE_P
+  206 simple_expr: OPEN_P . simple_expr CLOSE_P
+
+    IDENTIFIER   shift, and go to state 315
+    NSSTRING     shift, and go to state 61
+    FLOAT        shift, and go to state 62
+    CHAR         shift, and go to state 63
+    BOOL         shift, and go to state 64
+    INT          shift, and go to state 65
+    VOID         shift, and go to state 71
+    OPEN_P       shift, and go to state 305
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    NOT_EQUAL    shift, and go to state 306
+    ENUM         shift, and go to state 72
+    OPEN_ARR     shift, and go to state 177
+    TRUE         shift, and go to state 307
+    FALSE        shift, and go to state 308
+    STRUCT       shift, and go to state 73
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    type           go to state 143
+    struct_type    go to state 80
+    enum_type      go to state 81
+    simple_type    go to state 82
+    complex_type   go to state 83
+    p_type         go to state 251
+    logic_expr     go to state 359
+    expr           go to state 310
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 360
+    message_call2  go to state 194
+    message_call   go to state 195
+
+
+State 306
 
   185 logic_expr: NOT_EQUAL . expr
 
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
 
-    p_type         go to state 188
-    expr           go to state 364
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
+    p_type         go to state 251
+    expr           go to state 361
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
 
 
-State 318
+State 307
 
   189 logic_expr: TRUE .
 
     $default  reduce using rule 189 (logic_expr)
 
 
-State 319
+State 308
 
   190 logic_expr: FALSE .
 
     $default  reduce using rule 190 (logic_expr)
 
 
-State 320
+State 309
 
   187 logic_expr: logic_expr . AND_AND logic_expr
   188           | logic_expr . OR_OR logic_expr
   223 while_loop_header: WHILE OPEN_P logic_expr . CLOSE_P
 
-    CLOSE_P  shift, and go to state 365
-    AND_AND  shift, and go to state 366
-    OR_OR    shift, and go to state 367
+    CLOSE_P  shift, and go to state 362
+    AND_AND  shift, and go to state 363
+    OR_OR    shift, and go to state 364
 
 
-State 321
+State 310
 
   180 logic_expr: expr . LESS_THAN expr
   181           | expr . MORE_THAN expr
@@ -4309,146 +4085,312 @@ State 321
   183           | expr . MORE_OR_EQUAL expr
   184           | expr . EQUAL_EQUAL expr
 
-    LESS_THAN      shift, and go to state 368
-    MORE_THAN      shift, and go to state 369
-    LESS_OR_EQUAL  shift, and go to state 370
-    MORE_OR_EQUAL  shift, and go to state 371
-    EQUAL_EQUAL    shift, and go to state 372
+    LESS_THAN      shift, and go to state 365
+    MORE_THAN      shift, and go to state 366
+    LESS_OR_EQUAL  shift, and go to state 367
+    MORE_OR_EQUAL  shift, and go to state 368
+    EQUAL_EQUAL    shift, and go to state 369
 
 
-State 322
+State 311
 
   187 logic_expr: logic_expr . AND_AND logic_expr
   188           | logic_expr . OR_OR logic_expr
   227 if_header: IF OPEN_P logic_expr . CLOSE_P
 
-    CLOSE_P  shift, and go to state 373
-    AND_AND  shift, and go to state 366
-    OR_OR    shift, and go to state 367
+    CLOSE_P  shift, and go to state 370
+    AND_AND  shift, and go to state 363
+    OR_OR    shift, and go to state 364
 
 
-State 323
+State 312
 
   228 switch_header: SWITCH OPEN_P IDENTIFIER . CLOSE_P switch_body_block
 
-    CLOSE_P  shift, and go to state 374
+    CLOSE_P  shift, and go to state 371
 
 
-State 324
+State 313
+
+  207 simple_expr: IDENTIFIER DOUBLEPLUS .
+
+    $default  reduce using rule 207 (simple_expr)
+
+
+State 314
+
+  208 simple_expr: IDENTIFIER DOUBLEMINUS .
+
+    $default  reduce using rule 208 (simple_expr)
+
+
+State 315
+
+   95 complex_type: IDENTIFIER . MULTI
+  196 long_id: IDENTIFIER .
+  207 simple_expr: IDENTIFIER . DOUBLEPLUS
+  208            | IDENTIFIER . DOUBLEMINUS
+
+    DOUBLEPLUS   shift, and go to state 313
+    DOUBLEMINUS  shift, and go to state 314
+
+    $default  reduce using rule 196 (long_id)
+
+
+State 316
+
+  194 long_id: long_id . DOT IDENTIFIER
+  201 simple_expr: long_id .
+
+    DOT  shift, and go to state 267
+
+    $default  reduce using rule 201 (simple_expr)
+
+
+State 317
+
+  202 simple_expr: simple_expr . PLUS simple_expr
+  203            | simple_expr . MINUS simple_expr
+  204            | simple_expr . MULTI simple_expr
+  205            | simple_expr . DIV simple_expr
+  206            | OPEN_P simple_expr . CLOSE_P
+
+    PLUS     shift, and go to state 322
+    MINUS    shift, and go to state 323
+    CLOSE_P  shift, and go to state 372
+    MULTI    shift, and go to state 324
+    DIV      shift, and go to state 325
+
+
+State 318
+
+  209 simple_expr: DOUBLEPLUS IDENTIFIER .
+
+    $default  reduce using rule 209 (simple_expr)
+
+
+State 319
+
+  210 simple_expr: DOUBLEMINUS IDENTIFIER .
+
+    $default  reduce using rule 210 (simple_expr)
+
+
+State 320
+
+  202 simple_expr: simple_expr . PLUS simple_expr
+  203            | simple_expr . MINUS simple_expr
+  204            | simple_expr . MULTI simple_expr
+  205            | simple_expr . DIV simple_expr
+  211            | p_type simple_expr .
+
+    PLUS   shift, and go to state 322
+    MINUS  shift, and go to state 323
+    MULTI  shift, and go to state 324
+    DIV    shift, and go to state 325
+
+    $default  reduce using rule 211 (simple_expr)
+
+
+State 321
 
   162 return_statement: RETURN expr SEMI_COMA .
 
     $default  reduce using rule 162 (return_statement)
 
 
+State 322
+
+  202 simple_expr: simple_expr PLUS . simple_expr
+
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    long_id        go to state 316
+    simple_expr    go to state 373
+    message_call2  go to state 194
+    message_call   go to state 195
+
+
+State 323
+
+  203 simple_expr: simple_expr MINUS . simple_expr
+
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    long_id        go to state 316
+    simple_expr    go to state 374
+    message_call2  go to state 194
+    message_call   go to state 195
+
+
+State 324
+
+  204 simple_expr: simple_expr MULTI . simple_expr
+
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    long_id        go to state 316
+    simple_expr    go to state 375
+    message_call2  go to state 194
+    message_call   go to state 195
+
+
 State 325
 
-  256 catch_list: CATCH . OPEN_S type IDENTIFIER CLOSE_S statement
+  205 simple_expr: simple_expr DIV . simple_expr
 
-    OPEN_S  shift, and go to state 375
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    long_id        go to state 316
+    simple_expr    go to state 376
+    message_call2  go to state 194
+    message_call   go to state 195
 
 
 State 326
+
+  256 catch_list: CATCH . OPEN_S type IDENTIFIER CLOSE_S statement
+
+    OPEN_S  shift, and go to state 377
+
+
+State 327
 
   254 try_catch: TRY statement catch_list . finally_statement
   255          | TRY statement catch_list .
   257 catch_list: catch_list . CATCH OPEN_S type IDENTIFIER CLOSE_S statement
 
-    CATCH    shift, and go to state 376
-    FINALLY  shift, and go to state 377
+    CATCH    shift, and go to state 378
+    FINALLY  shift, and go to state 379
 
     $default  reduce using rule 255 (try_catch)
 
-    finally_statement  go to state 378
-
-
-State 327
-
-  161 variable: error array_tag . initializer
-
-    EQUAL  shift, and go to state 379
-
-    $default  reduce using rule 103 (initializer)
-
-    initializer  go to state 380
+    finally_statement  go to state 380
 
 
 State 328
 
-  104 main_initializer: EQUAL . expr
+  161 variable: error array_tag . initializer
 
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    expr           go to state 381
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 329
-
-  159 variable: IDENTIFIER array_tag . initializer
-
-    EQUAL  shift, and go to state 379
+    EQUAL  shift, and go to state 381
 
     $default  reduce using rule 103 (initializer)
 
     initializer  go to state 382
 
 
+State 329
+
+  104 main_initializer: EQUAL . expr
+
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    expr           go to state 383
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
+
+
 State 330
+
+  159 variable: IDENTIFIER array_tag . initializer
+
+    EQUAL  shift, and go to state 381
+
+    $default  reduce using rule 103 (initializer)
+
+    initializer  go to state 384
+
+
+State 331
 
   160 variable: IDENTIFIER main_initializer .
 
     $default  reduce using rule 160 (variable)
 
 
-State 331
+State 332
 
   158 variable_list: variable_list error . variable
 
-    error       shift, and go to state 262
-    IDENTIFIER  shift, and go to state 263
+    error       shift, and go to state 257
+    IDENTIFIER  shift, and go to state 258
 
-    variable  go to state 383
+    variable  go to state 385
 
 
-State 332
+State 333
 
   153 variable_declaration_block: type variable_list SEMI_COMA .
 
     $default  reduce using rule 153 (variable_declaration_block)
 
 
-State 333
+State 334
 
   156 variable_list: variable_list COMMA . variable
 
-    error       shift, and go to state 262
-    IDENTIFIER  shift, and go to state 263
+    error       shift, and go to state 257
+    IDENTIFIER  shift, and go to state 258
 
-    variable  go to state 384
-
-
-State 334
-
-  166 do_while: do_header statement while_loop_header . SEMI_COMA
-
-    SEMI_COMA  shift, and go to state 385
+    variable  go to state 386
 
 
 State 335
+
+  166 do_while: do_header statement while_loop_header . SEMI_COMA
+
+    SEMI_COMA  shift, and go to state 387
+
+
+State 336
 
   193 assign_expr: long_id EQUAL simple_expr .
   202 simple_expr: simple_expr . PLUS simple_expr
@@ -4456,22 +4398,572 @@ State 335
   204            | simple_expr . MULTI simple_expr
   205            | simple_expr . DIV simple_expr
 
-    PLUS   shift, and go to state 274
-    MINUS  shift, and go to state 275
-    MULTI  shift, and go to state 276
-    DIV    shift, and go to state 277
+    PLUS   shift, and go to state 322
+    MINUS  shift, and go to state 323
+    MULTI  shift, and go to state 324
+    DIV    shift, and go to state 325
 
     $default  reduce using rule 193 (assign_expr)
 
 
-State 336
+State 337
 
   194 long_id: long_id DOT IDENTIFIER .
 
     $default  reduce using rule 194 (long_id)
 
 
-State 337
+State 338
+
+  216 message: IDENTIFIER .
+  217        | IDENTIFIER . SEMI_COLUMN argument_list
+
+    SEMI_COLUMN  shift, and go to state 388
+
+    $default  reduce using rule 216 (message)
+
+
+State 339
+
+  213 message_call: message_call2 sender message . CLOSE_ARR
+
+    CLOSE_ARR  shift, and go to state 389
+
+
+State 340
+
+  225 conditional_statement: if_header statement ELSE . statement
+
+    IDENTIFIER  shift, and go to state 168
+    NSSTRING    shift, and go to state 61
+    FLOAT       shift, and go to state 62
+    CHAR        shift, and go to state 63
+    BOOL        shift, and go to state 64
+    INT         shift, and go to state 65
+    OPEN_S      shift, and go to state 115
+    CONST       shift, and go to state 170
+    VOID        shift, and go to state 71
+    FOR         shift, and go to state 171
+    WHILE       shift, and go to state 172
+    IF          shift, and go to state 173
+    DO          shift, and go to state 174
+    SWITCH      shift, and go to state 175
+    ENUM        shift, and go to state 176
+    OPEN_ARR    shift, and go to state 177
+    RETURN      shift, and go to state 178
+    STRUCT      shift, and go to state 73
+    TRY         shift, and go to state 179
+
+    type                        go to state 180
+    struct_type                 go to state 80
+    enum_type                   go to state 81
+    simple_type                 go to state 82
+    complex_type                go to state 83
+    block_body                  go to state 181
+    block_body_header           go to state 117
+    statement                   go to state 390
+    variable_declaration_block  go to state 185
+    return_statement            go to state 186
+    loop_statement              go to state 187
+    do_while                    go to state 188
+    do_header                   go to state 189
+    for_loop                    go to state 190
+    for_loop_header             go to state 191
+    assign_expr                 go to state 192
+    long_id                     go to state 193
+    message_call2               go to state 194
+    message_call                go to state 195
+    while_loop                  go to state 196
+    while_loop_header           go to state 197
+    conditional_statement       go to state 198
+    if_header                   go to state 199
+    switch_header               go to state 200
+    enum                        go to state 201
+    try_catch                   go to state 202
+
+
+State 341
+
+  236 case_body: CASE expr . SEMI_COLUMN statement BREAK SEMI_COMA
+  237          | CASE expr . SEMI_COLUMN statement
+  238          | CASE expr . SEMI_COLUMN BREAK SEMI_COMA
+
+    SEMI_COLUMN  shift, and go to state 391
+
+
+State 342
+
+  239 default_case: DEFAULT SEMI_COLUMN . statement BREAK SEMI_COMA
+  240             | DEFAULT SEMI_COLUMN . statement
+  241             | DEFAULT SEMI_COLUMN . BREAK SEMI_COMA
+
+    IDENTIFIER  shift, and go to state 168
+    NSSTRING    shift, and go to state 61
+    FLOAT       shift, and go to state 62
+    CHAR        shift, and go to state 63
+    BOOL        shift, and go to state 64
+    INT         shift, and go to state 65
+    OPEN_S      shift, and go to state 115
+    CONST       shift, and go to state 170
+    VOID        shift, and go to state 71
+    FOR         shift, and go to state 171
+    WHILE       shift, and go to state 172
+    IF          shift, and go to state 173
+    DO          shift, and go to state 174
+    SWITCH      shift, and go to state 175
+    BREAK       shift, and go to state 392
+    ENUM        shift, and go to state 176
+    OPEN_ARR    shift, and go to state 177
+    RETURN      shift, and go to state 178
+    STRUCT      shift, and go to state 73
+    TRY         shift, and go to state 179
+
+    type                        go to state 180
+    struct_type                 go to state 80
+    enum_type                   go to state 81
+    simple_type                 go to state 82
+    complex_type                go to state 83
+    block_body                  go to state 181
+    block_body_header           go to state 117
+    statement                   go to state 393
+    variable_declaration_block  go to state 185
+    return_statement            go to state 186
+    loop_statement              go to state 187
+    do_while                    go to state 188
+    do_header                   go to state 189
+    for_loop                    go to state 190
+    for_loop_header             go to state 191
+    assign_expr                 go to state 192
+    long_id                     go to state 193
+    message_call2               go to state 194
+    message_call                go to state 195
+    while_loop                  go to state 196
+    while_loop_header           go to state 197
+    conditional_statement       go to state 198
+    if_header                   go to state 199
+    switch_header               go to state 200
+    enum                        go to state 201
+    try_catch                   go to state 202
+
+
+State 343
+
+  231 switch_body: list_of_case CLOSE_S .
+
+    $default  reduce using rule 231 (switch_body)
+
+
+State 344
+
+  234 list_of_case: list_of_case case_body .
+
+    $default  reduce using rule 234 (list_of_case)
+
+
+State 345
+
+  230 switch_body: list_of_case default_case . CLOSE_S
+
+    CLOSE_S  shift, and go to state 394
+
+
+State 346
+
+  232 switch_body: default_case CLOSE_S .
+
+    $default  reduce using rule 232 (switch_body)
+
+
+State 347
+
+  250 list_expr: IDENTIFIER EQUAL expr COMMA . list_expr
+
+    IDENTIFIER  shift, and go to state 125
+
+    list_expr  go to state 395
+
+
+State 348
+
+  100 array_first_tag: OPEN_ARR INT_VAL CLOSE_ARR .
+
+    $default  reduce using rule 100 (array_first_tag)
+
+
+State 349
+
+   97 array_tag_list: array_tag_list OPEN_ARR . INT_VAL CLOSE_ARR
+   99               | array_tag_list OPEN_ARR . error CLOSE_ARR
+
+    error    shift, and go to state 396
+    INT_VAL  shift, and go to state 397
+
+
+State 350
+
+  120 parameter_list: parameter_list IDENTIFIER SEMI_COLUMN . parameter
+
+    OPEN_P  shift, and go to state 87
+
+    p_type     go to state 219
+    parameter  go to state 398
+
+
+State 351
+
+  119 parameter_list: parameter_list SEMI_COLUMN parameter .
+
+    $default  reduce using rule 119 (parameter_list)
+
+
+State 352
+
+   75 struct: struct_header OPEN_S struct_variable_declaration CLOSE_S entity error SEMI_COMA .
+
+    $default  reduce using rule 75 (struct)
+
+
+State 353
+
+  154 variable_declaration_block: CONST type variable_list SEMI_COMA .
+
+    $default  reduce using rule 154 (variable_declaration_block)
+
+
+State 354
+
+  178 for_initializer: IDENTIFIER EQUAL . expr
+
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    expr           go to state 399
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
+
+
+State 355
+
+  177 for_initializer: INT IDENTIFIER . EQUAL expr
+
+    EQUAL  shift, and go to state 400
+
+
+State 356
+
+  175 for_loop_header: FOR OPEN_P SEMI_COMA SEMI_COMA . expr CLOSE_P
+  176                | FOR OPEN_P SEMI_COMA SEMI_COMA . CLOSE_P
+
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    CLOSE_P      shift, and go to state 401
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    expr           go to state 402
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
+
+
+State 357
+
+  170 for_loop_header: FOR OPEN_P SEMI_COMA logic_expr . SEMI_COMA expr CLOSE_P
+  174                | FOR OPEN_P SEMI_COMA logic_expr . SEMI_COMA CLOSE_P
+  187 logic_expr: logic_expr . AND_AND logic_expr
+  188           | logic_expr . OR_OR logic_expr
+
+    SEMI_COMA  shift, and go to state 403
+    AND_AND    shift, and go to state 363
+    OR_OR      shift, and go to state 364
+
+
+State 358
+
+  169 for_loop_header: FOR OPEN_P for_initializer SEMI_COMA . logic_expr SEMI_COMA expr CLOSE_P
+  171                | FOR OPEN_P for_initializer SEMI_COMA . SEMI_COMA expr CLOSE_P
+  172                | FOR OPEN_P for_initializer SEMI_COMA . logic_expr SEMI_COMA CLOSE_P
+  173                | FOR OPEN_P for_initializer SEMI_COMA . SEMI_COMA CLOSE_P
+
+    IDENTIFIER   shift, and go to state 243
+    SEMI_COMA    shift, and go to state 404
+    OPEN_P       shift, and go to state 305
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    NOT_EQUAL    shift, and go to state 306
+    OPEN_ARR     shift, and go to state 177
+    TRUE         shift, and go to state 307
+    FALSE        shift, and go to state 308
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    logic_expr     go to state 405
+    expr           go to state 310
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
+
+
+State 359
+
+  186 logic_expr: OPEN_P logic_expr . CLOSE_P
+  187           | logic_expr . AND_AND logic_expr
+  188           | logic_expr . OR_OR logic_expr
+
+    CLOSE_P  shift, and go to state 406
+    AND_AND  shift, and go to state 363
+    OR_OR    shift, and go to state 364
+
+
+State 360
+
+  192 expr: simple_expr .
+  202 simple_expr: simple_expr . PLUS simple_expr
+  203            | simple_expr . MINUS simple_expr
+  204            | simple_expr . MULTI simple_expr
+  205            | simple_expr . DIV simple_expr
+  206            | OPEN_P simple_expr . CLOSE_P
+
+    PLUS     shift, and go to state 322
+    MINUS    shift, and go to state 323
+    CLOSE_P  shift, and go to state 372
+    MULTI    shift, and go to state 324
+    DIV      shift, and go to state 325
+
+    $default  reduce using rule 192 (expr)
+
+
+State 361
+
+  185 logic_expr: NOT_EQUAL expr .
+
+    $default  reduce using rule 185 (logic_expr)
+
+
+State 362
+
+  223 while_loop_header: WHILE OPEN_P logic_expr CLOSE_P .
+
+    $default  reduce using rule 223 (while_loop_header)
+
+
+State 363
+
+  187 logic_expr: logic_expr AND_AND . logic_expr
+
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 305
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    NOT_EQUAL    shift, and go to state 306
+    OPEN_ARR     shift, and go to state 177
+    TRUE         shift, and go to state 307
+    FALSE        shift, and go to state 308
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    logic_expr     go to state 407
+    expr           go to state 310
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
+
+
+State 364
+
+  188 logic_expr: logic_expr OR_OR . logic_expr
+
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 305
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    NOT_EQUAL    shift, and go to state 306
+    OPEN_ARR     shift, and go to state 177
+    TRUE         shift, and go to state 307
+    FALSE        shift, and go to state 308
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    logic_expr     go to state 408
+    expr           go to state 310
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
+
+
+State 365
+
+  180 logic_expr: expr LESS_THAN . expr
+
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    expr           go to state 409
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
+
+
+State 366
+
+  181 logic_expr: expr MORE_THAN . expr
+
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    expr           go to state 410
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
+
+
+State 367
+
+  182 logic_expr: expr LESS_OR_EQUAL . expr
+
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    expr           go to state 411
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
+
+
+State 368
+
+  183 logic_expr: expr MORE_OR_EQUAL . expr
+
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    expr           go to state 412
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
+
+
+State 369
+
+  184 logic_expr: expr EQUAL_EQUAL . expr
+
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    expr           go to state 413
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
+
+
+State 370
+
+  227 if_header: IF OPEN_P logic_expr CLOSE_P .
+
+    $default  reduce using rule 227 (if_header)
+
+
+State 371
+
+  228 switch_header: SWITCH OPEN_P IDENTIFIER CLOSE_P . switch_body_block
+
+    OPEN_S  shift, and go to state 414
+
+    switch_body_block  go to state 415
+
+
+State 372
+
+  206 simple_expr: OPEN_P simple_expr CLOSE_P .
+
+    $default  reduce using rule 206 (simple_expr)
+
+
+State 373
 
   202 simple_expr: simple_expr . PLUS simple_expr
   202            | simple_expr PLUS simple_expr .
@@ -4479,13 +4971,13 @@ State 337
   204            | simple_expr . MULTI simple_expr
   205            | simple_expr . DIV simple_expr
 
-    MULTI  shift, and go to state 276
-    DIV    shift, and go to state 277
+    MULTI  shift, and go to state 324
+    DIV    shift, and go to state 325
 
     $default  reduce using rule 202 (simple_expr)
 
 
-State 338
+State 374
 
   202 simple_expr: simple_expr . PLUS simple_expr
   203            | simple_expr . MINUS simple_expr
@@ -4493,13 +4985,13 @@ State 338
   204            | simple_expr . MULTI simple_expr
   205            | simple_expr . DIV simple_expr
 
-    MULTI  shift, and go to state 276
-    DIV    shift, and go to state 277
+    MULTI  shift, and go to state 324
+    DIV    shift, and go to state 325
 
     $default  reduce using rule 203 (simple_expr)
 
 
-State 339
+State 375
 
   202 simple_expr: simple_expr . PLUS simple_expr
   203            | simple_expr . MINUS simple_expr
@@ -4510,7 +5002,7 @@ State 339
     $default  reduce using rule 204 (simple_expr)
 
 
-State 340
+State 376
 
   202 simple_expr: simple_expr . PLUS simple_expr
   203            | simple_expr . MINUS simple_expr
@@ -4521,570 +5013,7 @@ State 340
     $default  reduce using rule 205 (simple_expr)
 
 
-State 341
-
-  216 message: IDENTIFIER .
-  217        | IDENTIFIER . SEMI_COLUMN argument_list
-
-    SEMI_COLUMN  shift, and go to state 386
-
-    $default  reduce using rule 216 (message)
-
-
-State 342
-
-  213 message_call: message_call2 sender message . CLOSE_ARR
-
-    CLOSE_ARR  shift, and go to state 387
-
-
-State 343
-
-  225 conditional_statement: if_header statement ELSE . statement
-
-    IDENTIFIER   shift, and go to state 168
-    NSSTRING     shift, and go to state 61
-    FLOAT        shift, and go to state 62
-    CHAR         shift, and go to state 63
-    BOOL         shift, and go to state 64
-    INT          shift, and go to state 65
-    OPEN_S       shift, and go to state 115
-    CONST        shift, and go to state 170
-    VOID         shift, and go to state 71
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    FOR          shift, and go to state 176
-    WHILE        shift, and go to state 177
-    IF           shift, and go to state 178
-    DO           shift, and go to state 179
-    SWITCH       shift, and go to state 180
-    ENUM         shift, and go to state 181
-    OPEN_ARR     shift, and go to state 182
-    RETURN       shift, and go to state 183
-    STRUCT       shift, and go to state 73
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-    TRY          shift, and go to state 186
-
-    type                        go to state 187
-    struct_type                 go to state 80
-    enum_type                   go to state 81
-    simple_type                 go to state 82
-    complex_type                go to state 83
-    p_type                      go to state 188
-    block_body                  go to state 189
-    block_body_header           go to state 117
-    statement                   go to state 388
-    variable_declaration_block  go to state 193
-    return_statement            go to state 194
-    loop_statement              go to state 195
-    do_while                    go to state 196
-    do_header                   go to state 197
-    for_loop                    go to state 198
-    for_loop_header             go to state 199
-    expr                        go to state 200
-    assign_expr                 go to state 201
-    long_id                     go to state 202
-    simple_expr                 go to state 203
-    message_call2               go to state 204
-    message_call                go to state 205
-    while_loop                  go to state 206
-    while_loop_header           go to state 207
-    conditional_statement       go to state 208
-    if_header                   go to state 209
-    switch_header               go to state 210
-    enum                        go to state 211
-    try_catch                   go to state 212
-
-
-State 344
-
-  236 case_body: CASE expr . SEMI_COLUMN statement BREAK SEMI_COMA
-  237          | CASE expr . SEMI_COLUMN statement
-  238          | CASE expr . SEMI_COLUMN BREAK SEMI_COMA
-
-    SEMI_COLUMN  shift, and go to state 389
-
-
-State 345
-
-  239 default_case: DEFAULT SEMI_COLUMN . statement BREAK SEMI_COMA
-  240             | DEFAULT SEMI_COLUMN . statement
-  241             | DEFAULT SEMI_COLUMN . BREAK SEMI_COMA
-
-    IDENTIFIER   shift, and go to state 168
-    NSSTRING     shift, and go to state 61
-    FLOAT        shift, and go to state 62
-    CHAR         shift, and go to state 63
-    BOOL         shift, and go to state 64
-    INT          shift, and go to state 65
-    OPEN_S       shift, and go to state 115
-    CONST        shift, and go to state 170
-    VOID         shift, and go to state 71
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    FOR          shift, and go to state 176
-    WHILE        shift, and go to state 177
-    IF           shift, and go to state 178
-    DO           shift, and go to state 179
-    SWITCH       shift, and go to state 180
-    BREAK        shift, and go to state 390
-    ENUM         shift, and go to state 181
-    OPEN_ARR     shift, and go to state 182
-    RETURN       shift, and go to state 183
-    STRUCT       shift, and go to state 73
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-    TRY          shift, and go to state 186
-
-    type                        go to state 187
-    struct_type                 go to state 80
-    enum_type                   go to state 81
-    simple_type                 go to state 82
-    complex_type                go to state 83
-    p_type                      go to state 188
-    block_body                  go to state 189
-    block_body_header           go to state 117
-    statement                   go to state 391
-    variable_declaration_block  go to state 193
-    return_statement            go to state 194
-    loop_statement              go to state 195
-    do_while                    go to state 196
-    do_header                   go to state 197
-    for_loop                    go to state 198
-    for_loop_header             go to state 199
-    expr                        go to state 200
-    assign_expr                 go to state 201
-    long_id                     go to state 202
-    simple_expr                 go to state 203
-    message_call2               go to state 204
-    message_call                go to state 205
-    while_loop                  go to state 206
-    while_loop_header           go to state 207
-    conditional_statement       go to state 208
-    if_header                   go to state 209
-    switch_header               go to state 210
-    enum                        go to state 211
-    try_catch                   go to state 212
-
-
-State 346
-
-  231 switch_body: list_of_case CLOSE_S .
-
-    $default  reduce using rule 231 (switch_body)
-
-
-State 347
-
-  234 list_of_case: list_of_case case_body .
-
-    $default  reduce using rule 234 (list_of_case)
-
-
-State 348
-
-  230 switch_body: list_of_case default_case . CLOSE_S
-
-    CLOSE_S  shift, and go to state 392
-
-
-State 349
-
-  232 switch_body: default_case CLOSE_S .
-
-    $default  reduce using rule 232 (switch_body)
-
-
-State 350
-
-  250 list_expr: IDENTIFIER EQUAL expr COMMA . list_expr
-
-    IDENTIFIER  shift, and go to state 125
-
-    list_expr  go to state 393
-
-
-State 351
-
-  100 array_first_tag: OPEN_ARR INT_VAL CLOSE_ARR .
-
-    $default  reduce using rule 100 (array_first_tag)
-
-
-State 352
-
-   97 array_tag_list: array_tag_list OPEN_ARR . INT_VAL CLOSE_ARR
-   99               | array_tag_list OPEN_ARR . error CLOSE_ARR
-
-    error    shift, and go to state 394
-    INT_VAL  shift, and go to state 395
-
-
-State 353
-
-  120 parameter_list: parameter_list IDENTIFIER SEMI_COLUMN . parameter
-
-    OPEN_P  shift, and go to state 87
-
-    p_type     go to state 229
-    parameter  go to state 396
-
-
-State 354
-
-  119 parameter_list: parameter_list SEMI_COLUMN parameter .
-
-    $default  reduce using rule 119 (parameter_list)
-
-
-State 355
-
-   75 struct: struct_header OPEN_S struct_variable_declaration CLOSE_S entity error SEMI_COMA .
-
-    $default  reduce using rule 75 (struct)
-
-
-State 356
-
-  154 variable_declaration_block: CONST type variable_list SEMI_COMA .
-
-    $default  reduce using rule 154 (variable_declaration_block)
-
-
-State 357
-
-  178 for_initializer: IDENTIFIER EQUAL . expr
-
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    expr           go to state 397
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 358
-
-  177 for_initializer: INT IDENTIFIER . EQUAL expr
-
-    EQUAL  shift, and go to state 398
-
-
-State 359
-
-  175 for_loop_header: FOR OPEN_P SEMI_COMA SEMI_COMA . expr CLOSE_P
-  176                | FOR OPEN_P SEMI_COMA SEMI_COMA . CLOSE_P
-
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    CLOSE_P      shift, and go to state 399
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    expr           go to state 400
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 360
-
-  170 for_loop_header: FOR OPEN_P SEMI_COMA logic_expr . SEMI_COMA expr CLOSE_P
-  174                | FOR OPEN_P SEMI_COMA logic_expr . SEMI_COMA CLOSE_P
-  187 logic_expr: logic_expr . AND_AND logic_expr
-  188           | logic_expr . OR_OR logic_expr
-
-    SEMI_COMA  shift, and go to state 401
-    AND_AND    shift, and go to state 366
-    OR_OR      shift, and go to state 367
-
-
-State 361
-
-  169 for_loop_header: FOR OPEN_P for_initializer SEMI_COMA . logic_expr SEMI_COMA expr CLOSE_P
-  171                | FOR OPEN_P for_initializer SEMI_COMA . SEMI_COMA expr CLOSE_P
-  172                | FOR OPEN_P for_initializer SEMI_COMA . logic_expr SEMI_COMA CLOSE_P
-  173                | FOR OPEN_P for_initializer SEMI_COMA . SEMI_COMA CLOSE_P
-
-    IDENTIFIER   shift, and go to state 257
-    SEMI_COMA    shift, and go to state 402
-    OPEN_P       shift, and go to state 316
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    NOT_EQUAL    shift, and go to state 317
-    OPEN_ARR     shift, and go to state 182
-    TRUE         shift, and go to state 318
-    FALSE        shift, and go to state 319
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    logic_expr     go to state 403
-    expr           go to state 321
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 362
-
-  186 logic_expr: OPEN_P logic_expr . CLOSE_P
-  187           | logic_expr . AND_AND logic_expr
-  188           | logic_expr . OR_OR logic_expr
-
-    CLOSE_P  shift, and go to state 404
-    AND_AND  shift, and go to state 366
-    OR_OR    shift, and go to state 367
-
-
-State 363
-
-  192 expr: simple_expr .
-  202 simple_expr: simple_expr . PLUS simple_expr
-  203            | simple_expr . MINUS simple_expr
-  204            | simple_expr . MULTI simple_expr
-  205            | simple_expr . DIV simple_expr
-  206            | OPEN_P simple_expr . CLOSE_P
-
-    PLUS     shift, and go to state 274
-    MINUS    shift, and go to state 275
-    CLOSE_P  shift, and go to state 311
-    MULTI    shift, and go to state 276
-    DIV      shift, and go to state 277
-
-    $default  reduce using rule 192 (expr)
-
-
-State 364
-
-  185 logic_expr: NOT_EQUAL expr .
-
-    $default  reduce using rule 185 (logic_expr)
-
-
-State 365
-
-  223 while_loop_header: WHILE OPEN_P logic_expr CLOSE_P .
-
-    $default  reduce using rule 223 (while_loop_header)
-
-
-State 366
-
-  187 logic_expr: logic_expr AND_AND . logic_expr
-
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 316
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    NOT_EQUAL    shift, and go to state 317
-    OPEN_ARR     shift, and go to state 182
-    TRUE         shift, and go to state 318
-    FALSE        shift, and go to state 319
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    logic_expr     go to state 405
-    expr           go to state 321
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 367
-
-  188 logic_expr: logic_expr OR_OR . logic_expr
-
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 316
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    NOT_EQUAL    shift, and go to state 317
-    OPEN_ARR     shift, and go to state 182
-    TRUE         shift, and go to state 318
-    FALSE        shift, and go to state 319
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    logic_expr     go to state 406
-    expr           go to state 321
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 368
-
-  180 logic_expr: expr LESS_THAN . expr
-
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    expr           go to state 407
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 369
-
-  181 logic_expr: expr MORE_THAN . expr
-
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    expr           go to state 408
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 370
-
-  182 logic_expr: expr LESS_OR_EQUAL . expr
-
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    expr           go to state 409
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 371
-
-  183 logic_expr: expr MORE_OR_EQUAL . expr
-
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    expr           go to state 410
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 372
-
-  184 logic_expr: expr EQUAL_EQUAL . expr
-
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    expr           go to state 411
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 373
-
-  227 if_header: IF OPEN_P logic_expr CLOSE_P .
-
-    $default  reduce using rule 227 (if_header)
-
-
-State 374
-
-  228 switch_header: SWITCH OPEN_P IDENTIFIER CLOSE_P . switch_body_block
-
-    OPEN_S  shift, and go to state 412
-
-    switch_body_block  go to state 413
-
-
-State 375
+State 377
 
   256 catch_list: CATCH OPEN_S . type IDENTIFIER CLOSE_S statement
 
@@ -5098,410 +5027,390 @@ State 375
     ENUM        shift, and go to state 72
     STRUCT      shift, and go to state 73
 
-    type          go to state 414
+    type          go to state 416
     struct_type   go to state 80
     enum_type     go to state 81
     simple_type   go to state 82
     complex_type  go to state 83
 
 
-State 376
+State 378
 
   257 catch_list: catch_list CATCH . OPEN_S type IDENTIFIER CLOSE_S statement
 
-    OPEN_S  shift, and go to state 415
+    OPEN_S  shift, and go to state 417
 
 
-State 377
+State 379
 
   258 finally_statement: FINALLY . statement
 
-    IDENTIFIER   shift, and go to state 168
-    NSSTRING     shift, and go to state 61
-    FLOAT        shift, and go to state 62
-    CHAR         shift, and go to state 63
-    BOOL         shift, and go to state 64
-    INT          shift, and go to state 65
-    OPEN_S       shift, and go to state 115
-    CONST        shift, and go to state 170
-    VOID         shift, and go to state 71
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    FOR          shift, and go to state 176
-    WHILE        shift, and go to state 177
-    IF           shift, and go to state 178
-    DO           shift, and go to state 179
-    SWITCH       shift, and go to state 180
-    ENUM         shift, and go to state 181
-    OPEN_ARR     shift, and go to state 182
-    RETURN       shift, and go to state 183
-    STRUCT       shift, and go to state 73
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-    TRY          shift, and go to state 186
+    IDENTIFIER  shift, and go to state 168
+    NSSTRING    shift, and go to state 61
+    FLOAT       shift, and go to state 62
+    CHAR        shift, and go to state 63
+    BOOL        shift, and go to state 64
+    INT         shift, and go to state 65
+    OPEN_S      shift, and go to state 115
+    CONST       shift, and go to state 170
+    VOID        shift, and go to state 71
+    FOR         shift, and go to state 171
+    WHILE       shift, and go to state 172
+    IF          shift, and go to state 173
+    DO          shift, and go to state 174
+    SWITCH      shift, and go to state 175
+    ENUM        shift, and go to state 176
+    OPEN_ARR    shift, and go to state 177
+    RETURN      shift, and go to state 178
+    STRUCT      shift, and go to state 73
+    TRY         shift, and go to state 179
 
-    type                        go to state 187
+    type                        go to state 180
     struct_type                 go to state 80
     enum_type                   go to state 81
     simple_type                 go to state 82
     complex_type                go to state 83
-    p_type                      go to state 188
-    block_body                  go to state 189
+    block_body                  go to state 181
     block_body_header           go to state 117
-    statement                   go to state 416
-    variable_declaration_block  go to state 193
-    return_statement            go to state 194
-    loop_statement              go to state 195
-    do_while                    go to state 196
-    do_header                   go to state 197
-    for_loop                    go to state 198
-    for_loop_header             go to state 199
-    expr                        go to state 200
-    assign_expr                 go to state 201
-    long_id                     go to state 202
-    simple_expr                 go to state 203
-    message_call2               go to state 204
-    message_call                go to state 205
-    while_loop                  go to state 206
-    while_loop_header           go to state 207
-    conditional_statement       go to state 208
-    if_header                   go to state 209
-    switch_header               go to state 210
-    enum                        go to state 211
-    try_catch                   go to state 212
+    statement                   go to state 418
+    variable_declaration_block  go to state 185
+    return_statement            go to state 186
+    loop_statement              go to state 187
+    do_while                    go to state 188
+    do_header                   go to state 189
+    for_loop                    go to state 190
+    for_loop_header             go to state 191
+    assign_expr                 go to state 192
+    long_id                     go to state 193
+    message_call2               go to state 194
+    message_call                go to state 195
+    while_loop                  go to state 196
+    while_loop_header           go to state 197
+    conditional_statement       go to state 198
+    if_header                   go to state 199
+    switch_header               go to state 200
+    enum                        go to state 201
+    try_catch                   go to state 202
 
 
-State 378
+State 380
 
   254 try_catch: TRY statement catch_list finally_statement .
 
     $default  reduce using rule 254 (try_catch)
 
 
-State 379
+State 381
 
   102 initializer: EQUAL . array_body
 
-    OPEN_S  shift, and go to state 417
+    OPEN_S  shift, and go to state 419
 
-    array_body  go to state 418
+    array_body  go to state 420
 
 
-State 380
+State 382
 
   161 variable: error array_tag initializer .
 
     $default  reduce using rule 161 (variable)
 
 
-State 381
+State 383
 
   104 main_initializer: EQUAL expr .
 
     $default  reduce using rule 104 (main_initializer)
 
 
-State 382
+State 384
 
   159 variable: IDENTIFIER array_tag initializer .
 
     $default  reduce using rule 159 (variable)
 
 
-State 383
+State 385
 
   158 variable_list: variable_list error variable .
 
     $default  reduce using rule 158 (variable_list)
 
 
-State 384
+State 386
 
   156 variable_list: variable_list COMMA variable .
 
     $default  reduce using rule 156 (variable_list)
 
 
-State 385
+State 387
 
   166 do_while: do_header statement while_loop_header SEMI_COMA .
 
     $default  reduce using rule 166 (do_while)
 
 
-State 386
+State 388
 
   217 message: IDENTIFIER SEMI_COLUMN . argument_list
 
-    IDENTIFIER   shift, and go to state 419
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
+    IDENTIFIER   shift, and go to state 421
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
 
-    p_type         go to state 188
-    expr           go to state 420
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
-    argument_list  go to state 421
-    argument       go to state 422
+    p_type         go to state 251
+    expr           go to state 422
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
+    argument_list  go to state 423
+    argument       go to state 424
 
 
-State 387
+State 389
 
   213 message_call: message_call2 sender message CLOSE_ARR .
 
     $default  reduce using rule 213 (message_call)
 
 
-State 388
+State 390
 
   225 conditional_statement: if_header statement ELSE statement .
 
     $default  reduce using rule 225 (conditional_statement)
 
 
-State 389
+State 391
 
   236 case_body: CASE expr SEMI_COLUMN . statement BREAK SEMI_COMA
   237          | CASE expr SEMI_COLUMN . statement
   238          | CASE expr SEMI_COLUMN . BREAK SEMI_COMA
 
-    IDENTIFIER   shift, and go to state 168
-    NSSTRING     shift, and go to state 61
-    FLOAT        shift, and go to state 62
-    CHAR         shift, and go to state 63
-    BOOL         shift, and go to state 64
-    INT          shift, and go to state 65
-    OPEN_S       shift, and go to state 115
-    CONST        shift, and go to state 170
-    VOID         shift, and go to state 71
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    FOR          shift, and go to state 176
-    WHILE        shift, and go to state 177
-    IF           shift, and go to state 178
-    DO           shift, and go to state 179
-    SWITCH       shift, and go to state 180
-    BREAK        shift, and go to state 423
-    ENUM         shift, and go to state 181
-    OPEN_ARR     shift, and go to state 182
-    RETURN       shift, and go to state 183
-    STRUCT       shift, and go to state 73
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-    TRY          shift, and go to state 186
+    IDENTIFIER  shift, and go to state 168
+    NSSTRING    shift, and go to state 61
+    FLOAT       shift, and go to state 62
+    CHAR        shift, and go to state 63
+    BOOL        shift, and go to state 64
+    INT         shift, and go to state 65
+    OPEN_S      shift, and go to state 115
+    CONST       shift, and go to state 170
+    VOID        shift, and go to state 71
+    FOR         shift, and go to state 171
+    WHILE       shift, and go to state 172
+    IF          shift, and go to state 173
+    DO          shift, and go to state 174
+    SWITCH      shift, and go to state 175
+    BREAK       shift, and go to state 425
+    ENUM        shift, and go to state 176
+    OPEN_ARR    shift, and go to state 177
+    RETURN      shift, and go to state 178
+    STRUCT      shift, and go to state 73
+    TRY         shift, and go to state 179
 
-    type                        go to state 187
+    type                        go to state 180
     struct_type                 go to state 80
     enum_type                   go to state 81
     simple_type                 go to state 82
     complex_type                go to state 83
-    p_type                      go to state 188
-    block_body                  go to state 189
+    block_body                  go to state 181
     block_body_header           go to state 117
-    statement                   go to state 424
-    variable_declaration_block  go to state 193
-    return_statement            go to state 194
-    loop_statement              go to state 195
-    do_while                    go to state 196
-    do_header                   go to state 197
-    for_loop                    go to state 198
-    for_loop_header             go to state 199
-    expr                        go to state 200
-    assign_expr                 go to state 201
-    long_id                     go to state 202
-    simple_expr                 go to state 203
-    message_call2               go to state 204
-    message_call                go to state 205
-    while_loop                  go to state 206
-    while_loop_header           go to state 207
-    conditional_statement       go to state 208
-    if_header                   go to state 209
-    switch_header               go to state 210
-    enum                        go to state 211
-    try_catch                   go to state 212
+    statement                   go to state 426
+    variable_declaration_block  go to state 185
+    return_statement            go to state 186
+    loop_statement              go to state 187
+    do_while                    go to state 188
+    do_header                   go to state 189
+    for_loop                    go to state 190
+    for_loop_header             go to state 191
+    assign_expr                 go to state 192
+    long_id                     go to state 193
+    message_call2               go to state 194
+    message_call                go to state 195
+    while_loop                  go to state 196
+    while_loop_header           go to state 197
+    conditional_statement       go to state 198
+    if_header                   go to state 199
+    switch_header               go to state 200
+    enum                        go to state 201
+    try_catch                   go to state 202
 
 
-State 390
+State 392
 
   241 default_case: DEFAULT SEMI_COLUMN BREAK . SEMI_COMA
 
-    SEMI_COMA  shift, and go to state 425
+    SEMI_COMA  shift, and go to state 427
 
 
-State 391
+State 393
 
   239 default_case: DEFAULT SEMI_COLUMN statement . BREAK SEMI_COMA
   240             | DEFAULT SEMI_COLUMN statement .
 
-    BREAK  shift, and go to state 426
+    BREAK  shift, and go to state 428
 
     $default  reduce using rule 240 (default_case)
 
 
-State 392
+State 394
 
   230 switch_body: list_of_case default_case CLOSE_S .
 
     $default  reduce using rule 230 (switch_body)
 
 
-State 393
+State 395
 
   250 list_expr: IDENTIFIER EQUAL expr COMMA list_expr .
 
     $default  reduce using rule 250 (list_expr)
 
 
-State 394
+State 396
 
    99 array_tag_list: array_tag_list OPEN_ARR error . CLOSE_ARR
 
-    CLOSE_ARR  shift, and go to state 427
+    CLOSE_ARR  shift, and go to state 429
 
 
-State 395
+State 397
 
    97 array_tag_list: array_tag_list OPEN_ARR INT_VAL . CLOSE_ARR
 
-    CLOSE_ARR  shift, and go to state 428
+    CLOSE_ARR  shift, and go to state 430
 
 
-State 396
+State 398
 
   120 parameter_list: parameter_list IDENTIFIER SEMI_COLUMN parameter .
 
     $default  reduce using rule 120 (parameter_list)
 
 
-State 397
+State 399
 
   178 for_initializer: IDENTIFIER EQUAL expr .
 
     $default  reduce using rule 178 (for_initializer)
 
 
-State 398
+State 400
 
   177 for_initializer: INT IDENTIFIER EQUAL . expr
 
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
 
-    p_type         go to state 188
-    expr           go to state 429
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
+    p_type         go to state 251
+    expr           go to state 431
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
 
 
-State 399
+State 401
 
   176 for_loop_header: FOR OPEN_P SEMI_COMA SEMI_COMA CLOSE_P .
 
     $default  reduce using rule 176 (for_loop_header)
 
 
-State 400
+State 402
 
   175 for_loop_header: FOR OPEN_P SEMI_COMA SEMI_COMA expr . CLOSE_P
 
-    CLOSE_P  shift, and go to state 430
+    CLOSE_P  shift, and go to state 432
 
 
-State 401
+State 403
 
   170 for_loop_header: FOR OPEN_P SEMI_COMA logic_expr SEMI_COMA . expr CLOSE_P
   174                | FOR OPEN_P SEMI_COMA logic_expr SEMI_COMA . CLOSE_P
 
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    CLOSE_P      shift, and go to state 431
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    CLOSE_P      shift, and go to state 433
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
 
-    p_type         go to state 188
-    expr           go to state 432
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
+    p_type         go to state 251
+    expr           go to state 434
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
 
 
-State 402
+State 404
 
   171 for_loop_header: FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA . expr CLOSE_P
   173                | FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA . CLOSE_P
 
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    CLOSE_P      shift, and go to state 433
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    CLOSE_P      shift, and go to state 435
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
 
-    p_type         go to state 188
-    expr           go to state 434
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
+    p_type         go to state 251
+    expr           go to state 436
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
 
 
-State 403
+State 405
 
   169 for_loop_header: FOR OPEN_P for_initializer SEMI_COMA logic_expr . SEMI_COMA expr CLOSE_P
   172                | FOR OPEN_P for_initializer SEMI_COMA logic_expr . SEMI_COMA CLOSE_P
   187 logic_expr: logic_expr . AND_AND logic_expr
   188           | logic_expr . OR_OR logic_expr
 
-    SEMI_COMA  shift, and go to state 435
-    AND_AND    shift, and go to state 366
-    OR_OR      shift, and go to state 367
+    SEMI_COMA  shift, and go to state 437
+    AND_AND    shift, and go to state 363
+    OR_OR      shift, and go to state 364
 
 
-State 404
+State 406
 
   186 logic_expr: OPEN_P logic_expr CLOSE_P .
 
     $default  reduce using rule 186 (logic_expr)
 
 
-State 405
+State 407
 
   187 logic_expr: logic_expr . AND_AND logic_expr
   187           | logic_expr AND_AND logic_expr .
@@ -5513,7 +5422,7 @@ State 405
     $default  reduce using rule 187 (logic_expr)
 
 
-State 406
+State 408
 
   187 logic_expr: logic_expr . AND_AND logic_expr
   188           | logic_expr . OR_OR logic_expr
@@ -5525,63 +5434,63 @@ State 406
     $default  reduce using rule 188 (logic_expr)
 
 
-State 407
+State 409
 
   180 logic_expr: expr LESS_THAN expr .
 
     $default  reduce using rule 180 (logic_expr)
 
 
-State 408
+State 410
 
   181 logic_expr: expr MORE_THAN expr .
 
     $default  reduce using rule 181 (logic_expr)
 
 
-State 409
+State 411
 
   182 logic_expr: expr LESS_OR_EQUAL expr .
 
     $default  reduce using rule 182 (logic_expr)
 
 
-State 410
+State 412
 
   183 logic_expr: expr MORE_OR_EQUAL expr .
 
     $default  reduce using rule 183 (logic_expr)
 
 
-State 411
+State 413
 
   184 logic_expr: expr EQUAL_EQUAL expr .
 
     $default  reduce using rule 184 (logic_expr)
 
 
-State 412
+State 414
 
   229 switch_body_block: OPEN_S .
 
     $default  reduce using rule 229 (switch_body_block)
 
 
-State 413
+State 415
 
   228 switch_header: SWITCH OPEN_P IDENTIFIER CLOSE_P switch_body_block .
 
     $default  reduce using rule 228 (switch_header)
 
 
-State 414
+State 416
 
   256 catch_list: CATCH OPEN_S type . IDENTIFIER CLOSE_S statement
 
-    IDENTIFIER  shift, and go to state 436
+    IDENTIFIER  shift, and go to state 438
 
 
-State 415
+State 417
 
   257 catch_list: catch_list CATCH OPEN_S . type IDENTIFIER CLOSE_S statement
 
@@ -5595,656 +5504,636 @@ State 415
     ENUM        shift, and go to state 72
     STRUCT      shift, and go to state 73
 
-    type          go to state 437
+    type          go to state 439
     struct_type   go to state 80
     enum_type     go to state 81
     simple_type   go to state 82
     complex_type  go to state 83
 
 
-State 416
+State 418
 
   258 finally_statement: FINALLY statement .
 
     $default  reduce using rule 258 (finally_statement)
 
 
-State 417
+State 419
 
    36 array_body: OPEN_S . array_ele CLOSE_S
    37           | OPEN_S . CLOSE_S
 
-    IDENTIFIER   shift, and go to state 257
-    OPEN_S       shift, and go to state 438
-    CLOSE_S      shift, and go to state 439
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
+    IDENTIFIER   shift, and go to state 243
+    OPEN_S       shift, and go to state 440
+    CLOSE_S      shift, and go to state 441
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
 
-    array_ele      go to state 440
-    p_type         go to state 188
-    expr           go to state 441
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
+    array_ele      go to state 442
+    p_type         go to state 251
+    expr           go to state 443
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
 
 
-State 418
+State 420
 
   102 initializer: EQUAL array_body .
 
     $default  reduce using rule 102 (initializer)
 
 
-State 419
+State 421
 
   196 long_id: IDENTIFIER .
   207 simple_expr: IDENTIFIER . DOUBLEPLUS
   208            | IDENTIFIER . DOUBLEMINUS
   221 argument: IDENTIFIER . SEMI_COLUMN expr
 
-    SEMI_COLUMN  shift, and go to state 442
+    SEMI_COLUMN  shift, and go to state 444
 
     $default  reduce using rule 196 (long_id)
 
 
-State 420
+State 422
 
   220 argument: expr .
 
     $default  reduce using rule 220 (argument)
 
 
-State 421
+State 423
 
   217 message: IDENTIFIER SEMI_COLUMN argument_list .
   218 argument_list: argument_list . argument
 
-    IDENTIFIER   shift, and go to state 419
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
+    IDENTIFIER   shift, and go to state 421
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
 
     $default  reduce using rule 217 (message)
 
-    p_type         go to state 188
-    expr           go to state 420
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
-    argument       go to state 443
+    p_type         go to state 251
+    expr           go to state 422
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
+    argument       go to state 445
 
 
-State 422
+State 424
 
   219 argument_list: argument .
 
     $default  reduce using rule 219 (argument_list)
 
 
-State 423
+State 425
 
   238 case_body: CASE expr SEMI_COLUMN BREAK . SEMI_COMA
 
-    SEMI_COMA  shift, and go to state 444
+    SEMI_COMA  shift, and go to state 446
 
 
-State 424
+State 426
 
   236 case_body: CASE expr SEMI_COLUMN statement . BREAK SEMI_COMA
   237          | CASE expr SEMI_COLUMN statement .
 
-    BREAK  shift, and go to state 445
+    BREAK  shift, and go to state 447
 
     $default  reduce using rule 237 (case_body)
 
 
-State 425
+State 427
 
   241 default_case: DEFAULT SEMI_COLUMN BREAK SEMI_COMA .
 
     $default  reduce using rule 241 (default_case)
 
 
-State 426
+State 428
 
   239 default_case: DEFAULT SEMI_COLUMN statement BREAK . SEMI_COMA
 
-    SEMI_COMA  shift, and go to state 446
+    SEMI_COMA  shift, and go to state 448
 
 
-State 427
+State 429
 
    99 array_tag_list: array_tag_list OPEN_ARR error CLOSE_ARR .
 
     $default  reduce using rule 99 (array_tag_list)
 
 
-State 428
+State 430
 
    97 array_tag_list: array_tag_list OPEN_ARR INT_VAL CLOSE_ARR .
 
     $default  reduce using rule 97 (array_tag_list)
 
 
-State 429
+State 431
 
   177 for_initializer: INT IDENTIFIER EQUAL expr .
 
     $default  reduce using rule 177 (for_initializer)
 
 
-State 430
+State 432
 
   175 for_loop_header: FOR OPEN_P SEMI_COMA SEMI_COMA expr CLOSE_P .
 
     $default  reduce using rule 175 (for_loop_header)
 
 
-State 431
+State 433
 
   174 for_loop_header: FOR OPEN_P SEMI_COMA logic_expr SEMI_COMA CLOSE_P .
 
     $default  reduce using rule 174 (for_loop_header)
 
 
-State 432
+State 434
 
   170 for_loop_header: FOR OPEN_P SEMI_COMA logic_expr SEMI_COMA expr . CLOSE_P
 
-    CLOSE_P  shift, and go to state 447
+    CLOSE_P  shift, and go to state 449
 
 
-State 433
+State 435
 
   173 for_loop_header: FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA CLOSE_P .
 
     $default  reduce using rule 173 (for_loop_header)
 
 
-State 434
+State 436
 
   171 for_loop_header: FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA expr . CLOSE_P
 
-    CLOSE_P  shift, and go to state 448
-
-
-State 435
-
-  169 for_loop_header: FOR OPEN_P for_initializer SEMI_COMA logic_expr SEMI_COMA . expr CLOSE_P
-  172                | FOR OPEN_P for_initializer SEMI_COMA logic_expr SEMI_COMA . CLOSE_P
-
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    CLOSE_P      shift, and go to state 449
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-
-    p_type         go to state 188
-    expr           go to state 450
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
-
-
-State 436
-
-  256 catch_list: CATCH OPEN_S type IDENTIFIER . CLOSE_S statement
-
-    CLOSE_S  shift, and go to state 451
+    CLOSE_P  shift, and go to state 450
 
 
 State 437
 
-  257 catch_list: catch_list CATCH OPEN_S type . IDENTIFIER CLOSE_S statement
+  169 for_loop_header: FOR OPEN_P for_initializer SEMI_COMA logic_expr SEMI_COMA . expr CLOSE_P
+  172                | FOR OPEN_P for_initializer SEMI_COMA logic_expr SEMI_COMA . CLOSE_P
 
-    IDENTIFIER  shift, and go to state 452
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    CLOSE_P      shift, and go to state 451
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
+
+    p_type         go to state 251
+    expr           go to state 452
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
 
 
 State 438
+
+  256 catch_list: CATCH OPEN_S type IDENTIFIER . CLOSE_S statement
+
+    CLOSE_S  shift, and go to state 453
+
+
+State 439
+
+  257 catch_list: catch_list CATCH OPEN_S type . IDENTIFIER CLOSE_S statement
+
+    IDENTIFIER  shift, and go to state 454
+
+
+State 440
 
    40 array_ele: OPEN_S . CLOSE_S
    41          | OPEN_S . array_ele CLOSE_S COMMA array_ele
    42          | OPEN_S . array_ele CLOSE_S
    43          | OPEN_S . CLOSE_S COMMA array_ele
 
-    IDENTIFIER   shift, and go to state 257
-    OPEN_S       shift, and go to state 438
-    CLOSE_S      shift, and go to state 453
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
+    IDENTIFIER   shift, and go to state 243
+    OPEN_S       shift, and go to state 440
+    CLOSE_S      shift, and go to state 455
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
 
-    array_ele      go to state 454
-    p_type         go to state 188
-    expr           go to state 441
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
+    array_ele      go to state 456
+    p_type         go to state 251
+    expr           go to state 443
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
 
 
-State 439
+State 441
 
    37 array_body: OPEN_S CLOSE_S .
 
     $default  reduce using rule 37 (array_body)
 
 
-State 440
+State 442
 
    36 array_body: OPEN_S array_ele . CLOSE_S
 
-    CLOSE_S  shift, and go to state 455
+    CLOSE_S  shift, and go to state 457
 
 
-State 441
+State 443
 
    38 array_ele: expr . COMMA array_ele
    39          | expr .
 
-    COMMA  shift, and go to state 456
+    COMMA  shift, and go to state 458
 
     $default  reduce using rule 39 (array_ele)
 
 
-State 442
+State 444
 
   221 argument: IDENTIFIER SEMI_COLUMN . expr
 
-    IDENTIFIER   shift, and go to state 257
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
+    IDENTIFIER   shift, and go to state 243
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
 
-    p_type         go to state 188
-    expr           go to state 457
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
+    p_type         go to state 251
+    expr           go to state 459
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
 
 
-State 443
+State 445
 
   218 argument_list: argument_list argument .
 
     $default  reduce using rule 218 (argument_list)
 
 
-State 444
+State 446
 
   238 case_body: CASE expr SEMI_COLUMN BREAK SEMI_COMA .
 
     $default  reduce using rule 238 (case_body)
 
 
-State 445
+State 447
 
   236 case_body: CASE expr SEMI_COLUMN statement BREAK . SEMI_COMA
 
-    SEMI_COMA  shift, and go to state 458
+    SEMI_COMA  shift, and go to state 460
 
 
-State 446
+State 448
 
   239 default_case: DEFAULT SEMI_COLUMN statement BREAK SEMI_COMA .
 
     $default  reduce using rule 239 (default_case)
 
 
-State 447
+State 449
 
   170 for_loop_header: FOR OPEN_P SEMI_COMA logic_expr SEMI_COMA expr CLOSE_P .
 
     $default  reduce using rule 170 (for_loop_header)
 
 
-State 448
+State 450
 
   171 for_loop_header: FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA expr CLOSE_P .
 
     $default  reduce using rule 171 (for_loop_header)
 
 
-State 449
+State 451
 
   172 for_loop_header: FOR OPEN_P for_initializer SEMI_COMA logic_expr SEMI_COMA CLOSE_P .
 
     $default  reduce using rule 172 (for_loop_header)
 
 
-State 450
+State 452
 
   169 for_loop_header: FOR OPEN_P for_initializer SEMI_COMA logic_expr SEMI_COMA expr . CLOSE_P
 
-    CLOSE_P  shift, and go to state 459
-
-
-State 451
-
-  256 catch_list: CATCH OPEN_S type IDENTIFIER CLOSE_S . statement
-
-    IDENTIFIER   shift, and go to state 168
-    NSSTRING     shift, and go to state 61
-    FLOAT        shift, and go to state 62
-    CHAR         shift, and go to state 63
-    BOOL         shift, and go to state 64
-    INT          shift, and go to state 65
-    OPEN_S       shift, and go to state 115
-    CONST        shift, and go to state 170
-    VOID         shift, and go to state 71
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    FOR          shift, and go to state 176
-    WHILE        shift, and go to state 177
-    IF           shift, and go to state 178
-    DO           shift, and go to state 179
-    SWITCH       shift, and go to state 180
-    ENUM         shift, and go to state 181
-    OPEN_ARR     shift, and go to state 182
-    RETURN       shift, and go to state 183
-    STRUCT       shift, and go to state 73
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-    TRY          shift, and go to state 186
-
-    type                        go to state 187
-    struct_type                 go to state 80
-    enum_type                   go to state 81
-    simple_type                 go to state 82
-    complex_type                go to state 83
-    p_type                      go to state 188
-    block_body                  go to state 189
-    block_body_header           go to state 117
-    statement                   go to state 460
-    variable_declaration_block  go to state 193
-    return_statement            go to state 194
-    loop_statement              go to state 195
-    do_while                    go to state 196
-    do_header                   go to state 197
-    for_loop                    go to state 198
-    for_loop_header             go to state 199
-    expr                        go to state 200
-    assign_expr                 go to state 201
-    long_id                     go to state 202
-    simple_expr                 go to state 203
-    message_call2               go to state 204
-    message_call                go to state 205
-    while_loop                  go to state 206
-    while_loop_header           go to state 207
-    conditional_statement       go to state 208
-    if_header                   go to state 209
-    switch_header               go to state 210
-    enum                        go to state 211
-    try_catch                   go to state 212
-
-
-State 452
-
-  257 catch_list: catch_list CATCH OPEN_S type IDENTIFIER . CLOSE_S statement
-
-    CLOSE_S  shift, and go to state 461
+    CLOSE_P  shift, and go to state 461
 
 
 State 453
 
-   40 array_ele: OPEN_S CLOSE_S .
-   43          | OPEN_S CLOSE_S . COMMA array_ele
+  256 catch_list: CATCH OPEN_S type IDENTIFIER CLOSE_S . statement
 
-    COMMA  shift, and go to state 462
+    IDENTIFIER  shift, and go to state 168
+    NSSTRING    shift, and go to state 61
+    FLOAT       shift, and go to state 62
+    CHAR        shift, and go to state 63
+    BOOL        shift, and go to state 64
+    INT         shift, and go to state 65
+    OPEN_S      shift, and go to state 115
+    CONST       shift, and go to state 170
+    VOID        shift, and go to state 71
+    FOR         shift, and go to state 171
+    WHILE       shift, and go to state 172
+    IF          shift, and go to state 173
+    DO          shift, and go to state 174
+    SWITCH      shift, and go to state 175
+    ENUM        shift, and go to state 176
+    OPEN_ARR    shift, and go to state 177
+    RETURN      shift, and go to state 178
+    STRUCT      shift, and go to state 73
+    TRY         shift, and go to state 179
 
-    $default  reduce using rule 40 (array_ele)
+    type                        go to state 180
+    struct_type                 go to state 80
+    enum_type                   go to state 81
+    simple_type                 go to state 82
+    complex_type                go to state 83
+    block_body                  go to state 181
+    block_body_header           go to state 117
+    statement                   go to state 462
+    variable_declaration_block  go to state 185
+    return_statement            go to state 186
+    loop_statement              go to state 187
+    do_while                    go to state 188
+    do_header                   go to state 189
+    for_loop                    go to state 190
+    for_loop_header             go to state 191
+    assign_expr                 go to state 192
+    long_id                     go to state 193
+    message_call2               go to state 194
+    message_call                go to state 195
+    while_loop                  go to state 196
+    while_loop_header           go to state 197
+    conditional_statement       go to state 198
+    if_header                   go to state 199
+    switch_header               go to state 200
+    enum                        go to state 201
+    try_catch                   go to state 202
 
 
 State 454
 
-   41 array_ele: OPEN_S array_ele . CLOSE_S COMMA array_ele
-   42          | OPEN_S array_ele . CLOSE_S
+  257 catch_list: catch_list CATCH OPEN_S type IDENTIFIER . CLOSE_S statement
 
     CLOSE_S  shift, and go to state 463
 
 
 State 455
 
+   40 array_ele: OPEN_S CLOSE_S .
+   43          | OPEN_S CLOSE_S . COMMA array_ele
+
+    COMMA  shift, and go to state 464
+
+    $default  reduce using rule 40 (array_ele)
+
+
+State 456
+
+   41 array_ele: OPEN_S array_ele . CLOSE_S COMMA array_ele
+   42          | OPEN_S array_ele . CLOSE_S
+
+    CLOSE_S  shift, and go to state 465
+
+
+State 457
+
    36 array_body: OPEN_S array_ele CLOSE_S .
 
     $default  reduce using rule 36 (array_body)
 
 
-State 456
+State 458
 
    38 array_ele: expr COMMA . array_ele
 
-    IDENTIFIER   shift, and go to state 257
-    OPEN_S       shift, and go to state 438
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
+    IDENTIFIER   shift, and go to state 243
+    OPEN_S       shift, and go to state 440
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
 
-    array_ele      go to state 464
-    p_type         go to state 188
-    expr           go to state 441
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
+    array_ele      go to state 466
+    p_type         go to state 251
+    expr           go to state 443
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
 
 
-State 457
+State 459
 
   221 argument: IDENTIFIER SEMI_COLUMN expr .
 
     $default  reduce using rule 221 (argument)
 
 
-State 458
+State 460
 
   236 case_body: CASE expr SEMI_COLUMN statement BREAK SEMI_COMA .
 
     $default  reduce using rule 236 (case_body)
 
 
-State 459
+State 461
 
   169 for_loop_header: FOR OPEN_P for_initializer SEMI_COMA logic_expr SEMI_COMA expr CLOSE_P .
 
     $default  reduce using rule 169 (for_loop_header)
 
 
-State 460
+State 462
 
   256 catch_list: CATCH OPEN_S type IDENTIFIER CLOSE_S statement .
 
     $default  reduce using rule 256 (catch_list)
 
 
-State 461
+State 463
 
   257 catch_list: catch_list CATCH OPEN_S type IDENTIFIER CLOSE_S . statement
 
-    IDENTIFIER   shift, and go to state 168
-    NSSTRING     shift, and go to state 61
-    FLOAT        shift, and go to state 62
-    CHAR         shift, and go to state 63
-    BOOL         shift, and go to state 64
-    INT          shift, and go to state 65
-    OPEN_S       shift, and go to state 115
-    CONST        shift, and go to state 170
-    VOID         shift, and go to state 71
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    FOR          shift, and go to state 176
-    WHILE        shift, and go to state 177
-    IF           shift, and go to state 178
-    DO           shift, and go to state 179
-    SWITCH       shift, and go to state 180
-    ENUM         shift, and go to state 181
-    OPEN_ARR     shift, and go to state 182
-    RETURN       shift, and go to state 183
-    STRUCT       shift, and go to state 73
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
-    TRY          shift, and go to state 186
+    IDENTIFIER  shift, and go to state 168
+    NSSTRING    shift, and go to state 61
+    FLOAT       shift, and go to state 62
+    CHAR        shift, and go to state 63
+    BOOL        shift, and go to state 64
+    INT         shift, and go to state 65
+    OPEN_S      shift, and go to state 115
+    CONST       shift, and go to state 170
+    VOID        shift, and go to state 71
+    FOR         shift, and go to state 171
+    WHILE       shift, and go to state 172
+    IF          shift, and go to state 173
+    DO          shift, and go to state 174
+    SWITCH      shift, and go to state 175
+    ENUM        shift, and go to state 176
+    OPEN_ARR    shift, and go to state 177
+    RETURN      shift, and go to state 178
+    STRUCT      shift, and go to state 73
+    TRY         shift, and go to state 179
 
-    type                        go to state 187
+    type                        go to state 180
     struct_type                 go to state 80
     enum_type                   go to state 81
     simple_type                 go to state 82
     complex_type                go to state 83
-    p_type                      go to state 188
-    block_body                  go to state 189
+    block_body                  go to state 181
     block_body_header           go to state 117
-    statement                   go to state 465
-    variable_declaration_block  go to state 193
-    return_statement            go to state 194
-    loop_statement              go to state 195
-    do_while                    go to state 196
-    do_header                   go to state 197
-    for_loop                    go to state 198
-    for_loop_header             go to state 199
-    expr                        go to state 200
-    assign_expr                 go to state 201
-    long_id                     go to state 202
-    simple_expr                 go to state 203
-    message_call2               go to state 204
-    message_call                go to state 205
-    while_loop                  go to state 206
-    while_loop_header           go to state 207
-    conditional_statement       go to state 208
-    if_header                   go to state 209
-    switch_header               go to state 210
-    enum                        go to state 211
-    try_catch                   go to state 212
+    statement                   go to state 467
+    variable_declaration_block  go to state 185
+    return_statement            go to state 186
+    loop_statement              go to state 187
+    do_while                    go to state 188
+    do_header                   go to state 189
+    for_loop                    go to state 190
+    for_loop_header             go to state 191
+    assign_expr                 go to state 192
+    long_id                     go to state 193
+    message_call2               go to state 194
+    message_call                go to state 195
+    while_loop                  go to state 196
+    while_loop_header           go to state 197
+    conditional_statement       go to state 198
+    if_header                   go to state 199
+    switch_header               go to state 200
+    enum                        go to state 201
+    try_catch                   go to state 202
 
 
-State 462
+State 464
 
    43 array_ele: OPEN_S CLOSE_S COMMA . array_ele
 
-    IDENTIFIER   shift, and go to state 257
-    OPEN_S       shift, and go to state 438
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
+    IDENTIFIER   shift, and go to state 243
+    OPEN_S       shift, and go to state 440
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
 
-    array_ele      go to state 466
-    p_type         go to state 188
-    expr           go to state 441
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
+    array_ele      go to state 468
+    p_type         go to state 251
+    expr           go to state 443
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
 
 
-State 463
+State 465
 
    41 array_ele: OPEN_S array_ele CLOSE_S . COMMA array_ele
    42          | OPEN_S array_ele CLOSE_S .
 
-    COMMA  shift, and go to state 467
+    COMMA  shift, and go to state 469
 
     $default  reduce using rule 42 (array_ele)
 
 
-State 464
+State 466
 
    38 array_ele: expr COMMA array_ele .
 
     $default  reduce using rule 38 (array_ele)
 
 
-State 465
+State 467
 
   257 catch_list: catch_list CATCH OPEN_S type IDENTIFIER CLOSE_S statement .
 
     $default  reduce using rule 257 (catch_list)
 
 
-State 466
+State 468
 
    43 array_ele: OPEN_S CLOSE_S COMMA array_ele .
 
     $default  reduce using rule 43 (array_ele)
 
 
-State 467
+State 469
 
    41 array_ele: OPEN_S array_ele CLOSE_S COMMA . array_ele
 
-    IDENTIFIER   shift, and go to state 257
-    OPEN_S       shift, and go to state 438
-    OPEN_P       shift, and go to state 171
-    STRING_VAL   shift, and go to state 172
-    FLOAT_VAL    shift, and go to state 173
-    CHAR_VAL     shift, and go to state 174
-    INT_VAL      shift, and go to state 175
-    OPEN_ARR     shift, and go to state 182
-    DOUBLEPLUS   shift, and go to state 184
-    DOUBLEMINUS  shift, and go to state 185
+    IDENTIFIER   shift, and go to state 243
+    OPEN_S       shift, and go to state 440
+    OPEN_P       shift, and go to state 244
+    STRING_VAL   shift, and go to state 245
+    FLOAT_VAL    shift, and go to state 246
+    CHAR_VAL     shift, and go to state 247
+    INT_VAL      shift, and go to state 248
+    OPEN_ARR     shift, and go to state 177
+    DOUBLEPLUS   shift, and go to state 249
+    DOUBLEMINUS  shift, and go to state 250
 
-    array_ele      go to state 468
-    p_type         go to state 188
-    expr           go to state 441
-    assign_expr    go to state 201
-    long_id        go to state 202
-    simple_expr    go to state 203
-    message_call2  go to state 204
-    message_call   go to state 205
+    array_ele      go to state 470
+    p_type         go to state 251
+    expr           go to state 443
+    assign_expr    go to state 253
+    long_id        go to state 254
+    simple_expr    go to state 255
+    message_call2  go to state 194
+    message_call   go to state 195
 
 
-State 468
+State 470
 
    41 array_ele: OPEN_S array_ele CLOSE_S COMMA array_ele .
 

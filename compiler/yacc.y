@@ -765,7 +765,7 @@ statement:
 											$<r.text>$="cond";
 											$<r.node>$=$<r.node>1;
 											}
-	|expr SEMI_COMA							{
+	|assign_expr SEMI_COMA							{
 												cout<<"statement: expr\n";
 												$<r.text>$="expr";
 												$<r.node>$=$<r.node>1;

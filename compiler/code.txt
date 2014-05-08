@@ -20,41 +20,7 @@ y=8;
 
 -(int) a2go:(int)y
 {
-//wessam aa;
-//[aa ecjgo2:5 ];
-
-}
--(int) ecjgo2:(int)y
-{
-y=8;
-int i=7;
-if(i>=7){
-if(y>10)
-	y=24;
-}else y=15;
+	wesam* a;
 }
 
-@end
-
-@interface koko
-{
-@public
-NSString str1;
-}
--(int) kokogo:(int)y;
-
-@end
-
-@implementation koko
-
--(int) ko:(int)y
-{
-y=8;
-
-}
-
--(int) jjjj:(int)y
-{
-
-}
 @end
