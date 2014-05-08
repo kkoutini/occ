@@ -15,23 +15,28 @@ public:
 	static	int 	Dowhile_label;
 	DoWhileNode(Node* condition,Node* statment,ScoopNode* scoop):Node(scoop),_statment(statment),_condition(condition)
 	{
-		//test commit
+		
 	}
 
 	virtual bool typeCheck()
 	{
+
+		if (_condition->getType() == NULL)
+		{
+			string error = "ERROR in condition in DO While NULL ERROR  line number :" + std::to_string(_line) + " col number :" + std::to_string(_col);
+			Program::addError(new SemanticError(error));
+			return false;
+		}
 		Type* boolType=symbolTable->getType("bool");
 		if (_condition->getType()==boolType)
 		{
 			return true;
-		}else
+		}
+		else
 		{
-		///////////////////////////////////////////////////
-			/////////// error 
-			///////////////////////////////////////////////
-			string error = "ERROR in While NODE  in  line number ";
+			/////////// error
+			string error = "ERROR Cannot implicitly convert type " + _condition->getType()->get_name() + " to 'bool'  AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
 			Program::addError(new SemanticError(error));
-			
 			return false;
 		}
 		

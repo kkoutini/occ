@@ -21,16 +21,20 @@ IfNode(Node* condition,Node* statment,ScoopNode* scoop,Node* elseNode):Node(scoo
 	{
 		Type* boolType=symbolTable->getType("bool");
 		
+		if (_condtion->getType()==NULL)
+		{
+			string error = "ERROR TYPE NULL in IF NODE  AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
+			Program::addError(new SemanticError(error));
+			return false;
+		}
 
 		if (_condtion->getType()==boolType)
 		{
 			return true;
 		}else
 		{
-		///////////////////////////////////////////////////
 			/////////// error 
-			///////////////////////////////////////////////
-			string error = "ERROR in if NODE type mismatch  in  line number ";
+			string error = "ERROR Cannot implicitly convert type " + _condtion->getType()->get_name() + " to 'bool'  AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
 			Program::addError(new SemanticError(error));
 			return false;
 		}

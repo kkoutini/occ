@@ -16,22 +16,6 @@ static	int 	Else_label;
 		
 	}
 
-	virtual bool typeCheck()
-	{
-		//Type* boolType=symbolTable->getType("bool");
-		//if (_condtion->getType()==boolType)
-		//{
-		//	return true;
-		//}else
-		//{
-		/////////////////////////////////////////////////////
-		//	/////////// error 
-		//	///////////////////////////////////////////////
-		//
-		//}
-		return 1;
-	}
-
 	  void generateCode ()
 	  {
 		
