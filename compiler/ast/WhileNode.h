@@ -31,10 +31,8 @@ public:
 			}
 			else
 			{
-				///////////////////////////////////////////////////
-				/////////// error 
-				///////////////////////////////////////////////
-				string error = "ERROR in condition in While  line number :" + std::to_string(_line) + " col number :" + std::to_string(_col);
+				/////////// error 	
+				string error = "ERROR Cannot implicitly convert type " + _condition->getType()->get_name() + " to 'bool'  AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
 				Program::addError(new SemanticError(error));
 				return false;
 			}
