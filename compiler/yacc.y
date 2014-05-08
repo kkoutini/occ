@@ -794,7 +794,11 @@ statement:
 
 	|asm                                    {
 	                                            $<r.text>$="asm";
-												$<r.node>$=$<r.node>1;}
+												$<r.node>$=$<r.node>1;}	
+    |message_call SEMI_COMA{
+	 $<r.text>$="call";
+	$<r.node>$=$<r.node>1;
+	}
 	
 	
 ;
