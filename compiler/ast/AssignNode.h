@@ -1,6 +1,8 @@
 #pragma once
 #include "Node.h"
 #include "TypeChecker.h"
+#include "../Warning.h"
+
 class AssignNode: public Node
 {
 public:
@@ -16,6 +18,11 @@ public:
 		 this->_leftExp=leftExp;
 	}
 	 void generateCode(){
+		 if (typeCheck()==true)
+		 {
+			 cout << "dddd";
+
+		 }
 		 string t1="t1";
 		  string t0="t0";
 		 string mem_addr="sp";
@@ -45,25 +52,29 @@ public:
 	 }
 	virtual bool typeCheck()
 	{
-		
-		if(TypeChecker::canCast(_rightExp->getType(),_leftExp->getType())==1)
-			{
-				return true;
-			}
-		else if(TypeChecker::canCast(_rightExp->getType(),_leftExp->getType())==2)
-			{
-				
-				////////////////////////////////////////////////////////////
-				//////TO DO THROW WARNING
-				///////////////////////////////////////////////////////////
-				return true;
+		if (TypeChecker::canCast(_rightExp->getType(), _leftExp->getType()) == 1)
+		{
+			return true;
+		}
+		else if (TypeChecker::canCast(_rightExp->getType(), _leftExp->getType()) == 2)
+		{
 
-			}else{
-				////////////////////////////////////////////////////////////
-				//////TO DO THROW ERROR
-				///////////////////////////////////////////////////////////
+			////////////////////////////////////////////////////////////
+			//////TO DO THROW WARNING
+			///////////////////////////////////////////////////////////
+			string error = "Warning in cast";
+			Program::addWarning(new Warning(error));
+			return true;
+
+		}
+		else{
+			////////////////////////////////////////////////////////////
+			//////TO DO THROW ERROR
+			///////////////////////////////////////////////////////////
+			string error = "Error in cast";
+			Program::addError(new SemanticError(error));
 			return false;
-			}
+		}
 	}
 	virtual Type* generateType()
 	{

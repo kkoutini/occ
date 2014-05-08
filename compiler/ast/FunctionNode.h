@@ -2,6 +2,8 @@
 
 #include "scoopnode.h"
 #include "../ST/Method.h"
+#include "../ST/SymbolTable.h"
+extern SymbolTable* symbolTable;
 class FunctionNode :
 	public ScoopNode
 {

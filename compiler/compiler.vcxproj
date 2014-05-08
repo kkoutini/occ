@@ -159,6 +159,7 @@
     <ClInclude Include="ST\VariableHelper.h" />
     <ClInclude Include="SwitchNode.h" />
     <ClInclude Include="VariableItems.h" />
+    <ClInclude Include="Warning.h" />
     <ClInclude Include="yacc.hpp" />
   </ItemGroup>
   <ItemGroup>

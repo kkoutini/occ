@@ -2,6 +2,8 @@
 
 #include "ast\scoopnode.h"
 #include "ST\Interface.h"
+#include "ST\SymbolTable.h"
+extern SymbolTable* symbolTable;
 class ClassNode :
 	public ScoopNode
 {

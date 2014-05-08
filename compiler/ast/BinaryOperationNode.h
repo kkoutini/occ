@@ -1,11 +1,12 @@
 #pragma once
 #include "Node.h"
 #include "../yacc.hpp"
-#include "../ST/SymbolTable.h"
+
 #include "TypeChecker.h"
 #include "string"
 #include "mips_asm.h"
 using std::string;
+#include "../ST/SymbolTable.h"
 extern SymbolTable* symbolTable;
 class BinaryOperationNode:public Node
 {
