@@ -69,7 +69,18 @@ public:
 	}
 	virtual Type* generateType()
 	{
-
+		Type* senderType = _sender->getType();
+		Interface* sender_interface = (dynamic_cast<Interface*>(senderType));
+		if (sender_interface == NULL)
+		{
+			///errroooooooooooor teko
+		}
+		Method* method = sender_interface->getMethod(_message, _params, _types, false);
+		if (method == NULL)
+		{
+			///erooooooooooooooooooooooooor teko
+		}
+		return method->get_return_type();
 	}
 	virtual ~CallNode(void)
 	{
