@@ -11,17 +11,38 @@ class Variable;
 
 class Selector :public Symbol
 {
-private:
+public:
 	string name;
 	vector<Variable*> _vars;
+
+	vector<Type*> _types;
 	Variable* variable;
-public:
+
 	Selector(string, vector<Variable*> vars);
 		Selector(Selector*);
-		static bool compareSelectorName(Selector*,Selector*);
+		static bool compareSelector(Selector*,Selector*);
 		Variable* getVariable();
 		void setVariable(Variable*);
+		void updateTypesFromVars(){
+			 _types.clear();
 
+			for (auto c : _vars){
+				_types.push_back(c->getType());
+			}
+		}
+		bool operator==(const Selector &b){
+			if (name != b.name)
+				return false;
+			if (_vars.size() != b._vars.size())
+				return false;
+			for (int i = 0; i < _types.size(); i++)
+			{
+				if (b._types[i] != _types[i])
+					return false;
+			}
+			return true;
+
+		}
 	~Selector(void);
 };
 

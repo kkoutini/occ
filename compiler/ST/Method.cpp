@@ -118,9 +118,14 @@ void Method::checkParameters(Method*method1, Method*method2){
 
 	for (int i = 0; i < method1->parameters.size(); i++)
 	{
-		if (Type::equal(method1->parameters.at(i)->getVariable()->getType(), method2->parameters.at(j)->getVariable()->getType()))
+		if (Selector::compareSelector(method1->parameters.at(i), method2->parameters.at(j)))
 			j++;
-		else cout << "Error:Conflicting parameter type in implementation of '" << method1->parameters.at(i)->get_name() << "': '" << method1->parameters.at(i)->getVariable()->getType()->get_name() << "' vs '" << method2->parameters.at(j)->getVariable()->getType()->get_name() << "'.\n";
+		else
+		{
+			//TODO make error not cout
+			cout << "Error:Conflicting parameter type in implementation of '" << method1->parameters.at(i)->get_name() << "': '" << method1->parameters.at(i)->getVariable()->getType()->get_name() << "' vs '" << method2->parameters.at(j)->getVariable()->getType()->get_name() << "'.\n";
+
+		}
 	}
 }
 bool Method::compare(Method* method1, Method* method2){
@@ -131,7 +136,7 @@ bool Method::compare(Method* method1, Method* method2){
 		for (int i = 0; i < method1->parameters.size(); i++)
 		{
 
-			if (!Selector::compareSelectorName(method1->parameters.at(i), method2->parameters.at(j)))
+			if (!Selector::compareSelector(method1->parameters.at(i), method2->parameters.at(j)))
 				return false;
 			j++;
 		}

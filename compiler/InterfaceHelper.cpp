@@ -87,12 +87,10 @@ Method* InterfaceHelper:: createNewMethod(Type* type,SymbolTable* symbolTable,st
 		method->set_static(isStatic);
 		for(int i=0;i<selectorsList.size();i++)
 		{
-			if(i==0)                                                                                       
-				selectorsList.at(i)->set_name(name);
 			if(!method->addSelector(selectorsList.at(i)))
 			{
 				string error="Redifinition of selector name '";
-				error.append(selectorsList.at(i)->getVariable()->get_name());
+				error.append(selectorsList.at(i)->get_name());
 				error.append("'.");
 				Program::addError(new SemanticError(error));
 			}
