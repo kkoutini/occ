@@ -6,9 +6,10 @@
 using namespace std;
 #include "ST\variable.h"
 #include "ST\Symbol.h"
+
 class Method;
 class Variable;
-
+class Type;
 class Selector :public Symbol
 {
 public:
@@ -23,13 +24,7 @@ public:
 		static bool compareSelector(Selector*,Selector*);
 		Variable* getVariable();
 		void setVariable(Variable*);
-		void updateTypesFromVars(){
-			 _types.clear();
-
-			for (auto c : _vars){
-				_types.push_back(c->getType());
-			}
-		}
+		void updateTypesFromVars();
 		bool operator==(const Selector &b){
 			if (name != b.name)
 				return false;

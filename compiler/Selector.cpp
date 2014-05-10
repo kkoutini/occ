@@ -6,8 +6,9 @@ Selector::Selector(string name, vector<Variable*> vars) :Symbol(name), _vars(var
 	updateTypesFromVars();
 }
 
-Selector::Selector(Selector * selector):Symbol(name){
-	setVariable(selector->variable);
+Selector::Selector(Selector * selector) : Symbol(selector->get_name()), _vars(selector -> _vars){
+
+	updateTypesFromVars();
 }
 
 void Selector::setVariable(Variable* variable){
@@ -23,4 +24,11 @@ bool Selector:: compareSelector(Selector* selector1,Selector* selector2)
 }
 Selector::~Selector(void)
 {
+}
+void Selector::updateTypesFromVars() {
+	_types.clear();
+
+	for (auto c : _vars){
+		_types.push_back(c->getType());
+	}
 }
