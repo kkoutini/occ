@@ -56,7 +56,10 @@
 	bool flag=false;
 	Node* tempNode;
 	Method * method=NULL;
+	Selector* tselector=NULL;
 	vector <Selector *> selectorsList;
+	vector <Variable *> selectorVarList;
+
 	Type* type=NULL;
 	vector <Node*>casesNode;
 	SwitchNode * tempSwitch=NULL;
@@ -560,31 +563,31 @@ interface_declaration:
 	
 ;
 class_method_declaration:
-	PLUS p_type		 method_selector	SEMI_COMA				{
-																cout<<"class_method_declaration: PLUS p_type method_selector	SEMI_COMA\n";
+	PLUS p_type		 method_selectors	SEMI_COMA				{
+																cout<<"class_method_declaration: PLUS p_type method_selectors	SEMI_COMA\n";
 																method=InterfaceHelper::createNewMethod(type,symbolTable,$<r.text>3,selectorsList,true);
 															
 																 selectorsList.clear();
 																
 																}
-	|PLUS			 method_selector	SEMI_COMA				{
-																cout<<"class_method_declaration: PLUS			 method_selector	SEMI_COMA\n";
+	|PLUS			 method_selectors	SEMI_COMA				{
+																cout<<"class_method_declaration: PLUS			 method_selectors	SEMI_COMA\n";
 																		method=InterfaceHelper::createNewMethod(type,symbolTable,$<r.text>3,selectorsList,true);
 																 selectorsList.clear();
 																}
-	|PLUS p_type		 method_selector error	   {cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-	|PLUS			 method_selector error		{cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+	|PLUS p_type		 method_selectors error	   {cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+	|PLUS			 method_selectors error		{cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
 	;
 instance_method_declaration:
-	MINUS p_type	method_selector		SEMI_COMA			{
-															cout<<"instance_method_declaration: MINUS p_type	method_selector		SEMI_COMA\n";
+	MINUS p_type	method_selectors		SEMI_COMA			{
+															cout<<"instance_method_declaration: MINUS p_type	method_selectors		SEMI_COMA\n";
 															method=InterfaceHelper::createNewMethod(type,symbolTable,$<r.text>3,selectorsList,false);
 																 selectorsList.clear();
 																
 																
 															}
-	|MINUS			 method_selector	SEMI_COMA				{
-																	cout<<"instance_method_declaration: MINUS			 method_selector	SEMI_COMA\n";
+	|MINUS			 method_selectors	SEMI_COMA				{
+																	cout<<"instance_method_declaration: MINUS			 method_selectors	SEMI_COMA\n";
 																method=InterfaceHelper::createNewMethod(type,symbolTable,$<r.text>3,selectorsList,true);
 																 selectorsList.clear();
 																}
@@ -596,26 +599,46 @@ p_type:
 																}
    
 ;
-method_selector:
-	IDENTIFIER SEMI_COLUMN parameter_list						{\
-																cout<<"method_selector:IDENTIFIER SEMI_COLUMN parameter_list\n";
-																	$<r.text>$=$<r.text>1;
+method_selectors:
+	 selectors_list						{
+																cout<<"method_selectors:IDENTIFIER SEMI_COLUMN selectors_list\n";
+																	$<r.text>$="";
 																}
-	|IDENTIFIER													{cout<<"method_selector:IDENTIFIER \n";$<r.text>$=$<r.text>1;}
+	|IDENTIFIER													{cout<<"method_selectors:IDENTIFIER \n";$<r.text>$=$<r.text>1;}
 ;
-parameter_list:	parameter_list	SEMI_COLUMN	parameter						{
-																				cout<<"parameter_list:	parameter_list	SEMI_COLUMN	parameter\n";
-																				selectorsList.push_back(new Selector("",var));
-																			}
-				|parameter_list	IDENTIFIER SEMI_COLUMN	parameter			{
-																				cout<<"parameter_list:	parameter_list	IDENTIFIER  SEMI_COLUMN	parameter\n";
-																					selectorsList.push_back(new Selector($<r.text>2,var));
-																			}
-				|parameter													{
-																				cout<<"parameter_list: parameter\n";
-																			selectorsList.push_back(new Selector("",var));
-																			}
+selectors_list:	selectors_list selector_decleration{
+													cout<<"selectors_list:	selectors_list selector_decleration\n";
+																
+													selectorsList.push_back(tselector);
+													tselector=NULL;
+											}
+				|	selector_decleration			{
+														cout<<"selectors_list:	 selector_decleration\n";
+												selectorsList.clear();
+
+												selectorsList.push_back(tselector);
+												tselector=NULL;
+}
 ;
+selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list						{
+																				cout<<"selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	\n";
+																				tselector=new Selector($<r.text>1,selectorVarList);
+																			}
+		
+;
+parameter_list: parameter_list SEMI_COLUMN parameter {
+														cout<<"parameter_list: parameter_list parameter\n";
+																	selectorVarList.push_back(var);		
+											}
+				|	parameter {
+									selectorVarList.clear();
+										selectorVarList.push_back(var);		
+											
+				 
+														cout<<"parameter_list:  parameter\n";
+						
+					}		
+		;
 parameter:  p_type IDENTIFIER									{
 																cout<<"parameter:  p_type IDENTIFIER\n";
 																
@@ -677,15 +700,15 @@ class_implementation_definition:
 													}
 ;
 class_implementation_definition_header:
-	PLUS p_type		 method_selector	{
-										cout<<"class_implementation_definition_header: PLUS p_type		 method_selector\n";
+	PLUS p_type		 method_selectors	{
+										cout<<"class_implementation_definition_header: PLUS p_type		 method_selectors\n";
 															method=InterfaceHelper:: createNewMethod(type,symbolTable,$<r.text>3,selectorsList,true);
 																 selectorsList.clear();
 																
 																
 										}
-	|PLUS			 method_selector	{
-											cout<<"class_implementation_definition_header:  PLUS			 method_selector\n";
+	|PLUS			 method_selectors	{
+											cout<<"class_implementation_definition_header:  PLUS			 method_selectors\n";
 													 method =InterfaceHelper:: createNewMethod(type,symbolTable,$<r.text>2,selectorsList,true);
 																 selectorsList.clear();
 									
@@ -702,14 +725,14 @@ instance_implementation_definition:
 															}	
 ;
 instance_implementation_definition_header:
-	MINUS p_type		method_selector			{
-											     cout<<"instance_implementation_definition_header:MINUS p_type		method_selector\n";
+	MINUS p_type		method_selectors			{
+											     cout<<"instance_implementation_definition_header:MINUS p_type		method_selectors\n";
 												 method=InterfaceHelper:: createNewMethod(type,symbolTable,$<r.text>3,selectorsList,false);
 																 selectorsList.clear();
 															
 												}
-	|MINUS				method_selector			{
-												cout<<"instance_implementation_definition_header:MINUS 			method_selector\n";
+	|MINUS				method_selectors			{
+												cout<<"instance_implementation_definition_header:MINUS 			method_selectors\n";
 												 method =InterfaceHelper:: createNewMethod(type,symbolTable,$<r.text>2,selectorsList,false);
 																 selectorsList.clear();
 												}

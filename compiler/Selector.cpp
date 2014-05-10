@@ -1,9 +1,9 @@
 #include "Selector.h"
 
 
-Selector::Selector(string name,Variable* variable):Symbol(name)
+Selector::Selector(string name, vector<Variable*> vars) :Symbol(name), _vars(vars)
 {
-	setVariable(variable);
+
 }
 
 Selector::Selector(Selector * selector):Symbol(name){

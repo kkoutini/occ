@@ -36,8 +36,8 @@ public:
 		void setFunctionNode(FunctionNode*);
 	Type* get_return_type();
 	void set_return_type(Type* returnType);
-	Variable* getParameter(string);
-	bool addParameter(Selector*);
+	Selector* getSelector(string);
+	bool addSelector(Selector*);
 	void toString();
 	bool static checkReturnType(Method*,Method*);
 	void static checkParameters(Method*,Method*);

@@ -89,9 +89,9 @@ Method* InterfaceHelper:: createNewMethod(Type* type,SymbolTable* symbolTable,st
 		{
 			if(i==0)                                                                                       
 				selectorsList.at(i)->set_name(name);
-			if(!method->addParameter(selectorsList.at(i)))
+			if(!method->addSelector(selectorsList.at(i)))
 			{
-				string error="Redifinition of paramater name '";
+				string error="Redifinition of selector name '";
 				error.append(selectorsList.at(i)->getVariable()->get_name());
 				error.append("'.");
 				Program::addError(new SemanticError(error));
