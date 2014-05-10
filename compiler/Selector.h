@@ -20,6 +20,7 @@ public:
 
 	Selector(string, vector<Variable*> vars);
 		Selector(Selector*);
+		Selector(string name);
 		static bool compareSelector(Selector*,Selector*);
 		void updateTypesFromVars();
 		bool operator==(const Selector &b){

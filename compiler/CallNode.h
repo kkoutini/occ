@@ -7,15 +7,13 @@
 #include "ST/SymbolTable.h"
 extern SymbolTable* symbolTable;
 #include "ST/Type.h"
+#include "CallSelector.h"
 class CallNode :
 	public Node
 {
 public:
 
-		list<pair<string,Node*>> arguments;
-		vector<string> _params;
-		vector<Type*> _types;
-
+		vector<CallSelector*> _selcs;
 		Node* _sender;
 		string _message;
 	CallNode(ScoopNode* scoop,Node* sender,string message):Node(scoop),_sender(sender),_message(message)
@@ -32,20 +30,8 @@ public:
 	void setMessage(string message){
 		this->_message=message;
 	}
-	void addArgument(Node* argumentNode,string name){
-		this->arguments.push_back({ name, argumentNode });
-	}
-	void updateParams(){
-		_params.clear();
-		for (auto a : arguments){
-			_params.push_back(a.first);
-		}
-	}
-	void updateTypes(){
-		_types.clear();
-		for (auto a : arguments){
-			_types.push_back(a.second->getType());
-		}
+	void addSelector(CallSelector* c){
+		_selcs.push_back(c);
 	}
 
 	virtual void generateCode(){
@@ -60,7 +46,7 @@ public:
 		{
 			//ERRor
 		}
-		Method* method=sender_interface->getMethod(_message, _params, _types,false);
+		Method* method = NULL;//sender_interface->getMethod(_message, _params, _types,false);
 		if (method == NULL){
 			//ERROR no method
 		}
@@ -79,7 +65,7 @@ public:
 			Program::addError(new SemanticError(error));
 			return false;
 		}
-		Method* method = sender_interface->getMethod(_message, _params, _types, false);
+		Method* method = NULL; //sender_interface->getMethod(_message, _params, _types, false);
 		if (method == NULL)
 		{
 			//throw error

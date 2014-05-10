@@ -117,6 +117,9 @@
     <ClCompile Include="ast\mips_asm.cpp">
       <Filter>Header Files\AST</Filter>
     </ClCompile>
+    <ClCompile Include="CallSelector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="yacc.hpp">
@@ -262,6 +265,9 @@
     </ClInclude>
     <ClInclude Include="AsmNode.h">
       <Filter>Header Files\AST</Filter>
+    </ClInclude>
+    <ClInclude Include="CallSelector.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

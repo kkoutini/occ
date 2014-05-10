@@ -5,7 +5,9 @@ Selector::Selector(string name, vector<Variable*> vars) :Symbol(name), _vars(var
 {
 	updateTypesFromVars();
 }
-
+Selector::Selector(string name) : Symbol(name)
+{
+}
 Selector::Selector(Selector * selector) : Symbol(selector->get_name()), _vars(selector -> _vars){
 
 	updateTypesFromVars();

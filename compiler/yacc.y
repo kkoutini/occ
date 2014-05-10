@@ -10,6 +10,7 @@
 	#include "ST\SymbolTable.h"
 	#include "ast\ConstantNode.h"
 	#include "CallNode.h"
+		#include "CallSelector.h"
 		#include "ast\IdentifierNode.h"
 				#include "ast\BinaryOperationNode.h"
 				#include "ast\CastNode.h"
@@ -57,6 +58,8 @@
 	Node* tempNode;
 	Method * method=NULL;
 	Selector* tselector=NULL;
+	
+	CallSelector* cselector=NULL;
 	vector <Selector *> selectorsList;
 	vector <Variable *> selectorVarList;
 
@@ -1086,49 +1089,72 @@ simple_expr:
 message_call2:
 OPEN_ARR				 {
 							cout<<"message_call2: OPEN_ARR\n";
-							callNode=new CallNode(scoop);
+							
 						 }
 ;
 message_call:
 	 message_call2 sender message CLOSE_ARR		{
 												cout<<"message_call: OPEN_ARR sender message CLOSE_ARR\n";
-												callNode->setSender($<r.node>2);
 												callNode->setMessage($<r.text>3);
 												$<r.node>$=callNode;
+											
 												}
 ;
 sender:
 	message_call							{cout<<"sender: message_call\n";
+											callNode=new CallNode(scoop);
+											
+											callNode->setSender($<r.node>1);
 											 $<r.node>$=$<r.node>1;
 											}
 	|IDENTIFIER								{cout<<"sender: IDENTIFIER\n";
 											$<r.node>$=new IdentifierNode($<r.text>1,scoop);
+											
+											callNode=new CallNode(scoop);
+											
+											callNode->setSender($<r.node>$);
+											
 											}
 ;
 message:
 	IDENTIFIER								{cout<<"message: IDENTIFIER\n";
-											//$<r.node>$=$<r.text>1;
+											$<r.text>$=$<r.text>1;
 												
 											}
-	|IDENTIFIER SEMI_COLUMN argument_list	{
-											cout<<"message: IDENTIFIER SEMI_COLUMN argument_list\n";
+	|message_selectors_list		{
+											cout<<"message_selectors_list\n";
 											//$<r.node>$=$<r.text>1;
+											$<r.text>$="";
 											}
 ;
+message_selectors_list:
+	message_selectors_list message_selector {
+											cout<<"message_selectors_list:message_selectors_list message_selector \n";
+												callNode->addSelector(cselector);
+											cselector=NULL;
+												}
+	|message_selector {	callNode->addSelector(cselector);
+							cselector=NULL;
+								cout<<"message_selectors_list: message_selector\n";
+											
+		}
+;	
+message_selector: IDENTIFIER SEMI_COLUMN argument_list{
+									cselector->name=$<r.text>1;
+							}
 argument_list:
-	argument_list argument					{cout<<"argument_list: argument_list argument\n";}
-	|argument								{cout<<"argument_list: argument\n";}
-;
+	argument_list SEMI_COLUMN argument					{cout<<"argument_list: argument_list argument\n";
+												cselector->addArg($<r.node>3);}
+	|argument								{cout<<"argument_list: argument\n";
+												cselector=new CallSelector("");
+											cselector->addArg($<r.node>1);}
+; 
 argument:
 	 expr									{
 											cout<<"argument: SEMI_COLUMN expr\n";
 											$<r.node>$=$<r.node>1;
-											callNode->addArgument($<r.node>1,"");
-											}
-	|IDENTIFIER SEMI_COLUMN expr			{
-											 cout<<"argument: IDENTIFIER SEMI_COLUMN expr\n";
-											 callNode->addArgument($<r.node>3,$<r.text>1);
-											 $<r.node>$=$<r.node>3;
+											//callNode->addArgument($<r.node>1,"");
+											
 											}
 ;
 while_loop:
