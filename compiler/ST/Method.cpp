@@ -123,8 +123,7 @@ void Method::checkParameters(Method*method1, Method*method2){
 		else
 		{
 			//TODO make error not cout
-			cout << "Error:Conflicting parameter type in implementation of '" << method1->parameters.at(i)->get_name() << "': '" << method1->parameters.at(i)->getVariable()->getType()->get_name() << "' vs '" << method2->parameters.at(j)->getVariable()->getType()->get_name() << "'.\n";
-
+			cout << "Error:Conflicting parameter type in implementation of '" << method1->parameters.at(i)->get_name() << "': '";
 		}
 	}
 }
@@ -160,7 +159,9 @@ void Method::toString(){
 		cout << "Selectors: ";
 		for (int i = 0; i < parameters.size(); i++)
 		{
-			cout << parameters.at(i)->get_name() << ":(" << parameters.at(i)->getVariable()->getType()->get_name() << ") " << parameters.at(i)->getVariable()->get_name() << "\t";
+			cout << parameters.at(i)->get_name() << ":";
+			for (auto c : parameters.at(i)->_vars)
+				cout << " (" << c->getType()->get_name() << ") " << c->get_name() << "\t";
 		}
 		cout << endl;
 	}

@@ -8,7 +8,11 @@ ScoopNode* ScoopHelper::createNewScoop(ScoopNode* parentScoop,Method* method){
 		scoop=new ScoopNode(NULL,NULL);
 		for (int i = 0; i <method->get_variables().size(); i++)
 		{
-			scoop->add_variable( method->get_variables().at(i)->getVariable());
+			for (auto c : method->get_variables().at(i)->_vars)
+			{
+				scoop->add_variable(c);
+			}
+			
 		}
 		method->set_scoop(scoop);
 			//functionNode=new FunctionNode(scoop,method);

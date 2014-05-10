@@ -11,13 +11,7 @@ Selector::Selector(Selector * selector) : Symbol(selector->get_name()), _vars(se
 	updateTypesFromVars();
 }
 
-void Selector::setVariable(Variable* variable){
-		this->variable=new Variable(variable);
-}
 
-Variable* Selector::getVariable(){
-	return variable;
-}
 bool Selector:: compareSelector(Selector* selector1,Selector* selector2)
 {
 	return (*selector1)==(*selector2);

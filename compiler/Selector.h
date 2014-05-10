@@ -17,13 +17,10 @@ public:
 	vector<Variable*> _vars;
 
 	vector<Type*> _types;
-	Variable* variable;
 
 	Selector(string, vector<Variable*> vars);
 		Selector(Selector*);
 		static bool compareSelector(Selector*,Selector*);
-		Variable* getVariable();
-		void setVariable(Variable*);
 		void updateTypesFromVars();
 		bool operator==(const Selector &b){
 			if (name != b.name)
