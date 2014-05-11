@@ -6,6 +6,7 @@
 	#include <iostream>
 	#include <FlexLexer.h>
 	#include <string>
+	#include <stack>
 	#include "ast\node.h"
 	#include "ST\SymbolTable.h"
 	#include "ast\ConstantNode.h"
@@ -62,7 +63,7 @@
 	CallSelector* cselector=NULL;
 	vector <Selector *> selectorsList;
 	vector <Variable *> selectorVarList;
-
+	stack<CallNode*>callNodeStack;
 	Type* type=NULL;
 	vector <Node*>casesNode;
 	SwitchNode * tempSwitch=NULL;
@@ -1087,30 +1088,37 @@ simple_expr:
 															}//casting
 ;
 message_call2:
-OPEN_ARR				 {
-							cout<<"message_call2: OPEN_ARR\n";
-							
-						 }
+OPEN_ARR {		
+			cout<<"message_call2\n";
+			if(callNode==NULL)
+			callNode=new CallNode(scoop);
+			callNodeStack.push(callNode);
+			cout<<"mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm";
+			}
 ;
 message_call:
-	 message_call2 sender message CLOSE_ARR		{
+	message_call2 sender message CLOSE_ARR		{
 												cout<<"message_call: OPEN_ARR sender message CLOSE_ARR\n";
 												callNode->setMessage($<r.text>3);
 												$<r.node>$=callNode;
-											
+												callNode=NULL;
+														if(callNodeStack.size()!=0){
+														callNode=callNodeStack.top();
+														callNodeStack.pop();
+														}
 												}
 ;
 sender:
 	message_call							{cout<<"sender: message_call\n";
-											callNode=new CallNode(scoop);
 											
 											callNode->setSender($<r.node>1);
 											 $<r.node>$=$<r.node>1;
+											 
 											}
 	|IDENTIFIER								{cout<<"sender: IDENTIFIER\n";
 											$<r.node>$=new IdentifierNode($<r.text>1,scoop);
 											
-											callNode=new CallNode(scoop);
+											//callNode=new CallNode(scoop);
 											
 											callNode->setSender($<r.node>$);
 											
@@ -1318,7 +1326,7 @@ freopen("code.txt","r",stdin);
     //yydebug=1;
 	Parser* p = new Parser();
 	p->parse();
-	symbolTable->toString();
+//	symbolTable->toString();
 	/*for(int i=0;i<scoopVector.size();i++)
 	scoopVector.at(i)->toString();*/
 	Program::printErrors();

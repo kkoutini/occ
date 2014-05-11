@@ -20,7 +20,8 @@ y=8;
 
 -(int) a2go:(int)y
 {
-	wesam* a;
+	//wesam* a;
+	[a go:[a go: 5]];
 }
 
 @end
