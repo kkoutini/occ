@@ -36,7 +36,7 @@ public:
 	void add_son_protocol(Protocol*);
 	Protocol* get_son_protocol(string);
 
-	Method* getMethodByName(string name, Type* type, vector<Selector*> v, bool isStatic);
+	Method* getMethodByName(string name, Type* type, vector<DeclerationSelector*> v, bool isStatic);
 
 	Method* getMethod(string name, vector<string> selectors, vector<Type*> types, bool isStatic=false);
 

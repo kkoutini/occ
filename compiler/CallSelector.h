@@ -9,6 +9,15 @@ public:
 
 	CallSelector(string name);
 	void addArg(Node* n);
+	virtual  int getTypesSize() const{
+		return _args.size();
+	}
+	virtual Type* getTypeAt(int i)const
+	{
+		return _args.at(i)->getType();
+	}
+
+	
 	virtual ~CallSelector();
 };
 

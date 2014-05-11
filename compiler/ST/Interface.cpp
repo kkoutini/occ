@@ -111,7 +111,7 @@ string Interface::getTypeName(){
 	return "Interface";
 }
 
-Method* Interface::getMethodByName(string name,Type* type,vector<Selector*> v,bool isStatic)
+Method* Interface::getMethodByName(string name, Type* type, vector<DeclerationSelector*> v, bool isStatic)
 {
 	return methodsItem->getMethod(name,type,v,isStatic);
 }

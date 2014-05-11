@@ -12,6 +12,7 @@
 	#include "ast\ConstantNode.h"
 	#include "CallNode.h"
 		#include "CallSelector.h"
+		#include "DeclerationSelector.h"
 		#include "ast\IdentifierNode.h"
 				#include "ast\BinaryOperationNode.h"
 				#include "ast\CastNode.h"
@@ -58,10 +59,10 @@
 	bool flag=false;
 	Node* tempNode;
 	Method * method=NULL;
-	Selector* tselector=NULL;
+	DeclerationSelector* tselector=NULL;
 	
 	CallSelector* cselector=NULL;
-	vector <Selector *> selectorsList;
+	vector <DeclerationSelector *> selectorsList;
 	vector <Variable *> selectorVarList;
 	stack<CallNode*>callNodeStack;
 	Type* type=NULL;
@@ -626,7 +627,7 @@ selectors_list:	selectors_list selector_decleration{
 ;
 selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list						{
 																				cout<<"selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	\n";
-																				tselector=new Selector($<r.text>1,selectorVarList);
+																				tselector=new DeclerationSelector($<r.text>1,selectorVarList);
 																			}
 		
 ;
