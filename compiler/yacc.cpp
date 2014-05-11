@@ -73,6 +73,7 @@
 	#include "ast\ConstantNode.h"
 	#include "CallNode.h"
 		#include "CallSelector.h"
+		#include "DeclerationSelector.h"
 		#include "ast\IdentifierNode.h"
 				#include "ast\BinaryOperationNode.h"
 				#include "ast\CastNode.h"
@@ -119,10 +120,10 @@
 	bool flag=false;
 	Node* tempNode;
 	Method * method=NULL;
-	Selector* tselector=NULL;
+	DeclerationSelector* tselector=NULL;
 	
 	CallSelector* cselector=NULL;
-	vector <Selector *> selectorsList;
+	vector <DeclerationSelector *> selectorsList;
 	vector <Variable *> selectorVarList;
 	stack<CallNode*>callNodeStack;
 	Type* type=NULL;
@@ -141,7 +142,7 @@ Method* nodeXX;
 		}
 	};
 
-#line 145 "yacc.cpp" /* yacc.c:339  */
+#line 146 "yacc.cpp" /* yacc.c:339  */
 
 # ifndef YY_NULL
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -171,11 +172,11 @@ Method* nodeXX;
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 149 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:355  */
+#line 150 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:355  */
 
 #include "ast\node.h"
 
-#line 179 "yacc.cpp" /* yacc.c:355  */
+#line 180 "yacc.cpp" /* yacc.c:355  */
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -259,7 +260,7 @@ extern int yydebug;
 typedef union YYSTYPE YYSTYPE;
 union YYSTYPE
 {
-#line 152 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:355  */
+#line 153 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:355  */
 
 	
 	struct R {
@@ -274,7 +275,7 @@ union YYSTYPE
 			      }r;
 	   
 
-#line 278 "yacc.cpp" /* yacc.c:355  */
+#line 279 "yacc.cpp" /* yacc.c:355  */
 };
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
@@ -289,7 +290,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 293 "yacc.cpp" /* yacc.c:358  */
+#line 294 "yacc.cpp" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -551,33 +552,33 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,   182,   182,   185,   186,   188,   189,   190,   191,   192,
-     194,   204,   208,   213,   214,   216,   218,   224,   228,   233,
-     238,   242,   244,   249,   250,   251,   252,   253,   254,   255,
-     256,   257,   258,   262,   269,   272,   276,   281,   282,   286,
-     287,   288,   289,   290,   291,   294,   295,   298,   299,   300,
-     303,   306,   314,   325,   326,   327,   332,   335,   338,   342,
-     346,   350,   351,   354,   360,   361,   362,   364,   372,   379,
-     383,   389,   390,   391,   392,   393,   394,   395,   396,   399,
-     400,   401,   405,   406,   407,   408,   412,   421,   432,   441,
-     452,   461,   469,   477,   485,   493,   503,   514,   519,   523,
-     524,   527,   531,   537,   540,   542,   546,   551,   557,   565,
-     566,   570,   577,   582,   583,   586,   593,   600,   607,   611,
-     613,   619,   627,   633,   637,   646,   659,   662,   667,   673,
-     679,   682,   688,   691,   692,   695,   696,   699,   707,   714,
-     723,   732,   738,   745,   752,   766,   770,   776,   781,   790,
-     794,   798,   804,   813,   816,   820,   822,   825,   834,   840,
-     846,   853,   857,   858,   861,   864,   871,   880,   883,   888,
-     891,   894,   899,   904,   907,   925,   931,   935,   939,   944,
-     948,   952,   957,   963,   974,   977,   982,   985,   988,   991,
-     994,   997,  1000,  1003,  1007,  1010,  1013,  1018,  1021,  1026,
-    1033,  1034,  1038,  1048,  1051,  1055,  1058,  1061,  1064,  1068,
-    1072,  1075,  1079,  1080,  1081,  1082,  1083,  1084,  1091,  1100,
-    1112,  1118,  1128,  1132,  1139,  1144,  1150,  1154,  1156,  1161,
-    1169,  1175,  1180,  1183,  1187,  1192,  1197,  1203,  1206,  1207,
-    1208,  1209,  1212,  1213,  1216,  1217,  1218,  1221,  1222,  1223,
-    1225,  1233,  1239,  1247,  1255,  1261,  1264,  1270,  1277,  1282,
-    1287,  1292,  1299,  1303,  1308,  1309,  1312
+       0,   183,   183,   186,   187,   189,   190,   191,   192,   193,
+     195,   205,   209,   214,   215,   217,   219,   225,   229,   234,
+     239,   243,   245,   250,   251,   252,   253,   254,   255,   256,
+     257,   258,   259,   263,   270,   273,   277,   282,   283,   287,
+     288,   289,   290,   291,   292,   295,   296,   299,   300,   301,
+     304,   307,   315,   326,   327,   328,   333,   336,   339,   343,
+     347,   351,   352,   355,   361,   362,   363,   365,   373,   380,
+     384,   390,   391,   392,   393,   394,   395,   396,   397,   400,
+     401,   402,   406,   407,   408,   409,   413,   422,   433,   442,
+     453,   462,   470,   478,   486,   494,   504,   515,   520,   524,
+     525,   528,   532,   538,   541,   543,   547,   552,   558,   566,
+     567,   571,   578,   583,   584,   587,   594,   601,   608,   612,
+     614,   620,   628,   634,   638,   647,   660,   663,   668,   674,
+     680,   683,   689,   692,   693,   696,   697,   700,   708,   715,
+     724,   733,   739,   746,   753,   767,   771,   777,   782,   791,
+     795,   799,   805,   814,   817,   821,   823,   826,   835,   841,
+     847,   854,   858,   859,   862,   865,   872,   881,   884,   889,
+     892,   895,   900,   905,   908,   926,   932,   936,   940,   945,
+     949,   953,   958,   964,   975,   978,   983,   986,   989,   992,
+     995,   998,  1001,  1004,  1008,  1011,  1014,  1019,  1022,  1027,
+    1034,  1035,  1039,  1049,  1052,  1056,  1059,  1062,  1065,  1069,
+    1073,  1076,  1080,  1081,  1082,  1083,  1084,  1085,  1092,  1101,
+    1113,  1119,  1129,  1133,  1140,  1145,  1151,  1155,  1157,  1162,
+    1170,  1176,  1181,  1184,  1188,  1193,  1198,  1204,  1207,  1208,
+    1209,  1210,  1213,  1214,  1217,  1218,  1219,  1222,  1223,  1224,
+    1226,  1234,  1240,  1248,  1256,  1262,  1265,  1271,  1278,  1283,
+    1288,  1293,  1300,  1304,  1309,  1310,  1313
 };
 #endif
 
@@ -2032,56 +2033,56 @@ yyreduce:
     switch (yyn)
       {
           case 2:
-#line 182 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 183 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"program: components\n"; 
 										 }
-#line 2039 "yacc.cpp" /* yacc.c:1646  */
+#line 2040 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 3:
-#line 185 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 186 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"components: components component\n";}
-#line 2045 "yacc.cpp" /* yacc.c:1646  */
+#line 2046 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 4:
-#line 186 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 187 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"components: component\n";}
-#line 2051 "yacc.cpp" /* yacc.c:1646  */
+#line 2052 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 188 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 189 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"class_interface \n";}
-#line 2057 "yacc.cpp" /* yacc.c:1646  */
+#line 2058 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 189 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 190 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"class_implementation \n";}
-#line 2063 "yacc.cpp" /* yacc.c:1646  */
+#line 2064 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 190 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 191 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"protocol \n";}
-#line 2069 "yacc.cpp" /* yacc.c:1646  */
+#line 2070 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 191 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 192 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"struct \n";}
-#line 2075 "yacc.cpp" /* yacc.c:1646  */
+#line 2076 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 192 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 193 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"enum \n";}
-#line 2081 "yacc.cpp" /* yacc.c:1646  */
+#line 2082 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 194 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 195 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"class_interface: class_interface_header class_interface_body\n";
 																interface->setClassNode(classNode);
 																classNode=NULL;
@@ -2089,167 +2090,167 @@ yyreduce:
 																 methodsList.clear();
 																 method=NULL;
 																}
-#line 2093 "yacc.cpp" /* yacc.c:1646  */
+#line 2094 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 11:
-#line 204 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 205 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"class_interface_header:  AT_INTERFACE IDENTIFIER SEMI_COLUMN IDENTIFIER\n";
 																				interface=InterfaceHelper::createNewInterface((yyvsp[-2].r.text),(yyvsp[0].r.text),symbolTable);
 																				classNode=new ClassNode(NULL,interface);
 																				}
-#line 2102 "yacc.cpp" /* yacc.c:1646  */
+#line 2103 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 208 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 209 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																					cout<<"class_interface_header:  AT_INTERFACE IDENTIFIER\n";
 																				 interface=InterfaceHelper::createNewInterface((yyvsp[0].r.text),"",symbolTable);
 																				 	classNode=new ClassNode(NULL,interface);
 																				}
-#line 2112 "yacc.cpp" /* yacc.c:1646  */
+#line 2113 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 213 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 214 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Unknown type name '"<<(yyvsp[-1].r.text)<<"' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2118 "yacc.cpp" /* yacc.c:1646  */
+#line 2119 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 214 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 215 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected Identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2124 "yacc.cpp" /* yacc.c:1646  */
+#line 2125 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 216 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 217 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected Identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2130 "yacc.cpp" /* yacc.c:1646  */
+#line 2131 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 219 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 220 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {	
 															
 														InterfaceHelper::addMethods(interface,methodsList);
 																cout<<"class_interface_body:	protocol_reference_list instance_variables	interface_declaration_list	AT_END\n";
 														}
-#line 2140 "yacc.cpp" /* yacc.c:1646  */
+#line 2141 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 225 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 226 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 														cout<<"class_interface_body:	protocol_reference_list instance_variables AT_END\n";
 														}
-#line 2148 "yacc.cpp" /* yacc.c:1646  */
+#line 2149 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 229 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 230 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {	
 																InterfaceHelper::addMethods(interface,methodsList);
 																cout<<"class_interface_body:	protocol_reference_list interface_declaration_list	AT_END\n";
 														}
-#line 2157 "yacc.cpp" /* yacc.c:1646  */
+#line 2158 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 234 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 235 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {	
 																InterfaceHelper::addMethods(interface,methodsList);
 																cout<<"class_interface_body:	instance_variables	interface_declaration_list	AT_END\n";
 														}
-#line 2166 "yacc.cpp" /* yacc.c:1646  */
+#line 2167 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 20:
-#line 239 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 240 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																cout<<"class_interface_body:	protocol_reference_list 	AT_END\n";
 														}
-#line 2174 "yacc.cpp" /* yacc.c:1646  */
+#line 2175 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 243 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 244 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"class_interface_body:instance_variables		AT_END\n";}
-#line 2180 "yacc.cpp" /* yacc.c:1646  */
+#line 2181 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 245 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 246 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {														
 																InterfaceHelper::addMethods(interface,methodsList);
 																cout<<"class_interface_body:interface_declaration_list	AT_END\n";
 														}
-#line 2189 "yacc.cpp" /* yacc.c:1646  */
+#line 2190 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 249 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 250 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"class_interface_body:AT_END\n";}
-#line 2195 "yacc.cpp" /* yacc.c:1646  */
+#line 2196 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 250 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 251 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected '}' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2201 "yacc.cpp" /* yacc.c:1646  */
+#line 2202 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 25:
-#line 251 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 252 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected '}' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2207 "yacc.cpp" /* yacc.c:1646  */
+#line 2208 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 252 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 253 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2213 "yacc.cpp" /* yacc.c:1646  */
+#line 2214 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 253 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 254 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2219 "yacc.cpp" /* yacc.c:1646  */
+#line 2220 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 28:
-#line 254 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 255 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2225 "yacc.cpp" /* yacc.c:1646  */
+#line 2226 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 29:
-#line 255 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 256 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2231 "yacc.cpp" /* yacc.c:1646  */
+#line 2232 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 30:
-#line 256 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 257 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2237 "yacc.cpp" /* yacc.c:1646  */
+#line 2238 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 31:
-#line 257 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 258 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2243 "yacc.cpp" /* yacc.c:1646  */
+#line 2244 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 32:
-#line 258 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 259 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2249 "yacc.cpp" /* yacc.c:1646  */
+#line 2250 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 33:
-#line 262 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 263 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 													if(interface!=NULL){
 													InterfaceHelper::addInheritedProtocol(interface,idsList,symbolTable);
@@ -2257,120 +2258,120 @@ yyreduce:
 													}
 													cout<<"protocol_reference_list: LESS_THAN ids_list_identifier MORE_THAN\n";
 												}
-#line 2261 "yacc.cpp" /* yacc.c:1646  */
+#line 2262 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 34:
-#line 269 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 270 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected '>' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2267 "yacc.cpp" /* yacc.c:1646  */
+#line 2268 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 35:
-#line 272 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 273 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 													cout<<"ids_list:ids_list_identifier COMMA IDENTIFIER\n"; 
 													idsList.push_back((yyvsp[0].r.text));
 													}
-#line 2276 "yacc.cpp" /* yacc.c:1646  */
+#line 2277 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 36:
-#line 276 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 277 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 													cout<<"ids_list_identifier:IDENTIFIER\n";
 													idsList.push_back((yyvsp[0].r.text));
 												    }
-#line 2285 "yacc.cpp" /* yacc.c:1646  */
+#line 2286 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 37:
-#line 281 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 282 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"array with body";}
-#line 2291 "yacc.cpp" /* yacc.c:1646  */
+#line 2292 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 38:
-#line 282 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 283 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"array without elements";}
-#line 2297 "yacc.cpp" /* yacc.c:1646  */
+#line 2298 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 39:
-#line 286 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 287 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"array-element \n";}
-#line 2303 "yacc.cpp" /* yacc.c:1646  */
+#line 2304 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 40:
-#line 287 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 288 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"array-element \n";}
-#line 2309 "yacc.cpp" /* yacc.c:1646  */
+#line 2310 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 41:
-#line 288 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 289 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"empty element \n";}
-#line 2315 "yacc.cpp" /* yacc.c:1646  */
+#line 2316 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 42:
-#line 289 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 290 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"inside braces element \n";}
-#line 2321 "yacc.cpp" /* yacc.c:1646  */
+#line 2322 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 43:
-#line 290 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 291 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"inside braces element \n";}
-#line 2327 "yacc.cpp" /* yacc.c:1646  */
+#line 2328 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 44:
-#line 291 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 292 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"inside braces element \n";}
-#line 2333 "yacc.cpp" /* yacc.c:1646  */
+#line 2334 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 45:
-#line 294 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 295 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"instance_variables:OPEN_S	instance_variable_declaration	CLOSE_S\n";}
-#line 2339 "yacc.cpp" /* yacc.c:1646  */
+#line 2340 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 46:
-#line 295 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 296 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"instance_variables:OPEN_S	 CLOSE_S\n";}
-#line 2345 "yacc.cpp" /* yacc.c:1646  */
+#line 2346 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 47:
-#line 298 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 299 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"instance_variable_declarations:instance_variable_declarations instance_variable_declaration\n";}
-#line 2351 "yacc.cpp" /* yacc.c:1646  */
+#line 2352 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 48:
-#line 299 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 300 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"instance_variable_declarations:instance_variable_declaration\n";}
-#line 2357 "yacc.cpp" /* yacc.c:1646  */
+#line 2358 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 49:
-#line 300 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 301 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"instance_variable_declarations:variable_declaration_list\n";}
-#line 2363 "yacc.cpp" /* yacc.c:1646  */
+#line 2364 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 50:
-#line 303 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 304 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"instance_variable_declaration:visibility_specification variable_declaration_list\n";
 																	}
-#line 2370 "yacc.cpp" /* yacc.c:1646  */
+#line 2371 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 51:
-#line 307 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 308 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 										cout<<"variable_declaration_list: variable_declaration_list variable_declaration\n";
 										InterfaceHelper::addDataMembers(interface,idsList,type,arrayList,flag,symbolTable,visibility);
@@ -2378,11 +2379,11 @@ yyreduce:
 												idsList.clear();
 												flag=false;
 										}
-#line 2382 "yacc.cpp" /* yacc.c:1646  */
+#line 2383 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 52:
-#line 315 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 316 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 										       InterfaceHelper::addDataMembers(interface,idsList,type,arrayList,flag,symbolTable,visibility);
 												arrayList.clear();
@@ -2390,108 +2391,108 @@ yyreduce:
 												flag=false;
 										cout<<"variable_declaration_list: variable_declaration\n";
 										}
-#line 2394 "yacc.cpp" /* yacc.c:1646  */
+#line 2395 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 53:
-#line 325 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 326 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"visibility_specification:AT_PRIVATE\n";  visibility=new char[256]; visibility[0]='\0';strcat(visibility,(yyvsp[0].r.text));}
-#line 2400 "yacc.cpp" /* yacc.c:1646  */
+#line 2401 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 54:
-#line 326 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 327 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"visibility_specification:AT_PROTECTED\n"; visibility=new char[256]; visibility[0]='\0';strcat(visibility,(yyvsp[0].r.text));}
-#line 2406 "yacc.cpp" /* yacc.c:1646  */
+#line 2407 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 55:
-#line 327 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 328 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"visibility_specification:AT_PUBLIC\n"; visibility=new char[256]; visibility[0]='\0';strcat(visibility,(yyvsp[0].r.text));}
-#line 2412 "yacc.cpp" /* yacc.c:1646  */
+#line 2413 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 56:
-#line 332 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 333 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"struct_variable_declaration:struct_declaration_list\n";}
-#line 2418 "yacc.cpp" /* yacc.c:1646  */
+#line 2419 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 57:
-#line 335 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 336 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"variable_declaration:type IDENTIFIER	SEMI_COMA\n";
 	                                           (yyval.r.text)=(yyvsp[-2].r.text);
 												}
-#line 2426 "yacc.cpp" /* yacc.c:1646  */
+#line 2427 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 58:
-#line 338 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 339 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"variable_declaration:CONST type IDENTIFIER	SEMI_COMA\n";
 														flag=true;
 														 (yyval.r.text)=(yyvsp[-2].r.text);
 													}
-#line 2435 "yacc.cpp" /* yacc.c:1646  */
+#line 2436 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 59:
-#line 342 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 343 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2441 "yacc.cpp" /* yacc.c:1646  */
+#line 2442 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 60:
-#line 346 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 347 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 									cout<<"ids_list:ids_list COMMA id_dec\n"; 
 
 									}
-#line 2450 "yacc.cpp" /* yacc.c:1646  */
+#line 2451 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 61:
-#line 350 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 351 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"ids_list:id_dec\n"; }
-#line 2456 "yacc.cpp" /* yacc.c:1646  */
+#line 2457 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 62:
-#line 351 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 352 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2462 "yacc.cpp" /* yacc.c:1646  */
+#line 2463 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 63:
-#line 354 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 355 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout <<" data_member: IDENTIFIER array_tag \n";
 							 var=new Array((yyvsp[0].r.text),arrayAlloc.size(),NULL);
 					       ( dynamic_cast<Array*>(var))->set_alloc(arrayAlloc);
 						   arrayList.push_back( ( dynamic_cast<Array*>(var)));
 						      arrayAlloc.clear();
 							}
-#line 2473 "yacc.cpp" /* yacc.c:1646  */
+#line 2474 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 64:
-#line 360 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 361 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {idsList.push_back((yyvsp[0].r.text)) ;cout <<" data_member: IDENTIFIER  \n";}
-#line 2479 "yacc.cpp" /* yacc.c:1646  */
+#line 2480 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 65:
-#line 361 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 362 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;arrayAlloc.clear();}
-#line 2485 "yacc.cpp" /* yacc.c:1646  */
+#line 2486 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 66:
-#line 362 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 363 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;arrayAlloc.clear();}
-#line 2491 "yacc.cpp" /* yacc.c:1646  */
+#line 2492 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 67:
-#line 364 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 365 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {  
 																												StructHelper::addDataMembers( myStruct,idsList,type,arrayList,flag, symbolTable);
 																												arrayList.clear();
@@ -2499,11 +2500,11 @@ yyreduce:
 																												flag=false;
 																										  cout<<"struct_declaration_list: struct_declaration_list  variable_declarationxx\n";
 																										}
-#line 2503 "yacc.cpp" /* yacc.c:1646  */
+#line 2504 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 68:
-#line 372 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 373 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {	
 																												StructHelper::addDataMembers( myStruct,idsList,type,arrayList,flag, symbolTable);
 																												arrayList.clear();
@@ -2511,116 +2512,116 @@ yyreduce:
 																															flag=false;
 																										cout<<"struct_declaration_list:  variable_declarationxx\n";
 																										}
-#line 2515 "yacc.cpp" /* yacc.c:1646  */
+#line 2516 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 69:
-#line 379 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 380 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Illigal visibility specification at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2521 "yacc.cpp" /* yacc.c:1646  */
+#line 2522 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 70:
-#line 383 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 384 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 					myStruct=StructHelper::createNewStruct((yyvsp[0].r.text),symbolTable);
 					cout<<"struct_header: STRUCT  IDENTIFIER\n";
 					}
-#line 2530 "yacc.cpp" /* yacc.c:1646  */
+#line 2531 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 71:
-#line 389 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 390 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"struct: STRUCT IDENTIFIER OPEN_S   CLOSE_S  entity SEMI_COMA\n";}
-#line 2536 "yacc.cpp" /* yacc.c:1646  */
+#line 2537 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 72:
-#line 390 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 391 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"struct: STRUCT IDENTIFIER OPEN_S struct_variable_declaration  CLOSE_S enteity SEMI_COMA \n";}
-#line 2542 "yacc.cpp" /* yacc.c:1646  */
+#line 2543 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 73:
-#line 391 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 392 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"struct: STRUCT IDENTIFIER OPEN_S   CLOSE_S SEMI_COMA\n";}
-#line 2548 "yacc.cpp" /* yacc.c:1646  */
+#line 2549 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 74:
-#line 392 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 393 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"struct: STRUCT IDENTIFIER OPEN_S struct_variable_declaration  CLOSE_S  SEMI_COMA  \n";}
-#line 2554 "yacc.cpp" /* yacc.c:1646  */
+#line 2555 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 75:
-#line 393 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 394 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2560 "yacc.cpp" /* yacc.c:1646  */
+#line 2561 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 76:
-#line 394 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 395 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2566 "yacc.cpp" /* yacc.c:1646  */
+#line 2567 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 77:
-#line 395 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 396 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2572 "yacc.cpp" /* yacc.c:1646  */
+#line 2573 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 78:
-#line 396 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 397 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2578 "yacc.cpp" /* yacc.c:1646  */
+#line 2579 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 79:
-#line 399 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 400 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"entity: IDENTIFIER COMMA  entity\n";}
-#line 2584 "yacc.cpp" /* yacc.c:1646  */
+#line 2585 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 80:
-#line 400 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 401 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"entity:  IDENTIFIER \n";}
-#line 2590 "yacc.cpp" /* yacc.c:1646  */
+#line 2591 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 81:
-#line 401 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 402 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2596 "yacc.cpp" /* yacc.c:1646  */
+#line 2597 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 82:
-#line 405 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 406 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"type:simple type\n";}
-#line 2602 "yacc.cpp" /* yacc.c:1646  */
+#line 2603 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 83:
-#line 406 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 407 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"type: complex type\n";}
-#line 2608 "yacc.cpp" /* yacc.c:1646  */
+#line 2609 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 84:
-#line 407 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 408 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"type: struct_type\n";}
-#line 2614 "yacc.cpp" /* yacc.c:1646  */
+#line 2615 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 85:
-#line 408 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 409 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"type: enum_type\n";}
-#line 2620 "yacc.cpp" /* yacc.c:1646  */
+#line 2621 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 86:
-#line 412 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 413 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {	cout<<"struct_type: STRUCT IDENTIFIER   \n";
 													 type=symbolTable->getType((yyvsp[0].r.text));
 																if(type==NULL){
@@ -2630,11 +2631,11 @@ yyreduce:
 		Program::addError(new SemanticError(error));
 																}
 													}
-#line 2634 "yacc.cpp" /* yacc.c:1646  */
+#line 2635 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 87:
-#line 421 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 422 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"struct_type: STRUCT IDENTIFIER  MULTI \n";
 													 type=symbolTable->getType((yyvsp[-1].r.text));
 																if(type==NULL){
@@ -2644,11 +2645,11 @@ yyreduce:
 		Program::addError(new SemanticError(error));
 																}
 													}
-#line 2648 "yacc.cpp" /* yacc.c:1646  */
+#line 2649 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 88:
-#line 432 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 433 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"enum_type: ENUM IDENTIFIER \n";
 													 type=symbolTable->getType((yyvsp[0].r.text));
 																if(type==NULL){
@@ -2658,11 +2659,11 @@ yyreduce:
 		Program::addError(new SemanticError(error));
 																}
 													}
-#line 2662 "yacc.cpp" /* yacc.c:1646  */
+#line 2663 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 89:
-#line 441 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 442 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"enum_type: ENUM IDENTIFIER  MULTI  \n";
 													 type=symbolTable->getType((yyvsp[-1].r.text));
 																if(type==NULL){
@@ -2672,11 +2673,11 @@ yyreduce:
 		Program::addError(new SemanticError(error));
 																}
 													}
-#line 2676 "yacc.cpp" /* yacc.c:1646  */
+#line 2677 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 90:
-#line 452 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 453 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"int type \n";
 																type=symbolTable->getType((yyvsp[0].r.text));
 																if(type==NULL){
@@ -2686,11 +2687,11 @@ yyreduce:
 		Program::addError(new SemanticError(error));
 																}
 																}
-#line 2690 "yacc.cpp" /* yacc.c:1646  */
+#line 2691 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 91:
-#line 461 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 462 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"char type\n";
 	type=symbolTable->getType((yyvsp[0].r.text));
 																if(type==NULL){
@@ -2699,11 +2700,11 @@ yyreduce:
 		error.append("'.");
 		Program::addError(new SemanticError(error));
 																}}
-#line 2703 "yacc.cpp" /* yacc.c:1646  */
+#line 2704 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 92:
-#line 469 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 470 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"float type\n";
 	type=symbolTable->getType((yyvsp[0].r.text));
 																if(type==NULL){
@@ -2712,11 +2713,11 @@ yyreduce:
 		error.append("'.");
 		Program::addError(new SemanticError(error));
 																}}
-#line 2716 "yacc.cpp" /* yacc.c:1646  */
+#line 2717 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 93:
-#line 477 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 478 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"NSString type\n";
 	type=symbolTable->getType((yyvsp[0].r.text));
 																if(type==NULL){
@@ -2725,11 +2726,11 @@ yyreduce:
 		error.append("'.");
 		Program::addError(new SemanticError(error));
 																}}
-#line 2729 "yacc.cpp" /* yacc.c:1646  */
+#line 2730 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 94:
-#line 485 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 486 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"void type\n";
 	type=symbolTable->getType((yyvsp[0].r.text));
 																if(type==NULL){
@@ -2738,11 +2739,11 @@ yyreduce:
 		error.append("'.");
 		Program::addError(new SemanticError(error));
 																}}
-#line 2742 "yacc.cpp" /* yacc.c:1646  */
+#line 2743 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 95:
-#line 493 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 494 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"bool type\n";
 	type=symbolTable->getType((yyvsp[0].r.text));
 																if(type==NULL){
@@ -2751,11 +2752,11 @@ yyreduce:
 		error.append("'.");
 		Program::addError(new SemanticError(error));
 																}}
-#line 2755 "yacc.cpp" /* yacc.c:1646  */
+#line 2756 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 96:
-#line 503 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 504 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"complex_type:	IDENTIFIER	MULTI\n";
  {
 													 type=symbolTable->getType((yyvsp[-1].r.text));
@@ -2766,103 +2767,103 @@ yyreduce:
 		Program::addError(new SemanticError(error));
 																}
 													}}
-#line 2770 "yacc.cpp" /* yacc.c:1646  */
+#line 2771 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 97:
-#line 514 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 515 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											cout<<"array_tag: array_first_tag array_tag_list \n"; 
 										   }
-#line 2778 "yacc.cpp" /* yacc.c:1646  */
+#line 2779 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 98:
-#line 519 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 520 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																cout<<"array_tag_list: array_tag_list OPEN_ARR INT_VAL CLOSE_ARR\n"; 
 																arrayAlloc.push_back((yyvsp[-1].r.int_val));
 														   }
-#line 2787 "yacc.cpp" /* yacc.c:1646  */
+#line 2788 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 100:
-#line 524 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 525 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<" Error:missing  dimension in array tag  ";arrayAlloc.clear();}
-#line 2793 "yacc.cpp" /* yacc.c:1646  */
+#line 2794 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 101:
-#line 527 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 528 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											cout<<"array_first_tag: OPEN_ARR INT_VAL CLOSE_ARR\n"; 
 											arrayAlloc.push_back((yyvsp[-1].r.int_val));
 											}
-#line 2802 "yacc.cpp" /* yacc.c:1646  */
+#line 2803 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 102:
-#line 531 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 532 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											cout<<"array_first_tag: OPEN_ARR  CLOSE_ARR\n"; 
 											arrayAlloc.push_back(-1);
 											}
-#line 2811 "yacc.cpp" /* yacc.c:1646  */
+#line 2812 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 103:
-#line 537 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 538 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"array with value\n";
 								(yyval.r.node)=new AssignNode(scoop,NULL,(yyvsp[0].r.node));
 							   }
-#line 2819 "yacc.cpp" /* yacc.c:1646  */
+#line 2820 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 105:
-#line 542 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 543 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 								cout <<"with value\n";
 								(yyval.r.node)=new AssignNode(scoop,NULL,(yyvsp[0].r.node));
 							 }
-#line 2828 "yacc.cpp" /* yacc.c:1646  */
+#line 2829 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 107:
-#line 551 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 552 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																cout<<"interface_declaration_list:interface_declaration_list interface_declaration\n";
 															 methodsList.push_back(method);
 														
 															 
 																}
-#line 2839 "yacc.cpp" /* yacc.c:1646  */
+#line 2840 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 108:
-#line 557 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 558 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																 cout<<"interface_declaration_list:interface_declaration\n";
 															 methodsList.push_back(method);
 															 
 																 	
 																 }
-#line 2850 "yacc.cpp" /* yacc.c:1646  */
+#line 2851 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 109:
-#line 565 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 566 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"interface_declaration: class_method_declaration\n";}
-#line 2856 "yacc.cpp" /* yacc.c:1646  */
+#line 2857 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 110:
-#line 566 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 567 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"interface_declaration: instance_method_declaration\n";}
-#line 2862 "yacc.cpp" /* yacc.c:1646  */
+#line 2863 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 111:
-#line 570 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 571 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																cout<<"class_method_declaration: PLUS p_type method_selectors	SEMI_COMA\n";
 																method=InterfaceHelper::createNewMethod(type,symbolTable,(yyvsp[-1].r.text),selectorsList,true);
@@ -2870,33 +2871,33 @@ yyreduce:
 																 selectorsList.clear();
 																
 																}
-#line 2874 "yacc.cpp" /* yacc.c:1646  */
+#line 2875 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 112:
-#line 577 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 578 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																cout<<"class_method_declaration: PLUS			 method_selectors	SEMI_COMA\n";
 																		method=InterfaceHelper::createNewMethod(type,symbolTable,(yyvsp[0].r.text),selectorsList,true);
 																 selectorsList.clear();
 																}
-#line 2884 "yacc.cpp" /* yacc.c:1646  */
+#line 2885 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 113:
-#line 582 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 583 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2890 "yacc.cpp" /* yacc.c:1646  */
+#line 2891 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 114:
-#line 583 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 584 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2896 "yacc.cpp" /* yacc.c:1646  */
+#line 2897 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 115:
-#line 586 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 587 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 															cout<<"instance_method_declaration: MINUS p_type	method_selectors		SEMI_COMA\n";
 															method=InterfaceHelper::createNewMethod(type,symbolTable,(yyvsp[-1].r.text),selectorsList,false);
@@ -2904,56 +2905,56 @@ yyreduce:
 																
 																
 															}
-#line 2908 "yacc.cpp" /* yacc.c:1646  */
+#line 2909 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 116:
-#line 593 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 594 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																	cout<<"instance_method_declaration: MINUS			 method_selectors	SEMI_COMA\n";
 																method=InterfaceHelper::createNewMethod(type,symbolTable,(yyvsp[0].r.text),selectorsList,true);
 																 selectorsList.clear();
 																}
-#line 2918 "yacc.cpp" /* yacc.c:1646  */
+#line 2919 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 117:
-#line 600 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 601 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																cout<<"p_type : OPEN_P type CLOSE_P\n";
 																(yyval.r.text)=(yyvsp[-1].r.text);
 																}
-#line 2927 "yacc.cpp" /* yacc.c:1646  */
+#line 2928 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 118:
-#line 607 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 608 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																cout<<"method_selectors:IDENTIFIER SEMI_COLUMN selectors_list\n";
 																	(yyval.r.text)="";
 																}
-#line 2936 "yacc.cpp" /* yacc.c:1646  */
+#line 2937 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 119:
-#line 611 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 612 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"method_selectors:IDENTIFIER \n";(yyval.r.text)=(yyvsp[0].r.text);}
-#line 2942 "yacc.cpp" /* yacc.c:1646  */
+#line 2943 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 120:
-#line 613 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 614 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 													cout<<"selectors_list:	selectors_list selector_decleration\n";
 																
 													selectorsList.push_back(tselector);
 													tselector=NULL;
 											}
-#line 2953 "yacc.cpp" /* yacc.c:1646  */
+#line 2954 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 121:
-#line 619 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 620 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 														cout<<"selectors_list:	 selector_decleration\n";
 												selectorsList.clear();
@@ -2961,29 +2962,29 @@ yyreduce:
 												selectorsList.push_back(tselector);
 												tselector=NULL;
 }
-#line 2965 "yacc.cpp" /* yacc.c:1646  */
+#line 2966 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 122:
-#line 627 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 628 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																				cout<<"selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	\n";
-																				tselector=new Selector((yyvsp[-2].r.text),selectorVarList);
+																				tselector=new DeclerationSelector((yyvsp[-2].r.text),selectorVarList);
 																			}
-#line 2974 "yacc.cpp" /* yacc.c:1646  */
+#line 2975 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 123:
-#line 633 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 634 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 														cout<<"parameter_list: parameter_list parameter\n";
 																	selectorVarList.push_back(var);		
 											}
-#line 2983 "yacc.cpp" /* yacc.c:1646  */
+#line 2984 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 124:
-#line 637 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 638 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 									selectorVarList.clear();
 										selectorVarList.push_back(var);		
@@ -2992,11 +2993,11 @@ yyreduce:
 														cout<<"parameter_list:  parameter\n";
 						
 					}
-#line 2996 "yacc.cpp" /* yacc.c:1646  */
+#line 2997 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 125:
-#line 646 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 647 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																cout<<"parameter:  p_type IDENTIFIER\n";
 																
@@ -3007,106 +3008,106 @@ yyreduce:
 																cout<<"Error:Type not found.\n";
 																}
 																}
-#line 3011 "yacc.cpp" /* yacc.c:1646  */
+#line 3012 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 126:
-#line 659 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 660 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"class_implementation: class_implementation_header class_implementation_body\n";}
-#line 3017 "yacc.cpp" /* yacc.c:1646  */
+#line 3018 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 127:
-#line 662 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 663 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																	cout<<"class_implementation_header: AT_IMPLEMENTATION IDENTIFIER SEMI_COLUMN IDENTIFIER\n";
 																	interface=InterfaceHelper::checkImplementation((yyvsp[-2].r.text),symbolTable,(yyvsp[0].r.text));
 																	
 																}
-#line 3027 "yacc.cpp" /* yacc.c:1646  */
+#line 3028 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 128:
-#line 667 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 668 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																interface=InterfaceHelper::checkImplementation((yyvsp[0].r.text),symbolTable,"");
 																	
 																}
-#line 3036 "yacc.cpp" /* yacc.c:1646  */
+#line 3037 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 129:
-#line 673 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 674 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																	cout<<"class_implementation_body: instance_variables	implementation_definition_list	AT_END\n";
 																			InterfaceHelper:: implementMethods(methodsList, interface);
 														methodsList.clear();
 														}
-#line 3046 "yacc.cpp" /* yacc.c:1646  */
+#line 3047 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 130:
-#line 679 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 680 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     { 
 																	cout<<"class_implementation_body: instance_variables									AT_END\n";
 																}
-#line 3054 "yacc.cpp" /* yacc.c:1646  */
+#line 3055 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 131:
-#line 682 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 683 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																	cout<<"class_implementation_body:						implementation_definition_list	AT_END\n";
 																	InterfaceHelper:: implementMethods(methodsList, interface);
 														methodsList.clear();
 														
 																}
-#line 3065 "yacc.cpp" /* yacc.c:1646  */
+#line 3066 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 132:
-#line 688 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 689 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"class_implementation_body:	AT_END\n";}
-#line 3071 "yacc.cpp" /* yacc.c:1646  */
+#line 3072 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 133:
-#line 691 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 692 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {	 methodsList.push_back(method);cout<<"implementation_definition_list: implementation_definition_list implementation_definition\n";}
-#line 3077 "yacc.cpp" /* yacc.c:1646  */
+#line 3078 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 134:
-#line 692 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 693 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {	 methodsList.push_back(method);cout<<"implementation_definition_list: implementation_definition\n";}
-#line 3083 "yacc.cpp" /* yacc.c:1646  */
+#line 3084 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 135:
-#line 695 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 696 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"implementation_definition: class_implementation_definition	\n";}
-#line 3089 "yacc.cpp" /* yacc.c:1646  */
+#line 3090 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 136:
-#line 696 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 697 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"implementation_definition: instance_implementation_definition \n";}
-#line 3095 "yacc.cpp" /* yacc.c:1646  */
+#line 3096 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 137:
-#line 699 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 700 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 														cout<<"class_implementation_definition: class_implementation_definition_header block_body";
 														method->setFunctionNode(functionNode);
 														functionNode=NULL;
 													nodeXX=method;
 													}
-#line 3106 "yacc.cpp" /* yacc.c:1646  */
+#line 3107 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 138:
-#line 707 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 708 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 										cout<<"class_implementation_definition_header: PLUS p_type		 method_selectors\n";
 															method=InterfaceHelper:: createNewMethod(type,symbolTable,(yyvsp[0].r.text),selectorsList,true);
@@ -3114,22 +3115,22 @@ yyreduce:
 																
 																
 										}
-#line 3118 "yacc.cpp" /* yacc.c:1646  */
+#line 3119 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 139:
-#line 714 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 715 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											cout<<"class_implementation_definition_header:  PLUS			 method_selectors\n";
 													 method =InterfaceHelper:: createNewMethod(type,symbolTable,(yyvsp[0].r.text),selectorsList,true);
 																 selectorsList.clear();
 									
 										}
-#line 3129 "yacc.cpp" /* yacc.c:1646  */
+#line 3130 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 140:
-#line 723 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 724 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 															scoop=NULL;
 															cscoop=NULL;
@@ -3137,42 +3138,42 @@ yyreduce:
 															method->setFunctionNode(functionNode);
 														functionNode=NULL;
 															}
-#line 3141 "yacc.cpp" /* yacc.c:1646  */
+#line 3142 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 141:
-#line 732 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 733 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											     cout<<"instance_implementation_definition_header:MINUS p_type		method_selectors\n";
 												 method=InterfaceHelper:: createNewMethod(type,symbolTable,(yyvsp[0].r.text),selectorsList,false);
 																 selectorsList.clear();
 															
 												}
-#line 3152 "yacc.cpp" /* yacc.c:1646  */
+#line 3153 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 142:
-#line 738 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 739 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												cout<<"instance_implementation_definition_header:MINUS 			method_selectors\n";
 												 method =InterfaceHelper:: createNewMethod(type,symbolTable,(yyvsp[0].r.text),selectorsList,false);
 																 selectorsList.clear();
 												}
-#line 3162 "yacc.cpp" /* yacc.c:1646  */
+#line 3163 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 143:
-#line 745 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 746 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												
 												cout<<"block_body:OPEN_S  block_body_part \n";
 												(yyval.r.node)=(yyvsp[-1].r.node);
 												}
-#line 3172 "yacc.cpp" /* yacc.c:1646  */
+#line 3173 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 144:
-#line 752 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 753 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												cscoop=scoop;
                                                 scoop=ScoopHelper::createNewScoop(cscoop,method);
@@ -3184,79 +3185,79 @@ yyreduce:
 												cout<<"block_body_header:OPEN_S	\n";
 												(yyval.r.node)=scoop;
 												}
-#line 3188 "yacc.cpp" /* yacc.c:1646  */
+#line 3189 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 145:
-#line 766 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 767 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												scoop=scoop->getParent();
 												cout<<"block_body_statements:statement_list	CLOSE_S	\n";
 												}
-#line 3197 "yacc.cpp" /* yacc.c:1646  */
+#line 3198 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 146:
-#line 770 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 771 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												scoop=scoop->getParent();
 												cout<<"block_body_statements:CLOSE_S\n";
 												}
-#line 3206 "yacc.cpp" /* yacc.c:1646  */
+#line 3207 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 147:
-#line 776 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 777 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"statement_list: statement_list statement\n";
 											(yyval.r.text)=(yyvsp[0].r.text);
 											scoop->addNode((yyvsp[0].r.node));
 											
 											}
-#line 3216 "yacc.cpp" /* yacc.c:1646  */
+#line 3217 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 148:
-#line 781 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 782 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"statement_list: statement\n";
 											(yyval.r.text)=(yyvsp[0].r.text);
 											(yyval.r.node)=(yyvsp[0].r.node);
 											scoop->addNode((yyvsp[0].r.node));
 											
 											}
-#line 3227 "yacc.cpp" /* yacc.c:1646  */
+#line 3228 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 149:
-#line 790 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 791 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"statement: loop_statement\n";
 											(yyval.r.text)="loop";
 											(yyval.r.node)=(yyvsp[0].r.node);
 											}
-#line 3236 "yacc.cpp" /* yacc.c:1646  */
+#line 3237 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 150:
-#line 794 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 795 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"statement: conditional_statement\n";
 											(yyval.r.text)="cond";
 											(yyval.r.node)=(yyvsp[0].r.node);
 											}
-#line 3245 "yacc.cpp" /* yacc.c:1646  */
+#line 3246 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 151:
-#line 798 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 799 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												cout<<"statement: expr\n";
 												(yyval.r.text)="expr";
 												(yyval.r.node)=(yyvsp[-1].r.node);
 												//nodeXX=$<r.node>1;
 											}
-#line 3256 "yacc.cpp" /* yacc.c:1646  */
+#line 3257 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 152:
-#line 804 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 805 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											cout<<"statement: variable_declaration\n";
 											
@@ -3266,70 +3267,70 @@ yyreduce:
 												flag=false;
 												(yyval.r.node)=(yyvsp[0].r.node);
 										    }
-#line 3270 "yacc.cpp" /* yacc.c:1646  */
+#line 3271 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 153:
-#line 813 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 814 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"statement: block_body\n";(yyval.r.text)=new char[256];(yyval.r.text)[0]='\0';strcat((yyval.r.text),"Block");
 												(yyval.r.node)=(yyvsp[0].r.node);
 											}
-#line 3278 "yacc.cpp" /* yacc.c:1646  */
+#line 3279 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 154:
-#line 816 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 817 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"statement: return_statement\n";
 												(yyval.r.text)="return";
 												(yyval.r.node)=(yyvsp[0].r.node);
 											}
-#line 3287 "yacc.cpp" /* yacc.c:1646  */
+#line 3288 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 155:
-#line 820 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 821 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"statement: try_catch\n";}
-#line 3293 "yacc.cpp" /* yacc.c:1646  */
+#line 3294 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 156:
-#line 822 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 823 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 	                                            (yyval.r.text)="asm";
 												(yyval.r.node)=(yyvsp[0].r.node);}
-#line 3301 "yacc.cpp" /* yacc.c:1646  */
+#line 3302 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 157:
-#line 825 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 826 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 	 (yyval.r.text)="call";
 	(yyval.r.node)=(yyvsp[-1].r.node);
 	}
-#line 3310 "yacc.cpp" /* yacc.c:1646  */
+#line 3311 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 158:
-#line 834 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 835 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"@asm command \n";
 	                                         (yyval.r.node)=new AsmNode(scoop,(yyvsp[-1].r.text));
 											 }
-#line 3318 "yacc.cpp" /* yacc.c:1646  */
+#line 3319 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 159:
-#line 840 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 841 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 														cout<<"variable_declaration:type IDENTIFIER	SEMI_COMA\n";
 														 (yyval.r.text)=(yyvsp[-2].r.text);
 														 (yyval.r.node)=new DeclerationNode(declarationList,scoop,type->get_name());
 														 declarationList.clear();
 														}
-#line 3329 "yacc.cpp" /* yacc.c:1646  */
+#line 3330 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 160:
-#line 846 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 847 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 														cout<<"variable_declaration:CONST type IDENTIFIER	SEMI_COMA\n";
 														flag=true;
@@ -3337,37 +3338,37 @@ yyreduce:
 														  (yyval.r.node)=new DeclerationNode(declarationList,scoop,type->get_name());
 														 declarationList.clear();
 														}
-#line 3341 "yacc.cpp" /* yacc.c:1646  */
+#line 3342 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 161:
-#line 853 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 854 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"variable_declaration:enum\n";}
-#line 3347 "yacc.cpp" /* yacc.c:1646  */
+#line 3348 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 162:
-#line 857 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 858 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"variable_list:variable_list COMMA variable\n";}
-#line 3353 "yacc.cpp" /* yacc.c:1646  */
+#line 3354 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 163:
-#line 858 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 859 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"variable_list:variable\n";
 										
 										}
-#line 3361 "yacc.cpp" /* yacc.c:1646  */
+#line 3362 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 164:
-#line 861 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 862 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected ',' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 3367 "yacc.cpp" /* yacc.c:1646  */
+#line 3368 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 165:
-#line 864 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 865 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											cout <<"variable:  IDENTIFIER array_tag initializer \n";
 											 var=new Array((yyvsp[-1].r.text),arrayAlloc.size(),NULL);
@@ -3375,11 +3376,11 @@ yyreduce:
 											 arrayList.push_back( ( dynamic_cast<Array*>(var)));
 											 arrayAlloc.clear();
 											}
-#line 3379 "yacc.cpp" /* yacc.c:1646  */
+#line 3380 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 166:
-#line 871 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 872 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     { 
 											cout <<"variable:  IDENTIFIER main_initializer \n";
 											idsList.push_back((yyvsp[-1].r.text)) ;
@@ -3389,63 +3390,63 @@ yyreduce:
 											}
 											declarationList.push_back(make_pair((yyvsp[-1].r.text),(yyvsp[0].r.node)));
 											}
-#line 3393 "yacc.cpp" /* yacc.c:1646  */
+#line 3394 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 167:
-#line 880 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 881 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 3399 "yacc.cpp" /* yacc.c:1646  */
+#line 3400 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 168:
-#line 883 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 884 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"return_statement: RETURN expr\n";
 												 (yyval.r.node)=new ReturnNode(scoop,(yyvsp[-1].r.node));
 												}
-#line 3407 "yacc.cpp" /* yacc.c:1646  */
+#line 3408 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 169:
-#line 888 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 889 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"loop_statement: for_loop\n";
 												(yyval.r.node)=(yyvsp[0].r.node);
 											}
-#line 3415 "yacc.cpp" /* yacc.c:1646  */
+#line 3416 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 170:
-#line 891 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 892 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"loop_statement: while_loop\n";
 												(yyval.r.node)=(yyvsp[0].r.node);
 											}
-#line 3423 "yacc.cpp" /* yacc.c:1646  */
+#line 3424 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 171:
-#line 894 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 895 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"loop_statement: do_while_loop\n";
 												(yyval.r.node)=(yyvsp[0].r.node);
 											}
-#line 3431 "yacc.cpp" /* yacc.c:1646  */
+#line 3432 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 172:
-#line 899 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 900 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"do_while: do_header   statement   while_loop_header   SEMI_COMMA\n";
 													(yyval.r.node)=new DoWhileNode((yyvsp[-1].r.node),(yyvsp[-2].r.node),scoop);
 													}
-#line 3439 "yacc.cpp" /* yacc.c:1646  */
+#line 3440 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 173:
-#line 904 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 905 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"do_header: DO\n";}
-#line 3445 "yacc.cpp" /* yacc.c:1646  */
+#line 3446 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 174:
-#line 907 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 908 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_loop: for_loop_header statement\n";
 												type=symbolTable->getType("int");
 											if(type==NULL){
@@ -3462,76 +3463,76 @@ yyreduce:
 												(yyvsp[0].r.node)->toString();
 												(yyval.r.node)=(yyvsp[-1].r.node);
 											}
-#line 3466 "yacc.cpp" /* yacc.c:1646  */
+#line 3467 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 175:
-#line 926 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 927 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_loop_header: FOR OPEN_P for_initializer	SEMI_COMA logic_expr SEMI_COMA expr			CLOSE_P\n";
 										(yyval.r.node)=new ForNode((yyvsp[-5].r.node),(yyvsp[-3].r.node),(yyvsp[-1].r.node),NULL,scoop);
 										//nodeXX=$<r.node>5;
 										}
-#line 3475 "yacc.cpp" /* yacc.c:1646  */
+#line 3476 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 176:
-#line 932 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 933 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr SEMI_COMA expr			CLOSE_P\n";
 										(yyval.r.node)=new ForNode(NULL,(yyvsp[-3].r.node),(yyvsp[-1].r.node),NULL,scoop);
 										}
-#line 3483 "yacc.cpp" /* yacc.c:1646  */
+#line 3484 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 177:
-#line 936 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 937 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_loop_header: FOR OPEN_P for_initializer SEMI_COMA			 SEMI_COMA expr			CLOSE_P\n";
 										(yyval.r.node)=new ForNode((yyvsp[-4].r.node),NULL,(yyvsp[-1].r.node),NULL,scoop);
 										}
-#line 3491 "yacc.cpp" /* yacc.c:1646  */
+#line 3492 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 178:
-#line 940 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 941 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_loop_header: FOR OPEN_P for_initializer SEMI_COMA logic_expr SEMI_COMA				CLOSE_P	\n";
 										(yyval.r.node)=new ForNode((yyvsp[-4].r.node),(yyvsp[-2].r.node),NULL,NULL,scoop);
 										}
-#line 3499 "yacc.cpp" /* yacc.c:1646  */
+#line 3500 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 179:
-#line 945 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 946 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_loop_header: FOR OPEN_P	for_initializer	SEMI_COMA			 SEMI_COMA				CLOSE_P	\n";
 										(yyval.r.node)=new ForNode((yyvsp[-3].r.node),NULL,NULL,NULL,scoop);
 										}
-#line 3507 "yacc.cpp" /* yacc.c:1646  */
+#line 3508 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 180:
-#line 949 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 950 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr SEMI_COMA				CLOSE_P\n";
 										(yyval.r.node)=new ForNode(NULL,(yyvsp[-1].r.node),NULL,NULL,scoop);
 										}
-#line 3515 "yacc.cpp" /* yacc.c:1646  */
+#line 3516 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 181:
-#line 953 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 954 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_loop_header: FOR OPEN_P 				SEMI_COMA			 SEMI_COMA expr			CLOSE_P";
 										(yyval.r.node)=new ForNode(NULL,NULL,(yyvsp[-1].r.node),NULL,scoop);
 										}
-#line 3523 "yacc.cpp" /* yacc.c:1646  */
+#line 3524 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 182:
-#line 958 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 959 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_loop_hearder: FOR OPEN_P 				SEMI_COMA			SEMI_COMA 				CLOSE_P	\n";
 											(yyval.r.node)=new ForNode(NULL,NULL,NULL,NULL,scoop);
 											}
-#line 3531 "yacc.cpp" /* yacc.c:1646  */
+#line 3532 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 183:
-#line 963 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 964 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_initializer: INT IDENTIFIER EQUAL expr\n";
 											AssignNode * temp=new AssignNode(scoop,new IdentifierNode((yyvsp[-2].r.text),scoop),(yyvsp[0].r.node));
 											
@@ -3543,283 +3544,283 @@ yyreduce:
 										 (yyval.r.node)=temp1; 
 										 idsList.push_back((yyvsp[-2].r.text));
 										}
-#line 3547 "yacc.cpp" /* yacc.c:1646  */
+#line 3548 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 184:
-#line 974 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 975 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_initializer: IDENTIFIER EQUAL expr\n";
 										(yyval.r.node)=new AssignNode(scoop,new IdentifierNode((yyvsp[-2].r.text),scoop),(yyvsp[0].r.node));
 										}
-#line 3555 "yacc.cpp" /* yacc.c:1646  */
+#line 3556 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 185:
-#line 977 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 978 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_initializer: IDENTIFIER\n";
 										(yyval.r.node)=new IdentifierNode((yyvsp[0].r.text),scoop);
 										}
-#line 3563 "yacc.cpp" /* yacc.c:1646  */
+#line 3564 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 186:
-#line 982 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 983 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:expr LESS_THAN expr\n";
 										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),LESS_THAN,scoop);
 										}
-#line 3571 "yacc.cpp" /* yacc.c:1646  */
+#line 3572 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 187:
-#line 985 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 986 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:expr MORE_THAN expr\n";
 										 (yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),MORE_THAN,scoop);
 										}
-#line 3579 "yacc.cpp" /* yacc.c:1646  */
+#line 3580 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 188:
-#line 988 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 989 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:expr LESS_OR_EQUAL expr\n";
 										 (yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),LESS_OR_EQUAL,scoop);
 										}
-#line 3587 "yacc.cpp" /* yacc.c:1646  */
+#line 3588 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 189:
-#line 991 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 992 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:expr MORE_OR_EQUAL expr\n";
 										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),MORE_OR_EQUAL,scoop);
 										}
-#line 3595 "yacc.cpp" /* yacc.c:1646  */
+#line 3596 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 190:
-#line 994 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 995 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:expr EQUAL_EQUAL expr\n";
 										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),EQUAL_EQUAL,scoop);
 										}
-#line 3603 "yacc.cpp" /* yacc.c:1646  */
+#line 3604 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 191:
-#line 997 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 998 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:NOT_EQUAL expr\n";
 										 (yyval.r.node)=new UnaryNode(scoop,(yyvsp[0].r.node),NOT_EQUAL);
 										}
-#line 3611 "yacc.cpp" /* yacc.c:1646  */
+#line 3612 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 192:
-#line 1000 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1001 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:OPEN_P logic_expr CLOSE_P\n";
 										 (yyval.r.node)=(yyvsp[-1].r.node);
 										}
-#line 3619 "yacc.cpp" /* yacc.c:1646  */
+#line 3620 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 193:
-#line 1003 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1004 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											cout<<"logic_expr:logic_expr AND_AND logic_expr\n";
 											(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),AND_AND,scoop);
 										}
-#line 3628 "yacc.cpp" /* yacc.c:1646  */
+#line 3629 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 194:
-#line 1007 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1008 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:logic_expr OR_OR logic_expr\n";
 										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),OR_OR,scoop);
 										}
-#line 3636 "yacc.cpp" /* yacc.c:1646  */
+#line 3637 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 195:
-#line 1010 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1011 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:TRUE\n";
 										 (yyval.r.node)=new ConstantNode(true,scoop);
 										}
-#line 3644 "yacc.cpp" /* yacc.c:1646  */
+#line 3645 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 196:
-#line 1013 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1014 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:FALSE\n";
 											 (yyval.r.node)=new ConstantNode(false,scoop);
 										}
-#line 3652 "yacc.cpp" /* yacc.c:1646  */
+#line 3653 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 197:
-#line 1018 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1019 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"expr:assign_expr\n";
 										 (yyval.r.node)=(yyvsp[0].r.node);
 										}
-#line 3660 "yacc.cpp" /* yacc.c:1646  */
+#line 3661 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 198:
-#line 1021 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1022 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"expr:simple_expr\n";
 										(yyval.r.node)=(yyvsp[0].r.node);
 										}
-#line 3668 "yacc.cpp" /* yacc.c:1646  */
+#line 3669 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 199:
-#line 1026 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1027 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 										cout<<"assign_expr:long_id EQUAL simple_expr\n";
 										//LongIdHelper::checkIdenentifier( scoop, interface,"set1");
 										(yyval.r.node)=new AssignNode(scoop,(yyvsp[-2].r.node),(yyvsp[0].r.node));
 										}
-#line 3678 "yacc.cpp" /* yacc.c:1646  */
+#line 3679 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 200:
-#line 1033 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1034 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"long_id: long_id.IDENTIFIER\n";LongIdHelper::addIdentifier((yyvsp[-2].r.text));}
-#line 3684 "yacc.cpp" /* yacc.c:1646  */
+#line 3685 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 201:
-#line 1034 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1035 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												cout<<"long_id: long_id.message_call\n";
 												(yyval.r.node)=(yyvsp[0].r.node);
 											}
-#line 3693 "yacc.cpp" /* yacc.c:1646  */
+#line 3694 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 202:
-#line 1038 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1039 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																LongIdHelper::addIdentifier((yyvsp[0].r.text)); 
 																(yyval.r.node)=new IdentifierNode((yyvsp[0].r.text),scoop);
 																cout<<"long_id:IDENTIFIER\n";
 															   }
-#line 3703 "yacc.cpp" /* yacc.c:1646  */
+#line 3704 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 203:
-#line 1048 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1049 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:STRING_VAL\n";
 									(yyval.r.node)=new ConstantNode(yylval.r.string_val,scoop);
 									}
-#line 3711 "yacc.cpp" /* yacc.c:1646  */
+#line 3712 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 204:
-#line 1051 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1052 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 									cout<<"simple_expr:INT_VAL\n";
 									(yyval.r.node)=new ConstantNode(yylval.r.int_val,scoop);
 									}
-#line 3720 "yacc.cpp" /* yacc.c:1646  */
+#line 3721 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 205:
-#line 1055 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1056 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:FLOAT_VAL\n";
 									(yyval.r.node)=new ConstantNode(yylval.r.float_val,scoop);
 									}
-#line 3728 "yacc.cpp" /* yacc.c:1646  */
+#line 3729 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 206:
-#line 1058 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1059 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:CHAR_VAL\n";
 										(yyval.r.node)=new ConstantNode(yylval.r.char_val,scoop);
 									}
-#line 3736 "yacc.cpp" /* yacc.c:1646  */
+#line 3737 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 207:
-#line 1061 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1062 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:long_id\n";
 									(yyval.r.node)=(yyvsp[0].r.node);
 									}
-#line 3744 "yacc.cpp" /* yacc.c:1646  */
+#line 3745 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 208:
-#line 1064 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1065 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 										cout<<"simple_expr:expr PLUS expr\n";
 										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),PLUS,scoop);
 									}
-#line 3753 "yacc.cpp" /* yacc.c:1646  */
+#line 3754 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 209:
-#line 1068 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1069 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 										cout<<"simple_expr:expr MINUS expr\n";
 										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),MINUS,scoop);
 									}
-#line 3762 "yacc.cpp" /* yacc.c:1646  */
+#line 3763 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 210:
-#line 1072 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1073 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:expr MULTI expr\n";
 											(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),MULTI,scoop);
 									}
-#line 3770 "yacc.cpp" /* yacc.c:1646  */
+#line 3771 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 211:
-#line 1075 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1076 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 									cout<<"simple_expr:expr DIV expr\n";
 									(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),DIV,scoop);
 									}
-#line 3779 "yacc.cpp" /* yacc.c:1646  */
+#line 3780 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 212:
-#line 1079 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1080 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:OPEN_P expr CLOSE_P\n";}
-#line 3785 "yacc.cpp" /* yacc.c:1646  */
+#line 3786 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 213:
-#line 1080 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1081 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:ID++";}
-#line 3791 "yacc.cpp" /* yacc.c:1646  */
+#line 3792 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 214:
-#line 1081 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1082 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:ID--";}
-#line 3797 "yacc.cpp" /* yacc.c:1646  */
+#line 3798 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 215:
-#line 1082 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1083 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:++ID";}
-#line 3803 "yacc.cpp" /* yacc.c:1646  */
+#line 3804 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 216:
-#line 1083 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1084 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:--ID";}
-#line 3809 "yacc.cpp" /* yacc.c:1646  */
+#line 3810 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 217:
-#line 1084 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1085 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																cout<<"expr:p_type expr\n";
 																if(type!=NULL)
 																(yyval.r.node)=new CastNode(scoop,type,(yyvsp[0].r.node));
 															}
-#line 3819 "yacc.cpp" /* yacc.c:1646  */
+#line 3820 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 218:
-#line 1091 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1092 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {		
 			cout<<"message_call2\n";
 			if(callNode==NULL)
@@ -3827,11 +3828,11 @@ yyreduce:
 			callNodeStack.push(callNode);
 			cout<<"mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm";
 			}
-#line 3831 "yacc.cpp" /* yacc.c:1646  */
+#line 3832 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 219:
-#line 1100 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1101 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												cout<<"message_call: OPEN_ARR sender message CLOSE_ARR\n";
 												callNode->setMessage((yyvsp[-1].r.text));
@@ -3842,22 +3843,22 @@ yyreduce:
 														callNodeStack.pop();
 														}
 												}
-#line 3846 "yacc.cpp" /* yacc.c:1646  */
+#line 3847 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 220:
-#line 1112 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1113 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"sender: message_call\n";
 											
 											callNode->setSender((yyvsp[0].r.node));
 											 (yyval.r.node)=(yyvsp[0].r.node);
 											 
 											}
-#line 3857 "yacc.cpp" /* yacc.c:1646  */
+#line 3858 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 221:
-#line 1118 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1119 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"sender: IDENTIFIER\n";
 											(yyval.r.node)=new IdentifierNode((yyvsp[0].r.text),scoop);
 											
@@ -3866,242 +3867,242 @@ yyreduce:
 											callNode->setSender((yyval.r.node));
 											
 											}
-#line 3870 "yacc.cpp" /* yacc.c:1646  */
+#line 3871 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 222:
-#line 1128 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1129 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"message: IDENTIFIER\n";
 											(yyval.r.text)=(yyvsp[0].r.text);
 												
 											}
-#line 3879 "yacc.cpp" /* yacc.c:1646  */
+#line 3880 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 223:
-#line 1132 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1133 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											cout<<"message_selectors_list\n";
 											//$<r.node>$=$<r.text>1;
 											(yyval.r.text)="";
 											}
-#line 3889 "yacc.cpp" /* yacc.c:1646  */
+#line 3890 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 224:
-#line 1139 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1140 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											cout<<"message_selectors_list:message_selectors_list message_selector \n";
 												callNode->addSelector(cselector);
 											cselector=NULL;
 												}
-#line 3899 "yacc.cpp" /* yacc.c:1646  */
+#line 3900 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 225:
-#line 1144 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1145 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {	callNode->addSelector(cselector);
 							cselector=NULL;
 								cout<<"message_selectors_list: message_selector\n";
 											
 		}
-#line 3909 "yacc.cpp" /* yacc.c:1646  */
+#line 3910 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 226:
-#line 1150 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1151 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 									cselector->name=(yyvsp[-2].r.text);
 							}
-#line 3917 "yacc.cpp" /* yacc.c:1646  */
+#line 3918 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 227:
-#line 1154 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1155 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"argument_list: argument_list argument\n";
 												cselector->addArg((yyvsp[0].r.node));}
-#line 3924 "yacc.cpp" /* yacc.c:1646  */
+#line 3925 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 228:
-#line 1156 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1157 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"argument_list: argument\n";
 												cselector=new CallSelector("");
 											cselector->addArg((yyvsp[0].r.node));}
-#line 3932 "yacc.cpp" /* yacc.c:1646  */
+#line 3933 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 229:
-#line 1161 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1162 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											cout<<"argument: SEMI_COLUMN expr\n";
 											(yyval.r.node)=(yyvsp[0].r.node);
 											//callNode->addArgument($<r.node>1,"");
 											
 											}
-#line 3943 "yacc.cpp" /* yacc.c:1646  */
+#line 3944 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 230:
-#line 1169 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1170 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											cout<<"while_loop:while_loop_header statement\n";
 											 (yyval.r.node)=new WhileNode((yyvsp[-1].r.node),(yyvsp[0].r.node),scoop);
 										}
-#line 3952 "yacc.cpp" /* yacc.c:1646  */
+#line 3953 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 231:
-#line 1175 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1176 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"while_loop_header: WHILE OPEN_P logic_expr CLOSE_P\n";
 											(yyval.r.node)=(yyvsp[-1].r.node);
 											}
-#line 3960 "yacc.cpp" /* yacc.c:1646  */
+#line 3961 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 232:
-#line 1180 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1181 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"conditional_statement: if_header statement\n";
 												 (yyval.r.node)=new IfNode((yyvsp[-1].r.node),(yyvsp[0].r.node),scoop,NULL);
 												}
-#line 3968 "yacc.cpp" /* yacc.c:1646  */
+#line 3969 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 233:
-#line 1183 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1184 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												cout<<"conditional_statement: if_header statement with else\n";
 												 (yyval.r.node)=new IfNode((yyvsp[-3].r.node),(yyvsp[-2].r.node),scoop,new ElseNode((yyvsp[0].r.node),scoop));
 												}
-#line 3977 "yacc.cpp" /* yacc.c:1646  */
+#line 3978 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 234:
-#line 1187 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1188 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"conditional_statement: switch_header switch_body statement\n";
 											(yyval.r.node)=new SwitchNode(tempSwitch);
 										}
-#line 3985 "yacc.cpp" /* yacc.c:1646  */
+#line 3986 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 235:
-#line 1192 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1193 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"if_header: IF OPEN_P logic_expr CLOSE_P\n";
 											(yyval.r.node)=(yyvsp[-1].r.node);
 											}
-#line 3993 "yacc.cpp" /* yacc.c:1646  */
+#line 3994 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 236:
-#line 1197 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1198 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"switch_header: SWITCH OPEN_P IDENTIFIER CLOSE_P\n";
 										
 										tempSwitch->setExpr(new IdentifierNode((yyvsp[-2].r.text),scoop));
 									}
-#line 4002 "yacc.cpp" /* yacc.c:1646  */
+#line 4003 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 237:
-#line 1203 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1204 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cscoop=scoop;scoop=new ScoopNode(cscoop);tempSwitch=new SwitchNode(NULL,std::list<pair<Node*,Node*>>(),scoop);}
-#line 4008 "yacc.cpp" /* yacc.c:1646  */
+#line 4009 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 238:
-#line 1206 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1207 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {;}
-#line 4014 "yacc.cpp" /* yacc.c:1646  */
+#line 4015 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 239:
-#line 1207 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1208 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {;}
-#line 4020 "yacc.cpp" /* yacc.c:1646  */
+#line 4021 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 240:
-#line 1208 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1209 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {;}
-#line 4026 "yacc.cpp" /* yacc.c:1646  */
+#line 4027 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 241:
-#line 1209 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1210 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {;}
-#line 4032 "yacc.cpp" /* yacc.c:1646  */
+#line 4033 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 242:
-#line 1212 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1213 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {;}
-#line 4038 "yacc.cpp" /* yacc.c:1646  */
+#line 4039 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 243:
-#line 1213 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1214 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {;}
-#line 4044 "yacc.cpp" /* yacc.c:1646  */
+#line 4045 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 244:
-#line 1216 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1217 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {tempSwitch->addCase((yyvsp[-4].r.node),(yyvsp[-2].r.node));}
-#line 4050 "yacc.cpp" /* yacc.c:1646  */
+#line 4051 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 245:
-#line 1217 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1218 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {tempSwitch->addCase((yyvsp[-2].r.node),(yyvsp[0].r.node));}
-#line 4056 "yacc.cpp" /* yacc.c:1646  */
+#line 4057 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 246:
-#line 1218 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1219 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {tempSwitch->addCase((yyvsp[-3].r.node),NULL);}
-#line 4062 "yacc.cpp" /* yacc.c:1646  */
+#line 4063 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 247:
-#line 1221 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1222 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {tempSwitch->addCase(NULL,(yyvsp[-2].r.node));}
-#line 4068 "yacc.cpp" /* yacc.c:1646  */
+#line 4069 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 248:
-#line 1222 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1223 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {tempSwitch->addCase(NULL,(yyvsp[0].r.node));}
-#line 4074 "yacc.cpp" /* yacc.c:1646  */
+#line 4075 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 249:
-#line 1223 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1224 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {tempSwitch->addCase(NULL,(yyvsp[-1].r.node));}
-#line 4080 "yacc.cpp" /* yacc.c:1646  */
+#line 4081 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 250:
-#line 1225 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1226 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 										cout<<"protocol: protocol_header protocol_body\n";
 										idsList.clear();
 										methodsList.clear();
 										method=NULL;
 										}
-#line 4091 "yacc.cpp" /* yacc.c:1646  */
+#line 4092 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 251:
-#line 1233 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1234 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 								cout<<"protocol_header: AT_PROTOCOL IDENTIFIER \n";
 								protocol=ProtocolHelper ::createNewProtocol((yyvsp[0].r.text),symbolTable );
 								
 								}
-#line 4101 "yacc.cpp" /* yacc.c:1646  */
+#line 4102 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 252:
-#line 1240 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1241 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 								cout<<"protocol_body:	protocol_reference_list interface_declaration_list	AT_END\n";
 								ProtocolHelper::addInheritedProtocol( protocol, idsList,symbolTable);
@@ -4109,11 +4110,11 @@ yyreduce:
 								methodsList.clear();
 								idsList.clear();
 								}
-#line 4113 "yacc.cpp" /* yacc.c:1646  */
+#line 4114 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 253:
-#line 1248 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1249 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 								cout<<"protocol_body:	interface_declaration_list	AT_END\n";
 									
@@ -4121,115 +4122,115 @@ yyreduce:
 								methodsList.clear();
 								
 								}
-#line 4125 "yacc.cpp" /* yacc.c:1646  */
+#line 4126 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 254:
-#line 1256 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1257 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 								cout<<"protocol_body:	protocol_reference_list AT_END	\n";
 											ProtocolHelper::addInheritedProtocol( protocol, idsList,symbolTable);
 								idsList.clear();
 								}
-#line 4135 "yacc.cpp" /* yacc.c:1646  */
+#line 4136 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 255:
-#line 1262 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1263 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"protocol_body:	AT_END\n";}
-#line 4141 "yacc.cpp" /* yacc.c:1646  */
+#line 4142 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 256:
-#line 1264 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1265 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																cout<<"enum: ENUM IDENTIFIER  OPEN_S list_expr CLOSE_S SEMI_COMA  \n";
 																
 																EnumHelper::createNewEnum( (yyvsp[-4].r.text),idsList, symbolTable);
 																idsList.clear();
 															 }
-#line 4152 "yacc.cpp" /* yacc.c:1646  */
+#line 4153 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 257:
-#line 1270 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1271 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																cout<<"enum: ENUM IDENTIFIER SEMI_COMA\n";
 																EnumHelper::createNewEnum( (yyvsp[-1].r.text),idsList, symbolTable);
 															  }
-#line 4161 "yacc.cpp" /* yacc.c:1646  */
+#line 4162 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 258:
-#line 1277 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1278 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												cout<<"list_expr:IDENTIFIER EQUAL expr COMMA list_expr\n";
 												idsList.push_back((yyvsp[-4].r.text));
 													(yyval.r.node)=new AssignNode(scoop,new IdentifierNode((yyvsp[-4].r.text),scoop),(yyvsp[-2].r.node));
 												}
-#line 4171 "yacc.cpp" /* yacc.c:1646  */
+#line 4172 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 259:
-#line 1282 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1283 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												cout<<"list_expr:IDENTIFIER EQUAL expr\n";
 												idsList.push_back((yyvsp[-2].r.text));
 												(yyval.r.node)=new AssignNode(scoop,new IdentifierNode((yyvsp[-2].r.text),scoop),(yyvsp[0].r.node));
 												}
-#line 4181 "yacc.cpp" /* yacc.c:1646  */
+#line 4182 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 260:
-#line 1287 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1288 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 													cout<<"list_expr:IDENTIFIER \n";
 													idsList.push_back((yyvsp[0].r.text));
 													//??
 												}
-#line 4191 "yacc.cpp" /* yacc.c:1646  */
+#line 4192 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 261:
-#line 1292 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1293 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												  cout<<"list_expr:IDENTIFIER  COMMA list_expr \n";
 												  idsList.push_back((yyvsp[-2].r.text));
 												  //??
 												}
-#line 4201 "yacc.cpp" /* yacc.c:1646  */
+#line 4202 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 262:
-#line 1299 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1300 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												  cout<<"try_catch:TRY statement catch_list finally_statement \n";
 												}
-#line 4209 "yacc.cpp" /* yacc.c:1646  */
+#line 4210 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 263:
-#line 1303 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1304 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {				  
 								cout<<"try_catch:TRY statement catch_list \n";
 							  }
-#line 4217 "yacc.cpp" /* yacc.c:1646  */
+#line 4218 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 264:
-#line 1308 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1309 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"catch_list:CATCH OPEN_S type IDENTIFIER CLOSE_S statement \n";}
-#line 4223 "yacc.cpp" /* yacc.c:1646  */
+#line 4224 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 265:
-#line 1309 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1310 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"catch_list:catch_list CATCH OPEN_S type IDENTIFIER CLOSE_S statement \n";}
-#line 4229 "yacc.cpp" /* yacc.c:1646  */
+#line 4230 "yacc.cpp" /* yacc.c:1646  */
     break;
 
 
-#line 4233 "yacc.cpp" /* yacc.c:1646  */
+#line 4234 "yacc.cpp" /* yacc.c:1646  */
         default: break;
       }
     if (yychar_backup != yychar)
@@ -4469,7 +4470,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 1314 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1906  */
+#line 1315 "C:\\Users\\toshiba\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1906  */
 
 void yyerror(const char *s) {
 	fprintf (stderr, "%s\n", s);
