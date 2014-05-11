@@ -1,0 +1,21 @@
+.globl main
+main:
+ #generating code for Method:
+__:
+ #movesp to fp
+move $fp,$sp
+ #reserving space in stack for scope variables
+addi $sp,$sp,4
+li $t9,8
+add $sp,$sp,4
+sw $t9, 0($sp)
+lw $t1, 0($sp)
+sub $sp,$sp,4
+ #identifier y
+lw $t9,0($fp)
+add $sp,$sp,4
+sw $t9, 0($sp)
+lw $t0, 0($sp)
+sub $sp,$sp,4
+add $t0,$0,$t1
+sw $t0,0($fp)

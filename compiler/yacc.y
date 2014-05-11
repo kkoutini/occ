@@ -1093,7 +1093,11 @@ OPEN_ARR {
 			cout<<"message_call2\n";
 			if(callNode==NULL)
 			callNode=new CallNode(scoop);
+			else 
+			{
 			callNodeStack.push(callNode);
+			callNode=new CallNode(scoop);
+			}
 			cout<<"mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm";
 			}
 ;
