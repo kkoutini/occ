@@ -82,7 +82,7 @@ void Method::set_return_type(Type* returnType){
 	this->return_type = returnType;
 }
 
-Selector* Method::getSelector(string para_name){
+DeclerationSelector* Method::getSelector(string para_name){
 	for (int i = 0; i < parameters.size(); i++){
 		if (parameters.at(i)->get_name() == para_name){
 			return parameters.at(i);
@@ -92,7 +92,7 @@ Selector* Method::getSelector(string para_name){
 	return NULL;
 }
 
-bool Method::addSelector(Selector* selector){
+bool Method::addSelector(DeclerationSelector* selector){
 	if (getSelector(selector->get_name()) == NULL){
 		this->parameters.push_back(selector);
 		return true;
@@ -174,14 +174,14 @@ void Method::toString(){
 	cout << "\nend method: " << get_name() << endl;
 }
 
-void Method::set_variables(vector<Selector*>parameters){
+void Method::set_variables(vector<DeclerationSelector*>parameters){
 	for (int i = 0; i < parameters.size(); i++)
 	{
 		addSelector(parameters.at(i));
 	}
 
 }
-vector<Selector*> Method::get_variables(){
+vector<DeclerationSelector*> Method::get_variables(){
 	return parameters;
 }
 

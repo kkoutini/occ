@@ -88,6 +88,7 @@
   <ItemGroup>
     <ClCompile Include="ast\mips_asm.cpp" />
     <ClCompile Include="CallSelector.cpp" />
+    <ClCompile Include="DeclerationSelector.cpp" />
     <ClCompile Include="EnumHelper.cpp" />
     <ClCompile Include="EnumType.cpp" />
     <ClCompile Include="Error.cpp" />
@@ -136,6 +137,7 @@
     <ClInclude Include="CallNode.h" />
     <ClInclude Include="CallSelector.h" />
     <ClInclude Include="ClassNode.h" />
+    <ClInclude Include="DeclerationSelector.h" />
     <ClInclude Include="DoWhileNode.h" />
     <ClInclude Include="ElseNode.h" />
     <ClInclude Include="EnumHelper.h" />

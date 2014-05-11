@@ -120,6 +120,9 @@
     <ClCompile Include="CallSelector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DeclerationSelector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="yacc.hpp">
@@ -267,6 +270,9 @@
       <Filter>Header Files\AST</Filter>
     </ClInclude>
     <ClInclude Include="CallSelector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeclerationSelector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

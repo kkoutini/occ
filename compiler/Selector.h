@@ -14,23 +14,21 @@ class Selector :public Symbol
 {
 public:
 	string name;
-	vector<Variable*> _vars;
-
-	vector<Type*> _types;
-
-	Selector(string, vector<Variable*> vars);
-		Selector(Selector*);
+	
+	
 		Selector(string name);
 		static bool compareSelector(Selector*,Selector*);
-		void updateTypesFromVars();
+		virtual  int getTypesSize() const = 0;
+		virtual Type* getTypeAt(int i)const = 0;
+
 		bool operator==(const Selector &b){
 			if (name != b.name)
 				return false;
-			if (_vars.size() != b._vars.size())
+			if (getTypesSize() != b.getTypesSize())
 				return false;
-			for (int i = 0; i < _types.size(); i++)
+			for (int i = 0; i < getTypesSize(); i++)
 			{
-				if (b._types[i] != _types[i])
+				if (b.getTypeAt(i) != getTypeAt(i))
 					return false;
 			}
 			return true;

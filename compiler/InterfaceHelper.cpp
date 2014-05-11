@@ -78,7 +78,7 @@ void InterfaceHelper::addDataMembers(Interface* interface,vector<string>idsList,
 
 
 }
-Method* InterfaceHelper:: createNewMethod(Type* type,SymbolTable* symbolTable,string name,vector<Selector*>selectorsList,bool isStatic){
+Method* InterfaceHelper::createNewMethod(Type* type, SymbolTable* symbolTable, string name, vector<DeclerationSelector*>selectorsList, bool isStatic){
 	
 	Method* method=NULL;
 	if(type!=NULL)

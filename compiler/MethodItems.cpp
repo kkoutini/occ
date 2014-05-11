@@ -36,7 +36,7 @@ MethodItems::MethodItems(MethodItems* methodItems){
 	this->methods=methodItems->methods;
 }
 
-Method* MethodItems::getMethod(string name,Type* type ,vector<Selector*>parameter,bool isStatic)
+Method* MethodItems::getMethod(string name, Type* type, vector<DeclerationSelector*>parameter, bool isStatic)
 	{
 		multimap<const string, Method*>::iterator it = this->methods.find(name);
 		Method* tempMethod=new Method(name,type);

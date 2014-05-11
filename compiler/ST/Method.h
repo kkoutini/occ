@@ -5,6 +5,8 @@
 #include <hash_map>
 #include <vector>
 #include "../Selector.h"
+
+#include "../DeclerationSelector.h"
 extern int line;
 extern int col;
 class Variable;
@@ -21,7 +23,7 @@ public:
 	bool is_override;
 	bool is_final;
 	string label;
-	vector<Selector*> parameters;
+	vector<DeclerationSelector*> parameters;
 	FunctionNode* node;
 	public:
 		FunctionNode* getF(){
@@ -36,8 +38,8 @@ public:
 		void setFunctionNode(FunctionNode*);
 	Type* get_return_type();
 	void set_return_type(Type* returnType);
-	Selector* getSelector(string);
-	bool addSelector(Selector*);
+	DeclerationSelector* getSelector(string);
+	bool addSelector(DeclerationSelector*);
 	void toString();
 	bool static checkReturnType(Method*,Method*);
 	void static checkParameters(Method*,Method*);
@@ -67,8 +69,8 @@ public:
 	bool get_final();
 	void Do_attr(vector<string>);*/
 	bool static compare(Method*,Method*);
-	void set_variables(vector<Selector*>);
-	vector<Selector*> get_variables();
+	void set_variables(vector<DeclerationSelector*>);
+	vector<DeclerationSelector*> get_variables();
 
 	string getLabel();
 	FunctionNode* getNode();
