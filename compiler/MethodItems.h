@@ -4,6 +4,7 @@
 #include<map>
 #include<hash_map>
 #include "ST\Method.h"
+#include"CallSelector.h"
 class MethodItems
 {
 public:
@@ -13,7 +14,7 @@ public:
 	bool addMethod(Method*);
 	void setMethods(multimap<const string,Method*>);
 	Method* getMethod(string name, Type* type, vector<DeclerationSelector*>, bool isStatic);
-	Method* MethodItems::getMethod(string name, vector<string> selectors, vector<Type*> types, bool isStatic);
+	Method* getMethod(string message, vector<CallSelector*> v, bool isStatic = false);
 	void toString();
 	~MethodItems(void);
 };

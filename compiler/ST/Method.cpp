@@ -173,7 +173,21 @@ void Method::toString(){
 		node->toString();
 	cout << "\nend method: " << get_name() << endl;
 }
-
+string Method::	to_string(){
+	string s=get_name();
+	if (parameters.size()>0)
+	{
+		
+		for (int i = 0; i < parameters.size(); i++)
+		{
+			s+= parameters.at(i)->get_name() + ":";
+			for (auto c : parameters.at(i)->_vars)
+				s +=string(" (") + c->getType()->get_name() + string( ") ")+ c->get_name() +string( " ");
+		}
+	
+	}
+	return s;
+}
 void Method::set_variables(vector<DeclerationSelector*>parameters){
 	for (int i = 0; i < parameters.size(); i++)
 	{

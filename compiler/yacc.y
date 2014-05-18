@@ -604,7 +604,8 @@ p_type:
 																}
    
 ;
-method_selectors:
+
+
 	 selectors_list						{
 																cout<<"method_selectors:IDENTIFIER SEMI_COLUMN selectors_list\n";
 																	$<r.text>$="";
@@ -1342,5 +1343,6 @@ freopen("code.txt","r",stdin);
 
 //	functionNode->toString();
 	//functionNode->generateCode();
+	
 }
 

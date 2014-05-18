@@ -41,6 +41,7 @@ public:
 	DeclerationSelector* getSelector(string);
 	bool addSelector(DeclerationSelector*);
 	void toString();
+	string to_string();
 	bool static checkReturnType(Method*,Method*);
 	void static checkParameters(Method*,Method*);
 	string getSignature();

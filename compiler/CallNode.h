@@ -22,7 +22,8 @@ public:
 	}
 	CallNode(ScoopNode* scoop):Node(scoop)
 	{
-		 
+
+		int x;
 	}
 	void setSender(Node* sender){
 		this->_sender=sender;
@@ -39,19 +40,20 @@ public:
 	//	type->getMethodByName
 		_sender->generateCode();
 		Type* senderType = _sender->getType();
-
+		
 		//TODO: check if sender isn't interface
 		Interface* sender_interface=(dynamic_cast<Interface*>(senderType));
 		if (sender_interface == NULL)
 		{
 			//ERRor
 		}
-		Method* method = NULL;//sender_interface->getMethod(_message, _params, _types,false);
+		Method* method = sender_interface->getMethod(_message, _selcs,false);
+
 		if (method == NULL){
 			//ERROR no method
 		}
 
-		MIPS_ASM::printComment("CALLING A METHOD "+_message);
+		MIPS_ASM::printComment(string("CALLING A METHOD ")+method->to_string());
 		
 	}
 	virtual Type* generateType()

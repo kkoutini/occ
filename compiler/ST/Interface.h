@@ -7,6 +7,7 @@
 #include "Protocol.h"
 #include "../VariableItems.h"
 #include "../MethodItems.h"
+#include "../CallSelector.h"
 class ClassNode;
 
 class Interface:public Type{
@@ -38,7 +39,7 @@ public:
 
 	Method* getMethodByName(string name, Type* type, vector<DeclerationSelector*> v, bool isStatic);
 
-	Method* getMethod(string name, vector<string> selectors, vector<Type*> types, bool isStatic=false);
+	Method* getMethod(string message, vector<CallSelector*> v, bool isStatic = false);
 
 	/*void add_Method(Method*);
 	Method* Get_Method(string name,Type* type ,vector<Variable*> parameter);*/

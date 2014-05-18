@@ -425,9 +425,15 @@ void MIPS_ASM::move(string dest_reg,string from_reg)
 
 void MIPS_ASM::printComment(string comment)
 {
-	string c=" #";
-	c+=comment+"\r\n";
-	MIPS_ASM::add_instruction(c);
-}
+	stringstream cmt(comment);
+	string line;
+		while (getline(cmt, line))
+		{
+			string c = " #";
+			c += line + "\n";
+			MIPS_ASM::add_instruction(c);
+
+		}
+	}
 
 

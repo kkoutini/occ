@@ -41,6 +41,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -57,6 +58,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <AssemblyDebug>true</AssemblyDebug>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -88,6 +91,7 @@
   <ItemGroup>
     <ClCompile Include="ast\mips_asm.cpp" />
     <ClCompile Include="CallSelector.cpp" />
+    <ClCompile Include="DeclerationSelector.cpp" />
     <ClCompile Include="EnumHelper.cpp" />
     <ClCompile Include="EnumType.cpp" />
     <ClCompile Include="Error.cpp" />
@@ -136,6 +140,7 @@
     <ClInclude Include="CallNode.h" />
     <ClInclude Include="CallSelector.h" />
     <ClInclude Include="ClassNode.h" />
+    <ClInclude Include="DeclerationSelector.h" />
     <ClInclude Include="DoWhileNode.h" />
     <ClInclude Include="ElseNode.h" />
     <ClInclude Include="EnumHelper.h" />

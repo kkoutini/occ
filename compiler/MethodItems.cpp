@@ -54,9 +54,9 @@ Method* MethodItems::getMethod(string name, Type* type, vector<DeclerationSelect
 	}
 }
 
-Method* MethodItems::getMethod(string name, vector<string> selectors, vector<Type*> types, bool isStatic)
+Method* MethodItems::getMethod(string message, vector<CallSelector*> selectors, bool isStatic )
 {
-	auto it = this->methods.find(name);
+	auto it = this->methods.find(message);
 	while (it != this->methods.end()){
 		Method& m =*( it->second);
 		int i = 0;
@@ -65,12 +65,14 @@ Method* MethodItems::getMethod(string name, vector<string> selectors, vector<Typ
 			bool match = true;
 			for (auto p : m.parameters){
 
-				if (p->get_name() != selectors[i])
+				if ((*p) == (*selectors[i]))
+					++i;
+				else
 				{
 					match = false;
 					break;
 				}
-				++i;
+				
 
 			}
 			if (match)
