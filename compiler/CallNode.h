@@ -51,10 +51,26 @@ public:
 
 		if (method == NULL){
 			//ERROR no method
+			return;
 		}
 
 		MIPS_ASM::printComment(string("CALLING A METHOD ")+method->to_string());
+		MIPS_ASM::printComment("generating code for the sender");
+		_sender->generateCode();
+
+		MIPS_ASM::printComment("generating code for Args");
 		
+		for (auto selector : _selcs){
+			MIPS_ASM::printComment(string("generating code for selector:") + selector->get_name());
+			int argcount=0;
+			for (auto arg : selector->_args){;
+				MIPS_ASM::printComment(string("generating  for var #")+std::to_string(argcount++));
+
+				arg->generateCode();
+			}
+		}
+		MIPS_ASM::jal(method->getLabel());
+
 	}
 	virtual Type* generateType()
 	{

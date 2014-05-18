@@ -1,0 +1,44 @@
+.globl main
+main:
+ #generating code for Method:go: (int) y 
+__:
+ #movesp to fp
+move $fp,$sp
+ #reserving space in stack for scope variables
+addi $sp,$sp,4
+li $t9,8
+add $sp,$sp,4
+sw $t9, 0($sp)
+lw $t1, 0($sp)
+sub $sp,$sp,4
+ #identifier y
+lw $t9,0($fp)
+add $sp,$sp,4
+sw $t9, 0($sp)
+lw $t0, 0($sp)
+sub $sp,$sp,4
+add $t0,$0,$t1
+sw $t0,0($fp)
+ #generating code for Method:a2go: (int) y 
+__:
+ #movesp to fp
+move $fp,$sp
+ #reserving space in stack for scope variables
+addi $sp,$sp,8
+ #identifier a
+lw $t9,4($fp)
+add $sp,$sp,4
+sw $t9, 0($sp)
+ #CALLING A METHOD go: (int) y 
+ #generating code for the sender
+ #identifier a
+lw $t9,4($fp)
+add $sp,$sp,4
+sw $t9, 0($sp)
+ #generating code for Args
+ #generating code for selector:go
+ #generating  for var #0
+li $t9,5
+add $sp,$sp,4
+sw $t9, 0($sp)
+jal __

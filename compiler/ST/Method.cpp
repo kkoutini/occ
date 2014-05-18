@@ -198,6 +198,13 @@ void Method::set_variables(vector<DeclerationSelector*>parameters){
 vector<DeclerationSelector*> Method::get_variables(){
 	return parameters;
 }
+int Method::get_params_num(){
+	int sum = 0;
+	for (auto p : parameters){
+		sum += p->getTypesSize();
+	}
+	return sum;
+}
 
 void Method::set_static(bool isStatic){
 	this->is_static = isStatic;

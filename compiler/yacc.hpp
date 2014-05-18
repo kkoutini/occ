@@ -40,7 +40,7 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 150 "C:\\Users\\Mac Win\\source\\repos\\occ\\compiler\\yacc.y" /* yacc.c:1909  */
+#line 150 "C:\\Users\\Mac Win\\source\\repos\\occ - Copy\\compiler\\yacc.y" /* yacc.c:1909  */
 
 #include "ast\node.h"
 
@@ -128,7 +128,7 @@ extern int yydebug;
 typedef union YYSTYPE YYSTYPE;
 union YYSTYPE
 {
-#line 153 "C:\\Users\\Mac Win\\source\\repos\\occ\\compiler\\yacc.y" /* yacc.c:1909  */
+#line 153 "C:\\Users\\Mac Win\\source\\repos\\occ - Copy\\compiler\\yacc.y" /* yacc.c:1909  */
 
 	
 	struct R {

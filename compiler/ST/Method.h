@@ -56,7 +56,8 @@ public:
 	//string* Get_access_modifier ();
 	bool set_scoop(ScoopNode*);
 	ScoopNode* get_Scoop();
-	
+
+	int get_params_num();
 	
 	void set_static(bool);
 	bool get_static();

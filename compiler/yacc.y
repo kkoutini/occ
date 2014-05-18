@@ -606,8 +606,9 @@ p_type:
 ;
 
 
+method_selectors:
 	 selectors_list						{
-																cout<<"method_selectors:IDENTIFIER SEMI_COLUMN selectors_list\n";
+																cout<<"method_selectors: selectors_list\n";
 																	$<r.text>$="";
 																}
 	|IDENTIFIER													{cout<<"method_selectors:IDENTIFIER \n";$<r.text>$=$<r.text>1;}

@@ -16,7 +16,9 @@ public:
 	{
 		return _args.at(i)->getType();
 	}
-
+	virtual string get_name(){
+		return name;
+	}
 	
 	virtual ~CallSelector();
 };

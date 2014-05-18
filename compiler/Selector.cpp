@@ -3,6 +3,7 @@
 
 Selector::Selector(string name) : Symbol(name)
 {
+	this->name = name;
 }
 
 

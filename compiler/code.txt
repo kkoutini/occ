@@ -15,8 +15,6 @@ NSString str1;
 -(int) go:(int)y
 {
 	y=8;
-	wessam* a;
-	[a go:5];
 }
 
 -(int) a2go:(int)y
