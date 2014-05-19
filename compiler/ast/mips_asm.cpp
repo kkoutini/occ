@@ -212,7 +212,7 @@ void MIPS_ASM::lif(string reg,float v)
 
 void MIPS_ASM::push(string source)
 {
-	MIPS_ASM::add_instruction("add $sp,$sp,4\n");
+	MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
 	string c="sw $";	
 	c+=source;
 	c+=", 0($sp)\n";
@@ -222,7 +222,7 @@ void MIPS_ASM::push(string source)
 void MIPS_ASM::reserveStack( int size )
 {
 	MIPS_ASM::printComment("reserving space in stack for scope variables");
-	MIPS_ASM::add_instruction(string("addi $sp,$sp,")+to_string(size) +string("\n"));
+	MIPS_ASM::add_instruction(string("sub $sp,$sp,")+to_string(size) +string("\n"));
 }
 
 
@@ -232,13 +232,13 @@ void MIPS_ASM::pop(string dest)
 	c+=dest;
 	c+=", 0($sp)\n";
 	MIPS_ASM::add_instruction(c);
-	MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
+	MIPS_ASM::add_instruction("add $sp,$sp,4\n");
 
 }
 
 void MIPS_ASM::pushf(string source)
 {
-	MIPS_ASM::add_instruction("add $sp,$sp,4\n");
+	MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
 	string c="s.s $";	
 	c+=source;
 	c+=", 0($sp)\n";
