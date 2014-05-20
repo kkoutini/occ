@@ -701,7 +701,7 @@ implementation_definition:
 class_implementation_definition:
 	class_implementation_definition_header block_body {
 														cout<<"class_implementation_definition: class_implementation_definition_header block_body";
-														method->setFunctionNode(functionNode);
+														//method->setFunctionNode(functionNode);
 														functionNode=NULL;
 													nodeXX=method;
 													}
@@ -727,7 +727,7 @@ instance_implementation_definition:
 															scoop=NULL;
 															cscoop=NULL;
 															cout<<"instance_implementation_definition: instance_implementation_definition_header block_body\n";
-															method->setFunctionNode(functionNode);
+															//method->setFunctionNode(functionNode);
 														functionNode=NULL;
 															}	
 ;
@@ -754,7 +754,8 @@ block_body:
 block_body_header:
 OPEN_S											{
 												cscoop=scoop;
-                                                scoop=ScoopHelper::createNewScoop(cscoop,method);
+                                                scoop=ScoopHelper::createNewScoop(cscoop,method,interface);
+												
 												if(functionNode==NULL)
 													functionNode=new FunctionNode(scoop,method);
 													else

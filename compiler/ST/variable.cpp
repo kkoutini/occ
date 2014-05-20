@@ -14,7 +14,12 @@ Variable::Variable(string name, Type* type,string accessModifier):Symbol(name){
 	this->setAccessModifier(accessModifier);
 	offset=-1;
 	}
-
+Variable::Variable(string name, Type* type, bool isConst) :Symbol(name){
+	this->type = type;
+	this->isConst = true;
+	this->setAccessModifier("@public");
+	offset = -1;
+}
 string Variable:: getAccessModifier(){
 	if (this!=NULL){
 		switch (this->accessModifier){

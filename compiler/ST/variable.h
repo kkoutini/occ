@@ -19,6 +19,7 @@ public :
 	virtual void toString();
 	Variable(string name, Type* type,string="@public");
 	Variable(Variable*);
+	Variable(string name, Type* type, bool);
 	static bool compare (Variable *,Variable*);
 	string getAccessModifier();
 	void setAccessModifier(string );

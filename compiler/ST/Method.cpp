@@ -6,7 +6,7 @@
 #include <sstream>
 #include "../ast/FunctionNode.h"
 void Method::setFunctionNode(FunctionNode* fNode){
-	this->node = new FunctionNode(fNode);
+	this->scoopBody = new FunctionNode(fNode);
 }
 Method::Method(string name) :Symbol(name)
 {
@@ -99,7 +99,7 @@ bool Method::addSelector(DeclerationSelector* selector){
 	}
 	return false;
 }
-bool Method::set_scoop(ScoopNode* scoop){
+bool Method::set_scoop(FunctionNode* scoop){
 	if (scoop != NULL)
 	{
 		this->scoopBody = scoop;
@@ -169,8 +169,8 @@ void Method::toString(){
 	{
 		scoopBody->toString();
 	}
-	if (node != NULL)
-		node->toString();
+	if (scoopBody != NULL)
+		scoopBody->toString();
 	cout << "\nend method: " << get_name() << endl;
 }
 string Method::	to_string(){

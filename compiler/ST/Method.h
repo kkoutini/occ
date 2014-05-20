@@ -16,7 +16,7 @@ class Method:public Symbol{
 public:
 
 	Type* return_type;
-	ScoopNode* scoopBody;
+	//ScoopNode* scoopBody;
 	bool is_static;
 	bool is_virtual;
 	bool is_abstract;
@@ -24,10 +24,10 @@ public:
 	bool is_final;
 	string label;
 	vector<DeclerationSelector*> parameters;
-	FunctionNode* node;
+	FunctionNode* scoopBody;
 	public:
 		FunctionNode* getF(){
-			return this->node;
+			return this->scoopBody;
 		}
 	Method(string name);
 	Method(string name, Type* return_type);
@@ -54,7 +54,7 @@ public:
 	//bool Add_Intern_Vars(symbol*);
 	//void Set_access_modifier (string Acss_mod);
 	//string* Get_access_modifier ();
-	bool set_scoop(ScoopNode*);
+	bool set_scoop(FunctionNode*);
 	ScoopNode* get_Scoop();
 
 	int get_params_num();
@@ -76,7 +76,7 @@ public:
 
 	string getLabel();
 	FunctionNode* getNode();
-	FunctionNode* Node() const { return node; }
-	void Node(FunctionNode* val) { node = val; }
+	FunctionNode* Node() const { return scoopBody; }
+	void Node(FunctionNode* val) { scoopBody = val; }
 };
 #endif

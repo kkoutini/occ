@@ -1,5 +1,7 @@
 #include "InterfaceHelper.h"
 #include "SemanticError.h"
+#include "ast\FunctionNode.h"
+#include "ClassNode.h"
 extern SymbolTable* symbolTable;
 
 void InterfaceHelper::addMethods(Interface* interface,vector<Method*>methodsList){
@@ -85,6 +87,7 @@ Method* InterfaceHelper::createNewMethod(Type* type, SymbolTable* symbolTable, s
 	{
 		method =new Method(name,type);
 		method->set_static(isStatic);
+
 		for(int i=0;i<selectorsList.size();i++)
 		{
 			if(!method->addSelector(selectorsList.at(i)))
@@ -97,13 +100,15 @@ Method* InterfaceHelper::createNewMethod(Type* type, SymbolTable* symbolTable, s
 		}
 	
 	}
-
+	
 	return method;
 }
 void InterfaceHelper:: implementMethods(vector<Method*>methodsList,Interface* interface){
 	if(interface!=NULL){
+
 		for(int i=0 ;i<methodsList.size();i++){
 			Method* tempMethod=interface->getMethodsItem()-> getMethod(methodsList.at(i)->get_name(),methodsList.at(i)->get_return_type(),methodsList.at(i)->get_variables(),methodsList.at(i)->get_static());
+
 			if(tempMethod!=NULL){
 				if(!Method::checkReturnType(methodsList.at(i),tempMethod)){
 						string error="Conflicting return type in implementation of '";
@@ -116,7 +121,8 @@ void InterfaceHelper:: implementMethods(vector<Method*>methodsList,Interface* in
 			Program::addError(new SemanticError(error));
 				}
 				Method::checkParameters(methodsList.at(i),tempMethod);
-				tempMethod->set_scoop(methodsList.at(i)->get_Scoop());
+				FunctionNode* fn = dynamic_cast<FunctionNode*>(methodsList.at(i)->get_Scoop());
+				tempMethod->set_scoop(fn);
 			}
 			else 
 			{
@@ -179,6 +185,7 @@ Interface* InterfaceHelper:: checkImplementation(string typeS,SymbolTable* symbo
 }
 Interface* InterfaceHelper ::createNewInterface(string name,string inheritedInterfaceName,SymbolTable *symbolTable ){
 	Interface * interface=new Interface(name);
+	interface->setClassNode(new ClassNode(NULL,interface));
 	if(inheritedInterfaceName!="")
 		if(symbolTable->getType(inheritedInterfaceName)!=NULL)
 		{

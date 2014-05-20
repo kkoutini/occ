@@ -21,6 +21,9 @@ private:
 	
 public:
 	Interface(string name);
+	ClassNode* getScoop(){
+		return classNode;
+	}
 	void setClassNode(ClassNode*);
 	Interface(Interface*);
 	MethodItems* getMethodsItem();

@@ -1,11 +1,12 @@
 #include "ScoopHelper.h"
 #include "SemanticError.h"
 #include "ast\FunctionNode.h"
-
-ScoopNode* ScoopHelper::createNewScoop(ScoopNode* parentScoop,Method* method){
+#include"ast\ScoopNode.h"
+#include "ClassNode.h"
+ScoopNode* ScoopHelper::createNewScoop(ScoopNode* parentScoop,Method* method,Interface* interface){
 	ScoopNode* scoop;
 	if(parentScoop==NULL){
-		scoop=new ScoopNode(NULL,NULL);
+		scoop = new FunctionNode(dynamic_cast<ScoopNode*>(interface->getScoop()), NULL);
 		for (int i = 0; i <method->get_variables().size(); i++)
 		{
 			for (auto c : method->get_variables().at(i)->_vars)
@@ -14,9 +15,10 @@ ScoopNode* ScoopHelper::createNewScoop(ScoopNode* parentScoop,Method* method){
 			}
 			
 		}
-		method->set_scoop(scoop);
+		method->set_scoop(dynamic_cast<FunctionNode*>(scoop));
 			//functionNode=new FunctionNode(scoop,method);
 			 method->setFunctionNode(new FunctionNode(scoop,method));
+				 method->getF()->add_variable(new Variable("self",interface,true));
 			// method->getF()->generateCode();
 	}
 	else{
