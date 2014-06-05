@@ -78,5 +78,26 @@ public:
 	FunctionNode* getNode();
 	FunctionNode* Node() const { return scoopBody; }
 	void Node(FunctionNode* val) { scoopBody = val; }
+
+	// compare only the method signature
+	bool operator<(const Method& method2)const{
+		if (parameters.size() == method2.parameters.size() )
+		{
+			int j = 0;
+
+			for (int i = 0; i < parameters.size(); i++)
+			{
+
+				if (!Selector::compareSelector(parameters.at(i), method2.parameters.at(j)))
+					return *parameters.at(i)<* method2.parameters.at(j);
+				j++;
+			}
+			return get_name()<method2.get_name();
+		}
+		// to do mwssages case
+		return parameters.size() < method2.parameters.size();
+
+	}
+	
 };
 #endif

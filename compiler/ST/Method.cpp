@@ -5,6 +5,7 @@
 #include <string>
 #include <sstream>
 #include "../ast/FunctionNode.h"
+#include "../MethodsIndexer.h"
 void Method::setFunctionNode(FunctionNode* fNode){
 	this->scoopBody = new FunctionNode(fNode);
 }
@@ -139,7 +140,7 @@ bool Method::compare(Method* method1, Method* method2){
 				return false;
 			j++;
 		}
-		return true;
+		return method1-> get_name()<method2->get_name();
 	}
 	return false;
 }
@@ -218,8 +219,7 @@ string Method::getLabel()
 {
 	if (label == "")
 	{
-		//@toDO
-		label = string("__") + get_name();
+		label = string("__method_") + std::to_string( MethodsIndexer::getMethodIndex(this));
 	}
 	return label;
 }

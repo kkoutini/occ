@@ -34,6 +34,7 @@ public:
 			return true;
 
 		}
+		bool operator<(const Selector &b)const;
 	~Selector(void);
 };
 

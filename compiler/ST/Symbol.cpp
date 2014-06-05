@@ -30,7 +30,7 @@
 		this->prev = prev;
 	}*/
 	string Symbol::get_name()
-	{
+	const{
 		if (this!=NULL){
 			return this->name;
 		}else{

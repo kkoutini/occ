@@ -99,6 +99,7 @@
     <ClCompile Include="lex.yy.cc" />
     <ClCompile Include="LongIdHelper.cpp" />
     <ClCompile Include="MethodItems.cpp" />
+    <ClCompile Include="MethodsIndexer.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="ProtocolHelper.cpp" />
     <ClCompile Include="ScoopHelper.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="InterfaceHelper.h" />
     <ClInclude Include="LongIdHelper.h" />
     <ClInclude Include="MethodItems.h" />
+    <ClInclude Include="MethodsIndexer.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="ProtocolHelper.h" />
     <ClInclude Include="ScoopHelper.h" />

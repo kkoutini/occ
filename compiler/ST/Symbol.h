@@ -21,7 +21,7 @@ public:
 //	Symbol(string, string);
 	//virtual void set_prev(Symbol* next);	
 	//virtual Symbol* get_prev();	
-	virtual string get_name();
+	virtual string get_name()const;
 	virtual void set_name(string name);
 	//virtual void set_path(string path);
 	//virtual string get_path();
