@@ -7,7 +7,7 @@ class Node
 protected:
 		int _line;
 		int _col;
-		
+		string _filename;
 		Type* type;
 
 public:
@@ -18,7 +18,7 @@ public:
 	{
 		this->_line = ::lineNum;
 		this->_col = ::colNum;
-
+		this->_filename = ::sourceFile;
 	}
 	
 	virtual void generateCode (){

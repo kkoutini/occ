@@ -9,7 +9,7 @@ using namespace std;
 
 extern int lineNum;
 extern int colNum;
-
+extern string sourceFile;
 class MIPS_ASM
 {
 private: 

@@ -1,4 +1,4 @@
-%output ="yacc.cpp"
+%output "yacc.cpp"
 %define parse.lac full
 %define parse.error verbose
 
@@ -32,7 +32,8 @@
 				#include "AsmNode.h"
 				#include <fstream>
 	using namespace std;
-
+	
+    extern string sourceFile="";
 	int yylex(void);
 	int yyparse();
 	void yyerror(const char *);
@@ -41,7 +42,7 @@
 	//extern int colno;
 	//extern string ytext; 
 	extern std::ofstream ofs ("test.txt", std::ofstream::out);
-	FlexLexer* lexer = new yyFlexLexer();
+	FlexLexer* lexer ;
 	SymbolTable * symbolTable =new SymbolTable();
 	Variable * var=NULL;
 	Protocol * protocol=NULL;
@@ -1335,10 +1336,20 @@ int yylex(){
 
 }
 void main(void){
-freopen("code.txt","r",stdin);
+//freopen("code.txt","r",stdin);
+//yyin = fopen("code.txt","r");
     //yydebug=1;
+	vector<string> sfiles;
+		sfiles.push_back("system.oc");
+
+	sfiles.push_back("code.txt");
+	for(string sf:sfiles){
+	sourceFile=sf;
+	ifstream inf(sf);
+	lexer = new yyFlexLexer(&inf);
 	Parser* p = new Parser();
 	p->parse();
+	}
 //	symbolTable->toString();
 	/*for(int i=0;i<scoopVector.size();i++)
 	scoopVector.at(i)->toString();*/
