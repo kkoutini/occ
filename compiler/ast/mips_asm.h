@@ -7,6 +7,8 @@
 #include <fstream>
 using namespace std;
 
+extern int lineNum;
+extern int colNum;
 
 class MIPS_ASM
 {
@@ -43,6 +45,8 @@ static	FILE * file;
 	static void lif(string reg,float v);
 
 	static void reserveStack(int size);
+	static void releaseStack(int size);
+
 	static void push(string source);
 	static void pushf(string source);
 

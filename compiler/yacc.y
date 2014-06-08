@@ -775,6 +775,10 @@ statement_list	CLOSE_S							{
 												scoop=scoop->getParent();
 												cout<<"block_body_statements:CLOSE_S\n";
 												}
+|error CLOSE_S                                        {
+												scoop=scoop->getParent();
+												cout<<"block_body_statements: error CLOSE_S\n";
+												}
 ;
 statement_list:
 		statement_list statement			{cout<<"statement_list: statement_list statement\n";
@@ -831,11 +835,12 @@ statement:
 	$<r.node>$=$<r.node>1;
 	}
 	
-	
+	| error SEMI_COMA { cout<<"error SEMI_COMA \n";}
+
 ;
 
 asm:
-	AT_ASM IDENTIFIER SEMI_COMA              {cout<<"@asm command \n";
+	AT_ASM STRING_VAL SEMI_COMA              {cout<<"@asm command \n";
 	                                         $<r.node>$=new AsmNode(scoop,$<r.text>2);
 											 }
 

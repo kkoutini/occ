@@ -118,6 +118,10 @@ Method* Interface::getMethodByName(string name, Type* type, vector<DeclerationSe
 
 
 void Interface::generateCode(){
+	MIPS_ASM::printComment("#########################################");
+	MIPS_ASM::printComment(string("Generating code for class ") + this->get_name());
+	MIPS_ASM::add_instruction("\n\n\n");
+
 	for (auto i = this->methodsItem->methods.begin(); i != this->methodsItem->methods.end(); i++)
 	{
 		MIPS_ASM::printComment(string( "generating code for Method:")+ i->first+i->second->to_string());
@@ -129,6 +133,8 @@ void Interface::generateCode(){
 
 		}
 	}
+	MIPS_ASM::printComment("#########################################");
+	MIPS_ASM::add_instruction("\n\n\n");
 }
 
 Method* Interface::getMethod(string message, vector<CallSelector*> v, bool isStatic )

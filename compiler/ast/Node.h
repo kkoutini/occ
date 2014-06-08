@@ -1,7 +1,5 @@
 #pragma once
 #include "mips_asm.h"
-extern int lineNum;
-extern int colNum;
 class ScoopNode;
 class Type;
 class Node

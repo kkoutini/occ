@@ -124,6 +124,9 @@ cout<<"end scooooooooooooop\n";
 		for(auto i=_nodes.begin();i!=_nodes.end();i++){
 			(*i)->generateCode();
 		}
+		//TODO collecting garbage
+		MIPS_ASM::releaseStack(getFrameSize());
+
 	}
 	virtual bool typeCheck()
 	{

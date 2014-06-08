@@ -292,5 +292,11 @@
     <Text Include="code.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="system.oc">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="external tool.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

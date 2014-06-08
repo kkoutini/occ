@@ -177,6 +177,8 @@
     <Text Include="code.txt" />
     <Text Include="codeold.txt" />
     <Text Include="test.txt" />
+    <Text Include="system.oc" />
+    <Text Include="external tool.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
