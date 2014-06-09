@@ -18,12 +18,15 @@ private:
 	hash_map< string, Protocol*> son_protocols;
 	ClassNode *classNode;
 	Interface* inherit_interface;
-	
+	int _id=-1;
 public:
+	static int interfacesCount;
+
 	Interface(string name);
 	ClassNode* getScoop(){
 		return classNode;
 	}
+	int getId();
 	void setClassNode(ClassNode*);
 	Interface(Interface*);
 	MethodItems* getMethodsItem();

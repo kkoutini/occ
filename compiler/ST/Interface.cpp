@@ -6,6 +6,7 @@
 #include "../ClassNode.h"
 #include "../ast/FunctionNode.h"
 using namespace std;
+int Interface::interfacesCount=0;
 
 Interface::Interface(string name):Type(name)
 {
@@ -140,4 +141,10 @@ void Interface::generateCode(){
 Method* Interface::getMethod(string message, vector<CallSelector*> v, bool isStatic )
 {
 	return methodsItem->getMethod(message, v, isStatic);
+}
+int Interface::getId(){
+	if (_id == -1){
+		_id = ++interfacesCount;
+	}
+	return _id;
 }
