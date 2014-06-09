@@ -3801,7 +3801,7 @@ yyreduce:
 
   case 214:
 #line 1089 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
-    {cout<<"simple_expr:OPEN_P expr CLOSE_P\n";}
+    {cout<<"simple_expr:OPEN_P expr CLOSE_P\n";(yyval.r.node)=(yyvsp[-1].r.node);}
 #line 3806 "yacc.cpp" /* yacc.c:1646  */
     break;
 

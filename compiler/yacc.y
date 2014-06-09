@@ -1086,7 +1086,7 @@ simple_expr:
 									cout<<"simple_expr:expr DIV expr\n";
 									$<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,DIV,scoop);
 									}
-	|OPEN_P simple_expr CLOSE_P		{cout<<"simple_expr:OPEN_P expr CLOSE_P\n";}
+	|OPEN_P simple_expr CLOSE_P		{cout<<"simple_expr:OPEN_P expr CLOSE_P\n";$<r.node>$=$<r.node>2;}
 	|IDENTIFIER DOUBLEPLUS          {cout<<"simple_expr:ID++";}
 	|IDENTIFIER DOUBLEMINUS         {cout<<"simple_expr:ID--";}
 	|DOUBLEPLUS IDENTIFIER         {cout<<"simple_expr:++ID";}
