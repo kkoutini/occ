@@ -142,6 +142,7 @@
     <ClInclude Include="CallSelector.h" />
     <ClInclude Include="ClassNode.h" />
     <ClInclude Include="DeclerationSelector.h" />
+    <ClInclude Include="DotNode.h" />
     <ClInclude Include="DoWhileNode.h" />
     <ClInclude Include="ElseNode.h" />
     <ClInclude Include="EnumHelper.h" />

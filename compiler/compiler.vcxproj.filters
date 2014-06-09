@@ -281,6 +281,9 @@
     <ClInclude Include="MethodsIndexer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DotNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="codeold.txt">
