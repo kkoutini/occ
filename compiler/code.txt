@@ -12,13 +12,26 @@ int b;
 @implementation wessam
 -(void) print:(int)parameter
 {
-	@asm "li $v0 ,1";
-	@asm "lw $a0 ,0($fp)";
-	@asm "syscall";
+	
 }
 -(int) go:(int)y
 {
 	y=8;
+	int c;
+	{
+		int mm;
+		mm=3;
+		{
+			int bb;
+			y=0;
+			c=0;
+			bb=0;
+		}
+		int nn;
+		nn=11;
+	}
+	int b;
+
 }
 
 -(int) a2go:(int)y

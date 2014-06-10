@@ -51,6 +51,7 @@ void InterfaceHelper::addDataMembers(Interface* interface,vector<string>idsList,
 				var->setIsConst(true);
 			if(interface->getVariableItems()-> get_variable(var->get_name())==NULL){
 				interface-> getVariableItems()-> add_variable(var);
+				interface->getScoop()->add_variable(var);
 			}
 			else {
 				string error="Duplicate member '";

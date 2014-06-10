@@ -14,7 +14,6 @@ protected:
 
 public:
 
-	int offset;
 	virtual int getVarsOffset()
 	{
 		return getParent()==NULL?0:getParent()->getFrameSize() + getParent()->getVarsOffset();
@@ -32,7 +31,6 @@ public:
 	}
 	ScoopNode(ScoopNode * parent) :Node(parent)
 	{
-		offset=0;
 		_currentInnerOffset=0;
 	}
 	/*
@@ -60,7 +58,8 @@ public:
 	{
 		if ((this!=NULL)&&(variable!= NULL)&&(!checkVariableExistance(variable->get_name())))
 		{
-			variable->offset=getNextOffset(variable->getType()->getTypeSize());
+			variable->setOffset( getNextOffset(variable->getType()->getTypeSize()));
+			variable->_scoop = this;
 			_variables.insert(make_pair(variable->get_name(), variable));
 
 			return true;

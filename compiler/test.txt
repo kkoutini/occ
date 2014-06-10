@@ -230,7 +230,7 @@ move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
  #reserving space in stack for scope variables
-sub $sp,$sp,0
+sub $sp,$sp,8
 li $t9,8
 sub $sp,$sp,4
 sw $t9, 0($sp)
@@ -244,8 +244,81 @@ lw $t0, 0($sp)
 add $sp,$sp,4
 add $t0,$0,$t1
 sw $t0,0($fp)
+ #reserving space in stack for scope variables
+sub $sp,$sp,8
+li $t9,3
+sub $sp,$sp,4
+sw $t9, 0($sp)
+lw $t1, 0($sp)
+add $sp,$sp,4
+ #identifier mm
+lw $t9,12($fp)
+sub $sp,$sp,4
+sw $t9, 0($sp)
+lw $t0, 0($sp)
+add $sp,$sp,4
+add $t0,$0,$t1
+sw $t0,12($fp)
+ #reserving space in stack for scope variables
+sub $sp,$sp,4
+li $t9,0
+sub $sp,$sp,4
+sw $t9, 0($sp)
+lw $t1, 0($sp)
+add $sp,$sp,4
+ #identifier y
+lw $t9,0($fp)
+sub $sp,$sp,4
+sw $t9, 0($sp)
+lw $t0, 0($sp)
+add $sp,$sp,4
+add $t0,$0,$t1
+sw $t0,0($fp)
+li $t9,0
+sub $sp,$sp,4
+sw $t9, 0($sp)
+lw $t1, 0($sp)
+add $sp,$sp,4
+ #identifier c
+lw $t9,4($fp)
+sub $sp,$sp,4
+sw $t9, 0($sp)
+lw $t0, 0($sp)
+add $sp,$sp,4
+add $t0,$0,$t1
+sw $t0,4($fp)
+li $t9,0
+sub $sp,$sp,4
+sw $t9, 0($sp)
+lw $t1, 0($sp)
+add $sp,$sp,4
+ #identifier bb
+lw $t9,20($fp)
+sub $sp,$sp,4
+sw $t9, 0($sp)
+lw $t0, 0($sp)
+add $sp,$sp,4
+add $t0,$0,$t1
+sw $t0,20($fp)
  #releasing space in stack for scope variables
-add $sp,$sp,0
+add $sp,$sp,4
+li $t9,11
+sub $sp,$sp,4
+sw $t9, 0($sp)
+lw $t1, 0($sp)
+add $sp,$sp,4
+ #identifier nn
+lw $t9,16($fp)
+sub $sp,$sp,4
+sw $t9, 0($sp)
+lw $t0, 0($sp)
+add $sp,$sp,4
+add $t0,$0,$t1
+sw $t0,16($fp)
+ #releasing space in stack for scope variables
+add $sp,$sp,8
+ #releasing space in stack for scope variables
+add $sp,$sp,8
  #releasing space in stack for scope variables
 add $sp,$sp,4
 
@@ -261,12 +334,6 @@ move $fp,$sp
 sub $sp,$sp,4
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- #asm node :li $v0 ,1
-li $v0 ,1
- #asm node :lw $a0 ,0($fp)
-lw $a0 ,0($fp)
- #asm node :syscall
-syscall
  #releasing space in stack for scope variables
 add $sp,$sp,0
  #releasing space in stack for scope variables
@@ -285,13 +352,13 @@ sub $sp,$sp,4
  #reserving space in stack for scope variables
 sub $sp,$sp,4
  #identifier a
-lw $t9,0($fp)
+lw $t9,4($fp)
 sub $sp,$sp,4
 sw $t9, 0($sp)
  #CALLING A METHOD go: (int) y 
  #generating code for the sender
  #identifier a
-lw $t9,0($fp)
+lw $t9,4($fp)
 sub $sp,$sp,4
 sw $t9, 0($sp)
  #generating code for Args
@@ -307,18 +374,18 @@ sw $t9, 0($sp)
 lw $t1, 0($sp)
 add $sp,$sp,4
  #identifier a
-lw $t9,0($fp)
+lw $t9,4($fp)
 sub $sp,$sp,4
 sw $t9, 0($sp)
  #getting a datamember b of type int
  #generating code for the sender
  #identifier a
-lw $t9,0($fp)
+lw $t9,4($fp)
 sub $sp,$sp,4
 sw $t9, 0($sp)
 lw $a0, 0($sp)
 add $sp,$sp,4
-lw $t0,-1($a0)
+lw $t0,4($a0)
 sub $sp,$sp,4
 sw $t0, 0($sp)
 lw $t0, 0($sp)

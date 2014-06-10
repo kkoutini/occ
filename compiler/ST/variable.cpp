@@ -1,5 +1,6 @@
 #include "Variable.h"
 #include "Array.h"
+#include "../ast/ScoopNode.h"
 //setters and getters
 //Variable::Variable(string name, symbol* Variable_type):symbol(name, NULL){
 //	this->var_type = Variable_type;
@@ -12,13 +13,13 @@ Variable::Variable(string name, Type* type,string accessModifier):Symbol(name){
 	this->type=type;
 	this->isConst = false;
 	this->setAccessModifier(accessModifier);
-	offset=-1;
+	_offset=-1;
 	}
 Variable::Variable(string name, Type* type, bool isConst) :Symbol(name){
 	this->type = type;
 	this->isConst = true;
 	this->setAccessModifier("@public");
-	offset = -1;
+	_offset = -1;
 }
 string Variable:: getAccessModifier(){
 	if (this!=NULL){
@@ -104,3 +105,11 @@ string Variable::to_string(){
 	return this->get_name() + " of type " + this->getType()->get_name();
 }
 
+
+int Variable::getOffset()
+{
+	if (_scoop == NULL)
+		Streams::WTF() << "variable scoop in null\n";
+
+	return _scoop->getVarsOffset() + _offset;
+}

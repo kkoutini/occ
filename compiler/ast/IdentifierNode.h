@@ -16,11 +16,12 @@ public:
 		
 	}
 	int getOffset(){
-		return this->_scoop->getVarsOffset()+this->_scoop->get_variable(_name)->offset;
+		return this->_scoop->get_variable(_name)->getOffset();
 	}
 virtual void generateCode(){
 		MIPS_ASM::printComment("identifier "+_name);
-		MIPS_ASM::lw_fp("t9",this->_scoop->offset+this->_scoop->get_variable(_name)->offset);
+		Variable *var = this->_scoop->get_variable(_name);
+		MIPS_ASM::lw_fp("t9", var->getOffset());
 		MIPS_ASM::push("t9");
 
 		//for(int i=0;i<=(this->_scoop->offset+this->_scoop->get_variable(_name)->offset)/4;i++)

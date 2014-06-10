@@ -40,7 +40,7 @@ public:
 		// now the object address must be in stack
 		MIPS_ASM::pop("a0");
 
-		MIPS_ASM::lw("t0",variable->offset,"a0");
+		MIPS_ASM::lw("t0",variable->getOffset(),"a0");
 		MIPS_ASM::push("t0");
 
 	}

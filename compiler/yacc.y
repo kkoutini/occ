@@ -555,6 +555,7 @@ main_initializer: EQUAL expr {
 								$<r.node>$=new AssignNode(scoop,NULL,$<r.node>2);
 							 }
 | //epsilon
+{$<r.node>$=NULL;}
 ;
 
 
