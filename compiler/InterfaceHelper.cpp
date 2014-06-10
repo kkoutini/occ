@@ -184,8 +184,7 @@ Interface* InterfaceHelper:: checkImplementation(string typeS,SymbolTable* symbo
 	return interface;
 }
 Interface* InterfaceHelper ::createNewInterface(string name,string inheritedInterfaceName,SymbolTable *symbolTable ){
-	Interface * interface=new Interface(name);
-	interface->setClassNode(new ClassNode(NULL,interface));
+	Interface * interface = dynamic_cast<Interface*>( symbolTable->getType(name));
 	if(inheritedInterfaceName!="")
 		if(symbolTable->getType(inheritedInterfaceName)!=NULL)
 		{

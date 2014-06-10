@@ -1,6 +1,6 @@
 #include"SymbolTable.h"
 #include"Symbol.h"
-
+#include "../Streams.h"
 SymbolTable::SymbolTable(void)
 {
 	this->add_type(new Type("int"));
@@ -44,7 +44,11 @@ void SymbolTable::toString(){
 void SymbolTable ::add_type(Type* type){
 	if ((type!=NULL)&&(this!=NULL) ){
 		//Method* temp = this->getMethod(S->get_name(), S->get_return_type(),S->parameters);
-
+		if (types.find(type->get_name()) != types.end())
+		{
+			Streams::WTF() << "duplicated addd\n\n";
+			throw new exception("deal breaking error,WTF duplicated add");
+		}
 		types[type->get_name()]=type;
 
 	}
@@ -59,6 +63,7 @@ Type* SymbolTable::getType(string name)
 		return types[name]; // even if it's not implemented yet it should return object with the default constructer expecting to be defined later (multiparse)
 		else
 		{
+			Streams::verbose() << "Making new interface\n\n\n\n";
 			Interface* interface = new Interface(name);
 			add_interfaceState(name, false);
 			return types[name] = interface;

@@ -4,11 +4,14 @@
 #include"ST\Array.h"
 #include "Program.h"
 #include "ST\Interface.h"
+
 static class ScoopHelper
 {
 public:
-	static ScoopNode* createNewScoop(ScoopNode*,Method*,Interface*);
-	static void addVariables(vector<string>,vector<Array*>,Type*,bool,ScoopNode*);
+	
+	static FunctionNode* createNewFunctionNode(ScoopNode*, Method*, Interface*);
+	static ScoopNode* createNewScoop(ScoopNode*);
+	static void addVariables(vector<string>, vector<Array*>, Type*, bool, ScoopNode*);
 		
 };
 

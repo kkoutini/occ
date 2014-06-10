@@ -16,6 +16,7 @@ public:
 	*/
 	static ostream& WTF()
 	{
+		cout << "######################################\nWTF\nshould never happen\n\n\n";
 		return cout;
 	}
 	/*

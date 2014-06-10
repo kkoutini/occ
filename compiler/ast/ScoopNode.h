@@ -32,7 +32,7 @@ public:
 	}
 	ScoopNode(ScoopNode* scoop):Node(scoop)
 	{
-		
+		//TODO this may cause problems for later defined vars
 		if(scoop!=NULL){
 			offset=scoop->offset;
 		_currentInnerOffset=scoop->_currentInnerOffset;

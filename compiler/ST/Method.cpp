@@ -140,7 +140,7 @@ bool Method::compare(Method* method1, Method* method2){
 				return false;
 			j++;
 		}
-		return method1-> get_name()!=method2->get_name();
+		return method1-> get_name()==method2->get_name();
 	}
 	return false;
 }

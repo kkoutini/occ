@@ -14,7 +14,7 @@ Interface::Interface(string name):Type(name)
 	methodsItem=new MethodItems();
 }
 	void Interface::setClassNode(ClassNode* classNode){
-		this->classNode=new ClassNode(classNode);
+		this->classNode=classNode;
 	}
 Interface::Interface(Interface* interf):Type(interf->get_name())
 {
@@ -64,7 +64,7 @@ Interface::Interface(Interface* interf):Type(interf->get_name())
 
 	void Interface ::setInheritInterface(Interface* interf)
 	{
-		this->inherit_interface=new Interface(interf);
+		this->inherit_interface=interf;
 	}
 	
 //void Interface::add_Method(Method* S)

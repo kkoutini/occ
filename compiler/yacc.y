@@ -32,6 +32,8 @@
 				#include "AsmNode.h"
 				#include "DotNode.h"
 				#include <fstream>
+				#include "Streams.h"
+
 	using namespace std;
 	
     extern string sourceFile="";
@@ -56,6 +58,8 @@
 	vector<Array*>arrayList;
 	vector<Method*>methodsList;
 	vector <ScoopNode*>scoopVector;
+	ScoopNode* globalScoop=NULL;
+
 	ScoopNode* scoop=NULL;
 	ScoopNode* cscoop=NULL;
 	bool flag=false;
@@ -195,7 +199,6 @@ component:	class_interface				{cout<<"class_interface \n";}
 			|enum						{cout<<"enum \n";}
 ;
 class_interface: class_interface_header class_interface_body	{cout<<"class_interface: class_interface_header class_interface_body\n";
-																interface->setClassNode(classNode);
 																classNode=NULL;
 																 idsList.clear();
 																 methodsList.clear();
@@ -206,12 +209,17 @@ class_interface: class_interface_header class_interface_body	{cout<<"class_inter
 ;
 class_interface_header:  AT_INTERFACE IDENTIFIER		SEMI_COLUMN IDENTIFIER	{cout<<"class_interface_header:  AT_INTERFACE IDENTIFIER SEMI_COLUMN IDENTIFIER\n";
 																				interface=InterfaceHelper::createNewInterface($<r.text>2,$<r.text>4,symbolTable);
-																				classNode=new ClassNode(NULL,interface);
+																				
+																				classNode=new ClassNode(globalScoop,interface);
+																				interface->setClassNode(classNode);
+																				
 																				}
 						|AT_INTERFACE IDENTIFIER								{
 																					cout<<"class_interface_header:  AT_INTERFACE IDENTIFIER\n";
 																				 interface=InterfaceHelper::createNewInterface($<r.text>2,"",symbolTable);
-																				 	classNode=new ClassNode(NULL,interface);
+																				 	classNode=new ClassNode(globalScoop,interface);
+																				interface->setClassNode(classNode);
+
 																				}
 						|error IDENTIFIER								{cout<<"Error: Unknown type name '"<<$<r.text>1<<"' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
 						|AT_INTERFACE error					{cout<<"Error: Expected Identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
@@ -577,11 +585,7 @@ class_method_declaration:
 																 selectorsList.clear();
 																
 																}
-	|PLUS			 method_selectors	SEMI_COMA				{
-																cout<<"class_method_declaration: PLUS			 method_selectors	SEMI_COMA\n";
-																		method=InterfaceHelper::createNewMethod(type,symbolTable,$<r.text>3,selectorsList,true);
-																 selectorsList.clear();
-																}
+	
 	|PLUS p_type		 method_selectors error	   {cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
 	|PLUS			 method_selectors error		{cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
 	;
@@ -593,12 +597,7 @@ instance_method_declaration:
 																
 																
 															}
-	|MINUS			 method_selectors	SEMI_COMA				{
-																	cout<<"instance_method_declaration: MINUS			 method_selectors	SEMI_COMA\n";
-																method=InterfaceHelper::createNewMethod(type,symbolTable,$<r.text>3,selectorsList,true);
-																 selectorsList.clear();
-																}
-	;
+;
 p_type:
 	OPEN_P type CLOSE_P											{
 																cout<<"p_type : OPEN_P type CLOSE_P\n";
@@ -716,21 +715,17 @@ class_implementation_definition_header:
 																
 																
 										}
-	|PLUS			 method_selectors	{
-											cout<<"class_implementation_definition_header:  PLUS			 method_selectors\n";
-													 method =InterfaceHelper:: createNewMethod(type,symbolTable,$<r.text>2,selectorsList,true);
-																 selectorsList.clear();
-									
-										}
 ;
 
 instance_implementation_definition:
 	instance_implementation_definition_header block_body	{
-															scoop=NULL;
-															cscoop=NULL;
+															//scoop=NULL;
+															//cscoop=NULL;
 															cout<<"instance_implementation_definition: instance_implementation_definition_header block_body\n";
-															//method->setFunctionNode(functionNode);
+														functionNode->addNode(scoop);
 														functionNode=NULL;
+												scoop=scoop->getParent();
+
 															}	
 ;
 instance_implementation_definition_header:
@@ -738,14 +733,11 @@ instance_implementation_definition_header:
 											     cout<<"instance_implementation_definition_header:MINUS p_type		method_selectors\n";
 												 method=InterfaceHelper:: createNewMethod(type,symbolTable,$<r.text>3,selectorsList,false);
 																 selectorsList.clear();
-															
+												cscoop=scoop;
+									           functionNode= ScoopHelper::createNewFunctionNode(scoop,method,interface);
+												scoop=functionNode;
 												}
-	|MINUS				method_selectors			{
-												cout<<"instance_implementation_definition_header:MINUS 			method_selectors\n";
-												 method =InterfaceHelper:: createNewMethod(type,symbolTable,$<r.text>2,selectorsList,false);
-																 selectorsList.clear();
-												}
-;
+	;
 block_body:
 	block_body_header block_body_statements		{
 												
@@ -756,16 +748,9 @@ block_body:
 block_body_header:
 OPEN_S											{
 												cscoop=scoop;
-                                                scoop=ScoopHelper::createNewScoop(cscoop,method,interface);
+                                                scoop=ScoopHelper::createNewScoop(cscoop);
 												
-												if(functionNode==NULL){
-												functionNode=dynamic_cast<FunctionNode*>(scoop);
-												if(functionNode==NULL)
-													cout<<"SHould never happpppen\n\n\n\n\n\n";
-													
-													//functionNode=new FunctionNode(scoop,method);
-													}else
-													functionNode->addNode(scoop);
+												
 												scoopVector.push_back(scoop);
 												cout<<"block_body_header:OPEN_S	\n";
 												$<r.node>$=scoop;
@@ -1344,9 +1329,10 @@ int yylex(){
 
 }
 void main(void){
-//freopen("code.txt","r",stdin);
-//yyin = fopen("code.txt","r");
-    //yydebug=1;
+  //yydebug=1;
+
+	globalScoop=new ScoopNode(NULL,NULL);
+	scoop=globalScoop;
 	vector<string> sfiles;
 		sfiles.push_back("system.oc");
 
