@@ -10,10 +10,17 @@ protected:
 	map<string, Variable*> _variables;
 	list<Node *> _nodes;
 	int _currentInnerOffset;
-
+	string _offsetReg = "fp";
 
 public:
-
+	virtual string getOffsetRegister()
+	{
+		return _offsetReg;
+	}
+	virtual void setOffsetRegister(string o)
+	{
+		_offsetReg = o;
+	}
 	virtual int getVarsOffset()
 	{
 		return getParent()==NULL?0:getParent()->getFrameSize() + getParent()->getVarsOffset();

@@ -1334,6 +1334,7 @@ void main(void){
   //yydebug=1;
 
 	globalScoop=new ScoopNode(NULL);
+	globalScoop->setOffsetRegister("gp");
 	vector<string> sfiles;
 	sfiles.push_back("system.oc");
 

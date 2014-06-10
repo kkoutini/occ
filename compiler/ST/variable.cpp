@@ -113,3 +113,9 @@ int Variable::getOffset()
 
 	return _scoop->getVarsOffset() + _offset;
 }
+
+
+string Variable::getOffsetRegister()
+{
+	return _scoop->getOffsetRegister();
+}

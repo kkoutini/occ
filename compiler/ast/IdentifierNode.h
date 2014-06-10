@@ -21,7 +21,7 @@ public:
 virtual void generateCode(){
 		MIPS_ASM::printComment("identifier "+_name);
 		Variable *var = this->_scoop->get_variable(_name);
-		MIPS_ASM::lw_fp("t9", var->getOffset());
+		MIPS_ASM::lw("t9", var->getOffset(), var->getOffsetRegister());
 		MIPS_ASM::push("t9");
 
 		//for(int i=0;i<=(this->_scoop->offset+this->_scoop->get_variable(_name)->offset)/4;i++)

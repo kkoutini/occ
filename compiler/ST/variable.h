@@ -19,6 +19,7 @@ public:
 	ScoopNode* _scoop;
 	int Variable::getOffset();
 
+	virtual string getOffsetRegister();
 	//Variable(string name, string var_type="Variable");
 	virtual void toString();
 	Variable(string name, Type* type, string = "@public");
