@@ -3,6 +3,7 @@
 {
 @public
 NSString str1;
+int b;
 }
 -(int) go:(int)y;
 
@@ -20,6 +21,7 @@ NSString str1;
 
 	wessam* a;
 	[a go:5];
+	a.b=2;
 }
 
 @end

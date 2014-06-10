@@ -30,6 +30,7 @@
 				#include "ElseNode.h"
 				#include "ClassNode.h"
 				#include "AsmNode.h"
+				#include "DotNode.h"
 				#include <fstream>
 	using namespace std;
 	
@@ -757,9 +758,13 @@ OPEN_S											{
 												cscoop=scoop;
                                                 scoop=ScoopHelper::createNewScoop(cscoop,method,interface);
 												
+												if(functionNode==NULL){
+												functionNode=dynamic_cast<FunctionNode*>(scoop);
 												if(functionNode==NULL)
-													functionNode=new FunctionNode(scoop,method);
-													else
+													cout<<"SHould never happpppen\n\n\n\n\n\n";
+													
+													//functionNode=new FunctionNode(scoop,method);
+													}else
 													functionNode->addNode(scoop);
 												scoopVector.push_back(scoop);
 												cout<<"block_body_header:OPEN_S	\n";
@@ -1040,7 +1045,10 @@ assign_expr:
 										}
 ;
 long_id:
-	long_id DOT IDENTIFIER					{cout<<"long_id: long_id.IDENTIFIER\n";LongIdHelper::addIdentifier($<r.text>1);}
+	long_id DOT IDENTIFIER					{cout<<"long_id: long_id.IDENTIFIER\n";
+																$<r.node>$=new DotNode(scoop,$<r.node>1,$<r.text>3);
+
+											;}
 	|message_call							{
 												cout<<"long_id: long_id.message_call\n";
 												$<r.node>$=$<r.node>1;

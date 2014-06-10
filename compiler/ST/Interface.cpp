@@ -125,11 +125,15 @@ Variable* Interface::getVariableByName(string name)
 void Interface::generateCode(){
 	MIPS_ASM::printComment("#########################################");
 	MIPS_ASM::printComment(string("Generating code for class ") + this->get_name());
-	MIPS_ASM::add_instruction("\n\n\n");
+	MIPS_ASM::add_instruction("\n\n\n\n");
 
 	for (auto i = this->methodsItem->methods.begin(); i != this->methodsItem->methods.end(); i++)
 	{
+		MIPS_ASM::add_instruction("\n\n");
+
 		MIPS_ASM::printComment(string( "generating code for Method:")+ i->first+i->second->to_string());
+		MIPS_ASM::add_instruction("\n");
+
 		if (i->second->getF() != NULL){
 			i->second->getF()->generateCode();
 		}

@@ -13,8 +13,7 @@ public:
 	
 	FunctionNode(ScoopNode* scoop,Method* method):ScoopNode(scoop),_method(method)
 	{
-		int x;
-		x = 1;
+	//	_method->setFunctionNode(this);
 	}
 	void toString(){
 		for(map<string, Variable*>::iterator it=_variables.begin();it!=_variables.end();it++)

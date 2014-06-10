@@ -7,7 +7,7 @@
 #include "../ast/FunctionNode.h"
 #include "../MethodsIndexer.h"
 void Method::setFunctionNode(FunctionNode* fNode){
-	this->scoopBody = new FunctionNode(fNode);
+	this->scoopBody = fNode;
 }
 Method::Method(string name) :Symbol(name)
 {
