@@ -1,10 +1,12 @@
 #pragma once
 #include <iostream>
+#include<sstream>
 using namespace std;
 class Streams
 {
 protected:
 	ostream* _wtf;
+	static stringstream _verbose;
 public:
 
 	Streams()
@@ -30,7 +32,9 @@ public:
 	detaild information not required by every-day-use
 	*/
 	static ostream& verbose()
+//	static stringstream& verbose()
 	{
+		//return _verbose;
 		return cout;
 	}
 

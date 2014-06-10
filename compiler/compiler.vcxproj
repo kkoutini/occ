@@ -105,6 +105,7 @@
     <ClCompile Include="ScoopHelper.cpp" />
     <ClCompile Include="Selector.cpp" />
     <ClCompile Include="SemanticError.cpp" />
+    <ClCompile Include="Streams.cpp" />
     <ClCompile Include="Struct.cpp" />
     <ClCompile Include="StructHelper.cpp" />
     <ClCompile Include="ST\Array.cpp" />
