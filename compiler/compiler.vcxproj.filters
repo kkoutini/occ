@@ -284,6 +284,9 @@
     <ClInclude Include="DotNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Streams.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="codeold.txt">

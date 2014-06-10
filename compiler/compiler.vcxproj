@@ -157,6 +157,7 @@
     <ClInclude Include="ScoopHelper.h" />
     <ClInclude Include="Selector.h" />
     <ClInclude Include="SemanticError.h" />
+    <ClInclude Include="Streams.h" />
     <ClInclude Include="Struct.h" />
     <ClInclude Include="StructHelper.h" />
     <ClInclude Include="ST\Array.h" />
