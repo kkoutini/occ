@@ -719,13 +719,12 @@ class_implementation_definition_header:
 
 instance_implementation_definition:
 	instance_implementation_definition_header block_body	{
-															//scoop=NULL;
-															//cscoop=NULL;
 															cout<<"instance_implementation_definition: instance_implementation_definition_header block_body\n";
-														functionNode->addNode(scoop);
+														functionNode->addNode(cscoop);
 														functionNode=NULL;
-												scoop=scoop->getParent();
-
+																scoop=NULL;
+															scoop=NULL;
+										
 															}	
 ;
 instance_implementation_definition_header:
@@ -733,8 +732,7 @@ instance_implementation_definition_header:
 											     cout<<"instance_implementation_definition_header:MINUS p_type		method_selectors\n";
 												 method=InterfaceHelper:: createNewMethod(type,symbolTable,$<r.text>3,selectorsList,false);
 																 selectorsList.clear();
-												cscoop=scoop;
-									           functionNode= ScoopHelper::createNewFunctionNode(scoop,method,interface);
+									           functionNode= ScoopHelper::createNewFunctionNode(method,interface);
 												scoop=functionNode;
 												}
 	;
@@ -747,8 +745,8 @@ block_body:
 ;
 block_body_header:
 OPEN_S											{
-												cscoop=scoop;
-                                                scoop=ScoopHelper::createNewScoop(cscoop);
+												
+                                                scoop=ScoopHelper::createNewScoop(scoop);
 												
 												
 												scoopVector.push_back(scoop);
@@ -759,15 +757,15 @@ OPEN_S											{
 block_body_statements:
 
 statement_list	CLOSE_S							{
-												scoop=scoop->getParent();
+												cscoop=scoop;scoop=scoop->getParent();
 												cout<<"block_body_statements:statement_list	CLOSE_S	\n";
 												}
 |CLOSE_S                                        {
-												scoop=scoop->getParent();
+												cscoop=scoop;scoop=scoop->getParent();
 												cout<<"block_body_statements:CLOSE_S\n";
 												}
 |error CLOSE_S                                        {
-												scoop=scoop->getParent();
+											  cscoop=scoop; scoop=scoop->getParent();
 												cout<<"block_body_statements: error CLOSE_S\n";
 												}
 ;
@@ -1207,7 +1205,7 @@ switch_header:
 									}
 ;
 switch_body_block:
-OPEN_S {cscoop=scoop;scoop=new ScoopNode(cscoop);tempSwitch=new SwitchNode(NULL,std::list<pair<Node*,Node*>>(),scoop);}
+OPEN_S {scoop=new ScoopNode(scoop);tempSwitch=new SwitchNode(NULL,std::list<pair<Node*,Node*>>(),scoop);}
 ;
 switch_body:
  list_of_case default_case CLOSE_S {;}
@@ -1332,17 +1330,16 @@ void main(void){
   //yydebug=1;
 
 	globalScoop=new ScoopNode(NULL,NULL);
-	scoop=globalScoop;
 	vector<string> sfiles;
-		sfiles.push_back("system.oc");
+	sfiles.push_back("system.oc");
 
 	sfiles.push_back("code.txt");
 	for(string sf:sfiles){
-	sourceFile=sf;
-	ifstream inf(sf);
-	lexer = new yyFlexLexer(&inf);
-	Parser* p = new Parser();
-	p->parse();
+		sourceFile=sf;
+		ifstream inf(sf);
+		lexer = new yyFlexLexer(&inf);
+		Parser* p = new Parser();
+		p->parse();
 	}
 //	symbolTable->toString();
 	/*for(int i=0;i<scoopVector.size();i++)
@@ -1357,4 +1354,3 @@ void main(void){
 	//functionNode->generateCode();
 	
 }
-

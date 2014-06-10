@@ -4,10 +4,9 @@
 #include"ast\ScoopNode.h"
 #include "ClassNode.h"
 #include "Streams.h"
-FunctionNode* ScoopHelper::createNewFunctionNode(ScoopNode* parentScoop, Method* method, Interface* interface){
+FunctionNode* ScoopHelper::createNewFunctionNode( Method* method, Interface* interface){
 	FunctionNode* scoop;
-	if (parentScoop != NULL){
-
+	
 		scoop = new FunctionNode(dynamic_cast<ScoopNode*>(interface->getScoop()), method);
 		method->getF()->add_variable(new Variable("self", interface, true));
 
@@ -25,15 +24,6 @@ FunctionNode* ScoopHelper::createNewFunctionNode(ScoopNode* parentScoop, Method*
 
 		method->setFunctionNode(scoop);
 		// method->getF()->generateCode();
-	}
-	else{
-		//TODO ERROR
-		//should never happen
-		Streams::WTF() << " parent for function is null\n\n\\\n";
-		scoop = NULL;
-
-	//parentScoop->addInternalScoop(scoop);
-	}
 	return scoop;
 }
 

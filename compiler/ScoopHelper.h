@@ -9,7 +9,7 @@ static class ScoopHelper
 {
 public:
 	
-	static FunctionNode* createNewFunctionNode(ScoopNode*, Method*, Interface*);
+	static FunctionNode* createNewFunctionNode( Method*, Interface*);
 	static ScoopNode* createNewScoop(ScoopNode*);
 	static void addVariables(vector<string>, vector<Array*>, Type*, bool, ScoopNode*);
 		

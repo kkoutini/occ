@@ -571,20 +571,20 @@ static const yytype_uint16 yyrline[] =
      535,   538,   542,   548,   551,   553,   557,   562,   568,   576,
      577,   581,   589,   590,   593,   602,   611,   615,   617,   623,
      631,   637,   641,   650,   663,   666,   671,   677,   683,   686,
-     692,   695,   696,   699,   700,   703,   711,   721,   732,   742,
-     749,   761,   765,   769,   775,   780,   789,   793,   797,   803,
-     812,   815,   819,   821,   824,   829,   834,   840,   846,   853,
-     857,   858,   861,   864,   871,   880,   883,   888,   891,   894,
-     899,   904,   907,   925,   931,   935,   939,   944,   948,   952,
-     957,   963,   974,   977,   982,   985,   988,   991,   994,   997,
-    1000,  1003,  1007,  1010,  1013,  1018,  1021,  1026,  1033,  1037,
-    1041,  1051,  1054,  1058,  1061,  1064,  1067,  1071,  1075,  1078,
-    1082,  1083,  1084,  1085,  1086,  1087,  1094,  1107,  1119,  1125,
-    1135,  1139,  1146,  1151,  1157,  1161,  1163,  1168,  1176,  1182,
-    1187,  1190,  1194,  1199,  1204,  1210,  1213,  1214,  1215,  1216,
-    1219,  1220,  1223,  1224,  1225,  1228,  1229,  1230,  1232,  1240,
-    1246,  1254,  1262,  1268,  1271,  1277,  1284,  1289,  1294,  1299,
-    1306,  1310,  1315,  1316,  1319
+     692,   695,   696,   699,   700,   703,   711,   721,   731,   740,
+     747,   759,   763,   767,   773,   778,   787,   791,   795,   801,
+     810,   813,   817,   819,   822,   827,   832,   838,   844,   851,
+     855,   856,   859,   862,   869,   878,   881,   886,   889,   892,
+     897,   902,   905,   923,   929,   933,   937,   942,   946,   950,
+     955,   961,   972,   975,   980,   983,   986,   989,   992,   995,
+     998,  1001,  1005,  1008,  1011,  1016,  1019,  1024,  1031,  1035,
+    1039,  1049,  1052,  1056,  1059,  1062,  1065,  1069,  1073,  1076,
+    1080,  1081,  1082,  1083,  1084,  1085,  1092,  1105,  1117,  1123,
+    1133,  1137,  1144,  1149,  1155,  1159,  1161,  1166,  1174,  1180,
+    1185,  1188,  1192,  1197,  1202,  1208,  1211,  1212,  1213,  1214,
+    1217,  1218,  1221,  1222,  1223,  1226,  1227,  1228,  1230,  1238,
+    1244,  1252,  1260,  1266,  1269,  1275,  1282,  1287,  1292,  1297,
+    1304,  1308,  1313,  1314,  1317
 };
 #endif
 
@@ -3109,133 +3109,131 @@ yyreduce:
   case 137:
 #line 721 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
-															//scoop=NULL;
-															//cscoop=NULL;
 															cout<<"instance_implementation_definition: instance_implementation_definition_header block_body\n";
-														functionNode->addNode(scoop);
+														functionNode->addNode(cscoop);
 														functionNode=NULL;
-												scoop=scoop->getParent();
-
+																scoop=NULL;
+															scoop=NULL;
+										
 															}
-#line 3121 "yacc.cpp" /* yacc.c:1646  */
+#line 3120 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 138:
-#line 732 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 731 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											     cout<<"instance_implementation_definition_header:MINUS p_type		method_selectors\n";
 												 method=InterfaceHelper:: createNewMethod(type,symbolTable,(yyvsp[0].r.text),selectorsList,false);
 																 selectorsList.clear();
-												cscoop=scoop;
-									           functionNode= ScoopHelper::createNewFunctionNode(scoop,method,interface);
+									           functionNode= ScoopHelper::createNewFunctionNode(method,interface);
 												scoop=functionNode;
 												}
-#line 3134 "yacc.cpp" /* yacc.c:1646  */
+#line 3132 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 139:
-#line 742 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 740 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												
 												cout<<"block_body:OPEN_S  block_body_part \n";
 												(yyval.r.node)=(yyvsp[-1].r.node);
 												}
-#line 3144 "yacc.cpp" /* yacc.c:1646  */
+#line 3142 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 140:
-#line 749 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 747 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
-												cscoop=scoop;
-                                                scoop=ScoopHelper::createNewScoop(cscoop);
+												
+                                                scoop=ScoopHelper::createNewScoop(scoop);
 												
 												
 												scoopVector.push_back(scoop);
 												cout<<"block_body_header:OPEN_S	\n";
 												(yyval.r.node)=scoop;
 												}
-#line 3158 "yacc.cpp" /* yacc.c:1646  */
+#line 3156 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 141:
-#line 761 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 759 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
-												scoop=scoop->getParent();
+												cscoop=scoop;scoop=scoop->getParent();
 												cout<<"block_body_statements:statement_list	CLOSE_S	\n";
 												}
-#line 3167 "yacc.cpp" /* yacc.c:1646  */
+#line 3165 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 142:
-#line 765 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 763 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
-												scoop=scoop->getParent();
+												cscoop=scoop;scoop=scoop->getParent();
 												cout<<"block_body_statements:CLOSE_S\n";
 												}
-#line 3176 "yacc.cpp" /* yacc.c:1646  */
+#line 3174 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 143:
-#line 769 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 767 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
-												scoop=scoop->getParent();
+											  cscoop=scoop; scoop=scoop->getParent();
 												cout<<"block_body_statements: error CLOSE_S\n";
 												}
-#line 3185 "yacc.cpp" /* yacc.c:1646  */
+#line 3183 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 144:
-#line 775 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 773 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"statement_list: statement_list statement\n";
 											(yyval.r.text)=(yyvsp[0].r.text);
 											scoop->addNode((yyvsp[0].r.node));
 											
 											}
-#line 3195 "yacc.cpp" /* yacc.c:1646  */
+#line 3193 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 145:
-#line 780 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 778 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"statement_list: statement\n";
 											(yyval.r.text)=(yyvsp[0].r.text);
 											(yyval.r.node)=(yyvsp[0].r.node);
 											scoop->addNode((yyvsp[0].r.node));
 											
 											}
-#line 3206 "yacc.cpp" /* yacc.c:1646  */
+#line 3204 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 146:
-#line 789 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 787 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"statement: loop_statement\n";
 											(yyval.r.text)="loop";
 											(yyval.r.node)=(yyvsp[0].r.node);
 											}
-#line 3215 "yacc.cpp" /* yacc.c:1646  */
+#line 3213 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 147:
-#line 793 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 791 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"statement: conditional_statement\n";
 											(yyval.r.text)="cond";
 											(yyval.r.node)=(yyvsp[0].r.node);
 											}
-#line 3224 "yacc.cpp" /* yacc.c:1646  */
+#line 3222 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 148:
-#line 797 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 795 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												cout<<"statement: expr\n";
 												(yyval.r.text)="expr";
 												(yyval.r.node)=(yyvsp[-1].r.node);
 												//nodeXX=$<r.node>1;
 											}
-#line 3235 "yacc.cpp" /* yacc.c:1646  */
+#line 3233 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 149:
-#line 803 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 801 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											cout<<"statement: variable_declaration\n";
 											
@@ -3245,76 +3243,76 @@ yyreduce:
 												flag=false;
 												(yyval.r.node)=(yyvsp[0].r.node);
 										    }
-#line 3249 "yacc.cpp" /* yacc.c:1646  */
+#line 3247 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 150:
-#line 812 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 810 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"statement: block_body\n";(yyval.r.text)=new char[256];(yyval.r.text)[0]='\0';strcat((yyval.r.text),"Block");
 												(yyval.r.node)=(yyvsp[0].r.node);
 											}
-#line 3257 "yacc.cpp" /* yacc.c:1646  */
+#line 3255 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 151:
-#line 815 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 813 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"statement: return_statement\n";
 												(yyval.r.text)="return";
 												(yyval.r.node)=(yyvsp[0].r.node);
 											}
-#line 3266 "yacc.cpp" /* yacc.c:1646  */
+#line 3264 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 152:
-#line 819 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 817 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"statement: try_catch\n";}
-#line 3272 "yacc.cpp" /* yacc.c:1646  */
+#line 3270 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 153:
-#line 821 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 819 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 	                                            (yyval.r.text)="asm";
 												(yyval.r.node)=(yyvsp[0].r.node);}
-#line 3280 "yacc.cpp" /* yacc.c:1646  */
+#line 3278 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 154:
-#line 824 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 822 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 	 (yyval.r.text)="call";
 	(yyval.r.node)=(yyvsp[-1].r.node);
 	}
-#line 3289 "yacc.cpp" /* yacc.c:1646  */
+#line 3287 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 155:
-#line 829 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 827 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     { cout<<"error SEMI_COMA \n";}
-#line 3295 "yacc.cpp" /* yacc.c:1646  */
+#line 3293 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 156:
-#line 834 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 832 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"@asm command \n";
 	                                         (yyval.r.node)=new AsmNode(scoop,(yyvsp[-1].r.text));
 											 }
-#line 3303 "yacc.cpp" /* yacc.c:1646  */
+#line 3301 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 157:
-#line 840 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 838 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 														cout<<"variable_declaration:type IDENTIFIER	SEMI_COMA\n";
 														 (yyval.r.text)=(yyvsp[-2].r.text);
 														 (yyval.r.node)=new DeclerationNode(declarationList,scoop,type->get_name());
 														 declarationList.clear();
 														}
-#line 3314 "yacc.cpp" /* yacc.c:1646  */
+#line 3312 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 158:
-#line 846 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 844 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 														cout<<"variable_declaration:CONST type IDENTIFIER	SEMI_COMA\n";
 														flag=true;
@@ -3322,37 +3320,37 @@ yyreduce:
 														  (yyval.r.node)=new DeclerationNode(declarationList,scoop,type->get_name());
 														 declarationList.clear();
 														}
-#line 3326 "yacc.cpp" /* yacc.c:1646  */
+#line 3324 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 159:
-#line 853 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 851 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"variable_declaration:enum\n";}
-#line 3332 "yacc.cpp" /* yacc.c:1646  */
+#line 3330 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 160:
-#line 857 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 855 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"variable_list:variable_list COMMA variable\n";}
-#line 3338 "yacc.cpp" /* yacc.c:1646  */
+#line 3336 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 161:
-#line 858 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 856 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"variable_list:variable\n";
 										
 										}
-#line 3346 "yacc.cpp" /* yacc.c:1646  */
+#line 3344 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 162:
-#line 861 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 859 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected ',' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 3352 "yacc.cpp" /* yacc.c:1646  */
+#line 3350 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 163:
-#line 864 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 862 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											cout <<"variable:  IDENTIFIER array_tag initializer \n";
 											 var=new Array((yyvsp[-1].r.text),arrayAlloc.size(),NULL);
@@ -3360,11 +3358,11 @@ yyreduce:
 											 arrayList.push_back( ( dynamic_cast<Array*>(var)));
 											 arrayAlloc.clear();
 											}
-#line 3364 "yacc.cpp" /* yacc.c:1646  */
+#line 3362 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 164:
-#line 871 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 869 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     { 
 											cout <<"variable:  IDENTIFIER main_initializer \n";
 											idsList.push_back((yyvsp[-1].r.text)) ;
@@ -3374,63 +3372,63 @@ yyreduce:
 											}
 											declarationList.push_back(make_pair((yyvsp[-1].r.text),(yyvsp[0].r.node)));
 											}
-#line 3378 "yacc.cpp" /* yacc.c:1646  */
+#line 3376 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 165:
-#line 880 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 878 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 3384 "yacc.cpp" /* yacc.c:1646  */
+#line 3382 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 166:
-#line 883 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 881 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"return_statement: RETURN expr\n";
 												 (yyval.r.node)=new ReturnNode(scoop,(yyvsp[-1].r.node));
 												}
-#line 3392 "yacc.cpp" /* yacc.c:1646  */
+#line 3390 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 167:
-#line 888 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 886 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"loop_statement: for_loop\n";
 												(yyval.r.node)=(yyvsp[0].r.node);
 											}
-#line 3400 "yacc.cpp" /* yacc.c:1646  */
+#line 3398 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 168:
-#line 891 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 889 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"loop_statement: while_loop\n";
 												(yyval.r.node)=(yyvsp[0].r.node);
 											}
-#line 3408 "yacc.cpp" /* yacc.c:1646  */
+#line 3406 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 169:
-#line 894 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 892 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"loop_statement: do_while_loop\n";
 												(yyval.r.node)=(yyvsp[0].r.node);
 											}
-#line 3416 "yacc.cpp" /* yacc.c:1646  */
+#line 3414 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 170:
-#line 899 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 897 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"do_while: do_header   statement   while_loop_header   SEMI_COMMA\n";
 													(yyval.r.node)=new DoWhileNode((yyvsp[-1].r.node),(yyvsp[-2].r.node),scoop);
 													}
-#line 3424 "yacc.cpp" /* yacc.c:1646  */
+#line 3422 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 171:
-#line 904 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 902 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"do_header: DO\n";}
-#line 3430 "yacc.cpp" /* yacc.c:1646  */
+#line 3428 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 172:
-#line 907 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 905 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_loop: for_loop_header statement\n";
 												type=symbolTable->getType("int");
 											if(type==NULL){
@@ -3447,76 +3445,76 @@ yyreduce:
 												(yyvsp[0].r.node)->toString();
 												(yyval.r.node)=(yyvsp[-1].r.node);
 											}
-#line 3451 "yacc.cpp" /* yacc.c:1646  */
+#line 3449 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 173:
-#line 926 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 924 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_loop_header: FOR OPEN_P for_initializer	SEMI_COMA logic_expr SEMI_COMA expr			CLOSE_P\n";
 										(yyval.r.node)=new ForNode((yyvsp[-5].r.node),(yyvsp[-3].r.node),(yyvsp[-1].r.node),NULL,scoop);
 										//nodeXX=$<r.node>5;
 										}
-#line 3460 "yacc.cpp" /* yacc.c:1646  */
+#line 3458 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 174:
-#line 932 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 930 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr SEMI_COMA expr			CLOSE_P\n";
 										(yyval.r.node)=new ForNode(NULL,(yyvsp[-3].r.node),(yyvsp[-1].r.node),NULL,scoop);
 										}
-#line 3468 "yacc.cpp" /* yacc.c:1646  */
+#line 3466 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 175:
-#line 936 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 934 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_loop_header: FOR OPEN_P for_initializer SEMI_COMA			 SEMI_COMA expr			CLOSE_P\n";
 										(yyval.r.node)=new ForNode((yyvsp[-4].r.node),NULL,(yyvsp[-1].r.node),NULL,scoop);
 										}
-#line 3476 "yacc.cpp" /* yacc.c:1646  */
+#line 3474 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 176:
-#line 940 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 938 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_loop_header: FOR OPEN_P for_initializer SEMI_COMA logic_expr SEMI_COMA				CLOSE_P	\n";
 										(yyval.r.node)=new ForNode((yyvsp[-4].r.node),(yyvsp[-2].r.node),NULL,NULL,scoop);
 										}
-#line 3484 "yacc.cpp" /* yacc.c:1646  */
+#line 3482 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 177:
-#line 945 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 943 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_loop_header: FOR OPEN_P	for_initializer	SEMI_COMA			 SEMI_COMA				CLOSE_P	\n";
 										(yyval.r.node)=new ForNode((yyvsp[-3].r.node),NULL,NULL,NULL,scoop);
 										}
-#line 3492 "yacc.cpp" /* yacc.c:1646  */
+#line 3490 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 178:
-#line 949 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 947 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr SEMI_COMA				CLOSE_P\n";
 										(yyval.r.node)=new ForNode(NULL,(yyvsp[-1].r.node),NULL,NULL,scoop);
 										}
-#line 3500 "yacc.cpp" /* yacc.c:1646  */
+#line 3498 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 179:
-#line 953 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 951 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_loop_header: FOR OPEN_P 				SEMI_COMA			 SEMI_COMA expr			CLOSE_P";
 										(yyval.r.node)=new ForNode(NULL,NULL,(yyvsp[-1].r.node),NULL,scoop);
 										}
-#line 3508 "yacc.cpp" /* yacc.c:1646  */
+#line 3506 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 180:
-#line 958 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 956 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_loop_hearder: FOR OPEN_P 				SEMI_COMA			SEMI_COMA 				CLOSE_P	\n";
 											(yyval.r.node)=new ForNode(NULL,NULL,NULL,NULL,scoop);
 											}
-#line 3516 "yacc.cpp" /* yacc.c:1646  */
+#line 3514 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 181:
-#line 963 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 961 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_initializer: INT IDENTIFIER EQUAL expr\n";
 											AssignNode * temp=new AssignNode(scoop,new IdentifierNode((yyvsp[-2].r.text),scoop),(yyvsp[0].r.node));
 											
@@ -3528,286 +3526,286 @@ yyreduce:
 										 (yyval.r.node)=temp1; 
 										 idsList.push_back((yyvsp[-2].r.text));
 										}
-#line 3532 "yacc.cpp" /* yacc.c:1646  */
+#line 3530 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 182:
-#line 974 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 972 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_initializer: IDENTIFIER EQUAL expr\n";
 										(yyval.r.node)=new AssignNode(scoop,new IdentifierNode((yyvsp[-2].r.text),scoop),(yyvsp[0].r.node));
 										}
-#line 3540 "yacc.cpp" /* yacc.c:1646  */
+#line 3538 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 183:
-#line 977 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 975 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"for_initializer: IDENTIFIER\n";
 										(yyval.r.node)=new IdentifierNode((yyvsp[0].r.text),scoop);
 										}
-#line 3548 "yacc.cpp" /* yacc.c:1646  */
+#line 3546 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 184:
-#line 982 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 980 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:expr LESS_THAN expr\n";
 										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),LESS_THAN,scoop);
 										}
-#line 3556 "yacc.cpp" /* yacc.c:1646  */
+#line 3554 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 185:
-#line 985 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 983 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:expr MORE_THAN expr\n";
 										 (yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),MORE_THAN,scoop);
 										}
-#line 3564 "yacc.cpp" /* yacc.c:1646  */
+#line 3562 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 186:
-#line 988 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 986 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:expr LESS_OR_EQUAL expr\n";
 										 (yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),LESS_OR_EQUAL,scoop);
 										}
-#line 3572 "yacc.cpp" /* yacc.c:1646  */
+#line 3570 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 187:
-#line 991 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 989 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:expr MORE_OR_EQUAL expr\n";
 										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),MORE_OR_EQUAL,scoop);
 										}
-#line 3580 "yacc.cpp" /* yacc.c:1646  */
+#line 3578 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 188:
-#line 994 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 992 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:expr EQUAL_EQUAL expr\n";
 										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),EQUAL_EQUAL,scoop);
 										}
-#line 3588 "yacc.cpp" /* yacc.c:1646  */
+#line 3586 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 189:
-#line 997 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 995 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:NOT_EQUAL expr\n";
 										 (yyval.r.node)=new UnaryNode(scoop,(yyvsp[0].r.node),NOT_EQUAL);
 										}
-#line 3596 "yacc.cpp" /* yacc.c:1646  */
+#line 3594 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 190:
-#line 1000 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 998 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:OPEN_P logic_expr CLOSE_P\n";
 										 (yyval.r.node)=(yyvsp[-1].r.node);
 										}
-#line 3604 "yacc.cpp" /* yacc.c:1646  */
+#line 3602 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 191:
-#line 1003 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1001 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											cout<<"logic_expr:logic_expr AND_AND logic_expr\n";
 											(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),AND_AND,scoop);
 										}
-#line 3613 "yacc.cpp" /* yacc.c:1646  */
+#line 3611 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 192:
-#line 1007 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1005 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:logic_expr OR_OR logic_expr\n";
 										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),OR_OR,scoop);
 										}
-#line 3621 "yacc.cpp" /* yacc.c:1646  */
+#line 3619 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 193:
-#line 1010 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1008 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:TRUE\n";
 										 (yyval.r.node)=new ConstantNode(true,scoop);
 										}
-#line 3629 "yacc.cpp" /* yacc.c:1646  */
+#line 3627 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 194:
-#line 1013 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1011 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"logic_expr:FALSE\n";
 											 (yyval.r.node)=new ConstantNode(false,scoop);
 										}
-#line 3637 "yacc.cpp" /* yacc.c:1646  */
+#line 3635 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 195:
-#line 1018 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1016 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"expr:assign_expr\n";
 										 (yyval.r.node)=(yyvsp[0].r.node);
 										}
-#line 3645 "yacc.cpp" /* yacc.c:1646  */
+#line 3643 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 196:
-#line 1021 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1019 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"expr:simple_expr\n";
 										(yyval.r.node)=(yyvsp[0].r.node);
 										}
-#line 3653 "yacc.cpp" /* yacc.c:1646  */
+#line 3651 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 197:
-#line 1026 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1024 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 										cout<<"assign_expr:long_id EQUAL simple_expr\n";
 										//LongIdHelper::checkIdenentifier( scoop, interface,"set1");
 										(yyval.r.node)=new AssignNode(scoop,(yyvsp[-2].r.node),(yyvsp[0].r.node));
 										}
-#line 3663 "yacc.cpp" /* yacc.c:1646  */
+#line 3661 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 198:
-#line 1033 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1031 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"long_id: long_id.IDENTIFIER\n";
 																(yyval.r.node)=new DotNode(scoop,(yyvsp[-2].r.node),(yyvsp[0].r.text));
 
 											;}
-#line 3672 "yacc.cpp" /* yacc.c:1646  */
+#line 3670 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 199:
-#line 1037 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1035 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												cout<<"long_id: long_id.message_call\n";
 												(yyval.r.node)=(yyvsp[0].r.node);
 											}
-#line 3681 "yacc.cpp" /* yacc.c:1646  */
+#line 3679 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 200:
-#line 1041 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1039 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																LongIdHelper::addIdentifier((yyvsp[0].r.text)); 
 																(yyval.r.node)=new IdentifierNode((yyvsp[0].r.text),scoop);
 																cout<<"long_id:IDENTIFIER\n";
 															   }
-#line 3691 "yacc.cpp" /* yacc.c:1646  */
+#line 3689 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 201:
-#line 1051 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1049 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:STRING_VAL\n";
 									(yyval.r.node)=new ConstantNode(yylval.r.string_val,scoop);
 									}
-#line 3699 "yacc.cpp" /* yacc.c:1646  */
+#line 3697 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 202:
-#line 1054 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1052 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 									cout<<"simple_expr:INT_VAL\n";
 									(yyval.r.node)=new ConstantNode(yylval.r.int_val,scoop);
 									}
-#line 3708 "yacc.cpp" /* yacc.c:1646  */
+#line 3706 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 203:
-#line 1058 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1056 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:FLOAT_VAL\n";
 									(yyval.r.node)=new ConstantNode(yylval.r.float_val,scoop);
 									}
-#line 3716 "yacc.cpp" /* yacc.c:1646  */
+#line 3714 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 204:
-#line 1061 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1059 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:CHAR_VAL\n";
 										(yyval.r.node)=new ConstantNode(yylval.r.char_val,scoop);
 									}
-#line 3724 "yacc.cpp" /* yacc.c:1646  */
+#line 3722 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 205:
-#line 1064 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1062 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:long_id\n";
 									(yyval.r.node)=(yyvsp[0].r.node);
 									}
-#line 3732 "yacc.cpp" /* yacc.c:1646  */
+#line 3730 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 206:
-#line 1067 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1065 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 										cout<<"simple_expr:expr PLUS expr\n";
 										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),PLUS,scoop);
 									}
-#line 3741 "yacc.cpp" /* yacc.c:1646  */
+#line 3739 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 207:
-#line 1071 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1069 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 										cout<<"simple_expr:expr MINUS expr\n";
 										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),MINUS,scoop);
 									}
-#line 3750 "yacc.cpp" /* yacc.c:1646  */
+#line 3748 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 208:
-#line 1075 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1073 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:expr MULTI expr\n";
 											(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),MULTI,scoop);
 									}
-#line 3758 "yacc.cpp" /* yacc.c:1646  */
+#line 3756 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 209:
-#line 1078 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1076 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 									cout<<"simple_expr:expr DIV expr\n";
 									(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),DIV,scoop);
 									}
-#line 3767 "yacc.cpp" /* yacc.c:1646  */
+#line 3765 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 210:
-#line 1082 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1080 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:OPEN_P expr CLOSE_P\n";(yyval.r.node)=(yyvsp[-1].r.node);}
-#line 3773 "yacc.cpp" /* yacc.c:1646  */
+#line 3771 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 211:
-#line 1083 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1081 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:ID++";}
-#line 3779 "yacc.cpp" /* yacc.c:1646  */
+#line 3777 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 212:
-#line 1084 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1082 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:ID--";}
-#line 3785 "yacc.cpp" /* yacc.c:1646  */
+#line 3783 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 213:
-#line 1085 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1083 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:++ID";}
-#line 3791 "yacc.cpp" /* yacc.c:1646  */
+#line 3789 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 214:
-#line 1086 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1084 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"simple_expr:--ID";}
-#line 3797 "yacc.cpp" /* yacc.c:1646  */
+#line 3795 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 215:
-#line 1087 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1085 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																cout<<"expr:p_type expr\n";
 																if(type!=NULL)
 																(yyval.r.node)=new CastNode(scoop,type,(yyvsp[0].r.node));
 															}
-#line 3807 "yacc.cpp" /* yacc.c:1646  */
+#line 3805 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 216:
-#line 1094 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1092 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {		
 			cout<<"message_call2\n";
 			if(callNode==NULL)
@@ -3819,11 +3817,11 @@ yyreduce:
 			}
 			cout<<"mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm";
 			}
-#line 3823 "yacc.cpp" /* yacc.c:1646  */
+#line 3821 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 217:
-#line 1107 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1105 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												cout<<"message_call: OPEN_ARR sender message CLOSE_ARR\n";
 												callNode->setMessage((yyvsp[-1].r.text));
@@ -3834,22 +3832,22 @@ yyreduce:
 														callNodeStack.pop();
 														}
 												}
-#line 3838 "yacc.cpp" /* yacc.c:1646  */
+#line 3836 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 218:
-#line 1119 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1117 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"sender: message_call\n";
 											
 											callNode->setSender((yyvsp[0].r.node));
 											 (yyval.r.node)=(yyvsp[0].r.node);
 											 
 											}
-#line 3849 "yacc.cpp" /* yacc.c:1646  */
+#line 3847 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 219:
-#line 1125 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1123 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"sender: IDENTIFIER\n";
 											(yyval.r.node)=new IdentifierNode((yyvsp[0].r.text),scoop);
 											
@@ -3858,242 +3856,242 @@ yyreduce:
 											callNode->setSender((yyval.r.node));
 											
 											}
-#line 3862 "yacc.cpp" /* yacc.c:1646  */
+#line 3860 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 220:
-#line 1135 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1133 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"message: IDENTIFIER\n";
 											(yyval.r.text)=(yyvsp[0].r.text);
 												
 											}
-#line 3871 "yacc.cpp" /* yacc.c:1646  */
+#line 3869 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 221:
-#line 1139 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1137 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											cout<<"message_selectors_list\n";
 											//$<r.node>$=$<r.text>1;
 											(yyval.r.text)="";
 											}
-#line 3881 "yacc.cpp" /* yacc.c:1646  */
+#line 3879 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 222:
-#line 1146 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1144 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											cout<<"message_selectors_list:message_selectors_list message_selector \n";
 												callNode->addSelector(cselector);
 											cselector=NULL;
 												}
-#line 3891 "yacc.cpp" /* yacc.c:1646  */
+#line 3889 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 223:
-#line 1151 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1149 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {	callNode->addSelector(cselector);
 							cselector=NULL;
 								cout<<"message_selectors_list: message_selector\n";
 											
 		}
-#line 3901 "yacc.cpp" /* yacc.c:1646  */
+#line 3899 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 224:
-#line 1157 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1155 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 									cselector->name=(yyvsp[-2].r.text);
 							}
-#line 3909 "yacc.cpp" /* yacc.c:1646  */
+#line 3907 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 225:
-#line 1161 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1159 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"argument_list: argument_list argument\n";
 												cselector->addArg((yyvsp[0].r.node));}
-#line 3916 "yacc.cpp" /* yacc.c:1646  */
+#line 3914 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 226:
-#line 1163 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1161 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"argument_list: argument\n";
 												cselector=new CallSelector("");
 											cselector->addArg((yyvsp[0].r.node));}
-#line 3924 "yacc.cpp" /* yacc.c:1646  */
+#line 3922 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 227:
-#line 1168 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1166 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											cout<<"argument: SEMI_COLUMN expr\n";
 											(yyval.r.node)=(yyvsp[0].r.node);
 											//callNode->addArgument($<r.node>1,"");
 											
 											}
-#line 3935 "yacc.cpp" /* yacc.c:1646  */
+#line 3933 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 228:
-#line 1176 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1174 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 											cout<<"while_loop:while_loop_header statement\n";
 											 (yyval.r.node)=new WhileNode((yyvsp[-1].r.node),(yyvsp[0].r.node),scoop);
 										}
-#line 3944 "yacc.cpp" /* yacc.c:1646  */
+#line 3942 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 229:
-#line 1182 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1180 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"while_loop_header: WHILE OPEN_P logic_expr CLOSE_P\n";
 											(yyval.r.node)=(yyvsp[-1].r.node);
 											}
-#line 3952 "yacc.cpp" /* yacc.c:1646  */
+#line 3950 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 230:
-#line 1187 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1185 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"conditional_statement: if_header statement\n";
 												 (yyval.r.node)=new IfNode((yyvsp[-1].r.node),(yyvsp[0].r.node),scoop,NULL);
 												}
-#line 3960 "yacc.cpp" /* yacc.c:1646  */
+#line 3958 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 231:
-#line 1190 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1188 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												cout<<"conditional_statement: if_header statement with else\n";
 												 (yyval.r.node)=new IfNode((yyvsp[-3].r.node),(yyvsp[-2].r.node),scoop,new ElseNode((yyvsp[0].r.node),scoop));
 												}
-#line 3969 "yacc.cpp" /* yacc.c:1646  */
+#line 3967 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 232:
-#line 1194 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1192 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"conditional_statement: switch_header switch_body statement\n";
 											(yyval.r.node)=new SwitchNode(tempSwitch);
 										}
-#line 3977 "yacc.cpp" /* yacc.c:1646  */
+#line 3975 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 233:
-#line 1199 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1197 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"if_header: IF OPEN_P logic_expr CLOSE_P\n";
 											(yyval.r.node)=(yyvsp[-1].r.node);
 											}
-#line 3985 "yacc.cpp" /* yacc.c:1646  */
+#line 3983 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 234:
-#line 1204 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1202 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"switch_header: SWITCH OPEN_P IDENTIFIER CLOSE_P\n";
 										
 										tempSwitch->setExpr(new IdentifierNode((yyvsp[-2].r.text),scoop));
 									}
-#line 3994 "yacc.cpp" /* yacc.c:1646  */
+#line 3992 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 235:
-#line 1210 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
-    {cscoop=scoop;scoop=new ScoopNode(cscoop);tempSwitch=new SwitchNode(NULL,std::list<pair<Node*,Node*>>(),scoop);}
-#line 4000 "yacc.cpp" /* yacc.c:1646  */
+#line 1208 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+    {scoop=new ScoopNode(scoop);tempSwitch=new SwitchNode(NULL,std::list<pair<Node*,Node*>>(),scoop);}
+#line 3998 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 236:
-#line 1213 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1211 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {;}
-#line 4006 "yacc.cpp" /* yacc.c:1646  */
+#line 4004 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 237:
-#line 1214 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1212 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {;}
-#line 4012 "yacc.cpp" /* yacc.c:1646  */
+#line 4010 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 238:
-#line 1215 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1213 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {;}
-#line 4018 "yacc.cpp" /* yacc.c:1646  */
+#line 4016 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 239:
-#line 1216 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1214 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {;}
-#line 4024 "yacc.cpp" /* yacc.c:1646  */
+#line 4022 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 240:
-#line 1219 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1217 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {;}
-#line 4030 "yacc.cpp" /* yacc.c:1646  */
+#line 4028 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 241:
-#line 1220 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1218 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {;}
-#line 4036 "yacc.cpp" /* yacc.c:1646  */
+#line 4034 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 242:
-#line 1223 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1221 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {tempSwitch->addCase((yyvsp[-4].r.node),(yyvsp[-2].r.node));}
-#line 4042 "yacc.cpp" /* yacc.c:1646  */
+#line 4040 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 243:
-#line 1224 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1222 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {tempSwitch->addCase((yyvsp[-2].r.node),(yyvsp[0].r.node));}
-#line 4048 "yacc.cpp" /* yacc.c:1646  */
+#line 4046 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 244:
-#line 1225 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1223 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {tempSwitch->addCase((yyvsp[-3].r.node),NULL);}
-#line 4054 "yacc.cpp" /* yacc.c:1646  */
+#line 4052 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 245:
-#line 1228 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1226 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {tempSwitch->addCase(NULL,(yyvsp[-2].r.node));}
-#line 4060 "yacc.cpp" /* yacc.c:1646  */
+#line 4058 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 246:
-#line 1229 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1227 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {tempSwitch->addCase(NULL,(yyvsp[0].r.node));}
-#line 4066 "yacc.cpp" /* yacc.c:1646  */
+#line 4064 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 247:
-#line 1230 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1228 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {tempSwitch->addCase(NULL,(yyvsp[-1].r.node));}
-#line 4072 "yacc.cpp" /* yacc.c:1646  */
+#line 4070 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 248:
-#line 1232 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1230 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 										cout<<"protocol: protocol_header protocol_body\n";
 										idsList.clear();
 										methodsList.clear();
 										method=NULL;
 										}
-#line 4083 "yacc.cpp" /* yacc.c:1646  */
+#line 4081 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 249:
-#line 1240 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1238 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 								cout<<"protocol_header: AT_PROTOCOL IDENTIFIER \n";
 								protocol=ProtocolHelper ::createNewProtocol((yyvsp[0].r.text),symbolTable );
 								
 								}
-#line 4093 "yacc.cpp" /* yacc.c:1646  */
+#line 4091 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 250:
-#line 1247 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1245 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 								cout<<"protocol_body:	protocol_reference_list interface_declaration_list	AT_END\n";
 								ProtocolHelper::addInheritedProtocol( protocol, idsList,symbolTable);
@@ -4101,11 +4099,11 @@ yyreduce:
 								methodsList.clear();
 								idsList.clear();
 								}
-#line 4105 "yacc.cpp" /* yacc.c:1646  */
+#line 4103 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 251:
-#line 1255 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1253 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 								cout<<"protocol_body:	interface_declaration_list	AT_END\n";
 									
@@ -4113,115 +4111,115 @@ yyreduce:
 								methodsList.clear();
 								
 								}
-#line 4117 "yacc.cpp" /* yacc.c:1646  */
+#line 4115 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 252:
-#line 1263 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1261 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 								cout<<"protocol_body:	protocol_reference_list AT_END	\n";
 											ProtocolHelper::addInheritedProtocol( protocol, idsList,symbolTable);
 								idsList.clear();
 								}
-#line 4127 "yacc.cpp" /* yacc.c:1646  */
+#line 4125 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 253:
-#line 1269 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1267 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"protocol_body:	AT_END\n";}
-#line 4133 "yacc.cpp" /* yacc.c:1646  */
+#line 4131 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 254:
-#line 1271 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1269 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																cout<<"enum: ENUM IDENTIFIER  OPEN_S list_expr CLOSE_S SEMI_COMA  \n";
 																
 																EnumHelper::createNewEnum( (yyvsp[-4].r.text),idsList, symbolTable);
 																idsList.clear();
 															 }
-#line 4144 "yacc.cpp" /* yacc.c:1646  */
+#line 4142 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 255:
-#line 1277 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1275 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 																cout<<"enum: ENUM IDENTIFIER SEMI_COMA\n";
 																EnumHelper::createNewEnum( (yyvsp[-1].r.text),idsList, symbolTable);
 															  }
-#line 4153 "yacc.cpp" /* yacc.c:1646  */
+#line 4151 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 256:
-#line 1284 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1282 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												cout<<"list_expr:IDENTIFIER EQUAL expr COMMA list_expr\n";
 												idsList.push_back((yyvsp[-4].r.text));
 													(yyval.r.node)=new AssignNode(scoop,new IdentifierNode((yyvsp[-4].r.text),scoop),(yyvsp[-2].r.node));
 												}
-#line 4163 "yacc.cpp" /* yacc.c:1646  */
+#line 4161 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 257:
-#line 1289 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1287 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												cout<<"list_expr:IDENTIFIER EQUAL expr\n";
 												idsList.push_back((yyvsp[-2].r.text));
 												(yyval.r.node)=new AssignNode(scoop,new IdentifierNode((yyvsp[-2].r.text),scoop),(yyvsp[0].r.node));
 												}
-#line 4173 "yacc.cpp" /* yacc.c:1646  */
+#line 4171 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 258:
-#line 1294 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1292 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 													cout<<"list_expr:IDENTIFIER \n";
 													idsList.push_back((yyvsp[0].r.text));
 													//??
 												}
-#line 4183 "yacc.cpp" /* yacc.c:1646  */
+#line 4181 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 259:
-#line 1299 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1297 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												  cout<<"list_expr:IDENTIFIER  COMMA list_expr \n";
 												  idsList.push_back((yyvsp[-2].r.text));
 												  //??
 												}
-#line 4193 "yacc.cpp" /* yacc.c:1646  */
+#line 4191 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 260:
-#line 1306 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1304 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {
 												  cout<<"try_catch:TRY statement catch_list finally_statement \n";
 												}
-#line 4201 "yacc.cpp" /* yacc.c:1646  */
+#line 4199 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 261:
-#line 1310 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1308 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {				  
 								cout<<"try_catch:TRY statement catch_list \n";
 							  }
-#line 4209 "yacc.cpp" /* yacc.c:1646  */
+#line 4207 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 262:
-#line 1315 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1313 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"catch_list:CATCH OPEN_S type IDENTIFIER CLOSE_S statement \n";}
-#line 4215 "yacc.cpp" /* yacc.c:1646  */
+#line 4213 "yacc.cpp" /* yacc.c:1646  */
     break;
 
   case 263:
-#line 1316 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
+#line 1314 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {cout<<"catch_list:catch_list CATCH OPEN_S type IDENTIFIER CLOSE_S statement \n";}
-#line 4221 "yacc.cpp" /* yacc.c:1646  */
+#line 4219 "yacc.cpp" /* yacc.c:1646  */
     break;
 
 
-#line 4225 "yacc.cpp" /* yacc.c:1646  */
+#line 4223 "yacc.cpp" /* yacc.c:1646  */
         default: break;
       }
     if (yychar_backup != yychar)
@@ -4461,7 +4459,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 1321 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1906  */
+#line 1319 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1906  */
 
 void yyerror(const char *s) {
 	fprintf (stderr, "%s\n", s);
@@ -4476,17 +4474,16 @@ void main(void){
   //yydebug=1;
 
 	globalScoop=new ScoopNode(NULL,NULL);
-	scoop=globalScoop;
 	vector<string> sfiles;
-		sfiles.push_back("system.oc");
+	sfiles.push_back("system.oc");
 
 	sfiles.push_back("code.txt");
 	for(string sf:sfiles){
-	sourceFile=sf;
-	ifstream inf(sf);
-	lexer = new yyFlexLexer(&inf);
-	Parser* p = new Parser();
-	p->parse();
+		sourceFile=sf;
+		ifstream inf(sf);
+		lexer = new yyFlexLexer(&inf);
+		Parser* p = new Parser();
+		p->parse();
 	}
 //	symbolTable->toString();
 	/*for(int i=0;i<scoopVector.size();i++)
@@ -4501,4 +4498,3 @@ void main(void){
 	//functionNode->generateCode();
 	
 }
-

@@ -63,7 +63,7 @@ Type* SymbolTable::getType(string name)
 		return types[name]; // even if it's not implemented yet it should return object with the default constructer expecting to be defined later (multiparse)
 		else
 		{
-			Streams::verbose() << "Making new interface\n\n\n\n";
+			Streams::verbose() << "Making new interface: "<<name<<"\n\n\n\n";
 			Interface* interface = new Interface(name);
 			add_interfaceState(name, false);
 			return types[name] = interface;
