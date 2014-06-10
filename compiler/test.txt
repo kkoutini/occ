@@ -28,7 +28,7 @@ move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
  #reserving space in stack for scope variables
-sub $sp,$sp,4
+sub $sp,$sp,0
  #asm node :li $v0 ,1
 li $v0 ,1
  #asm node :lw $a0 ,0($fp)
@@ -36,7 +36,7 @@ lw $a0 ,0($fp)
  #asm node :syscall
 syscall
  #releasing space in stack for scope variables
-add $sp,$sp,4
+add $sp,$sp,0
  #releasing space in stack for scope variables
 add $sp,$sp,4
 
@@ -51,7 +51,7 @@ move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
  #reserving space in stack for scope variables
-sub $sp,$sp,4
+sub $sp,$sp,0
  #asm node :li $v0, 2
 li $v0, 2
  #asm node :l.s  $f12,0($fp)
@@ -59,7 +59,7 @@ l.s  $f12,0($fp)
  #asm node :syscall
 syscall
  #releasing space in stack for scope variables
-add $sp,$sp,4
+add $sp,$sp,0
  #releasing space in stack for scope variables
 add $sp,$sp,4
 
@@ -74,7 +74,7 @@ move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
  #reserving space in stack for scope variables
-sub $sp,$sp,4
+sub $sp,$sp,0
  #asm node :li $v0 ,4
 li $v0 ,4
  #asm node :lw $a0 ,0($fp)
@@ -82,7 +82,7 @@ lw $a0 ,0($fp)
  #asm node :syscall
 syscall
  #releasing space in stack for scope variables
-add $sp,$sp,4
+add $sp,$sp,0
  #releasing space in stack for scope variables
 add $sp,$sp,4
 
@@ -97,7 +97,7 @@ move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
  #reserving space in stack for scope variables
-sub $sp,$sp,4
+sub $sp,$sp,0
  #asm node :li $v0, 12
 li $v0, 12
  #asm node :lw $a0 ,0($fp)
@@ -105,7 +105,7 @@ lw $a0 ,0($fp)
  #asm node :syscall
 syscall
  #releasing space in stack for scope variables
-add $sp,$sp,4
+add $sp,$sp,0
  #releasing space in stack for scope variables
 add $sp,$sp,4
 
@@ -230,7 +230,7 @@ move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
  #reserving space in stack for scope variables
-sub $sp,$sp,4
+sub $sp,$sp,0
 li $t9,8
 sub $sp,$sp,4
 sw $t9, 0($sp)
@@ -245,7 +245,7 @@ add $sp,$sp,4
 add $t0,$0,$t1
 sw $t0,0($fp)
  #releasing space in stack for scope variables
-add $sp,$sp,4
+add $sp,$sp,0
  #releasing space in stack for scope variables
 add $sp,$sp,4
 
@@ -260,15 +260,15 @@ move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
  #reserving space in stack for scope variables
-sub $sp,$sp,8
+sub $sp,$sp,4
  #identifier a
-lw $t9,4($fp)
+lw $t9,0($fp)
 sub $sp,$sp,4
 sw $t9, 0($sp)
  #CALLING A METHOD go: (int) y 
  #generating code for the sender
  #identifier a
-lw $t9,4($fp)
+lw $t9,0($fp)
 sub $sp,$sp,4
 sw $t9, 0($sp)
  #generating code for Args
@@ -284,13 +284,13 @@ sw $t9, 0($sp)
 lw $t1, 0($sp)
 add $sp,$sp,4
  #identifier a
-lw $t9,4($fp)
+lw $t9,0($fp)
 sub $sp,$sp,4
 sw $t9, 0($sp)
  #getting a datamember b of type int
  #generating code for the sender
  #identifier a
-lw $t9,4($fp)
+lw $t9,0($fp)
 sub $sp,$sp,4
 sw $t9, 0($sp)
 lw $a0, 0($sp)
@@ -302,7 +302,7 @@ lw $t0, 0($sp)
 add $sp,$sp,4
 add $t0,$0,$t1
  #releasing space in stack for scope variables
-add $sp,$sp,8
+add $sp,$sp,4
  #releasing space in stack for scope variables
 add $sp,$sp,4
  ##########################################

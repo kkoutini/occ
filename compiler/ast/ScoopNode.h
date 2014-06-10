@@ -25,11 +25,13 @@ public:
 	int getFrameSize(){
 		return _currentInnerOffset;
 	}
-	ScoopNode(ScoopNode* scoop,ScoopNode * parent):Node(scoop)
+	ScoopNode(ScoopNode * parent) :Node(parent)
 	{
 		offset=0;
 		_currentInnerOffset=0;
 	}
+	/*
+	copy constructer shouldn't be used
 	ScoopNode(ScoopNode* scoop):Node(scoop)
 	{
 		//TODO this may cause problems for later defined vars
@@ -45,7 +47,7 @@ public:
 		for(map<string, Variable*>::iterator it=scoop->_variables.begin();it!=scoop->_variables.end();it++)
 			_variables.insert(make_pair(it->first, it->second));
 		}
-	}
+	}*/
 	ScoopNode* getParent(){
 		return this->_scoop;
 	}

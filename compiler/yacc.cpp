@@ -4476,7 +4476,7 @@ int yylex(){
 void main(void){
   //yydebug=1;
 
-	globalScoop=new ScoopNode(NULL,NULL);
+	globalScoop=new ScoopNode(NULL);
 	vector<string> sfiles;
 	sfiles.push_back("system.oc");
 
