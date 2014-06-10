@@ -29,12 +29,12 @@ move $fp,$sp
 sub $sp,$sp,4
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- #asm node :parameter
-parameter
- #asm node :parameter
-parameter
- #asm node :parameter
-parameter
+ #asm node :li $v0 ,1
+li $v0 ,1
+ #asm node :lw $a0 ,0($fp)
+lw $a0 ,0($fp)
+ #asm node :syscall
+syscall
  #releasing space in stack for scope variables
 add $sp,$sp,4
  #releasing space in stack for scope variables
@@ -52,12 +52,12 @@ move $fp,$sp
 sub $sp,$sp,4
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- #asm node :parameter
-parameter
- #asm node :parameter
-parameter
- #asm node :parameter
-parameter
+ #asm node :li $v0, 2
+li $v0, 2
+ #asm node :l.s  $f12,0($fp)
+l.s  $f12,0($fp)
+ #asm node :syscall
+syscall
  #releasing space in stack for scope variables
 add $sp,$sp,4
  #releasing space in stack for scope variables
@@ -75,12 +75,12 @@ move $fp,$sp
 sub $sp,$sp,4
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- #asm node :parameter
-parameter
- #asm node :parameter
-parameter
- #asm node :parameter
-parameter
+ #asm node :li $v0 ,4
+li $v0 ,4
+ #asm node :lw $a0 ,0($fp)
+lw $a0 ,0($fp)
+ #asm node :syscall
+syscall
  #releasing space in stack for scope variables
 add $sp,$sp,4
  #releasing space in stack for scope variables
@@ -98,12 +98,12 @@ move $fp,$sp
 sub $sp,$sp,4
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- #asm node :parameter
-parameter
- #asm node :parameter
-parameter
- #asm node :parameter
-parameter
+ #asm node :li $v0, 12
+li $v0, 12
+ #asm node :lw $a0 ,0($fp)
+lw $a0 ,0($fp)
+ #asm node :syscall
+syscall
  #releasing space in stack for scope variables
 add $sp,$sp,4
  #releasing space in stack for scope variables
@@ -121,14 +121,14 @@ move $fp,$sp
 sub $sp,$sp,0
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- #asm node :readchar
-readchar
- #asm node :readchar
-readchar
- #asm node :readchar
-readchar
- #asm node :readchar
-readchar
+ #asm node :li $v0,12
+li $v0,12
+ #asm node :syscall
+syscall
+ #asm node :sub $sp,$sp,4
+sub $sp,$sp,4
+ #asm node :sw $v0, 0($sp)
+sw $v0, 0($sp)
  #releasing space in stack for scope variables
 add $sp,$sp,0
  #releasing space in stack for scope variables
@@ -146,14 +146,14 @@ move $fp,$sp
 sub $sp,$sp,0
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- #asm node :readfloat
-readfloat
- #asm node :readfloat
-readfloat
- #asm node :readfloat
-readfloat
- #asm node :readfloat
-readfloat
+ #asm node :li $v0, 6
+li $v0, 6
+ #asm node :syscall
+syscall
+ #asm node :sub $sp,$sp,4
+sub $sp,$sp,4
+ #asm node :sw $v0, 0($sp)
+sw $v0, 0($sp)
  #releasing space in stack for scope variables
 add $sp,$sp,0
  #releasing space in stack for scope variables
@@ -171,14 +171,14 @@ move $fp,$sp
 sub $sp,$sp,0
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- #asm node :readint
-readint
- #asm node :readint
-readint
- #asm node :readint
-readint
- #asm node :readint
-readint
+ #asm node :li $v0, 5
+li $v0, 5
+ #asm node :syscall
+syscall
+ #asm node :sub $sp,$sp,4
+sub $sp,$sp,4
+ #asm node :sw $v0, 0($sp)
+sw $v0, 0($sp)
  #releasing space in stack for scope variables
 add $sp,$sp,0
  #releasing space in stack for scope variables
@@ -196,14 +196,14 @@ move $fp,$sp
 sub $sp,$sp,0
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- #asm node :readstring
-readstring
- #asm node :readstring
-readstring
- #asm node :readstring
-readstring
- #asm node :readstring
-readstring
+ #asm node :li $v0,8
+li $v0,8
+ #asm node :syscall
+syscall
+ #asm node :sub $sp,$sp,4
+sub $sp,$sp,4
+ #asm node :sw $v0, 0($sp)
+sw $v0, 0($sp)
  #releasing space in stack for scope variables
 add $sp,$sp,0
  #releasing space in stack for scope variables

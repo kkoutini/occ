@@ -24,25 +24,25 @@
 @implementation System
 -(void) print:(int)parameter
 {
-	@asm "li $v0 1";
+	@asm "li $v0 ,1";
 	@asm "lw $a0 ,0($fp)";
 	@asm "syscall";
 }
 -(void) print:(float)parameter
 {
-	@asm "li $v0 2";
+	@asm "li $v0, 2";
     @asm "l.s  $f12,0($fp)";
 	@asm "syscall";
 }
 -(void) print:(NSString)parameter
 {
-	@asm "li $v0 4";
+	@asm "li $v0 ,4";
  	@asm "lw $a0 ,0($fp)";
 	@asm "syscall";
 }
 -(void) print:(char)parameter
 {
-	@asm "li $v0 12";
+	@asm "li $v0, 12";
 	@asm "lw $a0 ,0($fp)";
 	@asm "syscall";
 }

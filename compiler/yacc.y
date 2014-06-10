@@ -163,7 +163,7 @@ Method* nodeXX;
 		int lineNo;
 		int int_val;
 		char char_val;	
-		char* string_val;
+		string* string_val;
 		float float_val;
 		char* text;
 		Node* node;
@@ -830,7 +830,7 @@ statement:
 
 asm:
 	AT_ASM STRING_VAL SEMI_COMA              {cout<<"@asm command \n";
-	                                         $<r.node>$=new AsmNode(scoop,$<r.text>2);
+	                                         $<r.node>$=new AsmNode(scoop,*$<r.string_val>2);
 											 }
 
 ;
@@ -1046,8 +1046,11 @@ long_id:
 
 
 simple_expr:
-	STRING_VAL						{cout<<"simple_expr:STRING_VAL\n";
-									$<r.node>$=new ConstantNode(yylval.r.string_val,scoop);
+	STRING_VAL						{
+										cout<<"simple_expr:STRING_VAL\n";
+									$<r.node>$=new ConstantNode(*($<r.string_val>1),scoop);
+									cout<<"node typr"<<$<r.node>$->generateType()->get_name()<<"\n";
+									$<r.string_val>$=$<r.string_val>1;
 									}
 	|INT_VAL						{
 									cout<<"simple_expr:INT_VAL\n";

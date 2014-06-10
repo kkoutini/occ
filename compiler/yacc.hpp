@@ -136,7 +136,7 @@ union YYSTYPE
 		int lineNo;
 		int int_val;
 		char char_val;	
-		char* string_val;
+		string* string_val;
 		float float_val;
 		char* text;
 		Node* node;

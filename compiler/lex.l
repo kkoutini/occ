@@ -82,7 +82,7 @@ FLOAT						("+"|"-")?({digit}+\.{digit}+)
 \'[a-zA-z]\'		{	colNum+=strlen(yytext);	yylval.r.colNo=colNum;		return CHAR_VAL;}
 "++"                {  colNum+=strlen(yytext);	yylval.r.colNo=colNum;		return DOUBLEPLUS;}
 "--"                {  colNum+=strlen(yytext);	yylval.r.colNo=colNum;		return DOUBLEMINUS;}
-\".*\"				{		colNum+=strlen(yytext);	yylval.r.colNo=colNum;			return STRING_VAL;}
+\".*\"				{		colNum+=strlen(yytext);	yylval.r.colNo=colNum;yylval.r.string_val=new string(yytext+1);	yylval.r.string_val->pop_back();			return STRING_VAL;}
 [_]*([a-z|A-Z])([a-z|A-Z|0-9|_])*					{		colNum+=strlen(yytext);yylval.r.colNo=colNum;		yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);		return IDENTIFIER;}
 " "|\t|\a|\r									{		colNum+=strlen(yytext);yylval.r.colNo=colNum;				    }
 "//".*								{		colNum+=strlen(yytext);yylval.r.colNo=colNum;			   }

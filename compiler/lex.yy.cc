@@ -21,9 +21,10 @@
 #ifdef __cplusplus
 
 #include <stdlib.h>
-#include <unistd.h>
-#include <istream>
+#include <iostream>
 using std::istream;
+#include <unistd.h>
+
 /* Use prototypes in function declarations. */
 #define YY_USE_PROTOS
 
@@ -1050,7 +1051,7 @@ YY_RULE_SETUP
 case 64:
 YY_RULE_SETUP
 #line 85 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{		colNum+=strlen(yytext);	yylval.r.colNo=colNum;			return STRING_VAL;}
+{		colNum+=strlen(yytext);	yylval.r.colNo=colNum;yylval.r.string_val=new string(yytext+1);	yylval.r.string_val->pop_back();			return STRING_VAL;}
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
