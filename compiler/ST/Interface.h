@@ -42,6 +42,7 @@ public:
 
 	void add_son_protocol(Protocol*);
 	Protocol* get_son_protocol(string);
+	Variable* Interface::getVariableByName(string name);
 
 	Method* getMethodByName(string name, Type* type, vector<DeclerationSelector*> v, bool isStatic);
 

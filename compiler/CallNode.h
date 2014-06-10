@@ -45,6 +45,7 @@ public:
 		Interface* sender_interface=(dynamic_cast<Interface*>(senderType));
 		if (sender_interface == NULL)
 		{
+			//todo
 			//ERRor
 		}
 		Method* method = sender_interface->getMethod(_message, _selcs,false);

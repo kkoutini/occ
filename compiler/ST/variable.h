@@ -29,6 +29,6 @@ public :
 	virtual void setIsConst(bool );
 	Type* getType();
 	void setType(Type*);
-
+	string to_string();
 };
 #endif

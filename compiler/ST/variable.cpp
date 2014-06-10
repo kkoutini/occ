@@ -100,4 +100,7 @@ void Variable::setType(Type * type){
 bool Variable ::compare(Variable* var1 ,Variable* var2){
 	return var1->type->get_name()==var2->type->get_name();
 }
+string Variable::to_string(){
+	return this->get_name() + " of type " + this->getType()->get_name();
+}
 
