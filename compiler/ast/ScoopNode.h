@@ -10,10 +10,15 @@ protected:
 	map<string, Variable*> _variables;
 	list<Node *> _nodes;
 	int _currentInnerOffset;
-	
-	
+
+
 public:
+
 	int offset;
+	virtual int getVarsOffset()
+	{
+		return getParent()==NULL?0:getParent()->getFrameSize() + getParent()->getVarsOffset();
+	}
 	int getNextOffset(int newSize){
 		int t=_currentInnerOffset;
 		_currentInnerOffset+=newSize;

@@ -23,6 +23,11 @@ public:
 for(auto i=_nodes.begin();i!=_nodes.end();i++)
 	(*i)->toString();
 	}
+	virtual int getVarsOffset()
+	{
+		return 0;
+	}
+
 	FunctionNode(FunctionNode* temp):ScoopNode(temp->_scoop),_method(temp->_method)
 	{
 	}
