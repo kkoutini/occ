@@ -186,19 +186,19 @@ Method* nodeXX;
 %nonassoc FINALLY
 
 %%
-program: components	                     {cout<<"program: components\n"; 
+program: components	                     {Streams::verbose()<<"program: components\n"; 
 										 }       
 ;
-components: components component		 {cout<<"components: components component\n";}
-			|component				   	{cout<<"components: component\n";}
+components: components component		 {Streams::verbose()<<"components: components component\n";}
+			|component				   	{Streams::verbose()<<"components: component\n";}
 ;
-component:	class_interface				{cout<<"class_interface \n";}
-			|class_implementation		{cout<<"class_implementation \n";}
-			|protocol					{cout<<"protocol \n";}
-			|struct						{cout<<"struct \n";}
-			|enum						{cout<<"enum \n";}
+component:	class_interface				{Streams::verbose()<<"class_interface \n";}
+			|class_implementation		{Streams::verbose()<<"class_implementation \n";}
+			|protocol					{Streams::verbose()<<"protocol \n";}
+			|struct						{Streams::verbose()<<"struct \n";}
+			|enum						{Streams::verbose()<<"enum \n";}
 ;
-class_interface: class_interface_header class_interface_body	{cout<<"class_interface: class_interface_header class_interface_body\n";
+class_interface: class_interface_header class_interface_body	{Streams::verbose()<<"class_interface: class_interface_header class_interface_body\n";
 																classNode=NULL;
 																 idsList.clear();
 																 methodsList.clear();
@@ -207,7 +207,7 @@ class_interface: class_interface_header class_interface_body	{cout<<"class_inter
                 	
 						
 ;
-class_interface_header:  AT_INTERFACE IDENTIFIER		SEMI_COLUMN IDENTIFIER	{cout<<"class_interface_header:  AT_INTERFACE IDENTIFIER SEMI_COLUMN IDENTIFIER\n";
+class_interface_header:  AT_INTERFACE IDENTIFIER		SEMI_COLUMN IDENTIFIER	{Streams::verbose()<<"class_interface_header:  AT_INTERFACE IDENTIFIER SEMI_COLUMN IDENTIFIER\n";
 																				interface=InterfaceHelper::createNewInterface($<r.text>2,$<r.text>4,symbolTable);
 																				
 																				classNode=new ClassNode(globalScoop,interface);
@@ -215,58 +215,58 @@ class_interface_header:  AT_INTERFACE IDENTIFIER		SEMI_COLUMN IDENTIFIER	{cout<<
 																				
 																				}
 						|AT_INTERFACE IDENTIFIER								{
-																					cout<<"class_interface_header:  AT_INTERFACE IDENTIFIER\n";
+																					Streams::verbose()<<"class_interface_header:  AT_INTERFACE IDENTIFIER\n";
 																				 interface=InterfaceHelper::createNewInterface($<r.text>2,"",symbolTable);
 																				 	classNode=new ClassNode(globalScoop,interface);
 																				interface->setClassNode(classNode);
 
 																				}
-						|error IDENTIFIER								{cout<<"Error: Unknown type name '"<<$<r.text>1<<"' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
-						|AT_INTERFACE error					{cout<<"Error: Expected Identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
+						|error IDENTIFIER								{Streams::verbose()<<"Error: Unknown type name '"<<$<r.text>1<<"' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
+						|AT_INTERFACE error					{Streams::verbose()<<"Error: Expected Identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
 						
-						|AT_INTERFACE IDENTIFIER SEMI_COLUMN 	error  		{cout<<"Error: Expected Identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}		
+						|AT_INTERFACE IDENTIFIER SEMI_COLUMN 	error  		{Streams::verbose()<<"Error: Expected Identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}		
 ;
 class_interface_body:	protocol_reference_list instance_variables	interface_declaration_list	AT_END	
 														{	
 															
 														InterfaceHelper::addMethods(interface,methodsList);
-																cout<<"class_interface_body:	protocol_reference_list instance_variables	interface_declaration_list	AT_END\n";
+																Streams::verbose()<<"class_interface_body:	protocol_reference_list instance_variables	interface_declaration_list	AT_END\n";
 														}
 						|protocol_reference_list instance_variables								AT_END	
 														{
-														cout<<"class_interface_body:	protocol_reference_list instance_variables AT_END\n";
+														Streams::verbose()<<"class_interface_body:	protocol_reference_list instance_variables AT_END\n";
 														}
 						|protocol_reference_list 					interface_declaration_list	AT_END	
 														{	
 																InterfaceHelper::addMethods(interface,methodsList);
-																cout<<"class_interface_body:	protocol_reference_list interface_declaration_list	AT_END\n";
+																Streams::verbose()<<"class_interface_body:	protocol_reference_list interface_declaration_list	AT_END\n";
 														}
 						|						instance_variables	interface_declaration_list	AT_END	
 														{	
 																InterfaceHelper::addMethods(interface,methodsList);
-																cout<<"class_interface_body:	instance_variables	interface_declaration_list	AT_END\n";
+																Streams::verbose()<<"class_interface_body:	instance_variables	interface_declaration_list	AT_END\n";
 														}
 						|protocol_reference_list 												AT_END	 
 														{
-																cout<<"class_interface_body:	protocol_reference_list 	AT_END\n";
+																Streams::verbose()<<"class_interface_body:	protocol_reference_list 	AT_END\n";
 														}
 						|						instance_variables								AT_END	 
-														{cout<<"class_interface_body:instance_variables		AT_END\n";}
+														{Streams::verbose()<<"class_interface_body:instance_variables		AT_END\n";}
 						|											interface_declaration_list	AT_END	 
 														{														
 																InterfaceHelper::addMethods(interface,methodsList);
-																cout<<"class_interface_body:interface_declaration_list	AT_END\n";
+																Streams::verbose()<<"class_interface_body:interface_declaration_list	AT_END\n";
 														}
-						|AT_END	                    {cout<<"class_interface_body:AT_END\n";} 
-						| protocol_reference_list error AT_END {cout<<"Error: Expected '}' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
-						| protocol_reference_list error  interface_declaration_list AT_END {cout<<"Error: Expected '}' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
-						|protocol_reference_list error {cout<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-						|protocol_reference_list instance_variables interface_declaration_list error{cout<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
-							|protocol_reference_list instance_variables  error{cout<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-								|protocol_reference_list  interface_declaration_list error{cout<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-									| instance_variables interface_declaration_list error{cout<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-										| instance_variables  error{cout<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-											|  interface_declaration_list error{cout<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}												
+						|AT_END	                    {Streams::verbose()<<"class_interface_body:AT_END\n";} 
+						| protocol_reference_list error AT_END {Streams::verbose()<<"Error: Expected '}' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
+						| protocol_reference_list error  interface_declaration_list AT_END {Streams::verbose()<<"Error: Expected '}' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
+						|protocol_reference_list error {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+						|protocol_reference_list instance_variables interface_declaration_list error{Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
+							|protocol_reference_list instance_variables  error{Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+								|protocol_reference_list  interface_declaration_list error{Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+									| instance_variables interface_declaration_list error{Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+										| instance_variables  error{Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+											|  interface_declaration_list error{Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}												
 										
 ;
 protocol_reference_list:
@@ -275,48 +275,48 @@ protocol_reference_list:
 													InterfaceHelper::addInheritedProtocol(interface,idsList,symbolTable);
 														idsList.clear();
 													}
-													cout<<"protocol_reference_list: LESS_THAN ids_list_identifier MORE_THAN\n";
+													Streams::verbose()<<"protocol_reference_list: LESS_THAN ids_list_identifier MORE_THAN\n";
 												}
-	| LESS_THAN ids_list_identifier error        {cout<<"Error: Expected '>' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
+	| LESS_THAN ids_list_identifier error        {Streams::verbose()<<"Error: Expected '>' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
 ;
 ids_list_identifier:
 	ids_list_identifier COMMA IDENTIFIER			{
-													cout<<"ids_list:ids_list_identifier COMMA IDENTIFIER\n"; 
+													Streams::verbose()<<"ids_list:ids_list_identifier COMMA IDENTIFIER\n"; 
 													idsList.push_back($<r.text>3);
 													}
 	|IDENTIFIER										{
-													cout<<"ids_list_identifier:IDENTIFIER\n";
+													Streams::verbose()<<"ids_list_identifier:IDENTIFIER\n";
 													idsList.push_back($<r.text>1);
 												    }
 ;
-array_body : OPEN_S array_ele CLOSE_S  {cout<<"array with body";}
-|OPEN_S  CLOSE_S  {cout<<"array without elements";}
+array_body : OPEN_S array_ele CLOSE_S  {Streams::verbose()<<"array with body";}
+|OPEN_S  CLOSE_S  {Streams::verbose()<<"array without elements";}
 ;
 
 
-array_ele: expr COMMA array_ele {cout<<"array-element \n";}
-           |expr {cout<<"array-element \n";}
-		   | OPEN_S CLOSE_S {cout<<"empty element \n";}
-		   |OPEN_S array_ele CLOSE_S COMMA array_ele {cout<<"inside braces element \n";}
-		   |OPEN_S array_ele CLOSE_S {cout<<"inside braces element \n";}
-		   |OPEN_S CLOSE_S COMMA array_ele   {cout<<"inside braces element \n";}
+array_ele: expr COMMA array_ele {Streams::verbose()<<"array-element \n";}
+           |expr {Streams::verbose()<<"array-element \n";}
+		   | OPEN_S CLOSE_S {Streams::verbose()<<"empty element \n";}
+		   |OPEN_S array_ele CLOSE_S COMMA array_ele {Streams::verbose()<<"inside braces element \n";}
+		   |OPEN_S array_ele CLOSE_S {Streams::verbose()<<"inside braces element \n";}
+		   |OPEN_S CLOSE_S COMMA array_ele   {Streams::verbose()<<"inside braces element \n";}
 ;
 instance_variables:
-	OPEN_S	instance_variable_declarations	CLOSE_S	{cout<<"instance_variables:OPEN_S	instance_variable_declaration	CLOSE_S\n";}
-	| OPEN_S CLOSE_S  {cout<<"instance_variables:OPEN_S	 CLOSE_S\n";}
+	OPEN_S	instance_variable_declarations	CLOSE_S	{Streams::verbose()<<"instance_variables:OPEN_S	instance_variable_declaration	CLOSE_S\n";}
+	| OPEN_S CLOSE_S  {Streams::verbose()<<"instance_variables:OPEN_S	 CLOSE_S\n";}
 ;
 instance_variable_declarations:
-	instance_variable_declarations instance_variable_declaration		{cout<<"instance_variable_declarations:instance_variable_declarations instance_variable_declaration\n";}
-	|instance_variable_declaration										{cout<<"instance_variable_declarations:instance_variable_declaration\n";}
-	|variable_declaration_list											{cout<<"instance_variable_declarations:variable_declaration_list\n";}
+	instance_variable_declarations instance_variable_declaration		{Streams::verbose()<<"instance_variable_declarations:instance_variable_declarations instance_variable_declaration\n";}
+	|instance_variable_declaration										{Streams::verbose()<<"instance_variable_declarations:instance_variable_declaration\n";}
+	|variable_declaration_list											{Streams::verbose()<<"instance_variable_declarations:variable_declaration_list\n";}
 ;
 instance_variable_declaration:
-	visibility_specification variable_declaration_list				{cout<<"instance_variable_declaration:visibility_specification variable_declaration_list\n";
+	visibility_specification variable_declaration_list				{Streams::verbose()<<"instance_variable_declaration:visibility_specification variable_declaration_list\n";
 																	}
 ;
 variable_declaration_list: variable_declaration_list variable_declarationxx		
 										{
-										cout<<"variable_declaration_list: variable_declaration_list variable_declaration\n";
+										Streams::verbose()<<"variable_declaration_list: variable_declaration_list variable_declaration\n";
 										InterfaceHelper::addDataMembers(interface,idsList,type,arrayList,flag,symbolTable,visibility);
 											arrayList.clear();
 												idsList.clear();
@@ -328,56 +328,56 @@ variable_declaration_list: variable_declaration_list variable_declarationxx
 												arrayList.clear();
 												idsList.clear();
 												flag=false;
-										cout<<"variable_declaration_list: variable_declaration\n";
+										Streams::verbose()<<"variable_declaration_list: variable_declaration\n";
 										}
 ;
 
 visibility_specification:
-	AT_PRIVATE		{cout<<"visibility_specification:AT_PRIVATE\n";  visibility=new char[256]; visibility[0]='\0';strcat(visibility,$<r.text>1);}
-	|AT_PROTECTED	{cout<<"visibility_specification:AT_PROTECTED\n"; visibility=new char[256]; visibility[0]='\0';strcat(visibility,$<r.text>1);}
-	|AT_PUBLIC		{cout<<"visibility_specification:AT_PUBLIC\n"; visibility=new char[256]; visibility[0]='\0';strcat(visibility,$<r.text>1);}
+	AT_PRIVATE		{Streams::verbose()<<"visibility_specification:AT_PRIVATE\n";  visibility=new char[256]; visibility[0]='\0';strcat(visibility,$<r.text>1);}
+	|AT_PROTECTED	{Streams::verbose()<<"visibility_specification:AT_PROTECTED\n"; visibility=new char[256]; visibility[0]='\0';strcat(visibility,$<r.text>1);}
+	|AT_PUBLIC		{Streams::verbose()<<"visibility_specification:AT_PUBLIC\n"; visibility=new char[256]; visibility[0]='\0';strcat(visibility,$<r.text>1);}
 	
 ;
 struct_variable_declaration:
 														
-	struct_declaration_list													{cout<<"struct_variable_declaration:struct_declaration_list\n";}
+	struct_declaration_list													{Streams::verbose()<<"struct_variable_declaration:struct_declaration_list\n";}
 ;
 variable_declarationxx:
-	type ids_list	SEMI_COMA					{cout<<"variable_declaration:type IDENTIFIER	SEMI_COMA\n";
+	type ids_list	SEMI_COMA					{Streams::verbose()<<"variable_declaration:type IDENTIFIER	SEMI_COMA\n";
 	                                           $<r.text>$=$<r.text>1;
 												}
-	|CONST type ids_list	SEMI_COMA				{cout<<"variable_declaration:CONST type IDENTIFIER	SEMI_COMA\n";
+	|CONST type ids_list	SEMI_COMA				{Streams::verbose()<<"variable_declaration:CONST type IDENTIFIER	SEMI_COMA\n";
 														flag=true;
 														 $<r.text>$=$<r.text>2;
 													}
-	|type IDENTIFIER array_tag error{cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
+	|type IDENTIFIER array_tag error{Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
 
 ;
 ids_list:
 	ids_list COMMA data_member			{
-									cout<<"ids_list:ids_list COMMA id_dec\n"; 
+									Streams::verbose()<<"ids_list:ids_list COMMA id_dec\n"; 
 
 									}
-	|data_member							{cout<<"ids_list:id_dec\n"; }
-	 |error							{cout<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+	|data_member							{Streams::verbose()<<"ids_list:id_dec\n"; }
+	 |error							{Streams::verbose()<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
 ;
 data_member:
- IDENTIFIER array_tag  {cout <<" data_member: IDENTIFIER array_tag \n";
+ IDENTIFIER array_tag  {Streams::verbose() <<" data_member: IDENTIFIER array_tag \n";
 							 var=new Array($<r.text>2,arrayAlloc.size(),NULL);
 					       ( dynamic_cast<Array*>(var))->set_alloc(arrayAlloc);
 						   arrayList.push_back( ( dynamic_cast<Array*>(var)));
 						      arrayAlloc.clear();
 							}
- |IDENTIFIER  {idsList.push_back($<r.text>1) ;cout <<" data_member: IDENTIFIER  \n";}
- |error array_tag 				{cout<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;arrayAlloc.clear();}
- |IDENTIFIER error              {cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;arrayAlloc.clear();}
+ |IDENTIFIER  {idsList.push_back($<r.text>1) ;Streams::verbose() <<" data_member: IDENTIFIER  \n";}
+ |error array_tag 				{Streams::verbose()<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;arrayAlloc.clear();}
+ |IDENTIFIER error              {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;arrayAlloc.clear();}
 ;
 struct_declaration_list:  struct_declaration_list  variable_declarationxx		{  
 																												StructHelper::addDataMembers( myStruct,idsList,type,arrayList,flag, symbolTable);
 																												arrayList.clear();
 																												idsList.clear();
 																												flag=false;
-																										  cout<<"struct_declaration_list: struct_declaration_list  variable_declarationxx\n";
+																										  Streams::verbose()<<"struct_declaration_list: struct_declaration_list  variable_declarationxx\n";
 																										}
 
 						| variable_declarationxx									{	
@@ -385,42 +385,42 @@ struct_declaration_list:  struct_declaration_list  variable_declarationxx		{
 																												arrayList.clear();
 																														 	idsList.clear();
 																															flag=false;
-																										cout<<"struct_declaration_list:  variable_declarationxx\n";
+																										Streams::verbose()<<"struct_declaration_list:  variable_declarationxx\n";
 																										}
-						|error variable_declarationxx {cout<<"Error: Illigal visibility specification at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+						|error variable_declarationxx {Streams::verbose()<<"Error: Illigal visibility specification at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
 					
 ;
 struct_header: 
 STRUCT IDENTIFIER {
 					myStruct=StructHelper::createNewStruct($<r.text>2,symbolTable);
-					cout<<"struct_header: STRUCT  IDENTIFIER\n";
+					Streams::verbose()<<"struct_header: STRUCT  IDENTIFIER\n";
 					}
 ;
 struct:
-    struct_header OPEN_S   CLOSE_S entity SEMI_COMA    {cout<<"struct: STRUCT IDENTIFIER OPEN_S   CLOSE_S  entity SEMI_COMA\n";}
-	| struct_header OPEN_S struct_variable_declaration  CLOSE_S entity SEMI_COMA   {cout<<"struct: STRUCT IDENTIFIER OPEN_S struct_variable_declaration  CLOSE_S enteity SEMI_COMA \n";}
-	|  struct_header OPEN_S   CLOSE_S  SEMI_COMA    {cout<<"struct: STRUCT IDENTIFIER OPEN_S   CLOSE_S SEMI_COMA\n";}
-	| struct_header OPEN_S struct_variable_declaration  CLOSE_S  SEMI_COMA    {cout<<"struct: STRUCT IDENTIFIER OPEN_S struct_variable_declaration  CLOSE_S  SEMI_COMA  \n";}
-	|struct_header OPEN_S   CLOSE_S entity error SEMI_COMA  	{cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-	|struct_header OPEN_S struct_variable_declaration  CLOSE_S entity error SEMI_COMA 	{cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-	|struct_header OPEN_S   CLOSE_S error SEMI_COMA  {cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-		|struct_header OPEN_S struct_variable_declaration  CLOSE_S error SEMI_COMA {cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+    struct_header OPEN_S   CLOSE_S entity SEMI_COMA    {Streams::verbose()<<"struct: STRUCT IDENTIFIER OPEN_S   CLOSE_S  entity SEMI_COMA\n";}
+	| struct_header OPEN_S struct_variable_declaration  CLOSE_S entity SEMI_COMA   {Streams::verbose()<<"struct: STRUCT IDENTIFIER OPEN_S struct_variable_declaration  CLOSE_S enteity SEMI_COMA \n";}
+	|  struct_header OPEN_S   CLOSE_S  SEMI_COMA    {Streams::verbose()<<"struct: STRUCT IDENTIFIER OPEN_S   CLOSE_S SEMI_COMA\n";}
+	| struct_header OPEN_S struct_variable_declaration  CLOSE_S  SEMI_COMA    {Streams::verbose()<<"struct: STRUCT IDENTIFIER OPEN_S struct_variable_declaration  CLOSE_S  SEMI_COMA  \n";}
+	|struct_header OPEN_S   CLOSE_S entity error SEMI_COMA  	{Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+	|struct_header OPEN_S struct_variable_declaration  CLOSE_S entity error SEMI_COMA 	{Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+	|struct_header OPEN_S   CLOSE_S error SEMI_COMA  {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+		|struct_header OPEN_S struct_variable_declaration  CLOSE_S error SEMI_COMA {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
 ;
 entity:
-	 IDENTIFIER COMMA  entity   {cout<<"entity: IDENTIFIER COMMA  entity\n";}
-	|IDENTIFIER                {cout<<"entity:  IDENTIFIER \n";}
-	|error  COMMA                {cout<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+	 IDENTIFIER COMMA  entity   {Streams::verbose()<<"entity: IDENTIFIER COMMA  entity\n";}
+	|IDENTIFIER                {Streams::verbose()<<"entity:  IDENTIFIER \n";}
+	|error  COMMA                {Streams::verbose()<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
 
 	
 ;
-type: simple_type									{cout<<"type:simple type\n";}
-	  |complex_type									{cout<<"type: complex type\n";}
-	  |struct_type									{cout<<"type: struct_type\n";}
-	  |enum_type									{cout<<"type: enum_type\n";}
+type: simple_type									{Streams::verbose()<<"type:simple type\n";}
+	  |complex_type									{Streams::verbose()<<"type: complex type\n";}
+	  |struct_type									{Streams::verbose()<<"type: struct_type\n";}
+	  |enum_type									{Streams::verbose()<<"type: enum_type\n";}
 	  
 ;
 struct_type:
-STRUCT IDENTIFIER                        {	cout<<"struct_type: STRUCT IDENTIFIER   \n";
+STRUCT IDENTIFIER                        {	Streams::verbose()<<"struct_type: STRUCT IDENTIFIER   \n";
 													 type=symbolTable->getType($<r.text>2);
 																if(type==NULL){
 																		string error="Unknown type name '";
@@ -429,7 +429,7 @@ STRUCT IDENTIFIER                        {	cout<<"struct_type: STRUCT IDENTIFIER
 		Program::addError(new SemanticError(error));
 																}
 													}
-|STRUCT IDENTIFIER  MULTI 				 {cout<<"struct_type: STRUCT IDENTIFIER  MULTI \n";
+|STRUCT IDENTIFIER  MULTI 				 {Streams::verbose()<<"struct_type: STRUCT IDENTIFIER  MULTI \n";
 													 type=symbolTable->getType($<r.text>2);
 																if(type==NULL){
 																										string error="Unknown type name '";
@@ -440,7 +440,7 @@ STRUCT IDENTIFIER                        {	cout<<"struct_type: STRUCT IDENTIFIER
 													}
 ;
 enum_type:
-ENUM IDENTIFIER                            {cout<<"enum_type: ENUM IDENTIFIER \n";
+ENUM IDENTIFIER                            {Streams::verbose()<<"enum_type: ENUM IDENTIFIER \n";
 													 type=symbolTable->getType($<r.text>2);
 																if(type==NULL){
 																										string error="Unknown type name '";
@@ -449,7 +449,7 @@ ENUM IDENTIFIER                            {cout<<"enum_type: ENUM IDENTIFIER \n
 		Program::addError(new SemanticError(error));
 																}
 													}
-|ENUM IDENTIFIER  MULTI                   {cout<<"enum_type: ENUM IDENTIFIER  MULTI  \n";
+|ENUM IDENTIFIER  MULTI                   {Streams::verbose()<<"enum_type: ENUM IDENTIFIER  MULTI  \n";
 													 type=symbolTable->getType($<r.text>2);
 																if(type==NULL){
 																									string error="Unknown type name '";
@@ -460,7 +460,7 @@ ENUM IDENTIFIER                            {cout<<"enum_type: ENUM IDENTIFIER \n
 													}
 ;
 simple_type:
-	INT												{cout<<"int type \n";
+	INT												{Streams::verbose()<<"int type \n";
 																type=symbolTable->getType($<r.text>1);
 																if(type==NULL){
 																										string error="Unknown type name '";
@@ -469,7 +469,7 @@ simple_type:
 		Program::addError(new SemanticError(error));
 																}
 																}
-	|CHAR											{cout<<"char type\n";
+	|CHAR											{Streams::verbose()<<"char type\n";
 	type=symbolTable->getType($<r.text>1);
 																if(type==NULL){
 																										string error="Unknown type name '";
@@ -477,7 +477,7 @@ simple_type:
 		error.append("'.");
 		Program::addError(new SemanticError(error));
 																}}
-	|FLOAT											{cout<<"float type\n";
+	|FLOAT											{Streams::verbose()<<"float type\n";
 	type=symbolTable->getType($<r.text>1);
 																if(type==NULL){
 																										string error="Unknown type name '";
@@ -485,7 +485,7 @@ simple_type:
 		error.append("'.");
 		Program::addError(new SemanticError(error));
 																}}
-	|NSSTRING											{cout<<"NSString type\n";
+	|NSSTRING											{Streams::verbose()<<"NSString type\n";
 	type=symbolTable->getType($<r.text>1);
 																if(type==NULL){
 																										string error="Unknown type name '";
@@ -493,7 +493,7 @@ simple_type:
 		error.append("'.");
 		Program::addError(new SemanticError(error));
 																}}
-	|VOID											{cout<<"void type\n";
+	|VOID											{Streams::verbose()<<"void type\n";
 	type=symbolTable->getType($<r.text>1);
 																if(type==NULL){
 																										string error="Unknown type name '";
@@ -501,7 +501,7 @@ simple_type:
 		error.append("'.");
 		Program::addError(new SemanticError(error));
 																}}
-	|BOOL                                           {cout<<"bool type\n";
+	|BOOL                                           {Streams::verbose()<<"bool type\n";
 	type=symbolTable->getType($<r.text>1);
 																if(type==NULL){
 																										string error="Unknown type name '";
@@ -511,7 +511,7 @@ simple_type:
 																}}
 	
 ;
-complex_type:	IDENTIFIER	MULTI 					{cout<<"complex_type:	IDENTIFIER	MULTI\n";
+complex_type:	IDENTIFIER	MULTI 					{Streams::verbose()<<"complex_type:	IDENTIFIER	MULTI\n";
  {
 													 type=symbolTable->getType($<r.text>1);
 																if(type==NULL){
@@ -523,35 +523,35 @@ complex_type:	IDENTIFIER	MULTI 					{cout<<"complex_type:	IDENTIFIER	MULTI\n";
 													}}
 ;
 array_tag: array_first_tag array_tag_list  {
-											cout<<"array_tag: array_first_tag array_tag_list \n"; 
+											Streams::verbose()<<"array_tag: array_first_tag array_tag_list \n"; 
 										   }
 ;
 
 array_tag_list:  array_tag_list OPEN_ARR INT_VAL CLOSE_ARR {
-																cout<<"array_tag_list: array_tag_list OPEN_ARR INT_VAL CLOSE_ARR\n"; 
+																Streams::verbose()<<"array_tag_list: array_tag_list OPEN_ARR INT_VAL CLOSE_ARR\n"; 
 																arrayAlloc.push_back($<r.int_val>3);
 														   }
 | //epsilon  
-|array_tag_list OPEN_ARR error CLOSE_ARR {cout<<" Error:missing  dimension in array tag  ";arrayAlloc.clear();}
+|array_tag_list OPEN_ARR error CLOSE_ARR {Streams::verbose()<<" Error:missing  dimension in array tag  ";arrayAlloc.clear();}
 ;
 
 array_first_tag: OPEN_ARR INT_VAL CLOSE_ARR {
-											cout<<"array_first_tag: OPEN_ARR INT_VAL CLOSE_ARR\n"; 
+											Streams::verbose()<<"array_first_tag: OPEN_ARR INT_VAL CLOSE_ARR\n"; 
 											arrayAlloc.push_back($<r.int_val>2);
 											}
 | OPEN_ARR CLOSE_ARR					    {
-											cout<<"array_first_tag: OPEN_ARR  CLOSE_ARR\n"; 
+											Streams::verbose()<<"array_first_tag: OPEN_ARR  CLOSE_ARR\n"; 
 											arrayAlloc.push_back(-1);
 											}
 ;
 
-initializer:  EQUAL array_body {cout<<"array with value\n";
+initializer:  EQUAL array_body {Streams::verbose()<<"array with value\n";
 								$<r.node>$=new AssignNode(scoop,NULL,$<r.node>2);
 							   }
 | //epsilon
 ;
 main_initializer: EQUAL expr {
-								cout <<"with value\n";
+								Streams::verbose() <<"with value\n";
 								$<r.node>$=new AssignNode(scoop,NULL,$<r.node>2);
 							 }
 | //epsilon
@@ -560,38 +560,38 @@ main_initializer: EQUAL expr {
 
 interface_declaration_list:
 	interface_declaration_list interface_declaration			{
-																cout<<"interface_declaration_list:interface_declaration_list interface_declaration\n";
+																Streams::verbose()<<"interface_declaration_list:interface_declaration_list interface_declaration\n";
 															 methodsList.push_back(method);
 														
 															 
 																}
 	|interface_declaration										{
-																 cout<<"interface_declaration_list:interface_declaration\n";
+																 Streams::verbose()<<"interface_declaration_list:interface_declaration\n";
 															 methodsList.push_back(method);
 															 
 																 	
 																 }
 ;
 interface_declaration:
-	class_method_declaration									{cout<<"interface_declaration: class_method_declaration\n";}
-	|instance_method_declaration								{cout<<"interface_declaration: instance_method_declaration\n";}
+	class_method_declaration									{Streams::verbose()<<"interface_declaration: class_method_declaration\n";}
+	|instance_method_declaration								{Streams::verbose()<<"interface_declaration: instance_method_declaration\n";}
 	
 ;
 class_method_declaration:
 	PLUS p_type		 method_selectors	SEMI_COMA				{
-																cout<<"class_method_declaration: PLUS p_type method_selectors	SEMI_COMA\n";
+																Streams::verbose()<<"class_method_declaration: PLUS p_type method_selectors	SEMI_COMA\n";
 																method=InterfaceHelper::createNewMethod(type,symbolTable,$<r.text>3,selectorsList,true);
 															
 																 selectorsList.clear();
 																
 																}
 	
-	|PLUS p_type		 method_selectors error	   {cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-	|PLUS			 method_selectors error		{cout<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+	|PLUS p_type		 method_selectors error	   {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+	|PLUS			 method_selectors error		{Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
 	;
 instance_method_declaration:
 	MINUS p_type	method_selectors		SEMI_COMA			{
-															cout<<"instance_method_declaration: MINUS p_type	method_selectors		SEMI_COMA\n";
+															Streams::verbose()<<"instance_method_declaration: MINUS p_type	method_selectors		SEMI_COMA\n";
 															method=InterfaceHelper::createNewMethod(type,symbolTable,$<r.text>3,selectorsList,false);
 																 selectorsList.clear();
 																
@@ -600,7 +600,7 @@ instance_method_declaration:
 ;
 p_type:
 	OPEN_P type CLOSE_P											{
-																cout<<"p_type : OPEN_P type CLOSE_P\n";
+																Streams::verbose()<<"p_type : OPEN_P type CLOSE_P\n";
 																$<r.text>$=$<r.text>2;
 																}
    
@@ -609,19 +609,19 @@ p_type:
 
 method_selectors:
 	 selectors_list						{
-																cout<<"method_selectors: selectors_list\n";
+																Streams::verbose()<<"method_selectors: selectors_list\n";
 																	$<r.text>$="";
 																}
-	|IDENTIFIER													{cout<<"method_selectors:IDENTIFIER \n";$<r.text>$=$<r.text>1;}
+	|IDENTIFIER													{Streams::verbose()<<"method_selectors:IDENTIFIER \n";$<r.text>$=$<r.text>1;}
 ;
 selectors_list:	selectors_list selector_decleration{
-													cout<<"selectors_list:	selectors_list selector_decleration\n";
+													Streams::verbose()<<"selectors_list:	selectors_list selector_decleration\n";
 																
 													selectorsList.push_back(tselector);
 													tselector=NULL;
 											}
 				|	selector_decleration			{
-														cout<<"selectors_list:	 selector_decleration\n";
+														Streams::verbose()<<"selectors_list:	 selector_decleration\n";
 												selectorsList.clear();
 
 												selectorsList.push_back(tselector);
@@ -629,13 +629,13 @@ selectors_list:	selectors_list selector_decleration{
 }
 ;
 selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list						{
-																				cout<<"selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	\n";
+																				Streams::verbose()<<"selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	\n";
 																				tselector=new DeclerationSelector($<r.text>1,selectorVarList);
 																			}
 		
 ;
 parameter_list: parameter_list SEMI_COLUMN parameter {
-														cout<<"parameter_list: parameter_list parameter\n";
+														Streams::verbose()<<"parameter_list: parameter_list parameter\n";
 																	selectorVarList.push_back(var);		
 											}
 				|	parameter {
@@ -643,28 +643,28 @@ parameter_list: parameter_list SEMI_COLUMN parameter {
 										selectorVarList.push_back(var);		
 											
 				 
-														cout<<"parameter_list:  parameter\n";
+														Streams::verbose()<<"parameter_list:  parameter\n";
 						
 					}		
 		;
 parameter:  p_type IDENTIFIER									{
-																cout<<"parameter:  p_type IDENTIFIER\n";
+																Streams::verbose()<<"parameter:  p_type IDENTIFIER\n";
 																
 																if(type!=NULL){
 																var=new Variable($<r.text>2,type);
 																}
 																else{
-																cout<<"Error:Type not found.\n";
+																Streams::verbose()<<"Error:Type not found.\n";
 																}
 																}
 		                            
 ;
 class_implementation:
-	class_implementation_header class_implementation_body		{cout<<"class_implementation: class_implementation_header class_implementation_body\n";}
+	class_implementation_header class_implementation_body		{Streams::verbose()<<"class_implementation: class_implementation_header class_implementation_body\n";}
 ;
 class_implementation_header: 
 	AT_IMPLEMENTATION IDENTIFIER SEMI_COLUMN IDENTIFIER			{
-																	cout<<"class_implementation_header: AT_IMPLEMENTATION IDENTIFIER SEMI_COLUMN IDENTIFIER\n";
+																	Streams::verbose()<<"class_implementation_header: AT_IMPLEMENTATION IDENTIFIER SEMI_COLUMN IDENTIFIER\n";
 																	interface=InterfaceHelper::checkImplementation($<r.text>2,symbolTable,$<r.text>4);
 																	
 																}
@@ -675,33 +675,33 @@ class_implementation_header:
 ;
 class_implementation_body:
 	instance_variables	implementation_definition_list	AT_END	{
-																	cout<<"class_implementation_body: instance_variables	implementation_definition_list	AT_END\n";
+																	Streams::verbose()<<"class_implementation_body: instance_variables	implementation_definition_list	AT_END\n";
 																			InterfaceHelper:: implementMethods(methodsList, interface);
 														methodsList.clear();
 														}
 																
 	|instance_variables									AT_END	{ 
-																	cout<<"class_implementation_body: instance_variables									AT_END\n";
+																	Streams::verbose()<<"class_implementation_body: instance_variables									AT_END\n";
 																}
 	|					implementation_definition_list	AT_END	{
-																	cout<<"class_implementation_body:						implementation_definition_list	AT_END\n";
+																	Streams::verbose()<<"class_implementation_body:						implementation_definition_list	AT_END\n";
 																	InterfaceHelper:: implementMethods(methodsList, interface);
 														methodsList.clear();
 														
 																}
-	|						AT_END	{cout<<"class_implementation_body:	AT_END\n";}
+	|						AT_END	{Streams::verbose()<<"class_implementation_body:	AT_END\n";}
 ;
 implementation_definition_list:
-	implementation_definition_list implementation_definition	{	 methodsList.push_back(method);cout<<"implementation_definition_list: implementation_definition_list implementation_definition\n";}
-	|implementation_definition									{	 methodsList.push_back(method);cout<<"implementation_definition_list: implementation_definition\n";}
+	implementation_definition_list implementation_definition	{	 methodsList.push_back(method);Streams::verbose()<<"implementation_definition_list: implementation_definition_list implementation_definition\n";}
+	|implementation_definition									{	 methodsList.push_back(method);Streams::verbose()<<"implementation_definition_list: implementation_definition\n";}
 ;
 implementation_definition:
-	class_implementation_definition		{cout<<"implementation_definition: class_implementation_definition	\n";}
-	|instance_implementation_definition	{cout<<"implementation_definition: instance_implementation_definition \n";}
+	class_implementation_definition		{Streams::verbose()<<"implementation_definition: class_implementation_definition	\n";}
+	|instance_implementation_definition	{Streams::verbose()<<"implementation_definition: instance_implementation_definition \n";}
 ;
 class_implementation_definition:
 	class_implementation_definition_header block_body {
-														cout<<"class_implementation_definition: class_implementation_definition_header block_body";
+														Streams::verbose()<<"class_implementation_definition: class_implementation_definition_header block_body";
 														//method->setFunctionNode(functionNode);
 														functionNode=NULL;
 													nodeXX=method;
@@ -709,7 +709,7 @@ class_implementation_definition:
 ;
 class_implementation_definition_header:
 	PLUS p_type		 method_selectors	{
-										cout<<"class_implementation_definition_header: PLUS p_type		 method_selectors\n";
+										Streams::verbose()<<"class_implementation_definition_header: PLUS p_type		 method_selectors\n";
 															method=InterfaceHelper:: createNewMethod(type,symbolTable,$<r.text>3,selectorsList,true);
 																 selectorsList.clear();
 																
@@ -719,7 +719,7 @@ class_implementation_definition_header:
 
 instance_implementation_definition:
 	instance_implementation_definition_header block_body	{
-															cout<<"instance_implementation_definition: instance_implementation_definition_header block_body\n";
+															Streams::verbose()<<"instance_implementation_definition: instance_implementation_definition_header block_body\n";
 														functionNode->addNode(cscoop);
 														functionNode=NULL;
 																scoop=NULL;
@@ -729,7 +729,7 @@ instance_implementation_definition:
 ;
 instance_implementation_definition_header:
 	MINUS p_type		method_selectors			{
-											     cout<<"instance_implementation_definition_header:MINUS p_type		method_selectors\n";
+											     Streams::verbose()<<"instance_implementation_definition_header:MINUS p_type		method_selectors\n";
 												 method=InterfaceHelper:: createNewMethod(type,symbolTable,$<r.text>3,selectorsList,false);
 																 selectorsList.clear();
 									           functionNode= ScoopHelper::createNewFunctionNode(method,interface);
@@ -739,7 +739,7 @@ instance_implementation_definition_header:
 block_body:
 	block_body_header block_body_statements		{
 												
-												cout<<"block_body:OPEN_S  block_body_part \n";
+												Streams::verbose()<<"block_body:OPEN_S  block_body_part \n";
 												$<r.node>$=$<r.node>1;
 												}
 ;
@@ -750,7 +750,7 @@ OPEN_S											{
 												
 												
 												scoopVector.push_back(scoop);
-												cout<<"block_body_header:OPEN_S	\n";
+												Streams::verbose()<<"block_body_header:OPEN_S	\n";
 												$<r.node>$=scoop;
 												}
 ;
@@ -758,24 +758,24 @@ block_body_statements:
 
 statement_list	CLOSE_S							{
 												cscoop=scoop;scoop=scoop->getParent();
-												cout<<"block_body_statements:statement_list	CLOSE_S	\n";
+												Streams::verbose()<<"block_body_statements:statement_list	CLOSE_S	\n";
 												}
 |CLOSE_S                                        {
 												cscoop=scoop;scoop=scoop->getParent();
-												cout<<"block_body_statements:CLOSE_S\n";
+												Streams::verbose()<<"block_body_statements:CLOSE_S\n";
 												}
 |error CLOSE_S                                        {
 											  cscoop=scoop; scoop=scoop->getParent();
-												cout<<"block_body_statements: error CLOSE_S\n";
+												Streams::verbose()<<"block_body_statements: error CLOSE_S\n";
 												}
 ;
 statement_list:
-		statement_list statement			{cout<<"statement_list: statement_list statement\n";
+		statement_list statement			{Streams::verbose()<<"statement_list: statement_list statement\n";
 											$<r.text>$=$<r.text>2;
 											scoop->addNode($<r.node>2);
 											
 											}
-		|statement							{cout<<"statement_list: statement\n";
+		|statement							{Streams::verbose()<<"statement_list: statement\n";
 											$<r.text>$=$<r.text>1;
 											$<r.node>$=$<r.node>1;
 											scoop->addNode($<r.node>1);
@@ -784,22 +784,22 @@ statement_list:
 ;
 
 statement:
-	loop_statement							{cout<<"statement: loop_statement\n";
+	loop_statement							{Streams::verbose()<<"statement: loop_statement\n";
 											$<r.text>$="loop";
 											$<r.node>$=$<r.node>1;
 											}
-	|conditional_statement					{cout<<"statement: conditional_statement\n";
+	|conditional_statement					{Streams::verbose()<<"statement: conditional_statement\n";
 											$<r.text>$="cond";
 											$<r.node>$=$<r.node>1;
 											}
 	|assign_expr SEMI_COMA							{
-												cout<<"statement: expr\n";
+												Streams::verbose()<<"statement: expr\n";
 												$<r.text>$="expr";
 												$<r.node>$=$<r.node>1;
 												//nodeXX=$<r.node>1;
 											}
 	|variable_declaration_block				{
-											cout<<"statement: variable_declaration\n";
+											Streams::verbose()<<"statement: variable_declaration\n";
 											
 												ScoopHelper::addVariables(idsList,arrayList,type,flag,scoop);
 												arrayList.clear();
@@ -807,14 +807,14 @@ statement:
 												flag=false;
 												$<r.node>$=$<r.node>1;
 										    }
-	|block_body								{cout<<"statement: block_body\n";$<r.text>$=new char[256];$<r.text>$[0]='\0';strcat($<r.text>$,"Block");
+	|block_body								{Streams::verbose()<<"statement: block_body\n";$<r.text>$=new char[256];$<r.text>$[0]='\0';strcat($<r.text>$,"Block");
 												$<r.node>$=$<r.node>1;
 											}
-	|return_statement						{cout<<"statement: return_statement\n";
+	|return_statement						{Streams::verbose()<<"statement: return_statement\n";
 												$<r.text>$="return";
 												$<r.node>$=$<r.node>1;
 											}
-	|try_catch								{cout<<"statement: try_catch\n";}
+	|try_catch								{Streams::verbose()<<"statement: try_catch\n";}
 
 	|asm                                    {
 	                                            $<r.text>$="asm";
@@ -824,50 +824,50 @@ statement:
 	$<r.node>$=$<r.node>1;
 	}
 	
-	| error SEMI_COMA { cout<<"error SEMI_COMA \n";}
+	| error SEMI_COMA { Streams::verbose()<<"error SEMI_COMA \n";}
 
 ;
 
 asm:
-	AT_ASM STRING_VAL SEMI_COMA              {cout<<"@asm command \n";
+	AT_ASM STRING_VAL SEMI_COMA              {Streams::verbose()<<"@asm command \n";
 	                                         $<r.node>$=new AsmNode(scoop,*$<r.string_val>2);
 											 }
 
 ;
 variable_declaration_block:
 	type variable_list	SEMI_COMA						{
-														cout<<"variable_declaration:type IDENTIFIER	SEMI_COMA\n";
+														Streams::verbose()<<"variable_declaration:type IDENTIFIER	SEMI_COMA\n";
 														 $<r.text>$=$<r.text>1;
 														 $<r.node>$=new DeclerationNode(declarationList,scoop,type->get_name());
 														 declarationList.clear();
 														}
 	|CONST type variable_list	SEMI_COMA				{
-														cout<<"variable_declaration:CONST type IDENTIFIER	SEMI_COMA\n";
+														Streams::verbose()<<"variable_declaration:CONST type IDENTIFIER	SEMI_COMA\n";
 														flag=true;
 														 $<r.text>$=$<r.text>2;
 														  $<r.node>$=new DeclerationNode(declarationList,scoop,type->get_name());
 														 declarationList.clear();
 														}
-	|enum                                            {cout<<"variable_declaration:enum\n";}
+	|enum                                            {Streams::verbose()<<"variable_declaration:enum\n";}
 	
 ;
 variable_list:
-	variable_list COMMA variable			{cout<<"variable_list:variable_list COMMA variable\n";}
-	|variable							{cout<<"variable_list:variable\n";
+	variable_list COMMA variable			{Streams::verbose()<<"variable_list:variable_list COMMA variable\n";}
+	|variable							{Streams::verbose()<<"variable_list:variable\n";
 										
 										}
-	|variable_list error variable					{cout<<"Error: Expected ',' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+	|variable_list error variable					{Streams::verbose()<<"Error: Expected ',' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
 ;
 variable:
  IDENTIFIER array_tag initializer			{
-											cout <<"variable:  IDENTIFIER array_tag initializer \n";
+											Streams::verbose() <<"variable:  IDENTIFIER array_tag initializer \n";
 											 var=new Array($<r.text>2,arrayAlloc.size(),NULL);
 											(dynamic_cast<Array*>(var))->set_alloc(arrayAlloc);
 											 arrayList.push_back( ( dynamic_cast<Array*>(var)));
 											 arrayAlloc.clear();
 											}
  |IDENTIFIER main_initializer				{ 
-											cout <<"variable:  IDENTIFIER main_initializer \n";
+											Streams::verbose() <<"variable:  IDENTIFIER main_initializer \n";
 											idsList.push_back($<r.text>1) ;
 											IdentifierNode* identifierNode=new IdentifierNode($<r.text>1,scoop);
 											if($<r.node>2!=NULL){
@@ -875,34 +875,34 @@ variable:
 											}
 											declarationList.push_back(make_pair($<r.text>1,$<r.node>2));
 											}
- |error array_tag initializer 				{cout<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+ |error array_tag initializer 				{Streams::verbose()<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
 ;
 return_statement:
-	RETURN expr SEMI_COMA						{cout<<"return_statement: RETURN expr\n";
+	RETURN expr SEMI_COMA						{Streams::verbose()<<"return_statement: RETURN expr\n";
 												 $<r.node>$=new ReturnNode(scoop,$<r.node>2);
 												}
 ;
 loop_statement:
-	for_loop								{cout<<"loop_statement: for_loop\n";
+	for_loop								{Streams::verbose()<<"loop_statement: for_loop\n";
 												$<r.node>$=$<r.node>1;
 											}
-	|while_loop								{cout<<"loop_statement: while_loop\n";
+	|while_loop								{Streams::verbose()<<"loop_statement: while_loop\n";
 												$<r.node>$=$<r.node>1;
 											}
-	|do_while								 {cout<<"loop_statement: do_while_loop\n";
+	|do_while								 {Streams::verbose()<<"loop_statement: do_while_loop\n";
 												$<r.node>$=$<r.node>1;
 											}                                
 ;
 do_while:
- do_header statement while_loop_header SEMI_COMA	{cout<<"do_while: do_header   statement   while_loop_header   SEMI_COMMA\n";
+ do_header statement while_loop_header SEMI_COMA	{Streams::verbose()<<"do_while: do_header   statement   while_loop_header   SEMI_COMMA\n";
 													$<r.node>$=new DoWhileNode($<r.node>3,$<r.node>2,scoop);
 													}
 ;
 do_header:
-   DO						 {cout<<"do_header: DO\n";}
+   DO						 {Streams::verbose()<<"do_header: DO\n";}
 ;
 for_loop:
-	for_loop_header statement				{cout<<"for_loop: for_loop_header statement\n";
+	for_loop_header statement				{Streams::verbose()<<"for_loop: for_loop_header statement\n";
 												type=symbolTable->getType("int");
 											if(type==NULL){
 											  	string error="Unknown type name '";
@@ -921,44 +921,44 @@ for_loop:
 ;
 for_loop_header:
 	FOR OPEN_P for_initializer	SEMI_COMA logic_expr SEMI_COMA expr  			CLOSE_P	
-										{cout<<"for_loop_header: FOR OPEN_P for_initializer	SEMI_COMA logic_expr SEMI_COMA expr			CLOSE_P\n";
+										{Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer	SEMI_COMA logic_expr SEMI_COMA expr			CLOSE_P\n";
 										$<r.node>$=new ForNode($<r.node>3,$<r.node>5,$<r.node>7,NULL,scoop);
 										//nodeXX=$<r.node>5;
 										}
 	
 	|FOR OPEN_P					SEMI_COMA logic_expr SEMI_COMA expr			CLOSE_P	
-										{cout<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr SEMI_COMA expr			CLOSE_P\n";
+										{Streams::verbose()<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr SEMI_COMA expr			CLOSE_P\n";
 										$<r.node>$=new ForNode(NULL,$<r.node>4,$<r.node>6,NULL,scoop);
 										}
 	|FOR OPEN_P for_initializer SEMI_COMA			 SEMI_COMA expr			CLOSE_P	
-										{cout<<"for_loop_header: FOR OPEN_P for_initializer SEMI_COMA			 SEMI_COMA expr			CLOSE_P\n";
+										{Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer SEMI_COMA			 SEMI_COMA expr			CLOSE_P\n";
 										$<r.node>$=new ForNode($<r.node>3,NULL,$<r.node>6,NULL,scoop);
 										}
 	|FOR OPEN_P for_initializer SEMI_COMA logic_expr SEMI_COMA				CLOSE_P	
-										{cout<<"for_loop_header: FOR OPEN_P for_initializer SEMI_COMA logic_expr SEMI_COMA				CLOSE_P	\n";
+										{Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer SEMI_COMA logic_expr SEMI_COMA				CLOSE_P	\n";
 										$<r.node>$=new ForNode($<r.node>3,$<r.node>5,NULL,NULL,scoop);
 										}
 	
 	|FOR OPEN_P	for_initializer	SEMI_COMA			 SEMI_COMA				CLOSE_P	
-										{cout<<"for_loop_header: FOR OPEN_P	for_initializer	SEMI_COMA			 SEMI_COMA				CLOSE_P	\n";
+										{Streams::verbose()<<"for_loop_header: FOR OPEN_P	for_initializer	SEMI_COMA			 SEMI_COMA				CLOSE_P	\n";
 										$<r.node>$=new ForNode($<r.node>3,NULL,NULL,NULL,scoop);
 										}
 	|FOR OPEN_P					SEMI_COMA logic_expr SEMI_COMA				CLOSE_P	
-										{cout<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr SEMI_COMA				CLOSE_P\n";
+										{Streams::verbose()<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr SEMI_COMA				CLOSE_P\n";
 										$<r.node>$=new ForNode(NULL,$<r.node>5,NULL,NULL,scoop);
 										}
 	|FOR OPEN_P 				SEMI_COMA			 SEMI_COMA expr			CLOSE_P	
-										{cout<<"for_loop_header: FOR OPEN_P 				SEMI_COMA			 SEMI_COMA expr			CLOSE_P";
+										{Streams::verbose()<<"for_loop_header: FOR OPEN_P 				SEMI_COMA			 SEMI_COMA expr			CLOSE_P";
 										$<r.node>$=new ForNode(NULL,NULL,$<r.node>5,NULL,scoop);
 										}
 	
 	|FOR OPEN_P 				SEMI_COMA			SEMI_COMA 				CLOSE_P	
-											{cout<<"for_loop_hearder: FOR OPEN_P 				SEMI_COMA			SEMI_COMA 				CLOSE_P	\n";
+											{Streams::verbose()<<"for_loop_hearder: FOR OPEN_P 				SEMI_COMA			SEMI_COMA 				CLOSE_P	\n";
 											$<r.node>$=new ForNode(NULL,NULL,NULL,NULL,scoop);
 											}
 ;
 for_initializer:
-	INT IDENTIFIER EQUAL expr			{cout<<"for_initializer: INT IDENTIFIER EQUAL expr\n";
+	INT IDENTIFIER EQUAL expr			{Streams::verbose()<<"for_initializer: INT IDENTIFIER EQUAL expr\n";
 											AssignNode * temp=new AssignNode(scoop,new IdentifierNode($<r.text>2,scoop),$<r.node>4);
 											
 											//temp->add($<r.text>2,);
@@ -969,77 +969,77 @@ for_initializer:
 										 $<r.node>$=temp1; 
 										 idsList.push_back($<r.text>2);
 										}
-	|IDENTIFIER EQUAL expr				{cout<<"for_initializer: IDENTIFIER EQUAL expr\n";
+	|IDENTIFIER EQUAL expr				{Streams::verbose()<<"for_initializer: IDENTIFIER EQUAL expr\n";
 										$<r.node>$=new AssignNode(scoop,new IdentifierNode($<r.text>1,scoop),$<r.node>3);
 										}
-	|IDENTIFIER							{cout<<"for_initializer: IDENTIFIER\n";
+	|IDENTIFIER							{Streams::verbose()<<"for_initializer: IDENTIFIER\n";
 										$<r.node>$=new IdentifierNode($<r.text>1,scoop);
 										}
 ;
 logic_expr:
-	 expr LESS_THAN expr				{cout<<"logic_expr:expr LESS_THAN expr\n";
+	 expr LESS_THAN expr				{Streams::verbose()<<"logic_expr:expr LESS_THAN expr\n";
 										$<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,LESS_THAN,scoop);
 										}
-	|expr MORE_THAN expr				{cout<<"logic_expr:expr MORE_THAN expr\n";
+	|expr MORE_THAN expr				{Streams::verbose()<<"logic_expr:expr MORE_THAN expr\n";
 										 $<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,MORE_THAN,scoop);
 										}
-	|expr LESS_OR_EQUAL expr			{cout<<"logic_expr:expr LESS_OR_EQUAL expr\n";
+	|expr LESS_OR_EQUAL expr			{Streams::verbose()<<"logic_expr:expr LESS_OR_EQUAL expr\n";
 										 $<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,LESS_OR_EQUAL,scoop);
 										}
-	|expr MORE_OR_EQUAL expr			{cout<<"logic_expr:expr MORE_OR_EQUAL expr\n";
+	|expr MORE_OR_EQUAL expr			{Streams::verbose()<<"logic_expr:expr MORE_OR_EQUAL expr\n";
 										$<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,MORE_OR_EQUAL,scoop);
 										}
-	|expr EQUAL_EQUAL expr				{cout<<"logic_expr:expr EQUAL_EQUAL expr\n";
+	|expr EQUAL_EQUAL expr				{Streams::verbose()<<"logic_expr:expr EQUAL_EQUAL expr\n";
 										$<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,EQUAL_EQUAL,scoop);
 										}
-	|NOT_EQUAL expr						{cout<<"logic_expr:NOT_EQUAL expr\n";
+	|NOT_EQUAL expr						{Streams::verbose()<<"logic_expr:NOT_EQUAL expr\n";
 										 $<r.node>$=new UnaryNode(scoop,$<r.node>2,NOT_EQUAL);
 										}
-	|OPEN_P logic_expr CLOSE_P			{cout<<"logic_expr:OPEN_P logic_expr CLOSE_P\n";
+	|OPEN_P logic_expr CLOSE_P			{Streams::verbose()<<"logic_expr:OPEN_P logic_expr CLOSE_P\n";
 										 $<r.node>$=$<r.node>2;
 										}
 	|logic_expr AND_AND logic_expr		{
-											cout<<"logic_expr:logic_expr AND_AND logic_expr\n";
+											Streams::verbose()<<"logic_expr:logic_expr AND_AND logic_expr\n";
 											$<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,AND_AND,scoop);
 										}
-	|logic_expr OR_OR logic_expr		{cout<<"logic_expr:logic_expr OR_OR logic_expr\n";
+	|logic_expr OR_OR logic_expr		{Streams::verbose()<<"logic_expr:logic_expr OR_OR logic_expr\n";
 										$<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,OR_OR,scoop);
 										}
-	|TRUE								{cout<<"logic_expr:TRUE\n";
+	|TRUE								{Streams::verbose()<<"logic_expr:TRUE\n";
 										 $<r.node>$=new ConstantNode(true,scoop);
 										}
-	|FALSE								{cout<<"logic_expr:FALSE\n";
+	|FALSE								{Streams::verbose()<<"logic_expr:FALSE\n";
 											 $<r.node>$=new ConstantNode(false,scoop);
 										}
 ;
 expr:
-	assign_expr							{cout<<"expr:assign_expr\n";
+	assign_expr							{Streams::verbose()<<"expr:assign_expr\n";
 										 $<r.node>$=$<r.node>1;
 										}
-	|simple_expr						{cout<<"expr:simple_expr\n";
+	|simple_expr						{Streams::verbose()<<"expr:simple_expr\n";
 										$<r.node>$=$<r.node>1;
 										}
 ;
 assign_expr: 
 	long_id EQUAL simple_expr			{
-										cout<<"assign_expr:long_id EQUAL simple_expr\n";
+										Streams::verbose()<<"assign_expr:long_id EQUAL simple_expr\n";
 										//LongIdHelper::checkIdenentifier( scoop, interface,"set1");
 										$<r.node>$=new AssignNode(scoop,$<r.node>1,$<r.node>3);
 										}
 ;
 long_id:
-	long_id DOT IDENTIFIER					{cout<<"long_id: long_id.IDENTIFIER\n";
+	long_id DOT IDENTIFIER					{Streams::verbose()<<"long_id: long_id.IDENTIFIER\n";
 																$<r.node>$=new DotNode(scoop,$<r.node>1,$<r.text>3);
 
 											;}
 	|message_call							{
-												cout<<"long_id: long_id.message_call\n";
+												Streams::verbose()<<"long_id: long_id.message_call\n";
 												$<r.node>$=$<r.node>1;
 											}
 	|IDENTIFIER								%prec long_id_prec{
 																LongIdHelper::addIdentifier($<r.text>1); 
 																$<r.node>$=new IdentifierNode($<r.text>1,scoop);
-																cout<<"long_id:IDENTIFIER\n";
+																Streams::verbose()<<"long_id:IDENTIFIER\n";
 															   }
 ;
 
@@ -1047,53 +1047,53 @@ long_id:
 
 simple_expr:
 	STRING_VAL						{
-										cout<<"simple_expr:STRING_VAL\n";
+										Streams::verbose()<<"simple_expr:STRING_VAL\n";
 									$<r.node>$=new ConstantNode(*($<r.string_val>1),scoop);
-									cout<<"node typr"<<$<r.node>$->generateType()->get_name()<<"\n";
+									Streams::verbose()<<"node typr"<<$<r.node>$->generateType()->get_name()<<"\n";
 									$<r.string_val>$=$<r.string_val>1;
 									}
 	|INT_VAL						{
-									cout<<"simple_expr:INT_VAL\n";
+									Streams::verbose()<<"simple_expr:INT_VAL\n";
 									$<r.node>$=new ConstantNode(yylval.r.int_val,scoop);
 									}
-	|FLOAT_VAL						{cout<<"simple_expr:FLOAT_VAL\n";
+	|FLOAT_VAL						{Streams::verbose()<<"simple_expr:FLOAT_VAL\n";
 									$<r.node>$=new ConstantNode(yylval.r.float_val,scoop);
 									}
-	|CHAR_VAL						{cout<<"simple_expr:CHAR_VAL\n";
+	|CHAR_VAL						{Streams::verbose()<<"simple_expr:CHAR_VAL\n";
 										$<r.node>$=new ConstantNode(yylval.r.char_val,scoop);
 									}
-	|long_id						{cout<<"simple_expr:long_id\n";
+	|long_id						{Streams::verbose()<<"simple_expr:long_id\n";
 									$<r.node>$=$<r.node>1;
 									}
 	|simple_expr PLUS simple_expr	{
-										cout<<"simple_expr:expr PLUS expr\n";
+										Streams::verbose()<<"simple_expr:expr PLUS expr\n";
 										$<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,PLUS,scoop);
 									}
 	|simple_expr MINUS simple_expr	{
-										cout<<"simple_expr:expr MINUS expr\n";
+										Streams::verbose()<<"simple_expr:expr MINUS expr\n";
 										$<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,MINUS,scoop);
 									}
-	|simple_expr MULTI simple_expr	{cout<<"simple_expr:expr MULTI expr\n";
+	|simple_expr MULTI simple_expr	{Streams::verbose()<<"simple_expr:expr MULTI expr\n";
 											$<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,MULTI,scoop);
 									}
 	|simple_expr DIV simple_expr	{
-									cout<<"simple_expr:expr DIV expr\n";
+									Streams::verbose()<<"simple_expr:expr DIV expr\n";
 									$<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,DIV,scoop);
 									}
-	|OPEN_P simple_expr CLOSE_P		{cout<<"simple_expr:OPEN_P expr CLOSE_P\n";$<r.node>$=$<r.node>2;}
-	|IDENTIFIER DOUBLEPLUS          {cout<<"simple_expr:ID++";}
-	|IDENTIFIER DOUBLEMINUS         {cout<<"simple_expr:ID--";}
-	|DOUBLEPLUS IDENTIFIER         {cout<<"simple_expr:++ID";}
-	|DOUBLEMINUS IDENTIFIER        {cout<<"simple_expr:--ID";}
+	|OPEN_P simple_expr CLOSE_P		{Streams::verbose()<<"simple_expr:OPEN_P expr CLOSE_P\n";$<r.node>$=$<r.node>2;}
+	|IDENTIFIER DOUBLEPLUS          {Streams::verbose()<<"simple_expr:ID++";}
+	|IDENTIFIER DOUBLEMINUS         {Streams::verbose()<<"simple_expr:ID--";}
+	|DOUBLEPLUS IDENTIFIER         {Streams::verbose()<<"simple_expr:++ID";}
+	|DOUBLEMINUS IDENTIFIER        {Streams::verbose()<<"simple_expr:--ID";}
 	|p_type simple_expr				%prec p_type_expr_prec	{
-																cout<<"expr:p_type expr\n";
+																Streams::verbose()<<"expr:p_type expr\n";
 																if(type!=NULL)
 																$<r.node>$=new CastNode(scoop,type,$<r.node>2);
 															}//casting
 ;
 message_call2:
 OPEN_ARR {		
-			cout<<"message_call2\n";
+			Streams::verbose()<<"message_call2\n";
 			if(callNode==NULL)
 			callNode=new CallNode(scoop);
 			else 
@@ -1101,12 +1101,12 @@ OPEN_ARR {
 			callNodeStack.push(callNode);
 			callNode=new CallNode(scoop);
 			}
-			cout<<"mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm";
+			Streams::verbose()<<"mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm";
 			}
 ;
 message_call:
 	message_call2 sender message CLOSE_ARR		{
-												cout<<"message_call: OPEN_ARR sender message CLOSE_ARR\n";
+												Streams::verbose()<<"message_call: OPEN_ARR sender message CLOSE_ARR\n";
 												callNode->setMessage($<r.text>3);
 												$<r.node>$=callNode;
 												callNode=NULL;
@@ -1117,13 +1117,13 @@ message_call:
 												}
 ;
 sender:
-	message_call							{cout<<"sender: message_call\n";
+	message_call							{Streams::verbose()<<"sender: message_call\n";
 											
 											callNode->setSender($<r.node>1);
 											 $<r.node>$=$<r.node>1;
 											 
 											}
-	|IDENTIFIER								{cout<<"sender: IDENTIFIER\n";
+	|IDENTIFIER								{Streams::verbose()<<"sender: IDENTIFIER\n";
 											$<r.node>$=new IdentifierNode($<r.text>1,scoop);
 											
 											//callNode=new CallNode(scoop);
@@ -1133,25 +1133,25 @@ sender:
 											}
 ;
 message:
-	IDENTIFIER								{cout<<"message: IDENTIFIER\n";
+	IDENTIFIER								{Streams::verbose()<<"message: IDENTIFIER\n";
 											$<r.text>$=$<r.text>1;
 												
 											}
 	|message_selectors_list		{
-											cout<<"message_selectors_list\n";
+											Streams::verbose()<<"message_selectors_list\n";
 											//$<r.node>$=$<r.text>1;
 											$<r.text>$="";
 											}
 ;
 message_selectors_list:
 	message_selectors_list message_selector {
-											cout<<"message_selectors_list:message_selectors_list message_selector \n";
+											Streams::verbose()<<"message_selectors_list:message_selectors_list message_selector \n";
 												callNode->addSelector(cselector);
 											cselector=NULL;
 												}
 	|message_selector {	callNode->addSelector(cselector);
 							cselector=NULL;
-								cout<<"message_selectors_list: message_selector\n";
+								Streams::verbose()<<"message_selectors_list: message_selector\n";
 											
 		}
 ;	
@@ -1159,15 +1159,15 @@ message_selector: IDENTIFIER SEMI_COLUMN argument_list{
 									cselector->name=$<r.text>1;
 							}
 argument_list:
-	argument_list SEMI_COLUMN argument					{cout<<"argument_list: argument_list argument\n";
+	argument_list SEMI_COLUMN argument					{Streams::verbose()<<"argument_list: argument_list argument\n";
 												cselector->addArg($<r.node>3);}
-	|argument								{cout<<"argument_list: argument\n";
+	|argument								{Streams::verbose()<<"argument_list: argument\n";
 												cselector=new CallSelector("");
 											cselector->addArg($<r.node>1);}
 ; 
 argument:
 	 expr									{
-											cout<<"argument: SEMI_COLUMN expr\n";
+											Streams::verbose()<<"argument: SEMI_COLUMN expr\n";
 											$<r.node>$=$<r.node>1;
 											//callNode->addArgument($<r.node>1,"");
 											
@@ -1175,34 +1175,34 @@ argument:
 ;
 while_loop:
 	while_loop_header statement			{
-											cout<<"while_loop:while_loop_header statement\n";
+											Streams::verbose()<<"while_loop:while_loop_header statement\n";
 											 $<r.node>$=new WhileNode($<r.node>1,$<r.node>2,scoop);
 										}
 ;
 while_loop_header:
-	WHILE OPEN_P logic_expr CLOSE_P			{cout<<"while_loop_header: WHILE OPEN_P logic_expr CLOSE_P\n";
+	WHILE OPEN_P logic_expr CLOSE_P			{Streams::verbose()<<"while_loop_header: WHILE OPEN_P logic_expr CLOSE_P\n";
 											$<r.node>$=$<r.node>3;
 											}
 ;
 conditional_statement:
-	if_header statement		%prec if_h			{cout<<"conditional_statement: if_header statement\n";
+	if_header statement		%prec if_h			{Streams::verbose()<<"conditional_statement: if_header statement\n";
 												 $<r.node>$=new IfNode($<r.node>1,$<r.node>2,scoop,NULL);
 												}
 	|if_header statement	ELSE 	statement	{
-												cout<<"conditional_statement: if_header statement with else\n";
+												Streams::verbose()<<"conditional_statement: if_header statement with else\n";
 												 $<r.node>$=new IfNode($<r.node>1,$<r.node>2,scoop,new ElseNode($<r.node>4,scoop));
 												}
-	|switch_header switch_body			{cout<<"conditional_statement: switch_header switch_body statement\n";
+	|switch_header switch_body			{Streams::verbose()<<"conditional_statement: switch_header switch_body statement\n";
 											$<r.node>$=new SwitchNode(tempSwitch);
 										}
 ;
 if_header:
-	IF OPEN_P logic_expr CLOSE_P			{cout<<"if_header: IF OPEN_P logic_expr CLOSE_P\n";
+	IF OPEN_P logic_expr CLOSE_P			{Streams::verbose()<<"if_header: IF OPEN_P logic_expr CLOSE_P\n";
 											$<r.node>$=$<r.node>3;
 											}
 ;
 switch_header:
- SWITCH OPEN_P IDENTIFIER CLOSE_P switch_body_block  {cout<<"switch_header: SWITCH OPEN_P IDENTIFIER CLOSE_P\n";
+ SWITCH OPEN_P IDENTIFIER CLOSE_P switch_body_block  {Streams::verbose()<<"switch_header: SWITCH OPEN_P IDENTIFIER CLOSE_P\n";
 										
 										tempSwitch->setExpr(new IdentifierNode($<r.text>3,scoop));
 									}
@@ -1231,7 +1231,7 @@ DEFAULT SEMI_COLUMN statement BREAK SEMI_COMA {tempSwitch->addCase(NULL,$<r.node
 |DEFAULT SEMI_COLUMN BREAK SEMI_COMA {tempSwitch->addCase(NULL,$<r.node>3);}
 ;
 protocol: protocol_header protocol_body	{
-										cout<<"protocol: protocol_header protocol_body\n";
+										Streams::verbose()<<"protocol: protocol_header protocol_body\n";
 										idsList.clear();
 										methodsList.clear();
 										method=NULL;
@@ -1239,14 +1239,14 @@ protocol: protocol_header protocol_body	{
 ;
 protocol_header:
 		AT_PROTOCOL IDENTIFIER	{
-								cout<<"protocol_header: AT_PROTOCOL IDENTIFIER \n";
+								Streams::verbose()<<"protocol_header: AT_PROTOCOL IDENTIFIER \n";
 								protocol=ProtocolHelper ::createNewProtocol($<r.text>2,symbolTable );
 								
 								}
 ;
 protocol_body:	protocol_reference_list interface_declaration_list	AT_END	
 								{
-								cout<<"protocol_body:	protocol_reference_list interface_declaration_list	AT_END\n";
+								Streams::verbose()<<"protocol_body:	protocol_reference_list interface_declaration_list	AT_END\n";
 								ProtocolHelper::addInheritedProtocol( protocol, idsList,symbolTable);
 								ProtocolHelper::addMethods( protocol,methodsList);
 								methodsList.clear();
@@ -1254,7 +1254,7 @@ protocol_body:	protocol_reference_list interface_declaration_list	AT_END
 								}
 				|						interface_declaration_list	AT_END	
 								{
-								cout<<"protocol_body:	interface_declaration_list	AT_END\n";
+								Streams::verbose()<<"protocol_body:	interface_declaration_list	AT_END\n";
 									
 								ProtocolHelper::addMethods( protocol,methodsList);
 								methodsList.clear();
@@ -1262,59 +1262,59 @@ protocol_body:	protocol_reference_list interface_declaration_list	AT_END
 								}
 				|protocol_reference_list 							AT_END	
 								{
-								cout<<"protocol_body:	protocol_reference_list AT_END	\n";
+								Streams::verbose()<<"protocol_body:	protocol_reference_list AT_END	\n";
 											ProtocolHelper::addInheritedProtocol( protocol, idsList,symbolTable);
 								idsList.clear();
 								}
 				|													AT_END	
-								{cout<<"protocol_body:	AT_END\n";}
+								{Streams::verbose()<<"protocol_body:	AT_END\n";}
 enum:
      ENUM IDENTIFIER  OPEN_S list_expr CLOSE_S SEMI_COMA     {
-																cout<<"enum: ENUM IDENTIFIER  OPEN_S list_expr CLOSE_S SEMI_COMA  \n";
+																Streams::verbose()<<"enum: ENUM IDENTIFIER  OPEN_S list_expr CLOSE_S SEMI_COMA  \n";
 																
 																EnumHelper::createNewEnum( $<r.text>2,idsList, symbolTable);
 																idsList.clear();
 															 }
     |ENUM IDENTIFIER SEMI_COMA								 {
-																cout<<"enum: ENUM IDENTIFIER SEMI_COMA\n";
+																Streams::verbose()<<"enum: ENUM IDENTIFIER SEMI_COMA\n";
 																EnumHelper::createNewEnum( $<r.text>2,idsList, symbolTable);
 															  }
 	
 ;
 list_expr:
      IDENTIFIER EQUAL expr COMMA list_expr      {
-												cout<<"list_expr:IDENTIFIER EQUAL expr COMMA list_expr\n";
+												Streams::verbose()<<"list_expr:IDENTIFIER EQUAL expr COMMA list_expr\n";
 												idsList.push_back($<r.text>1);
 													$<r.node>$=new AssignNode(scoop,new IdentifierNode($<r.text>1,scoop),$<r.node>3);
 												}
 	| IDENTIFIER EQUAL expr						{
-												cout<<"list_expr:IDENTIFIER EQUAL expr\n";
+												Streams::verbose()<<"list_expr:IDENTIFIER EQUAL expr\n";
 												idsList.push_back($<r.text>1);
 												$<r.node>$=new AssignNode(scoop,new IdentifierNode($<r.text>1,scoop),$<r.node>3);
 												}
 	|IDENTIFIER									{
-													cout<<"list_expr:IDENTIFIER \n";
+													Streams::verbose()<<"list_expr:IDENTIFIER \n";
 													idsList.push_back($<r.text>1);
 													//??
 												}
 	|IDENTIFIER  COMMA list_expr				{
-												  cout<<"list_expr:IDENTIFIER  COMMA list_expr \n";
+												  Streams::verbose()<<"list_expr:IDENTIFIER  COMMA list_expr \n";
 												  idsList.push_back($<r.text>1);
 												  //??
 												}
 ;
 try_catch:
 	TRY statement catch_list finally_statement{
-												  cout<<"try_catch:TRY statement catch_list finally_statement \n";
+												  Streams::verbose()<<"try_catch:TRY statement catch_list finally_statement \n";
 												}
 
 	| TRY statement catch_list %prec try_prec{				  
-								cout<<"try_catch:TRY statement catch_list \n";
+								Streams::verbose()<<"try_catch:TRY statement catch_list \n";
 							  }
 ;
 catch_list:
-	CATCH OPEN_S type IDENTIFIER CLOSE_S statement {cout<<"catch_list:CATCH OPEN_S type IDENTIFIER CLOSE_S statement \n";}
-	|catch_list CATCH OPEN_S type IDENTIFIER CLOSE_S statement {cout<<"catch_list:catch_list CATCH OPEN_S type IDENTIFIER CLOSE_S statement \n";}
+	CATCH OPEN_S type IDENTIFIER CLOSE_S statement {Streams::verbose()<<"catch_list:CATCH OPEN_S type IDENTIFIER CLOSE_S statement \n";}
+	|catch_list CATCH OPEN_S type IDENTIFIER CLOSE_S statement {Streams::verbose()<<"catch_list:catch_list CATCH OPEN_S type IDENTIFIER CLOSE_S statement \n";}
 ;
 finally_statement:
 	FINALLY statement
