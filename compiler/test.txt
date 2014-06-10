@@ -20,7 +20,7 @@ main:
 
  #generating code for Method:print: (int) parameter 
 
-__method_1:
+_c1_method_1:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -43,7 +43,7 @@ add $sp,$sp,4
 
  #generating code for Method:print: (float) parameter 
 
-__method_2:
+_c1_method_2:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -66,7 +66,7 @@ add $sp,$sp,4
 
  #generating code for Method:print: (NSString) parameter 
 
-__method_3:
+_c1_method_3:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -89,7 +89,7 @@ add $sp,$sp,4
 
  #generating code for Method:print: (char) parameter 
 
-__method_4:
+_c1_method_4:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -112,7 +112,7 @@ add $sp,$sp,4
 
  #generating code for Method:readcharreadchar
 
-__method_5:
+_c1_method_5:
  #moving the stack back because args are in scoop
 add $sp,$sp,0
  #movesp to fp
@@ -137,7 +137,7 @@ add $sp,$sp,0
 
  #generating code for Method:readfloatreadfloat
 
-__method_6:
+_c1_method_6:
  #moving the stack back because args are in scoop
 add $sp,$sp,0
  #movesp to fp
@@ -162,7 +162,7 @@ add $sp,$sp,0
 
  #generating code for Method:readintreadint
 
-__method_7:
+_c1_method_7:
  #moving the stack back because args are in scoop
 add $sp,$sp,0
  #movesp to fp
@@ -187,7 +187,7 @@ add $sp,$sp,0
 
  #generating code for Method:readstringreadstring
 
-__method_8:
+_c1_method_8:
  #moving the stack back because args are in scoop
 add $sp,$sp,0
  #movesp to fp
@@ -222,7 +222,7 @@ add $sp,$sp,0
 
  #generating code for Method:go: (int) y 
 
-__method_9:
+_c2_method_9:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -250,9 +250,32 @@ add $sp,$sp,0
 add $sp,$sp,4
 
 
+ #generating code for Method:print: (int) parameter 
+
+_c2_method_1:
+ #moving the stack back because args are in scoop
+add $sp,$sp,4
+ #movesp to fp
+move $fp,$sp
+ #reserving space in stack for scope variables
+sub $sp,$sp,4
+ #reserving space in stack for scope variables
+sub $sp,$sp,0
+ #asm node :li $v0 ,1
+li $v0 ,1
+ #asm node :lw $a0 ,0($fp)
+lw $a0 ,0($fp)
+ #asm node :syscall
+syscall
+ #releasing space in stack for scope variables
+add $sp,$sp,0
+ #releasing space in stack for scope variables
+add $sp,$sp,4
+
+
  #generating code for Method:a2go: (int) y 
 
-__method_10:
+_c2_method_10:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -277,7 +300,7 @@ sw $t9, 0($sp)
 li $t9,5
 sub $sp,$sp,4
 sw $t9, 0($sp)
-jal __method_9
+jal _c2_method_9
 li $t9,2
 sub $sp,$sp,4
 sw $t9, 0($sp)

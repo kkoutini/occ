@@ -11,6 +11,7 @@ extern int line;
 extern int col;
 class Variable;
 class ScoopNode;
+class Interface;
 class FunctionNode;
 class Method:public Symbol{
 public:
@@ -37,6 +38,8 @@ public:
 //	access_type get_access_modifier();
 		void setFunctionNode(FunctionNode*);
 	Type* get_return_type();
+	Interface* Method::getInterface();
+
 	void set_return_type(Type* returnType);
 	DeclerationSelector* getSelector(string);
 	bool addSelector(DeclerationSelector*);
@@ -45,6 +48,8 @@ public:
 	bool static checkReturnType(Method*,Method*);
 	void static checkParameters(Method*,Method*);
 	string getSignature();
+	int Method::getId();
+
 	//variable* get_var_at(int var_index);	
 	//int get_para_num();
 	//bool equal_parameter(Method*);

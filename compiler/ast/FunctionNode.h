@@ -4,13 +4,15 @@
 #include "../ST/Method.h"
 #include "../ST/SymbolTable.h"
 extern SymbolTable* symbolTable;
+class Interface;
 class FunctionNode :
 	public ScoopNode
 {
 protected:
 	Method* _method;
+	Interface* _interface;
+
 public:
-	
 	FunctionNode(ScoopNode* scoop,Method* method):ScoopNode(scoop),_method(method)
 	{
 	//	_method->setFunctionNode(this);
@@ -42,7 +44,15 @@ for(auto i=_nodes.begin();i!=_nodes.end();i++)
 	{
 		return symbolTable->getType("void");
 	}
-	
+	 Interface* getInterface()
+	{
+		return _interface;
+	}
+	 void setInterface(Interface*i)
+	{
+		 _interface=i;
+	}
+
 	virtual ~FunctionNode(void)
 	{
 	}

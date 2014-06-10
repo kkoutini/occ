@@ -6,6 +6,7 @@
 #include <sstream>
 #include "../ast/FunctionNode.h"
 #include "../MethodsIndexer.h"
+#include "Interface.h"
 void Method::setFunctionNode(FunctionNode* fNode){
 	this->scoopBody = fNode;
 }
@@ -214,12 +215,19 @@ void Method::set_static(bool isStatic){
 bool Method::get_static(){
 	return this->is_static;
 }
-
+int Method::getId()
+{
+	return MethodsIndexer::getMethodIndex(this);
+}
+Interface* Method::getInterface()
+{
+	return 	this->getF()->getInterface();
+}
 string Method::getLabel()
 {
 	if (label == "")
 	{
-		label = string("__method_") + std::to_string( MethodsIndexer::getMethodIndex(this));
+		label = string("_c") + std::to_string(getInterface()->getId()) + "_method_" + std::to_string(getId());
 	}
 	return label;
 }

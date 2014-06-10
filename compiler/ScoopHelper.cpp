@@ -8,6 +8,7 @@ FunctionNode* ScoopHelper::createNewFunctionNode( Method* method, Interface* int
 	FunctionNode* scoop;
 	
 		scoop = new FunctionNode(dynamic_cast<ScoopNode*>(interface->getScoop()), method);
+		scoop->setInterface ( interface);
 		method->getF()->add_variable(new Variable("self", interface, true));
 
 		for (int i = 0; i <method->get_variables().size(); i++)
