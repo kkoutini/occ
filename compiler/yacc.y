@@ -37,13 +37,13 @@
 	using namespace std;
 	
     extern string sourceFile="";
+	
+extern int lineNum;
+extern int colNum;
 	int yylex(void);
 	int yyparse();
 	void yyerror(const char *);
 
-	//extern int linenum;
-	//extern int colno;
-	//extern string ytext; 
 	extern std::ofstream ofs ("test.txt", std::ofstream::out);
 	FlexLexer* lexer ;
 	SymbolTable * symbolTable =new SymbolTable();
@@ -1340,6 +1340,8 @@ void main(void){
 
 	sfiles.push_back("code.txt");
 	for(string sf:sfiles){
+	
+		lineNum=colNum=1;
 		sourceFile=sf;
 		ifstream inf(sf);
 		lexer = new yyFlexLexer(&inf);

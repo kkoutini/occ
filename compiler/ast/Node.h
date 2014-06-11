@@ -1,5 +1,6 @@
 #pragma once
 #include "mips_asm.h"
+#include <string>
 class ScoopNode;
 class Type;
 class Node
@@ -47,7 +48,12 @@ public:
 			return type;
 		return type=generateType();
 	}
-
+	virtual string getDebugString()
+	{
+		return string("#F:") + _filename + string(" #L:") + std::to_string(_line);
+		//+string(" #C:") + std::to_string(_col);
+	}
+	
 	virtual ~Node(void)
 	{
 	}
