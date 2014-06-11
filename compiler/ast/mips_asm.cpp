@@ -234,10 +234,15 @@ void MIPS_ASM::releaseStack(int size)
 
 void MIPS_ASM::pop(string dest)
 {
-	string c="lw $";	
-	c+=dest;
-	c+=", 0($sp)\n";
+	string c = "lw $";
+	c += dest;
+	c += ", 0($sp)\n";
 	MIPS_ASM::add_instruction(c);
+	MIPS_ASM::add_instruction("add $sp,$sp,4\n");
+
+}
+void MIPS_ASM::pop()
+{
 	MIPS_ASM::add_instruction("add $sp,$sp,4\n");
 
 }

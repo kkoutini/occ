@@ -136,6 +136,9 @@ cout<<"end scooooooooooooop\n";
 		MIPS_ASM::reserveStack(getFrameSize());
 		for(auto i=_nodes.begin();i!=_nodes.end();i++){
 			(*i)->generateCode();
+			// pop the result of the last statement from stack
+			if (!dynamic_cast<ScoopNode*>(*i))
+				MIPS_ASM::pop();
 		}
 		//TODO collecting garbage
 		MIPS_ASM::releaseStack(getFrameSize());

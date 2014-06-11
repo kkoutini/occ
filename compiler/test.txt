@@ -22,7 +22,7 @@ main:
 
 _c1_method_1:
  #moving the stack back because args are in scoop
-add $sp,$sp,4
+add $sp,$sp,8
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables
@@ -45,7 +45,7 @@ add $sp,$sp,8
 
 _c1_method_2:
  #moving the stack back because args are in scoop
-add $sp,$sp,4
+add $sp,$sp,8
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables
@@ -68,7 +68,7 @@ add $sp,$sp,8
 
 _c1_method_3:
  #moving the stack back because args are in scoop
-add $sp,$sp,4
+add $sp,$sp,8
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables
@@ -91,7 +91,7 @@ add $sp,$sp,8
 
 _c1_method_4:
  #moving the stack back because args are in scoop
-add $sp,$sp,4
+add $sp,$sp,8
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables
@@ -114,7 +114,7 @@ add $sp,$sp,8
 
 _c1_method_5:
  #moving the stack back because args are in scoop
-add $sp,$sp,0
+add $sp,$sp,4
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables
@@ -139,7 +139,7 @@ add $sp,$sp,4
 
 _c1_method_6:
  #moving the stack back because args are in scoop
-add $sp,$sp,0
+add $sp,$sp,4
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables
@@ -164,7 +164,7 @@ add $sp,$sp,4
 
 _c1_method_7:
  #moving the stack back because args are in scoop
-add $sp,$sp,0
+add $sp,$sp,4
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables
@@ -189,7 +189,7 @@ add $sp,$sp,4
 
 _c1_method_8:
  #moving the stack back because args are in scoop
-add $sp,$sp,0
+add $sp,$sp,4
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables
@@ -224,7 +224,7 @@ add $sp,$sp,4
 
 _c2_method_9:
  #moving the stack back because args are in scoop
-add $sp,$sp,4
+add $sp,$sp,8
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables
@@ -327,7 +327,7 @@ add $sp,$sp,8
 
 _c2_method_1:
  #moving the stack back because args are in scoop
-add $sp,$sp,4
+add $sp,$sp,8
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables
@@ -344,7 +344,7 @@ add $sp,$sp,8
 
 _c2_method_10:
  #moving the stack back because args are in scoop
-add $sp,$sp,4
+add $sp,$sp,8
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables

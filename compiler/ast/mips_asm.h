@@ -51,6 +51,7 @@ static	FILE * file;
 	static void pushf(string source);
 
 	static void pop(string dest);
+	static void pop();
 	static void popf(string dest);
 
 	static void beq(string reg1,string reg2,string label);
