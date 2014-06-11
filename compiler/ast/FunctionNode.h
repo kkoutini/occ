@@ -37,7 +37,7 @@ for(auto i=_nodes.begin();i!=_nodes.end();i++)
 	virtual void generateCode(){
 		MIPS_ASM::label(_method->getLabel());
 		MIPS_ASM::printComment("moving the stack back because args are in scoop");
-		MIPS_ASM::add_instruction(string("add $sp,$sp,") + to_string(_method->get_params_num()*4+4) + string("\n"));
+		MIPS_ASM::add_instruction(string("add $sp,$sp,") + to_string(_method->getF()->getFrameSize()) + string("\n"));
 		MIPS_ASM::move("fp","sp");
 		//MIPS_ASM::operation()
 	//_method->get_Scoop()->generateCode();
