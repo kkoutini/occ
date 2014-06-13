@@ -21,8 +21,10 @@ public:
 virtual void generateCode(){
 		MIPS_ASM::printComment("identifier "+_name);
 		Variable *var = this->_scoop->get_variable(_name);
-		MIPS_ASM::lw("t9", var->getOffset(), var->getOffsetRegister());
-		MIPS_ASM::push("t9");
+		MIPS_ASM::lw("t0", var->getOffset(), var->getOffsetRegister());
+		MIPS_ASM::add_instruction(string("addi $v0,$") + var->getOffsetRegister()
+			+ "," + std::to_string(var->getOffset())+"\n");
+		MIPS_ASM::push("t0");
 
 		//for(int i=0;i<=(this->_scoop->offset+this->_scoop->get_variable(_name)->offset)/4;i++)
 		//MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
