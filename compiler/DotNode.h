@@ -29,7 +29,7 @@ public:
 		Variable* variable = sender_interface->getVariableByName(_member);
 
 		if (variable == NULL){
-			//ERROR no variable
+			//ERROR no datamember with the name
 			return;
 		}
 
@@ -41,6 +41,9 @@ public:
 		MIPS_ASM::pop("a0");
 
 		MIPS_ASM::lw("t0",variable->getOffset(),"a0");
+		MIPS_ASM::add_instruction(string("addi $v0,$") + "a0"//var->getOffsetRegister()
+			+ "," + std::to_string(var->getOffset()) + "\n");
+
 		MIPS_ASM::push("t0");
 
 	}
