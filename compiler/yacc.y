@@ -1354,7 +1354,7 @@ void main(void){
 	Program::printErrors();
 	ofs<<".globl main\nmain:\n";
 	//ConstantNode * temp =new ConstantNode(5,NULL);
-	//method->getF()->generateCode();
+	//method->getFunctionNode()->generateCode();
 	symbolTable->generateCode();
 
 //	functionNode->toString();

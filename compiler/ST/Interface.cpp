@@ -134,8 +134,8 @@ void Interface::generateCode(){
 		MIPS_ASM::printComment(string( "generating code for Method:")+ i->first+i->second->to_string());
 		MIPS_ASM::add_instruction("\n");
 
-		if (i->second->getF() != NULL){
-			i->second->getF()->generateCode();
+		if (i->second->getFunctionNode() != NULL){
+			i->second->getFunctionNode()->generateCode();
 		}
 		else{
 			MIPS_ASM::printComment(string("Something wrong this method's node is NULL :") + i->first);

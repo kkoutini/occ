@@ -27,7 +27,7 @@ public:
 	vector<DeclerationSelector*> parameters;
 	FunctionNode* scoopBody;
 	public:
-		FunctionNode* getF(){
+		FunctionNode* getFunctionNode(){
 			return this->scoopBody;
 		}
 	Method(string name);

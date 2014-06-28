@@ -221,7 +221,7 @@ int Method::getId()
 }
 Interface* Method::getInterface()
 {
-	return 	this->getF()->getInterface();
+	return 	this->getFunctionNode()->getInterface();
 }
 string Method::getLabel()
 {

@@ -20,11 +20,11 @@ FunctionNode* ScoopHelper::createNewFunctionNode( Method* method, Interface* int
 
 		}
 		//functionNode=new FunctionNode(scoop,method);
-		if (method->getF() != NULL)
+		if (method->getFunctionNode() != NULL)
 			Streams::WTF() << "  getF is not null \n\n\\\n";
 
 		method->setFunctionNode(scoop);
-		// method->getF()->generateCode();
+		// method->getFunctionNode()->generateCode();
 	return scoop;
 }
 
