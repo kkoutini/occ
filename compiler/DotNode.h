@@ -42,7 +42,7 @@ public:
 
 		MIPS_ASM::lw("t0",variable->getOffset(),"a0");
 		MIPS_ASM::add_instruction(string("addi $v0,$") + "a0"//var->getOffsetRegister()
-			+ "," + std::to_string(var->getOffset()) + "\n");
+			+ "," + std::to_string(variable->getOffset()) + "\n");
 
 		MIPS_ASM::push("t0");
 
@@ -65,7 +65,7 @@ public:
 			string error = "ERROR in call NODE generate type in  line number ";
 			Program::addError(new SemanticError(error));
 		}
-		return variable->get_return_type();
+		return variable->getReturnType();
 	}
 	virtual ~DotNode()
 	{
