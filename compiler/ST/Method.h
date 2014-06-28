@@ -37,7 +37,7 @@ public:
 
 //	access_type get_access_modifier();
 		void setFunctionNode(FunctionNode*);
-	Type* get_return_type();
+	Type* getReturnType();
 	Interface* Method::getInterface();
 
 	void set_return_type(Type* returnType);

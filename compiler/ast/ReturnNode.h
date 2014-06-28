@@ -19,7 +19,7 @@ public:
 		}
 	virtual bool typeCheck()
 	{
-		if (_method->get_return_type()==_returnexp->getType())
+		if (_method->getReturnType()==_returnexp->getType())
 		{
 			return true;
 		}

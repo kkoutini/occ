@@ -108,16 +108,16 @@ void InterfaceHelper:: implementMethods(vector<Method*>methodsList,Interface* in
 	if(interface!=NULL){
 
 		for(int i=0 ;i<methodsList.size();i++){
-			Method* tempMethod=interface->getMethodsItem()-> getMethod(methodsList.at(i)->get_name(),methodsList.at(i)->get_return_type(),methodsList.at(i)->get_variables(),methodsList.at(i)->get_static());
+			Method* tempMethod=interface->getMethodsItem()-> getMethod(methodsList.at(i)->get_name(),methodsList.at(i)->getReturnType(),methodsList.at(i)->get_variables(),methodsList.at(i)->get_static());
 
 			if(tempMethod!=NULL){
 				if(!Method::checkReturnType(methodsList.at(i),tempMethod)){
 						string error="Conflicting return type in implementation of '";
 								error.append(tempMethod->get_name());
 			error.append("' (");
-			error.append(tempMethod->get_return_type()->get_name());
+			error.append(tempMethod->getReturnType()->get_name());
 			error.append(") vs (");
-				error.append(methodsList.at(i)->get_return_type()->get_name());
+				error.append(methodsList.at(i)->getReturnType()->get_name());
 				error.append(").");
 			Program::addError(new SemanticError(error));
 				}

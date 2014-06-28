@@ -91,7 +91,7 @@ public:
 			string error = "ERROR in call NODE generate type in  line number ";
 			Program::addError(new SemanticError(error));
 		}
-		return method->get_return_type();
+		return method->getReturnType();
 	}
 	virtual ~CallNode(void)
 	{

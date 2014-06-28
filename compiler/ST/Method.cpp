@@ -70,7 +70,7 @@ Method::Method(Method * method) :Symbol(method->get_name()){
 //	return Access_Modifier;
 //}
 
-Type* Method::get_return_type()
+Type* Method::getReturnType()
 {
 	if (this != NULL){
 		return this->return_type;
@@ -155,7 +155,7 @@ string Method::getSignature(){
 	return signature;
 }
 void Method::toString(){
-	cout << "Name: " << get_name() << "\t Return Type: " << get_return_type()->get_name() << "\tIsStatic: " << get_static() << endl;
+	cout << "Name: " << get_name() << "\t Return Type: " << getReturnType()->get_name() << "\tIsStatic: " << get_static() << endl;
 	if (parameters.size()>0)
 	{
 		cout << "Selectors: ";

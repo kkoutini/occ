@@ -43,7 +43,7 @@ void SymbolTable::toString(){
 }
 void SymbolTable ::add_type(Type* type){
 	if ((type!=NULL)&&(this!=NULL) ){
-		//Method* temp = this->getMethod(S->get_name(), S->get_return_type(),S->parameters);
+		//Method* temp = this->getMethod(S->get_name(), S->getReturnType(),S->parameters);
 		if (types.find(type->get_name()) != types.end())
 		{
 			Streams::WTF() << "duplicated addd\n\n";
