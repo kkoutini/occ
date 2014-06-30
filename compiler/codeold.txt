@@ -1,19 +1,37 @@
 
-
 @interface wessam
 {
 @public
 NSString str1;
+int b;
 }
 -(int) go:(int)y;
 
 @end
 
 @implementation wessam
-
+-(void) print:(int)parameter
+{
+	
+}
 -(int) go:(int)y
 {
 	y=8;
+	int c;
+	{
+		int mm;
+		mm=3;
+		{
+			int bb;
+			y=0;
+			c=0;
+			bb=0;
+		}
+		int nn;
+		nn=11;
+	}
+	int b;
+
 }
 
 -(int) a2go:(int)y
@@ -21,65 +39,8 @@ NSString str1;
 
 	wessam* a;
 	[a go:5];
+	a.b=2;
 }
 
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@interface vv{float set1;}@end
-@protocol v1
-
-
-
-@end
-struct tv{
-    int x;
-    float array[3][5];
-};
-@interface mYInterface :vv<v1>
-{
-
-ooo* x;
-  
-}
--(void)get:(int)x with:( int)y ;
-
-@end
-enum power{cda};
-@implementation mYInterface :vv1
-
--(void)get:(int)x with:(int)y{
-enum power set=5;
-const struct tv x1;
- }
-@end
-enum power1;
-
-enum power2{jjj,aaa};
-
-
-
 

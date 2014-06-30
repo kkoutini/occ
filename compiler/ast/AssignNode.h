@@ -25,18 +25,24 @@ public:
 		 }
 		 string t1="t1";
 		  string t0="t0";
-		 string mem_addr="sp";
+		  string mem_addr = "sp";
+		  MIPS_ASM::printComment("Assign node");
+		  MIPS_ASM::printComment("RHS:");
 		  _rightExp->generateCode();
 		 
-		
-		 MIPS_ASM::pop(t1);
-		// lw $t1, 0($sp)
-	//add $sp,$sp,4
+		  MIPS_ASM::printComment("Assign node lHS:");
+
 		 _leftExp->generateCode();
+
+		 MIPS_ASM::printComment("Assign node poping old val:");
+
 		 MIPS_ASM::pop(t0);
+		 MIPS_ASM::printComment("Assign node getting RHS val:");
+
 		 MIPS_ASM::top(t0);// not poping in order to keep value in stack
 		 // todo check if v0 isnot null in run time
 		 // todo check if we can assign 
+		 MIPS_ASM::printComment("Assign node storing in position val:");
 		 MIPS_ASM::sw(t0,0,"v0");
 
 

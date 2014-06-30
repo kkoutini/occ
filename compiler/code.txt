@@ -17,21 +17,7 @@ int b;
 -(int) go:(int)y
 {
 	y=8;
-	int c;
-	{
-		int mm;
-		mm=3;
-		{
-			int bb;
-			y=0;
-			c=0;
-			bb=0;
-		}
-		int nn;
-		nn=11;
-	}
-	int b;
-
+	
 }
 
 -(int) a2go:(int)y
