@@ -34,16 +34,12 @@ public:
 	//add $sp,$sp,4
 		 _leftExp->generateCode();
 		 MIPS_ASM::pop(t0);
-	//lw $t0, 0($sp)
-	//add $sp,$sp,4
-			MIPS_ASM::operation(t0,"0",t1,1);
+		 MIPS_ASM::top(t0);// not poping in order to keep value in stack
+		 // todo check if v0 isnot null in run time
+		 // todo check if we can assign 
+		 MIPS_ASM::sw(t0,0,"v0");
 
-	//add $t0,$0,$t1
-			if(dynamic_cast<IdentifierNode*>(_leftExp))
-			MIPS_ASM::sw_fp(t0,dynamic_cast<IdentifierNode*>(_leftExp)->getOffset());
-			//else
-			//	MIPS_ASM::sw_fp(t0,dynamic_cast<IdentifierNode*>(dynamic_cast<DeclerationNode*>(_leftExp)->)->getOffset());
-	//sw $t0, 0($this->left->offset)
+
 	 }
 	 void toString(){
 		 cout<<"AssignNode\n";

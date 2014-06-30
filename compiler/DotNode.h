@@ -41,6 +41,9 @@ public:
 		MIPS_ASM::pop("a0");
 
 		MIPS_ASM::lw("t0",variable->getOffset(),"a0");
+
+		//v0 contains the address in memorry to be used later in assignment
+		//TODO recheck this when checking the stack 
 		MIPS_ASM::add_instruction(string("addi $v0,$") + "a0"//var->getOffsetRegister()
 			+ "," + std::to_string(variable->getOffset()) + "\n");
 

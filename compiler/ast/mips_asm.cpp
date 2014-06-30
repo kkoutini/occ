@@ -241,6 +241,15 @@ void MIPS_ASM::pop(string dest)
 	MIPS_ASM::add_instruction("add $sp,$sp,4\n");
 
 }
+
+void MIPS_ASM::top(string dest)
+{
+	string c = "lw $";
+	c += dest;
+	c += ", 0($sp)\n";
+	MIPS_ASM::add_instruction(c);
+
+}
 void MIPS_ASM::pop()
 {
 	MIPS_ASM::add_instruction("add $sp,$sp,4\n");

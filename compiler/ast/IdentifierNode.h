@@ -22,6 +22,8 @@ virtual void generateCode(){
 		MIPS_ASM::printComment("identifier "+_name);
 		Variable *var = this->_scoop->get_variable(_name);
 		MIPS_ASM::lw("t0", var->getOffset(), var->getOffsetRegister());
+
+		//v0 contains the address in memorry to be used later in assignment
 		MIPS_ASM::add_instruction(string("addi $v0,$") + var->getOffsetRegister()
 			+ "," + std::to_string(var->getOffset())+"\n");
 		MIPS_ASM::push("t0");
