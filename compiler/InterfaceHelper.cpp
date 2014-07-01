@@ -5,16 +5,47 @@
 extern SymbolTable* symbolTable;
 
 void InterfaceHelper::addMethods(Interface* interface,vector<Method*>methodsList){
-	for(int i=0 ;i<methodsList.size();i++)
-		if(!interface->getMethodsItem()-> addMethod(methodsList.at(i)) &&methodsList.at(i)!=NULL)
-		{
-			string error="Duplicate declaration of method'";
-			error.append(methodsList.at(i)->getSignature());
+	for (auto i : methodsList)
+	{
+		if (i != NULL){
+			if (i->is_static)
+			{
+				if (interface->static_twin != NULL)
+				{
+					if (!interface->static_twin->getMethodsItem()->addMethod(i))
+					{
+						string error = "Duplicate declaration of method'";
+						error.append(i->getSignature());
 
-			error.append("'.");
-			Program::addError(new SemanticError(error));
+						error.append("'.");
+						Program::addError(new SemanticError(error));
 
+
+					}
+				}
+				else{
+					Streams::WTF() << "should never twin interface null";
+				}
+
+			}
+			else
+			{
+				if (!interface->getMethodsItem()->addMethod(i))
+				{
+					string error = "Duplicate declaration of method'";
+					error.append(i->getSignature());
+
+					error.append("'.");
+					Program::addError(new SemanticError(error));
+
+
+				}
+			}
 		}
+		else{
+			Streams::WTF() << "should never happen method null";
+		}
+	}
 }
 void InterfaceHelper::addInheritedProtocol(Interface* interface,vector<string>idsList,SymbolTable* symbolTable){
 	for(int i=0;i<idsList.size();i++)
