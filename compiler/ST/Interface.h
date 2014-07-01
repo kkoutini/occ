@@ -12,7 +12,7 @@ class ClassNode;
 
 class Interface:public Type{
 private:
-		
+	Interface* static_twin;
 	VariableItems* varItems;
 	MethodItems* methodsItem;
 	hash_map< string, Protocol*> son_protocols;
@@ -22,7 +22,7 @@ private:
 public:
 	static int interfacesCount;
 
-	Interface(string name);
+	Interface(string name,bool is_static_twin=false);
 	ClassNode* getScoop(){
 		return classNode;
 	}

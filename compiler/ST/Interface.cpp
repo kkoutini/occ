@@ -8,10 +8,13 @@
 using namespace std;
 int Interface::interfacesCount=0;
 
-Interface::Interface(string name):Type(name)
+Interface::Interface(string name, bool is_static_twin) :Type(name)
 {
 	varItems=new VariableItems();
 	methodsItem=new MethodItems();
+	if (!is_static_twin)
+		static_twin = new Interface(name, true);
+
 }
 	void Interface::setClassNode(ClassNode* classNode){
 		this->classNode=classNode;
@@ -163,12 +166,12 @@ void Interface::generateCode(){
 
 	}
 
-	
+
 	for (auto i = this->methodsItem->methods.begin(); i != this->methodsItem->methods.end(); i++)
 	{
 		MIPS_ASM::add_instruction("\n\n");
 
-		MIPS_ASM::printComment(string( "generating code for Method:")+ i->first+i->second->to_string());
+		MIPS_ASM::printComment(string("generating code for Method:") + i->first + i->second->to_string());
 		MIPS_ASM::add_instruction("\n");
 
 		if (i->second->getFunctionNode() != NULL){
@@ -180,6 +183,11 @@ void Interface::generateCode(){
 		}
 	}
 	MIPS_ASM::printComment("#########################################");
+	if (static_twin != NULL){
+		MIPS_ASM::printComment("###STATIC");
+
+		static_twin->generateCode();
+	}
 	MIPS_ASM::add_instruction("\n\n\n");
 }
 
