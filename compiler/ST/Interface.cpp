@@ -121,12 +121,32 @@ Variable* Interface::getVariableByName(string name)
 	return varItems->get_variable(name);
 }
 
+string Interface::getVtableLabel(){
+	return string("vt_") + std::to_string(getId());
+}
+string Interface::getVtableString(){
+	string res;
+	for (auto i = this->methodsItem->methods.begin(); i != this->methodsItem->methods.end(); i++)
+	{
+		string ins1="li $t0,";
+		ins1 += std::to_string(i->second->getId());
+		string ins2="beq $t0,$a1, ";
+		ins2 += i->second->getLabel();
+		res += ins1 + "\n" + ins2+"\n";
+	}
+	return res;
+}
 
 void Interface::generateCode(){
 	MIPS_ASM::printComment("#########################################");
 	MIPS_ASM::printComment(string("Generating code for class ") + this->get_name());
 	MIPS_ASM::add_instruction("\n\n\n\n");
+	MIPS_ASM::printComment(string("vtable: ") );
+	MIPS_ASM::add_instruction("\n\n");
+	MIPS_ASM::label(getVtableLabel() );
+	MIPS_ASM::add_instruction(getVtableString());
 
+	
 	for (auto i = this->methodsItem->methods.begin(); i != this->methodsItem->methods.end(); i++)
 	{
 		MIPS_ASM::add_instruction("\n\n");

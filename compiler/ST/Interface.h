@@ -26,6 +26,9 @@ public:
 	ClassNode* getScoop(){
 		return classNode;
 	}
+	string Interface::getVtableLabel();
+	string Interface::getVtableString();
+
 	int getId();
 	void setClassNode(ClassNode*);
 	Interface(Interface*);
