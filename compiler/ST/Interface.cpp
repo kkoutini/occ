@@ -144,7 +144,24 @@ void Interface::generateCode(){
 	MIPS_ASM::printComment(string("vtable: ") );
 	MIPS_ASM::add_instruction("\n\n");
 	MIPS_ASM::label(getVtableLabel() );
-	MIPS_ASM::add_instruction(getVtableString());
+	//MIPS_ASM::add_instruction(getVtableString());
+	Interface* vinter=this;
+	while (vinter!=NULL)
+	{
+		for (auto i = vinter->methodsItem->methods.begin(); i != vinter->methodsItem->methods.end(); i++)
+		{
+			MIPS_ASM::printComment(i->first+i->second->to_string());
+			MIPS_ASM::add_instruction(string("li $t0,") + std::to_string(i->second->getId())+"\n");
+			MIPS_ASM::add_instruction(string("beq $t0,$a1,") + i->second->getLabel() + "\n");
+
+		}
+
+		vinter = vinter->getInheretInterface();
+		MIPS_ASM::printComment("super");
+		if (vinter!=NULL)
+			MIPS_ASM::printComment(vinter->get_name());
+
+	}
 
 	
 	for (auto i = this->methodsItem->methods.begin(); i != this->methodsItem->methods.end(); i++)
