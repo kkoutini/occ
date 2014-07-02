@@ -201,6 +201,7 @@ Interface* InterfaceHelper:: checkImplementation(string typeS,SymbolTable* symbo
 				}
 			}
 			else{
+				if (typeS != "NSObject")
 				interface->setInheritInterface(dynamic_cast<Interface*> (symbolTable->getType("NSObject")));
 				//interface->setInheritInterface();
 			//string error="Class '";

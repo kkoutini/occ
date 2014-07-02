@@ -9,7 +9,6 @@ SymbolTable::SymbolTable(void)
 	this->add_type(new Type("float"));
 	this->add_type(new Type("void"));
 	this->add_type(new Type("char"));
-	this->add_type(new Interface("NSObject"));
 }
 SymbolTable::~SymbolTable(void)
 {
