@@ -33,7 +33,9 @@
 				#include "DotNode.h"
 				#include <fstream>
 				#include "Streams.h"
-
+#include <string>
+#include <fstream>
+#include <streambuf>
 	using namespace std;
 	
     extern string sourceFile="";
@@ -1354,7 +1356,12 @@ void main(void){
 	Program::printErrors();
 	ofs<<".globl main\nmain:\n";
 	//ConstantNode * temp =new ConstantNode(5,NULL);
-	//method->getFunctionNode()->generateCode();
+	//method->getFunctionNode()->generateCode
+
+	std::ifstream t_common("common.asm");
+std::string str_common((std::istreambuf_iterator<char>(t_common)),
+                 std::istreambuf_iterator<char>());
+	ofs<<str_common<<"\n";
 	symbolTable->generateCode();
 
 //	functionNode->toString();

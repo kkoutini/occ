@@ -2,7 +2,7 @@
 // Report bugs to <http://sourceforge.net/p/winflexbison/tickets>.
 // Home page: <http://sourceforge.net/projects/winflexbison/>.
 
-digraph "C:\\Users\\Dell\\Source\\Repos\\occ\\compiler\\yacc.y"
+digraph "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y"
 {
   node [fontname = courier, shape = box, colorscheme = paired6]
   edge [fontname = courier]
