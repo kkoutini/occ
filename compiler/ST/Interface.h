@@ -8,6 +8,8 @@
 #include "../VariableItems.h"
 #include "../MethodItems.h"
 #include "../CallSelector.h"
+extern ScoopNode* globalScoop;
+
 class ClassNode;
 
 class Interface:public Type{
@@ -31,8 +33,6 @@ public:
 	string Interface::getVtableString();
 
 	int getId();
-	void setClassNode(ClassNode*);
-	Interface(Interface*);
 	MethodItems* getMethodsItem();
 	void setMethodsItem(MethodItems*);
 	VariableItems* getVariableItems();

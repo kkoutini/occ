@@ -12,13 +12,16 @@ Interface::Interface(string name, bool is_static_twin) :Type(name)
 {
 	varItems=new VariableItems();
 	methodsItem=new MethodItems();
-	if (!is_static_twin)
+	classNode = new ClassNode(globalScoop, this);
+
+	if (!is_static_twin){
 		static_twin = new Interface(name, true);
+		static_twin->setStatus(completness::implemented);
+
+	}
 
 }
-	void Interface::setClassNode(ClassNode* classNode){
-		this->classNode=classNode;
-	}
+/*
 Interface::Interface(Interface* interf):Type(interf->get_name())
 {
 	//this->setInheritInterface(interf->inherit_interface);
@@ -27,7 +30,7 @@ Interface::Interface(Interface* interf):Type(interf->get_name())
 	this->son_protocols=interf->son_protocols;
 	this->inherit_interface=interf->getInheretInterface();
 	methodsItem=new MethodItems(interf->methodsItem);
-}
+}*/
 	Interface* Interface::getInheretInterface(){
 		return this->inherit_interface;
 	}
@@ -153,10 +156,12 @@ void Interface::generateCode(){
 	{
 		for (auto i = vinter->methodsItem->methods.begin(); i != vinter->methodsItem->methods.end(); i++)
 		{
-			MIPS_ASM::printComment(i->first+i->second->to_string());
-			MIPS_ASM::add_instruction(string("li $t0,") + std::to_string(i->second->getId())+"\n");
-			MIPS_ASM::add_instruction(string("beq $t0,$a1,") + i->second->getLabel() + "\n");
+			if (i->second->getFunctionNode() != NULL){
 
+				MIPS_ASM::printComment(i->first + i->second->to_string());
+				MIPS_ASM::add_instruction(string("li $t0,") + std::to_string(i->second->getId()) + "\n");
+				MIPS_ASM::add_instruction(string("beq $t0,$a1,") + i->second->getLabel() + "\n");
+			}
 		}
 
 		vinter = vinter->getInheretInterface();
@@ -187,8 +192,11 @@ void Interface::generateCode(){
 		MIPS_ASM::printComment("###STATIC");
 
 		static_twin->generateCode();
+		MIPS_ASM::printComment("###End STATIC");
+
 	}
 	MIPS_ASM::add_instruction("\n\n\n");
+
 }
 
 Method* Interface::getMethod(string message, vector<CallSelector*> v, bool isStatic )

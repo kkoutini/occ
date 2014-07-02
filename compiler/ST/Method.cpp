@@ -227,6 +227,11 @@ string Method::getLabel()
 {
 	if (label == "")
 	{
+		if (this->getFunctionNode() == NULL){
+			//not implmented method
+			//Todo 
+			label = "not_implemented";
+		}else
 		label = string("_c") + std::to_string(getInterface()->getId()) + "_method_" + std::to_string(getId());
 	}
 	return label;

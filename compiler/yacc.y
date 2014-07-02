@@ -210,15 +210,11 @@ class_interface: class_interface_header class_interface_body	{Streams::verbose()
 class_interface_header:  AT_INTERFACE IDENTIFIER		SEMI_COLUMN IDENTIFIER	{Streams::verbose()<<"class_interface_header:  AT_INTERFACE IDENTIFIER SEMI_COLUMN IDENTIFIER\n";
 																				interface=InterfaceHelper::createNewInterface($<r.text>2,$<r.text>4,symbolTable);
 																				
-																				classNode=new ClassNode(globalScoop,interface);
-																				interface->setClassNode(classNode);
 																				
 																				}
 						|AT_INTERFACE IDENTIFIER								{
 																					Streams::verbose()<<"class_interface_header:  AT_INTERFACE IDENTIFIER\n";
 																				 interface=InterfaceHelper::createNewInterface($<r.text>2,"",symbolTable);
-																				 	classNode=new ClassNode(globalScoop,interface);
-																				interface->setClassNode(classNode);
 
 																				}
 						|error IDENTIFIER								{Streams::verbose()<<"Error: Unknown type name '"<<$<r.text>1<<"' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
@@ -703,17 +699,19 @@ implementation_definition:
 class_implementation_definition:
 	class_implementation_definition_header block_body {
 														Streams::verbose()<<"class_implementation_definition: class_implementation_definition_header block_body";
-														//method->setFunctionNode(functionNode);
+														functionNode->addNode(cscoop);
 														functionNode=NULL;
-													nodeXX=method;
+																scoop=NULL;
+															scoop=NULL;
 													}
 ;
 class_implementation_definition_header:
 	PLUS p_type		 method_selectors	{
 										Streams::verbose()<<"class_implementation_definition_header: PLUS p_type		 method_selectors\n";
-															method=InterfaceHelper:: createNewMethod(type,symbolTable,$<r.text>3,selectorsList,true);
+										method=InterfaceHelper:: createNewMethod(type,symbolTable,$<r.text>3,selectorsList,true);
 																 selectorsList.clear();
-																
+									           functionNode= ScoopHelper::createNewFunctionNode(method,interface->static_twin);
+												scoop=functionNode;				
 																
 										}
 ;
