@@ -4483,7 +4483,7 @@ void main(void){
 	globalScoop=new ScoopNode(NULL);
 	globalScoop->setOffsetRegister("gp");
 	vector<string> sfiles;
-	sfiles.push_back("system.oc");
+	//sfiles.push_back("system.oc");
 
 	sfiles.push_back("code.txt");
 	for(string sf:sfiles){

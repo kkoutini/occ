@@ -158,16 +158,29 @@ void InterfaceHelper:: implementMethods(vector<Method*>methodsList,Interface* in
 			}
 			else 
 			{
+				if (methodsList.at(i) != NULL){
+					bool res = 0;
+					if (methodsList.at(i)->is_static)
+						res = interface->static_twin->getMethodsItem()->addMethod(methodsList.at(i));
+					else
+						res = interface->getMethodsItem()->addMethod(methodsList.at(i));
 
-				if(!interface->getMethodsItem()-> addMethod(methodsList.at(i)) &&methodsList.at(i)!=NULL){
-					
-								string error=" Duplicate method declaration'";
-								error.append(methodsList.at(i)->get_name());
-			error.append("'.");
-			Program::addError(new SemanticError(error));
+					if (!res){
+
+						string error = " Duplicate method declaration'";
+						error.append(methodsList.at(i)->get_name());
+						error.append("'.");
+						Program::addError(new SemanticError(error));
+
+					}
+				}
+				else
+				{
+					Streams::WTF() << "tried to add null methods\n";
 				}
 
-			}}
+			}
+		}
 	}
 }
 Interface* InterfaceHelper:: checkImplementation(string typeS,SymbolTable* symbolTable,string inheritedInterface){
