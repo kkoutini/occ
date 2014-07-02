@@ -1,0 +1,12 @@
+
+
+@interface NSObject
+{
+}
+
+
+
+
+@end
+@implementation NSObject
+@end
