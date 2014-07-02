@@ -307,5 +307,8 @@
     <Text Include="external tool.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="nsobject.oc">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

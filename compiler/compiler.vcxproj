@@ -182,6 +182,7 @@
     <Text Include="test.txt" />
     <Text Include="system.oc" />
     <Text Include="external tool.txt" />
+    <Text Include="nsobject.oc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
