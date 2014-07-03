@@ -18,12 +18,19 @@ int b;
 {
 	int x;
 	x=2;
-	[self print:[System readint]];
+	[self go:[System readint]];
 }
 +(void) print:(int)x
 {
 	[System print:x];
 	
+}
++(void) go:(int)x
+{
+
+	[self print:x];
+	if(x!=0)
+		[self go:x-1];
 }
 
 -(int) go:(int)y

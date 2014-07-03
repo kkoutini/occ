@@ -225,14 +225,30 @@ Interface* Method::getInterface()
 }
 string Method::getLabel()
 {
+
 	if (label == "")
 	{
 		if (this->getFunctionNode() == NULL){
 			//not implmented method
 			//Todo 
 			label = "not_implemented";
-		}else
-		label = string("_c") + std::to_string(getInterface()->getId()) + "_method_" + std::to_string(getId());
+		}
+		else{
+			string s = get_name();
+			if (parameters.size()>0)
+			{
+
+				for (int i = 0; i < parameters.size(); i++)
+				{
+					s += parameters.at(i)->get_name() + "_";
+					for (auto c : parameters.at(i)->_vars)
+						s += string("_") + c->getType()->get_name() + string("_") + c->get_name() + string("_");
+				}
+
+			}
+
+			label = string("_c") + std::to_string(getInterface()->getId()) + "_method_" + std::to_string(getId())+"_"+s;
+		}
 	}
 	return label;
 }

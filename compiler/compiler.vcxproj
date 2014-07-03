@@ -101,6 +101,7 @@
     <ClCompile Include="LongIdHelper.cpp" />
     <ClCompile Include="MethodItems.cpp" />
     <ClCompile Include="MethodsIndexer.cpp" />
+    <ClCompile Include="node.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="ProtocolHelper.cpp" />
     <ClCompile Include="ScoopHelper.cpp" />

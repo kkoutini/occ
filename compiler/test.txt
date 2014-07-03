@@ -13,47 +13,47 @@ main:
 
  #reserving space in stack for scope variables
 sub $sp,$sp,12
- ##F:code.txt #L:45
+ ##F:code.txt #L:52
  #asm node :la $t0,static_instance_1
 la $t0,static_instance_1
 
- ##F:code.txt #L:45
+ ##F:code.txt #L:52
  #asm node :sw $t0,0($gp)
 sw $t0,0($gp)
 
- ##F:code.txt #L:45
+ ##F:code.txt #L:52
  #asm node :la $t0,static_instance_2
 la $t0,static_instance_2
 
- ##F:code.txt #L:45
+ ##F:code.txt #L:52
  #asm node :sw $t0,-4($gp)
 sw $t0,-4($gp)
 
- ##F:code.txt #L:45
+ ##F:code.txt #L:52
  #asm node :la $t0,static_instance_3
 la $t0,static_instance_3
 
- ##F:code.txt #L:45
+ ##F:code.txt #L:52
  #asm node :sw $t0,-8($gp)
 sw $t0,-8($gp)
 
- ##F:code.txt #L:45
+ ##F:code.txt #L:52
  #identifier wessam
 lw $t0,-8($gp)
 addi $v0,$gp,-8
 sub $sp,$sp,4
 sw $t0, 0($sp)
 add $sp,$sp,4
- ##F:code.txt #L:45
+ ##F:code.txt #L:52
  #asm node :sub $sp,$sp,4
 sub $sp,$sp,4
- ##F:code.txt #L:45
- #asm node :jal _c4_method_1
-jal _c4_method_1
- ##F:code.txt #L:45
+ ##F:code.txt #L:52
+ #asm node :jal _c4_method_1_main
+jal _c4_method_1_main
+ ##F:code.txt #L:52
  #asm node :li $v0,10
 li $v0,10
- ##F:code.txt #L:45
+ ##F:code.txt #L:52
  #asm node :syscall
 syscall
  #releasing space in stack for scope variables
@@ -83,26 +83,26 @@ vt_1:
 vt_5:
  #allocalloc
 li $t0,2
-beq $t0,$a1,_c5_method_2
+beq $t0,$a1,_c5_method_2_alloc
  #super
 
 
  #generating code for Method:alloc
 
-_c5_method_2:
+_c5_method_2_alloc:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:45
+ ##F:code.txt #L:52
  #asm node :li $v0,9
 li $v0,9
- ##F:code.txt #L:45
+ ##F:code.txt #L:52
  #asm node :li $a0,4
 li $a0,4
- ##F:code.txt #L:45
+ ##F:code.txt #L:52
  #asm node :syscall
 syscall
  #releasing space in stack for scope variables
@@ -143,37 +143,37 @@ vt_2:
 vt_6:
  #print: (int) parameter 
 li $t0,3
-beq $t0,$a1,_c6_method_3
+beq $t0,$a1,_c6_method_3_print__int_parameter_
  #print: (float) parameter 
 li $t0,4
-beq $t0,$a1,_c6_method_4
+beq $t0,$a1,_c6_method_4_print__float_parameter_
  #print: (NSString) parameter 
 li $t0,5
-beq $t0,$a1,_c6_method_5
+beq $t0,$a1,_c6_method_5_print__NSString_parameter_
  #print: (char) parameter 
 li $t0,6
-beq $t0,$a1,_c6_method_6
+beq $t0,$a1,_c6_method_6_print__char_parameter_
  #allocalloc
 li $t0,2
-beq $t0,$a1,_c6_method_2
+beq $t0,$a1,_c6_method_2_alloc
  #readcharreadchar
 li $t0,7
-beq $t0,$a1,_c6_method_7
+beq $t0,$a1,_c6_method_7_readchar
  #readfloatreadfloat
 li $t0,8
-beq $t0,$a1,_c6_method_8
+beq $t0,$a1,_c6_method_8_readfloat
  #readintreadint
 li $t0,9
-beq $t0,$a1,_c6_method_9
+beq $t0,$a1,_c6_method_9_readint
  #readstringreadstring
 li $t0,10
-beq $t0,$a1,_c6_method_10
+beq $t0,$a1,_c6_method_10_readstring
  #super
 
 
  #generating code for Method:print: (int) parameter 
 
-_c6_method_3:
+_c6_method_3_print__int_parameter_:
  #moving the stack back because args are in scoop
 add $sp,$sp,8
  #movesp to fp
@@ -201,7 +201,7 @@ jr $ra
 
  #generating code for Method:print: (float) parameter 
 
-_c6_method_4:
+_c6_method_4_print__float_parameter_:
  #moving the stack back because args are in scoop
 add $sp,$sp,8
  #movesp to fp
@@ -229,7 +229,7 @@ jr $ra
 
  #generating code for Method:print: (NSString) parameter 
 
-_c6_method_5:
+_c6_method_5_print__NSString_parameter_:
  #moving the stack back because args are in scoop
 add $sp,$sp,8
  #movesp to fp
@@ -257,7 +257,7 @@ jr $ra
 
  #generating code for Method:print: (char) parameter 
 
-_c6_method_6:
+_c6_method_6_print__char_parameter_:
  #moving the stack back because args are in scoop
 add $sp,$sp,8
  #movesp to fp
@@ -285,20 +285,20 @@ jr $ra
 
  #generating code for Method:alloc
 
-_c6_method_2:
+_c6_method_2_alloc:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:45
+ ##F:code.txt #L:52
  #asm node :li $v0,9
 li $v0,9
- ##F:code.txt #L:45
+ ##F:code.txt #L:52
  #asm node :li $a0,4
 li $a0,4
- ##F:code.txt #L:45
+ ##F:code.txt #L:52
  #asm node :syscall
 syscall
  #releasing space in stack for scope variables
@@ -308,7 +308,7 @@ jr $ra
 
  #generating code for Method:readchar
 
-_c6_method_7:
+_c6_method_7_readchar:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -333,7 +333,7 @@ jr $ra
 
  #generating code for Method:readfloat
 
-_c6_method_8:
+_c6_method_8_readfloat:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -358,7 +358,7 @@ jr $ra
 
  #generating code for Method:readint
 
-_c6_method_9:
+_c6_method_9_readint:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -383,7 +383,7 @@ jr $ra
 
  #generating code for Method:readstring
 
-_c6_method_10:
+_c6_method_10_readstring:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -424,13 +424,13 @@ jr $ra
 vt_3:
  #go: (int) y 
 li $t0,11
-beq $t0,$a1,_c3_method_11
+beq $t0,$a1,_c3_method_11_go__int_y_
  #print: (int) parameter 
 li $t0,3
-beq $t0,$a1,_c3_method_3
+beq $t0,$a1,_c3_method_3_print__int_parameter_
  #a2go: (int) y 
 li $t0,12
-beq $t0,$a1,_c3_method_12
+beq $t0,$a1,_c3_method_12_a2go__int_y_
  #super
  #NSObject
  #super
@@ -438,17 +438,17 @@ beq $t0,$a1,_c3_method_12
 
  #generating code for Method:go: (int) y 
 
-_c3_method_11:
+_c3_method_11_go__int_y_:
  #moving the stack back because args are in scoop
 add $sp,$sp,8
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,8
- ##F:code.txt #L:30
+ ##F:code.txt #L:37
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- ##F:code.txt #L:31
+ ##F:code.txt #L:38
  #Assign node
  #RHS:
 li $t9,8
@@ -477,7 +477,7 @@ jr $ra
 
  #generating code for Method:print: (int) parameter 
 
-_c3_method_3:
+_c3_method_3_print__int_parameter_:
  #moving the stack back because args are in scoop
 add $sp,$sp,8
  #movesp to fp
@@ -496,17 +496,17 @@ jr $ra
 
  #generating code for Method:a2go: (int) y 
 
-_c3_method_12:
+_c3_method_12_a2go__int_y_:
  #moving the stack back because args are in scoop
 add $sp,$sp,8
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,8
- ##F:code.txt #L:36
+ ##F:code.txt #L:43
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:38
+ ##F:code.txt #L:45
  #releasing space in stack for scope variables
 add $sp,$sp,4
  #releasing space in stack for scope variables
@@ -526,19 +526,22 @@ jr $ra
 vt_4:
  #print: (int) x 
 li $t0,3
-beq $t0,$a1,_c4_method_3
+beq $t0,$a1,_c4_method_3_print__int_x_
+ #go: (int) x 
+li $t0,11
+beq $t0,$a1,_c4_method_11_go__int_x_
  #allocalloc
 li $t0,2
-beq $t0,$a1,_c4_method_2
+beq $t0,$a1,_c4_method_2_alloc
  #mainmain
 li $t0,1
-beq $t0,$a1,_c4_method_1
+beq $t0,$a1,_c4_method_1_main
  #super
 
 
  #generating code for Method:print: (int) x 
 
-_c4_method_3:
+_c4_method_3_print__int_x_:
  #moving the stack back because args are in scoop
 add $sp,$sp,8
  #movesp to fp
@@ -569,7 +572,7 @@ lw $t0,-8($fp)
 addi $v0,$fp,-8
 sub $sp,$sp,4
 sw $t0, 0($sp)
-jal _c6_method_3
+jal _c6_method_3_print__int_parameter_
 lw $fp, 0($sp)
 add $sp,$sp,4
 lw $ra, 0($sp)
@@ -584,22 +587,134 @@ add $sp,$sp,8
 jr $ra
 
 
+ #generating code for Method:go: (int) x 
+
+_c4_method_11_go__int_x_:
+ #moving the stack back because args are in scoop
+add $sp,$sp,8
+ #movesp to fp
+move $fp,$sp
+ #reserving space in stack for scope variables
+sub $sp,$sp,8
+ ##F:code.txt #L:29
+ #reserving space in stack for scope variables
+sub $sp,$sp,0
+ ##F:code.txt #L:31
+ #CALLING A METHOD print: (int) x 
+ #preserving registers
+sub $sp,$sp,4
+sw $ra, 0($sp)
+sub $sp,$sp,4
+sw $fp, 0($sp)
+ #generating code for the sender
+ #identifier self
+lw $t0,-4($fp)
+addi $v0,$fp,-4
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #generating code for Args
+ #generating code for selector:print
+ #generating  for var #0
+ #identifier x
+lw $t0,-8($fp)
+addi $v0,$fp,-8
+sub $sp,$sp,4
+sw $t0, 0($sp)
+jal _c4_method_3_print__int_x_
+lw $fp, 0($sp)
+add $sp,$sp,4
+lw $ra, 0($sp)
+add $sp,$sp,4
+sub $sp,$sp,4
+sw $v0, 0($sp)
+add $sp,$sp,4
+ ##F:code.txt #L:34
+ #identifier x
+lw $t0,-8($fp)
+addi $v0,$fp,-8
+sub $sp,$sp,4
+sw $t0, 0($sp)
+li $t9,0
+sub $sp,$sp,4
+sw $t9, 0($sp)
+lw $t1, 0($sp)
+add $sp,$sp,4
+lw $t0, 0($sp)
+add $sp,$sp,4
+ #not equal op
+li $t2,1
+bne $t0,$t1,eqop_temp1
+li $t2,0
+eqop_temp1:
+sub $sp,$sp,4
+sw $t2, 0($sp)
+lw $t0, 0($sp)
+add $sp,$sp,4
+beq $t0,$0,else_0
+ #CALLING A METHOD go: (int) x 
+ #preserving registers
+sub $sp,$sp,4
+sw $ra, 0($sp)
+sub $sp,$sp,4
+sw $fp, 0($sp)
+ #generating code for the sender
+ #identifier self
+lw $t0,-4($fp)
+addi $v0,$fp,-4
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #generating code for Args
+ #generating code for selector:go
+ #generating  for var #0
+ #identifier x
+lw $t0,-8($fp)
+addi $v0,$fp,-8
+sub $sp,$sp,4
+sw $t0, 0($sp)
+li $t9,1
+sub $sp,$sp,4
+sw $t9, 0($sp)
+lw $t1, 0($sp)
+add $sp,$sp,4
+lw $t0, 0($sp)
+add $sp,$sp,4
+sub $t0,$t0,$t1
+sub $sp,$sp,4
+sw $t0, 0($sp)
+jal _c4_method_11_go__int_x_
+lw $fp, 0($sp)
+add $sp,$sp,4
+lw $ra, 0($sp)
+add $sp,$sp,4
+sub $sp,$sp,4
+sw $v0, 0($sp)
+add $sp,$sp,4
+j endif_0
+else_0:
+endif_0:
+ #releasing space in stack for scope variables
+add $sp,$sp,0
+ #releasing space in stack for scope variables
+add $sp,$sp,8
+jr $ra
+
+
  #generating code for Method:alloc
 
-_c4_method_2:
+_c4_method_2_alloc:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:45
+ ##F:code.txt #L:52
  #asm node :li $v0,9
 li $v0,9
- ##F:code.txt #L:45
+ ##F:code.txt #L:52
  #asm node :li $a0,4
 li $a0,4
- ##F:code.txt #L:45
+ ##F:code.txt #L:52
  #asm node :syscall
 syscall
  #releasing space in stack for scope variables
@@ -609,7 +724,7 @@ jr $ra
 
  #generating code for Method:main
 
-_c4_method_1:
+_c4_method_1_main:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -641,7 +756,7 @@ lw $t0, 0($sp)
 sw $t0,0($v0)
 add $sp,$sp,4
  ##F:code.txt #L:21
- #CALLING A METHOD print: (int) x 
+ #CALLING A METHOD go: (int) x 
  #preserving registers
 sub $sp,$sp,4
 sw $ra, 0($sp)
@@ -654,7 +769,7 @@ addi $v0,$fp,-4
 sub $sp,$sp,4
 sw $t0, 0($sp)
  #generating code for Args
- #generating code for selector:print
+ #generating code for selector:go
  #generating  for var #0
  #CALLING A METHOD readint
  #preserving registers
@@ -669,14 +784,14 @@ addi $v0,$gp,-4
 sub $sp,$sp,4
 sw $t0, 0($sp)
  #generating code for Args
-jal _c6_method_9
+jal _c6_method_9_readint
 lw $fp, 0($sp)
 add $sp,$sp,4
 lw $ra, 0($sp)
 add $sp,$sp,4
 sub $sp,$sp,4
 sw $v0, 0($sp)
-jal _c4_method_3
+jal _c4_method_11_go__int_x_
 lw $fp, 0($sp)
 add $sp,$sp,4
 lw $ra, 0($sp)

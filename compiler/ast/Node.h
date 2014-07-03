@@ -53,7 +53,9 @@ public:
 		return string("#F:") + _filename + string(" #L:") + std::to_string(_line);
 		//+string(" #C:") + std::to_string(_col);
 	}
-	
+	//remove node evaluation from stack
+	// should always be done unleess you need the val
+	void dispose(Node* n);
 	virtual ~Node(void)
 	{
 	}

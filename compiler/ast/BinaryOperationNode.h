@@ -15,7 +15,7 @@ protected:
 	int _op;
 	Node* _leftExp;
 	Node* _rightExp;
-	
+	static int labelCount;
 public:
 
 	BinaryOperationNode(Node* leftExp,Node* rightExp,int op,ScoopNode *scoop):Node(scoop),_leftExp(leftExp),_rightExp(rightExp),_op(op)
@@ -28,7 +28,6 @@ public:
 		string t0="t0";
 string t1="t1";
 _leftExp->generateCode();
-MIPS_ASM::pop(t0);
 //MIPS_ASM::add_instruction("\nlw $t0, 0($sp)\n";
 //MIPS_ASM::add_instruction("add $sp,$sp,4\n";
 _rightExp->generateCode();
@@ -42,6 +41,7 @@ _rightExp->generateCode();
 
 
 MIPS_ASM::pop(t1);
+MIPS_ASM::pop(t0);
 
 if(_op== PLUS)
 {
@@ -80,19 +80,23 @@ if(_op== DIV)
 //
 if(_op == EQUAL_EQUAL || _op==NOT_EQUAL)
 {
-		MIPS_ASM::add_instruction("li $t2,0\n");
-	MIPS_ASM::add_instruction("bne $t0,$t1,temp\n");
-	MIPS_ASM::add_instruction("li $t2,1\n");
-	MIPS_ASM::add_instruction("temp:\n");
+	++labelCount;
 		
-	if(_op==NOT_EQUAL)
+	if (_op == EQUAL_EQUAL)
 	{
-		MIPS_ASM::add_instruction("beq $t2,$0,temp1\n");
+		MIPS_ASM::printComment("equal op");
 		MIPS_ASM::add_instruction("li $t2,0\n");
-		MIPS_ASM::add_instruction("j temp2\n");
-		MIPS_ASM::add_instruction("temp1:\n");
+		MIPS_ASM::add_instruction(string("bne $t0,$t1,") + "eqop_temp" + std::to_string(labelCount) + "\n");
 		MIPS_ASM::add_instruction("li $t2,1\n");
-		MIPS_ASM::add_instruction("temp2:\n");
+		MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
+	}
+	else{
+		MIPS_ASM::printComment("not equal op");
+		MIPS_ASM::add_instruction("li $t2,1\n");
+		MIPS_ASM::add_instruction(string("bne $t0,$t1,") + "eqop_temp" + std::to_string(labelCount) + "\n");
+		MIPS_ASM::add_instruction("li $t2,0\n");
+		MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
+
 	}
 	MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
 	MIPS_ASM::add_instruction("sw $t2, 0($sp)\n");
@@ -211,3 +215,4 @@ if(_op==MORE_OR_EQUAL)
 	}
 };
 
+int BinaryOperationNode::labelCount = 0;

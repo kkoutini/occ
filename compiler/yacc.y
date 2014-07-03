@@ -996,6 +996,9 @@ logic_expr:
 	|expr EQUAL_EQUAL expr				{Streams::verbose()<<"logic_expr:expr EQUAL_EQUAL expr\n";
 										$<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,EQUAL_EQUAL,scoop);
 										}
+	|expr NOT_EQUAL expr				{Streams::verbose()<<"logic_expr:expr EQUAL_EQUAL expr\n";
+										$<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,NOT_EQUAL,scoop);
+										}
 	|NOT_EQUAL expr						{Streams::verbose()<<"logic_expr:NOT_EQUAL expr\n";
 										 $<r.node>$=new UnaryNode(scoop,$<r.node>2,NOT_EQUAL);
 										}

@@ -1,6 +1,7 @@
 #include "AsmNode.h"
 #include "ast/ScoopNode.h"
 #include "ast/DeclerationNode.h"
+#include "ast/IfNode.h"
 
  void ScoopNode::generateCode()
 {
@@ -9,8 +10,7 @@
 		MIPS_ASM::printComment((*i)->getDebugString());
 		(*i)->generateCode();
 		// pop the result of the last statement from stack
-		if (!dynamic_cast<ScoopNode*>(*i) && !dynamic_cast<AsmNode*>(*i) && !dynamic_cast<DeclerationNode*>(*i))
-			MIPS_ASM::pop();
+		dispose(*i);
 	}
 	//TODO collecting garbage
 	MIPS_ASM::releaseStack(getFrameSize());
