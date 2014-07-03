@@ -80,15 +80,16 @@ public:
 		if (sender_interface == NULL)
 		{
 			//throw error
-			string error = "ERROR in call NODE generate type in  line number ";
+			string error = "ERROR in call NODE generate type sender is null in  line number ";
 			Program::addError(new SemanticError(error));
 			return false;
 		}
-		Method* method = NULL; //sender_interface->getMethod(_message, _params, _types, false);
+		Method* method = sender_interface->getMethod(_message, _selcs, false);
+		; //sender_interface->getMethod(_message, _params, _types, false);
 		if (method == NULL)
 		{
 			//throw error
-			string error = "ERROR in call NODE generate type in  line number ";
+			string error = "ERROR in call NODE generate type null  line number ";
 			Program::addError(new SemanticError(error));
 		}
 		return method->getReturnType();

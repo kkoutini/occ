@@ -6,22 +6,28 @@ int MIPS_ASM::lines=0;
 int MIPS_ASM::cols=0;
 char MIPS_ASM::alltext2[20000];
 char MIPS_ASM::current_chars[1000];
-char MIPS_ASM::data[1000]="\n.data\n";
+//char MIPS_ASM::data[1000]="\n.data\n";
 int MIPS_ASM::static_size=4;
-ofstream MIPS_ASM::code;
+stringstream MIPS_ASM::code;
+stringstream MIPS_ASM::data;
+stringstream MIPS_ASM::main;
 extern std::ofstream ofs;
 FILE * MIPS_ASM::file = fopen("AssemblyCode.asm","w");
 
 void MIPS_ASM::add_instruction(string c)
 {
 
-	//fputs(c,file);
-	ofs<<c.c_str();
+	code<<c.c_str();
 }
 
-void MIPS_ASM::add_data(char* c)
+void MIPS_ASM::add_data(string c)
 {
-	strcat(MIPS_ASM::data,c);		
+	data << c;
+
+}
+void MIPS_ASM::addMainInstruction(string c)
+{
+	main << c;
 }
 
 static bool char_exists(char* c)
@@ -56,7 +62,7 @@ char* MIPS_ASM::add_data_char(char c)
 	if(!char_exists(charr))
 	{		
 		strcat(MIPS_ASM::current_chars,charr);
-		strcat(MIPS_ASM::data,cc);
+		MIPS_ASM::data<<cc;
 	}
 
 	return label;
@@ -79,19 +85,31 @@ char* MIPS_ASM::add_data_char(char * c)
 	if(!char_exists(charr))
 	{		
 		strcat(MIPS_ASM::current_chars,charr);
-		strcat(MIPS_ASM::data,cc);
+		MIPS_ASM::data << cc;
 	}
 
 	return label;
 }
 
-void MIPS_ASM::write()
+void MIPS_ASM::writeData()
 {	
-	fputs(MIPS_ASM::data,MIPS_ASM::file);
-	fputs("\nnewline: .asciiz \"\\n\"",MIPS_ASM::file);	
-	fclose(MIPS_ASM::file);
+//	fputs(MIPS_ASM::data,MIPS_ASM::file);
+	//fputs("\nnewline: .asciiz \"\\n\"",MIPS_ASM::file);	
+	//fclose(MIPS_ASM::file);
+	ofs << data.str();
+	ofs << "\nnewline: .asciiz \"\\n\"";
 }
 
+void MIPS_ASM::writeCode()
+{
+	ofs << code.str();
+
+}
+void MIPS_ASM::writeMain()
+{
+	ofs << main.str();
+
+}
 void MIPS_ASM::operation(string reg1,string reg2,string reg3,int flag)
 {
 	//

@@ -32,6 +32,8 @@ public:
 	string Interface::getVtableLabel();
 	string Interface::getVtableString();
 
+	string Interface::getStaticPointerStr();
+
 	int getId();
 	MethodItems* getMethodsItem();
 	void setMethodsItem(MethodItems*);

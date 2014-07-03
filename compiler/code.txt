@@ -24,8 +24,8 @@ int b;
 {
 
 	wessam* a;
-	[a go:5];
-	a.b=2;
+//	[a go:5];
+	//a.b=2;
 }
 
 @end

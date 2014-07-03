@@ -4499,22 +4499,20 @@ void main(void){
 		Parser* p = new Parser();
 		p->parse();
 	}
-//	symbolTable->toString();
-	/*for(int i=0;i<scoopVector.size();i++)
-	scoopVector.at(i)->toString();*/
+		symbolTable->generateStatics();
+		symbolTable->generateCode();
 	Program::printErrors();
-	ofs<<".globl main\nmain:\n";
-	//ConstantNode * temp =new ConstantNode(5,NULL);
-	//method->getFunctionNode()->generateCode
+	ofs<<".data\n";
+	MIPS_ASM::writeData();
+		ofs<<".text\n";
 
+	ofs<<".globl main\nmain:\n";
+	
 	std::ifstream t_common("common.asm");
 std::string str_common((std::istreambuf_iterator<char>(t_common)),
                  std::istreambuf_iterator<char>());
 	ofs<<str_common<<"\n";
-	symbolTable->generateStatics();
-	symbolTable->generateCode();
-
-//	functionNode->toString();
-	//functionNode->generateCode();
+		
 	
+	MIPS_ASM::writeCode();
 }

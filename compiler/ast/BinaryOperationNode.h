@@ -29,11 +29,11 @@ public:
 string t1="t1";
 _leftExp->generateCode();
 MIPS_ASM::pop(t0);
-//ofs<<"\nlw $t0, 0($sp)\n";
-//ofs<<"add $sp,$sp,4\n";
+//MIPS_ASM::add_instruction("\nlw $t0, 0($sp)\n";
+//MIPS_ASM::add_instruction("add $sp,$sp,4\n";
 _rightExp->generateCode();
-//ofs<<"lw $t1, 0($sp)\n";
-//ofs<<"add $sp,$sp,4\n";
+//MIPS_ASM::add_instruction("lw $t1, 0($sp)\n";
+//MIPS_ASM::add_instruction("add $sp,$sp,4\n";
 //
 //// --- Arithmetic Operation
 //// + - * / 
@@ -80,32 +80,32 @@ if(_op== DIV)
 //
 if(_op == EQUAL_EQUAL || _op==NOT_EQUAL)
 {
-		ofs<<"li $t2,0\n";
-	ofs<<"bne $t0,$t1,temp\n";
-	ofs<<"li $t2,1\n";
-	ofs<<"temp:\n";
+		MIPS_ASM::add_instruction("li $t2,0\n");
+	MIPS_ASM::add_instruction("bne $t0,$t1,temp\n");
+	MIPS_ASM::add_instruction("li $t2,1\n");
+	MIPS_ASM::add_instruction("temp:\n");
 		
 	if(_op==NOT_EQUAL)
 	{
-		ofs<<"beq $t2,$0,temp1\n";
-		ofs<<"li $t2,0\n";
-		ofs<<"j temp2\n";
-		ofs<<"temp1:\n";
-		ofs<<"li $t2,1\n";
-		ofs<<"temp2:\n";
+		MIPS_ASM::add_instruction("beq $t2,$0,temp1\n");
+		MIPS_ASM::add_instruction("li $t2,0\n");
+		MIPS_ASM::add_instruction("j temp2\n");
+		MIPS_ASM::add_instruction("temp1:\n");
+		MIPS_ASM::add_instruction("li $t2,1\n");
+		MIPS_ASM::add_instruction("temp2:\n");
 	}
-	ofs<<"sub $sp,$sp,4\n";
-	ofs<<"sw $t2, 0($sp)\n";
-		//ofs<<"move $t0,$t2\n";
+	MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
+	MIPS_ASM::add_instruction("sw $t2, 0($sp)\n");
+		//MIPS_ASM::add_instruction("move $t0,$t2\n");
 }
 
 if(_op==LESS_THAN)
 {
 	MIPS_ASM::slt("t2","t0","t1");	
 	MIPS_ASM::push("t2");
-	/*ofs<<"slt $t2,$t0,$t1\n";
-	ofs<<"sub $sp,$sp,4\n";
-	ofs<<"sw $t2, 0($sp)\n";*/
+	/*MIPS_ASM::add_instruction("slt $t2,$t0,$t1\n");
+	MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
+	MIPS_ASM::add_instruction("sw $t2, 0($sp)\n");*/
 }
 
 if(_op==MORE_THAN)
@@ -113,9 +113,9 @@ if(_op==MORE_THAN)
 			MIPS_ASM::slt("t2","t1","t0");		
 			MIPS_ASM::push("t2");
 			//MIPS_ASM::operation("t0","0","t2",1);
-	/*ofs<<"slt $t2,$t1,$t0\n";
-	ofs<<"sub $sp,$sp,4\n";
-	ofs<<"sw $t2, 0($sp)\n";*/
+	/*MIPS_ASM::add_instruction("slt $t2,$t1,$t0\n");
+	MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
+	MIPS_ASM::add_instruction("sw $t2, 0($sp)\n");*/
 }
 
 

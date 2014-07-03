@@ -46,6 +46,8 @@ public:
 	bool checkTypeExist(string name);
 	void generateCode();
 	void SymbolTable::generateStatics();
+	void SymbolTable::generateStaticsCode();
+
 
 	//int Size;
 	//void add(symbol* newItem); //adds a new item to the table

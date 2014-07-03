@@ -5,6 +5,7 @@
 #include <cstring>
 
 #include <fstream>
+#include <sstream>
 using namespace std;
 
 extern int lineNum;
@@ -16,7 +17,7 @@ private:
 		  
 public:
 	 static char alltext2[20000];
-	 static char data[1000];
+	// static char data[1000];
 	 static int MIPS_ASM::lines;
 	 static int MIPS_ASM::cols;
 
@@ -24,12 +25,18 @@ public:
 	static char current_chars[1000];
 	static int MIPS_ASM::o;
 	static char* alltext;
-	static ofstream MIPS_ASM::code;
+	static stringstream MIPS_ASM::code;
+	static stringstream MIPS_ASM::data;
+	static stringstream MIPS_ASM::main;
 
 static	FILE * file;
 
-	static void write();
-	static void add_data(char* );
+static void writeData();
+static void writeCode();
+static void writeMain();
+
+static void add_data(string);
+static void addMainInstruction(string);
 
 	static void add_instruction(string c);
 	static char* add_data_char(char c);

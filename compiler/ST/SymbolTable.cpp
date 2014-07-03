@@ -2,6 +2,8 @@
 #include"Symbol.h"
 #include "../Streams.h"
 #include "../CallNode.h"
+#include "../AsmNode.h"
+#include "../ast/FunctionNode.h"
 #include "../ast/IdentifierNode.h"
 extern std::ofstream ofs;
 extern ScoopNode* globalScoop;
@@ -91,15 +93,43 @@ void SymbolTable::generateStatics()
 			 globalScoop->add_variable(new Variable(ifs->get_name(),ifs->static_twin,0));
 			 globalScoop->addNode(new CallNode(globalScoop, new IdentifierNode(ifs->get_name(),globalScoop)
 				 ,"init"));
+			 ifs->static_twin->setStatus(completness::implemented);
+
+			 MIPS_ASM::add_data(ifs->getStaticPointerStr() + ":    .byte   0:" + std::to_string(ifs->static_twin->getTypeSize()) + "\n");
+			 Method* method = new Method("alloc", ifs);
+			 auto fs = ScoopHelper::createNewFunctionNode(method, ifs->static_twin);
+			 fs->addNode(new AsmNode(fs, "li $v0,9"));
+			 fs->addNode(new AsmNode(fs, string("li $a0,") + std::to_string(ifs->static_twin->getTypeSize())));
+			 fs->addNode(new AsmNode(fs, "syscall"));
+			 ifs->static_twin->getMethodsItem()->addMethod(method);
+
 		}
+
 	}
 
-	globalScoop->generateCode();
 	
 		
 }
+void SymbolTable::generateStaticsCode()
+{
+	for (auto i = this->types.begin(); i != this->types.end(); i++)
+	{
+		auto ifs = dynamic_cast<Interface*> (i->second);
+		if (ifs){
+			MIPS_ASM::add_instruction("la $t0," + ifs->getStaticPointerStr()+"\n");
+			Variable* var = globalScoop->get_variable(ifs->get_name());
+			MIPS_ASM::sw("t0", var->getOffset(), var->getOffsetRegister());
+
+
+		}
+
+	}
+
+
+}
 void SymbolTable::generateCode()
 {
+	generateStaticsCode();
 	for (auto i = this->types.begin(); i != this->types.end(); i++)
 	{
 		i->second->generateCode();

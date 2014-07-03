@@ -16,13 +16,6 @@ Interface::Interface(string name, bool is_static_twin) :Type(name)
 
 	if (!is_static_twin){
 		static_twin = new Interface(name, true);
-		static_twin->setStatus(completness::implemented);
-		Method* method = new Method("alloc", this);
-		auto fs = ScoopHelper::createNewFunctionNode(method, this);
-		fs->addNode(new AsmNode(fs,"li $v0,9" ));
-		fs->addNode(new AsmNode(fs, string("li $a0,")+std::to_string(this->getTypeSize())));
-		fs->addNode(new AsmNode(fs, "syscall"));
-		static_twin->getMethodsItem()->addMethod(method);
 	}
 
 }
@@ -36,9 +29,12 @@ Interface::Interface(Interface* interf):Type(interf->get_name())
 	this->inherit_interface=interf->getInheretInterface();
 	methodsItem=new MethodItems(interf->methodsItem);
 }*/
-	Interface* Interface::getInheretInterface(){
-		return this->inherit_interface;
-	}
+Interface* Interface::getInheretInterface(){
+	return this->inherit_interface;
+}
+string Interface::getStaticPointerStr(){
+	return string("static_instance_")+std::to_string(getId());
+}
 
 	VariableItems* Interface:: getVariableItems(){
 		

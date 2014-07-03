@@ -57,7 +57,7 @@ public:
 		if (sender_interface == NULL)
 		{
 			//throw error
-			string error = "ERROR in call NODE generate type in  line number ";
+			string error = "ERROR in . NODE generate type in  line number ";
 			Program::addError(new SemanticError(error));
 			return false;
 		}
@@ -65,7 +65,7 @@ public:
 		if (variable == NULL)
 		{
 			//throw error
-			string error = "ERROR in call NODE generate type in  line number ";
+			string error = "ERROR in . NODE generate type in  line number ";
 			Program::addError(new SemanticError(error));
 		}
 		return variable->getReturnType();
