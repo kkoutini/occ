@@ -96,7 +96,7 @@ void SymbolTable::generateStatics()
 			 globalScoop->add_variable(new Variable(ifs->get_name(),ifs->static_twin,0));
 			 globalScoop->addNode(new AsmNode(globalScoop, "la $t0," + ifs->getStaticPointerStr() + "\n"));
 			 Variable* var = globalScoop->get_variable(ifs->get_name());
-			 globalScoop->addNode(new AsmNode(globalScoop, string("sw $t0,") + std::to_string( var->getOffset())+"($"
+			 globalScoop->addNode(new AsmNode(globalScoop, string("sw $t0,") + std::to_string( -var->getOffset())+"($"
 				 + var->getOffsetRegister() + ")\n"
 				 ));
 

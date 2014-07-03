@@ -26,21 +26,21 @@ sw $t0,0($gp)
 la $t0,static_instance_2
 
  ##F:code.txt #L:45
- #asm node :sw $t0,4($gp)
-sw $t0,4($gp)
+ #asm node :sw $t0,-4($gp)
+sw $t0,-4($gp)
 
  ##F:code.txt #L:45
  #asm node :la $t0,static_instance_3
 la $t0,static_instance_3
 
  ##F:code.txt #L:45
- #asm node :sw $t0,8($gp)
-sw $t0,8($gp)
+ #asm node :sw $t0,-8($gp)
+sw $t0,-8($gp)
 
  ##F:code.txt #L:45
  #identifier wessam
-lw $t0,8($gp)
-addi $v0,$gp,8
+lw $t0,-8($gp)
+addi $v0,$gp,-8
 sub $sp,$sp,4
 sw $t0, 0($sp)
 add $sp,$sp,4
@@ -474,8 +474,8 @@ sub $sp,$sp,4
 sw $t9, 0($sp)
  #Assign node lHS:
  #identifier y
-lw $t0,8($fp)
-addi $v0,$fp,8
+lw $t0,-8($fp)
+addi $v0,$fp,-8
 sub $sp,$sp,4
 sw $t0, 0($sp)
  #Assign node poping old val:
@@ -575,16 +575,16 @@ sub $sp,$sp,4
 sw $fp, 0($sp)
  #generating code for the sender
  #identifier System
-lw $t0,4($gp)
-addi $v0,$gp,4
+lw $t0,-4($gp)
+addi $v0,$gp,-4
 sub $sp,$sp,4
 sw $t0, 0($sp)
  #generating code for Args
  #generating code for selector:print
  #generating  for var #0
  #identifier x
-lw $t0,8($fp)
-addi $v0,$fp,8
+lw $t0,-8($fp)
+addi $v0,$fp,-8
 sub $sp,$sp,4
 sw $t0, 0($sp)
 jal _c6_method_3
@@ -649,8 +649,8 @@ sub $sp,$sp,4
 sw $fp, 0($sp)
  #generating code for the sender
  #identifier System
-lw $t0,4($gp)
-addi $v0,$gp,4
+lw $t0,-4($gp)
+addi $v0,$gp,-4
 sub $sp,$sp,4
 sw $t0, 0($sp)
  #generating code for Args
@@ -663,8 +663,8 @@ sub $sp,$sp,4
 sw $v0, 0($sp)
  #Assign node lHS:
  #identifier x
-lw $t0,8($fp)
-addi $v0,$fp,8
+lw $t0,-8($fp)
+addi $v0,$fp,-8
 sub $sp,$sp,4
 sw $t0, 0($sp)
  #Assign node poping old val:
@@ -684,16 +684,16 @@ sub $sp,$sp,4
 sw $fp, 0($sp)
  #generating code for the sender
  #identifier self
-lw $t0,4($fp)
-addi $v0,$fp,4
+lw $t0,-4($fp)
+addi $v0,$fp,-4
 sub $sp,$sp,4
 sw $t0, 0($sp)
  #generating code for Args
  #generating code for selector:print
  #generating  for var #0
  #identifier x
-lw $t0,8($fp)
-addi $v0,$fp,8
+lw $t0,-8($fp)
+addi $v0,$fp,-8
 sub $sp,$sp,4
 sw $t0, 0($sp)
 jal _c4_method_3
