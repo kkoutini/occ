@@ -57,16 +57,12 @@
         
         @asm "li $v0, 6";
         @asm "syscall";
-       	@asm "sub $sp,$sp,4";
-		@asm "sw $v0, 0($sp)";
 }
 +(NSString) readstring
 {
         
      @asm "li $v0,8"      ;
      @asm "syscall";
-    @asm "sub $sp,$sp,4";
-	@asm "sw $v0, 0($sp)";
     
 }
 +(char) readchar
@@ -74,8 +70,6 @@
         
      @asm "li $v0,12"     ; 
      @asm "syscall";
-	@asm "sub $sp,$sp,4";
-	@asm "sw $v0, 0($sp)";
     
 }
 
