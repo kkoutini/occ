@@ -1,8 +1,6 @@
 #pragma once
 #include "Node.h"
 #include "../ST/variable.h"
-
-
 class ScoopNode :
 	public Node
 {
@@ -131,20 +129,7 @@ for(auto i=_nodes.begin();i!=_nodes.end();i++){
 cout<<"end scooooooooooooop\n";
 
 }
-	virtual void generateCode()
-	{
-		MIPS_ASM::reserveStack(getFrameSize());
-		for(auto i=_nodes.begin();i!=_nodes.end();i++){
-			MIPS_ASM::printComment((*i)->getDebugString());
-			(*i)->generateCode();
-			// pop the result of the last statement from stack
-			if (!dynamic_cast<ScoopNode*>(*i))
-				MIPS_ASM::pop();
-		}
-		//TODO collecting garbage
-		MIPS_ASM::releaseStack(getFrameSize());
-
-	}
+	virtual void generateCode();
 	virtual bool typeCheck()
 	{
 		return 1;

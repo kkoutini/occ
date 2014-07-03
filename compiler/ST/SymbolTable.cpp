@@ -1,6 +1,10 @@
 #include"SymbolTable.h"
 #include"Symbol.h"
 #include "../Streams.h"
+#include "../CallNode.h"
+#include "../ast/IdentifierNode.h"
+extern std::ofstream ofs;
+extern ScoopNode* globalScoop;
 SymbolTable::SymbolTable(void)
 {
 	this->add_type(new Type("int"));
@@ -76,6 +80,23 @@ bool SymbolTable::checkTypeExist(string name)
 
 		return true;
 	return false;
+}
+void SymbolTable::generateStatics()
+{
+	for (auto i = this->types.begin(); i != this->types.end(); i++)
+	{
+		auto ifs = dynamic_cast<Interface*> (i->second);
+		if (ifs){
+			 ifs->static_twin->getTypeSize();
+			 globalScoop->add_variable(new Variable(ifs->get_name(),ifs->static_twin,0));
+			 globalScoop->addNode(new CallNode(globalScoop, new IdentifierNode(ifs->get_name(),globalScoop)
+				 ,"init"));
+		}
+	}
+
+	globalScoop->generateCode();
+	
+		
 }
 void SymbolTable::generateCode()
 {

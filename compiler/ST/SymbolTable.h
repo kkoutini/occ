@@ -45,6 +45,8 @@ public:
 	void add_type(Type*);
 	bool checkTypeExist(string name);
 	void generateCode();
+	void SymbolTable::generateStatics();
+
 	//int Size;
 	//void add(symbol* newItem); //adds a new item to the table
 	//int GetIndex (string str); // get Hashing index

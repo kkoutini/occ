@@ -121,7 +121,7 @@ extern int colNum;
 	vector<Array*>arrayList;
 	vector<Method*>methodsList;
 	vector <ScoopNode*>scoopVector;
-	ScoopNode* globalScoop=NULL;
+	extern ScoopNode* globalScoop=NULL;
 
 	ScoopNode* scoop=NULL;
 	ScoopNode* cscoop=NULL;
@@ -4511,6 +4511,7 @@ void main(void){
 std::string str_common((std::istreambuf_iterator<char>(t_common)),
                  std::istreambuf_iterator<char>());
 	ofs<<str_common<<"\n";
+	symbolTable->generateStatics();
 	symbolTable->generateCode();
 
 //	functionNode->toString();

@@ -2,7 +2,7 @@
 #include "Method.h"
 #include "Interface.h"
 #include<string.h>
-
+#include "../AsmNode.h"
 #include "../ClassNode.h"
 #include "../ast/FunctionNode.h"
 using namespace std;
@@ -17,7 +17,12 @@ Interface::Interface(string name, bool is_static_twin) :Type(name)
 	if (!is_static_twin){
 		static_twin = new Interface(name, true);
 		static_twin->setStatus(completness::implemented);
-
+		Method* method = new Method("alloc", this);
+		auto fs = ScoopHelper::createNewFunctionNode(method, this);
+		fs->addNode(new AsmNode(fs,"li $v0,9" ));
+		fs->addNode(new AsmNode(fs, string("li $a0,")+std::to_string(this->getTypeSize())));
+		fs->addNode(new AsmNode(fs, "syscall"));
+		static_twin->getMethodsItem()->addMethod(method);
 	}
 
 }

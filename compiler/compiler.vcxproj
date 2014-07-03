@@ -104,6 +104,7 @@
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="ProtocolHelper.cpp" />
     <ClCompile Include="ScoopHelper.cpp" />
+    <ClCompile Include="ScoopNode.cpp" />
     <ClCompile Include="Selector.cpp" />
     <ClCompile Include="SemanticError.cpp" />
     <ClCompile Include="Streams.cpp" />
