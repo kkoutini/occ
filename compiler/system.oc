@@ -51,8 +51,6 @@
         
         @asm "li $v0, 5";
         @asm "syscall";
-       	@asm "sub $sp,$sp,4";
-		@asm "sw $v0, 0($sp)";
 }
 +(float) readfloat
 {

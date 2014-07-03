@@ -12,47 +12,47 @@ main:
 
  #reserving space in stack for scope variables
 sub $sp,$sp,12
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #asm node :la $t0,static_instance_1
 la $t0,static_instance_1
 
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #asm node :sw $t0,0($gp)
 sw $t0,0($gp)
 
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #asm node :la $t0,static_instance_2
 la $t0,static_instance_2
 
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #asm node :sw $t0,4($gp)
 sw $t0,4($gp)
 
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #asm node :la $t0,static_instance_3
 la $t0,static_instance_3
 
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #asm node :sw $t0,8($gp)
 sw $t0,8($gp)
 
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #identifier wessam
 lw $t0,8($gp)
 addi $v0,$gp,8
 sub $sp,$sp,4
 sw $t0, 0($sp)
 add $sp,$sp,4
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #asm node :sub $sp,$sp,4
 sub $sp,$sp,4
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #asm node :jal _c4_method_1
 jal _c4_method_1
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #asm node :li $v0,10
 li $v0,10
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #asm node :syscall
 syscall
  #releasing space in stack for scope variables
@@ -95,13 +95,13 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #asm node :li $v0,9
 li $v0,9
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #asm node :li $a0,4
 li $a0,4
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #asm node :syscall
 syscall
  #releasing space in stack for scope variables
@@ -291,13 +291,13 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #asm node :li $v0,9
 li $v0,9
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #asm node :li $a0,4
 li $a0,4
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #asm node :syscall
 syscall
  #releasing space in stack for scope variables
@@ -314,19 +314,19 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:system.oc #L:75
+ ##F:system.oc #L:73
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- ##F:system.oc #L:77
+ ##F:system.oc #L:75
  #asm node :li $v0,12
 li $v0,12
- ##F:system.oc #L:78
+ ##F:system.oc #L:76
  #asm node :syscall
 syscall
- ##F:system.oc #L:79
+ ##F:system.oc #L:77
  #asm node :sub $sp,$sp,4
 sub $sp,$sp,4
- ##F:system.oc #L:80
+ ##F:system.oc #L:78
  #asm node :sw $v0, 0($sp)
 sw $v0, 0($sp)
  #releasing space in stack for scope variables
@@ -345,19 +345,19 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:system.oc #L:58
+ ##F:system.oc #L:56
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- ##F:system.oc #L:60
+ ##F:system.oc #L:58
  #asm node :li $v0, 6
 li $v0, 6
- ##F:system.oc #L:61
+ ##F:system.oc #L:59
  #asm node :syscall
 syscall
- ##F:system.oc #L:62
+ ##F:system.oc #L:60
  #asm node :sub $sp,$sp,4
 sub $sp,$sp,4
- ##F:system.oc #L:63
+ ##F:system.oc #L:61
  #asm node :sw $v0, 0($sp)
 sw $v0, 0($sp)
  #releasing space in stack for scope variables
@@ -385,12 +385,6 @@ li $v0, 5
  ##F:system.oc #L:53
  #asm node :syscall
 syscall
- ##F:system.oc #L:54
- #asm node :sub $sp,$sp,4
-sub $sp,$sp,4
- ##F:system.oc #L:55
- #asm node :sw $v0, 0($sp)
-sw $v0, 0($sp)
  #releasing space in stack for scope variables
 add $sp,$sp,0
  #releasing space in stack for scope variables
@@ -407,19 +401,19 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:system.oc #L:66
+ ##F:system.oc #L:64
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- ##F:system.oc #L:68
+ ##F:system.oc #L:66
  #asm node :li $v0,8
 li $v0,8
- ##F:system.oc #L:69
+ ##F:system.oc #L:67
  #asm node :syscall
 syscall
- ##F:system.oc #L:70
+ ##F:system.oc #L:68
  #asm node :sub $sp,$sp,4
 sub $sp,$sp,4
- ##F:system.oc #L:71
+ ##F:system.oc #L:69
  #asm node :sw $v0, 0($sp)
 sw $v0, 0($sp)
  #releasing space in stack for scope variables
@@ -468,10 +462,10 @@ add $sp,$sp,8
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,8
- ##F:code.txt #L:24
+ ##F:code.txt #L:26
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- ##F:code.txt #L:25
+ ##F:code.txt #L:27
  #Assign node
  #RHS:
 li $t9,8
@@ -526,11 +520,10 @@ add $sp,$sp,8
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,8
- ##F:code.txt #L:30
+ ##F:code.txt #L:32
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:32
-add $sp,$sp,4
+ ##F:code.txt #L:34
  #releasing space in stack for scope variables
 add $sp,$sp,4
  #releasing space in stack for scope variables
@@ -566,13 +559,13 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #asm node :li $v0,9
 li $v0,9
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #asm node :li $a0,4
 li $a0,4
- ##F:code.txt #L:39
+ ##F:code.txt #L:41
  #asm node :syscall
 syscall
  #releasing space in stack for scope variables
@@ -591,8 +584,46 @@ move $fp,$sp
 sub $sp,$sp,4
  ##F:code.txt #L:18
  #reserving space in stack for scope variables
-sub $sp,$sp,0
+sub $sp,$sp,4
  ##F:code.txt #L:19
+ ##F:code.txt #L:20
+ #Assign node
+ #RHS:
+ #CALLING A METHOD readint
+ #preserving registers
+sub $sp,$sp,4
+sw $ra, 0($sp)
+sub $sp,$sp,4
+sw $fp, 0($sp)
+ #generating code for the sender
+ #identifier System
+lw $t0,4($gp)
+addi $v0,$gp,4
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #generating code for Args
+jal _c6_method_9
+lw $fp, 0($sp)
+add $sp,$sp,4
+lw $ra, 0($sp)
+add $sp,$sp,4
+sub $sp,$sp,4
+sw $v0, 0($sp)
+ #Assign node lHS:
+ #identifier x
+lw $t0,8($fp)
+addi $v0,$fp,8
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #Assign node poping old val:
+lw $t0, 0($sp)
+add $sp,$sp,4
+ #Assign node getting RHS val:
+lw $t0, 0($sp)
+ #Assign node storing in position val:
+sw $t0,0($v0)
+add $sp,$sp,4
+ ##F:code.txt #L:21
  #CALLING A METHOD print: (int) parameter 
  #preserving registers
 sub $sp,$sp,4
@@ -608,9 +639,11 @@ sw $t0, 0($sp)
  #generating code for Args
  #generating code for selector:print
  #generating  for var #0
-li $t9,5
+ #identifier x
+lw $t0,8($fp)
+addi $v0,$fp,8
 sub $sp,$sp,4
-sw $t9, 0($sp)
+sw $t0, 0($sp)
 jal _c6_method_3
 lw $fp, 0($sp)
 add $sp,$sp,4
@@ -620,7 +653,7 @@ sub $sp,$sp,4
 sw $v0, 0($sp)
 add $sp,$sp,4
  #releasing space in stack for scope variables
-add $sp,$sp,0
+add $sp,$sp,4
  #releasing space in stack for scope variables
 add $sp,$sp,4
 jr $ra

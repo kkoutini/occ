@@ -16,7 +16,9 @@ int b;
 }
 +(int) main
 {
-	[System print:5];
+	int x;
+	x=[System readint];
+	[System print:x];
 	
 }
 
