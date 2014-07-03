@@ -10,6 +10,8 @@
 	#include "ast\node.h"
 	#include "ST\SymbolTable.h"
 	#include "ast\ConstantNode.h"
+	#include "SyntaxError.h"
+
 	#include "CallNode.h"
 		#include "CallSelector.h"
 		#include "DeclerationSelector.h"
@@ -1323,6 +1325,9 @@ finally_statement:
 ;
 %%
 void yyerror(const char *s) {
+
+Program::addError(new SyntaxError(s));
+
 	fprintf (stderr, "%s\n", s);
 	;
 }

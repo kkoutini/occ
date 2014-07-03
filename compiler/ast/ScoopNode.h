@@ -29,7 +29,10 @@ public:
 		return t;
 	}
 	void addNode(Node* node){
-		this->_nodes.push_back(node);
+		if (node)
+			this->_nodes.push_back(node);
+		else
+			Streams::WTF() << "empty node added!!! be carefull";
 	}
 	int getFrameSize(){
 		return _currentInnerOffset;

@@ -6,7 +6,7 @@ using namespace std;
 enum ErrorType{WARNING=0,ERROR};
  class Error
 {
-private:
+protected:
 	string message;
 	int lineNo,colNo;
 	string file;

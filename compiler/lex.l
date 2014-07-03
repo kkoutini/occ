@@ -50,7 +50,6 @@ FLOAT						("+"|"-")?({digit}+\.{digit}+)
 ")"					{colNum++;yylval.r.colNo=colNum;											return CLOSE_P;}
 "@implementation"	{colNum+=15;yylval.r.colNo=colNum;								return AT_IMPLEMENTATION;}
 "@asm"              {colNum+=4;yylval.r.colNo=colNum;                                 return AT_ASM;}
-"self"              {colNum+=4;yylval.r.colNo=colNum;                                 return SELF;}
 "&&"				{colNum+=2;yylval.r.colNo=colNum;											return AND_AND;}
 "||"				{	colNum+=2;yylval.r.colNo=colNum;									return OR_OR;}
 "<="				{colNum+=2;yylval.r.colNo=colNum;										return LESS_OR_EQUAL;}

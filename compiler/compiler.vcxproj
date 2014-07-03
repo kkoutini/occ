@@ -120,6 +120,7 @@
     <ClCompile Include="ST\Type.cpp" />
     <ClCompile Include="ST\variable.cpp" />
     <ClCompile Include="ST\VariableHelper.cpp" />
+    <ClCompile Include="SyntaxError.cpp" />
     <ClCompile Include="VariableItems.cpp" />
     <ClCompile Include="yacc.cpp" />
   </ItemGroup>
@@ -174,6 +175,7 @@
     <ClInclude Include="ST\variable.h" />
     <ClInclude Include="ST\VariableHelper.h" />
     <ClInclude Include="SwitchNode.h" />
+    <ClInclude Include="SyntaxError.h" />
     <ClInclude Include="VariableItems.h" />
     <ClInclude Include="Warning.h" />
     <ClInclude Include="yacc.hpp" />

@@ -18,6 +18,10 @@ int b;
 {
 	int x;
 	x=[System readint];
+	[self print:x];
+}
++(void) print:(int)x
+{
 	[System print:x];
 	
 }
