@@ -17,8 +17,8 @@ int b;
 +(int) main
 {
 	int x;
-	x=[System readint];
-	[self print:x];
+	x=2;
+	[self print:[System readint]];
 }
 +(void) print:(int)x
 {

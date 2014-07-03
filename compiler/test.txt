@@ -315,21 +315,15 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:system.oc #L:73
+ ##F:system.oc #L:69
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- ##F:system.oc #L:75
+ ##F:system.oc #L:71
  #asm node :li $v0,12
 li $v0,12
- ##F:system.oc #L:76
+ ##F:system.oc #L:72
  #asm node :syscall
 syscall
- ##F:system.oc #L:77
- #asm node :sub $sp,$sp,4
-sub $sp,$sp,4
- ##F:system.oc #L:78
- #asm node :sw $v0, 0($sp)
-sw $v0, 0($sp)
  #releasing space in stack for scope variables
 add $sp,$sp,0
  #releasing space in stack for scope variables
@@ -355,12 +349,6 @@ li $v0, 6
  ##F:system.oc #L:59
  #asm node :syscall
 syscall
- ##F:system.oc #L:60
- #asm node :sub $sp,$sp,4
-sub $sp,$sp,4
- ##F:system.oc #L:61
- #asm node :sw $v0, 0($sp)
-sw $v0, 0($sp)
  #releasing space in stack for scope variables
 add $sp,$sp,0
  #releasing space in stack for scope variables
@@ -402,21 +390,15 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:system.oc #L:64
+ ##F:system.oc #L:62
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- ##F:system.oc #L:66
+ ##F:system.oc #L:64
  #asm node :li $v0,8
 li $v0,8
- ##F:system.oc #L:67
+ ##F:system.oc #L:65
  #asm node :syscall
 syscall
- ##F:system.oc #L:68
- #asm node :sub $sp,$sp,4
-sub $sp,$sp,4
- ##F:system.oc #L:69
- #asm node :sw $v0, 0($sp)
-sw $v0, 0($sp)
  #releasing space in stack for scope variables
 add $sp,$sp,0
  #releasing space in stack for scope variables
@@ -641,26 +623,9 @@ sub $sp,$sp,4
  ##F:code.txt #L:20
  #Assign node
  #RHS:
- #CALLING A METHOD readint
- #preserving registers
+li $t9,2
 sub $sp,$sp,4
-sw $ra, 0($sp)
-sub $sp,$sp,4
-sw $fp, 0($sp)
- #generating code for the sender
- #identifier System
-lw $t0,-4($gp)
-addi $v0,$gp,-4
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #generating code for Args
-jal _c6_method_9
-lw $fp, 0($sp)
-add $sp,$sp,4
-lw $ra, 0($sp)
-add $sp,$sp,4
-sub $sp,$sp,4
-sw $v0, 0($sp)
+sw $t9, 0($sp)
  #Assign node lHS:
  #identifier x
 lw $t0,-8($fp)
@@ -691,11 +656,26 @@ sw $t0, 0($sp)
  #generating code for Args
  #generating code for selector:print
  #generating  for var #0
- #identifier x
-lw $t0,-8($fp)
-addi $v0,$fp,-8
+ #CALLING A METHOD readint
+ #preserving registers
+sub $sp,$sp,4
+sw $ra, 0($sp)
+sub $sp,$sp,4
+sw $fp, 0($sp)
+ #generating code for the sender
+ #identifier System
+lw $t0,-4($gp)
+addi $v0,$gp,-4
 sub $sp,$sp,4
 sw $t0, 0($sp)
+ #generating code for Args
+jal _c6_method_9
+lw $fp, 0($sp)
+add $sp,$sp,4
+lw $ra, 0($sp)
+add $sp,$sp,4
+sub $sp,$sp,4
+sw $v0, 0($sp)
 jal _c4_method_3
 lw $fp, 0($sp)
 add $sp,$sp,4
