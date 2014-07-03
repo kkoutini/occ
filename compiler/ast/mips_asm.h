@@ -68,7 +68,7 @@ static void addMainInstruction(string);
 
 	static void jump(string);
 
-	static void jr(string);
+	static void jr(string ra="ra");
 
 	static void jal(string);
 

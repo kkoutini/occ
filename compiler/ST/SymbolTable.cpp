@@ -7,6 +7,8 @@
 #include "../ast/IdentifierNode.h"
 extern std::ofstream ofs;
 extern ScoopNode* globalScoop;
+extern Method * mainMethod;
+
 SymbolTable::SymbolTable(void)
 {
 	this->add_type(new Type("int"));
@@ -18,6 +20,7 @@ SymbolTable::SymbolTable(void)
 }
 SymbolTable::~SymbolTable(void)
 {
+
 
 }
 //void SymbolTable::addSymbol(Type * S)
@@ -91,8 +94,12 @@ void SymbolTable::generateStatics()
 		if (ifs){
 			 ifs->static_twin->getTypeSize();
 			 globalScoop->add_variable(new Variable(ifs->get_name(),ifs->static_twin,0));
-			 globalScoop->addNode(new CallNode(globalScoop, new IdentifierNode(ifs->get_name(),globalScoop)
-				 ,"init"));
+			 globalScoop->addNode(new AsmNode(globalScoop, "la $t0," + ifs->getStaticPointerStr() + "\n"));
+			 Variable* var = globalScoop->get_variable(ifs->get_name());
+			 globalScoop->addNode(new AsmNode(globalScoop, string("sw $t0,") + std::to_string( var->getOffset())+"($"
+				 + var->getOffsetRegister() + ")\n"
+				 ));
+
 			 ifs->static_twin->setStatus(completness::implemented);
 
 			 MIPS_ASM::add_data(ifs->getStaticPointerStr() + ":    .byte   0:" + std::to_string(ifs->static_twin->getTypeSize()) + "\n");
@@ -112,19 +119,23 @@ void SymbolTable::generateStatics()
 }
 void SymbolTable::generateStaticsCode()
 {
-	for (auto i = this->types.begin(); i != this->types.end(); i++)
+	if (mainMethod)
 	{
-		auto ifs = dynamic_cast<Interface*> (i->second);
-		if (ifs){
-			MIPS_ASM::add_instruction("la $t0," + ifs->getStaticPointerStr()+"\n");
-			Variable* var = globalScoop->get_variable(ifs->get_name());
-			MIPS_ASM::sw("t0", var->getOffset(), var->getOffsetRegister());
+		
+		Variable* var = globalScoop->get_variable(mainMethod->getInterface()->get_name());
+		globalScoop->addNode(new IdentifierNode(mainMethod->getInterface()->get_name(),globalScoop));
+		globalScoop->addNode(new AsmNode(globalScoop, "sub $sp,$sp,4"));
+		globalScoop->addNode(new AsmNode(globalScoop, string("jal ") + mainMethod->getLabel()));
+		globalScoop->addNode(new AsmNode(globalScoop, "li $v0,10"));
+		globalScoop->addNode(new AsmNode(globalScoop, "syscall"));
 
-
-		}
 
 	}
-
+	else{
+		//ToDo error
+		Streams::WTF() << "errors null main";
+	}
+	globalScoop->generateCode();
 
 }
 void SymbolTable::generateCode()

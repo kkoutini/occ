@@ -177,7 +177,7 @@ void Interface::generateCode(){
 	{
 		MIPS_ASM::add_instruction("\n\n");
 
-		MIPS_ASM::printComment(string("generating code for Method:") + i->first + i->second->to_string());
+		MIPS_ASM::printComment(string("generating code for Method:") + i->second->to_string());
 		MIPS_ASM::add_instruction("\n");
 
 		if (i->second->getFunctionNode() != NULL){

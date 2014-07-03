@@ -97,7 +97,7 @@ void MIPS_ASM::writeData()
 	//fputs("\nnewline: .asciiz \"\\n\"",MIPS_ASM::file);	
 	//fclose(MIPS_ASM::file);
 	ofs << data.str();
-	ofs << "\nnewline: .asciiz \"\\n\"";
+	ofs << "\nnewline: .asciiz \"\\n\"\n";
 }
 
 void MIPS_ASM::writeCode()

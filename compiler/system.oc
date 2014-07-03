@@ -4,17 +4,17 @@
 @interface System
 {
 }
--(int) readint;
--(char) readchar;
--(float) readfloat;
--(NSString) readstring;
++(int) readint;
++(char) readchar;
++(float) readfloat;
++(NSString) readstring;
 
 
--(void) print:(int)parameter;
--(void) print:(float)parameter;
++(void) print:(int)parameter;
++(void) print:(float)parameter;
 
--(void) print:(NSString)parameter;
--(void) print:(char)parameter;
++(void) print:(NSString)parameter;
++(void) print:(char)parameter;
 
 
 
@@ -22,31 +22,31 @@
 
 @end
 @implementation System
--(void) print:(int)parameter
++(void) print:(int)parameter
 {
 	@asm "li $v0 ,1";
-	@asm "lw $a0 ,0($fp)";
+	@asm "lw $a0 ,-8($fp)";
 	@asm "syscall";
 }
--(void) print:(float)parameter
++(void) print:(float)parameter
 {
 	@asm "li $v0, 2";
-    @asm "l.s  $f12,0($fp)";
+    @asm "l.s  $f12,-8($fp)";
 	@asm "syscall";
 }
--(void) print:(NSString)parameter
++(void) print:(NSString)parameter
 {
 	@asm "li $v0 ,4";
- 	@asm "lw $a0 ,0($fp)";
+ 	@asm "lw $a0 ,-8($fp)";
 	@asm "syscall";
 }
--(void) print:(char)parameter
++(void) print:(char)parameter
 {
 	@asm "li $v0, 12";
-	@asm "lw $a0 ,0($fp)";
+	@asm "lw $a0 ,-8($fp)";
 	@asm "syscall";
 }
--(int) readint
++(int) readint
 {
         
         @asm "li $v0, 5";
@@ -54,7 +54,7 @@
        	@asm "sub $sp,$sp,4";
 		@asm "sw $v0, 0($sp)";
 }
--(float) readfloat
++(float) readfloat
 {
         
         @asm "li $v0, 6";
@@ -62,7 +62,7 @@
        	@asm "sub $sp,$sp,4";
 		@asm "sw $v0, 0($sp)";
 }
--(NSString) readstring
++(NSString) readstring
 {
         
      @asm "li $v0,8"      ;
@@ -71,7 +71,7 @@
 	@asm "sw $v0, 0($sp)";
     
 }
--(char) readchar
++(char) readchar
 {
         
      @asm "li $v0,12"     ; 

@@ -3,6 +3,7 @@
 #include "ast\FunctionNode.h"
 #include "ClassNode.h"
 extern SymbolTable* symbolTable;
+extern Method * mainMethod ;
 
 void InterfaceHelper::addMethods(Interface* interface,vector<Method*>methodsList){
 	for (auto i : methodsList)
@@ -139,8 +140,13 @@ void InterfaceHelper:: implementMethods(vector<Method*>methodsList,Interface* in
 	if(interface!=NULL){
 
 		for(int i=0 ;i<methodsList.size();i++){
-			Method* tempMethod=interface->getMethodsItem()-> getMethod(methodsList.at(i)->get_name(),methodsList.at(i)->getReturnType(),methodsList.at(i)->get_variables(),methodsList.at(i)->get_static());
-
+			Method* tempMethod = 0;
+			if (methodsList.at(i)->is_static)
+				 tempMethod = interface->static_twin->getMethodsItem()->getMethod(methodsList.at(i)->get_name(), methodsList.at(i)->getReturnType(), methodsList.at(i)->get_variables(), methodsList.at(i)->get_static());
+			else
+				 tempMethod = interface->getMethodsItem()->getMethod(methodsList.at(i)->get_name(), methodsList.at(i)->getReturnType(), methodsList.at(i)->get_variables(), methodsList.at(i)->get_static());
+			
+			
 			if(tempMethod!=NULL){
 				if(!Method::checkReturnType(methodsList.at(i),tempMethod)){
 						string error="Conflicting return type in implementation of '";
@@ -155,13 +161,22 @@ void InterfaceHelper:: implementMethods(vector<Method*>methodsList,Interface* in
 				Method::checkParameters(methodsList.at(i),tempMethod);
 				FunctionNode* fn = dynamic_cast<FunctionNode*>(methodsList.at(i)->get_Scoop());
 				tempMethod->set_scoop(fn);
+
 			}
 			else 
 			{
 				if (methodsList.at(i) != NULL){
+
 					bool res = 0;
-					if (methodsList.at(i)->is_static)
+					if (methodsList.at(i)->is_static){
 						res = interface->static_twin->getMethodsItem()->addMethod(methodsList.at(i));
+						if (methodsList.at(i)->get_name() == "main")
+						{
+							//TODO check for multiple main
+							
+							mainMethod = methodsList.at(i);
+						}
+					}
 					else
 						res = interface->getMethodsItem()->addMethod(methodsList.at(i));
 

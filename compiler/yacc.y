@@ -61,6 +61,7 @@ extern int colNum;
 	vector<Method*>methodsList;
 	vector <ScoopNode*>scoopVector;
 	extern ScoopNode* globalScoop=NULL;
+	extern Method * mainMethod=NULL;
 
 	ScoopNode* scoop=NULL;
 	ScoopNode* cscoop=NULL;
@@ -1355,7 +1356,7 @@ void main(void){
 	Program::printErrors();
 	ofs<<".data\n";
 	MIPS_ASM::writeData();
-		ofs<<".text\n";
+		ofs<<"\n.text\n";
 
 	ofs<<".globl main\nmain:\n";
 	

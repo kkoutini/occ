@@ -25,7 +25,7 @@ for(auto i=_nodes.begin();i!=_nodes.end();i++)
 	}
 	virtual int getVarsOffset()
 	{
-		return 0;
+		return 4;
 	}
 
 	FunctionNode(FunctionNode* temp):ScoopNode(temp->_scoop),_method(temp->_method)
@@ -44,6 +44,7 @@ for(auto i=_nodes.begin();i!=_nodes.end();i++)
 		//////////////////////////////////////////////////////////////////////////
 		////deal with params
 		ScoopNode::generateCode();
+		MIPS_ASM::jr();
 	};
 	virtual Type* generateType()
 	{

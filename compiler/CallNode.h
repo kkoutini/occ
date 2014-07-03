@@ -38,7 +38,6 @@ public:
 	virtual void generateCode(){
 	//	Interface* type=obj->getType();
 	//	type->getMethodByName
-		_sender->generateCode();
 		Type* senderType = _sender->getType();
 		
 		//TODO: check if sender isn't interface
@@ -56,6 +55,9 @@ public:
 		}
 
 		MIPS_ASM::printComment(string("CALLING A METHOD ")+method->to_string());
+		MIPS_ASM::printComment("preserving registers");
+		MIPS_ASM::push("ra");
+		MIPS_ASM::push("fp");
 		MIPS_ASM::printComment("generating code for the sender");
 		_sender->generateCode();
 
@@ -72,6 +74,9 @@ public:
 		}
 		MIPS_ASM::jal(method->getLabel());
 
+		MIPS_ASM::pop("fp");
+		MIPS_ASM::pop("ra");
+		MIPS_ASM::push("v0");
 	}
 	virtual Type* generateType()
 	{
