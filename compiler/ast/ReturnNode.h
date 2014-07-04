@@ -2,7 +2,7 @@
 #include "Node.h"
 #include "../ST/Method.h"
 class ReturnNode :
-	public Node
+	public VoidNode
 {
 
 protected:
@@ -11,7 +11,7 @@ protected:
 
 public:
 
-	ReturnNode(ScoopNode* scope,Node* returnexp):Node(scope),_returnexp(returnexp)
+	ReturnNode(ScoopNode* scope, Node* returnexp) :VoidNode(scope), _returnexp(returnexp)
 	{
 	}
 		 void generateCode (){

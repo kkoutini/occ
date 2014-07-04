@@ -1,8 +1,8 @@
 #pragma once
-#include "ast\Node.h"
+#include "voidNode.h"
 
 class ElseNode :
-	public Node
+	public VoidNode
 {
 protected:
 	Node* _statment;
@@ -10,7 +10,7 @@ protected:
 
 public:
 static	int 	Else_label;
-	ElseNode(Node* statment,ScoopNode* scoop):Node(scoop),_statment(statment)
+ElseNode(Node* statment, ScoopNode* scoop) :VoidNode(scoop), _statment(statment)
 	{
 		
 		

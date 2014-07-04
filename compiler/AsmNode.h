@@ -1,16 +1,16 @@
 #pragma once
 
-#include "ast\Node.h"
+#include "voidNode.h"
 #include "ST\SymbolTable.h"
 using std::string;
 extern SymbolTable* symbolTable;
 
-class AsmNode :public Node
+class AsmNode :public VoidNode
 {
 protected:
 	string _command;
 public:
-	AsmNode(ScoopNode* scoope, string command) :Node(scoope), _command(command)
+	AsmNode(ScoopNode* scoope, string command) :VoidNode(scoope), _command(command)
 	{
 	
 	}

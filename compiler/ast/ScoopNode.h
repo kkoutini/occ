@@ -1,8 +1,8 @@
 #pragma once
-#include "Node.h"
+#include "../VoidNode.h"
 #include "../ST/variable.h"
 class ScoopNode :
-	public Node
+	public VoidNode
 {
 protected:
 	map<string, Variable*> _variables;
@@ -37,7 +37,7 @@ public:
 	int getFrameSize(){
 		return _currentInnerOffset;
 	}
-	ScoopNode(ScoopNode * parent) :Node(parent)
+	ScoopNode(ScoopNode * parent) :VoidNode(parent)
 	{
 		_currentInnerOffset=0;
 	}

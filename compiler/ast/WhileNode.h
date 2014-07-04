@@ -1,7 +1,7 @@
 #pragma once
-#include "Node.h"
+#include "../voidNode.h"
 class WhileNode :
-	public Node
+	public VoidNode
 {
 
 
@@ -12,7 +12,7 @@ Node* _statment;
 
 public:
 	static	int 	while_label;
-	WhileNode(Node* condition,Node* statment,ScoopNode* scoop):Node(scoop),_statment(statment),_condition(condition)
+	WhileNode(Node* condition, Node* statment, ScoopNode* scoop) :VoidNode(scoop), _statment(statment), _condition(condition)
 	{
 	}
 

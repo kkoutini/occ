@@ -1,8 +1,8 @@
 #pragma once
-#include "ast\Node.h"
+#include "voidNode.h"
 using namespace std;
 class DoWhileNode :
-	public Node
+	public VoidNode
 {
 
 
@@ -13,7 +13,7 @@ Node* _statment;
 
 public:
 	static	int 	Dowhile_label;
-	DoWhileNode(Node* condition,Node* statment,ScoopNode* scoop):Node(scoop),_statment(statment),_condition(condition)
+	DoWhileNode(Node* condition, Node* statment, ScoopNode* scoop) :VoidNode(scoop), _statment(statment), _condition(condition)
 	{
 		
 	}

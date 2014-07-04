@@ -2,7 +2,7 @@
 #include "node.h"
 
 class IfNode :
-	public Node
+	public VoidNode
 {
 protected:
 	Node* _condtion;
@@ -11,7 +11,7 @@ protected:
 
 public:
 	static	int 	if_label;
-	IfNode(Node* condition, Node* statment, ScoopNode* scoop, Node* elseNode) :Node(scoop), _condtion(condition), _statment(statment), _elseNode(elseNode)
+	IfNode(Node* condition, Node* statment, ScoopNode* scoop, Node* elseNode) :VoidNode(scoop), _condtion(condition), _statment(statment), _elseNode(elseNode)
 	{
 
 

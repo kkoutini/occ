@@ -4,18 +4,15 @@
 using namespace std;
 
 class SwitchNode :
-	public Node
+	public VoidNode
 {
 protected:
 	Node* _expr;
 	list<pair<Node*,Node*>>_cases;
 public:
 	SwitchNode(Node* expr,list<pair<Node*,Node*>>cases,ScoopNode* scoop )
-		:Node(scoop),_expr(expr),_cases(cases)
+		:VoidNode(scoop), _expr(expr), _cases(cases)
 	{
-	}
-	SwitchNode(SwitchNode* temp):Node(temp->_scoop){
-		SwitchNode(temp->_expr,temp->_cases,temp->_scoop);
 	}
 	void setExpr(Node* expr){
 		this->_expr=expr;

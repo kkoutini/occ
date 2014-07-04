@@ -1200,7 +1200,7 @@ conditional_statement:
 												 $<r.node>$=new IfNode($<r.node>1,$<r.node>2,scoop,new ElseNode($<r.node>4,scoop));
 												}
 	|switch_header switch_body			{Streams::verbose()<<"conditional_statement: switch_header switch_body statement\n";
-											$<r.node>$=new SwitchNode(tempSwitch);
+											$<r.node>$=tempSwitch;
 										}
 ;
 if_header:

@@ -1,10 +1,10 @@
 #pragma once
-#include "node.h"
+#include "../voidnode.h"
 #include "../ST/SymbolTable.h"
 using std::string;
 extern SymbolTable* symbolTable;
 class ForNode :
-	public Node
+	public VoidNode
 {
 protected:
 	Node* _initlizer;
@@ -16,7 +16,7 @@ protected:
 public:
 	static	int 	for_label;
 	ForNode(Node* initlizer,Node* condition,Node* increment,Node* statment,ScoopNode* scoop):
-		Node(scoop),_initlizer(initlizer),_condition(condition),_increment(increment),_statment(statment)
+		VoidNode(scoop), _initlizer(initlizer), _condition(condition), _increment(increment), _statment(statment)
 	{
 
 	}

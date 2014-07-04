@@ -4004,7 +4004,7 @@ yyreduce:
   case 233:
 #line 1202 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* yacc.c:1646  */
     {Streams::verbose()<<"conditional_statement: switch_header switch_body statement\n";
-											(yyval.r.node)=new SwitchNode(tempSwitch);
+											(yyval.r.node)=tempSwitch;
 										}
 #line 4010 "yacc.cpp" /* yacc.c:1646  */
     break;

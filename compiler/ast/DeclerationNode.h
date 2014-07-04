@@ -1,5 +1,5 @@
 #pragma once
-#include "node.h"
+#include "../voidnode.h"
 
 #include "string"
 #include<list>
@@ -7,7 +7,7 @@
 using namespace std;
 
 class DeclerationNode :
-	public Node
+	public VoidNode
 {
 protected:
 	string _typename;
@@ -21,11 +21,11 @@ public:
 		(*i).second->generateCode();
 		}*/
 	}
-	DeclerationNode(list<pair<string,Node*> > identifires,ScoopNode* scoop,string typeName):Node(scoop),_identifires(identifires)
+	DeclerationNode(list<pair<string, Node*> > identifires, ScoopNode* scoop, string typeName) :VoidNode(scoop), _identifires(identifires)
 	{
 		_typename=typeName;
 	}
-	DeclerationNode(DeclerationNode* temp):Node(temp->_scoop),_identifires(temp->_identifires),_typename(temp->_typename)
+	DeclerationNode(DeclerationNode* temp) :VoidNode(temp->_scoop), _identifires(temp->_identifires), _typename(temp->_typename)
 	{
 	
 	}
