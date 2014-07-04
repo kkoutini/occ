@@ -68,8 +68,10 @@ public:
 	}
 	static int canCast(Type * from,Type *to)
 	{
-		if (from == to)
-			return true;
+		Interface* ifsf = dynamic_cast<Interface*>(from);
+		Interface* ifst = dynamic_cast<Interface*>(to);
+		if (ifsf&&ifst)
+			return ifsf->isDescendentOf(ifst);
 		Init();
 		if( to==symbolTable->getType("error_type"))
 			return 1;

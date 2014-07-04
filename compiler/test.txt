@@ -139,12 +139,12 @@ j type_not_found
 
 
 vt_1:
- #bprint: (int) parameter 
-li $t0,17
-beq $t0,$a1,_c1_B_m17_bprint__int_parameter_
+ #print: (int) parameter 
+li $t0,6
+beq $t0,$a1,_c1_B_m6_print__int_parameter_
  #bgo: (int) y 
-li $t0,18
-beq $t0,$a1,_c1_B_m18_bgo__int_y_
+li $t0,17
+beq $t0,$a1,_c1_B_m17_bgo__int_y_
  #super
  #wessam
  #go: (int) y 
@@ -167,9 +167,9 @@ j method_not_found
  #Something wrong this method's node is NULL :
 
 
- #generating code for Method:bprint: (int) parameter 
+ #generating code for Method:print: (int) parameter 
 
-_c1_B_m17_bprint__int_parameter_:
+_c1_B_m6_print__int_parameter_:
  #moving the stack back because args are in scoop
 add $sp,$sp,8
  #movesp to fp
@@ -313,7 +313,7 @@ jr $ra
 
  #generating code for Method:bgo: (int) y 
 
-_c1_B_m18_bgo__int_y_:
+_c1_B_m17_bgo__int_y_:
  #moving the stack back because args are in scoop
 add $sp,$sp,8
  #movesp to fp
@@ -483,15 +483,15 @@ jr $ra
 
 vt_2:
  #allocalloc
-li $t0,19
-beq $t0,$a1,_c2_B_m19_alloc
+li $t0,18
+beq $t0,$a1,_c2_B_m18_alloc
  #super
 j method_not_found
 
 
  #generating code for Method:alloc
 
-_c2_B_m19_alloc:
+_c2_B_m18_alloc:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -549,15 +549,15 @@ j method_not_found
 
 vt_4:
  #allocalloc
-li $t0,19
-beq $t0,$a1,_c4_NSObject_m19_alloc
+li $t0,18
+beq $t0,$a1,_c4_NSObject_m18_alloc
  #super
 j method_not_found
 
 
  #generating code for Method:alloc
 
-_c4_NSObject_m19_alloc:
+_c4_NSObject_m18_alloc:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -641,8 +641,8 @@ beq $t0,$a1,_c6_System_m12_println__NSString_parameter_
 li $t0,13
 beq $t0,$a1,_c6_System_m13_println__char_parameter_
  #allocalloc
-li $t0,19
-beq $t0,$a1,_c6_System_m19_alloc
+li $t0,18
+beq $t0,$a1,_c6_System_m18_alloc
  #printlnprintln
 li $t0,5
 beq $t0,$a1,_c6_System_m5_println
@@ -897,7 +897,7 @@ jr $ra
 
  #generating code for Method:alloc
 
-_c6_System_m19_alloc:
+_c6_System_m18_alloc:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -1050,6 +1050,74 @@ add $sp,$sp,0
  #releasing space in stack for scope variables
 add $sp,$sp,4
 jr $ra
+ ##########################################
+
+
+
+ ####End STATIC
+
+
+
+ ##########################################
+ #Generating code for class error_type
+
+
+
+
+ #vtable: 
+
+
+vt_9:
+ #super
+j method_not_found
+ ##########################################
+ ####STATIC
+ ##########################################
+ #Generating code for class error_type
+
+
+
+
+ #vtable: 
+
+
+vt_10:
+ #super
+j method_not_found
+ ##########################################
+
+
+
+ ####End STATIC
+
+
+
+ ##########################################
+ #Generating code for class id
+
+
+
+
+ #vtable: 
+
+
+vt_11:
+ #super
+j method_not_found
+ ##########################################
+ ####STATIC
+ ##########################################
+ #Generating code for class id
+
+
+
+
+ #vtable: 
+
+
+vt_12:
+ #super
+j method_not_found
  ##########################################
 
 
@@ -1346,8 +1414,8 @@ beq $t0,$a1,_c8_wessam_m14_go__int_x_
 li $t0,6
 beq $t0,$a1,_c8_wessam_m6_print__int_cc_
  #allocalloc
-li $t0,19
-beq $t0,$a1,_c8_wessam_m19_alloc
+li $t0,18
+beq $t0,$a1,_c8_wessam_m18_alloc
  #mainmain
 li $t0,15
 beq $t0,$a1,_c8_wessam_m15_main
@@ -1494,7 +1562,7 @@ jr $ra
 
  #generating code for Method:alloc
 
-_c8_wessam_m19_alloc:
+_c8_wessam_m18_alloc:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -1537,7 +1605,7 @@ sub $sp,$sp,4
  ##F:code.txt #L:22
  #Assign node
  #RHS:
- #Dynamically CALLING A METHOD 19
+ #Dynamically CALLING A METHOD 18
  #preserving registers
 sub $sp,$sp,4
 sw $ra, 0($sp)
@@ -1552,7 +1620,7 @@ sw $t0, 0($sp)
  #generating code for Args
 lw $t0,0($sp)
 lw $a0,0($t0)
-li $a1,19
+li $a1,18
 jal global_vtable
 lw $fp, 0($sp)
 add $sp,$sp,4
@@ -1575,7 +1643,7 @@ lw $t0, 0($sp)
 sw $t0,0($v0)
 add $sp,$sp,4
  ##F:code.txt #L:23
- #Dynamically CALLING A METHOD 18
+ #Dynamically CALLING A METHOD 17
  #preserving registers
 sub $sp,$sp,4
 sw $ra, 0($sp)
@@ -1595,7 +1663,7 @@ sub $sp,$sp,4
 sw $t9, 0($sp)
 lw $t0,4($sp)
 lw $a0,0($t0)
-li $a1,18
+li $a1,17
 jal global_vtable
 lw $fp, 0($sp)
 add $sp,$sp,4

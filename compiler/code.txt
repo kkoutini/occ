@@ -18,7 +18,7 @@ int b,c,a;
 }
 +(int) main
 {
-	B* a;
+	wessam* a;
 	a=[B alloc];
 	[a bgo:4];
 	[a print:2];
@@ -65,7 +65,7 @@ int bb,cb,ab;
 @end
 
 @implementation B:wessam
--(void) bprint:(int)parameter
+-(void) print:(int)parameter
 {
 	[System println:b+c];
 	[System println:a+c];

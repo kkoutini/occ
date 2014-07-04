@@ -44,6 +44,12 @@ int Interface::getObjectSize(){
 int Interface::getObjectIdentifiersSize(){
 	return 4;
 }
+bool Interface::isDescendentOf(Interface* i){
+	if (this == i)
+		return true;
+	return getInheretInterface() ? getInheretInterface()->isDescendentOf(i) : false;
+}
+
 string Interface::getStaticPointerStr(){
 	return string("static_instance_")+std::to_string(getId())+"_"+get_name();
 }

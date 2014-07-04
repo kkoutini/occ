@@ -31,7 +31,7 @@ public:
 	}
 	string Interface::getVtableLabel();
 	string Interface::getVtableString();
-
+	bool isDescendentOf(Interface* i);
 
 	int Interface::getObjectIdentifiersSize();
 
