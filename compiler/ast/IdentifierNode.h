@@ -1,6 +1,7 @@
 #pragma once
 #include "node.h"
 #include "string"
+#include "../ClassNode.h"
 using std::string;
 class IdentifierNode:
 	public Node
@@ -21,11 +22,26 @@ public:
 virtual void generateCode(){
 		MIPS_ASM::printComment("identifier "+_name);
 		Variable *var = this->_scoop->get_variable(_name);
-		MIPS_ASM::lw("t0",-var->getOffset(), var->getOffsetRegister());
+		ClassNode* cn = dynamic_cast<ClassNode*>(var->_scoop);
+		if (cn!=NULL){
+			Variable* self = this->_scoop->get_variable("self");
+			MIPS_ASM::lw("t0", -self->getOffset(), self->getOffsetRegister());
+			//v0 contains the address in memorry to be used later in assignment
+			MIPS_ASM::add_instruction(string("addi $v0,$") + "t0"
+				+ "," + std::to_string(var->getOffset()) + "\n");
 
-		//v0 contains the address in memorry to be used later in assignment
-		MIPS_ASM::add_instruction(string("addi $v0,$") + var->getOffsetRegister()
-			+ "," + std::to_string(-var->getOffset())+"\n");
+			MIPS_ASM::lw("t0", var->getOffset(), "t0");
+
+		}
+		else{
+			MIPS_ASM::lw("t0", -var->getOffset(), var->getOffsetRegister());
+
+			//v0 contains the address in memorry to be used later in assignment
+			MIPS_ASM::add_instruction(string("addi $v0,$") + var->getOffsetRegister()
+				+ "," + std::to_string(-var->getOffset()) + "\n");
+
+		}
+
 		MIPS_ASM::push("t0");
 
 		//for(int i=0;i<=(this->_scoop->offset+this->_scoop->get_variable(_name)->offset)/4;i++)

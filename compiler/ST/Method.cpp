@@ -247,7 +247,7 @@ string Method::getLabel()
 
 			}
 
-			label = string("_c") + std::to_string(getInterface()->getId()) + "_method_" + std::to_string(getId())+"_"+s;
+			label = string("_c") + std::to_string(getInterface()->getId()) +"_"+getInterface()->get_name()+ "_m" + std::to_string(getId())+"_"+s;
 		}
 	}
 	return label;

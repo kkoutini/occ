@@ -1,6 +1,7 @@
 #include "Variable.h"
 #include "Array.h"
 #include "../ast/ScoopNode.h"
+#include "../ClassNode.h"
 //setters and getters
 //Variable::Variable(string name, symbol* Variable_type):symbol(name, NULL){
 //	this->var_type = Variable_type;
@@ -118,4 +119,8 @@ int Variable::getOffset()
 string Variable::getOffsetRegister()
 {
 	return _scoop->getOffsetRegister();
+}
+string Variable::getLoadString()
+{
+	throw exception("not implmentred");
 }

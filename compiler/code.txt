@@ -12,6 +12,7 @@ int b;
 @implementation wessam
 -(void) print:(int)parameter
 {
+	[System print:b];
 	
 }
 +(int) main
@@ -19,10 +20,8 @@ int b;
 	wessam* a;
 	a=[wessam alloc];
 	[a go:4];
-
-	int x;
-	x=2;
-	[System print:x];
+	[a print:2];
+	
 }
 
 +(void) go:(int)x
@@ -34,11 +33,11 @@ int b;
 }
 +(void) print:(int)cc
 {
-	[System print:cc];
 }
 -(int) go:(int)y
 {
-[wessam go:y];
+		b=3;
+		[System print:b];
 	
 }
 

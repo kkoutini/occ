@@ -21,6 +21,8 @@ public:
 
 	virtual string getOffsetRegister();
 	//Variable(string name, string var_type="Variable");
+	string Variable::getLoadString();
+
 	virtual void toString();
 	Variable(string name, Type* type, string = "@public");
 	Variable(Variable*);
