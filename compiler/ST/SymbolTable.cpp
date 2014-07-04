@@ -113,6 +113,9 @@ void SymbolTable::generateStatics()
 			 fs->addNode(new AsmNode(fs, "li $v0,9"));
 			 fs->addNode(new AsmNode(fs, string("li $a0,") + std::to_string(ifs->static_twin->getTypeSize())));
 			 fs->addNode(new AsmNode(fs, "syscall"));
+			 fs->addNode(new AsmNode(fs, "li $t0,"+std::to_string(ifs->getId())));
+			 fs->addNode(new AsmNode(fs, "sw $t0,0($v0)"));
+
 			 ifs->static_twin->getMethodsItem()->addMethod(method);
 
 		}

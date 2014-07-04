@@ -68,6 +68,8 @@ public:
 	}
 	static int canCast(Type * from,Type *to)
 	{
+		if (from == to)
+			return true;
 		Init();
 		if( to==symbolTable->getType("error_type"))
 			return 1;

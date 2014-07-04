@@ -16,17 +16,19 @@ int b;
 }
 +(int) main
 {
-	[self go:4];
+	wessam* a;
+	a=[wessam alloc];
+	[a go:4];
 
 	int x;
 	x=2;
-	[self go:[System readint]];
+	[System print:x];
 }
 
 +(void) go:(int)x
 {
 
-	[self print:x];
+	[wessam print:x];
 	if(x!=0)
 		[self go:x-1];
 }
@@ -36,7 +38,7 @@ int b;
 }
 -(int) go:(int)y
 {
-	y=8;
+[wessam go:y];
 	
 }
 
