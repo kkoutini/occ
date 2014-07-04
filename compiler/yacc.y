@@ -1371,6 +1371,11 @@ void main(void){
 		Parser* p = new Parser();
 		p->parse();
 	}
+		if(!symbolTable->checkInhertanceLoop()){
+			cout<<"inherit loop detected, can't recover\n";
+			Program::printErrors();
+			return ;
+		}
 		symbolTable->generateStatics();
 		symbolTable->generateCode();
 	Program::printErrors();

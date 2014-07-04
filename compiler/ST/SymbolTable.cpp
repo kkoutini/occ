@@ -5,6 +5,7 @@
 #include "../AsmNode.h"
 #include "../ast/FunctionNode.h"
 #include "../ast/IdentifierNode.h"
+#include <set>
 extern std::ofstream ofs;
 extern ScoopNode* globalScoop;
 extern Method * mainMethod;
@@ -173,6 +174,15 @@ bool SymbolTable::checkInhertanceLoop()
 	{
 		auto ifs = dynamic_cast<Interface*> (i->second);
 		if (ifs){
+			set<Interface*> s;
+			s.insert(ifs);
+			while (ifs)
+			{
+				ifs = ifs->getInheretInterface();
+				if (s.count(ifs))
+					return false;
+				s.insert(ifs);
+			}
 			//TODo  check inhertance looop ; use sets std::set
 		}
 	}
