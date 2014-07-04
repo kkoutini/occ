@@ -32,6 +32,9 @@ public:
 	string Interface::getVtableLabel();
 	string Interface::getVtableString();
 
+
+	int Interface::getObjectIdentifiersSize();
+
 	string Interface::getStaticPointerStr();
 	int  Interface::getObjectSize();
 	int  Interface::getDataMembersSize();

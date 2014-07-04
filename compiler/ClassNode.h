@@ -23,6 +23,13 @@ for(auto i=_nodes.begin();i!=_nodes.end();i++)
 	ClassNode(ClassNode* temp):ScoopNode(temp->_scoop),_interface(temp->_interface)
 	{
 	}
+
+	virtual int getVarsOffset()
+	{
+		return _interface->getInheretInterface() == NULL ? _interface->getObjectIdentifiersSize()
+			: _interface->getInheretInterface()->getObjectSize();
+	}
+
 	Interface* getInterface(){
 		return _interface;
 	}

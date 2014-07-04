@@ -21,7 +21,10 @@ void MethodItems ::setMethods(multimap<const string,Method*> methods){
 	}
 bool MethodItems::addMethod(Method* S)
 {
+	
 	if ((S!=NULL)&&(this!=NULL) ){
+		//very bad practice but so be it
+		S->getId();
 		Method* temp = this->getMethod(S->get_name(), S->getReturnType(),S->get_variables(),S->get_static());
 		if ((temp==NULL)){				
 		this->methods.insert(hash_map<const string, Method*>::value_type(S->get_name(), S));

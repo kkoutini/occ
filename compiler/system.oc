@@ -9,12 +9,19 @@
 +(float) readfloat;
 +(NSString) readstring;
 
++(void) println;
 
 +(void) print:(int)parameter;
 +(void) print:(float)parameter;
 
 +(void) print:(NSString)parameter;
 +(void) print:(char)parameter;
+
++(void) println:(int)parameter;
++(void) println:(float)parameter;
+
++(void) println:(NSString)parameter;
++(void) println:(char)parameter;
 
 
 
@@ -41,6 +48,41 @@
 	@asm "syscall";
 }
 +(void) print:(char)parameter
+{
+	@asm "li $v0, 12";
+	@asm "lw $a0 ,-8($fp)";
+	@asm "syscall";
+}
++(void) println
+{
+	@asm "li $v0 ,4";
+	@asm "la $a0 ,newline";
+	@asm "syscall";
+
+}
++(void) println:(int)parameter
+{
+	@asm "li $v0 ,1";
+	@asm "lw $a0 ,-8($fp)";
+	@asm "syscall";
+	@asm "li $v0 ,4";
+	@asm "la $a0 ,newline";
+	@asm "syscall";
+
+}
++(void) println:(float)parameter
+{
+	@asm "li $v0, 2";
+    @asm "l.s  $f12,-8($fp)";
+	@asm "syscall";
+}
++(void) println:(NSString)parameter
+{
+	@asm "li $v0 ,4";
+ 	@asm "lw $a0 ,-8($fp)";
+	@asm "syscall";
+}
++(void) println:(char)parameter
 {
 	@asm "li $v0, 12";
 	@asm "lw $a0 ,-8($fp)";

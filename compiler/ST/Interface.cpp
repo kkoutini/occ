@@ -36,13 +36,16 @@ int Interface::getDataMembersSize(){
 	if (getInheretInterface() != NULL){
 		return classNode->getFrameSize() + getInheretInterface()->getDataMembersSize();
 	}
-	return getInheretInterface()->getDataMembersSize();
+	return classNode->getFrameSize();
 }
 int Interface::getObjectSize(){
-	return 4 + getDataMembersSize();
+	return  getObjectIdentifiersSize()+getDataMembersSize();
+}
+int Interface::getObjectIdentifiersSize(){
+	return 4;
 }
 string Interface::getStaticPointerStr(){
-	return string("static_instance_")+std::to_string(getId());
+	return string("static_instance_")+std::to_string(getId())+"_"+get_name();
 }
 
 	VariableItems* Interface:: getVariableItems(){
@@ -81,6 +84,7 @@ string Interface::getStaticPointerStr(){
 	void Interface ::setInheritInterface(Interface* interf)
 	{
 		this->inherit_interface=interf;
+		classNode->_scoop = interf->classNode;
 	}
 	
 //void Interface::add_Method(Method* S)

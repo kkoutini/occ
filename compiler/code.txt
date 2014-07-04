@@ -18,9 +18,9 @@ int b,c,a;
 }
 +(int) main
 {
-	wessam* a;
-	a=[wessam alloc];
-	[a go:4];
+	B* a;
+	a=[B alloc];
+	[a bgo:4];
 	[a print:2];
 	
 }
@@ -67,16 +67,19 @@ int bb,cb,ab;
 @implementation B:wessam
 -(void) bprint:(int)parameter
 {
-	[System print:b+c];
-	[System print:a+c];
+	[System println:b+c];
+	[System println:a+c];
+	[System println:ab];
 	
 }
 -(int) bgo:(int)y
 {
-		b=3;
-		a=10;
+	a=1;
+		b=1000;
+		ab=1000;
 		c=100;
 		[System print:b];
+		[System println];
 	
 }
 

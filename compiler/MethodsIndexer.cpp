@@ -24,7 +24,7 @@ int MethodsIndexer::getMethodIndex(Method* m)
 int MethodsIndexer::getMethodIndex(string message, vector<CallSelector*> v)
 {
 	Method* m = mi.getMethod(message, v);
-	if (methods.find(m) == methods.end())
+	if (!m || methods.find(m) == methods.end())
 	{
 		return -1;
 	}
