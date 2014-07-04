@@ -38,8 +38,20 @@
 #include <string>
 #include <fstream>
 #include <streambuf>
+
+#include <set>
 	using namespace std;
 	
+set<string> files_set;
+vector<string> sfiles;
+
+void addFile(string s){
+	if (!files_set.count(s))
+	{
+		files_set.insert(s);
+		sfiles.push_back(s);
+	}
+}
     extern string sourceFile="";
 	
 extern int lineNum;
@@ -1344,13 +1356,13 @@ void main(void){
 
 	globalScoop=new ScoopNode(NULL);
 	globalScoop->setOffsetRegister("gp");
-	vector<string> sfiles;
-	sfiles.push_back("nsobject.oc");
 
-	sfiles.push_back("system.oc");
+	addFile("nsobject.oc");
 
-	sfiles.push_back("code.txt");
-	for(string sf:sfiles){
+	addFile("system.oc");
+
+	addFile("code.txt");
+		for(string sf:sfiles){
 	
 		lineNum=colNum=1;
 		sourceFile=sf;
