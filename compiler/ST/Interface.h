@@ -33,6 +33,8 @@ public:
 	string Interface::getVtableString();
 
 	string Interface::getStaticPointerStr();
+	int  Interface::getObjectSize();
+	int  Interface::getDataMembersSize();
 
 	int getId();
 	MethodItems* getMethodsItem();

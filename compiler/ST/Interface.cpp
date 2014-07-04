@@ -32,6 +32,15 @@ Interface::Interface(Interface* interf):Type(interf->get_name())
 Interface* Interface::getInheretInterface(){
 	return this->inherit_interface;
 }
+int Interface::getDataMembersSize(){
+	if (getInheretInterface() != NULL){
+		return classNode->getFrameSize() + getInheretInterface()->getDataMembersSize();
+	}
+	return getInheretInterface()->getDataMembersSize();
+}
+int Interface::getObjectSize(){
+	return 4 + getDataMembersSize();
+}
 string Interface::getStaticPointerStr(){
 	return string("static_instance_")+std::to_string(getId());
 }

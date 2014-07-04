@@ -92,7 +92,6 @@ void SymbolTable::generateStatics()
 	{
 		auto ifs = dynamic_cast<Interface*> (i->second);
 		if (ifs){
-			 ifs->static_twin->getTypeSize();
 			 globalScoop->add_variable(new Variable(ifs->get_name(),ifs->static_twin,0));
 			 globalScoop->addNode(new AsmNode(globalScoop, "la $t0," + ifs->getStaticPointerStr() + "\n"));
 			 globalScoop->addNode(new AsmNode(globalScoop, "li $t1," + std::to_string(ifs->static_twin->getId()) + "\n"));
@@ -107,11 +106,11 @@ void SymbolTable::generateStatics()
 
 			 ifs->static_twin->setStatus(completness::implemented);
 
-			 MIPS_ASM::add_data(ifs->getStaticPointerStr() + ":    .byte   0:" + std::to_string(ifs->static_twin->getTypeSize()) + "\n");
+			 MIPS_ASM::add_data(ifs->getStaticPointerStr() + ":    .byte   0:" + std::to_string(ifs->static_twin->getObjectSize()) + "\n");
 			 Method* method = new Method("alloc", ifs);
 			 auto fs = ScoopHelper::createNewFunctionNode(method, ifs->static_twin);
 			 fs->addNode(new AsmNode(fs, "li $v0,9"));
-			 fs->addNode(new AsmNode(fs, string("li $a0,") + std::to_string(ifs->static_twin->getTypeSize())));
+			 fs->addNode(new AsmNode(fs, string("li $a0,") + std::to_string(ifs->getObjectSize())));
 			 fs->addNode(new AsmNode(fs, "syscall"));
 			 fs->addNode(new AsmNode(fs, "li $t0,"+std::to_string(ifs->getId())));
 			 fs->addNode(new AsmNode(fs, "sw $t0,0($v0)"));
@@ -167,6 +166,17 @@ void SymbolTable::generateStaticsCode()
 		}
 	}
 	MIPS_ASM::jump("type_not_found");
+}
+bool SymbolTable::checkInhertanceLoop()
+{
+	for (auto i = this->types.begin(); i != this->types.end(); i++)
+	{
+		auto ifs = dynamic_cast<Interface*> (i->second);
+		if (ifs){
+			//TODo  check inhertance looop ; use sets std::set
+		}
+	}
+	return true;
 }
 void SymbolTable::generateCode()
 {

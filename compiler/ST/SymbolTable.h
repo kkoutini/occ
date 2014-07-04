@@ -47,6 +47,7 @@ public:
 	void generateCode();
 	void SymbolTable::generateStatics();
 	void SymbolTable::generateStaticsCode();
+	bool checkInhertanceLoop();
 
 
 	//int Size;

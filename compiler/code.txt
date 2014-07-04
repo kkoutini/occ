@@ -54,3 +54,31 @@ int b,c,a;
 
 @end
 
+
+@interface B:wessam
+{
+@public
+int bb,cb,ab;
+}
+-(int) go:(int)y;
+
+@end
+
+@implementation B:wessam
+-(void) bprint:(int)parameter
+{
+	[System print:b+c];
+	[System print:a+c];
+	
+}
+-(int) bgo:(int)y
+{
+		b=3;
+		a=10;
+		c=100;
+		[System print:b];
+	
+}
+
+@end
+
