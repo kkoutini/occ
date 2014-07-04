@@ -4535,13 +4535,14 @@ void main(void){
 	MIPS_ASM::writeData();
 		ofs<<"\n.text\n";
 
-	ofs<<".globl main\nmain:\n";
+	ofs<<".globl main\n";
+		ofs<<"main:\n";
 	
+	
+	MIPS_ASM::writeCode();
 	std::ifstream t_common("common.asm");
 std::string str_common((std::istreambuf_iterator<char>(t_common)),
                  std::istreambuf_iterator<char>());
 	ofs<<str_common<<"\n";
-		
 	
-	MIPS_ASM::writeCode();
 }

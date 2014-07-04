@@ -173,6 +173,8 @@ void Interface::generateCode(){
 	}
 
 
+	MIPS_ASM::jump("method_not_found");
+
 	for (auto i = this->methodsItem->methods.begin(); i != this->methodsItem->methods.end(); i++)
 	{
 		MIPS_ASM::add_instruction("\n\n");
@@ -200,9 +202,9 @@ void Interface::generateCode(){
 
 }
 
-Method* Interface::getMethod(string message, vector<CallSelector*> v, bool isStatic )
+Method* Interface::getMethod(string message, vector<CallSelector*> v )
 {
-	return methodsItem->getMethod(message, v, isStatic);
+	return methodsItem->getMethod(message, v);
 }
 int Interface::getId(){
 	if (_id == -1){

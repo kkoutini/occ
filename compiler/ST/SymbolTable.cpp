@@ -95,9 +95,14 @@ void SymbolTable::generateStatics()
 			 ifs->static_twin->getTypeSize();
 			 globalScoop->add_variable(new Variable(ifs->get_name(),ifs->static_twin,0));
 			 globalScoop->addNode(new AsmNode(globalScoop, "la $t0," + ifs->getStaticPointerStr() + "\n"));
+			 globalScoop->addNode(new AsmNode(globalScoop, "li $t1," + std::to_string(ifs->static_twin->getId()) + "\n"));
+
 			 Variable* var = globalScoop->get_variable(ifs->get_name());
-			 globalScoop->addNode(new AsmNode(globalScoop, string("sw $t0,") + std::to_string( -var->getOffset())+"($"
+			 globalScoop->addNode(new AsmNode(globalScoop, string("sw $t0,") + std::to_string(-var->getOffset()) + "($"
 				 + var->getOffsetRegister() + ")\n"
+				 ));
+			 globalScoop->addNode(new AsmNode(globalScoop, string("sw $t1,") + std::to_string(0) + "($"
+				 + "t0"+ ")\n"
 				 ));
 
 			 ifs->static_twin->setStatus(completness::implemented);
@@ -137,6 +142,28 @@ void SymbolTable::generateStaticsCode()
 	}
 	globalScoop->generateCode();
 
+
+	MIPS_ASM::add_instruction("\n\n\n\n");
+	MIPS_ASM::printComment(string("Global vtable: "));
+	MIPS_ASM::add_instruction("\n\n");
+	MIPS_ASM::label("global_vtable");
+
+	for (auto i = this->types.begin(); i != this->types.end(); i++)
+	{
+		auto ifs = dynamic_cast<Interface*> (i->second);
+		if (ifs){
+			MIPS_ASM::printComment(ifs->get_name());
+			MIPS_ASM::add_instruction(string("li $t0,") + std::to_string(ifs->getId()) + "\n");
+			MIPS_ASM::add_instruction(string("beq $t0,$a0,") + ifs->getVtableLabel() + "\n");
+			ifs = ifs->static_twin;
+			MIPS_ASM::printComment(ifs->get_name()+" static");
+
+			MIPS_ASM::add_instruction(string("li $t0,") + std::to_string(ifs->getId()) + "\n");
+			MIPS_ASM::add_instruction(string("beq $t0,$a0,") + ifs->getVtableLabel() + "\n");
+
+		}
+	}
+	MIPS_ASM::jump("type_not_found");
 }
 void SymbolTable::generateCode()
 {

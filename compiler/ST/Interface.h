@@ -52,7 +52,7 @@ public:
 
 	Method* getMethodByName(string name, Type* type, vector<DeclerationSelector*> v, bool isStatic);
 
-	Method* getMethod(string message, vector<CallSelector*> v, bool isStatic = false);
+	Method* getMethod(string message, vector<CallSelector*> v);
 
 	/*void add_Method(Method*);
 	Method* Get_Method(string name,Type* type ,vector<Variable*> parameter);*/

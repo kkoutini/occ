@@ -14,7 +14,7 @@ public:
 	bool addMethod(Method*);
 	void setMethods(multimap<const string,Method*>);
 	Method* getMethod(string name, Type* type, vector<DeclerationSelector*>, bool isStatic);
-	Method* getMethod(string message, vector<CallSelector*> v, bool isStatic = false);
+	Method* getMethod(string message, vector<CallSelector*> v);
 	void toString();
 	~MethodItems(void);
 };

@@ -16,15 +16,13 @@ int b;
 }
 +(int) main
 {
+	[self go:4];
+
 	int x;
 	x=2;
 	[self go:[System readint]];
 }
-+(void) print:(int)x
-{
-	[System print:x];
-	
-}
+
 +(void) go:(int)x
 {
 
@@ -32,7 +30,10 @@ int b;
 	if(x!=0)
 		[self go:x-1];
 }
-
++(void) print:(int)cc
+{
+	[System print:cc];
+}
 -(int) go:(int)y
 {
 	y=8;

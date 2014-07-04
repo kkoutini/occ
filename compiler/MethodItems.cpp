@@ -54,7 +54,7 @@ Method* MethodItems::getMethod(string name, Type* type, vector<DeclerationSelect
 	}
 }
 
-Method* MethodItems::getMethod(string message, vector<CallSelector*> selectors, bool isStatic )
+Method* MethodItems::getMethod(string message, vector<CallSelector*> selectors )
 {
 	auto it = this->methods.find(message);
 	while (it != this->methods.end()){
