@@ -3,7 +3,7 @@
 {
 @public
 NSString str1;
-int b;
+int b,c,a;
 }
 -(int) go:(int)y;
 
@@ -12,7 +12,8 @@ int b;
 @implementation wessam
 -(void) print:(int)parameter
 {
-	[System print:b];
+	[System print:b+c];
+	[System print:a+c];
 	
 }
 +(int) main
@@ -37,6 +38,8 @@ int b;
 -(int) go:(int)y
 {
 		b=3;
+		a=10;
+		c=100;
 		[System print:b];
 	
 }
