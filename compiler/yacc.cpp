@@ -4540,6 +4540,8 @@ void main(void){
 		Parser* p = new Parser();
 		p->parse();
 	}
+		Program ::printErrors();
+
 		symbolTable->generateStatics();
 		symbolTable->generateCode();
 	Program::printErrors();

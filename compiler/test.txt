@@ -1,8 +1,9 @@
 .data
-static_instance_1_B:    .byte   0:4
-static_instance_3_NSObject:    .byte   0:4
-static_instance_5_System:    .byte   0:4
-static_instance_7_wessam:    .byte   0:4
+static_instance_1_A:    .byte   0:4
+static_instance_3_B:    .byte   0:4
+static_instance_5_C:    .byte   0:4
+static_instance_7_NSObject:    .byte   0:4
+static_instance_9_System:    .byte   0:4
 
 newline: .asciiz "\n"
 
@@ -10,92 +11,108 @@ newline: .asciiz "\n"
 .globl main
 main:
  #reserving space in stack for scope variables
-sub $sp,$sp,16
- ##F:code.txt #L:88
- #asm node :la $t0,static_instance_1_B
-la $t0,static_instance_1_B
+sub $sp,$sp,20
+ ##F:code.txt #L:56
+ #asm node :la $t0,static_instance_1_A
+la $t0,static_instance_1_A
 
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :li $t1,2
 li $t1,2
 
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :sw $t0,0($gp)
 sw $t0,0($gp)
 
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :sw $t1,0($t0)
 sw $t1,0($t0)
 
- ##F:code.txt #L:88
- #asm node :la $t0,static_instance_3_NSObject
-la $t0,static_instance_3_NSObject
+ ##F:code.txt #L:56
+ #asm node :la $t0,static_instance_3_B
+la $t0,static_instance_3_B
 
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :li $t1,4
 li $t1,4
 
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :sw $t0,-4($gp)
 sw $t0,-4($gp)
 
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :sw $t1,0($t0)
 sw $t1,0($t0)
 
- ##F:code.txt #L:88
- #asm node :la $t0,static_instance_5_System
-la $t0,static_instance_5_System
+ ##F:code.txt #L:56
+ #asm node :la $t0,static_instance_5_C
+la $t0,static_instance_5_C
 
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :li $t1,6
 li $t1,6
 
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :sw $t0,-8($gp)
 sw $t0,-8($gp)
 
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :sw $t1,0($t0)
 sw $t1,0($t0)
 
- ##F:code.txt #L:88
- #asm node :la $t0,static_instance_7_wessam
-la $t0,static_instance_7_wessam
+ ##F:code.txt #L:56
+ #asm node :la $t0,static_instance_7_NSObject
+la $t0,static_instance_7_NSObject
 
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :li $t1,8
 li $t1,8
 
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :sw $t0,-12($gp)
 sw $t0,-12($gp)
 
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :sw $t1,0($t0)
 sw $t1,0($t0)
 
- ##F:code.txt #L:88
- #identifier wessam
-lw $t0,-12($gp)
-addi $v0,$gp,-12
+ ##F:code.txt #L:56
+ #asm node :la $t0,static_instance_9_System
+la $t0,static_instance_9_System
+
+ ##F:code.txt #L:56
+ #asm node :li $t1,10
+li $t1,10
+
+ ##F:code.txt #L:56
+ #asm node :sw $t0,-16($gp)
+sw $t0,-16($gp)
+
+ ##F:code.txt #L:56
+ #asm node :sw $t1,0($t0)
+sw $t1,0($t0)
+
+ ##F:code.txt #L:56
+ #identifier A
+lw $t0,0($gp)
+addi $v0,$gp,0
 sub $sp,$sp,4
 sw $t0, 0($sp)
 add $sp,$sp,4
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :sub $sp,$sp,4
 sub $sp,$sp,4
- ##F:code.txt #L:88
- #asm node :jal _c8_wessam_m15_main
-jal _c8_wessam_m15_main
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
+ #asm node :jal _c2_A_m16_main
+jal _c2_A_m16_main
+ ##F:code.txt #L:56
  #asm node :li $v0,10
 li $v0,10
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :syscall
 syscall
  #releasing space in stack for scope variables
-add $sp,$sp,16
+add $sp,$sp,20
 
 
 
@@ -104,33 +121,39 @@ add $sp,$sp,16
 
 
 global_vtable:
- #B
+ #A
 li $t0,1
 beq $t0,$a0,vt_1
- #B static
+ #A static
 li $t0,2
 beq $t0,$a0,vt_2
- #NSObject
+ #B
 li $t0,3
 beq $t0,$a0,vt_3
- #NSObject static
+ #B static
 li $t0,4
 beq $t0,$a0,vt_4
- #System
+ #C
 li $t0,5
 beq $t0,$a0,vt_5
- #System static
+ #C static
 li $t0,6
 beq $t0,$a0,vt_6
- #wessam
+ #NSObject
 li $t0,7
 beq $t0,$a0,vt_7
- #wessam static
+ #NSObject static
 li $t0,8
 beq $t0,$a0,vt_8
+ #System
+li $t0,9
+beq $t0,$a0,vt_9
+ #System static
+li $t0,10
+beq $t0,$a0,vt_10
 j type_not_found
  ##########################################
- #Generating code for class B
+ #Generating code for class A
 
 
 
@@ -139,191 +162,31 @@ j type_not_found
 
 
 vt_1:
- #print: (int) parameter 
-li $t0,6
-beq $t0,$a1,_c1_B_m6_print__int_parameter_
- #bgo: (int) y 
-li $t0,17
-beq $t0,$a1,_c1_B_m17_bgo__int_y_
- #super
- #wessam
- #go: (int) y 
+ #gogo
 li $t0,14
-beq $t0,$a1,_c7_wessam_m14_go__int_y_
- #print: (int) parameter 
-li $t0,6
-beq $t0,$a1,_c7_wessam_m6_print__int_parameter_
- #a2go: (int) y 
-li $t0,16
-beq $t0,$a1,_c7_wessam_m16_a2go__int_y_
+beq $t0,$a1,_c1_A_m14_go
+ #printprint
+li $t0,15
+beq $t0,$a1,_c1_A_m15_print
  #super
  #NSObject
  #super
 j method_not_found
 
 
- #generating code for Method:go: (int) y 
+ #generating code for Method:go
 
- #Something wrong this method's node is NULL :
-
-
- #generating code for Method:print: (int) parameter 
-
-_c1_B_m6_print__int_parameter_:
+_c1_A_m14_go:
  #moving the stack back because args are in scoop
-add $sp,$sp,8
+add $sp,$sp,4
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables
-sub $sp,$sp,8
- ##F:code.txt #L:69
+sub $sp,$sp,4
+ ##F:code.txt #L:22
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- ##F:code.txt #L:70
- #Dynamically CALLING A METHOD 10
- #preserving registers
-sub $sp,$sp,4
-sw $ra, 0($sp)
-sub $sp,$sp,4
-sw $fp, 0($sp)
- #generating code for the sender
- #identifier System
-lw $t0,-8($gp)
-addi $v0,$gp,-8
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #generating code for Args
- #generating code for selector:println
- #generating  for var #0
- #identifier b
-lw $t0,-4($fp)
-addi $v0,$t0,8
-lw $t0,8($t0)
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #identifier c
-lw $t0,-4($fp)
-addi $v0,$t0,12
-lw $t0,12($t0)
-sub $sp,$sp,4
-sw $t0, 0($sp)
-lw $t1, 0($sp)
-add $sp,$sp,4
-lw $t0, 0($sp)
-add $sp,$sp,4
-add $t0,$t0,$t1
-sub $sp,$sp,4
-sw $t0, 0($sp)
-lw $t0,4($sp)
-lw $a0,0($t0)
-li $a1,10
-jal global_vtable
-lw $fp, 0($sp)
-add $sp,$sp,4
-lw $ra, 0($sp)
-add $sp,$sp,4
-sub $sp,$sp,4
-sw $v0, 0($sp)
-add $sp,$sp,4
- ##F:code.txt #L:71
- #Dynamically CALLING A METHOD 10
- #preserving registers
-sub $sp,$sp,4
-sw $ra, 0($sp)
-sub $sp,$sp,4
-sw $fp, 0($sp)
- #generating code for the sender
- #identifier System
-lw $t0,-8($gp)
-addi $v0,$gp,-8
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #generating code for Args
- #generating code for selector:println
- #generating  for var #0
- #identifier a
-lw $t0,-4($fp)
-addi $v0,$t0,16
-lw $t0,16($t0)
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #identifier c
-lw $t0,-4($fp)
-addi $v0,$t0,12
-lw $t0,12($t0)
-sub $sp,$sp,4
-sw $t0, 0($sp)
-lw $t1, 0($sp)
-add $sp,$sp,4
-lw $t0, 0($sp)
-add $sp,$sp,4
-add $t0,$t0,$t1
-sub $sp,$sp,4
-sw $t0, 0($sp)
-lw $t0,4($sp)
-lw $a0,0($t0)
-li $a1,10
-jal global_vtable
-lw $fp, 0($sp)
-add $sp,$sp,4
-lw $ra, 0($sp)
-add $sp,$sp,4
-sub $sp,$sp,4
-sw $v0, 0($sp)
-add $sp,$sp,4
- ##F:code.txt #L:72
- #Dynamically CALLING A METHOD 10
- #preserving registers
-sub $sp,$sp,4
-sw $ra, 0($sp)
-sub $sp,$sp,4
-sw $fp, 0($sp)
- #generating code for the sender
- #identifier System
-lw $t0,-8($gp)
-addi $v0,$gp,-8
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #generating code for Args
- #generating code for selector:println
- #generating  for var #0
- #identifier ab
-lw $t0,-4($fp)
-addi $v0,$t0,28
-lw $t0,28($t0)
-sub $sp,$sp,4
-sw $t0, 0($sp)
-lw $t0,4($sp)
-lw $a0,0($t0)
-li $a1,10
-jal global_vtable
-lw $fp, 0($sp)
-add $sp,$sp,4
-lw $ra, 0($sp)
-add $sp,$sp,4
-sub $sp,$sp,4
-sw $v0, 0($sp)
-add $sp,$sp,4
- #releasing space in stack for scope variables
-add $sp,$sp,0
- #releasing space in stack for scope variables
-add $sp,$sp,8
-jr $ra
-
-
- #generating code for Method:bgo: (int) y 
-
-_c1_B_m17_bgo__int_y_:
- #moving the stack back because args are in scoop
-add $sp,$sp,8
- #movesp to fp
-move $fp,$sp
- #reserving space in stack for scope variables
-sub $sp,$sp,8
- ##F:code.txt #L:76
- #reserving space in stack for scope variables
-sub $sp,$sp,0
- ##F:code.txt #L:77
+ ##F:code.txt #L:23
  #Assign node
  #RHS:
 li $t9,1
@@ -332,8 +195,8 @@ sw $t9, 0($sp)
  #Assign node lHS:
  #identifier a
 lw $t0,-4($fp)
-addi $v0,$t0,16
-lw $t0,16($t0)
+addi $v0,$t0,4
+lw $t0,4($t0)
 sub $sp,$sp,4
 sw $t0, 0($sp)
  #Assign node poping old val:
@@ -344,71 +207,27 @@ lw $t0, 0($sp)
  #Assign node storing in position val:
 sw $t0,0($v0)
 add $sp,$sp,4
- ##F:code.txt #L:78
- #Assign node
- #RHS:
-li $t9,1000
-sub $sp,$sp,4
-sw $t9, 0($sp)
- #Assign node lHS:
- #identifier b
-lw $t0,-4($fp)
-addi $v0,$t0,8
-lw $t0,8($t0)
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #Assign node poping old val:
-lw $t0, 0($sp)
+ #releasing space in stack for scope variables
+add $sp,$sp,0
+ #releasing space in stack for scope variables
 add $sp,$sp,4
- #Assign node getting RHS val:
-lw $t0, 0($sp)
- #Assign node storing in position val:
-sw $t0,0($v0)
+jr $ra
+
+
+ #generating code for Method:print
+
+_c1_A_m15_print:
+ #moving the stack back because args are in scoop
 add $sp,$sp,4
- ##F:code.txt #L:79
- #Assign node
- #RHS:
-li $t9,1000
+ #movesp to fp
+move $fp,$sp
+ #reserving space in stack for scope variables
 sub $sp,$sp,4
-sw $t9, 0($sp)
- #Assign node lHS:
- #identifier ab
-lw $t0,-4($fp)
-addi $v0,$t0,28
-lw $t0,28($t0)
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #Assign node poping old val:
-lw $t0, 0($sp)
-add $sp,$sp,4
- #Assign node getting RHS val:
-lw $t0, 0($sp)
- #Assign node storing in position val:
-sw $t0,0($v0)
-add $sp,$sp,4
- ##F:code.txt #L:80
- #Assign node
- #RHS:
-li $t9,100
-sub $sp,$sp,4
-sw $t9, 0($sp)
- #Assign node lHS:
- #identifier c
-lw $t0,-4($fp)
-addi $v0,$t0,12
-lw $t0,12($t0)
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #Assign node poping old val:
-lw $t0, 0($sp)
-add $sp,$sp,4
- #Assign node getting RHS val:
-lw $t0, 0($sp)
- #Assign node storing in position val:
-sw $t0,0($v0)
-add $sp,$sp,4
- ##F:code.txt #L:81
- #Dynamically CALLING A METHOD 6
+ ##F:code.txt #L:25
+ #reserving space in stack for scope variables
+sub $sp,$sp,0
+ ##F:code.txt #L:26
+ #Dynamically CALLING A METHOD 10
  #preserving registers
 sub $sp,$sp,4
 sw $ra, 0($sp)
@@ -416,47 +235,22 @@ sub $sp,$sp,4
 sw $fp, 0($sp)
  #generating code for the sender
  #identifier System
-lw $t0,-8($gp)
-addi $v0,$gp,-8
+lw $t0,-16($gp)
+addi $v0,$gp,-16
 sub $sp,$sp,4
 sw $t0, 0($sp)
  #generating code for Args
- #generating code for selector:print
+ #generating code for selector:println
  #generating  for var #0
- #identifier b
+ #identifier a
 lw $t0,-4($fp)
-addi $v0,$t0,8
-lw $t0,8($t0)
+addi $v0,$t0,4
+lw $t0,4($t0)
 sub $sp,$sp,4
 sw $t0, 0($sp)
 lw $t0,4($sp)
 lw $a0,0($t0)
-li $a1,6
-jal global_vtable
-lw $fp, 0($sp)
-add $sp,$sp,4
-lw $ra, 0($sp)
-add $sp,$sp,4
-sub $sp,$sp,4
-sw $v0, 0($sp)
-add $sp,$sp,4
- ##F:code.txt #L:82
- #Dynamically CALLING A METHOD 5
- #preserving registers
-sub $sp,$sp,4
-sw $ra, 0($sp)
-sub $sp,$sp,4
-sw $fp, 0($sp)
- #generating code for the sender
- #identifier System
-lw $t0,-8($gp)
-addi $v0,$gp,-8
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #generating code for Args
-lw $t0,0($sp)
-lw $a0,0($t0)
-li $a1,5
+li $a1,10
 jal global_vtable
 lw $fp, 0($sp)
 add $sp,$sp,4
@@ -468,12 +262,12 @@ add $sp,$sp,4
  #releasing space in stack for scope variables
 add $sp,$sp,0
  #releasing space in stack for scope variables
-add $sp,$sp,8
+add $sp,$sp,4
 jr $ra
  ##########################################
  ####STATIC
  ##########################################
- #Generating code for class B
+ #Generating code for class A
 
 
 
@@ -483,34 +277,565 @@ jr $ra
 
 vt_2:
  #allocalloc
-li $t0,18
-beq $t0,$a1,_c2_B_m18_alloc
+li $t0,17
+beq $t0,$a1,_c2_A_m17_alloc
+ #mainmain
+li $t0,16
+beq $t0,$a1,_c2_A_m16_main
  #super
 j method_not_found
 
 
  #generating code for Method:alloc
 
-_c2_B_m18_alloc:
+_c2_A_m17_alloc:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :li $v0,9
 li $v0,9
- ##F:code.txt #L:88
- #asm node :li $a0,32
-li $a0,32
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
+ #asm node :li $a0,8
+li $a0,8
+ ##F:code.txt #L:56
  #asm node :syscall
 syscall
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :li $t0,1
 li $t0,1
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
+ #asm node :sw $t0,0($v0)
+sw $t0,0($v0)
+ #releasing space in stack for scope variables
+add $sp,$sp,4
+jr $ra
+
+
+ #generating code for Method:main
+
+_c2_A_m16_main:
+ #moving the stack back because args are in scoop
+add $sp,$sp,4
+ #movesp to fp
+move $fp,$sp
+ #reserving space in stack for scope variables
+sub $sp,$sp,4
+ ##F:code.txt #L:13
+ #reserving space in stack for scope variables
+sub $sp,$sp,12
+ ##F:code.txt #L:14
+ ##F:code.txt #L:15
+ #Assign node
+ #RHS:
+ #Dynamically CALLING A METHOD 17
+ #preserving registers
+sub $sp,$sp,4
+sw $ra, 0($sp)
+sub $sp,$sp,4
+sw $fp, 0($sp)
+ #generating code for the sender
+ #identifier A
+lw $t0,0($gp)
+addi $v0,$gp,0
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #generating code for Args
+lw $t0,0($sp)
+lw $a0,0($t0)
+li $a1,17
+jal global_vtable
+lw $fp, 0($sp)
+add $sp,$sp,4
+lw $ra, 0($sp)
+add $sp,$sp,4
+sub $sp,$sp,4
+sw $v0, 0($sp)
+ #Assign node lHS:
+ #identifier a
+lw $t0,-8($fp)
+addi $v0,$fp,-8
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #Assign node poping old val:
+lw $t0, 0($sp)
+add $sp,$sp,4
+ #Assign node getting RHS val:
+lw $t0, 0($sp)
+ #Assign node storing in position val:
+sw $t0,0($v0)
+add $sp,$sp,4
+ ##F:code.txt #L:16
+ #Assign node
+ #RHS:
+ #Dynamically CALLING A METHOD 17
+ #preserving registers
+sub $sp,$sp,4
+sw $ra, 0($sp)
+sub $sp,$sp,4
+sw $fp, 0($sp)
+ #generating code for the sender
+ #identifier B
+lw $t0,-4($gp)
+addi $v0,$gp,-4
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #generating code for Args
+lw $t0,0($sp)
+lw $a0,0($t0)
+li $a1,17
+jal global_vtable
+lw $fp, 0($sp)
+add $sp,$sp,4
+lw $ra, 0($sp)
+add $sp,$sp,4
+sub $sp,$sp,4
+sw $v0, 0($sp)
+ #Assign node lHS:
+ #identifier b
+lw $t0,-12($fp)
+addi $v0,$fp,-12
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #Assign node poping old val:
+lw $t0, 0($sp)
+add $sp,$sp,4
+ #Assign node getting RHS val:
+lw $t0, 0($sp)
+ #Assign node storing in position val:
+sw $t0,0($v0)
+add $sp,$sp,4
+ ##F:code.txt #L:17
+ #Assign node
+ #RHS:
+ #Dynamically CALLING A METHOD 17
+ #preserving registers
+sub $sp,$sp,4
+sw $ra, 0($sp)
+sub $sp,$sp,4
+sw $fp, 0($sp)
+ #generating code for the sender
+ #identifier C
+lw $t0,-8($gp)
+addi $v0,$gp,-8
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #generating code for Args
+lw $t0,0($sp)
+lw $a0,0($t0)
+li $a1,17
+jal global_vtable
+lw $fp, 0($sp)
+add $sp,$sp,4
+lw $ra, 0($sp)
+add $sp,$sp,4
+sub $sp,$sp,4
+sw $v0, 0($sp)
+ #Assign node lHS:
+ #identifier c
+lw $t0,-16($fp)
+addi $v0,$fp,-16
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #Assign node poping old val:
+lw $t0, 0($sp)
+add $sp,$sp,4
+ #Assign node getting RHS val:
+lw $t0, 0($sp)
+ #Assign node storing in position val:
+sw $t0,0($v0)
+add $sp,$sp,4
+ ##F:code.txt #L:18
+ #Dynamically CALLING A METHOD 14
+ #preserving registers
+sub $sp,$sp,4
+sw $ra, 0($sp)
+sub $sp,$sp,4
+sw $fp, 0($sp)
+ #generating code for the sender
+ #identifier a
+lw $t0,-8($fp)
+addi $v0,$fp,-8
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #generating code for Args
+lw $t0,0($sp)
+lw $a0,0($t0)
+li $a1,14
+jal global_vtable
+lw $fp, 0($sp)
+add $sp,$sp,4
+lw $ra, 0($sp)
+add $sp,$sp,4
+sub $sp,$sp,4
+sw $v0, 0($sp)
+add $sp,$sp,4
+ ##F:code.txt #L:18
+ #Dynamically CALLING A METHOD 14
+ #preserving registers
+sub $sp,$sp,4
+sw $ra, 0($sp)
+sub $sp,$sp,4
+sw $fp, 0($sp)
+ #generating code for the sender
+ #identifier b
+lw $t0,-12($fp)
+addi $v0,$fp,-12
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #generating code for Args
+lw $t0,0($sp)
+lw $a0,0($t0)
+li $a1,14
+jal global_vtable
+lw $fp, 0($sp)
+add $sp,$sp,4
+lw $ra, 0($sp)
+add $sp,$sp,4
+sub $sp,$sp,4
+sw $v0, 0($sp)
+add $sp,$sp,4
+ ##F:code.txt #L:18
+ #Dynamically CALLING A METHOD 14
+ #preserving registers
+sub $sp,$sp,4
+sw $ra, 0($sp)
+sub $sp,$sp,4
+sw $fp, 0($sp)
+ #generating code for the sender
+ #identifier c
+lw $t0,-16($fp)
+addi $v0,$fp,-16
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #generating code for Args
+lw $t0,0($sp)
+lw $a0,0($t0)
+li $a1,14
+jal global_vtable
+lw $fp, 0($sp)
+add $sp,$sp,4
+lw $ra, 0($sp)
+add $sp,$sp,4
+sub $sp,$sp,4
+sw $v0, 0($sp)
+add $sp,$sp,4
+ ##F:code.txt #L:19
+ #Dynamically CALLING A METHOD 15
+ #preserving registers
+sub $sp,$sp,4
+sw $ra, 0($sp)
+sub $sp,$sp,4
+sw $fp, 0($sp)
+ #generating code for the sender
+ #identifier a
+lw $t0,-8($fp)
+addi $v0,$fp,-8
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #generating code for Args
+lw $t0,0($sp)
+lw $a0,0($t0)
+li $a1,15
+jal global_vtable
+lw $fp, 0($sp)
+add $sp,$sp,4
+lw $ra, 0($sp)
+add $sp,$sp,4
+sub $sp,$sp,4
+sw $v0, 0($sp)
+add $sp,$sp,4
+ ##F:code.txt #L:19
+ #Dynamically CALLING A METHOD 15
+ #preserving registers
+sub $sp,$sp,4
+sw $ra, 0($sp)
+sub $sp,$sp,4
+sw $fp, 0($sp)
+ #generating code for the sender
+ #identifier b
+lw $t0,-12($fp)
+addi $v0,$fp,-12
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #generating code for Args
+lw $t0,0($sp)
+lw $a0,0($t0)
+li $a1,15
+jal global_vtable
+lw $fp, 0($sp)
+add $sp,$sp,4
+lw $ra, 0($sp)
+add $sp,$sp,4
+sub $sp,$sp,4
+sw $v0, 0($sp)
+add $sp,$sp,4
+ ##F:code.txt #L:19
+ #Dynamically CALLING A METHOD 15
+ #preserving registers
+sub $sp,$sp,4
+sw $ra, 0($sp)
+sub $sp,$sp,4
+sw $fp, 0($sp)
+ #generating code for the sender
+ #identifier c
+lw $t0,-16($fp)
+addi $v0,$fp,-16
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #generating code for Args
+lw $t0,0($sp)
+lw $a0,0($t0)
+li $a1,15
+jal global_vtable
+lw $fp, 0($sp)
+add $sp,$sp,4
+lw $ra, 0($sp)
+add $sp,$sp,4
+sub $sp,$sp,4
+sw $v0, 0($sp)
+add $sp,$sp,4
+ #releasing space in stack for scope variables
+add $sp,$sp,12
+ #releasing space in stack for scope variables
+add $sp,$sp,4
+jr $ra
+ ##########################################
+
+
+
+ ####End STATIC
+
+
+
+ ##########################################
+ #Generating code for class B
+
+
+
+
+ #vtable: 
+
+
+vt_3:
+ #gogo
+li $t0,14
+beq $t0,$a1,_c3_B_m14_go
+ #super
+ #A
+ #gogo
+li $t0,14
+beq $t0,$a1,_c1_A_m14_go
+ #printprint
+li $t0,15
+beq $t0,$a1,_c1_A_m15_print
+ #super
+ #NSObject
+ #super
+j method_not_found
+
+
+ #generating code for Method:go
+
+_c3_B_m14_go:
+ #moving the stack back because args are in scoop
+add $sp,$sp,4
+ #movesp to fp
+move $fp,$sp
+ #reserving space in stack for scope variables
+sub $sp,$sp,4
+ ##F:code.txt #L:38
+ #reserving space in stack for scope variables
+sub $sp,$sp,0
+ ##F:code.txt #L:39
+ #Assign node
+ #RHS:
+li $t9,2
+sub $sp,$sp,4
+sw $t9, 0($sp)
+ #Assign node lHS:
+ #identifier a
+lw $t0,-4($fp)
+addi $v0,$t0,4
+lw $t0,4($t0)
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #Assign node poping old val:
+lw $t0, 0($sp)
+add $sp,$sp,4
+ #Assign node getting RHS val:
+lw $t0, 0($sp)
+ #Assign node storing in position val:
+sw $t0,0($v0)
+add $sp,$sp,4
+ #releasing space in stack for scope variables
+add $sp,$sp,0
+ #releasing space in stack for scope variables
+add $sp,$sp,4
+jr $ra
+ ##########################################
+ ####STATIC
+ ##########################################
+ #Generating code for class B
+
+
+
+
+ #vtable: 
+
+
+vt_4:
+ #allocalloc
+li $t0,17
+beq $t0,$a1,_c4_B_m17_alloc
+ #super
+j method_not_found
+
+
+ #generating code for Method:alloc
+
+_c4_B_m17_alloc:
+ #moving the stack back because args are in scoop
+add $sp,$sp,4
+ #movesp to fp
+move $fp,$sp
+ #reserving space in stack for scope variables
+sub $sp,$sp,4
+ ##F:code.txt #L:56
+ #asm node :li $v0,9
+li $v0,9
+ ##F:code.txt #L:56
+ #asm node :li $a0,8
+li $a0,8
+ ##F:code.txt #L:56
+ #asm node :syscall
+syscall
+ ##F:code.txt #L:56
+ #asm node :li $t0,3
+li $t0,3
+ ##F:code.txt #L:56
+ #asm node :sw $t0,0($v0)
+sw $t0,0($v0)
+ #releasing space in stack for scope variables
+add $sp,$sp,4
+jr $ra
+ ##########################################
+
+
+
+ ####End STATIC
+
+
+
+ ##########################################
+ #Generating code for class C
+
+
+
+
+ #vtable: 
+
+
+vt_5:
+ #gogo
+li $t0,14
+beq $t0,$a1,_c5_C_m14_go
+ #super
+ #A
+ #gogo
+li $t0,14
+beq $t0,$a1,_c1_A_m14_go
+ #printprint
+li $t0,15
+beq $t0,$a1,_c1_A_m15_print
+ #super
+ #NSObject
+ #super
+j method_not_found
+
+
+ #generating code for Method:go
+
+_c5_C_m14_go:
+ #moving the stack back because args are in scoop
+add $sp,$sp,4
+ #movesp to fp
+move $fp,$sp
+ #reserving space in stack for scope variables
+sub $sp,$sp,4
+ ##F:code.txt #L:52
+ #reserving space in stack for scope variables
+sub $sp,$sp,0
+ ##F:code.txt #L:53
+ #Assign node
+ #RHS:
+li $t9,3
+sub $sp,$sp,4
+sw $t9, 0($sp)
+ #Assign node lHS:
+ #identifier a
+lw $t0,-4($fp)
+addi $v0,$t0,4
+lw $t0,4($t0)
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #Assign node poping old val:
+lw $t0, 0($sp)
+add $sp,$sp,4
+ #Assign node getting RHS val:
+lw $t0, 0($sp)
+ #Assign node storing in position val:
+sw $t0,0($v0)
+add $sp,$sp,4
+ #releasing space in stack for scope variables
+add $sp,$sp,0
+ #releasing space in stack for scope variables
+add $sp,$sp,4
+jr $ra
+ ##########################################
+ ####STATIC
+ ##########################################
+ #Generating code for class C
+
+
+
+
+ #vtable: 
+
+
+vt_6:
+ #allocalloc
+li $t0,17
+beq $t0,$a1,_c6_C_m17_alloc
+ #super
+j method_not_found
+
+
+ #generating code for Method:alloc
+
+_c6_C_m17_alloc:
+ #moving the stack back because args are in scoop
+add $sp,$sp,4
+ #movesp to fp
+move $fp,$sp
+ #reserving space in stack for scope variables
+sub $sp,$sp,4
+ ##F:code.txt #L:56
+ #asm node :li $v0,9
+li $v0,9
+ ##F:code.txt #L:56
+ #asm node :li $a0,8
+li $a0,8
+ ##F:code.txt #L:56
+ #asm node :syscall
+syscall
+ ##F:code.txt #L:56
+ #asm node :li $t0,5
+li $t0,5
+ ##F:code.txt #L:56
  #asm node :sw $t0,0($v0)
 sw $t0,0($v0)
  #releasing space in stack for scope variables
@@ -533,7 +858,7 @@ jr $ra
  #vtable: 
 
 
-vt_3:
+vt_7:
  #super
 j method_not_found
  ##########################################
@@ -547,36 +872,36 @@ j method_not_found
  #vtable: 
 
 
-vt_4:
+vt_8:
  #allocalloc
-li $t0,18
-beq $t0,$a1,_c4_NSObject_m18_alloc
+li $t0,17
+beq $t0,$a1,_c8_NSObject_m17_alloc
  #super
 j method_not_found
 
 
  #generating code for Method:alloc
 
-_c4_NSObject_m18_alloc:
+_c8_NSObject_m17_alloc:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :li $v0,9
 li $v0,9
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :li $a0,4
 li $a0,4
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :syscall
 syscall
- ##F:code.txt #L:88
- #asm node :li $t0,3
-li $t0,3
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
+ #asm node :li $t0,7
+li $t0,7
+ ##F:code.txt #L:56
  #asm node :sw $t0,0($v0)
 sw $t0,0($v0)
  #releasing space in stack for scope variables
@@ -599,7 +924,7 @@ jr $ra
  #vtable: 
 
 
-vt_5:
+vt_9:
  #super
  #NSObject
  #super
@@ -615,56 +940,56 @@ j method_not_found
  #vtable: 
 
 
-vt_6:
+vt_10:
  #print: (int) parameter 
 li $t0,6
-beq $t0,$a1,_c6_System_m6_print__int_parameter_
+beq $t0,$a1,_c10_System_m6_print__int_parameter_
  #print: (float) parameter 
 li $t0,7
-beq $t0,$a1,_c6_System_m7_print__float_parameter_
+beq $t0,$a1,_c10_System_m7_print__float_parameter_
  #print: (NSString) parameter 
 li $t0,8
-beq $t0,$a1,_c6_System_m8_print__NSString_parameter_
+beq $t0,$a1,_c10_System_m8_print__NSString_parameter_
  #print: (char) parameter 
 li $t0,9
-beq $t0,$a1,_c6_System_m9_print__char_parameter_
+beq $t0,$a1,_c10_System_m9_print__char_parameter_
  #println: (int) parameter 
 li $t0,10
-beq $t0,$a1,_c6_System_m10_println__int_parameter_
+beq $t0,$a1,_c10_System_m10_println__int_parameter_
  #println: (float) parameter 
 li $t0,11
-beq $t0,$a1,_c6_System_m11_println__float_parameter_
+beq $t0,$a1,_c10_System_m11_println__float_parameter_
  #println: (NSString) parameter 
 li $t0,12
-beq $t0,$a1,_c6_System_m12_println__NSString_parameter_
+beq $t0,$a1,_c10_System_m12_println__NSString_parameter_
  #println: (char) parameter 
 li $t0,13
-beq $t0,$a1,_c6_System_m13_println__char_parameter_
+beq $t0,$a1,_c10_System_m13_println__char_parameter_
  #allocalloc
-li $t0,18
-beq $t0,$a1,_c6_System_m18_alloc
+li $t0,17
+beq $t0,$a1,_c10_System_m17_alloc
  #printlnprintln
 li $t0,5
-beq $t0,$a1,_c6_System_m5_println
+beq $t0,$a1,_c10_System_m5_println
  #readcharreadchar
 li $t0,2
-beq $t0,$a1,_c6_System_m2_readchar
+beq $t0,$a1,_c10_System_m2_readchar
  #readfloatreadfloat
 li $t0,3
-beq $t0,$a1,_c6_System_m3_readfloat
+beq $t0,$a1,_c10_System_m3_readfloat
  #readintreadint
 li $t0,1
-beq $t0,$a1,_c6_System_m1_readint
+beq $t0,$a1,_c10_System_m1_readint
  #readstringreadstring
 li $t0,4
-beq $t0,$a1,_c6_System_m4_readstring
+beq $t0,$a1,_c10_System_m4_readstring
  #super
 j method_not_found
 
 
  #generating code for Method:print: (int) parameter 
 
-_c6_System_m6_print__int_parameter_:
+_c10_System_m6_print__int_parameter_:
  #moving the stack back because args are in scoop
 add $sp,$sp,8
  #movesp to fp
@@ -692,7 +1017,7 @@ jr $ra
 
  #generating code for Method:print: (float) parameter 
 
-_c6_System_m7_print__float_parameter_:
+_c10_System_m7_print__float_parameter_:
  #moving the stack back because args are in scoop
 add $sp,$sp,8
  #movesp to fp
@@ -720,7 +1045,7 @@ jr $ra
 
  #generating code for Method:print: (NSString) parameter 
 
-_c6_System_m8_print__NSString_parameter_:
+_c10_System_m8_print__NSString_parameter_:
  #moving the stack back because args are in scoop
 add $sp,$sp,8
  #movesp to fp
@@ -748,7 +1073,7 @@ jr $ra
 
  #generating code for Method:print: (char) parameter 
 
-_c6_System_m9_print__char_parameter_:
+_c10_System_m9_print__char_parameter_:
  #moving the stack back because args are in scoop
 add $sp,$sp,8
  #movesp to fp
@@ -776,7 +1101,7 @@ jr $ra
 
  #generating code for Method:println: (int) parameter 
 
-_c6_System_m10_println__int_parameter_:
+_c10_System_m10_println__int_parameter_:
  #moving the stack back because args are in scoop
 add $sp,$sp,8
  #movesp to fp
@@ -813,7 +1138,7 @@ jr $ra
 
  #generating code for Method:println: (float) parameter 
 
-_c6_System_m11_println__float_parameter_:
+_c10_System_m11_println__float_parameter_:
  #moving the stack back because args are in scoop
 add $sp,$sp,8
  #movesp to fp
@@ -841,7 +1166,7 @@ jr $ra
 
  #generating code for Method:println: (NSString) parameter 
 
-_c6_System_m12_println__NSString_parameter_:
+_c10_System_m12_println__NSString_parameter_:
  #moving the stack back because args are in scoop
 add $sp,$sp,8
  #movesp to fp
@@ -869,7 +1194,7 @@ jr $ra
 
  #generating code for Method:println: (char) parameter 
 
-_c6_System_m13_println__char_parameter_:
+_c10_System_m13_println__char_parameter_:
  #moving the stack back because args are in scoop
 add $sp,$sp,8
  #movesp to fp
@@ -897,26 +1222,26 @@ jr $ra
 
  #generating code for Method:alloc
 
-_c6_System_m18_alloc:
+_c10_System_m17_alloc:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :li $v0,9
 li $v0,9
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :li $a0,4
 li $a0,4
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
  #asm node :syscall
 syscall
- ##F:code.txt #L:88
- #asm node :li $t0,5
-li $t0,5
- ##F:code.txt #L:88
+ ##F:code.txt #L:56
+ #asm node :li $t0,9
+li $t0,9
+ ##F:code.txt #L:56
  #asm node :sw $t0,0($v0)
 sw $t0,0($v0)
  #releasing space in stack for scope variables
@@ -926,7 +1251,7 @@ jr $ra
 
  #generating code for Method:println
 
-_c6_System_m5_println:
+_c10_System_m5_println:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -954,7 +1279,7 @@ jr $ra
 
  #generating code for Method:readchar
 
-_c6_System_m2_readchar:
+_c10_System_m2_readchar:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -979,7 +1304,7 @@ jr $ra
 
  #generating code for Method:readfloat
 
-_c6_System_m3_readfloat:
+_c10_System_m3_readfloat:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -1004,7 +1329,7 @@ jr $ra
 
  #generating code for Method:readint
 
-_c6_System_m1_readint:
+_c10_System_m1_readint:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -1029,7 +1354,7 @@ jr $ra
 
  #generating code for Method:readstring
 
-_c6_System_m4_readstring:
+_c10_System_m4_readstring:
  #moving the stack back because args are in scoop
 add $sp,$sp,4
  #movesp to fp
@@ -1067,47 +1392,13 @@ jr $ra
  #vtable: 
 
 
-vt_9:
- #super
-j method_not_found
- ##########################################
- ####STATIC
- ##########################################
- #Generating code for class error_type
-
-
-
-
- #vtable: 
-
-
-vt_10:
- #super
-j method_not_found
- ##########################################
-
-
-
- ####End STATIC
-
-
-
- ##########################################
- #Generating code for class id
-
-
-
-
- #vtable: 
-
-
 vt_11:
  #super
 j method_not_found
  ##########################################
  ####STATIC
  ##########################################
- #Generating code for class id
+ #Generating code for class error_type
 
 
 
@@ -1127,7 +1418,7 @@ j method_not_found
 
 
  ##########################################
- #Generating code for class wessam
+ #Generating code for class id
 
 
 
@@ -1135,270 +1426,13 @@ j method_not_found
  #vtable: 
 
 
-vt_7:
- #go: (int) y 
-li $t0,14
-beq $t0,$a1,_c7_wessam_m14_go__int_y_
- #print: (int) parameter 
-li $t0,6
-beq $t0,$a1,_c7_wessam_m6_print__int_parameter_
- #a2go: (int) y 
-li $t0,16
-beq $t0,$a1,_c7_wessam_m16_a2go__int_y_
- #super
- #NSObject
+vt_13:
  #super
 j method_not_found
-
-
- #generating code for Method:go: (int) y 
-
-_c7_wessam_m14_go__int_y_:
- #moving the stack back because args are in scoop
-add $sp,$sp,8
- #movesp to fp
-move $fp,$sp
- #reserving space in stack for scope variables
-sub $sp,$sp,8
- ##F:code.txt #L:39
- #reserving space in stack for scope variables
-sub $sp,$sp,0
- ##F:code.txt #L:40
- #Assign node
- #RHS:
-li $t9,3
-sub $sp,$sp,4
-sw $t9, 0($sp)
- #Assign node lHS:
- #identifier b
-lw $t0,-4($fp)
-addi $v0,$t0,8
-lw $t0,8($t0)
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #Assign node poping old val:
-lw $t0, 0($sp)
-add $sp,$sp,4
- #Assign node getting RHS val:
-lw $t0, 0($sp)
- #Assign node storing in position val:
-sw $t0,0($v0)
-add $sp,$sp,4
- ##F:code.txt #L:41
- #Assign node
- #RHS:
-li $t9,10
-sub $sp,$sp,4
-sw $t9, 0($sp)
- #Assign node lHS:
- #identifier a
-lw $t0,-4($fp)
-addi $v0,$t0,16
-lw $t0,16($t0)
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #Assign node poping old val:
-lw $t0, 0($sp)
-add $sp,$sp,4
- #Assign node getting RHS val:
-lw $t0, 0($sp)
- #Assign node storing in position val:
-sw $t0,0($v0)
-add $sp,$sp,4
- ##F:code.txt #L:42
- #Assign node
- #RHS:
-li $t9,100
-sub $sp,$sp,4
-sw $t9, 0($sp)
- #Assign node lHS:
- #identifier c
-lw $t0,-4($fp)
-addi $v0,$t0,12
-lw $t0,12($t0)
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #Assign node poping old val:
-lw $t0, 0($sp)
-add $sp,$sp,4
- #Assign node getting RHS val:
-lw $t0, 0($sp)
- #Assign node storing in position val:
-sw $t0,0($v0)
-add $sp,$sp,4
- ##F:code.txt #L:43
- #Dynamically CALLING A METHOD 6
- #preserving registers
-sub $sp,$sp,4
-sw $ra, 0($sp)
-sub $sp,$sp,4
-sw $fp, 0($sp)
- #generating code for the sender
- #identifier System
-lw $t0,-8($gp)
-addi $v0,$gp,-8
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #generating code for Args
- #generating code for selector:print
- #generating  for var #0
- #identifier b
-lw $t0,-4($fp)
-addi $v0,$t0,8
-lw $t0,8($t0)
-sub $sp,$sp,4
-sw $t0, 0($sp)
-lw $t0,4($sp)
-lw $a0,0($t0)
-li $a1,6
-jal global_vtable
-lw $fp, 0($sp)
-add $sp,$sp,4
-lw $ra, 0($sp)
-add $sp,$sp,4
-sub $sp,$sp,4
-sw $v0, 0($sp)
-add $sp,$sp,4
- #releasing space in stack for scope variables
-add $sp,$sp,0
- #releasing space in stack for scope variables
-add $sp,$sp,8
-jr $ra
-
-
- #generating code for Method:print: (int) parameter 
-
-_c7_wessam_m6_print__int_parameter_:
- #moving the stack back because args are in scoop
-add $sp,$sp,8
- #movesp to fp
-move $fp,$sp
- #reserving space in stack for scope variables
-sub $sp,$sp,8
- ##F:code.txt #L:14
- #reserving space in stack for scope variables
-sub $sp,$sp,0
- ##F:code.txt #L:15
- #Dynamically CALLING A METHOD 6
- #preserving registers
-sub $sp,$sp,4
-sw $ra, 0($sp)
-sub $sp,$sp,4
-sw $fp, 0($sp)
- #generating code for the sender
- #identifier System
-lw $t0,-8($gp)
-addi $v0,$gp,-8
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #generating code for Args
- #generating code for selector:print
- #generating  for var #0
- #identifier b
-lw $t0,-4($fp)
-addi $v0,$t0,8
-lw $t0,8($t0)
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #identifier c
-lw $t0,-4($fp)
-addi $v0,$t0,12
-lw $t0,12($t0)
-sub $sp,$sp,4
-sw $t0, 0($sp)
-lw $t1, 0($sp)
-add $sp,$sp,4
-lw $t0, 0($sp)
-add $sp,$sp,4
-add $t0,$t0,$t1
-sub $sp,$sp,4
-sw $t0, 0($sp)
-lw $t0,4($sp)
-lw $a0,0($t0)
-li $a1,6
-jal global_vtable
-lw $fp, 0($sp)
-add $sp,$sp,4
-lw $ra, 0($sp)
-add $sp,$sp,4
-sub $sp,$sp,4
-sw $v0, 0($sp)
-add $sp,$sp,4
- ##F:code.txt #L:16
- #Dynamically CALLING A METHOD 6
- #preserving registers
-sub $sp,$sp,4
-sw $ra, 0($sp)
-sub $sp,$sp,4
-sw $fp, 0($sp)
- #generating code for the sender
- #identifier System
-lw $t0,-8($gp)
-addi $v0,$gp,-8
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #generating code for Args
- #generating code for selector:print
- #generating  for var #0
- #identifier a
-lw $t0,-4($fp)
-addi $v0,$t0,16
-lw $t0,16($t0)
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #identifier c
-lw $t0,-4($fp)
-addi $v0,$t0,12
-lw $t0,12($t0)
-sub $sp,$sp,4
-sw $t0, 0($sp)
-lw $t1, 0($sp)
-add $sp,$sp,4
-lw $t0, 0($sp)
-add $sp,$sp,4
-add $t0,$t0,$t1
-sub $sp,$sp,4
-sw $t0, 0($sp)
-lw $t0,4($sp)
-lw $a0,0($t0)
-li $a1,6
-jal global_vtable
-lw $fp, 0($sp)
-add $sp,$sp,4
-lw $ra, 0($sp)
-add $sp,$sp,4
-sub $sp,$sp,4
-sw $v0, 0($sp)
-add $sp,$sp,4
- #releasing space in stack for scope variables
-add $sp,$sp,0
- #releasing space in stack for scope variables
-add $sp,$sp,8
-jr $ra
-
-
- #generating code for Method:a2go: (int) y 
-
-_c7_wessam_m16_a2go__int_y_:
- #moving the stack back because args are in scoop
-add $sp,$sp,8
- #movesp to fp
-move $fp,$sp
- #reserving space in stack for scope variables
-sub $sp,$sp,8
- ##F:code.txt #L:48
- #reserving space in stack for scope variables
-sub $sp,$sp,4
- ##F:code.txt #L:50
- #releasing space in stack for scope variables
-add $sp,$sp,4
- #releasing space in stack for scope variables
-add $sp,$sp,8
-jr $ra
  ##########################################
  ####STATIC
  ##########################################
- #Generating code for class wessam
+ #Generating code for class id
 
 
 
@@ -1406,307 +1440,9 @@ jr $ra
  #vtable: 
 
 
-vt_8:
- #go: (int) x 
-li $t0,14
-beq $t0,$a1,_c8_wessam_m14_go__int_x_
- #print: (int) cc 
-li $t0,6
-beq $t0,$a1,_c8_wessam_m6_print__int_cc_
- #allocalloc
-li $t0,18
-beq $t0,$a1,_c8_wessam_m18_alloc
- #mainmain
-li $t0,15
-beq $t0,$a1,_c8_wessam_m15_main
+vt_14:
  #super
 j method_not_found
-
-
- #generating code for Method:go: (int) x 
-
-_c8_wessam_m14_go__int_x_:
- #moving the stack back because args are in scoop
-add $sp,$sp,8
- #movesp to fp
-move $fp,$sp
- #reserving space in stack for scope variables
-sub $sp,$sp,8
- ##F:code.txt #L:29
- #reserving space in stack for scope variables
-sub $sp,$sp,0
- ##F:code.txt #L:31
- #Dynamically CALLING A METHOD 6
- #preserving registers
-sub $sp,$sp,4
-sw $ra, 0($sp)
-sub $sp,$sp,4
-sw $fp, 0($sp)
- #generating code for the sender
- #identifier wessam
-lw $t0,-12($gp)
-addi $v0,$gp,-12
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #generating code for Args
- #generating code for selector:print
- #generating  for var #0
- #identifier x
-lw $t0,-8($fp)
-addi $v0,$fp,-8
-sub $sp,$sp,4
-sw $t0, 0($sp)
-lw $t0,4($sp)
-lw $a0,0($t0)
-li $a1,6
-jal global_vtable
-lw $fp, 0($sp)
-add $sp,$sp,4
-lw $ra, 0($sp)
-add $sp,$sp,4
-sub $sp,$sp,4
-sw $v0, 0($sp)
-add $sp,$sp,4
- ##F:code.txt #L:34
- #identifier x
-lw $t0,-8($fp)
-addi $v0,$fp,-8
-sub $sp,$sp,4
-sw $t0, 0($sp)
-li $t9,0
-sub $sp,$sp,4
-sw $t9, 0($sp)
-lw $t1, 0($sp)
-add $sp,$sp,4
-lw $t0, 0($sp)
-add $sp,$sp,4
- #not equal op
-li $t2,1
-bne $t0,$t1,eqop_temp1
-li $t2,0
-eqop_temp1:
-sub $sp,$sp,4
-sw $t2, 0($sp)
-lw $t0, 0($sp)
-add $sp,$sp,4
-beq $t0,$0,else_0
- #Dynamically CALLING A METHOD 14
- #preserving registers
-sub $sp,$sp,4
-sw $ra, 0($sp)
-sub $sp,$sp,4
-sw $fp, 0($sp)
- #generating code for the sender
- #identifier self
-lw $t0,-4($fp)
-addi $v0,$fp,-4
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #generating code for Args
- #generating code for selector:go
- #generating  for var #0
- #identifier x
-lw $t0,-8($fp)
-addi $v0,$fp,-8
-sub $sp,$sp,4
-sw $t0, 0($sp)
-li $t9,1
-sub $sp,$sp,4
-sw $t9, 0($sp)
-lw $t1, 0($sp)
-add $sp,$sp,4
-lw $t0, 0($sp)
-add $sp,$sp,4
-sub $t0,$t0,$t1
-sub $sp,$sp,4
-sw $t0, 0($sp)
-lw $t0,4($sp)
-lw $a0,0($t0)
-li $a1,14
-jal global_vtable
-lw $fp, 0($sp)
-add $sp,$sp,4
-lw $ra, 0($sp)
-add $sp,$sp,4
-sub $sp,$sp,4
-sw $v0, 0($sp)
-add $sp,$sp,4
-j endif_0
-else_0:
-endif_0:
- #releasing space in stack for scope variables
-add $sp,$sp,0
- #releasing space in stack for scope variables
-add $sp,$sp,8
-jr $ra
-
-
- #generating code for Method:print: (int) cc 
-
-_c8_wessam_m6_print__int_cc_:
- #moving the stack back because args are in scoop
-add $sp,$sp,8
- #movesp to fp
-move $fp,$sp
- #reserving space in stack for scope variables
-sub $sp,$sp,8
- ##F:code.txt #L:36
- #reserving space in stack for scope variables
-sub $sp,$sp,0
- #releasing space in stack for scope variables
-add $sp,$sp,0
- #releasing space in stack for scope variables
-add $sp,$sp,8
-jr $ra
-
-
- #generating code for Method:alloc
-
-_c8_wessam_m18_alloc:
- #moving the stack back because args are in scoop
-add $sp,$sp,4
- #movesp to fp
-move $fp,$sp
- #reserving space in stack for scope variables
-sub $sp,$sp,4
- ##F:code.txt #L:88
- #asm node :li $v0,9
-li $v0,9
- ##F:code.txt #L:88
- #asm node :li $a0,20
-li $a0,20
- ##F:code.txt #L:88
- #asm node :syscall
-syscall
- ##F:code.txt #L:88
- #asm node :li $t0,7
-li $t0,7
- ##F:code.txt #L:88
- #asm node :sw $t0,0($v0)
-sw $t0,0($v0)
- #releasing space in stack for scope variables
-add $sp,$sp,4
-jr $ra
-
-
- #generating code for Method:main
-
-_c8_wessam_m15_main:
- #moving the stack back because args are in scoop
-add $sp,$sp,4
- #movesp to fp
-move $fp,$sp
- #reserving space in stack for scope variables
-sub $sp,$sp,4
- ##F:code.txt #L:20
- #reserving space in stack for scope variables
-sub $sp,$sp,4
- ##F:code.txt #L:21
- ##F:code.txt #L:22
- #Assign node
- #RHS:
- #Dynamically CALLING A METHOD 18
- #preserving registers
-sub $sp,$sp,4
-sw $ra, 0($sp)
-sub $sp,$sp,4
-sw $fp, 0($sp)
- #generating code for the sender
- #identifier B
-lw $t0,0($gp)
-addi $v0,$gp,0
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #generating code for Args
-lw $t0,0($sp)
-lw $a0,0($t0)
-li $a1,18
-jal global_vtable
-lw $fp, 0($sp)
-add $sp,$sp,4
-lw $ra, 0($sp)
-add $sp,$sp,4
-sub $sp,$sp,4
-sw $v0, 0($sp)
- #Assign node lHS:
- #identifier a
-lw $t0,-8($fp)
-addi $v0,$fp,-8
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #Assign node poping old val:
-lw $t0, 0($sp)
-add $sp,$sp,4
- #Assign node getting RHS val:
-lw $t0, 0($sp)
- #Assign node storing in position val:
-sw $t0,0($v0)
-add $sp,$sp,4
- ##F:code.txt #L:23
- #Dynamically CALLING A METHOD 17
- #preserving registers
-sub $sp,$sp,4
-sw $ra, 0($sp)
-sub $sp,$sp,4
-sw $fp, 0($sp)
- #generating code for the sender
- #identifier a
-lw $t0,-8($fp)
-addi $v0,$fp,-8
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #generating code for Args
- #generating code for selector:bgo
- #generating  for var #0
-li $t9,4
-sub $sp,$sp,4
-sw $t9, 0($sp)
-lw $t0,4($sp)
-lw $a0,0($t0)
-li $a1,17
-jal global_vtable
-lw $fp, 0($sp)
-add $sp,$sp,4
-lw $ra, 0($sp)
-add $sp,$sp,4
-sub $sp,$sp,4
-sw $v0, 0($sp)
-add $sp,$sp,4
- ##F:code.txt #L:24
- #Dynamically CALLING A METHOD 6
- #preserving registers
-sub $sp,$sp,4
-sw $ra, 0($sp)
-sub $sp,$sp,4
-sw $fp, 0($sp)
- #generating code for the sender
- #identifier a
-lw $t0,-8($fp)
-addi $v0,$fp,-8
-sub $sp,$sp,4
-sw $t0, 0($sp)
- #generating code for Args
- #generating code for selector:print
- #generating  for var #0
-li $t9,2
-sub $sp,$sp,4
-sw $t9, 0($sp)
-lw $t0,4($sp)
-lw $a0,0($t0)
-li $a1,6
-jal global_vtable
-lw $fp, 0($sp)
-add $sp,$sp,4
-lw $ra, 0($sp)
-add $sp,$sp,4
-sub $sp,$sp,4
-sw $v0, 0($sp)
-add $sp,$sp,4
- #releasing space in stack for scope variables
-add $sp,$sp,4
- #releasing space in stack for scope variables
-add $sp,$sp,4
-jr $ra
  ##########################################
 
 

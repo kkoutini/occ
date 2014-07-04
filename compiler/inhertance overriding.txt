@@ -1,0 +1,87 @@
+
+@interface wessam
+{
+@public
+NSString str1;
+int b,c,a;
+}
+-(int) go:(int)y;
+
+@end
+
+@implementation wessam
+-(void) print:(int)parameter
+{
+	[System print:b+c];
+	[System print:a+c];
+	
+}
++(int) main
+{
+	wessam* a;
+	a=[B alloc];
+	[a bgo:4];
+	[a print:2];
+	
+}
+
++(void) go:(int)x
+{
+
+	[wessam print:x];
+	if(x!=0)
+		[self go:x-1];
+}
++(void) print:(int)cc
+{
+}
+-(int) go:(int)y
+{
+		b=3;
+		a=10;
+		c=100;
+		[System print:b];
+	
+}
+
+-(int) a2go:(int)y
+{
+
+	wessam* a;
+//	[a go:5];
+	//a.b=2;
+}
+
+@end
+
+
+@interface B:wessam
+{
+@public
+int bb,cb,ab;
+}
+-(int) go:(int)y;
+
+@end
+
+@implementation B:wessam
+-(void) print:(int)parameter
+{
+	[System println:b+c];
+	[System println:a+c];
+	[System println:ab];
+	
+}
+-(int) bgo:(int)y
+{
+	a=1;
+		b=1000;
+		ab=1000;
+		c=100;
+		[System print:b];
+		[System println];
+	
+}
+
+@end
+

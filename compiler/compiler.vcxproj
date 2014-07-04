@@ -186,10 +186,12 @@
   <ItemGroup>
     <Text Include="code.txt" />
     <Text Include="codeold.txt" />
+    <Text Include="polytest.txt" />
     <Text Include="test.txt" />
     <Text Include="system.oc" />
     <Text Include="external tool.txt" />
     <Text Include="nsobject.oc" />
+    <Text Include="inhertance overriding.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

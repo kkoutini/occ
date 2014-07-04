@@ -90,6 +90,7 @@ string Interface::getStaticPointerStr(){
 	void Interface ::setInheritInterface(Interface* interf)
 	{
 		this->inherit_interface=interf;
+	//	this->static_twin->inherit_interface = interf->static_twin;
 		classNode->_scoop = interf->classNode;
 	}
 	
