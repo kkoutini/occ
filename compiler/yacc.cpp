@@ -4520,9 +4520,20 @@ int yylex(){
 	return lexer->yylex();
 
 }
-void main(void){
+void main(int argc,      // Number of strings in array argv
+          char *argv[]){
   //yydebug=1;
+	   for(int i = 0; i < argc; i++) 
+		{
+			if(string(argv[i])=="-o")
+			{
+				if(i+1<argc)
+				{
+						  ofs=std::ofstream(string(argv[i]), std::ofstream::out);
+				}	
+			}
 
+		}
 	globalScoop=new ScoopNode(NULL);
 	globalScoop->setOffsetRegister("gp");
 
