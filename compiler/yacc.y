@@ -170,6 +170,7 @@ Method* nodeXX;
 %token FINALLY //finally
 %token AT_ASM  //@asm
 %token SELF   //self pointer
+%token IMPORT //import file
 %code requires {
 #include "ast\node.h"
 }
@@ -208,6 +209,7 @@ program: components	                     {Streams::verbose()<<"program: componen
 ;
 components: components component		 {Streams::verbose()<<"components: components component\n";}
 			|component				   	{Streams::verbose()<<"components: component\n";}
+			|IMPORT STRING_VAL SEMI_COMA {addFile(*$<r.string_val>2);} 
 ;
 component:	class_interface				{Streams::verbose()<<"class_interface \n";}
 			|class_implementation		{Streams::verbose()<<"class_implementation \n";}
@@ -1373,8 +1375,9 @@ void main(int argc,      // Number of strings in array argv
 	addFile("system.oc");
 
 	addFile("code.txt");
-		for(string sf:sfiles){
-	
+	for(int i=0;i<sfiles.size();i++)
+		{
+	    string sf=sfiles[i];
 		lineNum=colNum=1;
 		sourceFile=sf;
 		ifstream inf(sf);

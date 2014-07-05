@@ -4,6 +4,7 @@ static_instance_3_B:    .byte   0:4
 static_instance_5_C:    .byte   0:4
 static_instance_7_NSObject:    .byte   0:4
 static_instance_9_System:    .byte   0:4
+static_instance_11_Wesso:    .byte   0:4
 string_1: .asciiz "hiiii"
 string_2: .asciiz "this is class B"
 string_3: .asciiz "this is class C"
@@ -14,108 +15,124 @@ newline: .asciiz "\n"
 .globl main
 main:
  #reserving space in stack for scope variables
-sub $sp,$sp,20
- ##F:code.txt #L:62
+sub $sp,$sp,24
+ ##F:wessam.txt #L:15
  #asm node :la $t0,static_instance_1_A
 la $t0,static_instance_1_A
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $t1,2
 li $t1,2
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :sw $t0,0($gp)
 sw $t0,0($gp)
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :sw $t1,0($t0)
 sw $t1,0($t0)
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :la $t0,static_instance_3_B
 la $t0,static_instance_3_B
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $t1,4
 li $t1,4
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :sw $t0,-4($gp)
 sw $t0,-4($gp)
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :sw $t1,0($t0)
 sw $t1,0($t0)
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :la $t0,static_instance_5_C
 la $t0,static_instance_5_C
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $t1,6
 li $t1,6
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :sw $t0,-8($gp)
 sw $t0,-8($gp)
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :sw $t1,0($t0)
 sw $t1,0($t0)
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :la $t0,static_instance_7_NSObject
 la $t0,static_instance_7_NSObject
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $t1,8
 li $t1,8
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :sw $t0,-12($gp)
 sw $t0,-12($gp)
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :sw $t1,0($t0)
 sw $t1,0($t0)
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :la $t0,static_instance_9_System
 la $t0,static_instance_9_System
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $t1,10
 li $t1,10
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :sw $t0,-16($gp)
 sw $t0,-16($gp)
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :sw $t1,0($t0)
 sw $t1,0($t0)
 
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
+ #asm node :la $t0,static_instance_11_Wesso
+la $t0,static_instance_11_Wesso
+
+ ##F:wessam.txt #L:15
+ #asm node :li $t1,12
+li $t1,12
+
+ ##F:wessam.txt #L:15
+ #asm node :sw $t0,-20($gp)
+sw $t0,-20($gp)
+
+ ##F:wessam.txt #L:15
+ #asm node :sw $t1,0($t0)
+sw $t1,0($t0)
+
+ ##F:wessam.txt #L:15
  #identifier A
 lw $t0,0($gp)
 addi $v0,$gp,0
 sub $sp,$sp,4
 sw $t0, 0($sp)
 add $sp,$sp,4
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :sub $sp,$sp,4
 sub $sp,$sp,4
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :jal _c2_A_m16_main
 jal _c2_A_m16_main
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $v0,10
 li $v0,10
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :syscall
 syscall
  #releasing space in stack for scope variables
-add $sp,$sp,20
+add $sp,$sp,24
 
 
 
@@ -154,6 +171,12 @@ beq $t0,$a0,vt_9
  #System static
 li $t0,10
 beq $t0,$a0,vt_10
+ #Wesso
+li $t0,11
+beq $t0,$a0,vt_11
+ #Wesso static
+li $t0,12
+beq $t0,$a0,vt_12
 j type_not_found
  ##########################################
  #Generating code for class A
@@ -186,10 +209,10 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:25
+ ##F:code.txt #L:26
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- ##F:code.txt #L:26
+ ##F:code.txt #L:27
  #Assign node
  #RHS:
 li $t9,1
@@ -226,10 +249,10 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:28
+ ##F:code.txt #L:29
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- ##F:code.txt #L:29
+ ##F:code.txt #L:30
  #Dynamically CALLING A METHOD 10
  #preserving registers
 sub $sp,$sp,4
@@ -298,19 +321,19 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $v0,9
 li $v0,9
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $a0,8
 li $a0,8
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :syscall
 syscall
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $t0,1
 li $t0,1
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :sw $t0,0($v0)
 sw $t0,0($v0)
  #releasing space in stack for scope variables
@@ -327,11 +350,11 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:13
+ ##F:code.txt #L:14
  #reserving space in stack for scope variables
 sub $sp,$sp,16
- ##F:code.txt #L:14
  ##F:code.txt #L:15
+ ##F:code.txt #L:16
  #Assign node
  #RHS:
 la $t9,string_1
@@ -351,7 +374,7 @@ lw $t0, 0($sp)
  #Assign node storing in position val:
 sw $t0,0($v0)
 add $sp,$sp,4
- ##F:code.txt #L:16
+ ##F:code.txt #L:17
  #Dynamically CALLING A METHOD 11
  #preserving registers
 sub $sp,$sp,4
@@ -391,8 +414,8 @@ add $sp,$sp,4
 sub $sp,$sp,4
 sw $v0, 0($sp)
 add $sp,$sp,4
- ##F:code.txt #L:17
  ##F:code.txt #L:18
+ ##F:code.txt #L:19
  #Assign node
  #RHS:
  #Dynamically CALLING A METHOD 17
@@ -432,7 +455,7 @@ lw $t0, 0($sp)
  #Assign node storing in position val:
 sw $t0,0($v0)
 add $sp,$sp,4
- ##F:code.txt #L:19
+ ##F:code.txt #L:20
  #Assign node
  #RHS:
  #Dynamically CALLING A METHOD 17
@@ -472,7 +495,7 @@ lw $t0, 0($sp)
  #Assign node storing in position val:
 sw $t0,0($v0)
 add $sp,$sp,4
- ##F:code.txt #L:20
+ ##F:code.txt #L:21
  #Assign node
  #RHS:
  #Dynamically CALLING A METHOD 17
@@ -512,7 +535,7 @@ lw $t0, 0($sp)
  #Assign node storing in position val:
 sw $t0,0($v0)
 add $sp,$sp,4
- ##F:code.txt #L:21
+ ##F:code.txt #L:22
  #Dynamically CALLING A METHOD 14
  #preserving registers
 sub $sp,$sp,4
@@ -537,7 +560,7 @@ add $sp,$sp,4
 sub $sp,$sp,4
 sw $v0, 0($sp)
 add $sp,$sp,4
- ##F:code.txt #L:21
+ ##F:code.txt #L:22
  #Dynamically CALLING A METHOD 14
  #preserving registers
 sub $sp,$sp,4
@@ -562,7 +585,7 @@ add $sp,$sp,4
 sub $sp,$sp,4
 sw $v0, 0($sp)
 add $sp,$sp,4
- ##F:code.txt #L:21
+ ##F:code.txt #L:22
  #Dynamically CALLING A METHOD 14
  #preserving registers
 sub $sp,$sp,4
@@ -587,7 +610,7 @@ add $sp,$sp,4
 sub $sp,$sp,4
 sw $v0, 0($sp)
 add $sp,$sp,4
- ##F:code.txt #L:22
+ ##F:code.txt #L:23
  #Dynamically CALLING A METHOD 15
  #preserving registers
 sub $sp,$sp,4
@@ -612,7 +635,7 @@ add $sp,$sp,4
 sub $sp,$sp,4
 sw $v0, 0($sp)
 add $sp,$sp,4
- ##F:code.txt #L:22
+ ##F:code.txt #L:23
  #Dynamically CALLING A METHOD 15
  #preserving registers
 sub $sp,$sp,4
@@ -637,7 +660,7 @@ add $sp,$sp,4
 sub $sp,$sp,4
 sw $v0, 0($sp)
 add $sp,$sp,4
- ##F:code.txt #L:22
+ ##F:code.txt #L:23
  #Dynamically CALLING A METHOD 15
  #preserving registers
 sub $sp,$sp,4
@@ -711,10 +734,10 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:41
+ ##F:code.txt #L:42
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- ##F:code.txt #L:42
+ ##F:code.txt #L:43
  #Assign node
  #RHS:
 li $t9,2
@@ -735,7 +758,7 @@ lw $t0, 0($sp)
  #Assign node storing in position val:
 sw $t0,0($v0)
 add $sp,$sp,4
- ##F:code.txt #L:43
+ ##F:code.txt #L:44
  #Dynamically CALLING A METHOD 12
  #preserving registers
 sub $sp,$sp,4
@@ -798,19 +821,19 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $v0,9
 li $v0,9
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $a0,8
 li $a0,8
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :syscall
 syscall
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $t0,3
 li $t0,3
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :sw $t0,0($v0)
 sw $t0,0($v0)
  #releasing space in stack for scope variables
@@ -860,10 +883,10 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:56
+ ##F:code.txt #L:57
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- ##F:code.txt #L:58
+ ##F:code.txt #L:59
  #Dynamically CALLING A METHOD 12
  #preserving registers
 sub $sp,$sp,4
@@ -893,7 +916,7 @@ add $sp,$sp,4
 sub $sp,$sp,4
 sw $v0, 0($sp)
 add $sp,$sp,4
- ##F:code.txt #L:59
+ ##F:code.txt #L:60
  #Assign node
  #RHS:
 li $t9,3
@@ -947,19 +970,19 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $v0,9
 li $v0,9
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $a0,8
 li $a0,8
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :syscall
 syscall
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $t0,5
 li $t0,5
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :sw $t0,0($v0)
 sw $t0,0($v0)
  #releasing space in stack for scope variables
@@ -1013,19 +1036,19 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $v0,9
 li $v0,9
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $a0,4
 li $a0,4
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :syscall
 syscall
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $t0,7
 li $t0,7
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :sw $t0,0($v0)
 sw $t0,0($v0)
  #releasing space in stack for scope variables
@@ -1380,19 +1403,19 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $v0,9
 li $v0,9
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $a0,4
 li $a0,4
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :syscall
 syscall
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :li $t0,9
 li $t0,9
- ##F:code.txt #L:62
+ ##F:wessam.txt #L:15
  #asm node :sw $t0,0($v0)
 sw $t0,0($v0)
  #releasing space in stack for scope variables
@@ -1535,7 +1558,7 @@ jr $ra
 
 
  ##########################################
- #Generating code for class error_type
+ #Generating code for class Wesso
 
 
 
@@ -1544,6 +1567,74 @@ jr $ra
 
 
 vt_11:
+ #super
+ #NSObject
+ #super
+j method_not_found
+ ##########################################
+ ####STATIC
+ ##########################################
+ #Generating code for class Wesso
+
+
+
+
+ #vtable: 
+
+
+vt_12:
+ #allocalloc
+li $t0,17
+beq $t0,$a1,_c12_Wesso_m17_alloc
+ #super
+j method_not_found
+
+
+ #generating code for Method:alloc
+
+_c12_Wesso_m17_alloc:
+ #moving the stack back because args are in scoop
+add $sp,$sp,4
+ #movesp to fp
+move $fp,$sp
+ #reserving space in stack for scope variables
+sub $sp,$sp,4
+ ##F:wessam.txt #L:15
+ #asm node :li $v0,9
+li $v0,9
+ ##F:wessam.txt #L:15
+ #asm node :li $a0,8
+li $a0,8
+ ##F:wessam.txt #L:15
+ #asm node :syscall
+syscall
+ ##F:wessam.txt #L:15
+ #asm node :li $t0,11
+li $t0,11
+ ##F:wessam.txt #L:15
+ #asm node :sw $t0,0($v0)
+sw $t0,0($v0)
+ #releasing space in stack for scope variables
+add $sp,$sp,4
+jr $ra
+ ##########################################
+
+
+
+ ####End STATIC
+
+
+
+ ##########################################
+ #Generating code for class error_type
+
+
+
+
+ #vtable: 
+
+
+vt_13:
  #super
 j method_not_found
  ##########################################
@@ -1557,7 +1648,7 @@ j method_not_found
  #vtable: 
 
 
-vt_12:
+vt_14:
  #super
 j method_not_found
  ##########################################
@@ -1577,7 +1668,7 @@ j method_not_found
  #vtable: 
 
 
-vt_13:
+vt_15:
  #super
 j method_not_found
  ##########################################
@@ -1591,7 +1682,7 @@ j method_not_found
  #vtable: 
 
 
-vt_14:
+vt_16:
  #super
 j method_not_found
  ##########################################

@@ -340,5 +340,8 @@
     <Text Include="polytest.txt">
       <Filter>Resource Files\tests</Filter>
     </Text>
+    <Text Include="wessam.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
