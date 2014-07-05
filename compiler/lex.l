@@ -36,6 +36,7 @@ FLOAT						("+"|"-")?({digit}+\.{digit}+)
 "@public"			{colNum+=7;yylval.r.colNo=colNum;					yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);				return AT_PUBLIC;}
 "@protected"		{colNum+=10;yylval.r.colNo=colNum;				yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);					return AT_PROTECTED;}
 "@private"			{colNum+=8;yylval.r.colNo=colNum;					yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);				return AT_PRIVATE;}
+"import"            {colNum+=6;yylval.r.colNo=colNum;                                   return IMPORT;}
 "{"					{colNum++;yylval.r.colNo=colNum;									return OPEN_S;}
 "}"					{colNum++;yylval.r.colNo=colNum;										return CLOSE_S;}
 ","					{colNum++;yylval.r.colNo=colNum;										return COMMA;}

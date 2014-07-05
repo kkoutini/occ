@@ -192,6 +192,7 @@
     <Text Include="external tool.txt" />
     <Text Include="nsobject.oc" />
     <Text Include="inhertance overriding.txt" />
+    <Text Include="wessam.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

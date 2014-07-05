@@ -46,6 +46,7 @@ using std::istream;
  #pragma warn -use
 #include <io.h>
 #include <stdlib.h>
+
 #define YY_USE_CONST
 #define YY_USE_PROTOS
 #endif
@@ -251,37 +252,38 @@ typedef unsigned char YY_CHAR;
 	*yy_cp = '\0'; \
 	yy_c_buf_p = yy_cp;
 
-#define YY_NUM_RULES 69
-#define YY_END_OF_BUFFER 70
-static yyconst short int yy_acclist[221] =
+#define YY_NUM_RULES 70
+#define YY_END_OF_BUFFER 71
+static yyconst short int yy_acclist[227] =
     {   0,
-        4,    4,   70,   69,   65,   69,   67,   69,   69,   69,
-       42,   69,   69,   69,   29,   69,   30,   69,   37,   69,
-       27,   69,   21,   69,   28,   69,   68,   69,   69,   58,
-       69,   58,   69,    8,   69,   14,   69,   22,   69,   41,
-       69,   23,   69,   69,   64,   69,   64,   69,   52,   69,
-       53,   69,   69,   64,   69,   64,   69,   64,   69,   64,
-       69,   64,   69,   64,   69,   64,   69,   64,   69,   64,
-       69,   64,   69,   64,   69,   19,   69,   64,   69,   20,
-       69,    3,    4,   69,    2,    3,    4,   69,    3,   69,
-        4,   69,   39,   63,   33,   61,   62,    1,   66,   58,
+        4,    4,   71,   70,   66,   70,   68,   70,   70,   70,
+       43,   70,   70,   70,   30,   70,   31,   70,   38,   70,
+       28,   70,   22,   70,   29,   70,   69,   70,   70,   59,
+       70,   59,   70,    8,   70,   14,   70,   23,   70,   42,
+       70,   24,   70,   70,   65,   70,   65,   70,   53,   70,
+       54,   70,   70,   65,   70,   65,   70,   65,   70,   65,
+       70,   65,   70,   65,   70,   65,   70,   65,   70,   65,
+       70,   65,   70,   65,   70,   20,   70,   65,   70,   21,
+       70,    3,    4,   70,    2,    3,    4,   70,    3,   70,
+        4,   70,   40,   64,   34,   62,   63,    1,   67,   59,
 
-       35,   38,   36,   64,   64,   64,   64,   64,   64,   64,
-       64,   64,   46,   64,   64,   64,   64,   64,   64,   15,
-       64,   44,   64,   64,   64,   64,   64,   64,   64,   64,
-       34,   64,    4,    3,    3,    5,   60,   66,   59,   64,
-       64,   64,   64,   64,   64,   64,   64,   64,   64,   64,
-       40,   64,   13,   64,   64,   64,   64,   64,   64,   64,
-       32,   24,   64,   12,   64,   64,   48,   64,   11,   64,
-       64,   64,   45,   64,   51,   64,   64,   64,   64,   64,
-       64,   54,   64,   26,   64,   64,   64,   50,   64,   25,
-       64,   64,   55,   64,   10,   64,   64,   64,   64,   43,
+       36,   39,   37,   65,   65,   65,   65,   65,   65,   65,
+       65,   65,   47,   65,   65,   65,   65,   65,   65,   15,
+       65,   45,   65,   65,   65,   65,   65,   65,   65,   65,
+       65,   35,   65,    4,    3,    3,    5,   61,   67,   60,
+       65,   65,   65,   65,   65,   65,   65,   65,   65,   65,
+       65,   41,   65,   65,   13,   65,   65,   65,   65,   65,
+       65,   65,   33,   25,   65,   12,   65,   65,   49,   65,
+       11,   65,   65,   65,   46,   65,   52,   65,   65,   65,
+       65,   65,   65,   65,   55,   65,   27,   65,   65,   65,
+       51,   65,   26,   65,   65,   56,   65,   10,   65,   65,
 
-       64,   64,   64,   57,   64,   56,   64,   47,   64,   16,
-       64,   49,   64,   18,    9,   64,    7,    6,   17,   31
+       65,   65,   65,   44,   65,   65,   65,   19,   65,   58,
+       65,   57,   65,   48,   65,   16,   65,   50,   65,   18,
+        9,   65,    7,    6,   17,   32
     } ;
 
-static yyconst short int yy_accept[208] =
+static yyconst short int yy_accept[213] =
     {   0,
         1,    1,    1,    2,    3,    4,    5,    7,    9,   10,
        11,   13,   14,   15,   17,   19,   21,   23,   25,   27,
@@ -292,20 +294,21 @@ static yyconst short int yy_accept[208] =
        98,   99,  100,  100,  101,  102,  103,  104,  104,  104,
       104,  104,  105,  106,  107,  107,  108,  109,  110,  111,
       112,  113,  115,  116,  117,  118,  119,  120,  122,  124,
-      125,  126,  127,  128,  129,  130,  131,  133,  134,  135,
+      125,  126,  127,  128,  129,  130,  131,  132,  134,  135,
 
-      136,  137,  138,  139,  140,  140,  140,  140,  140,  140,
-      140,  141,  142,  143,  144,  145,  146,  147,  148,  149,
-      150,  151,  153,  155,  156,  157,  158,  159,  160,  161,
-      162,  163,  163,  163,  163,  163,  163,  164,  166,  167,
-      169,  171,  172,  173,  175,  177,  178,  179,  180,  181,
-      182,  184,  186,  187,  187,  187,  187,  187,  187,  188,
-      190,  192,  193,  195,  197,  198,  199,  200,  202,  202,
-      202,  202,  202,  202,  202,  203,  204,  206,  208,  210,
-      210,  210,  210,  210,  210,  211,  212,  214,  214,  214,
-      215,  215,  215,  217,  217,  217,  217,  218,  218,  219,
+      136,  137,  138,  139,  140,  141,  141,  141,  141,  141,
+      141,  141,  142,  143,  144,  145,  146,  147,  148,  149,
+      150,  151,  152,  154,  155,  157,  158,  159,  160,  161,
+      162,  163,  164,  165,  165,  165,  165,  165,  165,  166,
+      168,  169,  171,  173,  174,  175,  177,  179,  180,  181,
+      182,  183,  184,  185,  187,  189,  190,  190,  190,  190,
+      190,  190,  191,  193,  195,  196,  198,  200,  201,  202,
+      203,  204,  206,  206,  206,  206,  206,  206,  206,  207,
+      208,  210,  212,  214,  216,  216,  216,  216,  216,  216,
+      217,  218,  220,  220,  220,  221,  221,  221,  223,  223,
 
-      220,  220,  220,  220,  220,  221,  221
+      223,  223,  224,  224,  225,  226,  226,  226,  226,  226,
+      227,  227
     } ;
 
 static yyconst int yy_ec[256] =
@@ -350,63 +353,63 @@ static yyconst int yy_meta[59] =
         6,    6,    6,    6,    6,    1,    8,    1
     } ;
 
-static yyconst short int yy_base[215] =
+static yyconst short int yy_base[220] =
     {   0,
-        0,    0,   55,   56,  276,  277,  277,  277,  250,  266,
-      277,  263,    0,  277,  277,  277,   46,  277,   51,  277,
-       59,   59,   63,  277,  277,  247,  246,  245,   47,    0,
-      239,  277,  277,  234,   37,   53,   50,   46,   57,   59,
-      228,   10,  216,  217,  222,  277,  206,  277,    0,    0,
-       89,    0,  277,  254,  253,  277,  249,  277,   89,  277,
-      277,    0,   91,   95,  277,  277,  277,  208,  211,   71,
-       69,    0,  227,    0,  222,  207,  215,  202,  217,  204,
-      210,    0,  198,  195,  202,  198,  195,    0,    0,  192,
-      191,  192,  198,  187,  196,  195,    0,    0,  277,  106,
+        0,    0,   55,   56,  281,  282,  282,  282,  255,  271,
+      282,  268,    0,  282,  282,  282,   46,  282,   51,  282,
+       59,   59,   63,  282,  282,  252,  251,  250,   47,    0,
+      244,  282,  282,  239,   37,   53,   50,   46,   57,   66,
+      233,   10,  221,  222,  227,  282,  211,  282,    0,    0,
+       80,    0,  282,  259,  258,  282,  254,  282,   89,  282,
+      282,    0,   94,   98,  282,  282,  282,  213,  216,   74,
+       47,    0,  232,    0,  227,  212,  220,  207,  222,  209,
+      215,    0,  203,  200,  207,  203,  200,    0,    0,  200,
+      196,  195,  196,  202,  191,  200,  199,    0,    0,  282,
 
-      277,  277,    0,  103,  191,  198,  186,  182,   78,  197,
-      180,  186,  195,  190,  178,  176,  191,  186,  178,  172,
-      187,    0,    0,  168,  167,  167,  179,  179,  171,  277,
-      277,  170,  175,  159,  160,  166,  160,    0,  165,    0,
-        0,  156,  154,    0,    0,  167,  153,  154,  166,  165,
-        0,    0,  162,  161,  149,  163,   88,  154,  153,    0,
-        0,  150,    0,    0,  147,  141,  150,    0,  145,  150,
-      137,  151,  150,  149,  132,  120,    0,    0,    0,  126,
-      129,  121,  105,   98,  277,   94,    0,   87,   96,  277,
-       93,   86,    0,   78,   90,   90,  277,   79,  277,  277,
+       89,  282,  282,    0,  102,  195,  202,  190,  186,   81,
+      201,  184,  190,  199,  194,  182,  180,  195,  190,  182,
+      176,  191,    0,  177,    0,  171,  170,  170,  182,  182,
+      174,  282,  282,  173,  178,  162,  163,  169,  163,    0,
+      168,    0,    0,  159,  157,    0,    0,  170,  156,  157,
+      156,  168,  167,    0,    0,  164,  163,  151,  165,   78,
+      156,  155,    0,    0,  152,    0,    0,  144,  148,  142,
+      151,    0,  146,  151,  138,  152,  151,  150,  139,  133,
+        0,    0,    0,    0,  145,  148,  143,  129,  132,  282,
+      138,    0,  125,  128,  282,  119,  112,    0,  101,  111,
 
-       52,   57,   46,   29,  277,  277,  136,  144,  147,  150,
-      153,  161,  169,  177
+      101,  282,   93,  282,  282,   75,   82,   63,   29,  282,
+      282,  129,  137,  140,  143,  146,  154,  162,  170
     } ;
 
-static yyconst short int yy_def[215] =
+static yyconst short int yy_def[220] =
     {   0,
-      206,    1,  207,  207,  206,  206,  206,  206,  206,  208,
-      206,  206,  209,  206,  206,  206,  206,  206,  206,  206,
-      206,  206,  206,  206,  206,  206,  206,  206,  206,  210,
-      210,  206,  206,  211,  210,  210,  210,  210,  210,  210,
-      210,  210,  210,  210,  210,  206,  210,  206,  212,  212,
-      213,  212,  206,  208,  208,  206,  206,  206,  206,  206,
-      206,  214,  206,  206,  206,  206,  206,  206,  206,  206,
-      206,  210,  210,  210,  211,  210,  210,  210,  210,  210,
-      210,  210,  210,  210,  210,  210,  210,  210,  210,  210,
-      210,  210,  210,  210,  210,  210,  210,  212,  206,  213,
+      211,    1,  212,  212,  211,  211,  211,  211,  211,  213,
+      211,  211,  214,  211,  211,  211,  211,  211,  211,  211,
+      211,  211,  211,  211,  211,  211,  211,  211,  211,  215,
+      215,  211,  211,  216,  215,  215,  215,  215,  215,  215,
+      215,  215,  215,  215,  215,  211,  215,  211,  217,  217,
+      218,  217,  211,  213,  213,  211,  211,  211,  211,  211,
+      211,  219,  211,  211,  211,  211,  211,  211,  211,  211,
+      211,  215,  215,  215,  216,  215,  215,  215,  215,  215,
+      215,  215,  215,  215,  215,  215,  215,  215,  215,  215,
+      215,  215,  215,  215,  215,  215,  215,  215,  217,  211,
 
-      206,  206,  214,  206,  206,  206,  206,  206,  206,  206,
-      210,  210,  210,  210,  210,  210,  210,  210,  210,  210,
-      210,  210,  210,  210,  210,  210,  210,  210,  210,  206,
-      206,  206,  206,  206,  206,  206,  210,  210,  210,  210,
-      210,  210,  210,  210,  210,  210,  210,  210,  210,  210,
-      210,  210,  210,  206,  206,  206,  206,  206,  210,  210,
-      210,  210,  210,  210,  210,  210,  210,  210,  206,  206,
-      206,  206,  206,  206,  210,  210,  210,  210,  210,  206,
-      206,  206,  206,  206,  206,  210,  210,  206,  206,  206,
-      206,  206,  210,  206,  206,  206,  206,  206,  206,  206,
+      218,  211,  211,  219,  211,  211,  211,  211,  211,  211,
+      211,  215,  215,  215,  215,  215,  215,  215,  215,  215,
+      215,  215,  215,  215,  215,  215,  215,  215,  215,  215,
+      215,  211,  211,  211,  211,  211,  211,  211,  215,  215,
+      215,  215,  215,  215,  215,  215,  215,  215,  215,  215,
+      215,  215,  215,  215,  215,  215,  211,  211,  211,  211,
+      211,  215,  215,  215,  215,  215,  215,  215,  215,  215,
+      215,  215,  211,  211,  211,  211,  211,  211,  215,  215,
+      215,  215,  215,  215,  211,  211,  211,  211,  211,  211,
+      215,  215,  211,  211,  211,  211,  211,  215,  211,  211,
 
-      206,  206,  206,  206,  206,    0,  206,  206,  206,  206,
-      206,  206,  206,  206
+      211,  211,  211,  211,  211,  211,  211,  211,  211,  211,
+        0,  211,  211,  211,  211,  211,  211,  211,  211
     } ;
 
-static yyconst short int yy_nxt[336] =
+static yyconst short int yy_nxt[341] =
     {   0,
         6,    7,    7,    8,    7,    7,    9,   10,   11,   12,
        13,   14,   15,   16,   17,   18,   19,   20,   21,   22,
@@ -414,40 +417,40 @@ static yyconst short int yy_nxt[336] =
        32,    6,   33,   34,   30,   35,   36,   37,   38,   39,
        30,   30,   40,   30,   30,   30,   30,   30,   30,   41,
        42,   43,   30,   44,   45,   46,   47,   48,   50,   50,
-       58,   92,    6,    6,   93,   59,   59,   60,   51,   51,
-       59,   59,   61,   52,   52,  205,   63,   62,   59,   59,
+       58,   93,    6,    6,   94,   59,   59,   60,   51,   51,
+       59,   59,   61,   52,   52,  210,   63,   62,   59,   59,
        63,   68,   64,   64,   76,   69,   77,   78,   81,   70,
-       83,   85,   84,  204,   79,   71,   88,   82,   89,  203,
+       83,   85,   84,  101,   79,   71,  110,   82,  102,  111,
 
-       80,   86,  100,  202,   87,   90,   63,  101,   59,   59,
-      104,  104,   63,  201,   64,   64,  107,  108,  109,  100,
-      134,  110,  104,  104,  101,  135,  172,  200,  199,  198,
-      197,  196,  195,  194,  193,  173,   49,   49,   49,   49,
-       49,   49,   49,   49,   54,  192,   54,   54,   54,   54,
-       54,   54,   57,   57,   72,   72,  191,   72,   74,  190,
-       74,   98,   98,  189,  188,   98,   98,   98,   98,   99,
-       99,  187,   99,   99,   99,   99,   99,  103,  186,  103,
-      103,  103,  103,  103,  103,  185,  184,  183,  182,  181,
-      180,  179,  178,  177,  176,  175,  174,  171,  170,  169,
+       80,   86,  101,   88,   87,   89,   63,  102,   59,   59,
+      209,   90,   91,  105,  105,   63,  176,   64,   64,  108,
+      109,  105,  105,  136,  208,  177,  207,  206,  137,   49,
+       49,   49,   49,   49,   49,   49,   49,   54,  205,   54,
+       54,   54,   54,   54,   54,   57,   57,   72,   72,  204,
+       72,   74,  203,   74,   99,   99,  202,  201,   99,   99,
+       99,   99,  100,  100,  200,  100,  100,  100,  100,  100,
+      104,  199,  104,  104,  104,  104,  104,  104,  198,  197,
+      196,  195,  194,  193,  192,  191,  190,  189,  188,  187,
+      186,  185,  184,  183,  182,  181,  180,  179,  178,  175,
 
-      168,  167,  166,  165,  164,  163,  162,  161,  160,  159,
-      158,  157,  156,  155,  154,  153,  152,  151,  150,  149,
-      148,  147,  146,  145,  144,  143,  142,  141,  140,  139,
-      138,  137,  136,  133,  132,  131,  130,  129,  128,  127,
-      126,  125,  124,  123,  122,  121,  120,  119,  118,  117,
-      116,  115,  114,  113,  112,   75,  111,  106,  105,  102,
-       55,   55,   97,   96,   95,   94,   91,   75,   73,   67,
-       66,   65,   56,   55,   53,  206,    5,  206,  206,  206,
-      206,  206,  206,  206,  206,  206,  206,  206,  206,  206,
-      206,  206,  206,  206,  206,  206,  206,  206,  206,  206,
+      174,  173,  172,  171,  170,  169,  168,  167,  166,  165,
+      164,  163,  162,  161,  160,  159,  158,  157,  156,  155,
+      154,  153,  152,  151,  150,  149,  148,  147,  146,  145,
+      144,  143,  142,  141,  140,  139,  138,  135,  134,  133,
+      132,  131,  130,  129,  128,  127,  126,  125,  124,  123,
+      122,  121,  120,  119,  118,  117,  116,  115,  114,  113,
+       75,  112,  107,  106,  103,   55,   55,   98,   97,   96,
+       95,   92,   75,   73,   67,   66,   65,   56,   55,   53,
+      211,    5,  211,  211,  211,  211,  211,  211,  211,  211,
+      211,  211,  211,  211,  211,  211,  211,  211,  211,  211,
 
-      206,  206,  206,  206,  206,  206,  206,  206,  206,  206,
-      206,  206,  206,  206,  206,  206,  206,  206,  206,  206,
-      206,  206,  206,  206,  206,  206,  206,  206,  206,  206,
-      206,  206,  206,  206,  206
+      211,  211,  211,  211,  211,  211,  211,  211,  211,  211,
+      211,  211,  211,  211,  211,  211,  211,  211,  211,  211,
+      211,  211,  211,  211,  211,  211,  211,  211,  211,  211,
+      211,  211,  211,  211,  211,  211,  211,  211,  211,  211
     } ;
 
-static yyconst short int yy_chk[336] =
+static yyconst short int yy_chk[341] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -456,36 +459,36 @@ static yyconst short int yy_chk[336] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    3,    4,
        17,   42,    3,    4,   42,   17,   17,   19,    3,    4,
-       19,   19,   21,    3,    4,  204,   22,   21,   22,   22,
+       19,   19,   21,    3,    4,  209,   22,   21,   22,   22,
        23,   29,   23,   23,   35,   29,   35,   36,   37,   29,
-       38,   39,   38,  203,   36,   29,   40,   37,   40,  202,
+       38,   39,   38,   51,   36,   29,   71,   37,   51,   71,
 
-       36,   39,   51,  201,   39,   40,   59,   51,   59,   59,
-       63,   63,   64,  198,   64,   64,   70,   70,   71,  100,
-      109,   71,  104,  104,  100,  109,  157,  196,  195,  194,
-      192,  191,  189,  188,  186,  157,  207,  207,  207,  207,
-      207,  207,  207,  207,  208,  184,  208,  208,  208,  208,
-      208,  208,  209,  209,  210,  210,  183,  210,  211,  182,
-      211,  212,  212,  181,  180,  212,  212,  212,  212,  213,
-      213,  176,  213,  213,  213,  213,  213,  214,  175,  214,
-      214,  214,  214,  214,  214,  174,  173,  172,  171,  170,
-      169,  167,  166,  165,  162,  159,  158,  156,  155,  154,
+       36,   39,  101,   40,   39,   40,   59,  101,   59,   59,
+      208,   40,   40,   63,   63,   64,  160,   64,   64,   70,
+       70,  105,  105,  110,  207,  160,  206,  203,  110,  212,
+      212,  212,  212,  212,  212,  212,  212,  213,  201,  213,
+      213,  213,  213,  213,  213,  214,  214,  215,  215,  200,
+      215,  216,  199,  216,  217,  217,  197,  196,  217,  217,
+      217,  217,  218,  218,  194,  218,  218,  218,  218,  218,
+      219,  193,  219,  219,  219,  219,  219,  219,  191,  189,
+      188,  187,  186,  185,  180,  179,  178,  177,  176,  175,
+      174,  173,  171,  170,  169,  168,  165,  162,  161,  159,
 
-      153,  150,  149,  148,  147,  146,  143,  142,  139,  137,
-      136,  135,  134,  133,  132,  129,  128,  127,  126,  125,
-      124,  121,  120,  119,  118,  117,  116,  115,  114,  113,
-      112,  111,  110,  108,  107,  106,  105,   96,   95,   94,
-       93,   92,   91,   90,   87,   86,   85,   84,   83,   81,
-       80,   79,   78,   77,   76,   75,   73,   69,   68,   57,
-       55,   54,   47,   45,   44,   43,   41,   34,   31,   28,
-       27,   26,   12,   10,    9,    5,  206,  206,  206,  206,
-      206,  206,  206,  206,  206,  206,  206,  206,  206,  206,
-      206,  206,  206,  206,  206,  206,  206,  206,  206,  206,
+      158,  157,  156,  153,  152,  151,  150,  149,  148,  145,
+      144,  141,  139,  138,  137,  136,  135,  134,  131,  130,
+      129,  128,  127,  126,  124,  122,  121,  120,  119,  118,
+      117,  116,  115,  114,  113,  112,  111,  109,  108,  107,
+      106,   97,   96,   95,   94,   93,   92,   91,   90,   87,
+       86,   85,   84,   83,   81,   80,   79,   78,   77,   76,
+       75,   73,   69,   68,   57,   55,   54,   47,   45,   44,
+       43,   41,   34,   31,   28,   27,   26,   12,   10,    9,
+        5,  211,  211,  211,  211,  211,  211,  211,  211,  211,
+      211,  211,  211,  211,  211,  211,  211,  211,  211,  211,
 
-      206,  206,  206,  206,  206,  206,  206,  206,  206,  206,
-      206,  206,  206,  206,  206,  206,  206,  206,  206,  206,
-      206,  206,  206,  206,  206,  206,  206,  206,  206,  206,
-      206,  206,  206,  206,  206
+      211,  211,  211,  211,  211,  211,  211,  211,  211,  211,
+      211,  211,  211,  211,  211,  211,  211,  211,  211,  211,
+      211,  211,  211,  211,  211,  211,  211,  211,  211,  211,
+      211,  211,  211,  211,  211,  211,  211,  211,  211,  211
     } ;
 
 #define REJECT \
@@ -498,9 +501,9 @@ goto find_rule; \
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-#line 1 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 1 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 #define INITIAL 0
-#line 2 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 2 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 	#include "yacc.hpp"
 	#include <iostream>
 	#include <istream>
@@ -512,7 +515,7 @@ goto find_rule; \
 
 #define comment 1
 
-#line 515 "lex.yy.cc"
+#line 517 "lex.yy.cc"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -639,9 +642,9 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 19 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 19 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 
-#line 644 "lex.yy.cc"
+#line 646 "lex.yy.cc"
 
 	if ( yy_init )
 		{
@@ -689,14 +692,14 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 207 )
+				if ( yy_current_state >= 212 )
 					yy_c = yy_meta[(unsigned int) yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			*yy_state_ptr++ = yy_current_state;
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 277 );
+		while ( yy_base[yy_current_state] != 282 );
 
 yy_find_action:
 		yy_current_state = *--yy_state_ptr;
@@ -734,350 +737,355 @@ do_action:	/* This label is used only to access EOF actions. */
 	{ /* beginning of action switch */
 case 1:
 YY_RULE_SETUP
-#line 20 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 20 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 {colNum+=2;		BEGIN(comment);}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 21 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 21 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 {lineNum+=1;		BEGIN(comment);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 22 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 22 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 {colNum+=strlen(yytext);	}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 23 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 23 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 {colNum+=strlen(yytext);	}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 24 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 24 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 { colNum+=strlen(yytext);	 BEGIN(INITIAL);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 26 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 26 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 {colNum+=10;yylval.r.colNo=colNum;		yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);	return AT_INTERFACE;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 27 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 27 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 {colNum+=9;yylval.r.colNo=colNum;					    		return AT_PROTOCOL;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 28 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 28 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 {colNum+=1;yylval.r.colNo=colNum;									return SEMI_COLUMN;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 29 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 29 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 {colNum+=8;yylval.r.colNo=colNum;			yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);						return NSSTRING;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 30 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 30 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 {colNum+=5;yylval.r.colNo=colNum;				yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);					return FLOAT;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 31 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 31 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 {colNum+=4;yylval.r.colNo=colNum;     		yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);						return CHAR;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 32 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 32 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 {colNum+=4;yylval.r.colNo=colNum;     			yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);					return BOOL;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 33 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 33 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 {colNum+=3;yylval.r.colNo=colNum;			yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);						return INT;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 34 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 34 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 {colNum+=1;yylval.r.colNo=colNum;										return SEMI_COMA;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 35 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 35 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 {colNum+=2;yylval.r.colNo=colNum;											return ID;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 36 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 36 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 {colNum+=7;yylval.r.colNo=colNum;					yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);				return AT_PUBLIC;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 37 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 37 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 {colNum+=10;yylval.r.colNo=colNum;				yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);					return AT_PROTECTED;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 38 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 38 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 {colNum+=8;yylval.r.colNo=colNum;					yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);				return AT_PRIVATE;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 39 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum++;yylval.r.colNo=colNum;									return OPEN_S;}
+#line 39 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum+=6;yylval.r.colNo=colNum;                                   return IMPORT;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 40 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum++;yylval.r.colNo=colNum;										return CLOSE_S;}
+#line 40 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum++;yylval.r.colNo=colNum;									return OPEN_S;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 41 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum++;yylval.r.colNo=colNum;										return COMMA;}
+#line 41 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum++;yylval.r.colNo=colNum;										return CLOSE_S;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 42 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum++;yylval.r.colNo=colNum;									return LESS_THAN;}
+#line 42 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum++;yylval.r.colNo=colNum;										return COMMA;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 43 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum++;yylval.r.colNo=colNum;									return MORE_THAN;}
+#line 43 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum++;yylval.r.colNo=colNum;									return LESS_THAN;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 44 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum+=4;yylval.r.colNo=colNum;										return AT_END;}
+#line 44 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum++;yylval.r.colNo=colNum;									return MORE_THAN;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 45 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum+=5;yylval.r.colNo=colNum;									return CONST;}
+#line 45 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum+=4;yylval.r.colNo=colNum;										return AT_END;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 46 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{	colNum+=4;				yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);				return VOID;}
+#line 46 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum+=5;yylval.r.colNo=colNum;									return CONST;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 47 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum++;yylval.r.colNo=colNum;									return PLUS;}
+#line 47 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{	colNum+=4;				yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);				return VOID;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 48 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum++;yylval.r.colNo=colNum;										return MINUS;}
+#line 48 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum++;yylval.r.colNo=colNum;									return PLUS;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 49 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum++;yylval.r.colNo=colNum;										return OPEN_P;}
+#line 49 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum++;yylval.r.colNo=colNum;										return MINUS;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 50 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum++;yylval.r.colNo=colNum;											return CLOSE_P;}
+#line 50 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum++;yylval.r.colNo=colNum;										return OPEN_P;}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 51 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum+=15;yylval.r.colNo=colNum;								return AT_IMPLEMENTATION;}
+#line 51 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum++;yylval.r.colNo=colNum;											return CLOSE_P;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 52 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum+=4;yylval.r.colNo=colNum;                                 return AT_ASM;}
+#line 52 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum+=15;yylval.r.colNo=colNum;								return AT_IMPLEMENTATION;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 53 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum+=2;yylval.r.colNo=colNum;											return AND_AND;}
+#line 53 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum+=4;yylval.r.colNo=colNum;                                 return AT_ASM;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 54 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{	colNum+=2;yylval.r.colNo=colNum;									return OR_OR;}
+#line 54 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum+=2;yylval.r.colNo=colNum;											return AND_AND;}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 55 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum+=2;yylval.r.colNo=colNum;										return LESS_OR_EQUAL;}
+#line 55 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{	colNum+=2;yylval.r.colNo=colNum;									return OR_OR;}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 56 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum+=2;	yylval.r.colNo=colNum;										return MORE_OR_EQUAL;}
+#line 56 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum+=2;yylval.r.colNo=colNum;										return LESS_OR_EQUAL;}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 57 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum++;yylval.r.colNo=colNum;											return MULTI;}
+#line 57 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum+=2;	yylval.r.colNo=colNum;										return MORE_OR_EQUAL;}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 59 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum+=2;	yylval.r.colNo=colNum;										return EQUAL_EQUAL;}
+#line 58 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum++;yylval.r.colNo=colNum;											return MULTI;}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 60 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum+=2;yylval.r.colNo=colNum;											return NOT_EQUAL;}
+#line 60 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum+=2;	yylval.r.colNo=colNum;										return EQUAL_EQUAL;}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 61 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum+=3;	yylval.r.colNo=colNum;										return FOR;}
+#line 61 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum+=2;yylval.r.colNo=colNum;											return NOT_EQUAL;}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 62 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{	colNum++;yylval.r.colNo=colNum;									return EQUAL;}
+#line 62 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum+=3;	yylval.r.colNo=colNum;										return FOR;}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 63 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum++;yylval.r.colNo=colNum;										return DIV;}
+#line 63 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{	colNum++;yylval.r.colNo=colNum;									return EQUAL;}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 64 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{		colNum+=5;yylval.r.colNo=colNum;								return WHILE;}
+#line 64 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum++;yylval.r.colNo=colNum;										return DIV;}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 65 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{	colNum+=2;	yylval.r.colNo=colNum;									return IF;}
+#line 65 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{		colNum+=5;yylval.r.colNo=colNum;								return WHILE;}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 66 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{   colNum+=2;	yylval.r.colNo=colNum;									return ELSE;}
+#line 66 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{	colNum+=2;	yylval.r.colNo=colNum;									return IF;}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 67 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{  colNum+=2; yylval.r.colNo=colNum;                                       return DO;}
+#line 67 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{   colNum+=2;	yylval.r.colNo=colNum;									return ELSE;}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 68 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{  colNum+=6; yylval.r.colNo=colNum;                                     return SWITCH;}
+#line 68 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{  colNum+=2; yylval.r.colNo=colNum;                                       return DO;}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 69 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{   colNum+=4;  yylval.r.colNo=colNum;                                   return CASE;}
+#line 69 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{  colNum+=6; yylval.r.colNo=colNum;                                     return SWITCH;}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 70 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{   colNum+=7;  yylval.r.colNo=colNum;                                 return DEFAULT;}
+#line 70 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{   colNum+=4;  yylval.r.colNo=colNum;                                   return CASE;}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 71 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{   colNum+=5;  yylval.r.colNo=colNum;                               return BREAK;}
+#line 71 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{   colNum+=7;  yylval.r.colNo=colNum;                                 return DEFAULT;}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 72 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{   colNum+=4;    yylval.r.colNo=colNum;                             return ENUM;}
+#line 72 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{   colNum+=5;  yylval.r.colNo=colNum;                               return BREAK;}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 73 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{	colNum++;yylval.r.colNo=colNum;										return OPEN_ARR;}
+#line 73 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{   colNum+=4;    yylval.r.colNo=colNum;                             return ENUM;}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 74 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{	colNum++;yylval.r.colNo=colNum;									return CLOSE_ARR;}
+#line 74 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{	colNum++;yylval.r.colNo=colNum;										return OPEN_ARR;}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 75 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{	colNum+=4;yylval.r.colNo=colNum;									return TRUE;}
+#line 75 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{	colNum++;yylval.r.colNo=colNum;									return CLOSE_ARR;}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 76 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{	colNum+=5;	yylval.r.colNo=colNum;							return FALSE;}
+#line 76 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{	colNum+=4;yylval.r.colNo=colNum;									return TRUE;}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 77 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{		colNum+=6;yylval.r.colNo=colNum;				return STRUCT;}
+#line 77 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{	colNum+=5;	yylval.r.colNo=colNum;							return FALSE;}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 78 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{		colNum+=6;	yylval.r.colNo=colNum;							return RETURN;}
+#line 78 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{		colNum+=6;yylval.r.colNo=colNum;				return STRUCT;}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 79 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{  colNum+=strlen(yytext);yylval.r.colNo=colNum;	 yylval.r.int_val=atoi(yytext);		return INT_VAL;}
+#line 79 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{		colNum+=6;	yylval.r.colNo=colNum;							return RETURN;}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 80 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{	colNum+=strlen(yytext);	yylval.r.colNo=colNum; yylval.r.float_val=atof(yytext);				return FLOAT_VAL;}
+#line 80 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{  colNum+=strlen(yytext);yylval.r.colNo=colNum;	 yylval.r.int_val=atoi(yytext);		return INT_VAL;}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 81 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{	colNum+=strlen(yytext);	yylval.r.colNo=colNum;		return CHAR_VAL;}
+#line 81 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{	colNum+=strlen(yytext);	yylval.r.colNo=colNum; yylval.r.float_val=atof(yytext);				return FLOAT_VAL;}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 82 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{  colNum+=strlen(yytext);	yylval.r.colNo=colNum;		return DOUBLEPLUS;}
+#line 82 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{	colNum+=strlen(yytext);	yylval.r.colNo=colNum;		return CHAR_VAL;}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 83 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{  colNum+=strlen(yytext);	yylval.r.colNo=colNum;		return DOUBLEMINUS;}
+#line 83 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{  colNum+=strlen(yytext);	yylval.r.colNo=colNum;		return DOUBLEPLUS;}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 84 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{		colNum+=strlen(yytext);	yylval.r.colNo=colNum;yylval.r.string_val=new string(yytext+1);	yylval.r.string_val->pop_back();			return STRING_VAL;}
+#line 84 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{  colNum+=strlen(yytext);	yylval.r.colNo=colNum;		return DOUBLEMINUS;}
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 85 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{		colNum+=strlen(yytext);yylval.r.colNo=colNum;		yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);		return IDENTIFIER;}
+#line 85 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{		colNum+=strlen(yytext);	yylval.r.colNo=colNum;yylval.r.string_val=new string(yytext+1);	yylval.r.string_val->pop_back();			return STRING_VAL;}
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 86 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{		colNum+=strlen(yytext);yylval.r.colNo=colNum;				    }
+#line 86 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{		colNum+=strlen(yytext);yylval.r.colNo=colNum;		yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);		return IDENTIFIER;}
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 87 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{		colNum+=strlen(yytext);yylval.r.colNo=colNum;			   }
+#line 87 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{		colNum+=strlen(yytext);yylval.r.colNo=colNum;				    }
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 88 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{ lineNum++;  colNum=1;yylval.r.colNo=colNum;yylval.r.lineNo=lineNum;}
+#line 88 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{		colNum+=strlen(yytext);yylval.r.colNo=colNum;			   }
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 89 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum+=1;yylval.r.colNo=colNum;				return DOT;}
+#line 89 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{ lineNum++;  colNum=1;yylval.r.colNo=colNum;yylval.r.lineNo=lineNum;}
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 90 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 90 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
+{colNum+=1;yylval.r.colNo=colNum;				return DOT;}
+	YY_BREAK
+case 70:
+YY_RULE_SETUP
+#line 91 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 ECHO;
 	YY_BREAK
-#line 1080 "lex.yy.cc"
+#line 1087 "lex.yy.cc"
 			case YY_STATE_EOF(INITIAL):
 			case YY_STATE_EOF(comment):
 				yyterminate();
@@ -1448,7 +1456,7 @@ yy_state_type yyFlexLexer::yy_get_previous_state()
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 207 )
+			if ( yy_current_state >= 212 )
 				yy_c = yy_meta[(unsigned int) yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
@@ -1473,11 +1481,11 @@ yy_state_type yyFlexLexer::yy_try_NUL_trans( yy_state_type yy_current_state )
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 207 )
+		if ( yy_current_state >= 212 )
 			yy_c = yy_meta[(unsigned int) yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
-	yy_is_jam = (yy_current_state == 206);
+	yy_is_jam = (yy_current_state == 211);
 	if ( ! yy_is_jam )
 		*yy_state_ptr++ = yy_current_state;
 
@@ -1883,5 +1891,5 @@ int main()
 	return 0;
 	}
 #endif
-#line 90 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
+#line 91 "C:\\Users\\Dell\\Source\\Repos\\occFinal\\compiler\\lex.l"
 
