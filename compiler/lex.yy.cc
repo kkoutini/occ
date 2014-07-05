@@ -1025,7 +1025,7 @@ YY_RULE_SETUP
 case 59:
 YY_RULE_SETUP
 #line 80 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{	colNum+=strlen(yytext);	yylval.r.colNo=colNum;				return FLOAT_VAL;}
+{	colNum+=strlen(yytext);	yylval.r.colNo=colNum; yylval.r.float_val=atof(yytext);				return FLOAT_VAL;}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP

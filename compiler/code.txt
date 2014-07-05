@@ -13,7 +13,7 @@ int a;
 +(void) main{
 NSString s;
 s="hiiii";
-[System println:s];
+[System println: 3.5 + 4.5];
 A* a,b,c;
 a=[A alloc];
 b=[B alloc];

@@ -231,7 +231,7 @@ void MIPS_ASM::lif(string reg,float v)
 		
 	c+=reg;
 	c+=",";
-	c+=v;
+	c+=std::to_string(v);
 	c+="\n";
 	MIPS_ASM::add_instruction(c);
 

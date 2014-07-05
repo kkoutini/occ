@@ -77,7 +77,7 @@ FLOAT						("+"|"-")?({digit}+\.{digit}+)
 "struct"  {		colNum+=6;yylval.r.colNo=colNum;				return STRUCT;}
 "return"			{		colNum+=6;	yylval.r.colNo=colNum;							return RETURN;}
 ([1-9][0-9]*)|0		{  colNum+=strlen(yytext);yylval.r.colNo=colNum;	 yylval.r.int_val=atoi(yytext);		return INT_VAL;}
-{FLOAT}				{	colNum+=strlen(yytext);	yylval.r.colNo=colNum;				return FLOAT_VAL;}
+{FLOAT}				{	colNum+=strlen(yytext);	yylval.r.colNo=colNum; yylval.r.float_val=atof(yytext);				return FLOAT_VAL;}
 \'[a-zA-z]\'		{	colNum+=strlen(yytext);	yylval.r.colNo=colNum;		return CHAR_VAL;}
 "++"                {  colNum+=strlen(yytext);	yylval.r.colNo=colNum;		return DOUBLEPLUS;}
 "--"                {  colNum+=strlen(yytext);	yylval.r.colNo=colNum;		return DOUBLEMINUS;}

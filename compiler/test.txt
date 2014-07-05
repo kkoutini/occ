@@ -352,7 +352,7 @@ lw $t0, 0($sp)
 sw $t0,0($v0)
 add $sp,$sp,4
  ##F:code.txt #L:16
- #Dynamically CALLING A METHOD 12
+ #Dynamically CALLING A METHOD 11
  #preserving registers
 sub $sp,$sp,4
 sw $ra, 0($sp)
@@ -367,14 +367,22 @@ sw $t0, 0($sp)
  #generating code for Args
  #generating code for selector:println
  #generating  for var #0
- #identifier s
-lw $t0,-8($fp)
-addi $v0,$fp,-8
+li $t9,1080033280
 sub $sp,$sp,4
-sw $t0, 0($sp)
+sw $t9, 0($sp)
+li $t9,1083179008
+sub $sp,$sp,4
+sw $t9, 0($sp)
+l.s $f1, 0($sp)
+add $sp,$sp,4
+l.s $f0, 0($sp)
+add $sp,$sp,4
+add.s $f0,$f0,$f1
+sub $sp,$sp,4
+s.s $f0, 0($sp)
 lw $t0,4($sp)
 lw $a0,0($t0)
-li $a1,12
+li $a1,11
 jal global_vtable
 lw $fp, 0($sp)
 add $sp,$sp,4
