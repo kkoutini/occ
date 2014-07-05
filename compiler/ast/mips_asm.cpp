@@ -1,7 +1,7 @@
 using namespace std;
 #include "mips_asm.h"
 #include <sstream>
-
+#include <map>
 int MIPS_ASM::lines=0;
 int MIPS_ASM::cols=0;
 char MIPS_ASM::alltext2[20000];
@@ -13,12 +13,23 @@ stringstream MIPS_ASM::data;
 stringstream MIPS_ASM::main;
 extern std::ofstream ofs;
 FILE * MIPS_ASM::file = fopen("AssemblyCode.asm","w");
-
+int MIPS_ASM::strings_count = 0;
+map<string, int> strings;
+const string stringsLabelPrefix = "string_";
 void MIPS_ASM::add_instruction(string c)
 {
 
 	code<<c.c_str();
 }
+string MIPS_ASM::getStringAdressLabel(string str){
+	if (strings.find(str) == strings.end())
+	{
+		strings[str] = ++strings_count;
+		add_data(stringsLabelPrefix + std::to_string(strings[str])+": .asciiz \"" + str +"\"\n");
+	}
+	return stringsLabelPrefix + std::to_string(strings[str]);
+}
+
 
 void MIPS_ASM::add_data(string c)
 {

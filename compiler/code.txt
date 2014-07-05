@@ -11,6 +11,9 @@ int a;
 
 @implementation A
 +(void) main{
+NSString s;
+s="hiiii";
+[System println:s];
 A* a,b,c;
 a=[A alloc];
 b=[B alloc];

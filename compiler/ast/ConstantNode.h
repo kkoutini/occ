@@ -40,18 +40,35 @@ public:
 	}
 	ConstantNode(string  val, ScoopNode* scoop):Node(scoop){
 		value.string_val=val;
-		type=symbolTable->getType("string");
+		type=symbolTable->getType("NSString");
 	}
 	ConstantNode(char val, ScoopNode* scoop):Node(scoop){
 		value.char_val=val;
 		type=symbolTable->getType("char");
 	}
 		virtual void generateCode (){
-			MIPS_ASM::li("t9",this->value.int_val);
-			//ofs<<"li $a0,"<<this->value.int_val<<"\n";
-			MIPS_ASM::push("t9");
-			//ofs<<"sub $sp,$sp,4\n";
-			//ofs<<"sw $a0, 0($sp)\n";
+			if (type == symbolTable->getType("int")){
+				MIPS_ASM::li("t9", this->value.int_val);
+				MIPS_ASM::push("t9");
+			}
+			if (type == symbolTable->getType("bool")){
+				MIPS_ASM::li("t9", this->value.bool_val);
+				MIPS_ASM::push("t9");
+			}
+			if (type == symbolTable->getType("float")){
+				// todo don't cast keep the bits only
+				MIPS_ASM::li("t9", this->value.float_val);
+				MIPS_ASM::push("t9");
+			}
+			if (type == symbolTable->getType("char")){
+				MIPS_ASM::li("t9", this->value.char_val);
+				MIPS_ASM::push("t9");
+			}
+			if (type == symbolTable->getType("NSString")){
+				MIPS_ASM::la("t9", MIPS_ASM::getStringAdressLabel(this->value.string_val));
+				MIPS_ASM::push("t9");
+			}
+
 			
 	}
 		virtual Type* generateType()

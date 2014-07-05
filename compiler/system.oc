@@ -75,17 +75,26 @@
 	@asm "li $v0, 2";
     @asm "l.s  $f12,-8($fp)";
 	@asm "syscall";
+	@asm "li $v0 ,4";
+	@asm "la $a0 ,newline";
+	@asm "syscall";
 }
 +(void) println:(NSString)parameter
 {
 	@asm "li $v0 ,4";
  	@asm "lw $a0 ,-8($fp)";
 	@asm "syscall";
+	@asm "li $v0 ,4";
+	@asm "la $a0 ,newline";
+	@asm "syscall";
 }
 +(void) println:(char)parameter
 {
 	@asm "li $v0, 12";
 	@asm "lw $a0 ,-8($fp)";
+	@asm "syscall";
+	@asm "li $v0 ,4";
+	@asm "la $a0 ,newline";
 	@asm "syscall";
 }
 +(int) readint

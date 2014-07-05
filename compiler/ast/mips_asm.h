@@ -16,6 +16,7 @@ class MIPS_ASM
 private: 
 		  
 public:
+	static int strings_count ;
 	 static char alltext2[20000];
 	// static char data[1000];
 	 static int MIPS_ASM::lines;
@@ -30,6 +31,7 @@ public:
 	static stringstream MIPS_ASM::main;
 
 static	FILE * file;
+static string getStringAdressLabel(string str);
 
 static void writeData();
 static void writeCode();
