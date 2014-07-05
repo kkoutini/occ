@@ -6,9 +6,15 @@
 #include "../ast/FunctionNode.h"
 #include "../ast/IdentifierNode.h"
 #include <set>
+#include "../Program.h";
+#include "../SemanticError.h";
+
 extern std::ofstream ofs;
 extern ScoopNode* globalScoop;
 extern Method * mainMethod;
+extern int lineNum;
+extern int colNum;
+extern string sourceFile;
 
 SymbolTable::SymbolTable(void)
 {
@@ -141,7 +147,11 @@ void SymbolTable::generateStaticsCode()
 	}
 	else{
 		//ToDo error
-		Streams::WTF() << "errors null main";
+		//hasson
+		string error = "Error Main not Found";
+		Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
+
+		
 	}
 	globalScoop->generateCode();
 
@@ -183,7 +193,7 @@ bool SymbolTable::checkInhertanceLoop()
 					return false;
 				s.insert(ifs);
 			}
-			//TODo  check inhertance looop ; use sets std::set
+		
 		}
 	}
 	return true;

@@ -41,24 +41,7 @@ public:
 	{
 		_currentInnerOffset=0;
 	}
-	/*
-	copy constructer shouldn't be used
-	ScoopNode(ScoopNode* scoop):Node(scoop)
-	{
-		//TODO this may cause problems for later defined vars
-		if(scoop!=NULL){
-			offset=scoop->offset;
-		_currentInnerOffset=scoop->_currentInnerOffset;
-		}
-		else{ _currentInnerOffset=0; offset=0;}
-		if(scoop!=NULL){
-		for(auto i=scoop->_nodes.begin();i!=scoop->_nodes.end();i++){
-			_nodes.push_back(*i);
-		}
-		for(map<string, Variable*>::iterator it=scoop->_variables.begin();it!=scoop->_variables.end();it++)
-			_variables.insert(make_pair(it->first, it->second));
-		}
-	}*/
+	
 	ScoopNode* getParent(){
 		return this->_scoop;
 	}

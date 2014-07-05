@@ -13,6 +13,7 @@
 		dispose(*i);
 	}
 	//TODO collecting garbage
+	//khaled
 	MIPS_ASM::releaseStack(getFrameSize());
 
 }

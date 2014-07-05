@@ -173,7 +173,13 @@ void InterfaceHelper:: implementMethods(vector<Method*>methodsList,Interface* in
 						if (methodsList.at(i)->get_name() == "main")
 						{
 							//TODO check for multiple main
-							
+							//hasson
+							if (mainMethod!=NULL)
+							{
+								string error = "Multiple Main Found";
+								Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
+
+							}
 							mainMethod = methodsList.at(i);
 						}
 					}

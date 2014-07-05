@@ -5,6 +5,7 @@ class SyntaxError :
 {
 public:
 	SyntaxError(string);
+	SyntaxError(string,int ,int ,string);
 	virtual void toString();
 	virtual ~SyntaxError();
 };

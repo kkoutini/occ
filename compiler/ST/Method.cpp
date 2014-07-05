@@ -7,6 +7,11 @@
 #include "../ast/FunctionNode.h"
 #include "../MethodsIndexer.h"
 #include "Interface.h"
+#include "../SyntaxError.h";
+#include "../SemanticError.h";
+extern int lineNum;
+extern int colNum;
+extern string sourceFile;
 void Method::setFunctionNode(FunctionNode* fNode){
 	this->scoopBody = fNode;
 }
@@ -124,8 +129,12 @@ void Method::checkParameters(Method*method1, Method*method2){
 			j++;
 		else
 		{
+			//hasson
 			//TODO make error not cout
-			cout << "Error:Conflicting parameter type in implementation of '" << method1->parameters.at(i)->get_name() << "': '";
+		string error= "Error:Conflicting parameter type in implementation of '" + method1->parameters.at(i)->get_name() + "': '";
+
+			Program::addError(new SemanticError(error,colNum,lineNum,sourceFile));
+			
 		}
 	}
 }
@@ -231,6 +240,7 @@ string Method::getLabel()
 		if (this->getFunctionNode() == NULL){
 			//not implmented method
 			//Todo 
+			//khaled
 			label = "not_implemented";
 		}
 		else{

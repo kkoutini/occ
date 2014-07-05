@@ -48,12 +48,15 @@ public:
 		{
 			//todo
 			//ERRor
+			string error = "ERROR Sender isn't Interface " ;
+			addError(error);
+			
 		}
 		
 		int method = MethodsIndexer::getMethodIndex(_message, _selcs);
 
 		if (method == -1){
-
+			//khaled
 			//ERROR no method found
 			
 			return;
@@ -98,10 +101,13 @@ public:
 		{
 			//todo
 			//ERRor
+			string error = "ERROR Sender isn't Interface ";
+			addError(error);
 		}
 		Method* method = sender_interface->getMethod(_message, _selcs);
 
 		if (method == NULL){
+			//khaled
 			//ERROR no method
 			return;
 		}

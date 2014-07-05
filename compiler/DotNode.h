@@ -25,9 +25,11 @@ public:
 		if (sender_interface == NULL)
 		{
 			//ERRor
+			string error = "ERROR Sender isn't Interface ";
+			addError(error);
 		}
 		Variable* variable = sender_interface->getVariableByName(_member);
-
+		//khaled
 		if (variable == NULL){
 			//ERROR no datamember with the name
 			return;
@@ -43,7 +45,7 @@ public:
 		MIPS_ASM::lw("t0",variable->getOffset(),"a0");
 
 		//v0 contains the address in memorry to be used later in assignment
-		//TODO recheck this when checking the stack 
+		
 		MIPS_ASM::add_instruction(string("addi $v0,$") + "a0"//var->getOffsetRegister()
 			+ "," + std::to_string(variable->getOffset()) + "\n");
 

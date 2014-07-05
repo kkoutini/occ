@@ -56,6 +56,7 @@ public:
 				MIPS_ASM::push("t9");
 			}
 			if (type == symbolTable->getType("float")){
+				//khaled
 				// todo don't cast keep the bits only
 				MIPS_ASM::li("t9", this->value.float_val);
 				MIPS_ASM::push("t9");
