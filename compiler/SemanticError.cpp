@@ -4,6 +4,13 @@
 SemanticError::SemanticError(string message):Error(message)
 {
 }
+SemanticError::SemanticError(string message,int col,int num,string _file) : Error(message)
+{
+	file = _file;
+	lineNo = num;
+	colNo = col;
+}
+
 
 void SemanticError::toString(){
 	cout<<"Semantic Issue: ";

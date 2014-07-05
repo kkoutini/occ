@@ -9,6 +9,12 @@ public:
 	{
 
 	}
+	Warning(string message,int col ,int line,string _file) :Error(message)
+	{
+		colNo = col;
+		lineNo = line;
+		file = _file;
+	}
 
 	void Warning::toString(){
 		cout << "Warning Issue: ";

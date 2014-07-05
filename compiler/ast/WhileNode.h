@@ -21,8 +21,8 @@ public:
 		Type* boolType = symbolTable->getType("bool");
 		if (_condition->getType() == NULL)
 		{
-			string error = "ERROR in condition in While NULL ERROR  line number :" + std::to_string(_line) + " col number :" + std::to_string(_col);
-			Program::addError(new SemanticError(error));
+			string error = "ERROR in condition in While NULL ERROR ";
+			addError((error));
 		}
 		else{
 			if (_condition->getType() == boolType)
@@ -32,8 +32,8 @@ public:
 			else
 			{
 				/////////// error 	
-				string error = "ERROR Cannot implicitly convert type " + _condition->getType()->get_name() + " to 'bool'  AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
-				Program::addError(new SemanticError(error));
+				string error = "ERROR Cannot implicitly convert type " + _condition->getType()->get_name() + " to 'bool' ";
+				addError(error);
 				return false;
 			}
 

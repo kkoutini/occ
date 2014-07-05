@@ -168,8 +168,8 @@ if(_op==MORE_OR_EQUAL)
 		case MINUS:
 			if (_rightExp->getType() == NULL || _leftExp->getType()==NULL)
 			{
-				string error = "ERROR in cast in binary operation type is null  line number ";
-				Program::addError(new SemanticError(error));
+				string error = "ERROR in cast in binary operation type is Null ";
+				addError(error);
 				return false;
 			}
 			if(TypeChecker::canCast(_rightExp->getType(),_leftExp->getType())==1)
@@ -181,15 +181,15 @@ if(_op==MORE_OR_EQUAL)
 					return _rightExp->getType();
 
 				////// THROW WARNING
-				string error = "WARNING in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name() + " AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
-				Program::addWarning(new Warning(error));
+				string error = "WARNING in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name();
+				addWarning(error);
 				return false;
 				return _leftExp->getType();
 
 			}else{
 				////// THROW ERROR
-				string error = "ERROR in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name() + " AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
-				Program::addError(new SemanticError(error));
+				string error = "ERROR in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name() ;
+				addError(error);
 				return false;
 			
 			}

@@ -23,8 +23,8 @@ public:
 
 		if (_condtion->getType() == NULL)
 		{
-			string error = "ERROR TYPE NULL in IF NODE  AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
-			Program::addError(new SemanticError(error));
+			string error = "ERROR TYPE NULL in IF NODE  ";
+			addError(error);
 			return false;
 		}
 
@@ -35,8 +35,8 @@ public:
 		else
 		{
 			/////////// error 
-			string error = "ERROR Cannot implicitly convert type " + _condtion->getType()->get_name() + " to 'bool'  AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
-			Program::addError(new SemanticError(error));
+			string error = "ERROR Cannot implicitly convert type " + _condtion->getType()->get_name() + " to 'bool' " ;
+			addError(error);
 			return false;
 		}
 

@@ -1,36 +1,49 @@
 #pragma once
 #include "mips_asm.h"
 #include <string>
+#include "../SemanticError.h";
+#include "../Warning.h";
+#include "../Program.h";
+
+
 class ScoopNode;
 class Type;
 class Node
 {
 protected:
-		int _line;
-		int _col;
-		string _filename;
-		Type* type;
+	int _line;
+	int _col;
+	string _filename;
+	Type* type;
 
 public:
 	ScoopNode* _scoop;
 	virtual void toString(){
 	}
-	Node(ScoopNode* scoop):_scoop(scoop)
+	Node(ScoopNode* scoop) :_scoop(scoop)
 	{
 		this->_line = ::lineNum;
 		this->_col = ::colNum;
 		this->_filename = ::sourceFile;
 	}
-	
-	virtual void generateCode (){
-		cout<<"Not implmented yet!!!!!!!!!!\n";
+
+	virtual void generateCode(){
+		cout << "Not implmented yet!!!!!!!!!!\n";
 	}
 	virtual bool typeCheck()
 	{
-		cout<<"Not implmented yet!!!!!!!!!!\n";
+		cout << "Not implmented yet!!!!!!!!!!\n";
 		return true;
 	}
 
+	void addError(string error)
+	{
+		Program::addError(new SemanticError(error,_col,_line,_filename));
+	}
+	void addWarning(string error)
+	{
+		Program::addWarning(new Warning(error, _col, _line, _filename));
+	}
 	/**
 	*	generate type for the node based on it's children 
 	*	SHOULD be overriden

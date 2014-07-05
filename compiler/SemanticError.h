@@ -7,6 +7,7 @@ class SemanticError :public Error
 {
 public:
 	SemanticError(string);
+	SemanticError(string,int ,int ,string);
 	void toString();
 	~SemanticError(void);
 };

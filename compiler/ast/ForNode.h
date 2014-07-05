@@ -39,8 +39,8 @@ public:
 				else
 				{
 					/////////// error 
-					string error = "ERROR Cannot implicitly convert type " + _condition->getType()->get_name() + " to 'bool'  AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
-					Program::addError(new SemanticError(error));
+					string error = "ERROR Cannot implicitly convert type " + _condition->getType()->get_name() + " to 'bool' ";
+					addError(error);
 				}
 			}
 			else

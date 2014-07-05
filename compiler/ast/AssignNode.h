@@ -57,7 +57,7 @@ public:
 		if (_rightExp->getType() == NULL || _leftExp->getType()==NULL)
 		{
 			string error = "ERROR some type in assign Node is null  ";
-			Program::addError(new SemanticError(error));
+			addError((error));
 			return false;
 		}
 		else{
@@ -68,15 +68,15 @@ public:
 			else if (TypeChecker::canCast(_rightExp->getType(), _leftExp->getType()) == 2)
 			{
 				//////THROW WARNING	
-				string error = "WARNING in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name() + " AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
-				Program::addWarning(new Warning(error));
+				string error = "WARNING in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name();
+				addWarning(error);
 				return true;
 
 			}
 			else{
 				////// THROW ERROR
-				string error = "ERROR in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name() + " AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
-				Program::addError(new SemanticError(error));
+				string error = "ERROR in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name();
+				addError(error);
 				return false;
 			}
 		}

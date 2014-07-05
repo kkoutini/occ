@@ -28,8 +28,8 @@ public:
 		//////////////////////////////////
 			/////////////
 			///////////////////////////////////
-			string error = "ERROR return type mismatch  line number :" + std::to_string(_line) + " col number :" + std::to_string(_col);
-			Program::addError(new SemanticError(error));
+			string error = "ERROR return type mismatch  ";
+			addError(error);
 			return false;
 		}
 

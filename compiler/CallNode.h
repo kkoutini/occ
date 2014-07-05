@@ -41,7 +41,7 @@ public:
 	virtual void dynamic_bind(){
 
 		Type* senderType = _sender->getType();
-
+		
 		//TODO: check if sender isn't interface
 		Interface* sender_interface = (dynamic_cast<Interface*>(senderType));
 		if (sender_interface == NULL)

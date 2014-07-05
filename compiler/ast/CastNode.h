@@ -20,7 +20,7 @@ public:
 		if (_node->getType()==NULL)
 		{
 			string error = "ERROR in cast NODE type is null   ";
-			Program::addError(new SemanticError(error));
+			addError((error));
 			symbolTable->getType("error_type");
 		}
 		else
@@ -33,16 +33,16 @@ public:
 			else if (res == 2)
 			{
 				/////////WARNING
-				string error = "WARNING in convert from " + (_node->getType()->get_name()) + " To " + _toType->get_name() + " AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
-				Program::addWarning(new Warning(error));
+				string error = "WARNING in convert from " + (_node->getType()->get_name()) + " To " + _toType->get_name();
+				addWarning(error);
 				return _toType;
 
 			}
 			else
 			{
 				//throw error
-				string error = "ERROR in convert from " + (_node->getType()->get_name()) + " To " + _toType->get_name() + " AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
-				Program::addError(new SemanticError(error));
+				string error = "ERROR in convert from " + (_node->getType()->get_name()) + " To " + _toType->get_name();
+				addError(error);
 				symbolTable->getType("error_type");
 			}
 		}
