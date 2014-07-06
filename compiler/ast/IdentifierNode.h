@@ -2,7 +2,11 @@
 #include "node.h"
 #include "string"
 #include "../ClassNode.h"
+#include "../SemanticError.h"
 using std::string;
+extern int lineNum;
+extern int colNum;
+extern string sourceFile;
 class IdentifierNode:
 	public Node
 {
@@ -20,6 +24,8 @@ public:
 		return this->_scoop->get_variable(_name)->getOffset();
 	}
 virtual void generateCode(){
+	if (getType() == symbolTable->getType("error_type"))
+		return;
 		MIPS_ASM::printComment("identifier "+_name);
 		Variable *var = this->_scoop->get_variable(_name);
 		ClassNode* cn = dynamic_cast<ClassNode*>(var->_scoop);
@@ -51,7 +57,16 @@ virtual void generateCode(){
 	}
   virtual Type* generateType()
   {
-	 return this->_scoop->get_variable(_name)->getType();
+	
+		
+	  if (this->_scoop->get_variable(_name) == NULL)
+		{
+		  Program::addError(new SemanticError("undeclare variable "+_name+" ", lineNum, colNum, sourceFile));
+		  return symbolTable->getType("error_type");
+		}
+		else
+			return  this->_scoop->get_variable(_name)->getType();;
+
   }
 	virtual ~IdentifierNode(void)
 	{

@@ -196,8 +196,8 @@ public:
 
 
 
-
-		if (getType() == intType)
+		//khaled i change this because it is geting the whole expr type like bool for == and of course it is not int
+		if (getHypoType() == intType)
 		{
 
 
