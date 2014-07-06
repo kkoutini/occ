@@ -47,27 +47,22 @@ public:
 		string f0 = "f0";
 		string f1 = "f1";
 
-		if (getType() == floatType)
+		if (getHypoType() == floatType)
 		{
-			if (lefttype == intType)
-			{
-				MIPS_ASM::popf(f1);
+			MIPS_ASM::popf(f1);
+			MIPS_ASM::popf(f0);
 
-			}
-			else{
-
-				//	MIPS_ASM::popf(f1);
-
-			}
 			if (righttype == intType)
 			{
-				MIPS_ASM::popf(f1);
+				MIPS_ASM::add_instruction("cvt.s.w $f1,$f1\n");
 
 			}
-			else{
-				//MIPS_ASM::popf(f0);
+			if (lefttype == intType)
+			{
+				MIPS_ASM::add_instruction("cvt.s.w $f0,$f0\n");
 
 			}
+			
 
 
 			if (_op == PLUS)
@@ -148,7 +143,7 @@ public:
 				MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
 				MIPS_ASM::add_instruction("li $t0,1\n");
 				MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
-				MIPS_ASM::pushf("t0");
+				MIPS_ASM::push("t0");
 				/*MIPS_ASM::add_instruction("slt $t2,$t0,$t1\n");
 				MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
 				MIPS_ASM::add_instruction("sw $t2, 0($sp)\n");*/
@@ -182,7 +177,7 @@ public:
 				MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
 				MIPS_ASM::add_instruction("li $t0,1\n");
 				MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
-				MIPS_ASM::pushf("t0");
+				MIPS_ASM::push("t0");
 			}
 
 			if (_op == MORE_OR_EQUAL)
@@ -195,7 +190,7 @@ public:
 				MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
 				MIPS_ASM::add_instruction("li $t0,0\n");
 				MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
-				MIPS_ASM::pushf("t0");
+				MIPS_ASM::push("t0");
 			}
 		}
 
@@ -322,7 +317,13 @@ public:
 		//MIPS_ASM::push(t0);
 	}
 
-
+	Type* hypoType = NULL;
+	Type* getHypoType(){
+		getType();
+		if (hypoType)
+			return hypoType;
+		return getType();
+	}
 	virtual Type* generateType()
 	{
 
@@ -333,11 +334,12 @@ public:
 		case DIV:
 		case PLUS:
 		case MINUS:
+
 			if (_rightExp->getType() == NULL || _leftExp->getType() == NULL)
 			{
 				string error = "ERROR in cast in binary operation type is Null ";
 				addError(error);
-				return false;
+				return symbolTable->getType("error_type");
 			}
 			if (TypeChecker::canCast(_rightExp->getType(), _leftExp->getType()) == 1)
 			{
@@ -351,7 +353,6 @@ public:
 				////// THROW WARNING
 				string error = "WARNING in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name();
 				addWarning(error);
-				return false;
 				return _leftExp->getType();
 
 			}
@@ -359,9 +360,10 @@ public:
 				////// THROW ERROR
 				string error = "ERROR in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name();
 				addError(error);
-				return false;
+				return symbolTable->getType("error_type");;
 
 			}
+
 			//////TO DO <= >= ==  !=
 
 		case EQUAL_EQUAL:
@@ -371,6 +373,33 @@ public:
 		case LESS_THAN:
 		case MORE_THAN:
 		{
+						  if (_rightExp->getType() == NULL || _leftExp->getType() == NULL)
+						  {
+							  string error = "ERROR in cast in binary operation type is Null ";
+							  addError(error);
+							  hypoType = symbolTable->getType("error_type");
+						  }
+						  if (TypeChecker::canCast(_rightExp->getType(), _leftExp->getType()) == 1)
+						  {
+							  hypoType = _leftExp->getType();
+						  }
+						  else if (TypeChecker::canCast(_rightExp->getType(), _leftExp->getType()) == 2)
+						  {
+							  if (TypeChecker::canCast(_leftExp->getType(), _rightExp->getType()) == 1)
+								  hypoType = _rightExp->getType();
+
+							  ////// THROW WARNING
+							  string error = "WARNING in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name();
+							  addWarning(error);
+							  hypoType = symbolTable->getType("error_type");
+						  }
+						  else{
+							  ////// THROW ERROR
+							  string error = "ERROR in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name();
+							  addError(error);
+							  hypoType = symbolTable->getType("error_type");
+
+						  }
 						  Type* t = symbolTable->getType("bool");
 						  return t;
 		}

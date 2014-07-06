@@ -112,6 +112,7 @@
     <ClCompile Include="Struct.cpp" />
     <ClCompile Include="StructHelper.cpp" />
     <ClCompile Include="ST\Array.cpp" />
+    <ClCompile Include="ST\ArrayType.cpp" />
     <ClCompile Include="ST\Interface.cpp" />
     <ClCompile Include="ST\Method.cpp" />
     <ClCompile Include="ST\Protocol.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="Struct.h" />
     <ClInclude Include="StructHelper.h" />
     <ClInclude Include="ST\Array.h" />
+    <ClInclude Include="ST\ArrayType.h" />
     <ClInclude Include="ST\Interface.h" />
     <ClInclude Include="ST\Method.h" />
     <ClInclude Include="ST\Protocol.h" />

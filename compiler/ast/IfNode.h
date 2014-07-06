@@ -44,7 +44,7 @@ public:
 
 	void generateCode()
 	{
-
+		MIPS_ASM::printComment("ifNode");
 		string i = "";
 		i = std::to_string(IfNode::if_label++);
 

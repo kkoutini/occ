@@ -15,6 +15,15 @@ int a;
 NSString s;
 s="hiiii";
 [System println: 3.5 + 4.5];
+if(6.8 < 4.5)
+	[System println: "is less"];
+if(6.8 <= 4.5)
+	[System println: "is less equal"];
+if(6.8 > 4.5)
+	[System println: "is more"];
+if(6.8 >= 4.5)
+	[System println: "is more eq"];
+
 A* a,b,c;
 a=[A alloc];
 b=[B alloc];

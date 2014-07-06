@@ -6,8 +6,12 @@ static_instance_7_NSObject:    .byte   0:4
 static_instance_9_System:    .byte   0:4
 static_instance_11_Wesso:    .byte   0:4
 string_1: .asciiz "hiiii"
-string_2: .asciiz "this is class B"
-string_3: .asciiz "this is class C"
+string_2: .asciiz "is less"
+string_3: .asciiz "is less equal"
+string_4: .asciiz "is more"
+string_5: .asciiz "is more eq"
+string_6: .asciiz "this is class B"
+string_7: .asciiz "this is class C"
 
 newline: .asciiz "\n"
 
@@ -209,10 +213,10 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:26
+ ##F:code.txt #L:35
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- ##F:code.txt #L:27
+ ##F:code.txt #L:36
  #Assign node
  #RHS:
 li $t9,1
@@ -249,10 +253,10 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:29
+ ##F:code.txt #L:38
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- ##F:code.txt #L:30
+ ##F:code.txt #L:39
  #Dynamically CALLING A METHOD 10
  #preserving registers
 sub $sp,$sp,4
@@ -414,8 +418,228 @@ add $sp,$sp,4
 sub $sp,$sp,4
 sw $v0, 0($sp)
 add $sp,$sp,4
- ##F:code.txt #L:18
- ##F:code.txt #L:19
+ ##F:code.txt #L:20
+ #ifNode
+li $t9,1088002458
+sub $sp,$sp,4
+sw $t9, 0($sp)
+li $t9,1083179008
+sub $sp,$sp,4
+sw $t9, 0($sp)
+l.s $f1, 0($sp)
+add $sp,$sp,4
+l.s $f0, 0($sp)
+add $sp,$sp,4
+ #LESS_THAN opf
+li $t0,0
+c.lt.s $f0,$f1 
+bc1f eqop_temp2
+li $t0,1
+eqop_temp2:
+sub $sp,$sp,4
+sw $t0, 0($sp)
+lw $t0, 0($sp)
+add $sp,$sp,4
+beq $t0,$0,else_0
+ #Dynamically CALLING A METHOD 12
+ #preserving registers
+sub $sp,$sp,4
+sw $ra, 0($sp)
+sub $sp,$sp,4
+sw $fp, 0($sp)
+ #generating code for the sender
+ #identifier System
+lw $t0,-16($gp)
+addi $v0,$gp,-16
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #generating code for Args
+ #generating code for selector:println
+ #generating  for var #0
+la $t9,string_2
+sub $sp,$sp,4
+sw $t9, 0($sp)
+lw $t0,4($sp)
+lw $a0,0($t0)
+li $a1,12
+jal global_vtable
+lw $fp, 0($sp)
+add $sp,$sp,4
+lw $ra, 0($sp)
+add $sp,$sp,4
+sub $sp,$sp,4
+sw $v0, 0($sp)
+add $sp,$sp,4
+j endif_0
+else_0:
+endif_0:
+ ##F:code.txt #L:22
+ #ifNode
+li $t9,1088002458
+sub $sp,$sp,4
+sw $t9, 0($sp)
+li $t9,1083179008
+sub $sp,$sp,4
+sw $t9, 0($sp)
+l.s $f1, 0($sp)
+add $sp,$sp,4
+l.s $f0, 0($sp)
+add $sp,$sp,4
+ #LESS_THAN opf
+li $t0,0
+c.le.s $f0,$f1 
+bc1f eqop_temp3
+li $t0,1
+eqop_temp3:
+sub $sp,$sp,4
+sw $t0, 0($sp)
+lw $t0, 0($sp)
+add $sp,$sp,4
+beq $t0,$0,else_1
+ #Dynamically CALLING A METHOD 12
+ #preserving registers
+sub $sp,$sp,4
+sw $ra, 0($sp)
+sub $sp,$sp,4
+sw $fp, 0($sp)
+ #generating code for the sender
+ #identifier System
+lw $t0,-16($gp)
+addi $v0,$gp,-16
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #generating code for Args
+ #generating code for selector:println
+ #generating  for var #0
+la $t9,string_3
+sub $sp,$sp,4
+sw $t9, 0($sp)
+lw $t0,4($sp)
+lw $a0,0($t0)
+li $a1,12
+jal global_vtable
+lw $fp, 0($sp)
+add $sp,$sp,4
+lw $ra, 0($sp)
+add $sp,$sp,4
+sub $sp,$sp,4
+sw $v0, 0($sp)
+add $sp,$sp,4
+j endif_1
+else_1:
+endif_1:
+ ##F:code.txt #L:24
+ #ifNode
+li $t9,1088002458
+sub $sp,$sp,4
+sw $t9, 0($sp)
+li $t9,1083179008
+sub $sp,$sp,4
+sw $t9, 0($sp)
+l.s $f1, 0($sp)
+add $sp,$sp,4
+l.s $f0, 0($sp)
+add $sp,$sp,4
+ #LESS_THAN opf
+li $t0,1
+c.lt.s $f0,$f1 
+bc1f eqop_temp4
+li $t0,0
+eqop_temp4:
+sub $sp,$sp,4
+sw $t0, 0($sp)
+lw $t0, 0($sp)
+add $sp,$sp,4
+beq $t0,$0,else_2
+ #Dynamically CALLING A METHOD 12
+ #preserving registers
+sub $sp,$sp,4
+sw $ra, 0($sp)
+sub $sp,$sp,4
+sw $fp, 0($sp)
+ #generating code for the sender
+ #identifier System
+lw $t0,-16($gp)
+addi $v0,$gp,-16
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #generating code for Args
+ #generating code for selector:println
+ #generating  for var #0
+la $t9,string_4
+sub $sp,$sp,4
+sw $t9, 0($sp)
+lw $t0,4($sp)
+lw $a0,0($t0)
+li $a1,12
+jal global_vtable
+lw $fp, 0($sp)
+add $sp,$sp,4
+lw $ra, 0($sp)
+add $sp,$sp,4
+sub $sp,$sp,4
+sw $v0, 0($sp)
+add $sp,$sp,4
+j endif_2
+else_2:
+endif_2:
+ ##F:code.txt #L:27
+ #ifNode
+li $t9,1088002458
+sub $sp,$sp,4
+sw $t9, 0($sp)
+li $t9,1083179008
+sub $sp,$sp,4
+sw $t9, 0($sp)
+l.s $f1, 0($sp)
+add $sp,$sp,4
+l.s $f0, 0($sp)
+add $sp,$sp,4
+ #LESS_THAN opf
+li $t0,1
+c.le.s $f0,$f1 
+bc1f eqop_temp5
+li $t0,0
+eqop_temp5:
+sub $sp,$sp,4
+sw $t0, 0($sp)
+lw $t0, 0($sp)
+add $sp,$sp,4
+beq $t0,$0,else_3
+ #Dynamically CALLING A METHOD 12
+ #preserving registers
+sub $sp,$sp,4
+sw $ra, 0($sp)
+sub $sp,$sp,4
+sw $fp, 0($sp)
+ #generating code for the sender
+ #identifier System
+lw $t0,-16($gp)
+addi $v0,$gp,-16
+sub $sp,$sp,4
+sw $t0, 0($sp)
+ #generating code for Args
+ #generating code for selector:println
+ #generating  for var #0
+la $t9,string_5
+sub $sp,$sp,4
+sw $t9, 0($sp)
+lw $t0,4($sp)
+lw $a0,0($t0)
+li $a1,12
+jal global_vtable
+lw $fp, 0($sp)
+add $sp,$sp,4
+lw $ra, 0($sp)
+add $sp,$sp,4
+sub $sp,$sp,4
+sw $v0, 0($sp)
+add $sp,$sp,4
+j endif_3
+else_3:
+endif_3:
+ ##F:code.txt #L:27
+ ##F:code.txt #L:28
  #Assign node
  #RHS:
  #Dynamically CALLING A METHOD 17
@@ -455,7 +679,7 @@ lw $t0, 0($sp)
  #Assign node storing in position val:
 sw $t0,0($v0)
 add $sp,$sp,4
- ##F:code.txt #L:20
+ ##F:code.txt #L:29
  #Assign node
  #RHS:
  #Dynamically CALLING A METHOD 17
@@ -495,7 +719,7 @@ lw $t0, 0($sp)
  #Assign node storing in position val:
 sw $t0,0($v0)
 add $sp,$sp,4
- ##F:code.txt #L:21
+ ##F:code.txt #L:30
  #Assign node
  #RHS:
  #Dynamically CALLING A METHOD 17
@@ -535,7 +759,7 @@ lw $t0, 0($sp)
  #Assign node storing in position val:
 sw $t0,0($v0)
 add $sp,$sp,4
- ##F:code.txt #L:22
+ ##F:code.txt #L:31
  #Dynamically CALLING A METHOD 14
  #preserving registers
 sub $sp,$sp,4
@@ -560,7 +784,7 @@ add $sp,$sp,4
 sub $sp,$sp,4
 sw $v0, 0($sp)
 add $sp,$sp,4
- ##F:code.txt #L:22
+ ##F:code.txt #L:31
  #Dynamically CALLING A METHOD 14
  #preserving registers
 sub $sp,$sp,4
@@ -585,7 +809,7 @@ add $sp,$sp,4
 sub $sp,$sp,4
 sw $v0, 0($sp)
 add $sp,$sp,4
- ##F:code.txt #L:22
+ ##F:code.txt #L:31
  #Dynamically CALLING A METHOD 14
  #preserving registers
 sub $sp,$sp,4
@@ -610,7 +834,7 @@ add $sp,$sp,4
 sub $sp,$sp,4
 sw $v0, 0($sp)
 add $sp,$sp,4
- ##F:code.txt #L:23
+ ##F:code.txt #L:32
  #Dynamically CALLING A METHOD 15
  #preserving registers
 sub $sp,$sp,4
@@ -635,7 +859,7 @@ add $sp,$sp,4
 sub $sp,$sp,4
 sw $v0, 0($sp)
 add $sp,$sp,4
- ##F:code.txt #L:23
+ ##F:code.txt #L:32
  #Dynamically CALLING A METHOD 15
  #preserving registers
 sub $sp,$sp,4
@@ -660,7 +884,7 @@ add $sp,$sp,4
 sub $sp,$sp,4
 sw $v0, 0($sp)
 add $sp,$sp,4
- ##F:code.txt #L:23
+ ##F:code.txt #L:32
  #Dynamically CALLING A METHOD 15
  #preserving registers
 sub $sp,$sp,4
@@ -734,10 +958,10 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:42
+ ##F:code.txt #L:51
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- ##F:code.txt #L:43
+ ##F:code.txt #L:52
  #Assign node
  #RHS:
 li $t9,2
@@ -758,7 +982,7 @@ lw $t0, 0($sp)
  #Assign node storing in position val:
 sw $t0,0($v0)
 add $sp,$sp,4
- ##F:code.txt #L:44
+ ##F:code.txt #L:53
  #Dynamically CALLING A METHOD 12
  #preserving registers
 sub $sp,$sp,4
@@ -774,7 +998,7 @@ sw $t0, 0($sp)
  #generating code for Args
  #generating code for selector:println
  #generating  for var #0
-la $t9,string_2
+la $t9,string_6
 sub $sp,$sp,4
 sw $t9, 0($sp)
 lw $t0,4($sp)
@@ -883,10 +1107,10 @@ add $sp,$sp,4
 move $fp,$sp
  #reserving space in stack for scope variables
 sub $sp,$sp,4
- ##F:code.txt #L:57
+ ##F:code.txt #L:66
  #reserving space in stack for scope variables
 sub $sp,$sp,0
- ##F:code.txt #L:59
+ ##F:code.txt #L:68
  #Dynamically CALLING A METHOD 12
  #preserving registers
 sub $sp,$sp,4
@@ -902,7 +1126,7 @@ sw $t0, 0($sp)
  #generating code for Args
  #generating code for selector:println
  #generating  for var #0
-la $t9,string_3
+la $t9,string_7
 sub $sp,$sp,4
 sw $t9, 0($sp)
 lw $t0,4($sp)
@@ -916,7 +1140,7 @@ add $sp,$sp,4
 sub $sp,$sp,4
 sw $v0, 0($sp)
 add $sp,$sp,4
- ##F:code.txt #L:60
+ ##F:code.txt #L:69
  #Assign node
  #RHS:
 li $t9,3
