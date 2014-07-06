@@ -70,6 +70,8 @@ void Variable::setIsConst(bool isConst){
 	}
 }
 Type* Variable::getType(){
+
+
 	return this->type;
 }
 

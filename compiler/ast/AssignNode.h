@@ -1,6 +1,7 @@
 #pragma once
 #include "Node.h"
 #include "TypeChecker.h"
+
 #include "../Warning.h"
 
 class AssignNode: public Node
