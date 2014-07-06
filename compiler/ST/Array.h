@@ -6,11 +6,11 @@
 class Type;
 using namespace std;
 class Array : public Variable{
-private:
-	int Dimention;
-	vector<int> array_alloc;
 	
 public:
+	int Dimention;
+	vector<int> array_alloc;
+
 	Array(string name,int Dim ,Type* var_type);
 	void set_alloc(vector<int>);
 	void toString();
