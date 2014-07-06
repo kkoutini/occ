@@ -15,10 +15,17 @@ public:
 	{
 	}
 		 void generateCode (){
+			 MIPS_ASM::printComment("return node");
 			 this->_returnexp->generateCode();
+			 MIPS_ASM::pop("v0");
+			 MIPS_ASM::move("sp","fp");
+			 MIPS_ASM::jr();
+
+
 		}
 	virtual bool typeCheck()
 	{
+		//todo use cancast like assign for warnings and errors
 		if (_method->getReturnType()==_returnexp->getType())
 		{
 			return true;
