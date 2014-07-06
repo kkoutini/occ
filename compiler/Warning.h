@@ -17,7 +17,7 @@ public:
 	}
 
 	void Warning::toString(){
-		cout << "Warning Issue: ";
+		cout << "Warning"<<"::";
 		Error::toString();
 	}
 	virtual ~Warning()

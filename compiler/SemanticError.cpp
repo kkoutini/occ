@@ -13,7 +13,7 @@ SemanticError::SemanticError(string message,int col,int num,string _file) : Erro
 
 
 void SemanticError::toString(){
-	cout<<"Semantic Issue: ";
+	cout<<"Error"<<"::";
 	Error::toString();
 }
 SemanticError::~SemanticError(void)

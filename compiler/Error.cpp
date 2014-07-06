@@ -5,5 +5,10 @@ Error::Error(string message){
 	this->message=message;
 }
 void Error::toString(){
-	cout<<message<<endl;
+
+	cout << message << "::";
+	cout << lineNo<<"::";
+	cout << colNo<<"::";
+	cout << file;
+
 }
