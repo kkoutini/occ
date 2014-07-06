@@ -3,9 +3,10 @@
 class ArrayType :
 	public Type
 {
+public:
+
 	int _count=0;
 	Type* _type;
-public:
 	ArrayType(Type* type,int count);
 	virtual ~ArrayType();
 	virtual int getTypeSize(){

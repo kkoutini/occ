@@ -33,6 +33,9 @@
 				#include "ClassNode.h"
 				#include "AsmNode.h"
 				#include "DotNode.h"
+				#include "ArrayAccessNode.h"
+
+				
 				#include <fstream>
 				#include "Streams.h"
 #include <string>
@@ -1062,9 +1065,21 @@ long_id:
 																$<r.node>$=new IdentifierNode($<r.text>1,scoop);
 																Streams::verbose()<<"long_id:IDENTIFIER\n";
 															   }
+   | array_access			{
+											Streams::verbose()<<"long_id: long_id.array_access\n";
+												$<r.node>$=$<r.node>1;
+											}
+
 ;
 
+array_access:
+	long_id OPEN_ARR  simple_expr CLOSE_ARR {
+							Streams::verbose()<<"array_access: details\n";
 
+							$<r.node>$=new ArrayAccessNode($<r.node>1,$<r.node>3,scoop);
+
+						}
+;
 
 simple_expr:
 	STRING_VAL						{
