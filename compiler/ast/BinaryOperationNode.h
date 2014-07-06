@@ -37,6 +37,7 @@ public:
 		//// --- Arithmetic Operation
 		//// + - * / 
 		//
+		++labelCount;
 
 		Type* lefttype = _leftExp->getType();
 		Type* righttype = _rightExp->getType();
@@ -45,20 +46,29 @@ public:
 
 		string f0 = "f0";
 		string f1 = "f1";
-		if (lefttype == floatType&&righttype == intType)
+
+		if (getType() == floatType)
 		{
+			if (lefttype == intType)
+			{
+				MIPS_ASM::popf(f1);
 
-		}
-		if (lefttype == intType&&righttype == floatType)
-		{
+			}
+			else{
 
-		}
-		if ((lefttype == floatType) && (righttype == floatType))
-		{
+				//	MIPS_ASM::popf(f1);
 
+			}
+			if (righttype == intType)
+			{
+				MIPS_ASM::popf(f1);
 
-			MIPS_ASM::popf(f1);
-			MIPS_ASM::popf(f0);
+			}
+			else{
+				//MIPS_ASM::popf(f0);
+
+			}
+
 
 			if (_op == PLUS)
 			{
@@ -101,28 +111,28 @@ public:
 			//
 			if (_op == EQUAL_EQUAL || _op == NOT_EQUAL)
 			{
-				++labelCount;
+
 
 				if (_op == EQUAL_EQUAL)
 				{
 					MIPS_ASM::printComment("equal opf");
-					MIPS_ASM::add_instruction("li.s $f2,0\n");
+					MIPS_ASM::add_instruction("li $t0,0\n");
 					MIPS_ASM::add_instruction(string("c.eq.s $f0,$f1 \n"));
 					MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
-					MIPS_ASM::add_instruction("li.s $f2,1\n");
+					MIPS_ASM::add_instruction("li $t0,1\n");
 					MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
 				}
 				else{
 					MIPS_ASM::printComment("not equal opf");
-					MIPS_ASM::add_instruction("li.s $f2,1\n");
+					MIPS_ASM::add_instruction("li $t0,1\n");
 					MIPS_ASM::add_instruction(string("c.eq.s $f0,$f1 \n"));
 					MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
-					MIPS_ASM::add_instruction("li.s $f2,0\n");
+					MIPS_ASM::add_instruction("li $t0,0\n");
 					MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
 
 				}
 				MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
-				MIPS_ASM::add_instruction("sw $t2, 0($sp)\n");
+				MIPS_ASM::add_instruction("sw $t0, 0($sp)\n");
 				//MIPS_ASM::add_instruction("move $t0,$t2\n");
 			}
 
@@ -131,13 +141,14 @@ public:
 				//MIPS_ASM::slt("t2", "t0", "t1");
 
 
+
 				MIPS_ASM::printComment("LESS_THAN opf");
-				MIPS_ASM::add_instruction("li.s $f2,0\n");
+				MIPS_ASM::add_instruction("li $t0,0\n");
 				MIPS_ASM::add_instruction(string("c.lt.s $f0,$f1 \n"));
 				MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
-				MIPS_ASM::add_instruction("li.s $f2,1\n");
+				MIPS_ASM::add_instruction("li $t0,1\n");
 				MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
-				MIPS_ASM::pushf("f2");
+				MIPS_ASM::pushf("t0");
 				/*MIPS_ASM::add_instruction("slt $t2,$t0,$t1\n");
 				MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
 				MIPS_ASM::add_instruction("sw $t2, 0($sp)\n");*/
@@ -145,13 +156,15 @@ public:
 
 			if (_op == MORE_THAN)
 			{
+
+
 				MIPS_ASM::printComment("LESS_THAN opf");
-				MIPS_ASM::add_instruction("li.s $f2,1\n");
+				MIPS_ASM::add_instruction("li $t0,1\n");
 				MIPS_ASM::add_instruction(string("c.lt.s $f0,$f1 \n"));
 				MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
-				MIPS_ASM::add_instruction("li.s $f2,0\n");
+				MIPS_ASM::add_instruction("li $t0,0\n");
 				MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
-				MIPS_ASM::pushf("f2");
+				MIPS_ASM::push("t0");
 				//MIPS_ASM::operation("t0","0","t2",1);
 				/*MIPS_ASM::add_instruction("slt $t2,$t1,$t0\n");
 				MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
@@ -161,31 +174,35 @@ public:
 
 			if (_op == LESS_OR_EQUAL)
 			{
+
+
 				MIPS_ASM::printComment("LESS_THAN opf");
-				MIPS_ASM::add_instruction("li.s $f2,0\n");
+				MIPS_ASM::add_instruction("li $t0,0\n");
 				MIPS_ASM::add_instruction(string("c.le.s $f0,$f1 \n"));
 				MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
-				MIPS_ASM::add_instruction("li.s $f2,1\n");
+				MIPS_ASM::add_instruction("li $t0,1\n");
 				MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
-				MIPS_ASM::pushf("f2");
+				MIPS_ASM::pushf("t0");
 			}
 
 			if (_op == MORE_OR_EQUAL)
 			{
+
+
 				MIPS_ASM::printComment("LESS_THAN opf");
-				MIPS_ASM::add_instruction("li.s $f2,1\n");
+				MIPS_ASM::add_instruction("li $t0,1\n");
 				MIPS_ASM::add_instruction(string("c.le.s $f0,$f1 \n"));
 				MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
-				MIPS_ASM::add_instruction("li.s $f2,0\n");
+				MIPS_ASM::add_instruction("li $t0,0\n");
 				MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
-				MIPS_ASM::pushf("f2");
+				MIPS_ASM::pushf("t0");
 			}
 		}
 
 
 
 
-		if ((lefttype == intType) && (righttype == intType))
+		if (getType() == intType)
 		{
 
 
@@ -229,7 +246,6 @@ public:
 			//
 			if (_op == EQUAL_EQUAL || _op == NOT_EQUAL)
 			{
-				++labelCount;
 
 				if (_op == EQUAL_EQUAL)
 				{
