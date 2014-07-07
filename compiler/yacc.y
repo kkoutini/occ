@@ -1371,14 +1371,27 @@ int yylex(){
 void main(int argc,      // Number of strings in array argv
           char *argv[]){
   //yydebug=1;
+	 	string input = "code.txt";
+	bool f = true;
+
 	   for(int i = 0; i < argc; i++) 
 		{
 			if(string(argv[i])=="-o")
 			{
 				if(i+1<argc)
 				{
-						  ofs=std::ofstream(string(argv[i]), std::ofstream::out);
+						  ofs=std::ofstream(string(argv[i+1]), std::ofstream::out);
 				}	
+			}
+			if (string(argv[i]) == "-i")
+			{
+				if (i + 1<argc)
+				{
+				//	ofs = std::ofstream(string(argv[i]), std::ofstream::out);
+					input = string(argv[i+1]);
+					addFile(input);
+					f = false;
+				}
 			}
 
 		}
@@ -1388,8 +1401,11 @@ void main(int argc,      // Number of strings in array argv
 	addFile("nsobject.oc");
 
 	addFile("system.oc");
-
-	addFile("code.txt");
+	if (f)
+	{
+		addFile(input);
+	}
+	
 	for(int i=0;i<sfiles.size();i++)
 		{
 	    string sf=sfiles[i];
