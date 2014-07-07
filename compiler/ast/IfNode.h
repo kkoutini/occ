@@ -20,30 +20,39 @@ public:
 	virtual bool typeCheck()
 	{
 		Type* boolType = symbolTable->getType("bool");
-
-		if (_condtion->getType() == NULL)
+		if (_condtion != NULL)
 		{
-			string error = "ERROR TYPE NULL in IF NODE  ";
-			addError(error);
-			return false;
-		}
 
-		if (_condtion->getType() == boolType)
-		{
-			return true;
+
+			if (_condtion->getType() == NULL)
+			{
+				string error = "ERROR TYPE NULL in IF NODE  ";
+				addError(error);
+				return false;
+			}
+
+			if (_condtion->getType() == boolType)
+			{
+				return true;
+			}
+			else
+			{
+				/////////// error 
+				string error = "ERROR Cannot implicitly convert type " + _condtion->getType()->get_name() + " to 'bool' ";
+				addError(error);
+				return false;
+			}
 		}
 		else
-		{
-			/////////// error 
-			string error = "ERROR Cannot implicitly convert type " + _condtion->getType()->get_name() + " to 'bool' " ;
-			addError(error);
 			return false;
-		}
-
 	}
 
 	void generateCode()
 	{
+		if (!typeCheck())
+		{
+			return;
+		}
 		MIPS_ASM::printComment("ifNode");
 		string i = "";
 		i = std::to_string(IfNode::if_label++);
@@ -57,9 +66,13 @@ public:
 
 		MIPS_ASM::pop("t0");
 		MIPS_ASM::beq("t0", "0", endif);
-
-		_statment->generateCode();
-		dispose(_statment);
+		if (_statment!=NULL)
+		{
+			MIPS_ASM::printComment("ifstatment");
+			_statment->generateCode();
+			dispose(_statment);
+		}
+		
 		MIPS_ASM::jump(end);
 		MIPS_ASM::label(endif);
 		if (_elseNode != NULL){
