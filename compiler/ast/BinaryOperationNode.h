@@ -42,11 +42,30 @@ public:
 		Type* lefttype = _leftExp->getType();
 		Type* righttype = _rightExp->getType();
 		Type* intType = symbolTable->getType("int");
+		Type* boolType = symbolTable->getType("bool");
 		Type* floatType = symbolTable->getType("float");
 
 		string f0 = "f0";
 		string f1 = "f1";
+		if (getHypoType() == boolType)
+		{
+			if (_op == AND_AND || _op == OR_OR)
+			{
 
+				MIPS_ASM::pop(t1);
+				MIPS_ASM::pop(t0);
+				if (_op == AND_AND)
+					MIPS_ASM::add_instruction("and $t0,$t0,$t1\n");
+				else
+					MIPS_ASM::add_instruction("or $t0,$t0,$t1\n");
+
+				MIPS_ASM::push(t0);
+			}
+			else{
+				addError("Operator not defined for bool values");
+				return;
+			}
+		}
 		if (getHypoType() == floatType)
 		{
 			MIPS_ASM::popf(f1);
@@ -330,6 +349,18 @@ public:
 
 		switch (_op)
 		{
+		case OR_OR:
+		case AND_AND:
+			if (_rightExp->getType() != symbolTable->getType("bool") || _leftExp->getType() != symbolTable->getType("bool"))
+			{
+				string error = "the two oprands of a logical operator must be boolean";
+				addError(error);
+				return symbolTable->getType("error_type");
+
+			}
+			else{
+
+			}
 		case MULTI:
 		case DIV:
 		case PLUS:
@@ -351,14 +382,14 @@ public:
 					return _rightExp->getType();
 
 				////// THROW WARNING
-				string error = "WARNING in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name();
+				string error = "Convertion from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name()+" may lose data ";
 				addWarning(error);
 				return _leftExp->getType();
 
 			}
 			else{
 				////// THROW ERROR
-				string error = "ERROR in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name();
+				string error = "Cann't convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name();
 				addError(error);
 				return symbolTable->getType("error_type");;
 

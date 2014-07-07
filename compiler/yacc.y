@@ -192,12 +192,12 @@ Method* nodeXX;
 	   }
 %nonassoc if_h
 %nonassoc ELSE
-%nonassoc AND_AND OR_OR
 %nonassoc expr_1
 %nonassoc STRING_VAL INT_VAL FLOAT_VAL CLOSE_ARR CHAR_VAL
 %nonassoc p_type_expr_prec
 %nonassoc DOUBLEPLUS
 %nonassoc DOUBLEMINUS
+%left OR_OR AND_AND 
 %left PLUS MINUS
 %left MULTI DIV
 %nonassoc long_id_prec
@@ -1063,7 +1063,7 @@ long_id:
 	|IDENTIFIER								%prec long_id_prec{
 																LongIdHelper::addIdentifier($<r.text>1); 
 																$<r.node>$=new IdentifierNode($<r.text>1,scoop);
-																Streams::verbose()<<"long_id:IDENTIFIER\n";
+																Streams::verbose()<<"long_id:IDENTIFIER :"<<$<r.text>1<<"\n";
 															   }
    | array_access			{
 											Streams::verbose()<<"long_id: long_id.array_access\n";

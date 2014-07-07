@@ -1,2 +1,2 @@
 #include "Streams.h"
-stringstream Streams::_verbose;
+ofstream Streams::_verbose("verbose.txt");

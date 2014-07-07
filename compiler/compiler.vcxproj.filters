@@ -352,5 +352,8 @@
     <Text Include="wessam.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="verbose.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

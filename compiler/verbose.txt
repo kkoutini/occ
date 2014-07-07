@@ -1,0 +1,978 @@
+class_interface_header:  AT_INTERFACE IDENTIFIER
+Making new interface: NSObject
+
+
+
+instance_variables:OPEN_S	 CLOSE_S
+class_interface_body:instance_variables		AT_END
+class_interface: class_interface_header class_interface_body
+class_interface 
+components: component
+class_implementation_body:	AT_END
+class_implementation: class_implementation_header class_implementation_body
+class_implementation 
+components: components component
+program: components
+class_interface_header:  AT_INTERFACE IDENTIFIER
+Making new interface: System
+
+
+
+instance_variables:OPEN_S	 CLOSE_S
+int type 
+type:simple type
+p_type : OPEN_P type CLOSE_P
+method_selectors:IDENTIFIER 
+class_method_declaration: PLUS p_type method_selectors	SEMI_COMA
+interface_declaration: class_method_declaration
+interface_declaration_list:interface_declaration
+char type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+method_selectors:IDENTIFIER 
+class_method_declaration: PLUS p_type method_selectors	SEMI_COMA
+interface_declaration: class_method_declaration
+interface_declaration_list:interface_declaration_list interface_declaration
+float type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+method_selectors:IDENTIFIER 
+class_method_declaration: PLUS p_type method_selectors	SEMI_COMA
+interface_declaration: class_method_declaration
+interface_declaration_list:interface_declaration_list interface_declaration
+NSString type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+method_selectors:IDENTIFIER 
+class_method_declaration: PLUS p_type method_selectors	SEMI_COMA
+interface_declaration: class_method_declaration
+interface_declaration_list:interface_declaration_list interface_declaration
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+method_selectors:IDENTIFIER 
+class_method_declaration: PLUS p_type method_selectors	SEMI_COMA
+interface_declaration: class_method_declaration
+interface_declaration_list:interface_declaration_list interface_declaration
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+int type 
+type:simple type
+p_type : OPEN_P type CLOSE_P
+parameter:  p_type IDENTIFIER
+parameter_list:  parameter
+selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	
+selectors_list:	 selector_decleration
+method_selectors: selectors_list
+class_method_declaration: PLUS p_type method_selectors	SEMI_COMA
+interface_declaration: class_method_declaration
+interface_declaration_list:interface_declaration_list interface_declaration
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+float type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+parameter:  p_type IDENTIFIER
+parameter_list:  parameter
+selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	
+selectors_list:	 selector_decleration
+method_selectors: selectors_list
+class_method_declaration: PLUS p_type method_selectors	SEMI_COMA
+interface_declaration: class_method_declaration
+interface_declaration_list:interface_declaration_list interface_declaration
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+NSString type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+parameter:  p_type IDENTIFIER
+parameter_list:  parameter
+selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	
+selectors_list:	 selector_decleration
+method_selectors: selectors_list
+class_method_declaration: PLUS p_type method_selectors	SEMI_COMA
+interface_declaration: class_method_declaration
+interface_declaration_list:interface_declaration_list interface_declaration
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+char type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+parameter:  p_type IDENTIFIER
+parameter_list:  parameter
+selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	
+selectors_list:	 selector_decleration
+method_selectors: selectors_list
+class_method_declaration: PLUS p_type method_selectors	SEMI_COMA
+interface_declaration: class_method_declaration
+interface_declaration_list:interface_declaration_list interface_declaration
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+int type 
+type:simple type
+p_type : OPEN_P type CLOSE_P
+parameter:  p_type IDENTIFIER
+parameter_list:  parameter
+selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	
+selectors_list:	 selector_decleration
+method_selectors: selectors_list
+class_method_declaration: PLUS p_type method_selectors	SEMI_COMA
+interface_declaration: class_method_declaration
+interface_declaration_list:interface_declaration_list interface_declaration
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+float type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+parameter:  p_type IDENTIFIER
+parameter_list:  parameter
+selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	
+selectors_list:	 selector_decleration
+method_selectors: selectors_list
+class_method_declaration: PLUS p_type method_selectors	SEMI_COMA
+interface_declaration: class_method_declaration
+interface_declaration_list:interface_declaration_list interface_declaration
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+NSString type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+parameter:  p_type IDENTIFIER
+parameter_list:  parameter
+selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	
+selectors_list:	 selector_decleration
+method_selectors: selectors_list
+class_method_declaration: PLUS p_type method_selectors	SEMI_COMA
+interface_declaration: class_method_declaration
+interface_declaration_list:interface_declaration_list interface_declaration
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+char type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+parameter:  p_type IDENTIFIER
+parameter_list:  parameter
+selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	
+selectors_list:	 selector_decleration
+method_selectors: selectors_list
+class_method_declaration: PLUS p_type method_selectors	SEMI_COMA
+interface_declaration: class_method_declaration
+interface_declaration_list:interface_declaration_list interface_declaration
+class_interface_body:	instance_variables	interface_declaration_list	AT_END
+class_interface: class_interface_header class_interface_body
+class_interface 
+components: component
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+int type 
+type:simple type
+p_type : OPEN_P type CLOSE_P
+parameter:  p_type IDENTIFIER
+parameter_list:  parameter
+selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	
+selectors_list:	 selector_decleration
+method_selectors: selectors_list
+class_implementation_definition_header: PLUS p_type		 method_selectors
+block_body_header:OPEN_S	
+@asm command 
+statement_list: statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+block_body_statements:statement_list	CLOSE_S	
+block_body:OPEN_S  block_body_part 
+class_implementation_definition: class_implementation_definition_header block_bodyimplementation_definition: class_implementation_definition	
+implementation_definition_list: implementation_definition
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+float type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+parameter:  p_type IDENTIFIER
+parameter_list:  parameter
+selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	
+selectors_list:	 selector_decleration
+method_selectors: selectors_list
+class_implementation_definition_header: PLUS p_type		 method_selectors
+block_body_header:OPEN_S	
+@asm command 
+statement_list: statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+block_body_statements:statement_list	CLOSE_S	
+block_body:OPEN_S  block_body_part 
+class_implementation_definition: class_implementation_definition_header block_bodyimplementation_definition: class_implementation_definition	
+implementation_definition_list: implementation_definition_list implementation_definition
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+NSString type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+parameter:  p_type IDENTIFIER
+parameter_list:  parameter
+selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	
+selectors_list:	 selector_decleration
+method_selectors: selectors_list
+class_implementation_definition_header: PLUS p_type		 method_selectors
+block_body_header:OPEN_S	
+@asm command 
+statement_list: statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+block_body_statements:statement_list	CLOSE_S	
+block_body:OPEN_S  block_body_part 
+class_implementation_definition: class_implementation_definition_header block_bodyimplementation_definition: class_implementation_definition	
+implementation_definition_list: implementation_definition_list implementation_definition
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+char type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+parameter:  p_type IDENTIFIER
+parameter_list:  parameter
+selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	
+selectors_list:	 selector_decleration
+method_selectors: selectors_list
+class_implementation_definition_header: PLUS p_type		 method_selectors
+block_body_header:OPEN_S	
+@asm command 
+statement_list: statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+block_body_statements:statement_list	CLOSE_S	
+block_body:OPEN_S  block_body_part 
+class_implementation_definition: class_implementation_definition_header block_bodyimplementation_definition: class_implementation_definition	
+implementation_definition_list: implementation_definition_list implementation_definition
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+method_selectors:IDENTIFIER 
+class_implementation_definition_header: PLUS p_type		 method_selectors
+block_body_header:OPEN_S	
+@asm command 
+statement_list: statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+block_body_statements:statement_list	CLOSE_S	
+block_body:OPEN_S  block_body_part 
+class_implementation_definition: class_implementation_definition_header block_bodyimplementation_definition: class_implementation_definition	
+implementation_definition_list: implementation_definition_list implementation_definition
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+int type 
+type:simple type
+p_type : OPEN_P type CLOSE_P
+parameter:  p_type IDENTIFIER
+parameter_list:  parameter
+selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	
+selectors_list:	 selector_decleration
+method_selectors: selectors_list
+class_implementation_definition_header: PLUS p_type		 method_selectors
+block_body_header:OPEN_S	
+@asm command 
+statement_list: statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+block_body_statements:statement_list	CLOSE_S	
+block_body:OPEN_S  block_body_part 
+class_implementation_definition: class_implementation_definition_header block_bodyimplementation_definition: class_implementation_definition	
+implementation_definition_list: implementation_definition_list implementation_definition
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+float type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+parameter:  p_type IDENTIFIER
+parameter_list:  parameter
+selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	
+selectors_list:	 selector_decleration
+method_selectors: selectors_list
+class_implementation_definition_header: PLUS p_type		 method_selectors
+block_body_header:OPEN_S	
+@asm command 
+statement_list: statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+block_body_statements:statement_list	CLOSE_S	
+block_body:OPEN_S  block_body_part 
+class_implementation_definition: class_implementation_definition_header block_bodyimplementation_definition: class_implementation_definition	
+implementation_definition_list: implementation_definition_list implementation_definition
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+NSString type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+parameter:  p_type IDENTIFIER
+parameter_list:  parameter
+selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	
+selectors_list:	 selector_decleration
+method_selectors: selectors_list
+class_implementation_definition_header: PLUS p_type		 method_selectors
+block_body_header:OPEN_S	
+@asm command 
+statement_list: statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+block_body_statements:statement_list	CLOSE_S	
+block_body:OPEN_S  block_body_part 
+class_implementation_definition: class_implementation_definition_header block_bodyimplementation_definition: class_implementation_definition	
+implementation_definition_list: implementation_definition_list implementation_definition
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+char type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+parameter:  p_type IDENTIFIER
+parameter_list:  parameter
+selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	
+selectors_list:	 selector_decleration
+method_selectors: selectors_list
+class_implementation_definition_header: PLUS p_type		 method_selectors
+block_body_header:OPEN_S	
+@asm command 
+statement_list: statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+@asm command 
+statement_list: statement_list statement
+block_body_statements:statement_list	CLOSE_S	
+block_body:OPEN_S  block_body_part 
+class_implementation_definition: class_implementation_definition_header block_bodyimplementation_definition: class_implementation_definition	
+implementation_definition_list: implementation_definition_list implementation_definition
+int type 
+type:simple type
+p_type : OPEN_P type CLOSE_P
+method_selectors:IDENTIFIER 
+class_implementation_definition_header: PLUS p_type		 method_selectors
+block_body_header:OPEN_S	
+@asm command 
+statement_list: statement
+@asm command 
+statement_list: statement_list statement
+block_body_statements:statement_list	CLOSE_S	
+block_body:OPEN_S  block_body_part 
+class_implementation_definition: class_implementation_definition_header block_bodyimplementation_definition: class_implementation_definition	
+implementation_definition_list: implementation_definition_list implementation_definition
+float type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+method_selectors:IDENTIFIER 
+class_implementation_definition_header: PLUS p_type		 method_selectors
+block_body_header:OPEN_S	
+@asm command 
+statement_list: statement
+@asm command 
+statement_list: statement_list statement
+block_body_statements:statement_list	CLOSE_S	
+block_body:OPEN_S  block_body_part 
+class_implementation_definition: class_implementation_definition_header block_bodyimplementation_definition: class_implementation_definition	
+implementation_definition_list: implementation_definition_list implementation_definition
+NSString type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+method_selectors:IDENTIFIER 
+class_implementation_definition_header: PLUS p_type		 method_selectors
+block_body_header:OPEN_S	
+@asm command 
+statement_list: statement
+@asm command 
+statement_list: statement_list statement
+block_body_statements:statement_list	CLOSE_S	
+block_body:OPEN_S  block_body_part 
+class_implementation_definition: class_implementation_definition_header block_bodyimplementation_definition: class_implementation_definition	
+implementation_definition_list: implementation_definition_list implementation_definition
+char type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+method_selectors:IDENTIFIER 
+class_implementation_definition_header: PLUS p_type		 method_selectors
+block_body_header:OPEN_S	
+@asm command 
+statement_list: statement
+@asm command 
+statement_list: statement_list statement
+block_body_statements:statement_list	CLOSE_S	
+block_body:OPEN_S  block_body_part 
+class_implementation_definition: class_implementation_definition_header block_bodyimplementation_definition: class_implementation_definition	
+implementation_definition_list: implementation_definition_list implementation_definition
+class_implementation_body:						implementation_definition_list	AT_END
+class_implementation: class_implementation_header class_implementation_body
+class_implementation 
+components: components component
+program: components
+class_interface_header:  AT_INTERFACE IDENTIFIER
+Making new interface: A
+
+
+
+visibility_specification:AT_PUBLIC
+int type 
+type:simple type
+ data_member: IDENTIFIER  
+ids_list:id_dec
+variable_declaration:type IDENTIFIER	SEMI_COMA
+variable_declaration_list: variable_declaration
+instance_variable_declaration:visibility_specification variable_declaration_list
+instance_variable_declarations:instance_variable_declaration
+instance_variables:OPEN_S	instance_variable_declaration	CLOSE_S
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+method_selectors:IDENTIFIER 
+instance_method_declaration: MINUS p_type	method_selectors		SEMI_COMA
+interface_declaration: instance_method_declaration
+interface_declaration_list:interface_declaration
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+method_selectors:IDENTIFIER 
+instance_method_declaration: MINUS p_type	method_selectors		SEMI_COMA
+interface_declaration: instance_method_declaration
+interface_declaration_list:interface_declaration_list interface_declaration
+class_interface_body:	instance_variables	interface_declaration_list	AT_END
+class_interface: class_interface_header class_interface_body
+class_interface 
+components: components component
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+method_selectors:IDENTIFIER 
+class_implementation_definition_header: PLUS p_type		 method_selectors
+block_body_header:OPEN_S	
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+simple_expr:INT_VAL
+expr:simple_expr
+argument: SEMI_COLUMN expr
+argument_list: argument
+message_selectors_list: message_selector
+message_selectors_list
+message_call: OPEN_ARR sender message CLOSE_ARR
+long_id: long_id.message_call
+simple_expr:long_id
+expr:simple_expr
+argument: SEMI_COLUMN expr
+argument_list: argument
+message_selectors_list: message_selector
+message_selectors_list
+message_call: OPEN_ARR sender message CLOSE_ARR
+statement_list: statement
+int type 
+type:simple type
+variable:  IDENTIFIER main_initializer 
+variable_list:variable
+variable_declaration:type IDENTIFIER	SEMI_COMA
+statement: variable_declaration
+statement_list: statement_list statement
+long_id:IDENTIFIER :k
+simple_expr:INT_VAL
+assign_expr:long_id EQUAL simple_expr
+statement: expr
+statement_list: statement_list statement
+long_id:IDENTIFIER :k
+simple_expr:long_id
+expr:simple_expr
+simple_expr:INT_VAL
+expr:simple_expr
+logic_expr:expr LESS_THAN expr
+long_id:IDENTIFIER :k
+simple_expr:long_id
+expr:simple_expr
+simple_expr:INT_VAL
+expr:simple_expr
+logic_expr:expr MORE_THAN expr
+logic_expr:logic_expr OR_OR logic_expr
+if_header: IF OPEN_P logic_expr CLOSE_P
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+simple_expr:STRING_VAL
+node typrNSString
+expr:simple_expr
+argument: SEMI_COLUMN expr
+argument_list: argument
+message_selectors_list: message_selector
+message_selectors_list
+message_call: OPEN_ARR sender message CLOSE_ARR
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+simple_expr:STRING_VAL
+node typrNSString
+expr:simple_expr
+argument: SEMI_COLUMN expr
+argument_list: argument
+message_selectors_list: message_selector
+message_selectors_list
+message_call: OPEN_ARR sender message CLOSE_ARR
+conditional_statement: if_header statement with else
+statement: conditional_statement
+statement_list: statement_list statement
+NSString type
+type:simple type
+variable:  IDENTIFIER main_initializer 
+variable_list:variable
+variable_declaration:type IDENTIFIER	SEMI_COMA
+statement: variable_declaration
+statement_list: statement_list statement
+long_id:IDENTIFIER :s
+simple_expr:STRING_VAL
+node typrNSString
+assign_expr:long_id EQUAL simple_expr
+statement: expr
+statement_list: statement_list statement
+simple_expr:FLOAT_VAL
+expr:simple_expr
+simple_expr:FLOAT_VAL
+expr:simple_expr
+logic_expr:expr LESS_THAN expr
+if_header: IF OPEN_P logic_expr CLOSE_P
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+simple_expr:STRING_VAL
+node typrNSString
+expr:simple_expr
+argument: SEMI_COLUMN expr
+argument_list: argument
+message_selectors_list: message_selector
+message_selectors_list
+message_call: OPEN_ARR sender message CLOSE_ARR
+conditional_statement: if_header statement
+statement: conditional_statement
+statement_list: statement_list statement
+simple_expr:FLOAT_VAL
+expr:simple_expr
+simple_expr:FLOAT_VAL
+expr:simple_expr
+logic_expr:expr LESS_OR_EQUAL expr
+if_header: IF OPEN_P logic_expr CLOSE_P
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+simple_expr:STRING_VAL
+node typrNSString
+expr:simple_expr
+argument: SEMI_COLUMN expr
+argument_list: argument
+message_selectors_list: message_selector
+message_selectors_list
+message_call: OPEN_ARR sender message CLOSE_ARR
+conditional_statement: if_header statement
+statement: conditional_statement
+statement_list: statement_list statement
+simple_expr:FLOAT_VAL
+expr:simple_expr
+simple_expr:FLOAT_VAL
+expr:simple_expr
+logic_expr:expr MORE_THAN expr
+if_header: IF OPEN_P logic_expr CLOSE_P
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+simple_expr:STRING_VAL
+node typrNSString
+expr:simple_expr
+argument: SEMI_COLUMN expr
+argument_list: argument
+message_selectors_list: message_selector
+message_selectors_list
+message_call: OPEN_ARR sender message CLOSE_ARR
+conditional_statement: if_header statement
+statement: conditional_statement
+statement_list: statement_list statement
+simple_expr:FLOAT_VAL
+expr:simple_expr
+simple_expr:FLOAT_VAL
+expr:simple_expr
+logic_expr:expr MORE_OR_EQUAL expr
+if_header: IF OPEN_P logic_expr CLOSE_P
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+simple_expr:STRING_VAL
+node typrNSString
+expr:simple_expr
+argument: SEMI_COLUMN expr
+argument_list: argument
+message_selectors_list: message_selector
+message_selectors_list
+message_call: OPEN_ARR sender message CLOSE_ARR
+conditional_statement: if_header statement
+statement: conditional_statement
+statement_list: statement_list statement
+complex_type:	IDENTIFIER	MULTI
+type: complex type
+variable:  IDENTIFIER main_initializer 
+variable_list:variable
+variable:  IDENTIFIER main_initializer 
+variable_list:variable_list COMMA variable
+variable:  IDENTIFIER main_initializer 
+variable_list:variable_list COMMA variable
+variable_declaration:type IDENTIFIER	SEMI_COMA
+statement: variable_declaration
+statement_list: statement_list statement
+long_id:IDENTIFIER :a
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+message: IDENTIFIER
+message_call: OPEN_ARR sender message CLOSE_ARR
+long_id: long_id.message_call
+simple_expr:long_id
+assign_expr:long_id EQUAL simple_expr
+statement: expr
+statement_list: statement_list statement
+long_id:IDENTIFIER :b
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+message: IDENTIFIER
+message_call: OPEN_ARR sender message CLOSE_ARR
+long_id: long_id.message_call
+simple_expr:long_id
+assign_expr:long_id EQUAL simple_expr
+statement: expr
+statement_list: statement_list statement
+long_id:IDENTIFIER :c
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+message: IDENTIFIER
+message_call: OPEN_ARR sender message CLOSE_ARR
+long_id: long_id.message_call
+simple_expr:long_id
+assign_expr:long_id EQUAL simple_expr
+statement: expr
+statement_list: statement_list statement
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+message: IDENTIFIER
+message_call: OPEN_ARR sender message CLOSE_ARR
+statement_list: statement_list statement
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+message: IDENTIFIER
+message_call: OPEN_ARR sender message CLOSE_ARR
+statement_list: statement_list statement
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+message: IDENTIFIER
+message_call: OPEN_ARR sender message CLOSE_ARR
+statement_list: statement_list statement
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+message: IDENTIFIER
+message_call: OPEN_ARR sender message CLOSE_ARR
+statement_list: statement_list statement
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+message: IDENTIFIER
+message_call: OPEN_ARR sender message CLOSE_ARR
+statement_list: statement_list statement
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+message: IDENTIFIER
+message_call: OPEN_ARR sender message CLOSE_ARR
+statement_list: statement_list statement
+block_body_statements:statement_list	CLOSE_S	
+block_body:OPEN_S  block_body_part 
+class_implementation_definition: class_implementation_definition_header block_bodyimplementation_definition: class_implementation_definition	
+implementation_definition_list: implementation_definition
+int type 
+type:simple type
+p_type : OPEN_P type CLOSE_P
+int type 
+type:simple type
+p_type : OPEN_P type CLOSE_P
+parameter:  p_type IDENTIFIER
+parameter_list:  parameter
+selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	
+selectors_list:	 selector_decleration
+method_selectors: selectors_list
+class_implementation_definition_header: PLUS p_type		 method_selectors
+block_body_header:OPEN_S	
+long_id:IDENTIFIER :x
+simple_expr:long_id
+expr:simple_expr
+simple_expr:INT_VAL
+expr:simple_expr
+logic_expr:expr EQUAL_EQUAL expr
+if_header: IF OPEN_P logic_expr CLOSE_P
+simple_expr:INT_VAL
+expr:simple_expr
+return_statement: RETURN expr
+statement: return_statement
+conditional_statement: if_header statement
+statement: conditional_statement
+statement_list: statement
+long_id:IDENTIFIER :x
+simple_expr:long_id
+expr:simple_expr
+simple_expr:INT_VAL
+expr:simple_expr
+logic_expr:expr EQUAL_EQUAL expr
+if_header: IF OPEN_P logic_expr CLOSE_P
+simple_expr:INT_VAL
+expr:simple_expr
+return_statement: RETURN expr
+statement: return_statement
+conditional_statement: if_header statement
+statement: conditional_statement
+statement_list: statement_list statement
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+long_id:IDENTIFIER :x
+simple_expr:long_id
+simple_expr:INT_VAL
+simple_expr:expr MINUS expr
+expr:simple_expr
+argument: SEMI_COLUMN expr
+argument_list: argument
+message_selectors_list: message_selector
+message_selectors_list
+message_call: OPEN_ARR sender message CLOSE_ARR
+long_id: long_id.message_call
+simple_expr:long_id
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+long_id:IDENTIFIER :x
+simple_expr:long_id
+simple_expr:INT_VAL
+simple_expr:expr MINUS expr
+expr:simple_expr
+argument: SEMI_COLUMN expr
+argument_list: argument
+message_selectors_list: message_selector
+message_selectors_list
+message_call: OPEN_ARR sender message CLOSE_ARR
+long_id: long_id.message_call
+simple_expr:long_id
+simple_expr:expr PLUS expr
+expr:simple_expr
+return_statement: RETURN expr
+statement: return_statement
+statement_list: statement_list statement
+block_body_statements:statement_list	CLOSE_S	
+block_body:OPEN_S  block_body_part 
+class_implementation_definition: class_implementation_definition_header block_bodyimplementation_definition: class_implementation_definition	
+implementation_definition_list: implementation_definition_list implementation_definition
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+method_selectors:IDENTIFIER 
+instance_implementation_definition_header:MINUS p_type		method_selectors
+block_body_header:OPEN_S	
+long_id:IDENTIFIER :a
+simple_expr:INT_VAL
+assign_expr:long_id EQUAL simple_expr
+statement: expr
+statement_list: statement
+block_body_statements:statement_list	CLOSE_S	
+block_body:OPEN_S  block_body_part 
+instance_implementation_definition: instance_implementation_definition_header block_body
+implementation_definition: instance_implementation_definition 
+implementation_definition_list: implementation_definition_list implementation_definition
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+method_selectors:IDENTIFIER 
+instance_implementation_definition_header:MINUS p_type		method_selectors
+block_body_header:OPEN_S	
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+long_id:IDENTIFIER :a
+simple_expr:long_id
+expr:simple_expr
+argument: SEMI_COLUMN expr
+argument_list: argument
+message_selectors_list: message_selector
+message_selectors_list
+message_call: OPEN_ARR sender message CLOSE_ARR
+statement_list: statement
+block_body_statements:statement_list	CLOSE_S	
+block_body:OPEN_S  block_body_part 
+instance_implementation_definition: instance_implementation_definition_header block_body
+implementation_definition: instance_implementation_definition 
+implementation_definition_list: implementation_definition_list implementation_definition
+class_implementation_body:						implementation_definition_list	AT_END
+class_implementation: class_implementation_header class_implementation_body
+class_implementation 
+components: components component
+class_interface_header:  AT_INTERFACE IDENTIFIER SEMI_COLUMN IDENTIFIER
+Making new interface: B
+
+
+
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+method_selectors:IDENTIFIER 
+instance_method_declaration: MINUS p_type	method_selectors		SEMI_COMA
+interface_declaration: instance_method_declaration
+interface_declaration_list:interface_declaration
+class_interface_body:interface_declaration_list	AT_END
+class_interface: class_interface_header class_interface_body
+class_interface 
+components: components component
+class_implementation_header: AT_IMPLEMENTATION IDENTIFIER SEMI_COLUMN IDENTIFIER
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+method_selectors:IDENTIFIER 
+instance_implementation_definition_header:MINUS p_type		method_selectors
+block_body_header:OPEN_S	
+long_id:IDENTIFIER :a
+simple_expr:INT_VAL
+assign_expr:long_id EQUAL simple_expr
+statement: expr
+statement_list: statement
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+simple_expr:STRING_VAL
+node typrNSString
+expr:simple_expr
+argument: SEMI_COLUMN expr
+argument_list: argument
+message_selectors_list: message_selector
+message_selectors_list
+message_call: OPEN_ARR sender message CLOSE_ARR
+statement_list: statement_list statement
+block_body_statements:statement_list	CLOSE_S	
+block_body:OPEN_S  block_body_part 
+instance_implementation_definition: instance_implementation_definition_header block_body
+implementation_definition: instance_implementation_definition 
+implementation_definition_list: implementation_definition
+class_implementation_body:						implementation_definition_list	AT_END
+class_implementation: class_implementation_header class_implementation_body
+class_implementation 
+components: components component
+class_interface_header:  AT_INTERFACE IDENTIFIER SEMI_COLUMN IDENTIFIER
+Making new interface: C
+
+
+
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+method_selectors:IDENTIFIER 
+instance_method_declaration: MINUS p_type	method_selectors		SEMI_COMA
+interface_declaration: instance_method_declaration
+interface_declaration_list:interface_declaration
+class_interface_body:interface_declaration_list	AT_END
+class_interface: class_interface_header class_interface_body
+class_interface 
+components: components component
+class_implementation_header: AT_IMPLEMENTATION IDENTIFIER SEMI_COLUMN IDENTIFIER
+void type
+type:simple type
+p_type : OPEN_P type CLOSE_P
+method_selectors:IDENTIFIER 
+instance_implementation_definition_header:MINUS p_type		method_selectors
+block_body_header:OPEN_S	
+message_call2
+mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmsender: IDENTIFIER
+simple_expr:STRING_VAL
+node typrNSString
+expr:simple_expr
+argument: SEMI_COLUMN expr
+argument_list: argument
+message_selectors_list: message_selector
+message_selectors_list
+message_call: OPEN_ARR sender message CLOSE_ARR
+statement_list: statement
+long_id:IDENTIFIER :a
+simple_expr:INT_VAL
+assign_expr:long_id EQUAL simple_expr
+statement: expr
+statement_list: statement_list statement
+block_body_statements:statement_list	CLOSE_S	
+block_body:OPEN_S  block_body_part 
+instance_implementation_definition: instance_implementation_definition_header block_body
+implementation_definition: instance_implementation_definition 
+implementation_definition_list: implementation_definition
+class_implementation_body:						implementation_definition_list	AT_END
+class_implementation: class_implementation_header class_implementation_body
+class_implementation 
+components: components component
+program: components
+class_interface_header:  AT_INTERFACE IDENTIFIER
+Making new interface: Wesso
+
+
+
+visibility_specification:AT_PUBLIC
+int type 
+type:simple type
+ data_member: IDENTIFIER  
+ids_list:id_dec
+variable_declaration:type IDENTIFIER	SEMI_COMA
+variable_declaration_list: variable_declaration
+instance_variable_declaration:visibility_specification variable_declaration_list
+instance_variable_declarations:instance_variable_declaration
+instance_variables:OPEN_S	instance_variable_declaration	CLOSE_S
+class_interface_body:instance_variables		AT_END
+class_interface: class_interface_header class_interface_body
+class_interface 
+components: component
+class_implementation_body:	AT_END
+class_implementation: class_implementation_header class_implementation_body
+class_implementation 
+components: components component
+program: components
+Making new interface: error_type
+
+
+
+Making new interface: id
+
+
+
