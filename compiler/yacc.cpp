@@ -1,8 +1,8 @@
 /* A Bison parser, made by GNU Bison 3.0.  */
 
-/* Bison implementation for Yacc-like parsers in C
+/* Skeleton implementation for Bison GLR parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2013 Free Software Foundation, Inc.
+   Copyright (C) 2002-2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -30,15 +30,7 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-/* C LALR(1) parser skeleton written by Richard Stallman, by
-   simplifying the original so-called "semantic" parser.  */
-
-/* All symbols defined below should begin with yy or YY, to avoid
-   infringing on user name space.  This should be done even for local
-   variables, as they might otherwise be expanded by user macros.
-   There are some unavoidable exceptions within include files to
-   define necessary library symbols; they are noted "INFRINGES ON
-   USER NAME SPACE" below.  */
+/* C GLR parser skeleton written by Paul Hilfinger.  */
 
 /* Identify Bison output.  */
 #define YYBISON 1
@@ -47,22 +39,18 @@
 #define YYBISON_VERSION "3.0"
 
 /* Skeleton name.  */
-#define YYSKELETON_NAME "yacc.c"
+#define YYSKELETON_NAME "glr.c"
 
 /* Pure parsers.  */
 #define YYPURE 0
 
-/* Push parsers.  */
-#define YYPUSH 0
-
-/* Pull parsers.  */
-#define YYPULL 1
 
 
 
 
-/* Copy the first part of user declarations.  */
-#line 5 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:339  */
+
+/* First part of user declarations.  */
+#line 6 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:207  */
 
 	#include <iostream>
 	#include <FlexLexer.h>
@@ -72,8 +60,9 @@
 	#include "ST\SymbolTable.h"
 	#include "ast\ConstantNode.h"
 	#include "SyntaxError.h"
-
+	
 	#include "CallNode.h"
+	#include "ThrowNode.h"
 		#include "CallSelector.h"
 		#include "DeclerationSelector.h"
 		#include "ast\IdentifierNode.h"
@@ -168,7 +157,7 @@ Method* nodeXX;
 		}
 	};
 
-#line 172 "yacc.cpp" /* yacc.c:339  */
+#line 161 "yacc.cpp" /* glr.c:207  */
 
 # ifndef YY_NULL
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -178,6 +167,8 @@ Method* nodeXX;
 #  endif
 # endif
 
+#include "yacc.hpp"
+
 /* Enabling verbose error messages.  */
 #ifdef YYERROR_VERBOSE
 # undef YYERROR_VERBOSE
@@ -186,181 +177,19 @@ Method* nodeXX;
 # define YYERROR_VERBOSE 1
 #endif
 
-/* In a future release of Bison, this section will be replaced
-   by #include "yacc.hpp".  */
-#ifndef YY_YY_YACC_HPP_INCLUDED
-# define YY_YY_YACC_HPP_INCLUDED
-/* Debug traces.  */
-#ifndef YYDEBUG
-# define YYDEBUG 0
-#endif
-#if YYDEBUG
-extern int yydebug;
-#endif
-/* "%code requires" blocks.  */
-#line 177 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:355  */
-
-#include "ast\node.h"
-
-#line 206 "yacc.cpp" /* yacc.c:355  */
-
-/* Token type.  */
-#ifndef YYTOKENTYPE
-# define YYTOKENTYPE
-  enum yytokentype
-  {
-    AT_INTERFACE = 258,
-    IDENTIFIER = 259,
-    SEMI_COLUMN = 260,
-    NSSTRING = 261,
-    FLOAT = 262,
-    CHAR = 263,
-    BOOL = 264,
-    INT = 265,
-    SEMI_COMA = 266,
-    ID = 267,
-    AT_PUBLIC = 268,
-    AT_PROTECTED = 269,
-    AT_PRIVATE = 270,
-    OPEN_S = 271,
-    CLOSE_S = 272,
-    COMMA = 273,
-    LESS_THAN = 274,
-    MORE_THAN = 275,
-    AT_END = 276,
-    CONST = 277,
-    VOID = 278,
-    PLUS = 279,
-    MINUS = 280,
-    OPEN_P = 281,
-    CLOSE_P = 282,
-    AT_IMPLEMENTATION = 283,
-    AND_AND = 284,
-    OR_OR = 285,
-    STRING_VAL = 286,
-    FLOAT_VAL = 287,
-    LESS_OR_EQUAL = 288,
-    CHAR_VAL = 289,
-    INT_VAL = 290,
-    MORE_OR_EQUAL = 291,
-    MULTI = 292,
-    EQUAL_EQUAL = 293,
-    NOT_EQUAL = 294,
-    FOR = 295,
-    EQUAL = 296,
-    DIV = 297,
-    WHILE = 298,
-    IF = 299,
-    DO = 300,
-    SWITCH = 301,
-    CASE = 302,
-    DEFAULT = 303,
-    BREAK = 304,
-    ENUM = 305,
-    OPEN_ARR = 306,
-    CLOSE_ARR = 307,
-    TRUE = 308,
-    FALSE = 309,
-    RETURN = 310,
-    AT_PROTOCOL = 311,
-    ELSE = 312,
-    STRUCT = 313,
-    DOT = 314,
-    DOUBLEPLUS = 315,
-    DOUBLEMINUS = 316,
-    TRY = 317,
-    CATCH = 318,
-    FINALLY = 319,
-    AT_ASM = 320,
-    SELF = 321,
-    IMPORT = 322,
-    if_h = 323,
-    expr_1 = 324,
-    p_type_expr_prec = 325,
-    long_id_prec = 326,
-    try_prec = 327
-  };
-#endif
-
-/* Value type.  */
-#if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef union YYSTYPE YYSTYPE;
-union YYSTYPE
-{
-#line 180 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:355  */
-
-	
-	struct R {
-		int colNo;
-		int lineNo;
-		int int_val;
-		char char_val;	
-		string* string_val;
-		float float_val;
-		char* text;
-		Node* node;
-			      }r;
-	   
-
-#line 306 "yacc.cpp" /* yacc.c:355  */
-};
-# define YYSTYPE_IS_TRIVIAL 1
-# define YYSTYPE_IS_DECLARED 1
-#endif
-
-
-extern YYSTYPE yylval;
-
-int yyparse (void);
-
-#endif /* !YY_YY_YACC_HPP_INCLUDED  */
+/* Default (constant) value used for initialization for null
+   right-hand sides.  Unlike the standard yacc.c template, here we set
+   the default value of $$ to a zeroed-out value.  Since the default
+   value is undefined, this behavior is technically correct.  */
+static YYSTYPE yyval_default;
 
 /* Copy the second part of user declarations.  */
 
-#line 321 "yacc.cpp" /* yacc.c:358  */
+#line 189 "yacc.cpp" /* glr.c:230  */
 
-#ifdef short
-# undef short
-#endif
-
-#ifdef YYTYPE_UINT8
-typedef YYTYPE_UINT8 yytype_uint8;
-#else
-typedef unsigned char yytype_uint8;
-#endif
-
-#ifdef YYTYPE_INT8
-typedef YYTYPE_INT8 yytype_int8;
-#else
-typedef signed char yytype_int8;
-#endif
-
-#ifdef YYTYPE_UINT16
-typedef YYTYPE_UINT16 yytype_uint16;
-#else
-typedef unsigned short int yytype_uint16;
-#endif
-
-#ifdef YYTYPE_INT16
-typedef YYTYPE_INT16 yytype_int16;
-#else
-typedef short int yytype_int16;
-#endif
-
-#ifndef YYSIZE_T
-# ifdef __SIZE_TYPE__
-#  define YYSIZE_T __SIZE_TYPE__
-# elif defined size_t
-#  define YYSIZE_T size_t
-# elif ! defined YYSIZE_T
-#  include <stddef.h> /* INFRINGES ON USER NAME SPACE */
-#  define YYSIZE_T size_t
-# else
-#  define YYSIZE_T unsigned int
-# endif
-#endif
-
-#define YYSIZE_MAXIMUM ((YYSIZE_T) -1)
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #ifndef YY_
 # if defined YYENABLE_NLS && YYENABLE_NLS
@@ -372,6 +201,34 @@ typedef short int yytype_int16;
 # ifndef YY_
 #  define YY_(Msgid) Msgid
 # endif
+#endif
+
+#ifndef YYFREE
+# define YYFREE free
+#endif
+#ifndef YYMALLOC
+# define YYMALLOC malloc
+#endif
+#ifndef YYREALLOC
+# define YYREALLOC realloc
+#endif
+
+#define YYSIZEMAX ((size_t) -1)
+
+#ifdef __cplusplus
+   typedef bool yybool;
+#else
+   typedef unsigned char yybool;
+#endif
+#define yytrue 1
+#define yyfalse 0
+
+#ifndef YYSETJMP
+# include <setjmp.h>
+# define YYJMP_BUF jmp_buf
+# define YYSETJMP(Env) setjmp (Env)
+/* Pacify clang.  */
+# define YYLONGJMP(Env, Val) (longjmp (Env, Val), YYASSERT (0))
 #endif
 
 #ifndef __attribute__
@@ -409,136 +266,38 @@ typedef short int yytype_int16;
 #endif
 
 
-#if 1
-
-/* The parser invokes alloca or malloc; define the necessary symbols.  */
-
-# ifdef YYSTACK_ALLOC
-   /* Pacify GCC's 'empty if-body' warning.  */
-#  define YYSTACK_FREE(Ptr) do { /* empty */; } while (0)
-#  ifndef YYSTACK_ALLOC_MAXIMUM
-    /* The OS might guarantee only one guard page at the bottom of the stack,
-       and a page size can be as small as 4096 bytes.  So we cannot safely
-       invoke alloca (N) if N exceeds 4096.  Use a slightly smaller number
-       to allow for a few compiler-allocated temporary stack slots.  */
-#   define YYSTACK_ALLOC_MAXIMUM 4032 /* reasonable circa 2006 */
-#  endif
-# else
-#  define YYSTACK_ALLOC YYMALLOC
-#  define YYSTACK_FREE YYFREE
-#  ifndef YYSTACK_ALLOC_MAXIMUM
-#   define YYSTACK_ALLOC_MAXIMUM YYSIZE_MAXIMUM
-#  endif
-#  if (defined __cplusplus && ! defined EXIT_SUCCESS \
-       && ! ((defined YYMALLOC || defined malloc) \
-             && (defined YYFREE || defined free)))
-#   include <stdlib.h> /* INFRINGES ON USER NAME SPACE */
-#   ifndef EXIT_SUCCESS
-#    define EXIT_SUCCESS 0
-#   endif
-#  endif
-#  ifndef YYMALLOC
-#   define YYMALLOC malloc
-#   if ! defined malloc && ! defined EXIT_SUCCESS
-void *malloc (YYSIZE_T); /* INFRINGES ON USER NAME SPACE */
-#   endif
-#  endif
-#  ifndef YYFREE
-#   define YYFREE free
-#   if ! defined free && ! defined EXIT_SUCCESS
-void free (void *); /* INFRINGES ON USER NAME SPACE */
-#   endif
-#  endif
-# endif
-# define YYCOPY_NEEDED 1
+#ifndef YYASSERT
+# define YYASSERT(Condition) ((void) ((Condition) || (abort (), 0)))
 #endif
-
-
-#if (! defined yyoverflow \
-     && (! defined __cplusplus \
-         || (defined YYSTYPE_IS_TRIVIAL && YYSTYPE_IS_TRIVIAL)))
-
-/* A type that is properly aligned for any stack member.  */
-union yyalloc
-{
-  yytype_int16 yyss_alloc;
-  YYSTYPE yyvs_alloc;
-};
-
-/* The size of the maximum gap between one aligned stack and the next.  */
-# define YYSTACK_GAP_MAXIMUM (sizeof (union yyalloc) - 1)
-
-/* The size of an array large to enough to hold all stacks, each with
-   N elements.  */
-# define YYSTACK_BYTES(N) \
-     ((N) * (sizeof (yytype_int16) + sizeof (YYSTYPE)) \
-      + YYSTACK_GAP_MAXIMUM)
-
-# define YYCOPY_NEEDED 1
-
-/* Relocate STACK from its old location to the new one.  The
-   local variables YYSIZE and YYSTACKSIZE give the old and new number of
-   elements in the stack, and YYPTR gives the new location of the
-   stack.  Advance YYPTR to a properly aligned location for the next
-   stack.  */
-# define YYSTACK_RELOCATE(Stack_alloc, Stack)                           \
-    do                                                                  \
-      {                                                                 \
-        YYSIZE_T yynewbytes;                                            \
-        YYCOPY (&yyptr->Stack_alloc, Stack, yysize);                    \
-        Stack = &yyptr->Stack_alloc;                                    \
-        yynewbytes = yystacksize * sizeof (*Stack) + YYSTACK_GAP_MAXIMUM; \
-        yyptr += yynewbytes / sizeof (*yyptr);                          \
-      }                                                                 \
-    while (0)
-
-#endif
-
-#if defined YYCOPY_NEEDED && YYCOPY_NEEDED
-/* Copy COUNT objects from SRC to DST.  The source and destination do
-   not overlap.  */
-# ifndef YYCOPY
-#  if defined __GNUC__ && 1 < __GNUC__
-#   define YYCOPY(Dst, Src, Count) \
-      __builtin_memcpy (Dst, Src, (Count) * sizeof (*(Src)))
-#  else
-#   define YYCOPY(Dst, Src, Count)              \
-      do                                        \
-        {                                       \
-          YYSIZE_T yyi;                         \
-          for (yyi = 0; yyi < (Count); yyi++)   \
-            (Dst)[yyi] = (Src)[yyi];            \
-        }                                       \
-      while (0)
-#  endif
-# endif
-#endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  28
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   902
+#define YYLAST   896
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  73
+#define YYNTOKENS  74
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  102
+#define YYNNTS  103
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  270
-/* YYNSTATES -- Number of states.  */
-#define YYNSTATES  490
+#define YYNRULES  272
+/* YYNRULES -- Number of states.  */
+#define YYNSTATES  496
+/* YYMAXRHS -- Maximum number of symbols on right-hand side of rule.  */
+#define YYMAXRHS 8
+/* YYMAXLEFT -- Maximum number of symbols to the left of a handle
+   accessed by $0, $-1, etc., in any rule.  */
+#define YYMAXLEFT 0
 
-/* YYTRANSLATE[YYX] -- Symbol number corresponding to YYX as returned
-   by yylex, with out-of-bounds checking.  */
+/* YYTRANSLATE(X) -- Bison symbol number corresponding to X.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   327
+#define YYMAXUTOK   328
 
 #define YYTRANSLATE(YYX)                                                \
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
 
-/* YYTRANSLATE[TOKEN-NUM] -- Symbol number corresponding to TOKEN-NUM
-   as returned by yylex, without out-of-bounds checking.  */
-static const yytype_uint8 yytranslate[] =
+/* YYTRANSLATE[YYLEX] -- Bison symbol number corresponding to YYLEX.  */
+static const unsigned char yytranslate[] =
 {
        0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -572,41 +331,41 @@ static const yytype_uint8 yytranslate[] =
       35,    36,    37,    38,    39,    40,    41,    42,    43,    44,
       45,    46,    47,    48,    49,    50,    51,    52,    53,    54,
       55,    56,    57,    58,    59,    60,    61,    62,    63,    64,
-      65,    66,    67,    68,    69,    70,    71,    72
+      65,    66,    67,    68,    69,    70,    71,    72,    73
 };
 
 #if YYDEBUG
-  /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
-static const yytype_uint16 yyrline[] =
+/* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
+static const unsigned short int yyrline[] =
 {
-       0,   210,   210,   213,   214,   215,   217,   218,   219,   220,
-     221,   223,   232,   237,   242,   243,   245,   247,   253,   257,
-     262,   267,   271,   273,   278,   279,   280,   281,   282,   283,
-     284,   285,   286,   287,   291,   298,   301,   305,   310,   311,
-     315,   316,   317,   318,   319,   320,   323,   324,   327,   328,
-     329,   332,   335,   343,   354,   355,   356,   361,   364,   367,
-     371,   375,   379,   380,   383,   389,   390,   391,   393,   401,
-     408,   412,   418,   419,   420,   421,   422,   423,   424,   425,
-     428,   429,   430,   434,   435,   436,   437,   441,   450,   461,
-     470,   481,   490,   498,   506,   514,   522,   532,   543,   548,
-     552,   553,   556,   560,   566,   569,   571,   576,   581,   587,
-     595,   596,   600,   608,   609,   612,   621,   630,   634,   636,
-     642,   650,   656,   660,   669,   682,   685,   690,   696,   702,
-     705,   711,   714,   715,   718,   719,   722,   731,   742,   752,
-     761,   768,   780,   784,   788,   794,   799,   808,   812,   816,
-     822,   831,   834,   838,   840,   843,   848,   853,   859,   865,
-     872,   876,   877,   880,   883,   890,   899,   902,   907,   910,
-     913,   918,   923,   926,   944,   950,   954,   958,   963,   967,
-     971,   976,   982,   993,   996,  1001,  1004,  1007,  1013,  1016,
-    1019,  1022,  1025,  1028,  1031,  1034,  1038,  1041,  1044,  1050,
-    1053,  1058,  1065,  1069,  1073,  1078,  1086,  1095,  1101,  1105,
-    1108,  1111,  1114,  1118,  1122,  1125,  1129,  1130,  1131,  1132,
-    1133,  1134,  1141,  1154,  1166,  1172,  1182,  1186,  1193,  1198,
-    1204,  1208,  1210,  1215,  1223,  1229,  1234,  1237,  1241,  1246,
-    1251,  1257,  1260,  1261,  1262,  1263,  1266,  1267,  1270,  1271,
-    1272,  1275,  1276,  1277,  1279,  1287,  1293,  1301,  1309,  1315,
-    1318,  1324,  1331,  1336,  1341,  1346,  1353,  1357,  1362,  1363,
-    1366
+       0,   213,   213,   216,   217,   218,   220,   221,   222,   223,
+     224,   226,   235,   240,   245,   246,   248,   250,   256,   260,
+     265,   270,   274,   276,   281,   282,   283,   284,   285,   286,
+     287,   288,   289,   290,   294,   301,   304,   308,   313,   314,
+     318,   319,   320,   321,   322,   323,   326,   327,   330,   331,
+     332,   335,   338,   346,   357,   358,   359,   364,   367,   370,
+     374,   378,   382,   383,   386,   392,   393,   394,   396,   404,
+     411,   415,   421,   422,   423,   424,   425,   426,   427,   428,
+     431,   432,   433,   437,   438,   439,   440,   444,   453,   464,
+     473,   484,   493,   501,   509,   517,   525,   535,   546,   551,
+     555,   556,   559,   563,   569,   572,   574,   579,   584,   590,
+     598,   599,   603,   611,   612,   615,   624,   633,   637,   639,
+     645,   653,   659,   663,   672,   685,   688,   693,   699,   705,
+     708,   714,   717,   718,   721,   722,   725,   734,   745,   755,
+     764,   771,   783,   787,   791,   797,   802,   811,   815,   819,
+     825,   834,   837,   841,   843,   846,   850,   852,   855,   860,
+     866,   872,   879,   883,   884,   887,   890,   897,   906,   909,
+     914,   917,   920,   925,   930,   933,   951,   957,   961,   965,
+     970,   974,   978,   983,   989,  1000,  1003,  1008,  1011,  1014,
+    1020,  1023,  1026,  1029,  1032,  1035,  1038,  1041,  1045,  1048,
+    1051,  1057,  1060,  1065,  1072,  1076,  1080,  1085,  1093,  1102,
+    1108,  1112,  1115,  1118,  1121,  1125,  1129,  1132,  1136,  1137,
+    1138,  1139,  1140,  1141,  1148,  1161,  1173,  1179,  1189,  1193,
+    1200,  1205,  1211,  1215,  1217,  1222,  1230,  1236,  1241,  1244,
+    1248,  1253,  1258,  1264,  1267,  1268,  1269,  1270,  1273,  1274,
+    1277,  1278,  1279,  1282,  1283,  1284,  1286,  1294,  1300,  1308,
+    1316,  1322,  1325,  1331,  1338,  1343,  1348,  1353,  1360,  1364,
+    1369,  1370,  1373
 };
 #endif
 
@@ -625,7 +384,7 @@ static const char *const yytname[] =
   "DIV", "WHILE", "IF", "DO", "SWITCH", "CASE", "DEFAULT", "BREAK", "ENUM",
   "OPEN_ARR", "CLOSE_ARR", "TRUE", "FALSE", "RETURN", "AT_PROTOCOL",
   "ELSE", "STRUCT", "DOT", "DOUBLEPLUS", "DOUBLEMINUS", "TRY", "CATCH",
-  "FINALLY", "AT_ASM", "SELF", "IMPORT", "if_h", "expr_1",
+  "THROW", "FINALLY", "AT_ASM", "SELF", "IMPORT", "if_h", "expr_1",
   "p_type_expr_prec", "long_id_prec", "try_prec", "$accept", "program",
   "components", "component", "class_interface", "class_interface_header",
   "class_interface_body", "protocol_reference_list", "ids_list_identifier",
@@ -647,472 +406,451 @@ static const char *const yytname[] =
   "instance_implementation_definition",
   "instance_implementation_definition_header", "block_body",
   "block_body_header", "block_body_statements", "statement_list",
-  "statement", "asm", "variable_declaration_block", "variable_list",
-  "variable", "return_statement", "loop_statement", "do_while",
-  "do_header", "for_loop", "for_loop_header", "for_initializer",
-  "logic_expr1", "logic_expr", "expr", "assign_expr", "long_id",
-  "array_access", "simple_expr", "message_call2", "message_call", "sender",
-  "message", "message_selectors_list", "message_selector", "argument_list",
-  "argument", "while_loop", "while_loop_header", "conditional_statement",
-  "if_header", "switch_header", "switch_body_block", "switch_body",
-  "list_of_case", "case_body", "default_case", "protocol",
-  "protocol_header", "protocol_body", "enum", "list_expr", "try_catch",
-  "catch_list", "finally_statement", YY_NULL
+  "statement", "throw_statement", "asm", "variable_declaration_block",
+  "variable_list", "variable", "return_statement", "loop_statement",
+  "do_while", "do_header", "for_loop", "for_loop_header",
+  "for_initializer", "logic_expr1", "logic_expr", "expr", "assign_expr",
+  "long_id", "array_access", "simple_expr", "message_call2",
+  "message_call", "sender", "message", "message_selectors_list",
+  "message_selector", "argument_list", "argument", "while_loop",
+  "while_loop_header", "conditional_statement", "if_header",
+  "switch_header", "switch_body_block", "switch_body", "list_of_case",
+  "case_body", "default_case", "protocol", "protocol_header",
+  "protocol_body", "enum", "list_expr", "try_catch", "catch_list",
+  "finally_statement", YY_NULL
 };
 #endif
 
-# ifdef YYPRINT
-/* YYTOKNUM[NUM] -- (External) token number corresponding to the
-   (internal) symbol number NUM (which must be that of a token).  */
-static const yytype_uint16 yytoknum[] =
-{
-       0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
-     265,   266,   267,   268,   269,   270,   271,   272,   273,   274,
-     275,   276,   277,   278,   279,   280,   281,   282,   283,   284,
-     285,   286,   287,   288,   289,   290,   291,   292,   293,   294,
-     295,   296,   297,   298,   299,   300,   301,   302,   303,   304,
-     305,   306,   307,   308,   309,   310,   311,   312,   313,   314,
-     315,   316,   317,   318,   319,   320,   321,   322,   323,   324,
-     325,   326,   327
-};
-# endif
-
-#define YYPACT_NINF -342
-
-#define yypact_value_is_default(Yystate) \
-  (!!((Yystate) == (-342)))
-
-#define YYTABLE_NINF -199
-
-#define yytable_value_is_error(Yytable_value) \
-  0
+#define YYPACT_NINF -448
+#define YYTABLE_NINF -201
 
   /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
      STATE-NUM.  */
-static const yytype_int16 yypact[] =
+static const short int yypact[] =
 {
-     110,    13,   230,    20,    26,    40,    53,    41,   129,    58,
-    -342,  -342,   535,   154,  -342,  -342,   300,  -342,   454,  -342,
-    -342,  -342,   174,   196,    52,  -342,  -342,   202,  -342,  -342,
-     824,   235,  -342,   111,   244,  -342,   172,   170,   281,  -342,
-    -342,  -342,   672,  -342,   244,   244,   425,  -342,   436,  -342,
-    -342,   261,  -342,   261,  -342,   472,   511,  -342,   277,   304,
-    -342,   338,  -342,   314,  -342,  -342,  -342,  -342,  -342,  -342,
-    -342,  -342,  -342,   508,  -342,   348,   354,   417,  -342,   844,
-     844,  -342,   308,  -342,  -342,  -342,  -342,  -342,   102,   362,
-     508,   368,   377,   386,  -342,   368,   543,  -342,   294,   306,
-    -342,  -342,   325,  -342,  -342,  -342,   844,   275,   374,  -342,
-     844,   368,   368,  -342,   548,  -342,  -342,  -342,  -342,   331,
-    -342,  -342,   550,  -342,  -342,  -342,  -342,   112,   378,  -342,
-     379,   380,   382,  -342,  -342,  -342,   844,   373,    99,    94,
-    -342,  -342,   441,  -342,   244,   413,   156,  -342,   362,  -342,
-     456,  -342,   556,  -342,  -342,   397,  -342,  -342,  -342,  -342,
-    -342,   225,   434,  -342,   264,   309,  -342,  -342,  -342,  -342,
-      -6,   314,  -342,   508,   421,   446,   450,  -342,   466,   478,
-    -342,   766,   539,   463,   507,  -342,  -342,   393,  -342,  -342,
-    -342,  -342,  -342,  -342,   539,  -342,   539,   487,   191,  -342,
-       0,   488,  -342,   539,  -342,   539,     6,  -342,  -342,  -342,
-     338,   766,   489,    99,   241,  -342,  -342,   -19,  -342,  -342,
-    -342,   158,  -342,   538,  -342,   509,   515,  -342,  -342,  -342,
-    -342,  -342,  -342,  -342,  -342,  -342,  -342,   591,   510,  -342,
-     255,  -342,   322,  -342,  -342,   507,   401,   665,   665,   522,
-      25,   236,   177,  -342,  -342,  -342,  -342,   529,   534,   766,
-     516,  -342,   191,   319,  -342,   546,   500,   554,   373,   189,
-     171,  -342,  -342,  -342,   527,  -342,  -342,   766,   766,   572,
-    -342,  -342,   574,  -342,  -342,   530,  -342,   766,   581,  -342,
-       8,  -342,   576,  -342,   573,  -342,  -342,  -342,   544,  -342,
-     547,  -342,   373,  -342,  -342,   244,   582,  -342,  -342,  -342,
-     588,  -342,   344,   561,   608,   353,   602,   599,   766,  -342,
-    -342,   476,  -342,   471,   242,   523,   587,  -342,  -342,   236,
-     155,   429,  -342,  -342,   319,  -342,   766,   766,   766,   766,
-     601,   265,  -342,   579,   766,   579,  -342,   507,  -342,   507,
-     610,   319,   103,  -342,   618,   575,   620,  -342,   539,   621,
-     419,  -342,  -342,   611,  -342,   338,  -342,     7,  -342,  -342,
-    -342,   766,   596,   229,   133,   632,   605,   429,  -342,  -342,
-     665,   665,   766,   766,   766,   766,   766,   766,  -342,   613,
-    -342,   173,   173,  -342,  -342,   508,   623,   539,  -342,   624,
-    -342,  -342,  -342,  -342,  -342,  -342,  -342,   766,  -342,   618,
-    -342,  -342,   479,   630,   593,  -342,  -342,   594,   595,  -342,
-     766,  -342,   627,   584,   708,   169,  -342,  -342,  -342,  -342,
-    -342,  -342,  -342,  -342,  -342,  -342,  -342,   644,   508,  -342,
-     697,  -342,  -342,   646,  -342,   645,   606,  -342,   650,  -342,
-    -342,  -342,  -342,  -342,   635,  -342,   638,   752,   651,   666,
-     720,  -342,   655,   656,   766,  -342,   664,  -342,  -342,  -342,
-    -342,   657,   539,   660,   669,   671,  -342,   759,  -342,  -342,
-    -342,  -342,   539,   759,   680,  -342,  -342,  -342,   759,  -342
+     122,    44,   138,    79,    95,   120,   164,   153,   188,   129,
+    -448,  -448,   474,   181,  -448,  -448,   354,  -448,   424,  -448,
+    -448,  -448,   205,   206,   264,  -448,  -448,   218,  -448,  -448,
+     632,   242,  -448,    12,   232,  -448,   140,   150,   248,  -448,
+    -448,  -448,   185,  -448,   232,   232,   417,  -448,   450,  -448,
+    -448,   261,  -448,   261,  -448,   481,   510,  -448,   295,   260,
+    -448,   359,  -448,   258,  -448,  -448,  -448,  -448,  -448,  -448,
+    -448,  -448,  -448,   838,  -448,   379,   385,   453,  -448,   815,
+     815,  -448,   390,  -448,  -448,  -448,  -448,  -448,    43,   403,
+     838,   412,   416,   422,  -448,   412,   535,  -448,   285,   291,
+    -448,  -448,   312,  -448,  -448,  -448,   815,   233,   429,  -448,
+     815,   412,   412,  -448,   555,  -448,  -448,  -448,  -448,   322,
+    -448,  -448,   567,  -448,  -448,  -448,  -448,    16,   433,  -448,
+     399,   394,   415,  -448,  -448,  -448,   815,   405,     7,    19,
+    -448,  -448,   457,  -448,   232,   435,   198,  -448,   403,  -448,
+     462,  -448,   576,  -448,  -448,   326,  -448,  -448,  -448,  -448,
+    -448,    41,   459,  -448,   282,   342,  -448,  -448,  -448,  -448,
+     244,   258,  -448,   838,   455,   465,   470,  -448,   471,   479,
+    -448,   780,   503,   477,   484,   488,  -448,  -448,   389,  -448,
+    -448,  -448,  -448,  -448,  -448,  -448,   503,  -448,   503,   497,
+     118,  -448,     2,   505,  -448,   503,  -448,   503,    22,  -448,
+    -448,  -448,   359,   780,   509,     7,    99,  -448,  -448,   161,
+    -448,  -448,  -448,    55,  -448,   513,  -448,   526,   527,  -448,
+    -448,  -448,  -448,  -448,  -448,  -448,  -448,  -448,  -448,   537,
+     528,  -448,   126,  -448,   341,  -448,  -448,   488,   345,   644,
+     644,   533,    85,   274,   600,  -448,  -448,  -448,  -448,   541,
+     546,   780,   540,  -448,   118,   277,  -448,   552,   489,   506,
+     553,   405,   307,   137,  -448,  -448,  -448,   519,  -448,  -448,
+     780,   780,   562,  -448,  -448,   571,  -448,  -448,   524,  -448,
+     780,   579,  -448,    72,  -448,   572,  -448,   575,  -448,  -448,
+    -448,   542,  -448,   554,  -448,   405,  -448,  -448,   232,   595,
+    -448,  -448,  -448,   605,  -448,   220,   578,   616,   228,   610,
+     564,   780,  -448,  -448,   380,  -448,   321,   171,   398,   601,
+    -448,  -448,   274,   111,   377,  -448,  -448,   277,  -448,   780,
+     780,   780,   780,   611,   255,   602,  -448,   589,   780,   589,
+    -448,   488,  -448,   488,   622,   277,   121,  -448,   638,   604,
+     648,  -448,   503,   652,   414,  -448,  -448,   636,  -448,   359,
+    -448,    32,  -448,  -448,  -448,   780,   621,   551,   212,   633,
+     639,   377,  -448,  -448,   644,   644,   780,   780,   780,   780,
+     780,   780,  -448,   647,  -448,   339,   339,  -448,  -448,   838,
+     653,   503,  -448,   660,   657,  -448,  -448,  -448,  -448,  -448,
+    -448,  -448,   780,  -448,   638,  -448,  -448,   478,   663,   628,
+    -448,  -448,   629,   637,  -448,   780,  -448,   658,   716,   727,
+     222,  -448,  -448,  -448,  -448,  -448,  -448,  -448,  -448,  -448,
+    -448,  -448,   676,   838,  -448,  -448,   684,  -448,  -448,   686,
+    -448,   681,   654,  -448,   685,  -448,  -448,  -448,  -448,  -448,
+     675,  -448,   679,   748,   690,   704,   695,  -448,   692,   696,
+     780,  -448,   702,  -448,  -448,  -448,  -448,   697,   503,   700,
+     705,   708,  -448,   769,  -448,  -448,  -448,  -448,   503,   769,
+     710,  -448,  -448,  -448,   769,  -448
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
      Performed when YYTABLE does not specify something else to do.  Zero
      means the default is an error.  */
-static const yytype_uint16 yydefact[] =
+static const unsigned short int yydefact[] =
 {
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
        4,     6,     0,     0,     9,     7,     0,     8,     0,    10,
-      14,    15,    13,   127,     0,   255,    71,     0,     1,     3,
+      14,    15,    13,   127,     0,   257,    71,     0,     1,     3,
        0,     0,    24,     0,     0,    11,     0,     0,     0,   109,
      110,   111,     0,   131,     0,     0,     0,   125,     0,   133,
-     134,     0,   135,     0,   259,     0,     0,   254,     0,     0,
-     261,     0,     5,     0,    94,    93,    92,    96,    91,    56,
+     134,     0,   135,     0,   261,     0,     0,   256,     0,     0,
+     263,     0,     5,     0,    94,    93,    92,    96,    91,    56,
       55,    54,    47,     0,    95,     0,     0,     0,    49,    50,
        0,    53,     0,    85,    86,    83,    84,    37,     0,   118,
        0,     0,     0,   117,   120,     0,    27,    21,     0,     0,
       32,    22,     0,    33,    23,   108,     0,     0,     0,    69,
       57,     0,     0,   129,     0,   130,   132,   141,   136,     0,
-     138,   258,     0,   257,    16,    12,   126,   264,     0,    97,
+     138,   260,     0,   259,    16,    12,   126,   266,     0,    97,
        0,    89,    87,    46,    48,    52,    51,    63,     0,     0,
       62,    35,     0,    34,     0,     0,     0,   114,     0,   119,
        0,    25,     0,    29,    18,     0,    30,    19,    31,    20,
       70,     0,    81,    74,     0,     0,    68,   137,   139,   128,
-       0,   204,   143,     0,     0,     0,     0,   172,     0,     0,
-     222,     0,     0,     0,     0,   151,   140,     0,   146,   154,
-     150,   152,   147,   170,     0,   168,     0,     0,     0,   205,
-       0,   203,   169,     0,   148,     0,     0,   160,   153,   256,
-       0,     0,     0,     0,     0,    90,    88,     0,    66,   100,
-      67,     0,    58,     0,    36,     0,   121,   123,   116,   113,
-     112,   115,    26,    28,    17,    78,    82,     0,     0,    72,
-       0,    75,     0,   156,   144,     0,     0,     0,     0,     0,
-      89,   204,     0,   207,   209,   210,   208,     0,     0,     0,
-       0,   199,   211,   200,   203,     0,     0,     0,     0,   107,
-       0,   162,   142,   145,     0,   173,   149,     0,     0,     0,
-     225,   224,     0,   155,   234,   236,   245,     0,     0,   238,
-       0,   247,     0,   265,   263,   260,    64,    59,     0,   103,
-      98,    60,     0,    61,   124,     0,     0,    80,    76,    79,
-       0,    73,     0,   184,     0,     0,     0,     0,     0,   196,
-     197,     0,   187,     0,   211,     0,     0,   217,   218,   204,
-     211,     0,   219,   220,   221,   167,     0,     0,     0,     0,
-       0,   267,   157,   105,     0,   105,   165,     0,   158,     0,
-       0,   201,     0,   202,   226,     0,   227,   229,     0,     0,
-       0,   243,   246,     0,   244,     0,   102,     0,   122,    77,
-     159,     0,     0,     0,     0,     0,     0,   200,   194,   235,
-       0,     0,     0,     0,     0,     0,     0,     0,   239,     0,
-     216,   212,   213,   214,   215,     0,     0,     0,   266,     0,
-     166,   106,   164,   163,   161,   171,   206,     0,   223,     0,
-     228,   237,     0,     0,   252,   242,   262,     0,     0,   183,
-       0,   181,     0,     0,     0,     0,   195,   185,   186,   188,
-     189,   190,   191,   192,   193,   241,   240,     0,     0,   270,
-       0,   104,   233,   230,   232,     0,   249,   253,     0,   101,
-      99,   182,   180,   179,     0,   178,     0,     0,     0,     0,
-       0,    39,     0,    41,     0,   250,     0,   251,   175,   176,
-     177,     0,     0,     0,    42,     0,    38,     0,   231,   248,
-     174,   268,     0,     0,    44,    40,   269,    45,     0,    43
+       0,   206,   143,     0,     0,     0,     0,   174,     0,     0,
+     224,     0,     0,     0,     0,     0,   151,   140,     0,   146,
+     156,   154,   150,   152,   147,   172,     0,   170,     0,     0,
+       0,   207,     0,   205,   171,     0,   148,     0,     0,   162,
+     153,   258,     0,     0,     0,     0,     0,    90,    88,     0,
+      66,   100,    67,     0,    58,     0,    36,     0,   121,   123,
+     116,   113,   112,   115,    26,    28,    17,    78,    82,     0,
+       0,    72,     0,    75,     0,   157,   144,     0,     0,     0,
+       0,     0,    89,   206,     0,   209,   211,   212,   210,     0,
+       0,     0,     0,   201,   213,   202,   205,     0,     0,     0,
+       0,     0,   107,     0,   164,   142,   145,     0,   175,   149,
+       0,     0,     0,   227,   226,     0,   155,   236,   238,   247,
+       0,     0,   240,     0,   249,     0,   267,   265,   262,    64,
+      59,     0,   103,    98,    60,     0,    61,   124,     0,     0,
+      80,    76,    79,     0,    73,     0,   186,     0,     0,     0,
+       0,     0,   198,   199,     0,   189,     0,   213,     0,     0,
+     219,   220,   206,   213,     0,   221,   222,   223,   169,     0,
+       0,     0,     0,     0,   269,     0,   159,   105,     0,   105,
+     167,     0,   160,     0,     0,   203,     0,   204,   228,     0,
+     229,   231,     0,     0,     0,   245,   248,     0,   246,     0,
+     102,     0,   122,    77,   161,     0,     0,     0,     0,     0,
+       0,   202,   196,   237,     0,     0,     0,     0,     0,     0,
+       0,     0,   241,     0,   218,   214,   215,   216,   217,     0,
+       0,     0,   268,     0,     0,   168,   106,   166,   165,   163,
+     173,   208,     0,   225,     0,   230,   239,     0,     0,   254,
+     244,   264,     0,     0,   185,     0,   183,     0,     0,     0,
+       0,   197,   187,   188,   190,   191,   192,   193,   194,   195,
+     243,   242,     0,     0,   272,   158,     0,   104,   235,   232,
+     234,     0,   251,   255,     0,   101,    99,   184,   182,   181,
+       0,   180,     0,     0,     0,     0,     0,    39,     0,    41,
+       0,   252,     0,   253,   177,   178,   179,     0,     0,     0,
+      42,     0,    38,     0,   233,   250,   176,   270,     0,     0,
+      44,    40,   271,    45,     0,    43
 };
 
   /* YYPGOTO[NTERM-NUM].  */
-static const yytype_int16 yypgoto[] =
+static const short int yypgoto[] =
 {
-    -342,  -342,  -342,   681,  -342,  -342,  -342,   684,  -342,  -342,
-    -341,   125,  -342,   626,   625,  -342,  -342,   -39,   577,   483,
-    -342,  -342,  -342,  -138,   -30,  -342,  -342,  -342,  -342,  -136,
-    -342,  -342,   363,  -342,    11,    -4,  -342,  -342,   -13,    63,
-    -342,   616,  -342,   405,  -342,  -342,  -342,   674,   -35,  -342,
-    -342,  -342,  -342,   283,  -342,  -342,  -342,  -168,  -342,  -342,
-     470,    19,  -342,  -342,  -342,  -342,  -342,  -342,  -342,  -226,
-    -279,  -166,  -109,  -113,  -342,  -213,  -342,  -112,  -342,  -342,
-    -342,   355,  -342,   253,  -342,   447,  -342,  -342,  -342,  -342,
-    -342,  -342,   437,   443,  -342,  -342,  -342,     9,  -209,  -342,
-    -342,  -342
+    -448,  -448,  -448,   713,  -448,  -448,  -448,   714,  -448,  -448,
+    -447,    15,  -448,   656,   659,  -448,  -448,    -2,   606,   512,
+    -448,  -448,  -448,  -152,   -30,  -448,  -448,  -448,  -448,  -118,
+    -448,  -448,   391,  -448,     9,   -24,  -448,  -448,   -23,   213,
+    -448,   641,  -448,   430,  -448,  -448,  -448,   703,   -19,  -448,
+    -448,  -448,  -448,   225,  -448,  -448,  -448,  -181,  -448,  -448,
+    -448,   494,    34,  -448,  -448,  -448,  -448,  -448,  -448,  -448,
+    -246,  -258,  -172,   -96,  -114,  -448,  -226,  -448,  -117,  -448,
+    -448,  -448,   397,  -448,   290,  -448,   486,  -448,  -448,  -448,
+    -448,  -448,  -448,   472,   473,  -448,  -448,  -448,   103,  -209,
+    -448,  -448,  -448
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
-static const yytype_int16 yydefgoto[] =
+static const short int yydefgoto[] =
 {
-      -1,     8,     9,    10,    11,    12,    35,    36,    88,   441,
-     462,    37,    77,    78,    79,    80,   108,    81,   139,   140,
-     110,    13,    14,   164,   184,    83,    84,    85,    86,   218,
-     300,   219,   400,   346,    38,    39,    40,    41,   259,    92,
-      93,    94,   226,   227,    15,    16,    47,    48,    49,    50,
-      51,    52,    53,   185,   119,   186,   187,   188,   189,   190,
-     270,   271,   191,   192,   193,   194,   195,   196,   316,   321,
-     322,   323,   261,   262,   199,   263,   200,   264,   282,   355,
-     356,   357,   443,   444,   202,   203,   204,   205,   206,   436,
-     289,   290,   291,   292,    17,    18,    57,   207,   128,   208,
-     341,   398
+      -1,     8,     9,    10,    11,    12,    35,    36,    88,   447,
+     468,    37,    77,    78,    79,    80,   108,    81,   139,   140,
+     110,    13,    14,   164,   185,    83,    84,    85,    86,   220,
+     303,   221,   405,   350,    38,    39,    40,    41,   261,    92,
+      93,    94,   228,   229,    15,    16,    47,    48,    49,    50,
+      51,    52,    53,   186,   119,   187,   188,   189,   190,   191,
+     192,   273,   274,   193,   194,   195,   196,   197,   198,   319,
+     324,   325,   326,   263,   264,   201,   265,   202,   266,   285,
+     359,   360,   361,   449,   450,   204,   205,   206,   207,   208,
+     441,   292,   293,   294,   295,    17,    18,    57,   209,   128,
+     210,   344,   402
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
      positive, shift that token.  If negative, reduce the rule whose
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
-static const yytype_int16 yytable[] =
+static const short int yytable[] =
 {
-      82,   293,   221,   109,   280,   243,   198,   201,   417,    19,
-     197,   244,    82,   116,   266,   260,   298,    20,    19,   273,
-      91,    95,   325,   286,    23,   361,   274,   242,   275,    56,
-      24,   111,   112,   299,   105,   284,    60,   285,   376,   331,
-     135,    61,   418,   130,    25,   294,   334,    99,   102,    82,
-      82,   180,   105,   287,   288,   287,   288,    26,    -2,     1,
-     145,     2,   215,    60,   351,   352,   122,   160,    61,   198,
-     201,   166,    27,   197,   198,   201,    82,   296,   197,   116,
-      82,   198,   201,   198,   201,   197,     3,   197,   281,   374,
-     198,   201,   198,   201,   197,   105,   197,   135,   105,   307,
-     220,   427,   428,   141,   377,   222,    82,   152,     4,   155,
-     -65,     1,   223,     2,     5,    89,     6,   -65,   105,   475,
-     142,   359,   143,   391,   392,   393,   394,   336,   337,    28,
-     210,   225,   343,   345,   324,   324,   485,    90,     3,   330,
-     338,    46,   487,   245,   423,   339,   330,   489,   105,   425,
-     217,   105,   378,   211,   146,   406,   416,   229,   150,   301,
-       4,    98,   380,   381,   330,   330,     5,   230,     6,   -64,
-      42,   100,   347,    96,   167,   168,   -64,     7,   401,    58,
-     457,   329,   348,    64,    65,    66,    67,    68,    30,   349,
-     411,   101,   414,    97,    33,    34,    33,    34,   380,   381,
-      74,    59,   324,   252,   324,   419,   278,   422,   253,   254,
-     338,   255,   256,    62,   279,   339,   429,   430,   431,   432,
-     433,   434,   145,   330,   330,   330,   330,    75,   180,   439,
-     344,    21,   277,   251,    22,    76,   235,   257,   258,    87,
-     217,   442,   278,   236,   446,   198,   201,   198,   201,   197,
-     279,   197,   297,  -198,   451,   252,   421,   454,   456,   223,
-     253,   254,   324,   255,   256,   238,   309,   324,   324,  -198,
-      90,  -198,  -198,   236,   463,   239,   161,   117,   124,   162,
-     180,   125,   103,   277,   198,   201,   163,   145,   197,   257,
-     258,   471,   225,   278,   463,   153,   327,   328,   442,   198,
-     201,   279,   104,   197,   481,    33,    34,   156,   126,   137,
-     240,   463,   138,   162,   486,   154,    30,   463,    33,    34,
-     241,    43,   463,   310,    44,    45,   158,   157,   396,   397,
-      33,    34,   170,   311,   118,   171,   120,    64,    65,    66,
-      67,    68,   127,   336,   337,   347,   159,   117,   172,    33,
-      34,   129,   131,   173,    74,   370,   338,   251,   132,   198,
-     201,   339,   349,   197,   373,   437,   403,   144,   404,   198,
-     201,   174,    89,   197,   175,   176,   177,   178,   147,   317,
-     137,   179,   180,   213,   253,   254,   181,   255,   256,    76,
-     148,   165,   318,   182,   265,   212,   183,   171,   233,    64,
-      65,    66,    67,    68,   180,   313,   319,   320,   459,   117,
-     272,   314,   315,   257,   258,   173,    74,   215,   234,   216,
-     265,    33,    34,   171,   217,    64,    65,    66,    67,    68,
-      69,    70,    71,   174,   133,   117,   175,   176,   177,   178,
-     228,   173,    74,   179,   180,   224,   113,   246,   181,    44,
-      45,    76,   237,   336,   337,   182,   390,   115,   183,   174,
-      44,    45,   175,   176,   177,   178,   338,   231,   413,   179,
-     180,   339,   247,    31,   181,    54,   248,    76,    33,    34,
-     265,   182,   250,   171,   183,    64,    65,    66,    67,    68,
-     382,   383,   249,   121,   267,   117,    33,    34,   276,   283,
-     295,   173,    74,   379,   384,   380,   381,   385,   268,   386,
-     387,   269,    63,   304,    64,    65,    66,    67,    68,   174,
-     305,   308,   175,   176,   177,   178,   326,   335,   445,   179,
-     180,    74,   123,   332,   181,    33,    34,    76,   333,   302,
-     265,   182,   213,   171,   183,    64,    65,    66,    67,    68,
-     388,    30,   380,   381,    31,   117,    32,   243,    75,    33,
-      34,   173,    74,   340,   151,   342,    76,    33,    34,   169,
-     175,   209,    44,    45,    33,    34,   353,   232,   354,   174,
-      33,    34,   175,   176,   177,   178,   360,   358,   251,   179,
-     180,   365,   306,   364,   181,   162,   366,    76,   367,   369,
-     236,   182,   371,   329,   183,    64,    65,    66,    67,    68,
-     252,   453,   372,   375,   389,   253,   254,   395,   255,   256,
-     399,   405,    74,   407,   409,   317,   412,   408,   415,   435,
-     253,   254,   426,   255,   256,   180,   251,   420,   318,   438,
-     440,   447,   448,   424,   257,   258,   449,   450,   458,    75,
-     180,   464,   319,   320,   452,   466,   465,    76,   317,   257,
-     258,   467,   468,   253,   254,   469,   255,   256,   472,   251,
-     473,   318,   476,   106,   477,   479,    63,   482,    64,    65,
-      66,    67,    68,   180,   480,   319,   320,   483,   484,   107,
-      29,   317,   257,   258,    73,    74,   253,   254,   488,   255,
-     256,   251,    55,   134,   318,   136,   303,   214,   402,   149,
-     368,   410,   251,   460,   461,   312,   180,   478,   319,   320,
-     114,   350,    75,   252,   251,   257,   258,   362,   253,   254,
-      76,   255,   256,   363,   252,   455,   460,   474,     0,   253,
-     254,     0,   255,   256,     0,     0,   252,     0,   180,     0,
-       0,   253,   254,     0,   255,   256,   251,   257,   258,   180,
-       0,     0,     0,   251,     0,     0,     0,     0,   257,   258,
-     251,   180,     0,     0,     0,   460,     0,     0,   252,   470,
-     257,   258,     0,   253,   254,   252,   255,   256,     0,     0,
-     253,   254,   252,   255,   256,     0,     0,   253,   254,     0,
-     255,   256,     0,   180,     0,     0,     0,     0,     0,     0,
-     180,     0,   257,   258,     0,     0,     0,   180,     0,   257,
-     258,     0,     0,     0,     0,     0,   257,   258,    63,     0,
-      64,    65,    66,    67,    68,     0,     0,    69,    70,    71,
-       0,    72,     0,     0,     0,     0,    73,    74,    63,     0,
-      64,    65,    66,    67,    68,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,    73,    74,     0,     0,
-       0,     0,     0,     0,    75,     0,     0,     0,     0,     0,
-       0,     0,    76,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,    75,     0,     0,     0,     0,     0,
-       0,     0,    76
+      82,   268,   203,   296,   328,   200,   283,   276,   222,   262,
+      91,    95,    82,   244,   105,   277,    89,   278,   -65,   481,
+     223,   111,   112,   199,   287,   -65,   288,    56,   334,   116,
+     224,    46,   105,   422,   212,   337,   491,   225,    90,   289,
+     109,   297,   493,   130,   141,    99,   102,   495,    20,    82,
+      82,    98,   237,   180,   355,   356,   304,   213,   219,   238,
+     145,   142,   380,   143,   122,   203,   -64,   423,   200,   290,
+     291,   203,   378,   -64,   200,   105,    82,   135,   105,   203,
+      82,   203,   200,    23,   200,   284,   199,   310,   203,   365,
+     203,   200,   199,   200,   381,   116,    60,   299,   105,    24,
+     199,    61,   199,    19,   160,   152,    82,   155,   166,   199,
+     300,   199,    19,   395,   396,   397,   398,   225,   363,   290,
+     291,   227,   217,     1,    25,     2,   432,   433,   105,    -2,
+       1,   105,     2,   430,   135,   327,   327,   312,   351,    21,
+     333,    96,    22,   247,   238,   339,   340,   333,   352,   382,
+       3,   100,   345,   347,   349,   353,    30,     3,   341,   280,
+     421,    97,   281,   342,    33,    34,   333,   333,    26,   281,
+     282,   101,     4,   411,    33,    34,   406,   282,     5,     4,
+       6,   416,  -200,   419,    27,     5,   106,     6,    28,    63,
+       7,    64,    65,    66,    67,    68,   301,    42,  -200,   231,
+    -200,  -200,   107,   424,   327,   427,   327,    73,    74,   232,
+      58,    59,   280,   302,   434,   435,   436,   437,   438,   439,
+     444,   351,   281,   428,   145,   333,   333,   333,   333,    62,
+     282,   374,   253,   463,   161,    75,   452,   162,   353,   377,
+     448,   384,   385,    76,   163,   203,    87,   203,   200,   103,
+     200,   384,   385,   457,   320,   245,   460,   462,    90,   255,
+     256,   246,   257,   258,   126,   327,   199,   321,   199,   104,
+     327,   327,    33,    34,   469,    60,   118,   117,   120,   180,
+      61,   322,   323,   240,   203,   227,   153,   200,   259,   260,
+     145,   477,   156,   241,   469,   129,   124,   487,   448,   125,
+     203,   339,   340,   200,   146,   199,   154,   492,   150,    33,
+      34,   469,   157,   158,   341,    33,    34,   469,   400,   342,
+     401,   199,   469,   170,   167,   168,   171,   235,    64,    65,
+      66,    67,    68,   159,   330,   331,    33,    34,   117,   172,
+     386,   387,   313,   242,   173,    74,   162,   236,   348,   316,
+      33,    34,   314,   243,   388,   317,   318,   389,   219,   390,
+     391,   203,   174,   127,   200,   175,   176,   177,   178,   442,
+      30,   203,   179,   180,   200,    43,   341,   181,    44,    45,
+      76,   342,   199,   131,   182,   408,   183,   409,   184,   132,
+     267,   137,   199,   171,   138,    64,    65,    66,    67,    68,
+     137,   339,   340,   215,   394,   117,   275,   383,   144,   384,
+     385,   173,    74,   465,   341,   267,    89,   147,   171,   342,
+      64,    65,    66,    67,    68,   392,   148,   384,   385,   174,
+     117,   217,   175,   176,   177,   178,   173,    74,   113,   179,
+     180,    44,    45,    31,   181,    54,   165,    76,    33,    34,
+     214,   182,   218,   183,   174,   184,   219,   175,   176,   177,
+     178,   226,   230,   418,   179,   180,    69,    70,    71,   181,
+     133,   115,    76,   233,    44,    45,   182,   239,   183,   267,
+     184,   248,   171,   252,    64,    65,    66,    67,    68,   271,
+      30,   249,   272,    31,   117,    32,   250,   251,    33,    34,
+     173,    74,   121,   269,   267,    33,    34,   171,   279,    64,
+      65,    66,    67,    68,   305,   270,   286,   215,   174,   117,
+     298,   175,   176,   177,   178,   173,    74,   451,   179,   180,
+     307,   123,   308,   181,    33,    34,    76,   329,   309,   311,
+     182,   162,   183,   174,   184,   335,   175,   176,   177,   178,
+     336,   338,   343,   179,   180,   253,   151,   180,   181,    33,
+      34,    76,   175,   245,   346,   182,   357,   183,   332,   184,
+      64,    65,    66,    67,    68,   358,   169,   254,   426,    44,
+      45,   362,   255,   256,   364,   257,   258,    74,   211,   368,
+     320,    33,    34,   369,   370,   255,   256,   234,   257,   258,
+      33,    34,   180,   321,   332,   371,    64,    65,    66,    67,
+      68,   259,   260,   238,    75,   180,   373,   322,   323,   375,
+     376,   379,    76,    74,   259,   260,   254,   399,   393,   403,
+     404,   255,   256,   410,   257,   258,    63,   253,    64,    65,
+      66,    67,    68,   412,   429,    69,    70,    71,   253,    72,
+      75,   180,   414,   420,    73,    74,   413,   417,    76,   320,
+     259,   260,   425,   440,   255,   256,   431,   257,   258,   443,
+     320,   445,   321,   446,   453,   255,   256,   454,   257,   258,
+     464,   455,    75,   321,   180,   458,   322,   323,   253,   456,
+      76,   470,   471,   259,   260,   180,   473,   322,   323,   253,
+     466,   467,   474,   472,   259,   260,   475,   478,   479,   482,
+     254,   466,   480,   485,   483,   255,   256,   488,   257,   258,
+     253,   254,    29,   489,   486,   490,   255,   256,   494,   257,
+     258,   253,    55,   134,   149,   180,   216,   306,   372,   136,
+     407,   315,   254,   459,   259,   260,   180,   255,   256,   114,
+     257,   258,   253,   254,   461,   259,   260,   415,   255,   256,
+     484,   257,   258,   354,     0,   366,   367,   180,     0,     0,
+       0,     0,     0,   253,   254,   476,   259,   260,   180,   255,
+     256,     0,   257,   258,   253,   466,     0,   259,   260,     0,
+       0,     0,     0,     0,     0,   254,     0,     0,     0,   180,
+     255,   256,     0,   257,   258,     0,   254,     0,   259,   260,
+       0,   255,   256,     0,   257,   258,     0,     0,     0,    63,
+     180,    64,    65,    66,    67,    68,     0,     0,     0,   259,
+     260,   180,     0,     0,     0,     0,     0,    73,    74,     0,
+     259,   260,    63,     0,    64,    65,    66,    67,    68,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,    74,     0,     0,     0,    75,     0,     0,     0,     0,
+       0,     0,     0,    76,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,    75,     0,
+       0,     0,     0,     0,     0,     0,    76
 };
 
-static const yytype_int16 yycheck[] =
+static const short int yycheck[] =
 {
-      30,   210,   138,    42,     4,    11,   119,   119,     1,     0,
-     119,    17,    42,    48,   182,   181,    35,     4,     9,   187,
-      33,    34,   248,    17,     4,    17,   194,   165,   196,    18,
-       4,    44,    45,    52,    38,   203,    11,   205,   317,   252,
-      79,    16,    35,    73,     4,   211,   259,    36,    37,    79,
-      80,    51,    56,    47,    48,    47,    48,     4,     0,     1,
-      90,     3,    37,    11,   277,   278,    55,   106,    16,   182,
-     182,   110,    31,   182,   187,   187,   106,   213,   187,   114,
-     110,   194,   194,   196,   196,   194,    28,   196,   200,   315,
-     203,   203,   205,   205,   203,    99,   205,   136,   102,   237,
-       1,   380,   381,     1,   317,    11,   136,    96,    50,    98,
-      11,     1,    18,     3,    56,     4,    58,    18,   122,   460,
-      18,   287,    20,   336,   337,   338,   339,    24,    25,     0,
-      18,   144,   268,   269,   247,   248,   477,    26,    28,   252,
-      37,    16,   483,   173,    11,    42,   259,   488,   152,   375,
-      51,   155,   318,    41,    91,    52,   365,     1,    95,     1,
-      50,    36,    29,    30,   277,   278,    56,    11,    58,    11,
-      16,     1,     1,     1,   111,   112,    18,    67,   344,     5,
-      11,     4,    11,     6,     7,     8,     9,    10,    16,    18,
-     358,    21,   360,    21,    24,    25,    24,    25,    29,    30,
-      23,     5,   315,    26,   317,   371,    51,   373,    31,    32,
-      37,    34,    35,    11,    59,    42,   382,   383,   384,   385,
-     386,   387,   252,   336,   337,   338,   339,    50,    51,   397,
-      41,     1,    41,     4,     4,    58,    11,    60,    61,     4,
-      51,   407,    51,    18,   412,   358,   358,   360,   360,   358,
-      59,   360,    11,    11,   420,    26,    27,   423,   424,    18,
-      31,    32,   375,    34,    35,     1,    11,   380,   381,    27,
-      26,    29,    30,    18,   440,    11,     1,    16,     1,     4,
-      51,     4,     1,    41,   397,   397,    11,   317,   397,    60,
-      61,   457,   305,    51,   460,     1,    60,    61,   464,   412,
-     412,    59,    21,   412,   472,    24,    25,     1,     4,     1,
-       1,   477,     4,     4,   482,    21,    16,   483,    24,    25,
-      11,    21,   488,     1,    24,    25,     1,    21,    63,    64,
-      24,    25,     1,    11,    51,     4,    53,     6,     7,     8,
-       9,    10,     4,    24,    25,     1,    21,    16,    17,    24,
-      25,    37,     4,    22,    23,    11,    37,     4,     4,   472,
-     472,    42,    18,   472,    11,   395,   347,     5,   349,   482,
-     482,    40,     4,   482,    43,    44,    45,    46,     1,    26,
-       1,    50,    51,     4,    31,    32,    55,    34,    35,    58,
-       4,    17,    39,    62,     1,    17,    65,     4,     1,     6,
-       7,     8,     9,    10,    51,     4,    53,    54,   438,    16,
-      17,    10,    11,    60,    61,    22,    23,    37,    21,    37,
-       1,    24,    25,     4,    51,     6,     7,     8,     9,    10,
-      13,    14,    15,    40,    17,    16,    43,    44,    45,    46,
-      27,    22,    23,    50,    51,     4,    21,    26,    55,    24,
-      25,    58,    18,    24,    25,    62,    27,    21,    65,    40,
-      24,    25,    43,    44,    45,    46,    37,    11,    49,    50,
-      51,    42,    26,    19,    55,    21,    26,    58,    24,    25,
-       1,    62,     4,     4,    65,     6,     7,     8,     9,    10,
-      19,    20,    26,    21,    31,    16,    24,    25,    11,    11,
-      11,    22,    23,    27,    33,    29,    30,    36,     1,    38,
-      39,     4,     4,     4,     6,     7,     8,     9,    10,    40,
-       5,    11,    43,    44,    45,    46,     4,    11,    49,    50,
-      51,    23,    21,     4,    55,    24,    25,    58,     4,     1,
-       1,    62,     4,     4,    65,     6,     7,     8,     9,    10,
-      27,    16,    29,    30,    19,    16,    21,    11,    50,    24,
-      25,    22,    23,    63,    21,    11,    58,    24,    25,    21,
-      43,    21,    24,    25,    24,    25,     4,    21,     4,    40,
-      24,    25,    43,    44,    45,    46,     5,    57,     4,    50,
-      51,    18,     1,    17,    55,     4,    52,    58,    51,    11,
-      18,    62,    41,     4,    65,     6,     7,     8,     9,    10,
-      26,    27,     4,    11,    27,    31,    32,    16,    34,    35,
-      41,    11,    23,     5,     4,    26,     5,    52,    17,    16,
-      31,    32,    27,    34,    35,    51,     4,    41,    39,    16,
-      16,    11,    49,    11,    60,    61,    52,    52,     4,    50,
-      51,     5,    53,    54,    27,    49,    11,    58,    26,    60,
-      61,    11,    27,    31,    32,    27,    34,    35,    17,     4,
-       4,    39,    17,     1,    18,    11,     4,    17,     6,     7,
-       8,     9,    10,    51,    27,    53,    54,    18,    17,    17,
-       9,    26,    60,    61,    22,    23,    31,    32,    18,    34,
-      35,     4,    18,    77,    39,    80,   223,   130,   345,    93,
-     305,   356,     4,    16,    17,   245,    51,   464,    53,    54,
-      46,   274,    50,    26,     4,    60,    61,   290,    31,    32,
-      58,    34,    35,   290,    26,    27,    16,    17,    -1,    31,
-      32,    -1,    34,    35,    -1,    -1,    26,    -1,    51,    -1,
-      -1,    31,    32,    -1,    34,    35,     4,    60,    61,    51,
-      -1,    -1,    -1,     4,    -1,    -1,    -1,    -1,    60,    61,
-       4,    51,    -1,    -1,    -1,    16,    -1,    -1,    26,    27,
-      60,    61,    -1,    31,    32,    26,    34,    35,    -1,    -1,
-      31,    32,    26,    34,    35,    -1,    -1,    31,    32,    -1,
-      34,    35,    -1,    51,    -1,    -1,    -1,    -1,    -1,    -1,
-      51,    -1,    60,    61,    -1,    -1,    -1,    51,    -1,    60,
-      61,    -1,    -1,    -1,    -1,    -1,    60,    61,     4,    -1,
-       6,     7,     8,     9,    10,    -1,    -1,    13,    14,    15,
-      -1,    17,    -1,    -1,    -1,    -1,    22,    23,     4,    -1,
-       6,     7,     8,     9,    10,    -1,    -1,    -1,    -1,    -1,
-      -1,    -1,    -1,    -1,    -1,    -1,    22,    23,    -1,    -1,
-      -1,    -1,    -1,    -1,    50,    -1,    -1,    -1,    -1,    -1,
-      -1,    -1,    58,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
-      -1,    -1,    -1,    -1,    50,    -1,    -1,    -1,    -1,    -1,
-      -1,    -1,    58
+      30,   182,   119,   212,   250,   119,     4,   188,     1,   181,
+      33,    34,    42,   165,    38,   196,     4,   198,    11,   466,
+     138,    44,    45,   119,   205,    18,   207,    18,   254,    48,
+      11,    16,    56,     1,    18,   261,   483,    18,    26,    17,
+      42,   213,   489,    73,     1,    36,    37,   494,     4,    79,
+      80,    36,    11,    51,   280,   281,     1,    41,    51,    18,
+      90,    18,   320,    20,    55,   182,    11,    35,   182,    47,
+      48,   188,   318,    18,   188,    99,   106,    79,   102,   196,
+     110,   198,   196,     4,   198,   202,   182,   239,   205,    17,
+     207,   205,   188,   207,   320,   114,    11,   215,   122,     4,
+     196,    16,   198,     0,   106,    96,   136,    98,   110,   205,
+      11,   207,     9,   339,   340,   341,   342,    18,   290,    47,
+      48,   144,    37,     1,     4,     3,   384,   385,   152,     0,
+       1,   155,     3,   379,   136,   249,   250,    11,     1,     1,
+     254,     1,     4,   173,    18,    24,    25,   261,    11,   321,
+      28,     1,   269,   271,   272,    18,    16,    28,    37,    41,
+     369,    21,    51,    42,    24,    25,   280,   281,     4,    51,
+      59,    21,    50,    52,    24,    25,   348,    59,    56,    50,
+      58,   362,    11,   364,    31,    56,     1,    58,     0,     4,
+      68,     6,     7,     8,     9,    10,    35,    16,    27,     1,
+      29,    30,    17,   375,   318,   377,   320,    22,    23,    11,
+       5,     5,    41,    52,   386,   387,   388,   389,   390,   391,
+     401,     1,    51,    11,   254,   339,   340,   341,   342,    11,
+      59,    11,     4,    11,     1,    50,   417,     4,    18,    11,
+     412,    29,    30,    58,    11,   362,     4,   364,   362,     1,
+     364,    29,    30,   425,    26,    11,   428,   429,    26,    31,
+      32,    17,    34,    35,     4,   379,   362,    39,   364,    21,
+     384,   385,    24,    25,   446,    11,    51,    16,    53,    51,
+      16,    53,    54,     1,   401,   308,     1,   401,    60,    61,
+     320,   463,     1,    11,   466,    37,     1,   478,   470,     4,
+     417,    24,    25,   417,    91,   401,    21,   488,    95,    24,
+      25,   483,    21,     1,    37,    24,    25,   489,    63,    42,
+      65,   417,   494,     1,   111,   112,     4,     1,     6,     7,
+       8,     9,    10,    21,    60,    61,    24,    25,    16,    17,
+      19,    20,     1,     1,    22,    23,     4,    21,    41,     4,
+      24,    25,    11,    11,    33,    10,    11,    36,    51,    38,
+      39,   478,    40,     4,   478,    43,    44,    45,    46,   399,
+      16,   488,    50,    51,   488,    21,    37,    55,    24,    25,
+      58,    42,   478,     4,    62,   351,    64,   353,    66,     4,
+       1,     1,   488,     4,     4,     6,     7,     8,     9,    10,
+       1,    24,    25,     4,    27,    16,    17,    27,     5,    29,
+      30,    22,    23,   443,    37,     1,     4,     1,     4,    42,
+       6,     7,     8,     9,    10,    27,     4,    29,    30,    40,
+      16,    37,    43,    44,    45,    46,    22,    23,    21,    50,
+      51,    24,    25,    19,    55,    21,    17,    58,    24,    25,
+      17,    62,    37,    64,    40,    66,    51,    43,    44,    45,
+      46,     4,    27,    49,    50,    51,    13,    14,    15,    55,
+      17,    21,    58,    11,    24,    25,    62,    18,    64,     1,
+      66,    26,     4,     4,     6,     7,     8,     9,    10,     1,
+      16,    26,     4,    19,    16,    21,    26,    26,    24,    25,
+      22,    23,    21,    26,     1,    24,    25,     4,    11,     6,
+       7,     8,     9,    10,     1,    31,    11,     4,    40,    16,
+      11,    43,    44,    45,    46,    22,    23,    49,    50,    51,
+       4,    21,     5,    55,    24,    25,    58,     4,     1,    11,
+      62,     4,    64,    40,    66,     4,    43,    44,    45,    46,
+       4,    11,    63,    50,    51,     4,    21,    51,    55,    24,
+      25,    58,    43,    11,    11,    62,     4,    64,     4,    66,
+       6,     7,     8,     9,    10,     4,    21,    26,    27,    24,
+      25,    57,    31,    32,     5,    34,    35,    23,    21,    17,
+      26,    24,    25,    18,    52,    31,    32,    21,    34,    35,
+      24,    25,    51,    39,     4,    51,     6,     7,     8,     9,
+      10,    60,    61,    18,    50,    51,    11,    53,    54,    41,
+       4,    11,    58,    23,    60,    61,    26,    16,    27,    27,
+      41,    31,    32,    11,    34,    35,     4,     4,     6,     7,
+       8,     9,    10,     5,    11,    13,    14,    15,     4,    17,
+      50,    51,     4,    17,    22,    23,    52,     5,    58,    26,
+      60,    61,    41,    16,    31,    32,    27,    34,    35,    16,
+      26,    11,    39,    16,    11,    31,    32,    49,    34,    35,
+       4,    52,    50,    39,    51,    27,    53,    54,     4,    52,
+      58,     5,    11,    60,    61,    51,    11,    53,    54,     4,
+      16,    17,    27,    49,    60,    61,    27,    17,     4,    17,
+      26,    16,    17,    11,    18,    31,    32,    17,    34,    35,
+       4,    26,     9,    18,    27,    17,    31,    32,    18,    34,
+      35,     4,    18,    77,    93,    51,   130,   225,   308,    80,
+     349,   247,    26,    27,    60,    61,    51,    31,    32,    46,
+      34,    35,     4,    26,    27,    60,    61,   360,    31,    32,
+     470,    34,    35,   277,    -1,   293,   293,    51,    -1,    -1,
+      -1,    -1,    -1,     4,    26,    27,    60,    61,    51,    31,
+      32,    -1,    34,    35,     4,    16,    -1,    60,    61,    -1,
+      -1,    -1,    -1,    -1,    -1,    26,    -1,    -1,    -1,    51,
+      31,    32,    -1,    34,    35,    -1,    26,    -1,    60,    61,
+      -1,    31,    32,    -1,    34,    35,    -1,    -1,    -1,     4,
+      51,     6,     7,     8,     9,    10,    -1,    -1,    -1,    60,
+      61,    51,    -1,    -1,    -1,    -1,    -1,    22,    23,    -1,
+      60,    61,     4,    -1,     6,     7,     8,     9,    10,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    23,    -1,    -1,    -1,    50,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    58,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    50,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    58
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
-static const yytype_uint8 yystos[] =
+static const unsigned char yystos[] =
 {
-       0,     1,     3,    28,    50,    56,    58,    67,    74,    75,
-      76,    77,    78,    94,    95,   117,   118,   167,   168,   170,
-       4,     1,     4,     4,     4,     4,     4,    31,     0,    76,
-      16,    19,    21,    24,    25,    79,    80,    84,   107,   108,
-     109,   110,    16,    21,    24,    25,    84,   119,   120,   121,
-     122,   123,   124,   125,    21,    80,   107,   169,     5,     5,
+       0,     1,     3,    28,    50,    56,    58,    68,    75,    76,
+      77,    78,    79,    95,    96,   118,   119,   169,   170,   172,
+       4,     1,     4,     4,     4,     4,     4,    31,     0,    77,
+      16,    19,    21,    24,    25,    80,    81,    85,   108,   109,
+     110,   111,    16,    21,    24,    25,    85,   120,   121,   122,
+     123,   124,   125,   126,    21,    81,   108,   171,     5,     5,
       11,    16,    11,     4,     6,     7,     8,     9,    10,    13,
-      14,    15,    17,    22,    23,    50,    58,    85,    86,    87,
-      88,    90,    97,    98,    99,   100,   101,     4,    81,     4,
-      26,   111,   112,   113,   114,   111,     1,    21,    84,   107,
-       1,    21,   107,     1,    21,   108,     1,    17,    89,    90,
-      93,   111,   111,    21,   120,    21,   121,    16,   126,   127,
-     126,    21,   107,    21,     1,     4,     4,     4,   171,    37,
-      97,     4,     4,    17,    86,    90,    87,     1,     4,    91,
-      92,     1,    18,    20,     5,    97,   112,     1,     4,   114,
-     112,    21,   107,     1,    21,   107,     1,    21,     1,    21,
-      90,     1,     4,    11,    96,    17,    90,   112,   112,    21,
+      14,    15,    17,    22,    23,    50,    58,    86,    87,    88,
+      89,    91,    98,    99,   100,   101,   102,     4,    82,     4,
+      26,   112,   113,   114,   115,   112,     1,    21,    85,   108,
+       1,    21,   108,     1,    21,   109,     1,    17,    90,    91,
+      94,   112,   112,    21,   121,    21,   122,    16,   127,   128,
+     127,    21,   108,    21,     1,     4,     4,     4,   173,    37,
+      98,     4,     4,    17,    87,    91,    88,     1,     4,    92,
+      93,     1,    18,    20,     5,    98,   113,     1,     4,   115,
+     113,    21,   108,     1,    21,   108,     1,    21,     1,    21,
+      91,     1,     4,    11,    97,    17,    91,   113,   113,    21,
        1,     4,    17,    22,    40,    43,    44,    45,    46,    50,
-      51,    55,    62,    65,    97,   126,   128,   129,   130,   131,
-     132,   135,   136,   137,   138,   139,   140,   145,   146,   147,
-     149,   150,   157,   158,   159,   160,   161,   170,   172,    21,
-      18,    41,    17,     4,    91,    37,    37,    51,   102,   104,
-       1,   102,    11,    18,     4,   111,   115,   116,    27,     1,
-      11,    11,    21,     1,    21,    11,    18,    18,     1,    11,
-       1,    11,    96,    11,    17,    97,    26,    26,    26,    26,
-       4,     4,    26,    31,    32,    34,    35,    60,    61,   111,
-     144,   145,   146,   148,   150,     1,   130,    31,     1,     4,
-     133,   134,    17,   130,   130,   130,    11,    41,    51,    59,
-       4,   150,   151,    11,   130,   130,    17,    47,    48,   163,
-     164,   165,   166,   171,   144,    11,   102,    11,    35,    52,
-     103,     1,     1,    92,     4,     5,     1,    96,    11,    11,
-       1,    11,   133,     4,    10,    11,   141,    26,    39,    53,
-      54,   142,   143,   144,   146,   142,     4,    60,    61,     4,
-     146,   148,     4,     4,   148,    11,    24,    25,    37,    42,
-      63,   173,    11,   102,    41,   102,   106,     1,    11,    18,
-     158,   148,   148,     4,     4,   152,   153,   154,    57,   144,
-       5,    17,   165,   166,    17,    18,    52,    51,   116,    11,
-      11,    41,     4,    11,   142,    11,   143,   148,   144,    27,
-      29,    30,    19,    20,    33,    36,    38,    39,    27,    27,
-      27,   148,   148,   148,   148,    16,    63,    64,   174,    41,
-     105,   144,   105,   134,   134,    11,    52,     5,    52,     4,
-     154,   130,     5,    49,   130,    17,   171,     1,    35,   144,
-      41,    27,   144,    11,    11,   142,    27,   143,   143,   144,
-     144,   144,   144,   144,   144,    16,   162,    97,    16,   130,
-      16,    82,   144,   155,   156,    49,   130,    11,    49,    52,
-      52,   144,    27,    27,   144,    27,   144,    11,     4,    97,
-      16,    17,    83,   144,     5,    11,    49,    11,    27,    27,
-      27,   144,    17,     4,    17,    83,    17,    18,   156,    11,
-      27,   130,    17,    18,    17,    83,   130,    83,    18,    83
+      51,    55,    62,    64,    66,    98,   127,   129,   130,   131,
+     132,   133,   134,   137,   138,   139,   140,   141,   142,   147,
+     148,   149,   151,   152,   159,   160,   161,   162,   163,   172,
+     174,    21,    18,    41,    17,     4,    92,    37,    37,    51,
+     103,   105,     1,   103,    11,    18,     4,   112,   116,   117,
+      27,     1,    11,    11,    21,     1,    21,    11,    18,    18,
+       1,    11,     1,    11,    97,    11,    17,    98,    26,    26,
+      26,    26,     4,     4,    26,    31,    32,    34,    35,    60,
+      61,   112,   146,   147,   148,   150,   152,     1,   131,    26,
+      31,     1,     4,   135,   136,    17,   131,   131,   131,    11,
+      41,    51,    59,     4,   152,   153,    11,   131,   131,    17,
+      47,    48,   165,   166,   167,   168,   173,   146,    11,   103,
+      11,    35,    52,   104,     1,     1,    93,     4,     5,     1,
+      97,    11,    11,     1,    11,   135,     4,    10,    11,   143,
+      26,    39,    53,    54,   144,   145,   146,   148,   144,     4,
+      60,    61,     4,   148,   150,     4,     4,   150,    11,    24,
+      25,    37,    42,    63,   175,   152,    11,   103,    41,   103,
+     107,     1,    11,    18,   160,   150,   150,     4,     4,   154,
+     155,   156,    57,   146,     5,    17,   167,   168,    17,    18,
+      52,    51,   117,    11,    11,    41,     4,    11,   144,    11,
+     145,   150,   146,    27,    29,    30,    19,    20,    33,    36,
+      38,    39,    27,    27,    27,   150,   150,   150,   150,    16,
+      63,    65,   176,    27,    41,   106,   146,   106,   136,   136,
+      11,    52,     5,    52,     4,   156,   131,     5,    49,   131,
+      17,   173,     1,    35,   146,    41,    27,   146,    11,    11,
+     144,    27,   145,   145,   146,   146,   146,   146,   146,   146,
+      16,   164,    98,    16,   131,    11,    16,    83,   146,   157,
+     158,    49,   131,    11,    49,    52,    52,   146,    27,    27,
+     146,    27,   146,    11,     4,    98,    16,    17,    84,   146,
+       5,    11,    49,    11,    27,    27,    27,   146,    17,     4,
+      17,    84,    17,    18,   158,    11,    27,   131,    17,    18,
+      17,    84,   131,    84,    18,    84
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
-static const yytype_uint8 yyr1[] =
+static const unsigned char yyr1[] =
 {
-       0,    73,    74,    75,    75,    75,    76,    76,    76,    76,
-      76,    77,    78,    78,    78,    78,    78,    79,    79,    79,
-      79,    79,    79,    79,    79,    79,    79,    79,    79,    79,
-      79,    79,    79,    79,    80,    80,    81,    81,    82,    82,
-      83,    83,    83,    83,    83,    83,    84,    84,    85,    85,
-      85,    86,    87,    87,    88,    88,    88,    89,    90,    90,
-      90,    91,    91,    91,    92,    92,    92,    92,    93,    93,
-      93,    94,    95,    95,    95,    95,    95,    95,    95,    95,
-      96,    96,    96,    97,    97,    97,    97,    98,    98,    99,
-      99,   100,   100,   100,   100,   100,   100,   101,   102,   103,
-     103,   103,   104,   104,   105,   105,   106,   106,   107,   107,
-     108,   108,   109,   109,   109,   110,   111,   112,   112,   113,
-     113,   114,   115,   115,   116,   117,   118,   118,   119,   119,
-     119,   119,   120,   120,   121,   121,   122,   123,   124,   125,
-     126,   127,   128,   128,   128,   129,   129,   130,   130,   130,
-     130,   130,   130,   130,   130,   130,   130,   131,   132,   132,
-     132,   133,   133,   133,   134,   134,   134,   135,   136,   136,
-     136,   137,   138,   139,   140,   140,   140,   140,   140,   140,
-     140,   140,   141,   141,   141,   142,   142,   142,   143,   143,
-     143,   143,   143,   143,   143,   143,   143,   143,   143,   144,
-     144,   145,   146,   146,   146,   146,   147,   148,   148,   148,
-     148,   148,   148,   148,   148,   148,   148,   148,   148,   148,
-     148,   148,   149,   150,   151,   151,   152,   152,   153,   153,
-     154,   155,   155,   156,   157,   158,   159,   159,   159,   160,
-     161,   162,   163,   163,   163,   163,   164,   164,   165,   165,
-     165,   166,   166,   166,   167,   168,   169,   169,   169,   169,
-     170,   170,   171,   171,   171,   171,   172,   172,   173,   173,
-     174
+       0,    74,    75,    76,    76,    76,    77,    77,    77,    77,
+      77,    78,    79,    79,    79,    79,    79,    80,    80,    80,
+      80,    80,    80,    80,    80,    80,    80,    80,    80,    80,
+      80,    80,    80,    80,    81,    81,    82,    82,    83,    83,
+      84,    84,    84,    84,    84,    84,    85,    85,    86,    86,
+      86,    87,    88,    88,    89,    89,    89,    90,    91,    91,
+      91,    92,    92,    92,    93,    93,    93,    93,    94,    94,
+      94,    95,    96,    96,    96,    96,    96,    96,    96,    96,
+      97,    97,    97,    98,    98,    98,    98,    99,    99,   100,
+     100,   101,   101,   101,   101,   101,   101,   102,   103,   104,
+     104,   104,   105,   105,   106,   106,   107,   107,   108,   108,
+     109,   109,   110,   110,   110,   111,   112,   113,   113,   114,
+     114,   115,   116,   116,   117,   118,   119,   119,   120,   120,
+     120,   120,   121,   121,   122,   122,   123,   124,   125,   126,
+     127,   128,   129,   129,   129,   130,   130,   131,   131,   131,
+     131,   131,   131,   131,   131,   131,   131,   131,   132,   133,
+     134,   134,   134,   135,   135,   135,   136,   136,   136,   137,
+     138,   138,   138,   139,   140,   141,   142,   142,   142,   142,
+     142,   142,   142,   142,   143,   143,   143,   144,   144,   144,
+     145,   145,   145,   145,   145,   145,   145,   145,   145,   145,
+     145,   146,   146,   147,   148,   148,   148,   148,   149,   150,
+     150,   150,   150,   150,   150,   150,   150,   150,   150,   150,
+     150,   150,   150,   150,   151,   152,   153,   153,   154,   154,
+     155,   155,   156,   157,   157,   158,   159,   160,   161,   161,
+     161,   162,   163,   164,   165,   165,   165,   165,   166,   166,
+     167,   167,   167,   168,   168,   168,   169,   170,   171,   171,
+     171,   171,   172,   172,   173,   173,   173,   173,   174,   174,
+     175,   175,   176
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
-static const yytype_uint8 yyr2[] =
+static const unsigned char yyr2[] =
 {
        0,     2,     1,     2,     1,     3,     1,     1,     1,     1,
        1,     2,     4,     2,     2,     2,     4,     4,     3,     3,
@@ -1129,71 +867,254 @@ static const yytype_uint8 yyr2[] =
        1,     3,     3,     1,     2,     2,     4,     2,     3,     2,
        2,     1,     2,     1,     1,     1,     2,     3,     2,     3,
        2,     1,     2,     1,     2,     2,     1,     1,     1,     2,
-       1,     1,     1,     1,     1,     2,     2,     3,     3,     4,
-       1,     3,     1,     3,     3,     2,     3,     3,     1,     1,
-       1,     4,     1,     2,     8,     7,     7,     7,     6,     6,
-       6,     5,     4,     3,     1,     3,     3,     1,     3,     3,
-       3,     3,     3,     3,     2,     3,     1,     1,     1,     1,
-       1,     3,     3,     1,     1,     1,     4,     1,     1,     1,
-       1,     1,     3,     3,     3,     3,     3,     2,     2,     2,
-       2,     2,     1,     4,     1,     1,     1,     1,     2,     1,
-       3,     3,     1,     1,     2,     4,     2,     4,     2,     4,
-       5,     1,     3,     2,     2,     1,     2,     1,     6,     4,
-       5,     5,     3,     4,     2,     2,     3,     2,     2,     1,
-       6,     3,     5,     3,     1,     3,     4,     3,     6,     7,
-       2
+       1,     1,     1,     1,     1,     2,     1,     2,     5,     3,
+       3,     4,     1,     3,     1,     3,     3,     2,     3,     3,
+       1,     1,     1,     4,     1,     2,     8,     7,     7,     7,
+       6,     6,     6,     5,     4,     3,     1,     3,     3,     1,
+       3,     3,     3,     3,     3,     3,     2,     3,     1,     1,
+       1,     1,     1,     3,     3,     1,     1,     1,     4,     1,
+       1,     1,     1,     1,     3,     3,     3,     3,     3,     2,
+       2,     2,     2,     2,     1,     4,     1,     1,     1,     1,
+       2,     1,     3,     3,     1,     1,     2,     4,     2,     4,
+       2,     4,     5,     1,     3,     2,     2,     1,     2,     1,
+       6,     4,     5,     5,     3,     4,     2,     2,     3,     2,
+       2,     1,     6,     3,     5,     3,     1,     3,     4,     3,
+       6,     7,     2
 };
 
 
-#define yyerrok         (yyerrstatus = 0)
-#define yyclearin       (yychar = YYEMPTY)
-#define YYEMPTY         (-2)
-#define YYEOF           0
+/* YYDPREC[RULE-NUM] -- Dynamic precedence of rule #RULE-NUM (0 if none).  */
+static const unsigned char yydprec[] =
+{
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0
+};
 
-#define YYACCEPT        goto yyacceptlab
-#define YYABORT         goto yyabortlab
-#define YYERROR         goto yyerrorlab
+/* YYMERGER[RULE-NUM] -- Index of merging function for rule #RULE-NUM.  */
+static const unsigned char yymerger[] =
+{
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0
+};
 
+/* YYIMMEDIATE[RULE-NUM] -- True iff rule #RULE-NUM is not to be deferred, as
+   in the case of predicates.  */
+static const yybool yyimmediate[] =
+{
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0
+};
 
-#define YYRECOVERING()  (!!yyerrstatus)
+/* YYCONFLP[YYPACT[STATE-NUM]] -- Pointer into YYCONFL of start of
+   list of conflicting reductions corresponding to action entry for
+   state STATE-NUM in yytable.  0 means no conflicts.  The list in
+   yyconfl is terminated by a rule number of 0.  */
+static const unsigned char yyconflp[] =
+{
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     1,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,     0
+};
 
-#define YYBACKUP(Token, Value)                                  \
-do                                                              \
-  if (yychar == YYEMPTY)                                        \
-    {                                                           \
-      yychar = (Token);                                         \
-      yylval = (Value);                                         \
-      YYPOPSTACK (yylen);                                       \
-      yystate = *yyssp;                                         \
-      YY_LAC_DISCARD ("YYBACKUP");                              \
-      goto yybackup;                                            \
-    }                                                           \
-  else                                                          \
-    {                                                           \
-      yyerror (YY_("syntax error: cannot back up")); \
-      YYERROR;                                                  \
-    }                                                           \
-while (0)
+/* YYCONFL[I] -- lists of conflicting rule numbers, each terminated by
+   0, pointed into by YYCONFLP.  */
+static const short int yyconfl[] =
+{
+       0,   213,     0
+};
 
 /* Error token number */
-#define YYTERROR        1
-#define YYERRCODE       256
+#define YYTERROR 1
 
 
 
-/* Enable debugging if requested.  */
+YYSTYPE yylval;
+
+int yynerrs;
+int yychar;
+
+static const int YYEOF = 0;
+static const int YYEMPTY = -2;
+
+typedef enum { yyok, yyaccept, yyabort, yyerr } YYRESULTTAG;
+
+#define YYCHK(YYE)                              \
+  do {                                          \
+    YYRESULTTAG yychk_flag = YYE;               \
+    if (yychk_flag != yyok)                     \
+      return yychk_flag;                        \
+  } while (0)
+
 #if YYDEBUG
 
 # ifndef YYFPRINTF
-#  include <stdio.h> /* INFRINGES ON USER NAME SPACE */
 #  define YYFPRINTF fprintf
 # endif
-
-# define YYDPRINTF(Args)                        \
-do {                                            \
-  if (yydebug)                                  \
-    YYFPRINTF Args;                             \
-} while (0)
 
 /* This macro is provided for backward compatibility. */
 #ifndef YY_LOCATION_PRINT
@@ -1201,16 +1122,11 @@ do {                                            \
 #endif
 
 
-# define YY_SYMBOL_PRINT(Title, Type, Value, Location)                    \
-do {                                                                      \
-  if (yydebug)                                                            \
-    {                                                                     \
-      YYFPRINTF (stderr, "%s ", Title);                                   \
-      yy_symbol_print (stderr,                                            \
-                  Type, Value); \
-      YYFPRINTF (stderr, "\n");                                           \
-    }                                                                     \
-} while (0)
+# define YYDPRINTF(Args)                        \
+  do {                                          \
+    if (yydebug)                                \
+      YYFPRINTF Args;                           \
+  } while (0)
 
 
 /*----------------------------------------.
@@ -1224,10 +1140,6 @@ yy_symbol_value_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvalue
   YYUSE (yyo);
   if (!yyvaluep)
     return;
-# ifdef YYPRINT
-  if (yytype < YYNTOKENS)
-    YYPRINT (yyoutput, yytoknum[yytype], *yyvaluep);
-# endif
   YYUSE (yytype);
 }
 
@@ -1246,70 +1158,32 @@ yy_symbol_print (FILE *yyoutput, int yytype, YYSTYPE const * const yyvaluep)
   YYFPRINTF (yyoutput, ")");
 }
 
-/*------------------------------------------------------------------.
-| yy_stack_print -- Print the state stack from its BOTTOM up to its |
-| TOP (included).                                                   |
-`------------------------------------------------------------------*/
-
-static void
-yy_stack_print (yytype_int16 *yybottom, yytype_int16 *yytop)
-{
-  YYFPRINTF (stderr, "Stack now");
-  for (; yybottom <= yytop; yybottom++)
-    {
-      int yybot = *yybottom;
-      YYFPRINTF (stderr, " %d", yybot);
-    }
-  YYFPRINTF (stderr, "\n");
-}
-
-# define YY_STACK_PRINT(Bottom, Top)                            \
-do {                                                            \
-  if (yydebug)                                                  \
-    yy_stack_print ((Bottom), (Top));                           \
-} while (0)
-
-
-/*------------------------------------------------.
-| Report that the YYRULE is going to be reduced.  |
-`------------------------------------------------*/
-
-static void
-yy_reduce_print (yytype_int16 *yyssp, YYSTYPE *yyvsp, int yyrule)
-{
-  unsigned long int yylno = yyrline[yyrule];
-  int yynrhs = yyr2[yyrule];
-  int yyi;
-  YYFPRINTF (stderr, "Reducing stack by rule %d (line %lu):\n",
-             yyrule - 1, yylno);
-  /* The symbols being reduced.  */
-  for (yyi = 0; yyi < yynrhs; yyi++)
-    {
-      YYFPRINTF (stderr, "   $%d = ", yyi + 1);
-      yy_symbol_print (stderr,
-                       yystos[yyssp[yyi + 1 - yynrhs]],
-                       &(yyvsp[(yyi + 1) - (yynrhs)])
-                                              );
-      YYFPRINTF (stderr, "\n");
-    }
-}
-
-# define YY_REDUCE_PRINT(Rule)          \
-do {                                    \
-  if (yydebug)                          \
-    yy_reduce_print (yyssp, yyvsp, Rule); \
-} while (0)
+# define YY_SYMBOL_PRINT(Title, Type, Value, Location)                  \
+  do {                                                                  \
+    if (yydebug)                                                        \
+      {                                                                 \
+        YYFPRINTF (stderr, "%s ", Title);                               \
+        yy_symbol_print (stderr, Type, Value);        \
+        YYFPRINTF (stderr, "\n");                                       \
+      }                                                                 \
+  } while (0)
 
 /* Nonzero means print parse trace.  It is left uninitialized so that
    multiple parsers can coexist.  */
 int yydebug;
+
+struct yyGLRStack;
+static void yypstack (struct yyGLRStack* yystackp, size_t yyk)
+  __attribute__ ((__unused__));
+static void yypdumpstack (struct yyGLRStack* yystackp)
+  __attribute__ ((__unused__));
+
 #else /* !YYDEBUG */
+
 # define YYDPRINTF(Args)
 # define YY_SYMBOL_PRINT(Title, Type, Value, Location)
-# define YY_STACK_PRINT(Bottom, Top)
-# define YY_REDUCE_PRINT(Rule)
-#endif /* !YYDEBUG */
 
+#endif /* !YYDEBUG */
 
 /* YYINITDEPTH -- initial size of the parser's stacks.  */
 #ifndef YYINITDEPTH
@@ -1320,264 +1194,40 @@ int yydebug;
    if the built-in stack extension method is used).
 
    Do not make this value too large; the results are undefined if
-   YYSTACK_ALLOC_MAXIMUM < YYSTACK_BYTES (YYMAXDEPTH)
+   SIZE_MAX < YYMAXDEPTH * sizeof (GLRStackItem)
    evaluated with infinite-precision integer arithmetic.  */
 
 #ifndef YYMAXDEPTH
 # define YYMAXDEPTH 10000
 #endif
 
-/* Given a state stack such that *YYBOTTOM is its bottom, such that
-   *YYTOP is either its top or is YYTOP_EMPTY to indicate an empty
-   stack, and such that *YYCAPACITY is the maximum number of elements it
-   can hold without a reallocation, make sure there is enough room to
-   store YYADD more elements.  If not, allocate a new stack using
-   YYSTACK_ALLOC, copy the existing elements, and adjust *YYBOTTOM,
-   *YYTOP, and *YYCAPACITY to reflect the new capacity and memory
-   location.  If *YYBOTTOM != YYBOTTOM_NO_FREE, then free the old stack
-   using YYSTACK_FREE.  Return 0 if successful or if no reallocation is
-   required.  Return 1 if memory is exhausted.  */
-static int
-yy_lac_stack_realloc (YYSIZE_T *yycapacity, YYSIZE_T yyadd,
-#if YYDEBUG
-                      char const *yydebug_prefix,
-                      char const *yydebug_suffix,
+/* Minimum number of free items on the stack allowed after an
+   allocation.  This is to allow allocation and initialization
+   to be completed by functions that call yyexpandGLRStack before the
+   stack is expanded, thus insuring that all necessary pointers get
+   properly redirected to new data.  */
+#define YYHEADROOM 2
+
+#ifndef YYSTACKEXPANDABLE
+#  define YYSTACKEXPANDABLE 1
 #endif
-                      yytype_int16 **yybottom,
-                      yytype_int16 *yybottom_no_free,
-                      yytype_int16 **yytop, yytype_int16 *yytop_empty)
-{
-  YYSIZE_T yysize_old =
-    *yytop == yytop_empty ? 0 : *yytop - *yybottom + 1;
-  YYSIZE_T yysize_new = yysize_old + yyadd;
-  if (*yycapacity < yysize_new)
-    {
-      YYSIZE_T yyalloc = 2 * yysize_new;
-      yytype_int16 *yybottom_new;
-      /* Use YYMAXDEPTH for maximum stack size given that the stack
-         should never need to grow larger than the main state stack
-         needs to grow without LAC.  */
-      if (YYMAXDEPTH < yysize_new)
-        {
-          YYDPRINTF ((stderr, "%smax size exceeded%s", yydebug_prefix,
-                      yydebug_suffix));
-          return 1;
-        }
-      if (YYMAXDEPTH < yyalloc)
-        yyalloc = YYMAXDEPTH;
-      yybottom_new =
-        (yytype_int16*) YYSTACK_ALLOC (yyalloc * sizeof *yybottom_new);
-      if (!yybottom_new)
-        {
-          YYDPRINTF ((stderr, "%srealloc failed%s", yydebug_prefix,
-                      yydebug_suffix));
-          return 1;
-        }
-      if (*yytop != yytop_empty)
-        {
-          YYCOPY (yybottom_new, *yybottom, yysize_old);
-          *yytop = yybottom_new + (yysize_old - 1);
-        }
-      if (*yybottom != yybottom_no_free)
-        YYSTACK_FREE (*yybottom);
-      *yybottom = yybottom_new;
-      *yycapacity = yyalloc;
-    }
-  return 0;
-}
 
-/* Establish the initial context for the current lookahead if no initial
-   context is currently established.
-
-   We define a context as a snapshot of the parser stacks.  We define
-   the initial context for a lookahead as the context in which the
-   parser initially examines that lookahead in order to select a
-   syntactic action.  Thus, if the lookahead eventually proves
-   syntactically unacceptable (possibly in a later context reached via a
-   series of reductions), the initial context can be used to determine
-   the exact set of tokens that would be syntactically acceptable in the
-   lookahead's place.  Moreover, it is the context after which any
-   further semantic actions would be erroneous because they would be
-   determined by a syntactically unacceptable token.
-
-   YY_LAC_ESTABLISH should be invoked when a reduction is about to be
-   performed in an inconsistent state (which, for the purposes of LAC,
-   includes consistent states that don't know they're consistent because
-   their default reductions have been disabled).  Iff there is a
-   lookahead token, it should also be invoked before reporting a syntax
-   error.  This latter case is for the sake of the debugging output.
-
-   For parse.lac=full, the implementation of YY_LAC_ESTABLISH is as
-   follows.  If no initial context is currently established for the
-   current lookahead, then check if that lookahead can eventually be
-   shifted if syntactic actions continue from the current context.
-   Report a syntax error if it cannot.  */
-#define YY_LAC_ESTABLISH                                         \
-do {                                                             \
-  if (!yy_lac_established)                                       \
-    {                                                            \
-      YYDPRINTF ((stderr,                                        \
-                  "LAC: initial context established for %s\n",   \
-                  yytname[yytoken]));                            \
-      yy_lac_established = 1;                                    \
-      {                                                          \
-        int yy_lac_status =                                      \
-          yy_lac (yyesa, &yyes, &yyes_capacity, yyssp, yytoken); \
-        if (yy_lac_status == 2)                                  \
-          goto yyexhaustedlab;                                   \
-        if (yy_lac_status == 1)                                  \
-          goto yyerrlab;                                         \
-      }                                                          \
-    }                                                            \
-} while (0)
-
-/* Discard any previous initial lookahead context because of Event,
-   which may be a lookahead change or an invalidation of the currently
-   established initial context for the current lookahead.
-
-   The most common example of a lookahead change is a shift.  An example
-   of both cases is syntax error recovery.  That is, a syntax error
-   occurs when the lookahead is syntactically erroneous for the
-   currently established initial context, so error recovery manipulates
-   the parser stacks to try to find a new initial context in which the
-   current lookahead is syntactically acceptable.  If it fails to find
-   such a context, it discards the lookahead.  */
-#if YYDEBUG
-# define YY_LAC_DISCARD(Event)                                           \
-do {                                                                     \
-  if (yy_lac_established)                                                \
-    {                                                                    \
-      if (yydebug)                                                       \
-        YYFPRINTF (stderr, "LAC: initial context discarded due to "      \
-                   Event "\n");                                          \
-      yy_lac_established = 0;                                            \
-    }                                                                    \
-} while (0)
+#if YYSTACKEXPANDABLE
+# define YY_RESERVE_GLRSTACK(Yystack)                   \
+  do {                                                  \
+    if (Yystack->yyspaceLeft < YYHEADROOM)              \
+      yyexpandGLRStack (Yystack);                       \
+  } while (0)
 #else
-# define YY_LAC_DISCARD(Event) yy_lac_established = 0
+# define YY_RESERVE_GLRSTACK(Yystack)                   \
+  do {                                                  \
+    if (Yystack->yyspaceLeft < YYHEADROOM)              \
+      yyMemoryExhausted (Yystack);                      \
+  } while (0)
 #endif
-
-/* Given the stack whose top is *YYSSP, return 0 iff YYTOKEN can
-   eventually (after perhaps some reductions) be shifted, return 1 if
-   not, or return 2 if memory is exhausted.  As preconditions and
-   postconditions: *YYES_CAPACITY is the allocated size of the array to
-   which *YYES points, and either *YYES = YYESA or *YYES points to an
-   array allocated with YYSTACK_ALLOC.  yy_lac may overwrite the
-   contents of either array, alter *YYES and *YYES_CAPACITY, and free
-   any old *YYES other than YYESA.  */
-static int
-yy_lac (yytype_int16 *yyesa, yytype_int16 **yyes,
-        YYSIZE_T *yyes_capacity, yytype_int16 *yyssp, int yytoken)
-{
-  yytype_int16 *yyes_prev = yyssp;
-  yytype_int16 *yyesp = yyes_prev;
-  YYDPRINTF ((stderr, "LAC: checking lookahead %s:", yytname[yytoken]));
-  if (yytoken == YYUNDEFTOK)
-    {
-      YYDPRINTF ((stderr, " Always Err\n"));
-      return 1;
-    }
-  while (1)
-    {
-      int yyrule = yypact[*yyesp];
-      if (yypact_value_is_default (yyrule)
-          || (yyrule += yytoken) < 0 || YYLAST < yyrule
-          || yycheck[yyrule] != yytoken)
-        {
-          yyrule = yydefact[*yyesp];
-          if (yyrule == 0)
-            {
-              YYDPRINTF ((stderr, " Err\n"));
-              return 1;
-            }
-        }
-      else
-        {
-          yyrule = yytable[yyrule];
-          if (yytable_value_is_error (yyrule))
-            {
-              YYDPRINTF ((stderr, " Err\n"));
-              return 1;
-            }
-          if (0 < yyrule)
-            {
-              YYDPRINTF ((stderr, " S%d\n", yyrule));
-              return 0;
-            }
-          yyrule = -yyrule;
-        }
-      {
-        YYSIZE_T yylen = yyr2[yyrule];
-        YYDPRINTF ((stderr, " R%d", yyrule - 1));
-        if (yyesp != yyes_prev)
-          {
-            YYSIZE_T yysize = yyesp - *yyes + 1;
-            if (yylen < yysize)
-              {
-                yyesp -= yylen;
-                yylen = 0;
-              }
-            else
-              {
-                yylen -= yysize;
-                yyesp = yyes_prev;
-              }
-          }
-        if (yylen)
-          yyesp = yyes_prev -= yylen;
-      }
-      {
-        int yystate;
-        {
-          int yylhs = yyr1[yyrule] - YYNTOKENS;
-          yystate = yypgoto[yylhs] + *yyesp;
-          if (yystate < 0 || YYLAST < yystate
-              || yycheck[yystate] != *yyesp)
-            yystate = yydefgoto[yylhs];
-          else
-            yystate = yytable[yystate];
-        }
-        if (yyesp == yyes_prev)
-          {
-            yyesp = *yyes;
-            *yyesp = yystate;
-          }
-        else
-          {
-            if (yy_lac_stack_realloc (yyes_capacity, 1,
-#if YYDEBUG
-                                      " (", ")",
-#endif
-                                      yyes, yyesa, &yyesp, yyes_prev))
-              {
-                YYDPRINTF ((stderr, "\n"));
-                return 2;
-              }
-            *++yyesp = yystate;
-          }
-        YYDPRINTF ((stderr, " G%d", yystate));
-      }
-    }
-}
 
 
 #if YYERROR_VERBOSE
-
-# ifndef yystrlen
-#  if defined __GLIBC__ && defined _STRING_H
-#   define yystrlen strlen
-#  else
-/* Return the length of YYSTR.  */
-static YYSIZE_T
-yystrlen (const char *yystr)
-{
-  YYSIZE_T yylen;
-  for (yylen = 0; yystr[yylen]; yylen++)
-    continue;
-  return yylen;
-}
-#  endif
-# endif
 
 # ifndef yystpcpy
 #  if defined __GLIBC__ && defined _STRING_H && defined _GNU_SOURCE
@@ -1607,12 +1257,12 @@ yystpcpy (char *yydest, const char *yysrc)
    backslash-backslash).  YYSTR is taken from yytname.  If YYRES is
    null, do not copy; instead, return the length of what the result
    would have been.  */
-static YYSIZE_T
+static size_t
 yytnamerr (char *yyres, const char *yystr)
 {
   if (*yystr == '"')
     {
-      YYSIZE_T yyn = 0;
+      size_t yyn = 0;
       char const *yyp = yystr;
 
       for (;;)
@@ -1641,152 +1291,2497 @@ yytnamerr (char *yyres, const char *yystr)
     }
 
   if (! yyres)
-    return yystrlen (yystr);
+    return strlen (yystr);
 
   return yystpcpy (yyres, yystr) - yyres;
 }
 # endif
 
-/* Copy into *YYMSG, which is of size *YYMSG_ALLOC, an error message
-   about the unexpected token YYTOKEN for the state stack whose top is
-   YYSSP.  In order to see if a particular token T is a
-   valid looakhead, invoke yy_lac (YYESA, YYES, YYES_CAPACITY, YYSSP, T).
+#endif /* !YYERROR_VERBOSE */
 
-   Return 0 if *YYMSG was successfully written.  Return 1 if *YYMSG is
-   not large enough to hold the message.  In that case, also set
-   *YYMSG_ALLOC to the required number of bytes.  Return 2 if the
-   required number of bytes is too large to store or if
-   yy_lac returned 2.  */
-static int
-yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
-                yytype_int16 *yyesa, yytype_int16 **yyes,
-                YYSIZE_T *yyes_capacity, yytype_int16 *yyssp, int yytoken)
+/** State numbers, as in LALR(1) machine */
+typedef int yyStateNum;
+
+/** Rule numbers, as in LALR(1) machine */
+typedef int yyRuleNum;
+
+/** Grammar symbol */
+typedef int yySymbol;
+
+/** Item references, as in LALR(1) machine */
+typedef short int yyItemNum;
+
+typedef struct yyGLRState yyGLRState;
+typedef struct yyGLRStateSet yyGLRStateSet;
+typedef struct yySemanticOption yySemanticOption;
+typedef union yyGLRStackItem yyGLRStackItem;
+typedef struct yyGLRStack yyGLRStack;
+
+struct yyGLRState {
+  /** Type tag: always true.  */
+  yybool yyisState;
+  /** Type tag for yysemantics.  If true, yysval applies, otherwise
+   *  yyfirstVal applies.  */
+  yybool yyresolved;
+  /** Number of corresponding LALR(1) machine state.  */
+  yyStateNum yylrState;
+  /** Preceding state in this stack */
+  yyGLRState* yypred;
+  /** Source position of the last token produced by my symbol */
+  size_t yyposn;
+  union {
+    /** First in a chain of alternative reductions producing the
+     *  non-terminal corresponding to this state, threaded through
+     *  yynext.  */
+    yySemanticOption* yyfirstVal;
+    /** Semantic value for this state.  */
+    YYSTYPE yysval;
+  } yysemantics;
+};
+
+struct yyGLRStateSet {
+  yyGLRState** yystates;
+  /** During nondeterministic operation, yylookaheadNeeds tracks which
+   *  stacks have actually needed the current lookahead.  During deterministic
+   *  operation, yylookaheadNeeds[0] is not maintained since it would merely
+   *  duplicate yychar != YYEMPTY.  */
+  yybool* yylookaheadNeeds;
+  size_t yysize, yycapacity;
+};
+
+struct yySemanticOption {
+  /** Type tag: always false.  */
+  yybool yyisState;
+  /** Rule number for this reduction */
+  yyRuleNum yyrule;
+  /** The last RHS state in the list of states to be reduced.  */
+  yyGLRState* yystate;
+  /** The lookahead for this reduction.  */
+  int yyrawchar;
+  YYSTYPE yyval;
+  /** Next sibling in chain of options.  To facilitate merging,
+   *  options are chained in decreasing order by address.  */
+  yySemanticOption* yynext;
+};
+
+/** Type of the items in the GLR stack.  The yyisState field
+ *  indicates which item of the union is valid.  */
+union yyGLRStackItem {
+  yyGLRState yystate;
+  yySemanticOption yyoption;
+};
+
+struct yyGLRStack {
+  int yyerrState;
+
+
+  YYJMP_BUF yyexception_buffer;
+  yyGLRStackItem* yyitems;
+  yyGLRStackItem* yynextFree;
+  size_t yyspaceLeft;
+  yyGLRState* yysplitPoint;
+  yyGLRState* yylastDeleted;
+  yyGLRStateSet yytops;
+};
+
+#if YYSTACKEXPANDABLE
+static void yyexpandGLRStack (yyGLRStack* yystackp);
+#endif
+
+static void yyFail (yyGLRStack* yystackp, const char* yymsg)
+  __attribute__ ((__noreturn__));
+static void
+yyFail (yyGLRStack* yystackp, const char* yymsg)
 {
-  YYSIZE_T yysize0 = yytnamerr (YY_NULL, yytname[yytoken]);
-  YYSIZE_T yysize = yysize0;
-  enum { YYERROR_VERBOSE_ARGS_MAXIMUM = 5 };
-  /* Internationalized format string. */
-  const char *yyformat = YY_NULL;
-  /* Arguments of yyformat. */
-  char const *yyarg[YYERROR_VERBOSE_ARGS_MAXIMUM];
-  /* Number of reported tokens (one for the "unexpected", one per
-     "expected"). */
-  int yycount = 0;
-
-  /* There are many possibilities here to consider:
-     - If this state is a consistent state with a default action, then
-       the only way this function was invoked is if the default action
-       is an error action.  In that case, don't check for expected
-       tokens because there are none.
-     - The only way there can be no lookahead present (in yychar) is if
-       this state is a consistent state with a default action.  Thus,
-       detecting the absence of a lookahead is sufficient to determine
-       that there is no unexpected or expected token to report.  In that
-       case, just report a simple "syntax error".
-     - Don't assume there isn't a lookahead just because this state is a
-       consistent state with a default action.  There might have been a
-       previous inconsistent state, consistent state with a non-default
-       action, or user semantic action that manipulated yychar.
-       In the first two cases, it might appear that the current syntax
-       error should have been detected in the previous state when yy_lac
-       was invoked.  However, at that time, there might have been a
-       different syntax error that discarded a different initial context
-       during error recovery, leaving behind the current lookahead.
-  */
-  if (yytoken != YYEMPTY)
-    {
-      int yyn = yypact[*yyssp];
-      YYDPRINTF ((stderr, "Constructing syntax error message\n"));
-      yyarg[yycount++] = yytname[yytoken];
-      if (!yypact_value_is_default (yyn))
-        {
-          int yyx;
-
-          for (yyx = 0; yyx < YYNTOKENS; ++yyx)
-            if (yyx != YYTERROR && yyx != YYUNDEFTOK)
-              {
-                {
-                  int yy_lac_status = yy_lac (yyesa, yyes, yyes_capacity,
-                                              yyssp, yyx);
-                  if (yy_lac_status == 2)
-                    return 2;
-                  if (yy_lac_status == 1)
-                    continue;
-                }
-                if (yycount == YYERROR_VERBOSE_ARGS_MAXIMUM)
-                  {
-                    yycount = 1;
-                    yysize = yysize0;
-                    break;
-                  }
-                yyarg[yycount++] = yytname[yyx];
-                {
-                  YYSIZE_T yysize1 = yysize + yytnamerr (YY_NULL, yytname[yyx]);
-                  if (! (yysize <= yysize1
-                         && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
-                    return 2;
-                  yysize = yysize1;
-                }
-              }
-        }
-# if YYDEBUG
-      else if (yydebug)
-        YYFPRINTF (stderr, "No expected tokens.\n");
-# endif
-    }
-
-  switch (yycount)
-    {
-# define YYCASE_(N, S)                      \
-      case N:                               \
-        yyformat = S;                       \
-      break
-      YYCASE_(0, YY_("syntax error"));
-      YYCASE_(1, YY_("syntax error, unexpected %s"));
-      YYCASE_(2, YY_("syntax error, unexpected %s, expecting %s"));
-      YYCASE_(3, YY_("syntax error, unexpected %s, expecting %s or %s"));
-      YYCASE_(4, YY_("syntax error, unexpected %s, expecting %s or %s or %s"));
-      YYCASE_(5, YY_("syntax error, unexpected %s, expecting %s or %s or %s or %s"));
-# undef YYCASE_
-    }
-
-  {
-    YYSIZE_T yysize1 = yysize + yystrlen (yyformat);
-    if (! (yysize <= yysize1 && yysize1 <= YYSTACK_ALLOC_MAXIMUM))
-      return 2;
-    yysize = yysize1;
-  }
-
-  if (*yymsg_alloc < yysize)
-    {
-      *yymsg_alloc = 2 * yysize;
-      if (! (yysize <= *yymsg_alloc
-             && *yymsg_alloc <= YYSTACK_ALLOC_MAXIMUM))
-        *yymsg_alloc = YYSTACK_ALLOC_MAXIMUM;
-      return 1;
-    }
-
-  /* Avoid sprintf, as that infringes on the user's name space.
-     Don't have undefined behavior even if the translation
-     produced a string with the wrong number of "%s"s.  */
-  {
-    char *yyp = *yymsg;
-    int yyi = 0;
-    while ((*yyp = *yyformat) != '\0')
-      if (*yyp == '%' && yyformat[1] == 's' && yyi < yycount)
-        {
-          yyp += yytnamerr (yyp, yyarg[yyi++]);
-          yyformat += 2;
-        }
-      else
-        {
-          yyp++;
-          yyformat++;
-        }
-  }
-  return 0;
+  if (yymsg != YY_NULL)
+    yyerror (yymsg);
+  YYLONGJMP (yystackp->yyexception_buffer, 1);
 }
-#endif /* YYERROR_VERBOSE */
+
+static void yyMemoryExhausted (yyGLRStack* yystackp)
+  __attribute__ ((__noreturn__));
+static void
+yyMemoryExhausted (yyGLRStack* yystackp)
+{
+  YYLONGJMP (yystackp->yyexception_buffer, 2);
+}
+
+#if YYDEBUG || YYERROR_VERBOSE
+/** A printable representation of TOKEN.  */
+static inline const char*
+yytokenName (yySymbol yytoken)
+{
+  if (yytoken == YYEMPTY)
+    return "";
+
+  return yytname[yytoken];
+}
+#endif
+
+/** Fill in YYVSP[YYLOW1 .. YYLOW0-1] from the chain of states starting
+ *  at YYVSP[YYLOW0].yystate.yypred.  Leaves YYVSP[YYLOW1].yystate.yypred
+ *  containing the pointer to the next state in the chain.  */
+static void yyfillin (yyGLRStackItem *, int, int) __attribute__ ((__unused__));
+static void
+yyfillin (yyGLRStackItem *yyvsp, int yylow0, int yylow1)
+{
+  int i;
+  yyGLRState *s = yyvsp[yylow0].yystate.yypred;
+  for (i = yylow0-1; i >= yylow1; i -= 1)
+    {
+#if YYDEBUG
+      yyvsp[i].yystate.yylrState = s->yylrState;
+#endif
+      yyvsp[i].yystate.yyresolved = s->yyresolved;
+      if (s->yyresolved)
+        yyvsp[i].yystate.yysemantics.yysval = s->yysemantics.yysval;
+      else
+        /* The effect of using yysval or yyloc (in an immediate rule) is
+         * undefined.  */
+        yyvsp[i].yystate.yysemantics.yyfirstVal = YY_NULL;
+      s = yyvsp[i].yystate.yypred = s->yypred;
+    }
+}
+
+/* Do nothing if YYNORMAL or if *YYLOW <= YYLOW1.  Otherwise, fill in
+ * YYVSP[YYLOW1 .. *YYLOW-1] as in yyfillin and set *YYLOW = YYLOW1.
+ * For convenience, always return YYLOW1.  */
+static inline int yyfill (yyGLRStackItem *, int *, int, yybool)
+     __attribute__ ((__unused__));
+static inline int
+yyfill (yyGLRStackItem *yyvsp, int *yylow, int yylow1, yybool yynormal)
+{
+  if (!yynormal && yylow1 < *yylow)
+    {
+      yyfillin (yyvsp, *yylow, yylow1);
+      *yylow = yylow1;
+    }
+  return yylow1;
+}
+
+/** Perform user action for rule number YYN, with RHS length YYRHSLEN,
+ *  and top stack item YYVSP.  YYLVALP points to place to put semantic
+ *  value ($$), and yylocp points to place for location information
+ *  (@$).  Returns yyok for normal return, yyaccept for YYACCEPT,
+ *  yyerr for YYERROR, yyabort for YYABORT.  */
+static YYRESULTTAG
+yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
+              yyGLRStack* yystackp,
+              YYSTYPE* yyvalp)
+{
+  yybool yynormal __attribute__ ((__unused__)) =
+    (yystackp->yysplitPoint == YY_NULL);
+  int yylow;
+  YYUSE (yyvalp);
+  YYUSE (yyrhslen);
+# undef yyerrok
+# define yyerrok (yystackp->yyerrState = 0)
+# undef YYACCEPT
+# define YYACCEPT return yyaccept
+# undef YYABORT
+# define YYABORT return yyabort
+# undef YYERROR
+# define YYERROR return yyerrok, yyerr
+# undef YYRECOVERING
+# define YYRECOVERING() (yystackp->yyerrState != 0)
+# undef yyclearin
+# define yyclearin (yychar = YYEMPTY)
+# undef YYFILL
+# define YYFILL(N) yyfill (yyvsp, &yylow, N, yynormal)
+# undef YYBACKUP
+# define YYBACKUP(Token, Value)                                              \
+  return yyerror (YY_("syntax error: cannot back up")),     \
+         yyerrok, yyerr
+
+  yylow = 1;
+  if (yyrhslen == 0)
+    *yyvalp = yyval_default;
+  else
+    *yyvalp = yyvsp[YYFILL (1-yyrhslen)].yystate.yysemantics.yysval;
+  switch (yyn)
+    {
+        case 2:
+#line 213 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"program: components\n"; 
+										 }
+#line 1508 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 3:
+#line 216 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"components: components component\n";}
+#line 1514 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 4:
+#line 217 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"components: component\n";}
+#line 1520 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 5:
+#line 218 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {addFile(*(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.string_val));}
+#line 1526 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 6:
+#line 220 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"class_interface \n";}
+#line 1532 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 7:
+#line 221 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"class_implementation \n";}
+#line 1538 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 8:
+#line 222 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"protocol \n";}
+#line 1544 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 9:
+#line 223 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"struct \n";}
+#line 1550 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 10:
+#line 224 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"enum \n";}
+#line 1556 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 11:
+#line 226 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"class_interface: class_interface_header class_interface_body\n";
+																classNode=NULL;
+																 idsList.clear();
+																 methodsList.clear();
+																 method=NULL;
+																}
+#line 1567 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 12:
+#line 235 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"class_interface_header:  AT_INTERFACE IDENTIFIER SEMI_COLUMN IDENTIFIER\n";
+																				interface=InterfaceHelper::createNewInterface((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),symbolTable);
+																				
+																				
+																				}
+#line 1577 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 13:
+#line 240 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+																					Streams::verbose()<<"class_interface_header:  AT_INTERFACE IDENTIFIER\n";
+																				 interface=InterfaceHelper::createNewInterface((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),"",symbolTable);
+
+																				}
+#line 1587 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 14:
+#line 245 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Unknown type name '"<<(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text)<<"' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 1593 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 15:
+#line 246 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Expected Identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 1599 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 16:
+#line 248 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Expected Identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 1605 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 17:
+#line 251 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {	
+															
+														InterfaceHelper::addMethods(interface,methodsList);
+																Streams::verbose()<<"class_interface_body:	protocol_reference_list instance_variables	interface_declaration_list	AT_END\n";
+														}
+#line 1615 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 18:
+#line 257 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+														Streams::verbose()<<"class_interface_body:	protocol_reference_list instance_variables AT_END\n";
+														}
+#line 1623 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 19:
+#line 261 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {	
+																InterfaceHelper::addMethods(interface,methodsList);
+																Streams::verbose()<<"class_interface_body:	protocol_reference_list interface_declaration_list	AT_END\n";
+														}
+#line 1632 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 20:
+#line 266 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {	
+																InterfaceHelper::addMethods(interface,methodsList);
+																Streams::verbose()<<"class_interface_body:	instance_variables	interface_declaration_list	AT_END\n";
+														}
+#line 1641 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 21:
+#line 271 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+																Streams::verbose()<<"class_interface_body:	protocol_reference_list 	AT_END\n";
+														}
+#line 1649 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 22:
+#line 275 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"class_interface_body:instance_variables		AT_END\n";}
+#line 1655 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 23:
+#line 277 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {														
+																InterfaceHelper::addMethods(interface,methodsList);
+																Streams::verbose()<<"class_interface_body:interface_declaration_list	AT_END\n";
+														}
+#line 1664 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 24:
+#line 281 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"class_interface_body:AT_END\n";}
+#line 1670 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 25:
+#line 282 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Expected '}' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 1676 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 26:
+#line 283 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Expected '}' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 1682 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 27:
+#line 284 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 1688 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 28:
+#line 285 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 1694 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 29:
+#line 286 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 1700 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 30:
+#line 287 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 1706 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 31:
+#line 288 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 1712 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 32:
+#line 289 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 1718 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 33:
+#line 290 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 1724 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 34:
+#line 294 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+													if(interface!=NULL){
+													InterfaceHelper::addInheritedProtocol(interface,idsList,symbolTable);
+														idsList.clear();
+													}
+													Streams::verbose()<<"protocol_reference_list: LESS_THAN ids_list_identifier MORE_THAN\n";
+												}
+#line 1736 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 35:
+#line 301 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Expected '>' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 1742 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 36:
+#line 304 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+													Streams::verbose()<<"ids_list:ids_list_identifier COMMA IDENTIFIER\n"; 
+													idsList.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+													}
+#line 1751 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 37:
+#line 308 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+													Streams::verbose()<<"ids_list_identifier:IDENTIFIER\n";
+													idsList.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+												    }
+#line 1760 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 38:
+#line 313 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"array with body";}
+#line 1766 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 39:
+#line 314 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"array without elements";}
+#line 1772 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 40:
+#line 318 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"array-element \n";}
+#line 1778 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 41:
+#line 319 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"array-element \n";}
+#line 1784 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 42:
+#line 320 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"empty element \n";}
+#line 1790 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 43:
+#line 321 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"inside braces element \n";}
+#line 1796 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 44:
+#line 322 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"inside braces element \n";}
+#line 1802 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 45:
+#line 323 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"inside braces element \n";}
+#line 1808 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 46:
+#line 326 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"instance_variables:OPEN_S	instance_variable_declaration	CLOSE_S\n";}
+#line 1814 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 47:
+#line 327 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"instance_variables:OPEN_S	 CLOSE_S\n";}
+#line 1820 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 48:
+#line 330 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"instance_variable_declarations:instance_variable_declarations instance_variable_declaration\n";}
+#line 1826 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 49:
+#line 331 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"instance_variable_declarations:instance_variable_declaration\n";}
+#line 1832 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 50:
+#line 332 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"instance_variable_declarations:variable_declaration_list\n";}
+#line 1838 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 51:
+#line 335 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"instance_variable_declaration:visibility_specification variable_declaration_list\n";
+																	}
+#line 1845 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 52:
+#line 339 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+										Streams::verbose()<<"variable_declaration_list: variable_declaration_list variable_declaration\n";
+										InterfaceHelper::addDataMembers(interface,idsList,type,arrayList,flag,symbolTable,visibility);
+											arrayList.clear();
+												idsList.clear();
+												flag=false;
+										}
+#line 1857 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 53:
+#line 347 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+										       InterfaceHelper::addDataMembers(interface,idsList,type,arrayList,flag,symbolTable,visibility);
+												arrayList.clear();
+												idsList.clear();
+												flag=false;
+										Streams::verbose()<<"variable_declaration_list: variable_declaration\n";
+										}
+#line 1869 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 54:
+#line 357 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"visibility_specification:AT_PRIVATE\n";  visibility=new char[256]; visibility[0]='\0';strcat(visibility,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));}
+#line 1875 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 55:
+#line 358 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"visibility_specification:AT_PROTECTED\n"; visibility=new char[256]; visibility[0]='\0';strcat(visibility,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));}
+#line 1881 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 56:
+#line 359 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"visibility_specification:AT_PUBLIC\n"; visibility=new char[256]; visibility[0]='\0';strcat(visibility,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));}
+#line 1887 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 57:
+#line 364 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"struct_variable_declaration:struct_declaration_list\n";}
+#line 1893 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 58:
+#line 367 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"variable_declaration:type IDENTIFIER	SEMI_COMA\n";
+	                                           ((*yyvalp).r.text)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text);
+												}
+#line 1901 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 59:
+#line 370 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"variable_declaration:CONST type IDENTIFIER	SEMI_COMA\n";
+														flag=true;
+														 ((*yyvalp).r.text)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text);
+													}
+#line 1910 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 60:
+#line 374 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 1916 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 61:
+#line 378 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+									Streams::verbose()<<"ids_list:ids_list COMMA id_dec\n"; 
+
+									}
+#line 1925 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 62:
+#line 382 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"ids_list:id_dec\n"; }
+#line 1931 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 63:
+#line 383 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 1937 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 64:
+#line 386 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose() <<" data_member: IDENTIFIER array_tag \n";
+							 var=new Array((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),arrayAlloc.size(),NULL);
+					       ( dynamic_cast<Array*>(var))->set_alloc(arrayAlloc);
+						   arrayList.push_back( ( dynamic_cast<Array*>(var)));
+						      arrayAlloc.clear();
+							}
+#line 1948 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 65:
+#line 392 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {idsList.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text)) ;Streams::verbose() <<" data_member: IDENTIFIER  \n";}
+#line 1954 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 66:
+#line 393 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;arrayAlloc.clear();}
+#line 1960 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 67:
+#line 394 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;arrayAlloc.clear();}
+#line 1966 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 68:
+#line 396 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {  
+																												StructHelper::addDataMembers( myStruct,idsList,type,arrayList,flag, symbolTable);
+																												arrayList.clear();
+																												idsList.clear();
+																												flag=false;
+																										  Streams::verbose()<<"struct_declaration_list: struct_declaration_list  variable_declarationxx\n";
+																										}
+#line 1978 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 69:
+#line 404 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {	
+																												StructHelper::addDataMembers( myStruct,idsList,type,arrayList,flag, symbolTable);
+																												arrayList.clear();
+																														 	idsList.clear();
+																															flag=false;
+																										Streams::verbose()<<"struct_declaration_list:  variable_declarationxx\n";
+																										}
+#line 1990 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 70:
+#line 411 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Illigal visibility specification at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 1996 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 71:
+#line 415 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+					myStruct=StructHelper::createNewStruct((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),symbolTable);
+					Streams::verbose()<<"struct_header: STRUCT  IDENTIFIER\n";
+					}
+#line 2005 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 72:
+#line 421 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"struct: STRUCT IDENTIFIER OPEN_S   CLOSE_S  entity SEMI_COMA\n";}
+#line 2011 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 73:
+#line 422 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"struct: STRUCT IDENTIFIER OPEN_S struct_variable_declaration  CLOSE_S enteity SEMI_COMA \n";}
+#line 2017 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 74:
+#line 423 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"struct: STRUCT IDENTIFIER OPEN_S   CLOSE_S SEMI_COMA\n";}
+#line 2023 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 75:
+#line 424 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"struct: STRUCT IDENTIFIER OPEN_S struct_variable_declaration  CLOSE_S  SEMI_COMA  \n";}
+#line 2029 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 76:
+#line 425 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 2035 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 77:
+#line 426 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 2041 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 78:
+#line 427 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 2047 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 79:
+#line 428 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 2053 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 80:
+#line 431 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"entity: IDENTIFIER COMMA  entity\n";}
+#line 2059 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 81:
+#line 432 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"entity:  IDENTIFIER \n";}
+#line 2065 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 82:
+#line 433 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 2071 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 83:
+#line 437 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"type:simple type\n";}
+#line 2077 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 84:
+#line 438 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"type: complex type\n";}
+#line 2083 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 85:
+#line 439 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"type: struct_type\n";}
+#line 2089 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 86:
+#line 440 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"type: enum_type\n";}
+#line 2095 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 87:
+#line 444 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {	Streams::verbose()<<"struct_type: STRUCT IDENTIFIER   \n";
+													 type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+																if(type==NULL){
+																		string error="Unknown type name '";
+		error.append((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+		error.append("'.");
+		Program::addError(new SemanticError(error));
+																}
+													}
+#line 2109 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 88:
+#line 453 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"struct_type: STRUCT IDENTIFIER  MULTI \n";
+													 type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text));
+																if(type==NULL){
+																										string error="Unknown type name '";
+		error.append((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text));
+		error.append("'.");
+		Program::addError(new SemanticError(error));
+																}
+													}
+#line 2123 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 89:
+#line 464 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"enum_type: ENUM IDENTIFIER \n";
+													 type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+																if(type==NULL){
+																										string error="Unknown type name '";
+		error.append((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+		error.append("'.");
+		Program::addError(new SemanticError(error));
+																}
+													}
+#line 2137 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 90:
+#line 473 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"enum_type: ENUM IDENTIFIER  MULTI  \n";
+													 type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text));
+																if(type==NULL){
+																									string error="Unknown type name '";
+		error.append((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text));
+		error.append("'.");
+		Program::addError(new SemanticError(error));
+																}
+													}
+#line 2151 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 91:
+#line 484 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"int type \n";
+																type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+																if(type==NULL){
+																										string error="Unknown type name '";
+		error.append((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+		error.append("'.");
+		Program::addError(new SemanticError(error));
+																}
+																}
+#line 2165 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 92:
+#line 493 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"char type\n";
+	type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+																if(type==NULL){
+																										string error="Unknown type name '";
+		error.append((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+		error.append("'.");
+		Program::addError(new SemanticError(error));
+																}}
+#line 2178 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 93:
+#line 501 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"float type\n";
+	type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+																if(type==NULL){
+																										string error="Unknown type name '";
+		error.append((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+		error.append("'.");
+		Program::addError(new SemanticError(error));
+																}}
+#line 2191 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 94:
+#line 509 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"NSString type\n";
+	type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+																if(type==NULL){
+																										string error="Unknown type name '";
+		error.append((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+		error.append("'.");
+		Program::addError(new SemanticError(error));
+																}}
+#line 2204 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 95:
+#line 517 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"void type\n";
+	type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+																if(type==NULL){
+																										string error="Unknown type name '";
+		error.append((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+		error.append("'.");
+		Program::addError(new SemanticError(error));
+																}}
+#line 2217 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 96:
+#line 525 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"bool type\n";
+	type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+																if(type==NULL){
+																										string error="Unknown type name '";
+		error.append((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+		error.append("'.");
+		Program::addError(new SemanticError(error));
+																}}
+#line 2230 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 97:
+#line 535 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"complex_type:	IDENTIFIER	MULTI\n";
+ {
+													 type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text));
+																if(type==NULL){
+																										string error="Unknown type name '";
+		error.append((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text));
+		error.append("'.");
+		Program::addError(new SemanticError(error));
+																}
+													}}
+#line 2245 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 98:
+#line 546 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+											Streams::verbose()<<"array_tag: array_first_tag array_tag_list \n"; 
+										   }
+#line 2253 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 99:
+#line 551 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+																Streams::verbose()<<"array_tag_list: array_tag_list OPEN_ARR INT_VAL CLOSE_ARR\n"; 
+																arrayAlloc.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.int_val));
+														   }
+#line 2262 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 101:
+#line 556 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<" Error:missing  dimension in array tag  ";arrayAlloc.clear();}
+#line 2268 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 102:
+#line 559 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+											Streams::verbose()<<"array_first_tag: OPEN_ARR INT_VAL CLOSE_ARR\n"; 
+											arrayAlloc.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.int_val));
+											}
+#line 2277 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 103:
+#line 563 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+											Streams::verbose()<<"array_first_tag: OPEN_ARR  CLOSE_ARR\n"; 
+											arrayAlloc.push_back(-1);
+											}
+#line 2286 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 104:
+#line 569 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"array with value\n";
+								((*yyvalp).r.node)=new AssignNode(scoop,NULL,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
+							   }
+#line 2294 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 106:
+#line 574 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+								Streams::verbose() <<"with value\n";
+								((*yyvalp).r.node)=new AssignNode(scoop,NULL,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
+							 }
+#line 2303 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 107:
+#line 579 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {((*yyvalp).r.node)=NULL;}
+#line 2309 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 108:
+#line 584 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+																Streams::verbose()<<"interface_declaration_list:interface_declaration_list interface_declaration\n";
+															 methodsList.push_back(method);
+														
+															 
+																}
+#line 2320 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 109:
+#line 590 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+																 Streams::verbose()<<"interface_declaration_list:interface_declaration\n";
+															 methodsList.push_back(method);
+															 
+																 	
+																 }
+#line 2331 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 110:
+#line 598 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"interface_declaration: class_method_declaration\n";}
+#line 2337 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 111:
+#line 599 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"interface_declaration: instance_method_declaration\n";}
+#line 2343 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 112:
+#line 603 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+																Streams::verbose()<<"class_method_declaration: PLUS p_type method_selectors	SEMI_COMA\n";
+																method=InterfaceHelper::createNewMethod(type,symbolTable,(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text),selectorsList,true);
+															
+																 selectorsList.clear();
+																
+																}
+#line 2355 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 113:
+#line 611 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 2361 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 114:
+#line 612 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 2367 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 115:
+#line 615 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+															Streams::verbose()<<"instance_method_declaration: MINUS p_type	method_selectors		SEMI_COMA\n";
+															method=InterfaceHelper::createNewMethod(type,symbolTable,(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text),selectorsList,false);
+																 selectorsList.clear();
+																
+																
+															}
+#line 2379 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 116:
+#line 624 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+																Streams::verbose()<<"p_type : OPEN_P type CLOSE_P\n";
+																((*yyvalp).r.text)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text);
+																}
+#line 2388 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 117:
+#line 633 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+																Streams::verbose()<<"method_selectors: selectors_list\n";
+																	((*yyvalp).r.text)="";
+																}
+#line 2397 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 118:
+#line 637 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"method_selectors:IDENTIFIER \n";((*yyvalp).r.text)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text);}
+#line 2403 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 119:
+#line 639 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+													Streams::verbose()<<"selectors_list:	selectors_list selector_decleration\n";
+																
+													selectorsList.push_back(tselector);
+													tselector=NULL;
+											}
+#line 2414 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 120:
+#line 645 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+														Streams::verbose()<<"selectors_list:	 selector_decleration\n";
+												selectorsList.clear();
+
+												selectorsList.push_back(tselector);
+												tselector=NULL;
+}
+#line 2426 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 121:
+#line 653 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+																				Streams::verbose()<<"selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	\n";
+																				tselector=new DeclerationSelector((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text),selectorVarList);
+																			}
+#line 2435 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 122:
+#line 659 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+														Streams::verbose()<<"parameter_list: parameter_list parameter\n";
+																	selectorVarList.push_back(var);		
+											}
+#line 2444 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 123:
+#line 663 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+									selectorVarList.clear();
+										selectorVarList.push_back(var);		
+											
+				 
+														Streams::verbose()<<"parameter_list:  parameter\n";
+						
+					}
+#line 2457 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 124:
+#line 672 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+																Streams::verbose()<<"parameter:  p_type IDENTIFIER\n";
+																
+																if(type!=NULL){
+																var=new Variable((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),type);
+																}
+																else{
+																Streams::verbose()<<"Error:Type not found.\n";
+																}
+																}
+#line 2472 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 125:
+#line 685 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"class_implementation: class_implementation_header class_implementation_body\n";}
+#line 2478 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 126:
+#line 688 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+																	Streams::verbose()<<"class_implementation_header: AT_IMPLEMENTATION IDENTIFIER SEMI_COLUMN IDENTIFIER\n";
+																	interface=InterfaceHelper::checkImplementation((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text),symbolTable,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+																	
+																}
+#line 2488 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 127:
+#line 693 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+																interface=InterfaceHelper::checkImplementation((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),symbolTable,"");
+																	
+																}
+#line 2497 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 128:
+#line 699 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+																	Streams::verbose()<<"class_implementation_body: instance_variables	implementation_definition_list	AT_END\n";
+																			InterfaceHelper:: implementMethods(methodsList, interface);
+														methodsList.clear();
+														}
+#line 2507 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 129:
+#line 705 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    { 
+																	Streams::verbose()<<"class_implementation_body: instance_variables									AT_END\n";
+																}
+#line 2515 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 130:
+#line 708 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+																	Streams::verbose()<<"class_implementation_body:						implementation_definition_list	AT_END\n";
+																	InterfaceHelper:: implementMethods(methodsList, interface);
+														methodsList.clear();
+														
+																}
+#line 2526 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 131:
+#line 714 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"class_implementation_body:	AT_END\n";}
+#line 2532 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 132:
+#line 717 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {	 methodsList.push_back(method);Streams::verbose()<<"implementation_definition_list: implementation_definition_list implementation_definition\n";}
+#line 2538 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 133:
+#line 718 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {	 methodsList.push_back(method);Streams::verbose()<<"implementation_definition_list: implementation_definition\n";}
+#line 2544 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 134:
+#line 721 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"implementation_definition: class_implementation_definition	\n";}
+#line 2550 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 135:
+#line 722 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"implementation_definition: instance_implementation_definition \n";}
+#line 2556 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 136:
+#line 725 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+														Streams::verbose()<<"class_implementation_definition: class_implementation_definition_header block_body";
+														functionNode->addNode(cscoop);
+														functionNode=NULL;
+																scoop=NULL;
+															scoop=NULL;
+													}
+#line 2568 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 137:
+#line 734 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+										Streams::verbose()<<"class_implementation_definition_header: PLUS p_type		 method_selectors\n";
+										method=InterfaceHelper:: createNewMethod(type,symbolTable,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),selectorsList,true);
+																 selectorsList.clear();
+									           functionNode= ScoopHelper::createNewFunctionNode(method,interface->static_twin);
+												scoop=functionNode;				
+																
+										}
+#line 2581 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 138:
+#line 745 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+															Streams::verbose()<<"instance_implementation_definition: instance_implementation_definition_header block_body\n";
+														functionNode->addNode(cscoop);
+														functionNode=NULL;
+																scoop=NULL;
+															scoop=NULL;
+										
+															}
+#line 2594 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 139:
+#line 755 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+											     Streams::verbose()<<"instance_implementation_definition_header:MINUS p_type		method_selectors\n";
+												 method=InterfaceHelper:: createNewMethod(type,symbolTable,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),selectorsList,false);
+																 selectorsList.clear();
+									           functionNode= ScoopHelper::createNewFunctionNode(method,interface);
+												scoop=functionNode;
+												}
+#line 2606 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 140:
+#line 764 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+												
+												Streams::verbose()<<"block_body:OPEN_S  block_body_part \n";
+												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node);
+												}
+#line 2616 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 141:
+#line 771 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+												
+                                                scoop=ScoopHelper::createNewScoop(scoop);
+												
+												
+												scoopVector.push_back(scoop);
+												Streams::verbose()<<"block_body_header:OPEN_S	\n";
+												((*yyvalp).r.node)=scoop;
+												}
+#line 2630 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 142:
+#line 783 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+												cscoop=scoop;scoop=scoop->getParent();
+												Streams::verbose()<<"block_body_statements:statement_list	CLOSE_S	\n";
+												}
+#line 2639 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 143:
+#line 787 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+												cscoop=scoop;scoop=scoop->getParent();
+												Streams::verbose()<<"block_body_statements:CLOSE_S\n";
+												}
+#line 2648 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 144:
+#line 791 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+											  cscoop=scoop; scoop=scoop->getParent();
+												Streams::verbose()<<"block_body_statements: error CLOSE_S\n";
+												}
+#line 2657 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 145:
+#line 797 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"statement_list: statement_list statement\n";
+											((*yyvalp).r.text)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text);
+											scoop->addNode((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
+											
+											}
+#line 2667 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 146:
+#line 802 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"statement_list: statement\n";
+											((*yyvalp).r.text)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text);
+											((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
+											scoop->addNode((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
+											
+											}
+#line 2678 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 147:
+#line 811 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"statement: loop_statement\n";
+											((*yyvalp).r.text)="loop";
+											((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
+											}
+#line 2687 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 148:
+#line 815 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"statement: conditional_statement\n";
+											((*yyvalp).r.text)="cond";
+											((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
+											}
+#line 2696 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 149:
+#line 819 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+												Streams::verbose()<<"statement: expr\n";
+												((*yyvalp).r.text)="expr";
+												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node);
+												//nodeXX=$<r.node>1;
+											}
+#line 2707 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 150:
+#line 825 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+											Streams::verbose()<<"statement: variable_declaration\n";
+											
+												ScoopHelper::addVariables(idsList,arrayList,type,flag,scoop);
+												arrayList.clear();
+												idsList.clear();
+												flag=false;
+												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
+										    }
+#line 2721 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 151:
+#line 834 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"statement: block_body\n";((*yyvalp).r.text)=new char[256];((*yyvalp).r.text)[0]='\0';strcat(((*yyvalp).r.text),"Block");
+												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
+											}
+#line 2729 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 152:
+#line 837 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"statement: return_statement\n";
+												((*yyvalp).r.text)="return";
+												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
+											}
+#line 2738 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 153:
+#line 841 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"statement: try_catch\n";}
+#line 2744 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 154:
+#line 843 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+	                                            ((*yyvalp).r.text)="asm";
+												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);}
+#line 2752 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 155:
+#line 846 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+	 ((*yyvalp).r.text)="call";
+	((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node);
+	}
+#line 2761 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 156:
+#line 850 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    { Streams::verbose()<<"statement: THROW\n";((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);}
+#line 2767 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 157:
+#line 852 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    { Streams::verbose()<<"error SEMI_COMA \n";}
+#line 2773 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 158:
+#line 855 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"statement: THROW\n";
+														((*yyvalp).r.node)=new ThrowNode(scoop,(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node));
+														}
+#line 2781 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 159:
+#line 860 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"@asm command \n";
+	                                         ((*yyvalp).r.node)=new AsmNode(scoop,*(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.string_val));
+											 }
+#line 2789 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 160:
+#line 866 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+														Streams::verbose()<<"variable_declaration:type IDENTIFIER	SEMI_COMA\n";
+														 ((*yyvalp).r.text)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text);
+														 ((*yyvalp).r.node)=new DeclerationNode(declarationList,scoop,type->get_name());
+														 declarationList.clear();
+														}
+#line 2800 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 161:
+#line 872 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+														Streams::verbose()<<"variable_declaration:CONST type IDENTIFIER	SEMI_COMA\n";
+														flag=true;
+														 ((*yyvalp).r.text)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text);
+														  ((*yyvalp).r.node)=new DeclerationNode(declarationList,scoop,type->get_name());
+														 declarationList.clear();
+														}
+#line 2812 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 162:
+#line 879 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"variable_declaration:enum\n";}
+#line 2818 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 163:
+#line 883 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"variable_list:variable_list COMMA variable\n";}
+#line 2824 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 164:
+#line 884 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"variable_list:variable\n";
+										
+										}
+#line 2832 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 165:
+#line 887 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Expected ',' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 2838 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 166:
+#line 890 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+											Streams::verbose() <<"variable:  IDENTIFIER array_tag initializer \n";
+											 var=new Array((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text),arrayAlloc.size(),NULL);
+											(dynamic_cast<Array*>(var))->set_alloc(arrayAlloc);
+											 arrayList.push_back( ( dynamic_cast<Array*>(var)));
+											 arrayAlloc.clear();
+											}
+#line 2850 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 167:
+#line 897 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    { 
+											Streams::verbose() <<"variable:  IDENTIFIER main_initializer \n";
+											idsList.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text)) ;
+											IdentifierNode* identifierNode=new IdentifierNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text),scoop);
+											if((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node)!=NULL){
+											(dynamic_cast<AssignNode*>((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node)))->setLeftExp(identifierNode);
+											}
+											declarationList.push_back(make_pair((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node)));
+											}
+#line 2864 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 168:
+#line 906 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
+#line 2870 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 169:
+#line 909 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"return_statement: RETURN expr\n";
+												 ((*yyvalp).r.node)=new ReturnNode(scoop,(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node));
+												}
+#line 2878 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 170:
+#line 914 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"loop_statement: for_loop\n";
+												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
+											}
+#line 2886 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 171:
+#line 917 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"loop_statement: while_loop\n";
+												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
+											}
+#line 2894 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 172:
+#line 920 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"loop_statement: do_while_loop\n";
+												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
+											}
+#line 2902 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 173:
+#line 925 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"do_while: do_header   statement   while_loop_header   SEMI_COMMA\n";
+													((*yyvalp).r.node)=new DoWhileNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),scoop);
+													}
+#line 2910 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 174:
+#line 930 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"do_header: DO\n";}
+#line 2916 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 175:
+#line 933 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"for_loop: for_loop_header statement\n";
+												type=symbolTable->getType("int");
+											if(type==NULL){
+											  	string error="Unknown type name '";
+												error.append((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text));
+												error.append("'.");
+												Program::addError(new SemanticError(error));
+											}	
+											ScoopHelper::addVariables(idsList,arrayList,type,flag,scoop);
+												arrayList.clear();
+												idsList.clear();
+												flag=false;
+												(dynamic_cast<ForNode*>((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node)))->setStatement((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
+												(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node)->toString();
+												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node);
+											}
+#line 2937 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 176:
+#line 952 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer	SEMI_COMA logic_expr1 SEMI_COMA expr			CLOSE_P\n";
+										((*yyvalp).r.node)=new ForNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-5)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node),NULL,scoop);
+										//nodeXX=$<r.node>5;
+										}
+#line 2946 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 177:
+#line 958 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA expr			CLOSE_P\n";
+										((*yyvalp).r.node)=new ForNode(NULL,(((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node),NULL,scoop);
+										}
+#line 2954 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 178:
+#line 962 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer SEMI_COMA			 SEMI_COMA expr			CLOSE_P\n";
+										((*yyvalp).r.node)=new ForNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-4)].yystate.yysemantics.yysval.r.node),NULL,(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node),NULL,scoop);
+										}
+#line 2962 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 179:
+#line 966 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P	\n";
+										((*yyvalp).r.node)=new ForNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-4)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),NULL,NULL,scoop);
+										}
+#line 2970 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 180:
+#line 971 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"for_loop_header: FOR OPEN_P	for_initializer	SEMI_COMA			 SEMI_COMA				CLOSE_P	\n";
+										((*yyvalp).r.node)=new ForNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.r.node),NULL,NULL,NULL,scoop);
+										}
+#line 2978 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 181:
+#line 975 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P\n";
+										((*yyvalp).r.node)=new ForNode(NULL,(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),NULL,NULL,scoop);
+										}
+#line 2986 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 182:
+#line 979 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"for_loop_header: FOR OPEN_P 				SEMI_COMA			 SEMI_COMA expr			CLOSE_P";
+										((*yyvalp).r.node)=new ForNode(NULL,NULL,(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node),NULL,scoop);
+										}
+#line 2994 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 183:
+#line 984 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"for_loop_hearder: FOR OPEN_P 				SEMI_COMA			SEMI_COMA 				CLOSE_P	\n";
+											((*yyvalp).r.node)=new ForNode(NULL,NULL,NULL,NULL,scoop);
+											}
+#line 3002 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 184:
+#line 989 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"for_initializer: INT IDENTIFIER EQUAL expr\n";
+											AssignNode * temp=new AssignNode(scoop,new IdentifierNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text),scoop),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
+											
+											//temp->add($<r.text>2,);
+											
+											//temp.push_back(make_pair($<r.text>2,$<r.node>4));
+											DeclerationNode* temp1=new DeclerationNode(list<pair<string,Node*>>(),scoop,"int");
+											temp1->add((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text),temp);
+										 ((*yyvalp).r.node)=temp1; 
+										 idsList.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text));
+										}
+#line 3018 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 185:
+#line 1000 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"for_initializer: IDENTIFIER EQUAL expr\n";
+										((*yyvalp).r.node)=new AssignNode(scoop,new IdentifierNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text),scoop),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
+										}
+#line 3026 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 186:
+#line 1003 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"for_initializer: IDENTIFIER\n";
+										((*yyvalp).r.node)=new IdentifierNode((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),scoop);
+										}
+#line 3034 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 187:
+#line 1008 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"logic_expr:expr AND! expr\n";
+										((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),AND_AND,scoop);
+										}
+#line 3042 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 188:
+#line 1011 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"logic_expr:logic_expr OR_OR logic_expr\n";
+										((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),OR_OR,scoop);
+										}
+#line 3050 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 189:
+#line 1014 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
+										
+										}
+#line 3058 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 190:
+#line 1020 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"logic_expr:expr LESS_THAN expr\n";
+										((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),LESS_THAN,scoop);
+										}
+#line 3066 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 191:
+#line 1023 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"logic_expr:expr MORE_THAN expr\n";
+										 ((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),MORE_THAN,scoop);
+										}
+#line 3074 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 192:
+#line 1026 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"logic_expr:expr LESS_OR_EQUAL expr\n";
+										 ((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),LESS_OR_EQUAL,scoop);
+										}
+#line 3082 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 193:
+#line 1029 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"logic_expr:expr MORE_OR_EQUAL expr\n";
+										((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),MORE_OR_EQUAL,scoop);
+										}
+#line 3090 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 194:
+#line 1032 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"logic_expr:expr EQUAL_EQUAL expr\n";
+										((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),EQUAL_EQUAL,scoop);
+										}
+#line 3098 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 195:
+#line 1035 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"logic_expr:expr EQUAL_EQUAL expr\n";
+										((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),NOT_EQUAL,scoop);
+										}
+#line 3106 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 196:
+#line 1038 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"logic_expr:NOT_EQUAL expr\n";
+										 ((*yyvalp).r.node)=new UnaryNode(scoop,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),NOT_EQUAL);
+										}
+#line 3114 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 197:
+#line 1041 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"logic_expr:OPEN_P logic_expr CLOSE_P\n";
+										 ((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node);
+										}
+#line 3122 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 198:
+#line 1045 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"logic_expr:TRUE\n";
+										 ((*yyvalp).r.node)=new ConstantNode(true,scoop);
+										}
+#line 3130 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 199:
+#line 1048 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"logic_expr:FALSE\n";
+											 ((*yyvalp).r.node)=new ConstantNode(false,scoop);
+										}
+#line 3138 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 200:
+#line 1051 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"logic_expr:long id\n";
+											 ((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
+										}
+#line 3146 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 201:
+#line 1057 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"expr:assign_expr\n";
+										 ((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
+										}
+#line 3154 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 202:
+#line 1060 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"expr:simple_expr\n";
+										((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
+										}
+#line 3162 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 203:
+#line 1065 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+										Streams::verbose()<<"assign_expr:long_id EQUAL simple_expr\n";
+										//LongIdHelper::checkIdenentifier( scoop, interface,"set1");
+										((*yyvalp).r.node)=new AssignNode(scoop,(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
+										}
+#line 3172 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 204:
+#line 1072 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"long_id: long_id.IDENTIFIER\n";
+																((*yyvalp).r.node)=new DotNode(scoop,(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+
+											;}
+#line 3181 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 205:
+#line 1076 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+												Streams::verbose()<<"long_id: long_id.message_call\n";
+												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
+											}
+#line 3190 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 206:
+#line 1080 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+																LongIdHelper::addIdentifier((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text)); 
+																((*yyvalp).r.node)=new IdentifierNode((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),scoop);
+																Streams::verbose()<<"long_id:IDENTIFIER :"<<(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text)<<"\n";
+															   }
+#line 3200 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 207:
+#line 1085 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+											Streams::verbose()<<"long_id: long_id.array_access\n";
+												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
+											}
+#line 3209 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 208:
+#line 1093 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+							Streams::verbose()<<"array_access: details\n";
+
+							((*yyvalp).r.node)=new ArrayAccessNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node),scoop);
+
+						}
+#line 3220 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 209:
+#line 1102 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+										Streams::verbose()<<"simple_expr:STRING_VAL\n";
+									((*yyvalp).r.node)=new ConstantNode(*((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.string_val)),scoop);
+									Streams::verbose()<<"node typr"<<((*yyvalp).r.node)->generateType()->get_name()<<"\n";
+									((*yyvalp).r.string_val)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.string_val);
+									}
+#line 3231 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 210:
+#line 1108 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+									Streams::verbose()<<"simple_expr:INT_VAL\n";
+									((*yyvalp).r.node)=new ConstantNode(yylval.r.int_val,scoop);
+									}
+#line 3240 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 211:
+#line 1112 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"simple_expr:FLOAT_VAL\n";
+									((*yyvalp).r.node)=new ConstantNode(yylval.r.float_val,scoop);
+									}
+#line 3248 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 212:
+#line 1115 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"simple_expr:CHAR_VAL\n";
+										((*yyvalp).r.node)=new ConstantNode(yylval.r.char_val,scoop);
+									}
+#line 3256 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 213:
+#line 1118 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"simple_expr:long_id\n";
+									((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
+									}
+#line 3264 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 214:
+#line 1121 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+										Streams::verbose()<<"simple_expr:expr PLUS expr\n";
+										((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),PLUS,scoop);
+									}
+#line 3273 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 215:
+#line 1125 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+										Streams::verbose()<<"simple_expr:expr MINUS expr\n";
+										((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),MINUS,scoop);
+									}
+#line 3282 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 216:
+#line 1129 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"simple_expr:expr MULTI expr\n";
+											((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),MULTI,scoop);
+									}
+#line 3290 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 217:
+#line 1132 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+									Streams::verbose()<<"simple_expr:expr DIV expr\n";
+									((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),DIV,scoop);
+									}
+#line 3299 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 218:
+#line 1136 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"simple_expr:OPEN_P expr CLOSE_P\n";((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node);}
+#line 3305 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 219:
+#line 1137 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"simple_expr:ID++";}
+#line 3311 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 220:
+#line 1138 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"simple_expr:ID--";}
+#line 3317 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 221:
+#line 1139 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"simple_expr:++ID";}
+#line 3323 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 222:
+#line 1140 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"simple_expr:--ID";}
+#line 3329 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 223:
+#line 1141 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+																Streams::verbose()<<"expr:p_type expr\n";
+																if(type!=NULL)
+																((*yyvalp).r.node)=new CastNode(scoop,type,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
+															}
+#line 3339 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 224:
+#line 1148 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {		
+			Streams::verbose()<<"message_call2\n";
+			if(callNode==NULL)
+			callNode=new CallNode(scoop);
+			else 
+			{
+			callNodeStack.push(callNode);
+			callNode=new CallNode(scoop);
+			}
+			Streams::verbose()<<"mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm";
+			}
+#line 3355 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 225:
+#line 1161 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+												Streams::verbose()<<"message_call: OPEN_ARR sender message CLOSE_ARR\n";
+												callNode->setMessage((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text));
+												((*yyvalp).r.node)=callNode;
+												callNode=NULL;
+														if(callNodeStack.size()!=0){
+														callNode=callNodeStack.top();
+														callNodeStack.pop();
+														}
+												}
+#line 3370 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 226:
+#line 1173 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"sender: message_call\n";
+											
+											callNode->setSender((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
+											 ((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
+											 
+											}
+#line 3381 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 227:
+#line 1179 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"sender: IDENTIFIER\n";
+											((*yyvalp).r.node)=new IdentifierNode((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),scoop);
+											
+											//callNode=new CallNode(scoop);
+											
+											callNode->setSender(((*yyvalp).r.node));
+											
+											}
+#line 3394 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 228:
+#line 1189 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"message: IDENTIFIER\n";
+											((*yyvalp).r.text)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text);
+												
+											}
+#line 3403 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 229:
+#line 1193 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+											Streams::verbose()<<"message_selectors_list\n";
+											//$<r.node>$=$<r.text>1;
+											((*yyvalp).r.text)="";
+											}
+#line 3413 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 230:
+#line 1200 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+											Streams::verbose()<<"message_selectors_list:message_selectors_list message_selector \n";
+												callNode->addSelector(cselector);
+											cselector=NULL;
+												}
+#line 3423 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 231:
+#line 1205 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {	callNode->addSelector(cselector);
+							cselector=NULL;
+								Streams::verbose()<<"message_selectors_list: message_selector\n";
+											
+		}
+#line 3433 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 232:
+#line 1211 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+									cselector->name=(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text);
+							}
+#line 3441 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 233:
+#line 1215 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"argument_list: argument_list argument\n";
+												cselector->addArg((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));}
+#line 3448 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 234:
+#line 1217 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"argument_list: argument\n";
+												cselector=new CallSelector("");
+											cselector->addArg((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));}
+#line 3456 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 235:
+#line 1222 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+											Streams::verbose()<<"argument: SEMI_COLUMN expr\n";
+											((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
+											//callNode->addArgument($<r.node>1,"");
+											
+											}
+#line 3467 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 236:
+#line 1230 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+											Streams::verbose()<<"while_loop:while_loop_header statement\n";
+											 ((*yyvalp).r.node)=new WhileNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),scoop);
+										}
+#line 3476 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 237:
+#line 1236 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"while_loop_header: WHILE OPEN_P logic_expr CLOSE_P\n";
+											((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node);
+											}
+#line 3484 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 238:
+#line 1241 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"conditional_statement: if_header statement\n";
+												 ((*yyvalp).r.node)=new IfNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),scoop,NULL);
+												}
+#line 3492 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 239:
+#line 1244 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+												Streams::verbose()<<"conditional_statement: if_header statement with else\n";
+												 ((*yyvalp).r.node)=new IfNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),scoop,new ElseNode((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),scoop));
+												}
+#line 3501 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 240:
+#line 1248 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"conditional_statement: switch_header switch_body statement\n";
+											((*yyvalp).r.node)=tempSwitch;
+										}
+#line 3509 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 241:
+#line 1253 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"if_header: IF OPEN_P logic_expr CLOSE_P\n";
+											((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node);
+											}
+#line 3517 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 242:
+#line 1258 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"switch_header: SWITCH OPEN_P IDENTIFIER CLOSE_P\n";
+										
+										tempSwitch->setExpr(new IdentifierNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text),scoop));
+									}
+#line 3526 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 243:
+#line 1264 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {scoop=new ScoopNode(scoop);tempSwitch=new SwitchNode(NULL,std::list<pair<Node*,Node*>>(),scoop);}
+#line 3532 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 244:
+#line 1267 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {;}
+#line 3538 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 245:
+#line 1268 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {;}
+#line 3544 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 246:
+#line 1269 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {;}
+#line 3550 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 247:
+#line 1270 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {;}
+#line 3556 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 248:
+#line 1273 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {;}
+#line 3562 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 249:
+#line 1274 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {;}
+#line 3568 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 250:
+#line 1277 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {tempSwitch->addCase((((yyGLRStackItem const *)yyvsp)[YYFILL (-4)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node));}
+#line 3574 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 251:
+#line 1278 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {tempSwitch->addCase((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));}
+#line 3580 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 252:
+#line 1279 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {tempSwitch->addCase((((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.r.node),NULL);}
+#line 3586 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 253:
+#line 1282 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {tempSwitch->addCase(NULL,(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node));}
+#line 3592 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 254:
+#line 1283 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {tempSwitch->addCase(NULL,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));}
+#line 3598 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 255:
+#line 1284 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {tempSwitch->addCase(NULL,(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node));}
+#line 3604 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 256:
+#line 1286 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+										Streams::verbose()<<"protocol: protocol_header protocol_body\n";
+										idsList.clear();
+										methodsList.clear();
+										method=NULL;
+										}
+#line 3615 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 257:
+#line 1294 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+								Streams::verbose()<<"protocol_header: AT_PROTOCOL IDENTIFIER \n";
+								protocol=ProtocolHelper ::createNewProtocol((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),symbolTable );
+								
+								}
+#line 3625 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 258:
+#line 1301 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+								Streams::verbose()<<"protocol_body:	protocol_reference_list interface_declaration_list	AT_END\n";
+								ProtocolHelper::addInheritedProtocol( protocol, idsList,symbolTable);
+								ProtocolHelper::addMethods( protocol,methodsList);
+								methodsList.clear();
+								idsList.clear();
+								}
+#line 3637 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 259:
+#line 1309 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+								Streams::verbose()<<"protocol_body:	interface_declaration_list	AT_END\n";
+									
+								ProtocolHelper::addMethods( protocol,methodsList);
+								methodsList.clear();
+								
+								}
+#line 3649 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 260:
+#line 1317 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+								Streams::verbose()<<"protocol_body:	protocol_reference_list AT_END	\n";
+											ProtocolHelper::addInheritedProtocol( protocol, idsList,symbolTable);
+								idsList.clear();
+								}
+#line 3659 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 261:
+#line 1323 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"protocol_body:	AT_END\n";}
+#line 3665 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 262:
+#line 1325 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+																Streams::verbose()<<"enum: ENUM IDENTIFIER  OPEN_S list_expr CLOSE_S SEMI_COMA  \n";
+																
+																EnumHelper::createNewEnum( (((yyGLRStackItem const *)yyvsp)[YYFILL (-4)].yystate.yysemantics.yysval.r.text),idsList, symbolTable);
+																idsList.clear();
+															 }
+#line 3676 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 263:
+#line 1331 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+																Streams::verbose()<<"enum: ENUM IDENTIFIER SEMI_COMA\n";
+																EnumHelper::createNewEnum( (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text),idsList, symbolTable);
+															  }
+#line 3685 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 264:
+#line 1338 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+												Streams::verbose()<<"list_expr:IDENTIFIER EQUAL expr COMMA list_expr\n";
+												idsList.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (-4)].yystate.yysemantics.yysval.r.text));
+													((*yyvalp).r.node)=new AssignNode(scoop,new IdentifierNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-4)].yystate.yysemantics.yysval.r.text),scoop),(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node));
+												}
+#line 3695 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 265:
+#line 1343 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+												Streams::verbose()<<"list_expr:IDENTIFIER EQUAL expr\n";
+												idsList.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text));
+												((*yyvalp).r.node)=new AssignNode(scoop,new IdentifierNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text),scoop),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
+												}
+#line 3705 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 266:
+#line 1348 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+													Streams::verbose()<<"list_expr:IDENTIFIER \n";
+													idsList.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
+													//??
+												}
+#line 3715 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 267:
+#line 1353 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+												  Streams::verbose()<<"list_expr:IDENTIFIER  COMMA list_expr \n";
+												  idsList.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text));
+												  //??
+												}
+#line 3725 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 268:
+#line 1360 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {
+												  Streams::verbose()<<"try_catch:TRY statement catch_list finally_statement \n";
+												}
+#line 3733 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 269:
+#line 1364 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {				  
+								Streams::verbose()<<"try_catch:TRY statement catch_list \n";
+							  }
+#line 3741 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 270:
+#line 1369 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"catch_list:CATCH OPEN_S type IDENTIFIER CLOSE_S statement \n";}
+#line 3747 "yacc.cpp" /* glr.c:788  */
+    break;
+
+  case 271:
+#line 1370 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    {Streams::verbose()<<"catch_list:catch_list CATCH OPEN_S type IDENTIFIER CLOSE_S statement \n";}
+#line 3753 "yacc.cpp" /* glr.c:788  */
+    break;
+
+
+#line 3757 "yacc.cpp" /* glr.c:788  */
+      default: break;
+    }
+
+  return yyok;
+# undef yyerrok
+# undef YYABORT
+# undef YYACCEPT
+# undef YYERROR
+# undef YYBACKUP
+# undef yyclearin
+# undef YYRECOVERING
+}
+
+
+static void
+yyuserMerge (int yyn, YYSTYPE* yy0, YYSTYPE* yy1)
+{
+  YYUSE (yy0);
+  YYUSE (yy1);
+
+  switch (yyn)
+    {
+
+      default: break;
+    }
+}
+
+                              /* Bison grammar-table manipulation.  */
 
 /*-----------------------------------------------.
 | Release the memory associated to this symbol.  |
@@ -1805,17 +3800,1323 @@ yydestruct (const char *yymsg, int yytype, YYSTYPE *yyvaluep)
   YY_IGNORE_MAYBE_UNINITIALIZED_END
 }
 
+/** Number of symbols composing the right hand side of rule #RULE.  */
+static inline int
+yyrhsLength (yyRuleNum yyrule)
+{
+  return yyr2[yyrule];
+}
+
+static void
+yydestroyGLRState (char const *yymsg, yyGLRState *yys)
+{
+  if (yys->yyresolved)
+    yydestruct (yymsg, yystos[yys->yylrState],
+                &yys->yysemantics.yysval);
+  else
+    {
+#if YYDEBUG
+      if (yydebug)
+        {
+          if (yys->yysemantics.yyfirstVal)
+            YYFPRINTF (stderr, "%s unresolved ", yymsg);
+          else
+            YYFPRINTF (stderr, "%s incomplete ", yymsg);
+          yy_symbol_print (stderr, yystos[yys->yylrState],
+                           YY_NULL);
+          YYFPRINTF (stderr, "\n");
+        }
+#endif
+
+      if (yys->yysemantics.yyfirstVal)
+        {
+          yySemanticOption *yyoption = yys->yysemantics.yyfirstVal;
+          yyGLRState *yyrh;
+          int yyn;
+          for (yyrh = yyoption->yystate, yyn = yyrhsLength (yyoption->yyrule);
+               yyn > 0;
+               yyrh = yyrh->yypred, yyn -= 1)
+            yydestroyGLRState (yymsg, yyrh);
+        }
+    }
+}
+
+/** Left-hand-side symbol for rule #YYRULE.  */
+static inline yySymbol
+yylhsNonterm (yyRuleNum yyrule)
+{
+  return yyr1[yyrule];
+}
+
+#define yypact_value_is_default(Yystate) \
+  (!!((Yystate) == (-448)))
+
+/** True iff LR state YYSTATE has only a default reduction (regardless
+ *  of token).  */
+static inline yybool
+yyisDefaultedState (yyStateNum yystate)
+{
+  return yypact_value_is_default (yypact[yystate]);
+}
+
+/** The default reduction for YYSTATE, assuming it has one.  */
+static inline yyRuleNum
+yydefaultAction (yyStateNum yystate)
+{
+  return yydefact[yystate];
+}
+
+#define yytable_value_is_error(Yytable_value) \
+  0
+
+/** Set *YYACTION to the action to take in YYSTATE on seeing YYTOKEN.
+ *  Result R means
+ *    R < 0:  Reduce on rule -R.
+ *    R = 0:  Error.
+ *    R > 0:  Shift to state R.
+ *  Set *YYCONFLICTS to a pointer into yyconfl to a 0-terminated list
+ *  of conflicting reductions.
+ */
+static inline void
+yygetLRActions (yyStateNum yystate, int yytoken,
+                int* yyaction, const short int** yyconflicts)
+{
+  int yyindex = yypact[yystate] + yytoken;
+  if (yypact_value_is_default (yypact[yystate])
+      || yyindex < 0 || YYLAST < yyindex || yycheck[yyindex] != yytoken)
+    {
+      *yyaction = -yydefact[yystate];
+      *yyconflicts = yyconfl;
+    }
+  else if (! yytable_value_is_error (yytable[yyindex]))
+    {
+      *yyaction = yytable[yyindex];
+      *yyconflicts = yyconfl + yyconflp[yyindex];
+    }
+  else
+    {
+      *yyaction = 0;
+      *yyconflicts = yyconfl + yyconflp[yyindex];
+    }
+}
+
+static inline yyStateNum
+yyLRgotoState (yyStateNum yystate, yySymbol yylhs)
+{
+  int yyr = yypgoto[yylhs - YYNTOKENS] + yystate;
+  if (0 <= yyr && yyr <= YYLAST && yycheck[yyr] == yystate)
+    return yytable[yyr];
+  else
+    return yydefgoto[yylhs - YYNTOKENS];
+}
+
+static inline yybool
+yyisShiftAction (int yyaction)
+{
+  return 0 < yyaction;
+}
+
+static inline yybool
+yyisErrorAction (int yyaction)
+{
+  return yyaction == 0;
+}
+
+                                /* GLRStates */
+
+/** Return a fresh GLRStackItem in YYSTACKP.  The item is an LR state
+ *  if YYISSTATE, and otherwise a semantic option.  Callers should call
+ *  YY_RESERVE_GLRSTACK afterwards to make sure there is sufficient
+ *  headroom.  */
+
+static inline yyGLRStackItem*
+yynewGLRStackItem (yyGLRStack* yystackp, yybool yyisState)
+{
+  yyGLRStackItem* yynewItem = yystackp->yynextFree;
+  yystackp->yyspaceLeft -= 1;
+  yystackp->yynextFree += 1;
+  yynewItem->yystate.yyisState = yyisState;
+  return yynewItem;
+}
+
+/** Add a new semantic action that will execute the action for rule
+ *  YYRULE on the semantic values in YYRHS to the list of
+ *  alternative actions for YYSTATE.  Assumes that YYRHS comes from
+ *  stack #YYK of *YYSTACKP. */
+static void
+yyaddDeferredAction (yyGLRStack* yystackp, size_t yyk, yyGLRState* yystate,
+                     yyGLRState* yyrhs, yyRuleNum yyrule)
+{
+  yySemanticOption* yynewOption =
+    &yynewGLRStackItem (yystackp, yyfalse)->yyoption;
+  yynewOption->yystate = yyrhs;
+  yynewOption->yyrule = yyrule;
+  if (yystackp->yytops.yylookaheadNeeds[yyk])
+    {
+      yynewOption->yyrawchar = yychar;
+      yynewOption->yyval = yylval;
+    }
+  else
+    yynewOption->yyrawchar = YYEMPTY;
+  yynewOption->yynext = yystate->yysemantics.yyfirstVal;
+  yystate->yysemantics.yyfirstVal = yynewOption;
+
+  YY_RESERVE_GLRSTACK (yystackp);
+}
+
+                                /* GLRStacks */
+
+/** Initialize YYSET to a singleton set containing an empty stack.  */
+static yybool
+yyinitStateSet (yyGLRStateSet* yyset)
+{
+  yyset->yysize = 1;
+  yyset->yycapacity = 16;
+  yyset->yystates = (yyGLRState**) YYMALLOC (16 * sizeof yyset->yystates[0]);
+  if (! yyset->yystates)
+    return yyfalse;
+  yyset->yystates[0] = YY_NULL;
+  yyset->yylookaheadNeeds =
+    (yybool*) YYMALLOC (16 * sizeof yyset->yylookaheadNeeds[0]);
+  if (! yyset->yylookaheadNeeds)
+    {
+      YYFREE (yyset->yystates);
+      return yyfalse;
+    }
+  return yytrue;
+}
+
+static void yyfreeStateSet (yyGLRStateSet* yyset)
+{
+  YYFREE (yyset->yystates);
+  YYFREE (yyset->yylookaheadNeeds);
+}
+
+/** Initialize *YYSTACKP to a single empty stack, with total maximum
+ *  capacity for all stacks of YYSIZE.  */
+static yybool
+yyinitGLRStack (yyGLRStack* yystackp, size_t yysize)
+{
+  yystackp->yyerrState = 0;
+  yynerrs = 0;
+  yystackp->yyspaceLeft = yysize;
+  yystackp->yyitems =
+    (yyGLRStackItem*) YYMALLOC (yysize * sizeof yystackp->yynextFree[0]);
+  if (!yystackp->yyitems)
+    return yyfalse;
+  yystackp->yynextFree = yystackp->yyitems;
+  yystackp->yysplitPoint = YY_NULL;
+  yystackp->yylastDeleted = YY_NULL;
+  return yyinitStateSet (&yystackp->yytops);
+}
 
 
+#if YYSTACKEXPANDABLE
+# define YYRELOC(YYFROMITEMS,YYTOITEMS,YYX,YYTYPE) \
+  &((YYTOITEMS) - ((YYFROMITEMS) - (yyGLRStackItem*) (YYX)))->YYTYPE
 
-/* The lookahead symbol.  */
-int yychar;
+/** If *YYSTACKP is expandable, extend it.  WARNING: Pointers into the
+    stack from outside should be considered invalid after this call.
+    We always expand when there are 1 or fewer items left AFTER an
+    allocation, so that we can avoid having external pointers exist
+    across an allocation.  */
+static void
+yyexpandGLRStack (yyGLRStack* yystackp)
+{
+  yyGLRStackItem* yynewItems;
+  yyGLRStackItem* yyp0, *yyp1;
+  size_t yynewSize;
+  size_t yyn;
+  size_t yysize = yystackp->yynextFree - yystackp->yyitems;
+  if (YYMAXDEPTH - YYHEADROOM < yysize)
+    yyMemoryExhausted (yystackp);
+  yynewSize = 2*yysize;
+  if (YYMAXDEPTH < yynewSize)
+    yynewSize = YYMAXDEPTH;
+  yynewItems = (yyGLRStackItem*) YYMALLOC (yynewSize * sizeof yynewItems[0]);
+  if (! yynewItems)
+    yyMemoryExhausted (yystackp);
+  for (yyp0 = yystackp->yyitems, yyp1 = yynewItems, yyn = yysize;
+       0 < yyn;
+       yyn -= 1, yyp0 += 1, yyp1 += 1)
+    {
+      *yyp1 = *yyp0;
+      if (*(yybool *) yyp0)
+        {
+          yyGLRState* yys0 = &yyp0->yystate;
+          yyGLRState* yys1 = &yyp1->yystate;
+          if (yys0->yypred != YY_NULL)
+            yys1->yypred =
+              YYRELOC (yyp0, yyp1, yys0->yypred, yystate);
+          if (! yys0->yyresolved && yys0->yysemantics.yyfirstVal != YY_NULL)
+            yys1->yysemantics.yyfirstVal =
+              YYRELOC (yyp0, yyp1, yys0->yysemantics.yyfirstVal, yyoption);
+        }
+      else
+        {
+          yySemanticOption* yyv0 = &yyp0->yyoption;
+          yySemanticOption* yyv1 = &yyp1->yyoption;
+          if (yyv0->yystate != YY_NULL)
+            yyv1->yystate = YYRELOC (yyp0, yyp1, yyv0->yystate, yystate);
+          if (yyv0->yynext != YY_NULL)
+            yyv1->yynext = YYRELOC (yyp0, yyp1, yyv0->yynext, yyoption);
+        }
+    }
+  if (yystackp->yysplitPoint != YY_NULL)
+    yystackp->yysplitPoint = YYRELOC (yystackp->yyitems, yynewItems,
+                                 yystackp->yysplitPoint, yystate);
 
-/* The semantic value of the lookahead symbol.  */
-YYSTYPE yylval;
-/* Number of syntax errors so far.  */
-int yynerrs;
+  for (yyn = 0; yyn < yystackp->yytops.yysize; yyn += 1)
+    if (yystackp->yytops.yystates[yyn] != YY_NULL)
+      yystackp->yytops.yystates[yyn] =
+        YYRELOC (yystackp->yyitems, yynewItems,
+                 yystackp->yytops.yystates[yyn], yystate);
+  YYFREE (yystackp->yyitems);
+  yystackp->yyitems = yynewItems;
+  yystackp->yynextFree = yynewItems + yysize;
+  yystackp->yyspaceLeft = yynewSize - yysize;
+}
+#endif
 
+static void
+yyfreeGLRStack (yyGLRStack* yystackp)
+{
+  YYFREE (yystackp->yyitems);
+  yyfreeStateSet (&yystackp->yytops);
+}
+
+/** Assuming that YYS is a GLRState somewhere on *YYSTACKP, update the
+ *  splitpoint of *YYSTACKP, if needed, so that it is at least as deep as
+ *  YYS.  */
+static inline void
+yyupdateSplit (yyGLRStack* yystackp, yyGLRState* yys)
+{
+  if (yystackp->yysplitPoint != YY_NULL && yystackp->yysplitPoint > yys)
+    yystackp->yysplitPoint = yys;
+}
+
+/** Invalidate stack #YYK in *YYSTACKP.  */
+static inline void
+yymarkStackDeleted (yyGLRStack* yystackp, size_t yyk)
+{
+  if (yystackp->yytops.yystates[yyk] != YY_NULL)
+    yystackp->yylastDeleted = yystackp->yytops.yystates[yyk];
+  yystackp->yytops.yystates[yyk] = YY_NULL;
+}
+
+/** Undelete the last stack in *YYSTACKP that was marked as deleted.  Can
+    only be done once after a deletion, and only when all other stacks have
+    been deleted.  */
+static void
+yyundeleteLastStack (yyGLRStack* yystackp)
+{
+  if (yystackp->yylastDeleted == YY_NULL || yystackp->yytops.yysize != 0)
+    return;
+  yystackp->yytops.yystates[0] = yystackp->yylastDeleted;
+  yystackp->yytops.yysize = 1;
+  YYDPRINTF ((stderr, "Restoring last deleted stack as stack #0.\n"));
+  yystackp->yylastDeleted = YY_NULL;
+}
+
+static inline void
+yyremoveDeletes (yyGLRStack* yystackp)
+{
+  size_t yyi, yyj;
+  yyi = yyj = 0;
+  while (yyj < yystackp->yytops.yysize)
+    {
+      if (yystackp->yytops.yystates[yyi] == YY_NULL)
+        {
+          if (yyi == yyj)
+            {
+              YYDPRINTF ((stderr, "Removing dead stacks.\n"));
+            }
+          yystackp->yytops.yysize -= 1;
+        }
+      else
+        {
+          yystackp->yytops.yystates[yyj] = yystackp->yytops.yystates[yyi];
+          /* In the current implementation, it's unnecessary to copy
+             yystackp->yytops.yylookaheadNeeds[yyi] since, after
+             yyremoveDeletes returns, the parser immediately either enters
+             deterministic operation or shifts a token.  However, it doesn't
+             hurt, and the code might evolve to need it.  */
+          yystackp->yytops.yylookaheadNeeds[yyj] =
+            yystackp->yytops.yylookaheadNeeds[yyi];
+          if (yyj != yyi)
+            {
+              YYDPRINTF ((stderr, "Rename stack %lu -> %lu.\n",
+                          (unsigned long int) yyi, (unsigned long int) yyj));
+            }
+          yyj += 1;
+        }
+      yyi += 1;
+    }
+}
+
+/** Shift to a new state on stack #YYK of *YYSTACKP, corresponding to LR
+ * state YYLRSTATE, at input position YYPOSN, with (resolved) semantic
+ * value *YYVALP and source location *YYLOCP.  */
+static inline void
+yyglrShift (yyGLRStack* yystackp, size_t yyk, yyStateNum yylrState,
+            size_t yyposn,
+            YYSTYPE* yyvalp)
+{
+  yyGLRState* yynewState = &yynewGLRStackItem (yystackp, yytrue)->yystate;
+
+  yynewState->yylrState = yylrState;
+  yynewState->yyposn = yyposn;
+  yynewState->yyresolved = yytrue;
+  yynewState->yypred = yystackp->yytops.yystates[yyk];
+  yynewState->yysemantics.yysval = *yyvalp;
+  yystackp->yytops.yystates[yyk] = yynewState;
+
+  YY_RESERVE_GLRSTACK (yystackp);
+}
+
+/** Shift stack #YYK of *YYSTACKP, to a new state corresponding to LR
+ *  state YYLRSTATE, at input position YYPOSN, with the (unresolved)
+ *  semantic value of YYRHS under the action for YYRULE.  */
+static inline void
+yyglrShiftDefer (yyGLRStack* yystackp, size_t yyk, yyStateNum yylrState,
+                 size_t yyposn, yyGLRState* yyrhs, yyRuleNum yyrule)
+{
+  yyGLRState* yynewState = &yynewGLRStackItem (yystackp, yytrue)->yystate;
+
+  yynewState->yylrState = yylrState;
+  yynewState->yyposn = yyposn;
+  yynewState->yyresolved = yyfalse;
+  yynewState->yypred = yystackp->yytops.yystates[yyk];
+  yynewState->yysemantics.yyfirstVal = YY_NULL;
+  yystackp->yytops.yystates[yyk] = yynewState;
+
+  /* Invokes YY_RESERVE_GLRSTACK.  */
+  yyaddDeferredAction (yystackp, yyk, yynewState, yyrhs, yyrule);
+}
+
+#if !YYDEBUG
+# define YY_REDUCE_PRINT(Args)
+#else
+# define YY_REDUCE_PRINT(Args)          \
+do {                                    \
+  if (yydebug)                          \
+    yy_reduce_print Args;               \
+} while (0)
+
+/*----------------------------------------------------------------------.
+| Report that stack #YYK of *YYSTACKP is going to be reduced by YYRULE. |
+`----------------------------------------------------------------------*/
+
+static inline void
+yy_reduce_print (int yynormal, yyGLRStackItem* yyvsp, size_t yyk,
+                 yyRuleNum yyrule)
+{
+  int yynrhs = yyrhsLength (yyrule);
+  int yyi;
+  YYFPRINTF (stderr, "Reducing stack %lu by rule %d (line %lu):\n",
+             (unsigned long int) yyk, yyrule - 1,
+             (unsigned long int) yyrline[yyrule]);
+  if (! yynormal)
+    yyfillin (yyvsp, 1, -yynrhs);
+  /* The symbols being reduced.  */
+  for (yyi = 0; yyi < yynrhs; yyi++)
+    {
+      YYFPRINTF (stderr, "   $%d = ", yyi + 1);
+      yy_symbol_print (stderr,
+                       yystos[yyvsp[yyi - yynrhs + 1].yystate.yylrState],
+                       &yyvsp[yyi - yynrhs + 1].yystate.yysemantics.yysval
+                                              );
+      if (!yyvsp[yyi - yynrhs + 1].yystate.yyresolved)
+        YYFPRINTF (stderr, " (unresolved)");
+      YYFPRINTF (stderr, "\n");
+    }
+}
+#endif
+
+/** Pop the symbols consumed by reduction #YYRULE from the top of stack
+ *  #YYK of *YYSTACKP, and perform the appropriate semantic action on their
+ *  semantic values.  Assumes that all ambiguities in semantic values
+ *  have been previously resolved.  Set *YYVALP to the resulting value,
+ *  and *YYLOCP to the computed location (if any).  Return value is as
+ *  for userAction.  */
+static inline YYRESULTTAG
+yydoAction (yyGLRStack* yystackp, size_t yyk, yyRuleNum yyrule,
+            YYSTYPE* yyvalp)
+{
+  int yynrhs = yyrhsLength (yyrule);
+
+  if (yystackp->yysplitPoint == YY_NULL)
+    {
+      /* Standard special case: single stack.  */
+      yyGLRStackItem* yyrhs = (yyGLRStackItem*) yystackp->yytops.yystates[yyk];
+      YYASSERT (yyk == 0);
+      yystackp->yynextFree -= yynrhs;
+      yystackp->yyspaceLeft += yynrhs;
+      yystackp->yytops.yystates[0] = & yystackp->yynextFree[-1].yystate;
+      YY_REDUCE_PRINT ((1, yyrhs, yyk, yyrule));
+      return yyuserAction (yyrule, yynrhs, yyrhs, yystackp,
+                           yyvalp);
+    }
+  else
+    {
+      int yyi;
+      yyGLRState* yys;
+      yyGLRStackItem yyrhsVals[YYMAXRHS + YYMAXLEFT + 1];
+      yys = yyrhsVals[YYMAXRHS + YYMAXLEFT].yystate.yypred
+        = yystackp->yytops.yystates[yyk];
+      for (yyi = 0; yyi < yynrhs; yyi += 1)
+        {
+          yys = yys->yypred;
+          YYASSERT (yys);
+        }
+      yyupdateSplit (yystackp, yys);
+      yystackp->yytops.yystates[yyk] = yys;
+      YY_REDUCE_PRINT ((0, yyrhsVals + YYMAXRHS + YYMAXLEFT - 1, yyk, yyrule));
+      return yyuserAction (yyrule, yynrhs, yyrhsVals + YYMAXRHS + YYMAXLEFT - 1,
+                           yystackp, yyvalp);
+    }
+}
+
+/** Pop items off stack #YYK of *YYSTACKP according to grammar rule YYRULE,
+ *  and push back on the resulting nonterminal symbol.  Perform the
+ *  semantic action associated with YYRULE and store its value with the
+ *  newly pushed state, if YYFORCEEVAL or if *YYSTACKP is currently
+ *  unambiguous.  Otherwise, store the deferred semantic action with
+ *  the new state.  If the new state would have an identical input
+ *  position, LR state, and predecessor to an existing state on the stack,
+ *  it is identified with that existing state, eliminating stack #YYK from
+ *  *YYSTACKP.  In this case, the semantic value is
+ *  added to the options for the existing state's semantic value.
+ */
+static inline YYRESULTTAG
+yyglrReduce (yyGLRStack* yystackp, size_t yyk, yyRuleNum yyrule,
+             yybool yyforceEval)
+{
+  size_t yyposn = yystackp->yytops.yystates[yyk]->yyposn;
+
+  if (yyforceEval || yystackp->yysplitPoint == YY_NULL)
+    {
+      YYRESULTTAG yyflag;
+      YYSTYPE yysval;
+
+      yyflag = yydoAction (yystackp, yyk, yyrule, &yysval);
+      if (yyflag == yyerr && yystackp->yysplitPoint != YY_NULL)
+        {
+          YYDPRINTF ((stderr, "Parse on stack %lu rejected by rule #%d.\n",
+                     (unsigned long int) yyk, yyrule - 1));
+        }
+      if (yyflag != yyok)
+        return yyflag;
+      YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyrule], &yysval, &yyloc);
+      yyglrShift (yystackp, yyk,
+                  yyLRgotoState (yystackp->yytops.yystates[yyk]->yylrState,
+                                 yylhsNonterm (yyrule)),
+                  yyposn, &yysval);
+    }
+  else
+    {
+      size_t yyi;
+      int yyn;
+      yyGLRState* yys, *yys0 = yystackp->yytops.yystates[yyk];
+      yyStateNum yynewLRState;
+
+      for (yys = yystackp->yytops.yystates[yyk], yyn = yyrhsLength (yyrule);
+           0 < yyn; yyn -= 1)
+        {
+          yys = yys->yypred;
+          YYASSERT (yys);
+        }
+      yyupdateSplit (yystackp, yys);
+      yynewLRState = yyLRgotoState (yys->yylrState, yylhsNonterm (yyrule));
+      YYDPRINTF ((stderr,
+                  "Reduced stack %lu by rule #%d; action deferred.  "
+                  "Now in state %d.\n",
+                  (unsigned long int) yyk, yyrule - 1, yynewLRState));
+      for (yyi = 0; yyi < yystackp->yytops.yysize; yyi += 1)
+        if (yyi != yyk && yystackp->yytops.yystates[yyi] != YY_NULL)
+          {
+            yyGLRState *yysplit = yystackp->yysplitPoint;
+            yyGLRState *yyp = yystackp->yytops.yystates[yyi];
+            while (yyp != yys && yyp != yysplit && yyp->yyposn >= yyposn)
+              {
+                if (yyp->yylrState == yynewLRState && yyp->yypred == yys)
+                  {
+                    yyaddDeferredAction (yystackp, yyk, yyp, yys0, yyrule);
+                    yymarkStackDeleted (yystackp, yyk);
+                    YYDPRINTF ((stderr, "Merging stack %lu into stack %lu.\n",
+                                (unsigned long int) yyk,
+                                (unsigned long int) yyi));
+                    return yyok;
+                  }
+                yyp = yyp->yypred;
+              }
+          }
+      yystackp->yytops.yystates[yyk] = yys;
+      yyglrShiftDefer (yystackp, yyk, yynewLRState, yyposn, yys0, yyrule);
+    }
+  return yyok;
+}
+
+static size_t
+yysplitStack (yyGLRStack* yystackp, size_t yyk)
+{
+  if (yystackp->yysplitPoint == YY_NULL)
+    {
+      YYASSERT (yyk == 0);
+      yystackp->yysplitPoint = yystackp->yytops.yystates[yyk];
+    }
+  if (yystackp->yytops.yysize >= yystackp->yytops.yycapacity)
+    {
+      yyGLRState** yynewStates;
+      yybool* yynewLookaheadNeeds;
+
+      yynewStates = YY_NULL;
+
+      if (yystackp->yytops.yycapacity
+          > (YYSIZEMAX / (2 * sizeof yynewStates[0])))
+        yyMemoryExhausted (yystackp);
+      yystackp->yytops.yycapacity *= 2;
+
+      yynewStates =
+        (yyGLRState**) YYREALLOC (yystackp->yytops.yystates,
+                                  (yystackp->yytops.yycapacity
+                                   * sizeof yynewStates[0]));
+      if (yynewStates == YY_NULL)
+        yyMemoryExhausted (yystackp);
+      yystackp->yytops.yystates = yynewStates;
+
+      yynewLookaheadNeeds =
+        (yybool*) YYREALLOC (yystackp->yytops.yylookaheadNeeds,
+                             (yystackp->yytops.yycapacity
+                              * sizeof yynewLookaheadNeeds[0]));
+      if (yynewLookaheadNeeds == YY_NULL)
+        yyMemoryExhausted (yystackp);
+      yystackp->yytops.yylookaheadNeeds = yynewLookaheadNeeds;
+    }
+  yystackp->yytops.yystates[yystackp->yytops.yysize]
+    = yystackp->yytops.yystates[yyk];
+  yystackp->yytops.yylookaheadNeeds[yystackp->yytops.yysize]
+    = yystackp->yytops.yylookaheadNeeds[yyk];
+  yystackp->yytops.yysize += 1;
+  return yystackp->yytops.yysize-1;
+}
+
+/** True iff YYY0 and YYY1 represent identical options at the top level.
+ *  That is, they represent the same rule applied to RHS symbols
+ *  that produce the same terminal symbols.  */
+static yybool
+yyidenticalOptions (yySemanticOption* yyy0, yySemanticOption* yyy1)
+{
+  if (yyy0->yyrule == yyy1->yyrule)
+    {
+      yyGLRState *yys0, *yys1;
+      int yyn;
+      for (yys0 = yyy0->yystate, yys1 = yyy1->yystate,
+           yyn = yyrhsLength (yyy0->yyrule);
+           yyn > 0;
+           yys0 = yys0->yypred, yys1 = yys1->yypred, yyn -= 1)
+        if (yys0->yyposn != yys1->yyposn)
+          return yyfalse;
+      return yytrue;
+    }
+  else
+    return yyfalse;
+}
+
+/** Assuming identicalOptions (YYY0,YYY1), destructively merge the
+ *  alternative semantic values for the RHS-symbols of YYY1 and YYY0.  */
+static void
+yymergeOptionSets (yySemanticOption* yyy0, yySemanticOption* yyy1)
+{
+  yyGLRState *yys0, *yys1;
+  int yyn;
+  for (yys0 = yyy0->yystate, yys1 = yyy1->yystate,
+       yyn = yyrhsLength (yyy0->yyrule);
+       yyn > 0;
+       yys0 = yys0->yypred, yys1 = yys1->yypred, yyn -= 1)
+    {
+      if (yys0 == yys1)
+        break;
+      else if (yys0->yyresolved)
+        {
+          yys1->yyresolved = yytrue;
+          yys1->yysemantics.yysval = yys0->yysemantics.yysval;
+        }
+      else if (yys1->yyresolved)
+        {
+          yys0->yyresolved = yytrue;
+          yys0->yysemantics.yysval = yys1->yysemantics.yysval;
+        }
+      else
+        {
+          yySemanticOption** yyz0p = &yys0->yysemantics.yyfirstVal;
+          yySemanticOption* yyz1 = yys1->yysemantics.yyfirstVal;
+          while (yytrue)
+            {
+              if (yyz1 == *yyz0p || yyz1 == YY_NULL)
+                break;
+              else if (*yyz0p == YY_NULL)
+                {
+                  *yyz0p = yyz1;
+                  break;
+                }
+              else if (*yyz0p < yyz1)
+                {
+                  yySemanticOption* yyz = *yyz0p;
+                  *yyz0p = yyz1;
+                  yyz1 = yyz1->yynext;
+                  (*yyz0p)->yynext = yyz;
+                }
+              yyz0p = &(*yyz0p)->yynext;
+            }
+          yys1->yysemantics.yyfirstVal = yys0->yysemantics.yyfirstVal;
+        }
+    }
+}
+
+/** Y0 and Y1 represent two possible actions to take in a given
+ *  parsing state; return 0 if no combination is possible,
+ *  1 if user-mergeable, 2 if Y0 is preferred, 3 if Y1 is preferred.  */
+static int
+yypreference (yySemanticOption* y0, yySemanticOption* y1)
+{
+  yyRuleNum r0 = y0->yyrule, r1 = y1->yyrule;
+  int p0 = yydprec[r0], p1 = yydprec[r1];
+
+  if (p0 == p1)
+    {
+      if (yymerger[r0] == 0 || yymerger[r0] != yymerger[r1])
+        return 0;
+      else
+        return 1;
+    }
+  if (p0 == 0 || p1 == 0)
+    return 0;
+  if (p0 < p1)
+    return 3;
+  if (p1 < p0)
+    return 2;
+  return 0;
+}
+
+static YYRESULTTAG yyresolveValue (yyGLRState* yys,
+                                   yyGLRStack* yystackp);
+
+
+/** Resolve the previous YYN states starting at and including state YYS
+ *  on *YYSTACKP. If result != yyok, some states may have been left
+ *  unresolved possibly with empty semantic option chains.  Regardless
+ *  of whether result = yyok, each state has been left with consistent
+ *  data so that yydestroyGLRState can be invoked if necessary.  */
+static YYRESULTTAG
+yyresolveStates (yyGLRState* yys, int yyn,
+                 yyGLRStack* yystackp)
+{
+  if (0 < yyn)
+    {
+      YYASSERT (yys->yypred);
+      YYCHK (yyresolveStates (yys->yypred, yyn-1, yystackp));
+      if (! yys->yyresolved)
+        YYCHK (yyresolveValue (yys, yystackp));
+    }
+  return yyok;
+}
+
+/** Resolve the states for the RHS of YYOPT on *YYSTACKP, perform its
+ *  user action, and return the semantic value and location in *YYVALP
+ *  and *YYLOCP.  Regardless of whether result = yyok, all RHS states
+ *  have been destroyed (assuming the user action destroys all RHS
+ *  semantic values if invoked).  */
+static YYRESULTTAG
+yyresolveAction (yySemanticOption* yyopt, yyGLRStack* yystackp,
+                 YYSTYPE* yyvalp)
+{
+  yyGLRStackItem yyrhsVals[YYMAXRHS + YYMAXLEFT + 1];
+  int yynrhs = yyrhsLength (yyopt->yyrule);
+  YYRESULTTAG yyflag =
+    yyresolveStates (yyopt->yystate, yynrhs, yystackp);
+  if (yyflag != yyok)
+    {
+      yyGLRState *yys;
+      for (yys = yyopt->yystate; yynrhs > 0; yys = yys->yypred, yynrhs -= 1)
+        yydestroyGLRState ("Cleanup: popping", yys);
+      return yyflag;
+    }
+
+  yyrhsVals[YYMAXRHS + YYMAXLEFT].yystate.yypred = yyopt->yystate;
+  {
+    int yychar_current = yychar;
+    YYSTYPE yylval_current = yylval;
+    yychar = yyopt->yyrawchar;
+    yylval = yyopt->yyval;
+    yyflag = yyuserAction (yyopt->yyrule, yynrhs,
+                           yyrhsVals + YYMAXRHS + YYMAXLEFT - 1,
+                           yystackp, yyvalp);
+    yychar = yychar_current;
+    yylval = yylval_current;
+  }
+  return yyflag;
+}
+
+#if YYDEBUG
+static void
+yyreportTree (yySemanticOption* yyx, int yyindent)
+{
+  int yynrhs = yyrhsLength (yyx->yyrule);
+  int yyi;
+  yyGLRState* yys;
+  yyGLRState* yystates[1 + YYMAXRHS];
+  yyGLRState yyleftmost_state;
+
+  for (yyi = yynrhs, yys = yyx->yystate; 0 < yyi; yyi -= 1, yys = yys->yypred)
+    yystates[yyi] = yys;
+  if (yys == YY_NULL)
+    {
+      yyleftmost_state.yyposn = 0;
+      yystates[0] = &yyleftmost_state;
+    }
+  else
+    yystates[0] = yys;
+
+  if (yyx->yystate->yyposn < yys->yyposn + 1)
+    YYFPRINTF (stderr, "%*s%s -> <Rule %d, empty>\n",
+               yyindent, "", yytokenName (yylhsNonterm (yyx->yyrule)),
+               yyx->yyrule - 1);
+  else
+    YYFPRINTF (stderr, "%*s%s -> <Rule %d, tokens %lu .. %lu>\n",
+               yyindent, "", yytokenName (yylhsNonterm (yyx->yyrule)),
+               yyx->yyrule - 1, (unsigned long int) (yys->yyposn + 1),
+               (unsigned long int) yyx->yystate->yyposn);
+  for (yyi = 1; yyi <= yynrhs; yyi += 1)
+    {
+      if (yystates[yyi]->yyresolved)
+        {
+          if (yystates[yyi-1]->yyposn+1 > yystates[yyi]->yyposn)
+            YYFPRINTF (stderr, "%*s%s <empty>\n", yyindent+2, "",
+                       yytokenName (yystos[yystates[yyi]->yylrState]));
+          else
+            YYFPRINTF (stderr, "%*s%s <tokens %lu .. %lu>\n", yyindent+2, "",
+                       yytokenName (yystos[yystates[yyi]->yylrState]),
+                       (unsigned long int) (yystates[yyi-1]->yyposn + 1),
+                       (unsigned long int) yystates[yyi]->yyposn);
+        }
+      else
+        yyreportTree (yystates[yyi]->yysemantics.yyfirstVal, yyindent+2);
+    }
+}
+#endif
+
+static YYRESULTTAG
+yyreportAmbiguity (yySemanticOption* yyx0,
+                   yySemanticOption* yyx1)
+{
+  YYUSE (yyx0);
+  YYUSE (yyx1);
+
+#if YYDEBUG
+  YYFPRINTF (stderr, "Ambiguity detected.\n");
+  YYFPRINTF (stderr, "Option 1,\n");
+  yyreportTree (yyx0, 2);
+  YYFPRINTF (stderr, "\nOption 2,\n");
+  yyreportTree (yyx1, 2);
+  YYFPRINTF (stderr, "\n");
+#endif
+
+  yyerror (YY_("syntax is ambiguous"));
+  return yyabort;
+}
+
+/** Resolve the ambiguity represented in state YYS in *YYSTACKP,
+ *  perform the indicated actions, and set the semantic value of YYS.
+ *  If result != yyok, the chain of semantic options in YYS has been
+ *  cleared instead or it has been left unmodified except that
+ *  redundant options may have been removed.  Regardless of whether
+ *  result = yyok, YYS has been left with consistent data so that
+ *  yydestroyGLRState can be invoked if necessary.  */
+static YYRESULTTAG
+yyresolveValue (yyGLRState* yys, yyGLRStack* yystackp)
+{
+  yySemanticOption* yyoptionList = yys->yysemantics.yyfirstVal;
+  yySemanticOption* yybest = yyoptionList;
+  yySemanticOption** yypp;
+  yybool yymerge = yyfalse;
+  YYSTYPE yysval;
+  YYRESULTTAG yyflag;
+
+  for (yypp = &yyoptionList->yynext; *yypp != YY_NULL; )
+    {
+      yySemanticOption* yyp = *yypp;
+
+      if (yyidenticalOptions (yybest, yyp))
+        {
+          yymergeOptionSets (yybest, yyp);
+          *yypp = yyp->yynext;
+        }
+      else
+        {
+          switch (yypreference (yybest, yyp))
+            {
+            case 0:
+              return yyreportAmbiguity (yybest, yyp);
+              break;
+            case 1:
+              yymerge = yytrue;
+              break;
+            case 2:
+              break;
+            case 3:
+              yybest = yyp;
+              yymerge = yyfalse;
+              break;
+            default:
+              /* This cannot happen so it is not worth a YYASSERT (yyfalse),
+                 but some compilers complain if the default case is
+                 omitted.  */
+              break;
+            }
+          yypp = &yyp->yynext;
+        }
+    }
+
+  if (yymerge)
+    {
+      yySemanticOption* yyp;
+      int yyprec = yydprec[yybest->yyrule];
+      yyflag = yyresolveAction (yybest, yystackp, &yysval);
+      if (yyflag == yyok)
+        for (yyp = yybest->yynext; yyp != YY_NULL; yyp = yyp->yynext)
+          {
+            if (yyprec == yydprec[yyp->yyrule])
+              {
+                YYSTYPE yysval_other;
+                yyflag = yyresolveAction (yyp, yystackp, &yysval_other);
+                if (yyflag != yyok)
+                  {
+                    yydestruct ("Cleanup: discarding incompletely merged value for",
+                                yystos[yys->yylrState],
+                                &yysval);
+                    break;
+                  }
+                yyuserMerge (yymerger[yyp->yyrule], &yysval, &yysval_other);
+              }
+          }
+    }
+  else
+    yyflag = yyresolveAction (yybest, yystackp, &yysval);
+
+  if (yyflag == yyok)
+    {
+      yys->yyresolved = yytrue;
+      yys->yysemantics.yysval = yysval;
+    }
+  else
+    yys->yysemantics.yyfirstVal = YY_NULL;
+  return yyflag;
+}
+
+static YYRESULTTAG
+yyresolveStack (yyGLRStack* yystackp)
+{
+  if (yystackp->yysplitPoint != YY_NULL)
+    {
+      yyGLRState* yys;
+      int yyn;
+
+      for (yyn = 0, yys = yystackp->yytops.yystates[0];
+           yys != yystackp->yysplitPoint;
+           yys = yys->yypred, yyn += 1)
+        continue;
+      YYCHK (yyresolveStates (yystackp->yytops.yystates[0], yyn, yystackp
+                             ));
+    }
+  return yyok;
+}
+
+static void
+yycompressStack (yyGLRStack* yystackp)
+{
+  yyGLRState* yyp, *yyq, *yyr;
+
+  if (yystackp->yytops.yysize != 1 || yystackp->yysplitPoint == YY_NULL)
+    return;
+
+  for (yyp = yystackp->yytops.yystates[0], yyq = yyp->yypred, yyr = YY_NULL;
+       yyp != yystackp->yysplitPoint;
+       yyr = yyp, yyp = yyq, yyq = yyp->yypred)
+    yyp->yypred = yyr;
+
+  yystackp->yyspaceLeft += yystackp->yynextFree - yystackp->yyitems;
+  yystackp->yynextFree = ((yyGLRStackItem*) yystackp->yysplitPoint) + 1;
+  yystackp->yyspaceLeft -= yystackp->yynextFree - yystackp->yyitems;
+  yystackp->yysplitPoint = YY_NULL;
+  yystackp->yylastDeleted = YY_NULL;
+
+  while (yyr != YY_NULL)
+    {
+      yystackp->yynextFree->yystate = *yyr;
+      yyr = yyr->yypred;
+      yystackp->yynextFree->yystate.yypred = &yystackp->yynextFree[-1].yystate;
+      yystackp->yytops.yystates[0] = &yystackp->yynextFree->yystate;
+      yystackp->yynextFree += 1;
+      yystackp->yyspaceLeft -= 1;
+    }
+}
+
+static YYRESULTTAG
+yyprocessOneStack (yyGLRStack* yystackp, size_t yyk,
+                   size_t yyposn)
+{
+  while (yystackp->yytops.yystates[yyk] != YY_NULL)
+    {
+      yyStateNum yystate = yystackp->yytops.yystates[yyk]->yylrState;
+      YYDPRINTF ((stderr, "Stack %lu Entering state %d\n",
+                  (unsigned long int) yyk, yystate));
+
+      YYASSERT (yystate != YYFINAL);
+
+      if (yyisDefaultedState (yystate))
+        {
+          YYRESULTTAG yyflag;
+          yyRuleNum yyrule = yydefaultAction (yystate);
+          if (yyrule == 0)
+            {
+              YYDPRINTF ((stderr, "Stack %lu dies.\n",
+                          (unsigned long int) yyk));
+              yymarkStackDeleted (yystackp, yyk);
+              return yyok;
+            }
+          yyflag = yyglrReduce (yystackp, yyk, yyrule, yyimmediate[yyrule]);
+          if (yyflag == yyerr)
+            {
+              YYDPRINTF ((stderr,
+                          "Stack %lu dies "
+                          "(predicate failure or explicit user error).\n",
+                          (unsigned long int) yyk));
+              yymarkStackDeleted (yystackp, yyk);
+              return yyok;
+            }
+          if (yyflag != yyok)
+            return yyflag;
+        }
+      else
+        {
+          yySymbol yytoken;
+          int yyaction;
+          const short int* yyconflicts;
+
+          yystackp->yytops.yylookaheadNeeds[yyk] = yytrue;
+          if (yychar == YYEMPTY)
+            {
+              YYDPRINTF ((stderr, "Reading a token: "));
+              yychar = yylex ();
+            }
+
+          if (yychar <= YYEOF)
+            {
+              yychar = yytoken = YYEOF;
+              YYDPRINTF ((stderr, "Now at end of input.\n"));
+            }
+          else
+            {
+              yytoken = YYTRANSLATE (yychar);
+              YY_SYMBOL_PRINT ("Next token is", yytoken, &yylval, &yylloc);
+            }
+
+          yygetLRActions (yystate, yytoken, &yyaction, &yyconflicts);
+
+          while (*yyconflicts != 0)
+            {
+              YYRESULTTAG yyflag;
+              size_t yynewStack = yysplitStack (yystackp, yyk);
+              YYDPRINTF ((stderr, "Splitting off stack %lu from %lu.\n",
+                          (unsigned long int) yynewStack,
+                          (unsigned long int) yyk));
+              yyflag = yyglrReduce (yystackp, yynewStack,
+                                    *yyconflicts,
+                                    yyimmediate[*yyconflicts]);
+              if (yyflag == yyok)
+                YYCHK (yyprocessOneStack (yystackp, yynewStack,
+                                          yyposn));
+              else if (yyflag == yyerr)
+                {
+                  YYDPRINTF ((stderr, "Stack %lu dies.\n",
+                              (unsigned long int) yynewStack));
+                  yymarkStackDeleted (yystackp, yynewStack);
+                }
+              else
+                return yyflag;
+              yyconflicts += 1;
+            }
+
+          if (yyisShiftAction (yyaction))
+            break;
+          else if (yyisErrorAction (yyaction))
+            {
+              YYDPRINTF ((stderr, "Stack %lu dies.\n",
+                          (unsigned long int) yyk));
+              yymarkStackDeleted (yystackp, yyk);
+              break;
+            }
+          else
+            {
+              YYRESULTTAG yyflag = yyglrReduce (yystackp, yyk, -yyaction,
+                                                yyimmediate[-yyaction]);
+              if (yyflag == yyerr)
+                {
+                  YYDPRINTF ((stderr,
+                              "Stack %lu dies "
+                              "(predicate failure or explicit user error).\n",
+                              (unsigned long int) yyk));
+                  yymarkStackDeleted (yystackp, yyk);
+                  break;
+                }
+              else if (yyflag != yyok)
+                return yyflag;
+            }
+        }
+    }
+  return yyok;
+}
+
+static void
+yyreportSyntaxError (yyGLRStack* yystackp)
+{
+  if (yystackp->yyerrState != 0)
+    return;
+#if ! YYERROR_VERBOSE
+  yyerror (YY_("syntax error"));
+#else
+  {
+  yySymbol yytoken = yychar == YYEMPTY ? YYEMPTY : YYTRANSLATE (yychar);
+  size_t yysize0 = yytnamerr (YY_NULL, yytokenName (yytoken));
+  size_t yysize = yysize0;
+  yybool yysize_overflow = yyfalse;
+  char* yymsg = YY_NULL;
+  enum { YYERROR_VERBOSE_ARGS_MAXIMUM = 5 };
+  /* Internationalized format string. */
+  const char *yyformat = YY_NULL;
+  /* Arguments of yyformat. */
+  char const *yyarg[YYERROR_VERBOSE_ARGS_MAXIMUM];
+  /* Number of reported tokens (one for the "unexpected", one per
+     "expected").  */
+  int yycount = 0;
+
+  /* There are many possibilities here to consider:
+     - If this state is a consistent state with a default action, then
+       the only way this function was invoked is if the default action
+       is an error action.  In that case, don't check for expected
+       tokens because there are none.
+     - The only way there can be no lookahead present (in yychar) is if
+       this state is a consistent state with a default action.  Thus,
+       detecting the absence of a lookahead is sufficient to determine
+       that there is no unexpected or expected token to report.  In that
+       case, just report a simple "syntax error".
+     - Don't assume there isn't a lookahead just because this state is a
+       consistent state with a default action.  There might have been a
+       previous inconsistent state, consistent state with a non-default
+       action, or user semantic action that manipulated yychar.
+     - Of course, the expected token list depends on states to have
+       correct lookahead information, and it depends on the parser not
+       to perform extra reductions after fetching a lookahead from the
+       scanner and before detecting a syntax error.  Thus, state merging
+       (from LALR or IELR) and default reductions corrupt the expected
+       token list.  However, the list is correct for canonical LR with
+       one exception: it will still contain any token that will not be
+       accepted due to an error action in a later state.
+  */
+  if (yytoken != YYEMPTY)
+    {
+      int yyn = yypact[yystackp->yytops.yystates[0]->yylrState];
+      yyarg[yycount++] = yytokenName (yytoken);
+      if (!yypact_value_is_default (yyn))
+        {
+          /* Start YYX at -YYN if negative to avoid negative indexes in
+             YYCHECK.  In other words, skip the first -YYN actions for this
+             state because they are default actions.  */
+          int yyxbegin = yyn < 0 ? -yyn : 0;
+          /* Stay within bounds of both yycheck and yytname.  */
+          int yychecklim = YYLAST - yyn + 1;
+          int yyxend = yychecklim < YYNTOKENS ? yychecklim : YYNTOKENS;
+          int yyx;
+          for (yyx = yyxbegin; yyx < yyxend; ++yyx)
+            if (yycheck[yyx + yyn] == yyx && yyx != YYTERROR
+                && !yytable_value_is_error (yytable[yyx + yyn]))
+              {
+                if (yycount == YYERROR_VERBOSE_ARGS_MAXIMUM)
+                  {
+                    yycount = 1;
+                    yysize = yysize0;
+                    break;
+                  }
+                yyarg[yycount++] = yytokenName (yyx);
+                {
+                  size_t yysz = yysize + yytnamerr (YY_NULL, yytokenName (yyx));
+                  yysize_overflow |= yysz < yysize;
+                  yysize = yysz;
+                }
+              }
+        }
+    }
+
+  switch (yycount)
+    {
+#define YYCASE_(N, S)                   \
+      case N:                           \
+        yyformat = S;                   \
+      break
+      YYCASE_(0, YY_("syntax error"));
+      YYCASE_(1, YY_("syntax error, unexpected %s"));
+      YYCASE_(2, YY_("syntax error, unexpected %s, expecting %s"));
+      YYCASE_(3, YY_("syntax error, unexpected %s, expecting %s or %s"));
+      YYCASE_(4, YY_("syntax error, unexpected %s, expecting %s or %s or %s"));
+      YYCASE_(5, YY_("syntax error, unexpected %s, expecting %s or %s or %s or %s"));
+#undef YYCASE_
+    }
+
+  {
+    size_t yysz = yysize + strlen (yyformat);
+    yysize_overflow |= yysz < yysize;
+    yysize = yysz;
+  }
+
+  if (!yysize_overflow)
+    yymsg = (char *) YYMALLOC (yysize);
+
+  if (yymsg)
+    {
+      char *yyp = yymsg;
+      int yyi = 0;
+      while ((*yyp = *yyformat))
+        {
+          if (*yyp == '%' && yyformat[1] == 's' && yyi < yycount)
+            {
+              yyp += yytnamerr (yyp, yyarg[yyi++]);
+              yyformat += 2;
+            }
+          else
+            {
+              yyp++;
+              yyformat++;
+            }
+        }
+      yyerror (yymsg);
+      YYFREE (yymsg);
+    }
+  else
+    {
+      yyerror (YY_("syntax error"));
+      yyMemoryExhausted (yystackp);
+    }
+  }
+#endif /* YYERROR_VERBOSE */
+  yynerrs += 1;
+}
+
+/* Recover from a syntax error on *YYSTACKP, assuming that *YYSTACKP->YYTOKENP,
+   yylval, and yylloc are the syntactic category, semantic value, and location
+   of the lookahead.  */
+static void
+yyrecoverSyntaxError (yyGLRStack* yystackp)
+{
+  size_t yyk;
+  int yyj;
+
+  if (yystackp->yyerrState == 3)
+    /* We just shifted the error token and (perhaps) took some
+       reductions.  Skip tokens until we can proceed.  */
+    while (yytrue)
+      {
+        yySymbol yytoken;
+        if (yychar == YYEOF)
+          yyFail (yystackp, YY_NULL);
+        if (yychar != YYEMPTY)
+          {
+            yytoken = YYTRANSLATE (yychar);
+            yydestruct ("Error: discarding",
+                        yytoken, &yylval);
+          }
+        YYDPRINTF ((stderr, "Reading a token: "));
+        yychar = yylex ();
+        if (yychar <= YYEOF)
+          {
+            yychar = yytoken = YYEOF;
+            YYDPRINTF ((stderr, "Now at end of input.\n"));
+          }
+        else
+          {
+            yytoken = YYTRANSLATE (yychar);
+            YY_SYMBOL_PRINT ("Next token is", yytoken, &yylval, &yylloc);
+          }
+        yyj = yypact[yystackp->yytops.yystates[0]->yylrState];
+        if (yypact_value_is_default (yyj))
+          return;
+        yyj += yytoken;
+        if (yyj < 0 || YYLAST < yyj || yycheck[yyj] != yytoken)
+          {
+            if (yydefact[yystackp->yytops.yystates[0]->yylrState] != 0)
+              return;
+          }
+        else if (! yytable_value_is_error (yytable[yyj]))
+          return;
+      }
+
+  /* Reduce to one stack.  */
+  for (yyk = 0; yyk < yystackp->yytops.yysize; yyk += 1)
+    if (yystackp->yytops.yystates[yyk] != YY_NULL)
+      break;
+  if (yyk >= yystackp->yytops.yysize)
+    yyFail (yystackp, YY_NULL);
+  for (yyk += 1; yyk < yystackp->yytops.yysize; yyk += 1)
+    yymarkStackDeleted (yystackp, yyk);
+  yyremoveDeletes (yystackp);
+  yycompressStack (yystackp);
+
+  /* Now pop stack until we find a state that shifts the error token.  */
+  yystackp->yyerrState = 3;
+  while (yystackp->yytops.yystates[0] != YY_NULL)
+    {
+      yyGLRState *yys = yystackp->yytops.yystates[0];
+      yyj = yypact[yys->yylrState];
+      if (! yypact_value_is_default (yyj))
+        {
+          yyj += YYTERROR;
+          if (0 <= yyj && yyj <= YYLAST && yycheck[yyj] == YYTERROR
+              && yyisShiftAction (yytable[yyj]))
+            {
+              /* Shift the error token.  */
+              YY_SYMBOL_PRINT ("Shifting", yystos[yytable[yyj]],
+                               &yylval, &yyerrloc);
+              yyglrShift (yystackp, 0, yytable[yyj],
+                          yys->yyposn, &yylval);
+              yys = yystackp->yytops.yystates[0];
+              break;
+            }
+        }
+      if (yys->yypred != YY_NULL)
+        yydestroyGLRState ("Error: popping", yys);
+      yystackp->yytops.yystates[0] = yys->yypred;
+      yystackp->yynextFree -= 1;
+      yystackp->yyspaceLeft += 1;
+    }
+  if (yystackp->yytops.yystates[0] == YY_NULL)
+    yyFail (yystackp, YY_NULL);
+}
+
+#define YYCHK1(YYE)                                                          \
+  do {                                                                       \
+    switch (YYE) {                                                           \
+    case yyok:                                                               \
+      break;                                                                 \
+    case yyabort:                                                            \
+      goto yyabortlab;                                                       \
+    case yyaccept:                                                           \
+      goto yyacceptlab;                                                      \
+    case yyerr:                                                              \
+      goto yyuser_error;                                                     \
+    default:                                                                 \
+      goto yybuglab;                                                         \
+    }                                                                        \
+  } while (0)
 
 /*----------.
 | yyparse.  |
@@ -1824,2735 +5125,310 @@ int yynerrs;
 int
 yyparse (void)
 {
-    int yystate;
-    /* Number of tokens to shift before error messages enabled.  */
-    int yyerrstatus;
-
-    /* The stacks and their tools:
-       'yyss': related to states.
-       'yyvs': related to semantic values.
-
-       Refer to the stacks through separate pointers, to allow yyoverflow
-       to reallocate them elsewhere.  */
-
-    /* The state stack.  */
-    yytype_int16 yyssa[YYINITDEPTH];
-    yytype_int16 *yyss;
-    yytype_int16 *yyssp;
-
-    /* The semantic value stack.  */
-    YYSTYPE yyvsa[YYINITDEPTH];
-    YYSTYPE *yyvs;
-    YYSTYPE *yyvsp;
-
-    YYSIZE_T yystacksize;
-
-    yytype_int16 yyesa[20];
-    yytype_int16 *yyes;
-    YYSIZE_T yyes_capacity;
-
-  int yy_lac_established = 0;
-  int yyn;
   int yyresult;
-  /* Lookahead token as an internal (translated) token number.  */
-  int yytoken = 0;
-  /* The variables used to return semantic value and location from the
-     action routines.  */
-  YYSTYPE yyval;
-
-#if YYERROR_VERBOSE
-  /* Buffer for error messages, and its allocated size.  */
-  char yymsgbuf[128];
-  char *yymsg = yymsgbuf;
-  YYSIZE_T yymsg_alloc = sizeof yymsgbuf;
-#endif
-
-#define YYPOPSTACK(N)   (yyvsp -= (N), yyssp -= (N))
-
-  /* The number of symbols on the RHS of the reduced rule.
-     Keep to zero when no symbol should be popped.  */
-  int yylen = 0;
-
-  yyssp = yyss = yyssa;
-  yyvsp = yyvs = yyvsa;
-  yystacksize = YYINITDEPTH;
-
-  yyes = yyesa;
-  yyes_capacity = sizeof yyesa / sizeof *yyes;
-  if (YYMAXDEPTH < yyes_capacity)
-    yyes_capacity = YYMAXDEPTH;
+  yyGLRStack yystack;
+  yyGLRStack* const yystackp = &yystack;
+  size_t yyposn;
 
   YYDPRINTF ((stderr, "Starting parse\n"));
 
-  yystate = 0;
-  yyerrstatus = 0;
-  yynerrs = 0;
-  yychar = YYEMPTY; /* Cause a token to be read.  */
-  goto yysetstate;
-
-/*------------------------------------------------------------.
-| yynewstate -- Push a new state, which is found in yystate.  |
-`------------------------------------------------------------*/
- yynewstate:
-  /* In all cases, when you get here, the value and location stacks
-     have just been pushed.  So pushing a state here evens the stacks.  */
-  yyssp++;
-
- yysetstate:
-  *yyssp = yystate;
-
-  if (yyss + yystacksize - 1 <= yyssp)
-    {
-      /* Get the current used size of the three stacks, in elements.  */
-      YYSIZE_T yysize = yyssp - yyss + 1;
-
-#ifdef yyoverflow
-      {
-        /* Give user a chance to reallocate the stack.  Use copies of
-           these so that the &'s don't force the real ones into
-           memory.  */
-        YYSTYPE *yyvs1 = yyvs;
-        yytype_int16 *yyss1 = yyss;
-
-        /* Each stack pointer address is followed by the size of the
-           data in use in that stack, in bytes.  This used to be a
-           conditional around just the two extra args, but that might
-           be undefined if yyoverflow is a macro.  */
-        yyoverflow (YY_("memory exhausted"),
-                    &yyss1, yysize * sizeof (*yyssp),
-                    &yyvs1, yysize * sizeof (*yyvsp),
-                    &yystacksize);
-
-        yyss = yyss1;
-        yyvs = yyvs1;
-      }
-#else /* no yyoverflow */
-# ifndef YYSTACK_RELOCATE
-      goto yyexhaustedlab;
-# else
-      /* Extend the stack our own way.  */
-      if (YYMAXDEPTH <= yystacksize)
-        goto yyexhaustedlab;
-      yystacksize *= 2;
-      if (YYMAXDEPTH < yystacksize)
-        yystacksize = YYMAXDEPTH;
-
-      {
-        yytype_int16 *yyss1 = yyss;
-        union yyalloc *yyptr =
-          (union yyalloc *) YYSTACK_ALLOC (YYSTACK_BYTES (yystacksize));
-        if (! yyptr)
-          goto yyexhaustedlab;
-        YYSTACK_RELOCATE (yyss_alloc, yyss);
-        YYSTACK_RELOCATE (yyvs_alloc, yyvs);
-#  undef YYSTACK_RELOCATE
-        if (yyss1 != yyssa)
-          YYSTACK_FREE (yyss1);
-      }
-# endif
-#endif /* no yyoverflow */
-
-      yyssp = yyss + yysize - 1;
-      yyvsp = yyvs + yysize - 1;
-
-      YYDPRINTF ((stderr, "Stack size increased to %lu\n",
-                  (unsigned long int) yystacksize));
-
-      if (yyss + yystacksize - 1 <= yyssp)
-        YYABORT;
-    }
-
-  YYDPRINTF ((stderr, "Entering state %d\n", yystate));
-
-  if (yystate == YYFINAL)
-    YYACCEPT;
-
-  goto yybackup;
-
-/*-----------.
-| yybackup.  |
-`-----------*/
-yybackup:
-
-  /* Do appropriate processing given the current state.  Read a
-     lookahead token if we need one and don't already have one.  */
-
-  /* First try to decide what to do without reference to lookahead token.  */
-  yyn = yypact[yystate];
-  if (yypact_value_is_default (yyn))
-    goto yydefault;
-
-  /* Not known => get a lookahead token if don't already have one.  */
-
-  /* YYCHAR is either YYEMPTY or YYEOF or a valid lookahead symbol.  */
-  if (yychar == YYEMPTY)
-    {
-      YYDPRINTF ((stderr, "Reading a token: "));
-      yychar = yylex ();
-    }
-
-  if (yychar <= YYEOF)
-    {
-      yychar = yytoken = YYEOF;
-      YYDPRINTF ((stderr, "Now at end of input.\n"));
-    }
-  else
-    {
-      yytoken = YYTRANSLATE (yychar);
-      YY_SYMBOL_PRINT ("Next token is", yytoken, &yylval, &yylloc);
-    }
-
-  /* If the proper action on seeing token YYTOKEN is to reduce or to
-     detect an error, take that action.  */
-  yyn += yytoken;
-  if (yyn < 0 || YYLAST < yyn || yycheck[yyn] != yytoken)
-    {
-      YY_LAC_ESTABLISH;
-      goto yydefault;
-    }
-  yyn = yytable[yyn];
-  if (yyn <= 0)
-    {
-      if (yytable_value_is_error (yyn))
-        goto yyerrlab;
-      YY_LAC_ESTABLISH;
-      yyn = -yyn;
-      goto yyreduce;
-    }
-
-  /* Count tokens shifted since error; after three, turn off error
-     status.  */
-  if (yyerrstatus)
-    yyerrstatus--;
-
-  /* Shift the lookahead token.  */
-  YY_SYMBOL_PRINT ("Shifting", yytoken, &yylval, &yylloc);
-
-  /* Discard the shifted token.  */
   yychar = YYEMPTY;
-  YY_LAC_DISCARD ("shift");
-
-  yystate = yyn;
-  YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
-  *++yyvsp = yylval;
-  YY_IGNORE_MAYBE_UNINITIALIZED_END
-
-  goto yynewstate;
-
-
-/*-----------------------------------------------------------.
-| yydefault -- do the default action for the current state.  |
-`-----------------------------------------------------------*/
-yydefault:
-  yyn = yydefact[yystate];
-  if (yyn == 0)
-    goto yyerrlab;
-  goto yyreduce;
-
-
-/*-----------------------------.
-| yyreduce -- Do a reduction.  |
-`-----------------------------*/
-yyreduce:
-  /* yyn is the number of a rule to reduce with.  */
-  yylen = yyr2[yyn];
-
-  /* If YYLEN is nonzero, implement the default value of the action:
-     '$$ = $1'.
-
-     Otherwise, the following line sets YYVAL to garbage.
-     This behavior is undocumented and Bison
-     users should not rely upon it.  Assigning to YYVAL
-     unconditionally makes the parser a bit smaller, and it avoids a
-     GCC warning that YYVAL may be used uninitialized.  */
-  yyval = yyvsp[1-yylen];
-
-
-  YY_REDUCE_PRINT (yyn);
-  {
-    int yychar_backup = yychar;
-    switch (yyn)
-      {
-          case 2:
-#line 210 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"program: components\n"; 
-										 }
-#line 2081 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 3:
-#line 213 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"components: components component\n";}
-#line 2087 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 4:
-#line 214 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"components: component\n";}
-#line 2093 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 5:
-#line 215 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {addFile(*(yyvsp[-1].r.string_val));}
-#line 2099 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 6:
-#line 217 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"class_interface \n";}
-#line 2105 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 7:
-#line 218 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"class_implementation \n";}
-#line 2111 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 8:
-#line 219 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"protocol \n";}
-#line 2117 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 9:
-#line 220 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"struct \n";}
-#line 2123 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 10:
-#line 221 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"enum \n";}
-#line 2129 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 11:
-#line 223 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"class_interface: class_interface_header class_interface_body\n";
-																classNode=NULL;
-																 idsList.clear();
-																 methodsList.clear();
-																 method=NULL;
-																}
-#line 2140 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 12:
-#line 232 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"class_interface_header:  AT_INTERFACE IDENTIFIER SEMI_COLUMN IDENTIFIER\n";
-																				interface=InterfaceHelper::createNewInterface((yyvsp[-2].r.text),(yyvsp[0].r.text),symbolTable);
-																				
-																				
-																				}
-#line 2150 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 13:
-#line 237 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-																					Streams::verbose()<<"class_interface_header:  AT_INTERFACE IDENTIFIER\n";
-																				 interface=InterfaceHelper::createNewInterface((yyvsp[0].r.text),"",symbolTable);
-
-																				}
-#line 2160 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 14:
-#line 242 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Unknown type name '"<<(yyvsp[-1].r.text)<<"' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2166 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 15:
-#line 243 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Expected Identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2172 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 16:
-#line 245 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Expected Identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2178 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 17:
-#line 248 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {	
-															
-														InterfaceHelper::addMethods(interface,methodsList);
-																Streams::verbose()<<"class_interface_body:	protocol_reference_list instance_variables	interface_declaration_list	AT_END\n";
-														}
-#line 2188 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 18:
-#line 254 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-														Streams::verbose()<<"class_interface_body:	protocol_reference_list instance_variables AT_END\n";
-														}
-#line 2196 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 19:
-#line 258 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {	
-																InterfaceHelper::addMethods(interface,methodsList);
-																Streams::verbose()<<"class_interface_body:	protocol_reference_list interface_declaration_list	AT_END\n";
-														}
-#line 2205 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 20:
-#line 263 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {	
-																InterfaceHelper::addMethods(interface,methodsList);
-																Streams::verbose()<<"class_interface_body:	instance_variables	interface_declaration_list	AT_END\n";
-														}
-#line 2214 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 21:
-#line 268 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-																Streams::verbose()<<"class_interface_body:	protocol_reference_list 	AT_END\n";
-														}
-#line 2222 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 22:
-#line 272 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"class_interface_body:instance_variables		AT_END\n";}
-#line 2228 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 23:
-#line 274 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {														
-																InterfaceHelper::addMethods(interface,methodsList);
-																Streams::verbose()<<"class_interface_body:interface_declaration_list	AT_END\n";
-														}
-#line 2237 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 24:
-#line 278 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"class_interface_body:AT_END\n";}
-#line 2243 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 25:
-#line 279 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Expected '}' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2249 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 26:
-#line 280 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Expected '}' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2255 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 27:
-#line 281 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2261 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 28:
-#line 282 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2267 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 29:
-#line 283 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2273 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 30:
-#line 284 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2279 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 31:
-#line 285 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2285 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 32:
-#line 286 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2291 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 33:
-#line 287 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2297 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 34:
-#line 291 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-													if(interface!=NULL){
-													InterfaceHelper::addInheritedProtocol(interface,idsList,symbolTable);
-														idsList.clear();
-													}
-													Streams::verbose()<<"protocol_reference_list: LESS_THAN ids_list_identifier MORE_THAN\n";
-												}
-#line 2309 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 35:
-#line 298 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Expected '>' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2315 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 36:
-#line 301 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-													Streams::verbose()<<"ids_list:ids_list_identifier COMMA IDENTIFIER\n"; 
-													idsList.push_back((yyvsp[0].r.text));
-													}
-#line 2324 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 37:
-#line 305 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-													Streams::verbose()<<"ids_list_identifier:IDENTIFIER\n";
-													idsList.push_back((yyvsp[0].r.text));
-												    }
-#line 2333 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 38:
-#line 310 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"array with body";}
-#line 2339 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 39:
-#line 311 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"array without elements";}
-#line 2345 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 40:
-#line 315 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"array-element \n";}
-#line 2351 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 41:
-#line 316 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"array-element \n";}
-#line 2357 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 42:
-#line 317 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"empty element \n";}
-#line 2363 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 43:
-#line 318 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"inside braces element \n";}
-#line 2369 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 44:
-#line 319 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"inside braces element \n";}
-#line 2375 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 45:
-#line 320 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"inside braces element \n";}
-#line 2381 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 46:
-#line 323 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"instance_variables:OPEN_S	instance_variable_declaration	CLOSE_S\n";}
-#line 2387 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 47:
-#line 324 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"instance_variables:OPEN_S	 CLOSE_S\n";}
-#line 2393 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 48:
-#line 327 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"instance_variable_declarations:instance_variable_declarations instance_variable_declaration\n";}
-#line 2399 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 49:
-#line 328 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"instance_variable_declarations:instance_variable_declaration\n";}
-#line 2405 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 50:
-#line 329 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"instance_variable_declarations:variable_declaration_list\n";}
-#line 2411 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 51:
-#line 332 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"instance_variable_declaration:visibility_specification variable_declaration_list\n";
-																	}
-#line 2418 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 52:
-#line 336 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-										Streams::verbose()<<"variable_declaration_list: variable_declaration_list variable_declaration\n";
-										InterfaceHelper::addDataMembers(interface,idsList,type,arrayList,flag,symbolTable,visibility);
-											arrayList.clear();
-												idsList.clear();
-												flag=false;
-										}
-#line 2430 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 53:
-#line 344 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-										       InterfaceHelper::addDataMembers(interface,idsList,type,arrayList,flag,symbolTable,visibility);
-												arrayList.clear();
-												idsList.clear();
-												flag=false;
-										Streams::verbose()<<"variable_declaration_list: variable_declaration\n";
-										}
-#line 2442 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 54:
-#line 354 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"visibility_specification:AT_PRIVATE\n";  visibility=new char[256]; visibility[0]='\0';strcat(visibility,(yyvsp[0].r.text));}
-#line 2448 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 55:
-#line 355 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"visibility_specification:AT_PROTECTED\n"; visibility=new char[256]; visibility[0]='\0';strcat(visibility,(yyvsp[0].r.text));}
-#line 2454 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 56:
-#line 356 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"visibility_specification:AT_PUBLIC\n"; visibility=new char[256]; visibility[0]='\0';strcat(visibility,(yyvsp[0].r.text));}
-#line 2460 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 57:
-#line 361 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"struct_variable_declaration:struct_declaration_list\n";}
-#line 2466 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 58:
-#line 364 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"variable_declaration:type IDENTIFIER	SEMI_COMA\n";
-	                                           (yyval.r.text)=(yyvsp[-2].r.text);
-												}
-#line 2474 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 59:
-#line 367 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"variable_declaration:CONST type IDENTIFIER	SEMI_COMA\n";
-														flag=true;
-														 (yyval.r.text)=(yyvsp[-2].r.text);
-													}
-#line 2483 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 60:
-#line 371 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2489 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 61:
-#line 375 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-									Streams::verbose()<<"ids_list:ids_list COMMA id_dec\n"; 
-
-									}
-#line 2498 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 62:
-#line 379 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"ids_list:id_dec\n"; }
-#line 2504 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 63:
-#line 380 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2510 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 64:
-#line 383 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose() <<" data_member: IDENTIFIER array_tag \n";
-							 var=new Array((yyvsp[0].r.text),arrayAlloc.size(),NULL);
-					       ( dynamic_cast<Array*>(var))->set_alloc(arrayAlloc);
-						   arrayList.push_back( ( dynamic_cast<Array*>(var)));
-						      arrayAlloc.clear();
-							}
-#line 2521 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 65:
-#line 389 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {idsList.push_back((yyvsp[0].r.text)) ;Streams::verbose() <<" data_member: IDENTIFIER  \n";}
-#line 2527 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 66:
-#line 390 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;arrayAlloc.clear();}
-#line 2533 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 67:
-#line 391 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;arrayAlloc.clear();}
-#line 2539 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 68:
-#line 393 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {  
-																												StructHelper::addDataMembers( myStruct,idsList,type,arrayList,flag, symbolTable);
-																												arrayList.clear();
-																												idsList.clear();
-																												flag=false;
-																										  Streams::verbose()<<"struct_declaration_list: struct_declaration_list  variable_declarationxx\n";
-																										}
-#line 2551 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 69:
-#line 401 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {	
-																												StructHelper::addDataMembers( myStruct,idsList,type,arrayList,flag, symbolTable);
-																												arrayList.clear();
-																														 	idsList.clear();
-																															flag=false;
-																										Streams::verbose()<<"struct_declaration_list:  variable_declarationxx\n";
-																										}
-#line 2563 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 70:
-#line 408 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Illigal visibility specification at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2569 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 71:
-#line 412 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-					myStruct=StructHelper::createNewStruct((yyvsp[0].r.text),symbolTable);
-					Streams::verbose()<<"struct_header: STRUCT  IDENTIFIER\n";
-					}
-#line 2578 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 72:
-#line 418 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"struct: STRUCT IDENTIFIER OPEN_S   CLOSE_S  entity SEMI_COMA\n";}
-#line 2584 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 73:
-#line 419 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"struct: STRUCT IDENTIFIER OPEN_S struct_variable_declaration  CLOSE_S enteity SEMI_COMA \n";}
-#line 2590 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 74:
-#line 420 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"struct: STRUCT IDENTIFIER OPEN_S   CLOSE_S SEMI_COMA\n";}
-#line 2596 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 75:
-#line 421 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"struct: STRUCT IDENTIFIER OPEN_S struct_variable_declaration  CLOSE_S  SEMI_COMA  \n";}
-#line 2602 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 76:
-#line 422 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2608 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 77:
-#line 423 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2614 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 78:
-#line 424 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2620 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 79:
-#line 425 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2626 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 80:
-#line 428 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"entity: IDENTIFIER COMMA  entity\n";}
-#line 2632 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 81:
-#line 429 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"entity:  IDENTIFIER \n";}
-#line 2638 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 82:
-#line 430 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2644 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 83:
-#line 434 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"type:simple type\n";}
-#line 2650 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 84:
-#line 435 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"type: complex type\n";}
-#line 2656 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 85:
-#line 436 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"type: struct_type\n";}
-#line 2662 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 86:
-#line 437 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"type: enum_type\n";}
-#line 2668 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 87:
-#line 441 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {	Streams::verbose()<<"struct_type: STRUCT IDENTIFIER   \n";
-													 type=symbolTable->getType((yyvsp[0].r.text));
-																if(type==NULL){
-																		string error="Unknown type name '";
-		error.append((yyvsp[0].r.text));
-		error.append("'.");
-		Program::addError(new SemanticError(error));
-																}
-													}
-#line 2682 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 88:
-#line 450 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"struct_type: STRUCT IDENTIFIER  MULTI \n";
-													 type=symbolTable->getType((yyvsp[-1].r.text));
-																if(type==NULL){
-																										string error="Unknown type name '";
-		error.append((yyvsp[-1].r.text));
-		error.append("'.");
-		Program::addError(new SemanticError(error));
-																}
-													}
-#line 2696 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 89:
-#line 461 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"enum_type: ENUM IDENTIFIER \n";
-													 type=symbolTable->getType((yyvsp[0].r.text));
-																if(type==NULL){
-																										string error="Unknown type name '";
-		error.append((yyvsp[0].r.text));
-		error.append("'.");
-		Program::addError(new SemanticError(error));
-																}
-													}
-#line 2710 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 90:
-#line 470 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"enum_type: ENUM IDENTIFIER  MULTI  \n";
-													 type=symbolTable->getType((yyvsp[-1].r.text));
-																if(type==NULL){
-																									string error="Unknown type name '";
-		error.append((yyvsp[-1].r.text));
-		error.append("'.");
-		Program::addError(new SemanticError(error));
-																}
-													}
-#line 2724 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 91:
-#line 481 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"int type \n";
-																type=symbolTable->getType((yyvsp[0].r.text));
-																if(type==NULL){
-																										string error="Unknown type name '";
-		error.append((yyvsp[0].r.text));
-		error.append("'.");
-		Program::addError(new SemanticError(error));
-																}
-																}
-#line 2738 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 92:
-#line 490 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"char type\n";
-	type=symbolTable->getType((yyvsp[0].r.text));
-																if(type==NULL){
-																										string error="Unknown type name '";
-		error.append((yyvsp[0].r.text));
-		error.append("'.");
-		Program::addError(new SemanticError(error));
-																}}
-#line 2751 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 93:
-#line 498 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"float type\n";
-	type=symbolTable->getType((yyvsp[0].r.text));
-																if(type==NULL){
-																										string error="Unknown type name '";
-		error.append((yyvsp[0].r.text));
-		error.append("'.");
-		Program::addError(new SemanticError(error));
-																}}
-#line 2764 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 94:
-#line 506 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"NSString type\n";
-	type=symbolTable->getType((yyvsp[0].r.text));
-																if(type==NULL){
-																										string error="Unknown type name '";
-		error.append((yyvsp[0].r.text));
-		error.append("'.");
-		Program::addError(new SemanticError(error));
-																}}
-#line 2777 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 95:
-#line 514 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"void type\n";
-	type=symbolTable->getType((yyvsp[0].r.text));
-																if(type==NULL){
-																										string error="Unknown type name '";
-		error.append((yyvsp[0].r.text));
-		error.append("'.");
-		Program::addError(new SemanticError(error));
-																}}
-#line 2790 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 96:
-#line 522 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"bool type\n";
-	type=symbolTable->getType((yyvsp[0].r.text));
-																if(type==NULL){
-																										string error="Unknown type name '";
-		error.append((yyvsp[0].r.text));
-		error.append("'.");
-		Program::addError(new SemanticError(error));
-																}}
-#line 2803 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 97:
-#line 532 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"complex_type:	IDENTIFIER	MULTI\n";
- {
-													 type=symbolTable->getType((yyvsp[-1].r.text));
-																if(type==NULL){
-																										string error="Unknown type name '";
-		error.append((yyvsp[-1].r.text));
-		error.append("'.");
-		Program::addError(new SemanticError(error));
-																}
-													}}
-#line 2818 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 98:
-#line 543 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-											Streams::verbose()<<"array_tag: array_first_tag array_tag_list \n"; 
-										   }
-#line 2826 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 99:
-#line 548 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-																Streams::verbose()<<"array_tag_list: array_tag_list OPEN_ARR INT_VAL CLOSE_ARR\n"; 
-																arrayAlloc.push_back((yyvsp[-1].r.int_val));
-														   }
-#line 2835 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 101:
-#line 553 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<" Error:missing  dimension in array tag  ";arrayAlloc.clear();}
-#line 2841 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 102:
-#line 556 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-											Streams::verbose()<<"array_first_tag: OPEN_ARR INT_VAL CLOSE_ARR\n"; 
-											arrayAlloc.push_back((yyvsp[-1].r.int_val));
-											}
-#line 2850 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 103:
-#line 560 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-											Streams::verbose()<<"array_first_tag: OPEN_ARR  CLOSE_ARR\n"; 
-											arrayAlloc.push_back(-1);
-											}
-#line 2859 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 104:
-#line 566 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"array with value\n";
-								(yyval.r.node)=new AssignNode(scoop,NULL,(yyvsp[0].r.node));
-							   }
-#line 2867 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 106:
-#line 571 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-								Streams::verbose() <<"with value\n";
-								(yyval.r.node)=new AssignNode(scoop,NULL,(yyvsp[0].r.node));
-							 }
-#line 2876 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 107:
-#line 576 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {(yyval.r.node)=NULL;}
-#line 2882 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 108:
-#line 581 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-																Streams::verbose()<<"interface_declaration_list:interface_declaration_list interface_declaration\n";
-															 methodsList.push_back(method);
-														
-															 
-																}
-#line 2893 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 109:
-#line 587 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-																 Streams::verbose()<<"interface_declaration_list:interface_declaration\n";
-															 methodsList.push_back(method);
-															 
-																 	
-																 }
-#line 2904 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 110:
-#line 595 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"interface_declaration: class_method_declaration\n";}
-#line 2910 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 111:
-#line 596 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"interface_declaration: instance_method_declaration\n";}
-#line 2916 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 112:
-#line 600 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-																Streams::verbose()<<"class_method_declaration: PLUS p_type method_selectors	SEMI_COMA\n";
-																method=InterfaceHelper::createNewMethod(type,symbolTable,(yyvsp[-1].r.text),selectorsList,true);
-															
-																 selectorsList.clear();
-																
-																}
-#line 2928 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 113:
-#line 608 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2934 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 114:
-#line 609 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2940 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 115:
-#line 612 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-															Streams::verbose()<<"instance_method_declaration: MINUS p_type	method_selectors		SEMI_COMA\n";
-															method=InterfaceHelper::createNewMethod(type,symbolTable,(yyvsp[-1].r.text),selectorsList,false);
-																 selectorsList.clear();
-																
-																
-															}
-#line 2952 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 116:
-#line 621 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-																Streams::verbose()<<"p_type : OPEN_P type CLOSE_P\n";
-																(yyval.r.text)=(yyvsp[-1].r.text);
-																}
-#line 2961 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 117:
-#line 630 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-																Streams::verbose()<<"method_selectors: selectors_list\n";
-																	(yyval.r.text)="";
-																}
-#line 2970 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 118:
-#line 634 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"method_selectors:IDENTIFIER \n";(yyval.r.text)=(yyvsp[0].r.text);}
-#line 2976 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 119:
-#line 636 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-													Streams::verbose()<<"selectors_list:	selectors_list selector_decleration\n";
-																
-													selectorsList.push_back(tselector);
-													tselector=NULL;
-											}
-#line 2987 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 120:
-#line 642 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-														Streams::verbose()<<"selectors_list:	 selector_decleration\n";
-												selectorsList.clear();
-
-												selectorsList.push_back(tselector);
-												tselector=NULL;
-}
-#line 2999 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 121:
-#line 650 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-																				Streams::verbose()<<"selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	\n";
-																				tselector=new DeclerationSelector((yyvsp[-2].r.text),selectorVarList);
-																			}
-#line 3008 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 122:
-#line 656 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-														Streams::verbose()<<"parameter_list: parameter_list parameter\n";
-																	selectorVarList.push_back(var);		
-											}
-#line 3017 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 123:
-#line 660 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-									selectorVarList.clear();
-										selectorVarList.push_back(var);		
-											
-				 
-														Streams::verbose()<<"parameter_list:  parameter\n";
-						
-					}
-#line 3030 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 124:
-#line 669 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-																Streams::verbose()<<"parameter:  p_type IDENTIFIER\n";
-																
-																if(type!=NULL){
-																var=new Variable((yyvsp[0].r.text),type);
-																}
-																else{
-																Streams::verbose()<<"Error:Type not found.\n";
-																}
-																}
-#line 3045 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 125:
-#line 682 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"class_implementation: class_implementation_header class_implementation_body\n";}
-#line 3051 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 126:
-#line 685 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-																	Streams::verbose()<<"class_implementation_header: AT_IMPLEMENTATION IDENTIFIER SEMI_COLUMN IDENTIFIER\n";
-																	interface=InterfaceHelper::checkImplementation((yyvsp[-2].r.text),symbolTable,(yyvsp[0].r.text));
-																	
-																}
-#line 3061 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 127:
-#line 690 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-																interface=InterfaceHelper::checkImplementation((yyvsp[0].r.text),symbolTable,"");
-																	
-																}
-#line 3070 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 128:
-#line 696 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-																	Streams::verbose()<<"class_implementation_body: instance_variables	implementation_definition_list	AT_END\n";
-																			InterfaceHelper:: implementMethods(methodsList, interface);
-														methodsList.clear();
-														}
-#line 3080 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 129:
-#line 702 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    { 
-																	Streams::verbose()<<"class_implementation_body: instance_variables									AT_END\n";
-																}
-#line 3088 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 130:
-#line 705 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-																	Streams::verbose()<<"class_implementation_body:						implementation_definition_list	AT_END\n";
-																	InterfaceHelper:: implementMethods(methodsList, interface);
-														methodsList.clear();
-														
-																}
-#line 3099 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 131:
-#line 711 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"class_implementation_body:	AT_END\n";}
-#line 3105 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 132:
-#line 714 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {	 methodsList.push_back(method);Streams::verbose()<<"implementation_definition_list: implementation_definition_list implementation_definition\n";}
-#line 3111 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 133:
-#line 715 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {	 methodsList.push_back(method);Streams::verbose()<<"implementation_definition_list: implementation_definition\n";}
-#line 3117 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 134:
-#line 718 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"implementation_definition: class_implementation_definition	\n";}
-#line 3123 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 135:
-#line 719 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"implementation_definition: instance_implementation_definition \n";}
-#line 3129 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 136:
-#line 722 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-														Streams::verbose()<<"class_implementation_definition: class_implementation_definition_header block_body";
-														functionNode->addNode(cscoop);
-														functionNode=NULL;
-																scoop=NULL;
-															scoop=NULL;
-													}
-#line 3141 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 137:
-#line 731 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-										Streams::verbose()<<"class_implementation_definition_header: PLUS p_type		 method_selectors\n";
-										method=InterfaceHelper:: createNewMethod(type,symbolTable,(yyvsp[0].r.text),selectorsList,true);
-																 selectorsList.clear();
-									           functionNode= ScoopHelper::createNewFunctionNode(method,interface->static_twin);
-												scoop=functionNode;				
-																
-										}
-#line 3154 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 138:
-#line 742 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-															Streams::verbose()<<"instance_implementation_definition: instance_implementation_definition_header block_body\n";
-														functionNode->addNode(cscoop);
-														functionNode=NULL;
-																scoop=NULL;
-															scoop=NULL;
-										
-															}
-#line 3167 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 139:
-#line 752 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-											     Streams::verbose()<<"instance_implementation_definition_header:MINUS p_type		method_selectors\n";
-												 method=InterfaceHelper:: createNewMethod(type,symbolTable,(yyvsp[0].r.text),selectorsList,false);
-																 selectorsList.clear();
-									           functionNode= ScoopHelper::createNewFunctionNode(method,interface);
-												scoop=functionNode;
-												}
-#line 3179 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 140:
-#line 761 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-												
-												Streams::verbose()<<"block_body:OPEN_S  block_body_part \n";
-												(yyval.r.node)=(yyvsp[-1].r.node);
-												}
-#line 3189 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 141:
-#line 768 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-												
-                                                scoop=ScoopHelper::createNewScoop(scoop);
-												
-												
-												scoopVector.push_back(scoop);
-												Streams::verbose()<<"block_body_header:OPEN_S	\n";
-												(yyval.r.node)=scoop;
-												}
-#line 3203 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 142:
-#line 780 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-												cscoop=scoop;scoop=scoop->getParent();
-												Streams::verbose()<<"block_body_statements:statement_list	CLOSE_S	\n";
-												}
-#line 3212 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 143:
-#line 784 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-												cscoop=scoop;scoop=scoop->getParent();
-												Streams::verbose()<<"block_body_statements:CLOSE_S\n";
-												}
-#line 3221 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 144:
-#line 788 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-											  cscoop=scoop; scoop=scoop->getParent();
-												Streams::verbose()<<"block_body_statements: error CLOSE_S\n";
-												}
-#line 3230 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 145:
-#line 794 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"statement_list: statement_list statement\n";
-											(yyval.r.text)=(yyvsp[0].r.text);
-											scoop->addNode((yyvsp[0].r.node));
-											
-											}
-#line 3240 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 146:
-#line 799 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"statement_list: statement\n";
-											(yyval.r.text)=(yyvsp[0].r.text);
-											(yyval.r.node)=(yyvsp[0].r.node);
-											scoop->addNode((yyvsp[0].r.node));
-											
-											}
-#line 3251 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 147:
-#line 808 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"statement: loop_statement\n";
-											(yyval.r.text)="loop";
-											(yyval.r.node)=(yyvsp[0].r.node);
-											}
-#line 3260 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 148:
-#line 812 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"statement: conditional_statement\n";
-											(yyval.r.text)="cond";
-											(yyval.r.node)=(yyvsp[0].r.node);
-											}
-#line 3269 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 149:
-#line 816 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-												Streams::verbose()<<"statement: expr\n";
-												(yyval.r.text)="expr";
-												(yyval.r.node)=(yyvsp[-1].r.node);
-												//nodeXX=$<r.node>1;
-											}
-#line 3280 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 150:
-#line 822 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-											Streams::verbose()<<"statement: variable_declaration\n";
-											
-												ScoopHelper::addVariables(idsList,arrayList,type,flag,scoop);
-												arrayList.clear();
-												idsList.clear();
-												flag=false;
-												(yyval.r.node)=(yyvsp[0].r.node);
-										    }
-#line 3294 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 151:
-#line 831 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"statement: block_body\n";(yyval.r.text)=new char[256];(yyval.r.text)[0]='\0';strcat((yyval.r.text),"Block");
-												(yyval.r.node)=(yyvsp[0].r.node);
-											}
-#line 3302 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 152:
-#line 834 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"statement: return_statement\n";
-												(yyval.r.text)="return";
-												(yyval.r.node)=(yyvsp[0].r.node);
-											}
-#line 3311 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 153:
-#line 838 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"statement: try_catch\n";}
-#line 3317 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 154:
-#line 840 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-	                                            (yyval.r.text)="asm";
-												(yyval.r.node)=(yyvsp[0].r.node);}
-#line 3325 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 155:
-#line 843 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-	 (yyval.r.text)="call";
-	(yyval.r.node)=(yyvsp[-1].r.node);
-	}
-#line 3334 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 156:
-#line 848 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    { Streams::verbose()<<"error SEMI_COMA \n";}
-#line 3340 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 157:
-#line 853 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"@asm command \n";
-	                                         (yyval.r.node)=new AsmNode(scoop,*(yyvsp[-1].r.string_val));
-											 }
-#line 3348 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 158:
-#line 859 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-														Streams::verbose()<<"variable_declaration:type IDENTIFIER	SEMI_COMA\n";
-														 (yyval.r.text)=(yyvsp[-2].r.text);
-														 (yyval.r.node)=new DeclerationNode(declarationList,scoop,type->get_name());
-														 declarationList.clear();
-														}
-#line 3359 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 159:
-#line 865 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-														Streams::verbose()<<"variable_declaration:CONST type IDENTIFIER	SEMI_COMA\n";
-														flag=true;
-														 (yyval.r.text)=(yyvsp[-2].r.text);
-														  (yyval.r.node)=new DeclerationNode(declarationList,scoop,type->get_name());
-														 declarationList.clear();
-														}
-#line 3371 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 160:
-#line 872 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"variable_declaration:enum\n";}
-#line 3377 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 161:
-#line 876 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"variable_list:variable_list COMMA variable\n";}
-#line 3383 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 162:
-#line 877 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"variable_list:variable\n";
-										
-										}
-#line 3391 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 163:
-#line 880 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Expected ',' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 3397 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 164:
-#line 883 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-											Streams::verbose() <<"variable:  IDENTIFIER array_tag initializer \n";
-											 var=new Array((yyvsp[-1].r.text),arrayAlloc.size(),NULL);
-											(dynamic_cast<Array*>(var))->set_alloc(arrayAlloc);
-											 arrayList.push_back( ( dynamic_cast<Array*>(var)));
-											 arrayAlloc.clear();
-											}
-#line 3409 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 165:
-#line 890 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    { 
-											Streams::verbose() <<"variable:  IDENTIFIER main_initializer \n";
-											idsList.push_back((yyvsp[-1].r.text)) ;
-											IdentifierNode* identifierNode=new IdentifierNode((yyvsp[-1].r.text),scoop);
-											if((yyvsp[0].r.node)!=NULL){
-											(dynamic_cast<AssignNode*>((yyvsp[0].r.node)))->setLeftExp(identifierNode);
-											}
-											declarationList.push_back(make_pair((yyvsp[-1].r.text),(yyvsp[0].r.node)));
-											}
-#line 3423 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 166:
-#line 899 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 3429 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 167:
-#line 902 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"return_statement: RETURN expr\n";
-												 (yyval.r.node)=new ReturnNode(scoop,(yyvsp[-1].r.node));
-												}
-#line 3437 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 168:
-#line 907 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"loop_statement: for_loop\n";
-												(yyval.r.node)=(yyvsp[0].r.node);
-											}
-#line 3445 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 169:
-#line 910 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"loop_statement: while_loop\n";
-												(yyval.r.node)=(yyvsp[0].r.node);
-											}
-#line 3453 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 170:
-#line 913 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"loop_statement: do_while_loop\n";
-												(yyval.r.node)=(yyvsp[0].r.node);
-											}
-#line 3461 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 171:
-#line 918 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"do_while: do_header   statement   while_loop_header   SEMI_COMMA\n";
-													(yyval.r.node)=new DoWhileNode((yyvsp[-1].r.node),(yyvsp[-2].r.node),scoop);
-													}
-#line 3469 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 172:
-#line 923 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"do_header: DO\n";}
-#line 3475 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 173:
-#line 926 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"for_loop: for_loop_header statement\n";
-												type=symbolTable->getType("int");
-											if(type==NULL){
-											  	string error="Unknown type name '";
-												error.append((yyvsp[-1].r.text));
-												error.append("'.");
-												Program::addError(new SemanticError(error));
-											}	
-											ScoopHelper::addVariables(idsList,arrayList,type,flag,scoop);
-												arrayList.clear();
-												idsList.clear();
-												flag=false;
-												(dynamic_cast<ForNode*>((yyvsp[-1].r.node)))->setStatement((yyvsp[0].r.node));
-												(yyvsp[0].r.node)->toString();
-												(yyval.r.node)=(yyvsp[-1].r.node);
-											}
-#line 3496 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 174:
-#line 945 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer	SEMI_COMA logic_expr1 SEMI_COMA expr			CLOSE_P\n";
-										(yyval.r.node)=new ForNode((yyvsp[-5].r.node),(yyvsp[-3].r.node),(yyvsp[-1].r.node),NULL,scoop);
-										//nodeXX=$<r.node>5;
-										}
-#line 3505 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 175:
-#line 951 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA expr			CLOSE_P\n";
-										(yyval.r.node)=new ForNode(NULL,(yyvsp[-3].r.node),(yyvsp[-1].r.node),NULL,scoop);
-										}
-#line 3513 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 176:
-#line 955 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer SEMI_COMA			 SEMI_COMA expr			CLOSE_P\n";
-										(yyval.r.node)=new ForNode((yyvsp[-4].r.node),NULL,(yyvsp[-1].r.node),NULL,scoop);
-										}
-#line 3521 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 177:
-#line 959 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P	\n";
-										(yyval.r.node)=new ForNode((yyvsp[-4].r.node),(yyvsp[-2].r.node),NULL,NULL,scoop);
-										}
-#line 3529 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 178:
-#line 964 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"for_loop_header: FOR OPEN_P	for_initializer	SEMI_COMA			 SEMI_COMA				CLOSE_P	\n";
-										(yyval.r.node)=new ForNode((yyvsp[-3].r.node),NULL,NULL,NULL,scoop);
-										}
-#line 3537 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 179:
-#line 968 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P\n";
-										(yyval.r.node)=new ForNode(NULL,(yyvsp[-2].r.node),NULL,NULL,scoop);
-										}
-#line 3545 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 180:
-#line 972 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"for_loop_header: FOR OPEN_P 				SEMI_COMA			 SEMI_COMA expr			CLOSE_P";
-										(yyval.r.node)=new ForNode(NULL,NULL,(yyvsp[-1].r.node),NULL,scoop);
-										}
-#line 3553 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 181:
-#line 977 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"for_loop_hearder: FOR OPEN_P 				SEMI_COMA			SEMI_COMA 				CLOSE_P	\n";
-											(yyval.r.node)=new ForNode(NULL,NULL,NULL,NULL,scoop);
-											}
-#line 3561 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 182:
-#line 982 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"for_initializer: INT IDENTIFIER EQUAL expr\n";
-											AssignNode * temp=new AssignNode(scoop,new IdentifierNode((yyvsp[-2].r.text),scoop),(yyvsp[0].r.node));
-											
-											//temp->add($<r.text>2,);
-											
-											//temp.push_back(make_pair($<r.text>2,$<r.node>4));
-											DeclerationNode* temp1=new DeclerationNode(list<pair<string,Node*>>(),scoop,"int");
-											temp1->add((yyvsp[-2].r.text),temp);
-										 (yyval.r.node)=temp1; 
-										 idsList.push_back((yyvsp[-2].r.text));
-										}
-#line 3577 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 183:
-#line 993 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"for_initializer: IDENTIFIER EQUAL expr\n";
-										(yyval.r.node)=new AssignNode(scoop,new IdentifierNode((yyvsp[-2].r.text),scoop),(yyvsp[0].r.node));
-										}
-#line 3585 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 184:
-#line 996 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"for_initializer: IDENTIFIER\n";
-										(yyval.r.node)=new IdentifierNode((yyvsp[0].r.text),scoop);
-										}
-#line 3593 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 185:
-#line 1001 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"logic_expr:expr AND! expr\n";
-										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),AND_AND,scoop);
-										}
-#line 3601 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 186:
-#line 1004 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"logic_expr:logic_expr OR_OR logic_expr\n";
-										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),OR_OR,scoop);
-										}
-#line 3609 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 187:
-#line 1007 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {(yyval.r.node)=(yyvsp[0].r.node);
-										
-										}
-#line 3617 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 188:
-#line 1013 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"logic_expr:expr LESS_THAN expr\n";
-										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),LESS_THAN,scoop);
-										}
-#line 3625 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 189:
-#line 1016 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"logic_expr:expr MORE_THAN expr\n";
-										 (yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),MORE_THAN,scoop);
-										}
-#line 3633 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 190:
-#line 1019 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"logic_expr:expr LESS_OR_EQUAL expr\n";
-										 (yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),LESS_OR_EQUAL,scoop);
-										}
-#line 3641 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 191:
-#line 1022 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"logic_expr:expr MORE_OR_EQUAL expr\n";
-										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),MORE_OR_EQUAL,scoop);
-										}
-#line 3649 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 192:
-#line 1025 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"logic_expr:expr EQUAL_EQUAL expr\n";
-										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),EQUAL_EQUAL,scoop);
-										}
-#line 3657 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 193:
-#line 1028 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"logic_expr:expr EQUAL_EQUAL expr\n";
-										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),NOT_EQUAL,scoop);
-										}
-#line 3665 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 194:
-#line 1031 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"logic_expr:NOT_EQUAL expr\n";
-										 (yyval.r.node)=new UnaryNode(scoop,(yyvsp[0].r.node),NOT_EQUAL);
-										}
-#line 3673 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 195:
-#line 1034 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"logic_expr:OPEN_P logic_expr CLOSE_P\n";
-										 (yyval.r.node)=(yyvsp[-1].r.node);
-										}
-#line 3681 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 196:
-#line 1038 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"logic_expr:TRUE\n";
-										 (yyval.r.node)=new ConstantNode(true,scoop);
-										}
-#line 3689 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 197:
-#line 1041 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"logic_expr:FALSE\n";
-											 (yyval.r.node)=new ConstantNode(false,scoop);
-										}
-#line 3697 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 198:
-#line 1044 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"logic_expr:long id\n";
-											 (yyval.r.node)=(yyvsp[0].r.node);
-										}
-#line 3705 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 199:
-#line 1050 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"expr:assign_expr\n";
-										 (yyval.r.node)=(yyvsp[0].r.node);
-										}
-#line 3713 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 200:
-#line 1053 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"expr:simple_expr\n";
-										(yyval.r.node)=(yyvsp[0].r.node);
-										}
-#line 3721 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 201:
-#line 1058 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-										Streams::verbose()<<"assign_expr:long_id EQUAL simple_expr\n";
-										//LongIdHelper::checkIdenentifier( scoop, interface,"set1");
-										(yyval.r.node)=new AssignNode(scoop,(yyvsp[-2].r.node),(yyvsp[0].r.node));
-										}
-#line 3731 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 202:
-#line 1065 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"long_id: long_id.IDENTIFIER\n";
-																(yyval.r.node)=new DotNode(scoop,(yyvsp[-2].r.node),(yyvsp[0].r.text));
-
-											;}
-#line 3740 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 203:
-#line 1069 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-												Streams::verbose()<<"long_id: long_id.message_call\n";
-												(yyval.r.node)=(yyvsp[0].r.node);
-											}
-#line 3749 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 204:
-#line 1073 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-																LongIdHelper::addIdentifier((yyvsp[0].r.text)); 
-																(yyval.r.node)=new IdentifierNode((yyvsp[0].r.text),scoop);
-																Streams::verbose()<<"long_id:IDENTIFIER :"<<(yyvsp[0].r.text)<<"\n";
-															   }
-#line 3759 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 205:
-#line 1078 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-											Streams::verbose()<<"long_id: long_id.array_access\n";
-												(yyval.r.node)=(yyvsp[0].r.node);
-											}
-#line 3768 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 206:
-#line 1086 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-							Streams::verbose()<<"array_access: details\n";
-
-							(yyval.r.node)=new ArrayAccessNode((yyvsp[-3].r.node),(yyvsp[-1].r.node),scoop);
-
-						}
-#line 3779 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 207:
-#line 1095 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-										Streams::verbose()<<"simple_expr:STRING_VAL\n";
-									(yyval.r.node)=new ConstantNode(*((yyvsp[0].r.string_val)),scoop);
-									Streams::verbose()<<"node typr"<<(yyval.r.node)->generateType()->get_name()<<"\n";
-									(yyval.r.string_val)=(yyvsp[0].r.string_val);
-									}
-#line 3790 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 208:
-#line 1101 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-									Streams::verbose()<<"simple_expr:INT_VAL\n";
-									(yyval.r.node)=new ConstantNode(yylval.r.int_val,scoop);
-									}
-#line 3799 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 209:
-#line 1105 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"simple_expr:FLOAT_VAL\n";
-									(yyval.r.node)=new ConstantNode(yylval.r.float_val,scoop);
-									}
-#line 3807 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 210:
-#line 1108 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"simple_expr:CHAR_VAL\n";
-										(yyval.r.node)=new ConstantNode(yylval.r.char_val,scoop);
-									}
-#line 3815 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 211:
-#line 1111 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"simple_expr:long_id\n";
-									(yyval.r.node)=(yyvsp[0].r.node);
-									}
-#line 3823 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 212:
-#line 1114 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-										Streams::verbose()<<"simple_expr:expr PLUS expr\n";
-										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),PLUS,scoop);
-									}
-#line 3832 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 213:
-#line 1118 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-										Streams::verbose()<<"simple_expr:expr MINUS expr\n";
-										(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),MINUS,scoop);
-									}
-#line 3841 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 214:
-#line 1122 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"simple_expr:expr MULTI expr\n";
-											(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),MULTI,scoop);
-									}
-#line 3849 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 215:
-#line 1125 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-									Streams::verbose()<<"simple_expr:expr DIV expr\n";
-									(yyval.r.node)=new BinaryOperationNode((yyvsp[-2].r.node),(yyvsp[0].r.node),DIV,scoop);
-									}
-#line 3858 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 216:
-#line 1129 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"simple_expr:OPEN_P expr CLOSE_P\n";(yyval.r.node)=(yyvsp[-1].r.node);}
-#line 3864 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 217:
-#line 1130 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"simple_expr:ID++";}
-#line 3870 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 218:
-#line 1131 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"simple_expr:ID--";}
-#line 3876 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 219:
-#line 1132 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"simple_expr:++ID";}
-#line 3882 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 220:
-#line 1133 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"simple_expr:--ID";}
-#line 3888 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 221:
-#line 1134 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-																Streams::verbose()<<"expr:p_type expr\n";
-																if(type!=NULL)
-																(yyval.r.node)=new CastNode(scoop,type,(yyvsp[0].r.node));
-															}
-#line 3898 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 222:
-#line 1141 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {		
-			Streams::verbose()<<"message_call2\n";
-			if(callNode==NULL)
-			callNode=new CallNode(scoop);
-			else 
-			{
-			callNodeStack.push(callNode);
-			callNode=new CallNode(scoop);
-			}
-			Streams::verbose()<<"mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm";
-			}
-#line 3914 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 223:
-#line 1154 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-												Streams::verbose()<<"message_call: OPEN_ARR sender message CLOSE_ARR\n";
-												callNode->setMessage((yyvsp[-1].r.text));
-												(yyval.r.node)=callNode;
-												callNode=NULL;
-														if(callNodeStack.size()!=0){
-														callNode=callNodeStack.top();
-														callNodeStack.pop();
-														}
-												}
-#line 3929 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 224:
-#line 1166 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"sender: message_call\n";
-											
-											callNode->setSender((yyvsp[0].r.node));
-											 (yyval.r.node)=(yyvsp[0].r.node);
-											 
-											}
-#line 3940 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 225:
-#line 1172 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"sender: IDENTIFIER\n";
-											(yyval.r.node)=new IdentifierNode((yyvsp[0].r.text),scoop);
-											
-											//callNode=new CallNode(scoop);
-											
-											callNode->setSender((yyval.r.node));
-											
-											}
-#line 3953 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 226:
-#line 1182 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"message: IDENTIFIER\n";
-											(yyval.r.text)=(yyvsp[0].r.text);
-												
-											}
-#line 3962 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 227:
-#line 1186 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-											Streams::verbose()<<"message_selectors_list\n";
-											//$<r.node>$=$<r.text>1;
-											(yyval.r.text)="";
-											}
-#line 3972 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 228:
-#line 1193 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-											Streams::verbose()<<"message_selectors_list:message_selectors_list message_selector \n";
-												callNode->addSelector(cselector);
-											cselector=NULL;
-												}
-#line 3982 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 229:
-#line 1198 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {	callNode->addSelector(cselector);
-							cselector=NULL;
-								Streams::verbose()<<"message_selectors_list: message_selector\n";
-											
-		}
-#line 3992 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 230:
-#line 1204 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-									cselector->name=(yyvsp[-2].r.text);
-							}
-#line 4000 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 231:
-#line 1208 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"argument_list: argument_list argument\n";
-												cselector->addArg((yyvsp[0].r.node));}
-#line 4007 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 232:
-#line 1210 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"argument_list: argument\n";
-												cselector=new CallSelector("");
-											cselector->addArg((yyvsp[0].r.node));}
-#line 4015 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 233:
-#line 1215 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-											Streams::verbose()<<"argument: SEMI_COLUMN expr\n";
-											(yyval.r.node)=(yyvsp[0].r.node);
-											//callNode->addArgument($<r.node>1,"");
-											
-											}
-#line 4026 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 234:
-#line 1223 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-											Streams::verbose()<<"while_loop:while_loop_header statement\n";
-											 (yyval.r.node)=new WhileNode((yyvsp[-1].r.node),(yyvsp[0].r.node),scoop);
-										}
-#line 4035 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 235:
-#line 1229 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"while_loop_header: WHILE OPEN_P logic_expr CLOSE_P\n";
-											(yyval.r.node)=(yyvsp[-1].r.node);
-											}
-#line 4043 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 236:
-#line 1234 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"conditional_statement: if_header statement\n";
-												 (yyval.r.node)=new IfNode((yyvsp[-1].r.node),(yyvsp[0].r.node),scoop,NULL);
-												}
-#line 4051 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 237:
-#line 1237 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-												Streams::verbose()<<"conditional_statement: if_header statement with else\n";
-												 (yyval.r.node)=new IfNode((yyvsp[-3].r.node),(yyvsp[-2].r.node),scoop,new ElseNode((yyvsp[0].r.node),scoop));
-												}
-#line 4060 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 238:
-#line 1241 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"conditional_statement: switch_header switch_body statement\n";
-											(yyval.r.node)=tempSwitch;
-										}
-#line 4068 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 239:
-#line 1246 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"if_header: IF OPEN_P logic_expr CLOSE_P\n";
-											(yyval.r.node)=(yyvsp[-1].r.node);
-											}
-#line 4076 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 240:
-#line 1251 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"switch_header: SWITCH OPEN_P IDENTIFIER CLOSE_P\n";
-										
-										tempSwitch->setExpr(new IdentifierNode((yyvsp[-2].r.text),scoop));
-									}
-#line 4085 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 241:
-#line 1257 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {scoop=new ScoopNode(scoop);tempSwitch=new SwitchNode(NULL,std::list<pair<Node*,Node*>>(),scoop);}
-#line 4091 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 242:
-#line 1260 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {;}
-#line 4097 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 243:
-#line 1261 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {;}
-#line 4103 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 244:
-#line 1262 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {;}
-#line 4109 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 245:
-#line 1263 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {;}
-#line 4115 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 246:
-#line 1266 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {;}
-#line 4121 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 247:
-#line 1267 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {;}
-#line 4127 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 248:
-#line 1270 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {tempSwitch->addCase((yyvsp[-4].r.node),(yyvsp[-2].r.node));}
-#line 4133 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 249:
-#line 1271 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {tempSwitch->addCase((yyvsp[-2].r.node),(yyvsp[0].r.node));}
-#line 4139 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 250:
-#line 1272 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {tempSwitch->addCase((yyvsp[-3].r.node),NULL);}
-#line 4145 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 251:
-#line 1275 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {tempSwitch->addCase(NULL,(yyvsp[-2].r.node));}
-#line 4151 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 252:
-#line 1276 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {tempSwitch->addCase(NULL,(yyvsp[0].r.node));}
-#line 4157 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 253:
-#line 1277 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {tempSwitch->addCase(NULL,(yyvsp[-1].r.node));}
-#line 4163 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 254:
-#line 1279 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-										Streams::verbose()<<"protocol: protocol_header protocol_body\n";
-										idsList.clear();
-										methodsList.clear();
-										method=NULL;
-										}
-#line 4174 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 255:
-#line 1287 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-								Streams::verbose()<<"protocol_header: AT_PROTOCOL IDENTIFIER \n";
-								protocol=ProtocolHelper ::createNewProtocol((yyvsp[0].r.text),symbolTable );
-								
-								}
-#line 4184 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 256:
-#line 1294 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-								Streams::verbose()<<"protocol_body:	protocol_reference_list interface_declaration_list	AT_END\n";
-								ProtocolHelper::addInheritedProtocol( protocol, idsList,symbolTable);
-								ProtocolHelper::addMethods( protocol,methodsList);
-								methodsList.clear();
-								idsList.clear();
-								}
-#line 4196 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 257:
-#line 1302 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-								Streams::verbose()<<"protocol_body:	interface_declaration_list	AT_END\n";
-									
-								ProtocolHelper::addMethods( protocol,methodsList);
-								methodsList.clear();
-								
-								}
-#line 4208 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 258:
-#line 1310 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-								Streams::verbose()<<"protocol_body:	protocol_reference_list AT_END	\n";
-											ProtocolHelper::addInheritedProtocol( protocol, idsList,symbolTable);
-								idsList.clear();
-								}
-#line 4218 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 259:
-#line 1316 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"protocol_body:	AT_END\n";}
-#line 4224 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 260:
-#line 1318 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-																Streams::verbose()<<"enum: ENUM IDENTIFIER  OPEN_S list_expr CLOSE_S SEMI_COMA  \n";
-																
-																EnumHelper::createNewEnum( (yyvsp[-4].r.text),idsList, symbolTable);
-																idsList.clear();
-															 }
-#line 4235 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 261:
-#line 1324 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-																Streams::verbose()<<"enum: ENUM IDENTIFIER SEMI_COMA\n";
-																EnumHelper::createNewEnum( (yyvsp[-1].r.text),idsList, symbolTable);
-															  }
-#line 4244 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 262:
-#line 1331 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-												Streams::verbose()<<"list_expr:IDENTIFIER EQUAL expr COMMA list_expr\n";
-												idsList.push_back((yyvsp[-4].r.text));
-													(yyval.r.node)=new AssignNode(scoop,new IdentifierNode((yyvsp[-4].r.text),scoop),(yyvsp[-2].r.node));
-												}
-#line 4254 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 263:
-#line 1336 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-												Streams::verbose()<<"list_expr:IDENTIFIER EQUAL expr\n";
-												idsList.push_back((yyvsp[-2].r.text));
-												(yyval.r.node)=new AssignNode(scoop,new IdentifierNode((yyvsp[-2].r.text),scoop),(yyvsp[0].r.node));
-												}
-#line 4264 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 264:
-#line 1341 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-													Streams::verbose()<<"list_expr:IDENTIFIER \n";
-													idsList.push_back((yyvsp[0].r.text));
-													//??
-												}
-#line 4274 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 265:
-#line 1346 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-												  Streams::verbose()<<"list_expr:IDENTIFIER  COMMA list_expr \n";
-												  idsList.push_back((yyvsp[-2].r.text));
-												  //??
-												}
-#line 4284 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 266:
-#line 1353 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {
-												  Streams::verbose()<<"try_catch:TRY statement catch_list finally_statement \n";
-												}
-#line 4292 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 267:
-#line 1357 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {				  
-								Streams::verbose()<<"try_catch:TRY statement catch_list \n";
-							  }
-#line 4300 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 268:
-#line 1362 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"catch_list:CATCH OPEN_S type IDENTIFIER CLOSE_S statement \n";}
-#line 4306 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-  case 269:
-#line 1363 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
-    {Streams::verbose()<<"catch_list:catch_list CATCH OPEN_S type IDENTIFIER CLOSE_S statement \n";}
-#line 4312 "yacc.cpp" /* yacc.c:1646  */
-    break;
-
-
-#line 4316 "yacc.cpp" /* yacc.c:1646  */
-        default: break;
-      }
-    if (yychar_backup != yychar)
-      YY_LAC_DISCARD ("yychar change");
-  }
-  /* User semantic actions sometimes alter yychar, and that requires
-     that yytoken be updated with the new translation.  We take the
-     approach of translating immediately before every use of yytoken.
-     One alternative is translating here after every semantic action,
-     but that translation would be missed if the semantic action invokes
-     YYABORT, YYACCEPT, or YYERROR immediately after altering yychar or
-     if it invokes YYBACKUP.  In the case of YYABORT or YYACCEPT, an
-     incorrect destructor might then be invoked immediately.  In the
-     case of YYERROR or YYBACKUP, subsequent parser actions might lead
-     to an incorrect destructor call or verbose syntax error message
-     before the lookahead is translated.  */
-  YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
-
-  YYPOPSTACK (yylen);
-  yylen = 0;
-  YY_STACK_PRINT (yyss, yyssp);
-
-  *++yyvsp = yyval;
-
-  /* Now 'shift' the result of the reduction.  Determine what state
-     that goes to, based on the state we popped back to and the rule
-     number reduced by.  */
-
-  yyn = yyr1[yyn];
-
-  yystate = yypgoto[yyn - YYNTOKENS] + *yyssp;
-  if (0 <= yystate && yystate <= YYLAST && yycheck[yystate] == *yyssp)
-    yystate = yytable[yystate];
-  else
-    yystate = yydefgoto[yyn - YYNTOKENS];
-
-  goto yynewstate;
-
-
-/*--------------------------------------.
-| yyerrlab -- here on detecting error.  |
-`--------------------------------------*/
-yyerrlab:
-  /* Make sure we have latest lookahead translation.  See comments at
-     user semantic actions for why this is necessary.  */
-  yytoken = yychar == YYEMPTY ? YYEMPTY : YYTRANSLATE (yychar);
-
-  /* If not already recovering from an error, report this error.  */
-  if (!yyerrstatus)
-    {
-      ++yynerrs;
-#if ! YYERROR_VERBOSE
-      yyerror (YY_("syntax error"));
-#else
-# define YYSYNTAX_ERROR yysyntax_error (&yymsg_alloc, &yymsg, \
-                                        yyesa, &yyes, &yyes_capacity, \
-                                        yyssp, yytoken)
-      {
-        char const *yymsgp = YY_("syntax error");
-        int yysyntax_error_status;
-        if (yychar != YYEMPTY)
-          YY_LAC_ESTABLISH;
-        yysyntax_error_status = YYSYNTAX_ERROR;
-        if (yysyntax_error_status == 0)
-          yymsgp = yymsg;
-        else if (yysyntax_error_status == 1)
-          {
-            if (yymsg != yymsgbuf)
-              YYSTACK_FREE (yymsg);
-            yymsg = (char *) YYSTACK_ALLOC (yymsg_alloc);
-            if (!yymsg)
-              {
-                yymsg = yymsgbuf;
-                yymsg_alloc = sizeof yymsgbuf;
-                yysyntax_error_status = 2;
-              }
-            else
-              {
-                yysyntax_error_status = YYSYNTAX_ERROR;
-                yymsgp = yymsg;
-              }
-          }
-        yyerror (yymsgp);
-        if (yysyntax_error_status == 2)
-          goto yyexhaustedlab;
-      }
-# undef YYSYNTAX_ERROR
-#endif
+  yylval = yyval_default;
+
+  if (! yyinitGLRStack (yystackp, YYINITDEPTH))
+    goto yyexhaustedlab;
+  switch (YYSETJMP (yystack.yyexception_buffer))
+    {
+    case 0: break;
+    case 1: goto yyabortlab;
+    case 2: goto yyexhaustedlab;
+    default: goto yybuglab;
     }
+  yyglrShift (&yystack, 0, 0, 0, &yylval);
+  yyposn = 0;
 
-
-
-  if (yyerrstatus == 3)
+  while (yytrue)
     {
-      /* If just tried and failed to reuse lookahead token after an
-         error, discard it.  */
-
-      if (yychar <= YYEOF)
+      /* For efficiency, we have two loops, the first of which is
+         specialized to deterministic operation (single stack, no
+         potential ambiguity).  */
+      /* Standard mode */
+      while (yytrue)
         {
-          /* Return failure if at end of input.  */
-          if (yychar == YYEOF)
-            YYABORT;
-        }
-      else
-        {
-          yydestruct ("Error: discarding",
-                      yytoken, &yylval);
-          yychar = YYEMPTY;
-        }
-    }
+          yyRuleNum yyrule;
+          int yyaction;
+          const short int* yyconflicts;
 
-  /* Else will try to reuse lookahead token after shifting the error
-     token.  */
-  goto yyerrlab1;
-
-
-/*---------------------------------------------------.
-| yyerrorlab -- error raised explicitly by YYERROR.  |
-`---------------------------------------------------*/
-yyerrorlab:
-
-  /* Pacify compilers like GCC when the user code never invokes
-     YYERROR and the label yyerrorlab therefore never appears in user
-     code.  */
-  if (/*CONSTCOND*/ 0)
-     goto yyerrorlab;
-
-  /* Do not reclaim the symbols of the rule whose action triggered
-     this YYERROR.  */
-  YYPOPSTACK (yylen);
-  yylen = 0;
-  YY_STACK_PRINT (yyss, yyssp);
-  yystate = *yyssp;
-  goto yyerrlab1;
-
-
-/*-------------------------------------------------------------.
-| yyerrlab1 -- common code for both syntax error and YYERROR.  |
-`-------------------------------------------------------------*/
-yyerrlab1:
-  yyerrstatus = 3;      /* Each real token shifted decrements this.  */
-
-  for (;;)
-    {
-      yyn = yypact[yystate];
-      if (!yypact_value_is_default (yyn))
-        {
-          yyn += YYTERROR;
-          if (0 <= yyn && yyn <= YYLAST && yycheck[yyn] == YYTERROR)
+          yyStateNum yystate = yystack.yytops.yystates[0]->yylrState;
+          YYDPRINTF ((stderr, "Entering state %d\n", yystate));
+          if (yystate == YYFINAL)
+            goto yyacceptlab;
+          if (yyisDefaultedState (yystate))
             {
-              yyn = yytable[yyn];
-              if (0 < yyn)
+              yyrule = yydefaultAction (yystate);
+              if (yyrule == 0)
+                {
+
+                  yyreportSyntaxError (&yystack);
+                  goto yyuser_error;
+                }
+              YYCHK1 (yyglrReduce (&yystack, 0, yyrule, yytrue));
+            }
+          else
+            {
+              yySymbol yytoken;
+              if (yychar == YYEMPTY)
+                {
+                  YYDPRINTF ((stderr, "Reading a token: "));
+                  yychar = yylex ();
+                }
+
+              if (yychar <= YYEOF)
+                {
+                  yychar = yytoken = YYEOF;
+                  YYDPRINTF ((stderr, "Now at end of input.\n"));
+                }
+              else
+                {
+                  yytoken = YYTRANSLATE (yychar);
+                  YY_SYMBOL_PRINT ("Next token is", yytoken, &yylval, &yylloc);
+                }
+
+              yygetLRActions (yystate, yytoken, &yyaction, &yyconflicts);
+              if (*yyconflicts != 0)
                 break;
+              if (yyisShiftAction (yyaction))
+                {
+                  YY_SYMBOL_PRINT ("Shifting", yytoken, &yylval, &yylloc);
+                  yychar = YYEMPTY;
+                  yyposn += 1;
+                  yyglrShift (&yystack, 0, yyaction, yyposn, &yylval);
+                  if (0 < yystack.yyerrState)
+                    yystack.yyerrState -= 1;
+                }
+              else if (yyisErrorAction (yyaction))
+                {
+
+                  yyreportSyntaxError (&yystack);
+                  goto yyuser_error;
+                }
+              else
+                YYCHK1 (yyglrReduce (&yystack, 0, -yyaction, yytrue));
             }
         }
 
-      /* Pop the current state because it cannot handle the error token.  */
-      if (yyssp == yyss)
-        YYABORT;
+      while (yytrue)
+        {
+          yySymbol yytoken_to_shift;
+          size_t yys;
 
+          for (yys = 0; yys < yystack.yytops.yysize; yys += 1)
+            yystackp->yytops.yylookaheadNeeds[yys] = yychar != YYEMPTY;
 
-      yydestruct ("Error: popping",
-                  yystos[yystate], yyvsp);
-      YYPOPSTACK (1);
-      yystate = *yyssp;
-      YY_STACK_PRINT (yyss, yyssp);
+          /* yyprocessOneStack returns one of three things:
+
+              - An error flag.  If the caller is yyprocessOneStack, it
+                immediately returns as well.  When the caller is finally
+                yyparse, it jumps to an error label via YYCHK1.
+
+              - yyok, but yyprocessOneStack has invoked yymarkStackDeleted
+                (&yystack, yys), which sets the top state of yys to NULL.  Thus,
+                yyparse's following invocation of yyremoveDeletes will remove
+                the stack.
+
+              - yyok, when ready to shift a token.
+
+             Except in the first case, yyparse will invoke yyremoveDeletes and
+             then shift the next token onto all remaining stacks.  This
+             synchronization of the shift (that is, after all preceding
+             reductions on all stacks) helps prevent double destructor calls
+             on yylval in the event of memory exhaustion.  */
+
+          for (yys = 0; yys < yystack.yytops.yysize; yys += 1)
+            YYCHK1 (yyprocessOneStack (&yystack, yys, yyposn));
+          yyremoveDeletes (&yystack);
+          if (yystack.yytops.yysize == 0)
+            {
+              yyundeleteLastStack (&yystack);
+              if (yystack.yytops.yysize == 0)
+                yyFail (&yystack, YY_("syntax error"));
+              YYCHK1 (yyresolveStack (&yystack));
+              YYDPRINTF ((stderr, "Returning to deterministic operation.\n"));
+
+              yyreportSyntaxError (&yystack);
+              goto yyuser_error;
+            }
+
+          /* If any yyglrShift call fails, it will fail after shifting.  Thus,
+             a copy of yylval will already be on stack 0 in the event of a
+             failure in the following loop.  Thus, yychar is set to YYEMPTY
+             before the loop to make sure the user destructor for yylval isn't
+             called twice.  */
+          yytoken_to_shift = YYTRANSLATE (yychar);
+          yychar = YYEMPTY;
+          yyposn += 1;
+          for (yys = 0; yys < yystack.yytops.yysize; yys += 1)
+            {
+              int yyaction;
+              const short int* yyconflicts;
+              yyStateNum yystate = yystack.yytops.yystates[yys]->yylrState;
+              yygetLRActions (yystate, yytoken_to_shift, &yyaction,
+                              &yyconflicts);
+              /* Note that yyconflicts were handled by yyprocessOneStack.  */
+              YYDPRINTF ((stderr, "On stack %lu, ", (unsigned long int) yys));
+              YY_SYMBOL_PRINT ("shifting", yytoken_to_shift, &yylval, &yylloc);
+              yyglrShift (&yystack, yys, yyaction, yyposn,
+                          &yylval);
+              YYDPRINTF ((stderr, "Stack %lu now in state #%d\n",
+                          (unsigned long int) yys,
+                          yystack.yytops.yystates[yys]->yylrState));
+            }
+
+          if (yystack.yytops.yysize == 1)
+            {
+              YYCHK1 (yyresolveStack (&yystack));
+              YYDPRINTF ((stderr, "Returning to deterministic operation.\n"));
+              yycompressStack (&yystack);
+              break;
+            }
+        }
+      continue;
+    yyuser_error:
+      yyrecoverSyntaxError (&yystack);
+      yyposn = yystack.yytops.yystates[0]->yyposn;
     }
 
-  /* If the stack popping above didn't lose the initial context for the
-     current lookahead token, the shift below will for sure.  */
-  YY_LAC_DISCARD ("error recovery");
-
-  YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN
-  *++yyvsp = yylval;
-  YY_IGNORE_MAYBE_UNINITIALIZED_END
-
-
-  /* Shift the error token.  */
-  YY_SYMBOL_PRINT ("Shifting", yystos[yyn], yyvsp, yylsp);
-
-  yystate = yyn;
-  goto yynewstate;
-
-
-/*-------------------------------------.
-| yyacceptlab -- YYACCEPT comes here.  |
-`-------------------------------------*/
-yyacceptlab:
+ yyacceptlab:
   yyresult = 0;
   goto yyreturn;
 
-/*-----------------------------------.
-| yyabortlab -- YYABORT comes here.  |
-`-----------------------------------*/
-yyabortlab:
+ yybuglab:
+  YYASSERT (yyfalse);
+  goto yyabortlab;
+
+ yyabortlab:
   yyresult = 1;
   goto yyreturn;
 
-#if 1
-/*-------------------------------------------------.
-| yyexhaustedlab -- memory exhaustion comes here.  |
-`-------------------------------------------------*/
-yyexhaustedlab:
+ yyexhaustedlab:
   yyerror (YY_("memory exhausted"));
   yyresult = 2;
-  /* Fall through.  */
-#endif
+  goto yyreturn;
 
-yyreturn:
+ yyreturn:
   if (yychar != YYEMPTY)
+    yydestruct ("Cleanup: discarding lookahead",
+                YYTRANSLATE (yychar), &yylval);
+
+  /* If the stack is well-formed, pop the stack until it is empty,
+     destroying its entries as we go.  But free the stack regardless
+     of whether it is well-formed.  */
+  if (yystack.yyitems)
     {
-      /* Make sure we have latest lookahead translation.  See comments at
-         user semantic actions for why this is necessary.  */
-      yytoken = YYTRANSLATE (yychar);
-      yydestruct ("Cleanup: discarding lookahead",
-                  yytoken, &yylval);
+      yyGLRState** yystates = yystack.yytops.yystates;
+      if (yystates)
+        {
+          size_t yysize = yystack.yytops.yysize;
+          size_t yyk;
+          for (yyk = 0; yyk < yysize; yyk += 1)
+            if (yystates[yyk])
+              {
+                while (yystates[yyk])
+                  {
+                    yyGLRState *yys = yystates[yyk];
+                  if (yys->yypred != YY_NULL)
+                      yydestroyGLRState ("Cleanup: popping", yys);
+                    yystates[yyk] = yys->yypred;
+                    yystack.yynextFree -= 1;
+                    yystack.yyspaceLeft += 1;
+                  }
+                break;
+              }
+        }
+      yyfreeGLRStack (&yystack);
     }
-  /* Do not reclaim the symbols of the rule whose action triggered
-     this YYABORT or YYACCEPT.  */
-  YYPOPSTACK (yylen);
-  YY_STACK_PRINT (yyss, yyssp);
-  while (yyssp != yyss)
-    {
-      yydestruct ("Cleanup: popping",
-                  yystos[*yyssp], yyvsp);
-      YYPOPSTACK (1);
-    }
-#ifndef yyoverflow
-  if (yyss != yyssa)
-    YYSTACK_FREE (yyss);
-#endif
-  if (yyes != yyesa)
-    YYSTACK_FREE (yyes);
-#if YYERROR_VERBOSE
-  if (yymsg != yymsgbuf)
-    YYSTACK_FREE (yymsg);
-#endif
+
   return yyresult;
 }
-#line 1368 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1906  */
+
+/* DEBUGGING ONLY */
+#if YYDEBUG
+static void
+yy_yypstack (yyGLRState* yys)
+{
+  if (yys->yypred)
+    {
+      yy_yypstack (yys->yypred);
+      YYFPRINTF (stderr, " -> ");
+    }
+  YYFPRINTF (stderr, "%d@%lu", yys->yylrState,
+             (unsigned long int) yys->yyposn);
+}
+
+static void
+yypstates (yyGLRState* yyst)
+{
+  if (yyst == YY_NULL)
+    YYFPRINTF (stderr, "<null>");
+  else
+    yy_yypstack (yyst);
+  YYFPRINTF (stderr, "\n");
+}
+
+static void
+yypstack (yyGLRStack* yystackp, size_t yyk)
+{
+  yypstates (yystackp->yytops.yystates[yyk]);
+}
+
+#define YYINDEX(YYX)                                                         \
+    ((YYX) == YY_NULL ? -1 : (yyGLRStackItem*) (YYX) - yystackp->yyitems)
+
+
+static void
+yypdumpstack (yyGLRStack* yystackp)
+{
+  yyGLRStackItem* yyp;
+  size_t yyi;
+  for (yyp = yystackp->yyitems; yyp < yystackp->yynextFree; yyp += 1)
+    {
+      YYFPRINTF (stderr, "%3lu. ",
+                 (unsigned long int) (yyp - yystackp->yyitems));
+      if (*(yybool *) yyp)
+        {
+          YYFPRINTF (stderr, "Res: %d, LR State: %d, posn: %lu, pred: %ld",
+                     yyp->yystate.yyresolved, yyp->yystate.yylrState,
+                     (unsigned long int) yyp->yystate.yyposn,
+                     (long int) YYINDEX (yyp->yystate.yypred));
+          if (! yyp->yystate.yyresolved)
+            YYFPRINTF (stderr, ", firstVal: %ld",
+                       (long int) YYINDEX (yyp->yystate
+                                             .yysemantics.yyfirstVal));
+        }
+      else
+        {
+          YYFPRINTF (stderr, "Option. rule: %d, state: %ld, next: %ld",
+                     yyp->yyoption.yyrule - 1,
+                     (long int) YYINDEX (yyp->yyoption.yystate),
+                     (long int) YYINDEX (yyp->yyoption.yynext));
+        }
+      YYFPRINTF (stderr, "\n");
+    }
+  YYFPRINTF (stderr, "Tops:");
+  for (yyi = 0; yyi < yystackp->yytops.yysize; yyi += 1)
+    YYFPRINTF (stderr, "%lu: %ld; ", (unsigned long int) yyi,
+               (long int) YYINDEX (yystackp->yytops.yystates[yyi]));
+  YYFPRINTF (stderr, "\n");
+}
+#endif
+
+#undef yylval
+#undef yychar
+#undef yynerrs
+
+
+
+#line 1375 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:2549  */
 
 void yyerror(const char *s) {
 

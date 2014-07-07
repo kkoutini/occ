@@ -1,6 +1,7 @@
 %output "yacc.cpp"
-%define parse.lac full
+//%define parse.lac full
 %define parse.error verbose
+%glr-parser
 
 %{
 	#include <iostream>
@@ -11,8 +12,9 @@
 	#include "ST\SymbolTable.h"
 	#include "ast\ConstantNode.h"
 	#include "SyntaxError.h"
-
+	
 	#include "CallNode.h"
+	#include "ThrowNode.h"
 		#include "CallSelector.h"
 		#include "DeclerationSelector.h"
 		#include "ast\IdentifierNode.h"
@@ -845,11 +847,15 @@ statement:
 	 $<r.text>$="call";
 	$<r.node>$=$<r.node>1;
 	}
-	
+	|throw_statement { Streams::verbose()<<"statement: THROW\n";$<r.node>$=$<r.node>1;}	
+
 	| error SEMI_COMA { Streams::verbose()<<"error SEMI_COMA \n";}
 
 ;
-
+throw_statement:  THROW OPEN_P message_call CLOSE_P SEMI_COMA {Streams::verbose()<<"statement: THROW\n";
+														$<r.node>$=new ThrowNode(scoop,$<r.node>3);
+														}
+;
 asm:
 	AT_ASM STRING_VAL SEMI_COMA              {Streams::verbose()<<"@asm command \n";
 	                                         $<r.node>$=new AsmNode(scoop,*$<r.string_val>2);

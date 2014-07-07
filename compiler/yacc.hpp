@@ -1,8 +1,8 @@
 /* A Bison parser, made by GNU Bison 3.0.  */
 
-/* Bison interface for Yacc-like parsers in C
+/* Skeleton interface for Bison GLR parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2013 Free Software Foundation, Inc.
+   Copyright (C) 2002-2013 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -40,11 +40,11 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 177 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1909  */
+#line 180 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:2553  */
 
 #include "ast\node.h"
 
-#line 48 "yacc.hpp" /* yacc.c:1909  */
+#line 48 "yacc.hpp" /* glr.c:2553  */
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -112,15 +112,16 @@ extern int yydebug;
     DOUBLEMINUS = 316,
     TRY = 317,
     CATCH = 318,
-    FINALLY = 319,
-    AT_ASM = 320,
-    SELF = 321,
-    IMPORT = 322,
-    if_h = 323,
-    expr_1 = 324,
-    p_type_expr_prec = 325,
-    long_id_prec = 326,
-    try_prec = 327
+    THROW = 319,
+    FINALLY = 320,
+    AT_ASM = 321,
+    SELF = 322,
+    IMPORT = 323,
+    if_h = 324,
+    expr_1 = 325,
+    p_type_expr_prec = 326,
+    long_id_prec = 327,
+    try_prec = 328
   };
 #endif
 
@@ -129,7 +130,7 @@ extern int yydebug;
 typedef union YYSTYPE YYSTYPE;
 union YYSTYPE
 {
-#line 180 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1909  */
+#line 183 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:2553  */
 
 	
 	struct R {
@@ -144,7 +145,7 @@ union YYSTYPE
 			      }r;
 	   
 
-#line 148 "yacc.hpp" /* yacc.c:1909  */
+#line 149 "yacc.hpp" /* glr.c:2553  */
 };
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1

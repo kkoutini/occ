@@ -326,6 +326,9 @@
     <ClInclude Include="ArrayAccessNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ThrowNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="codeold.txt">
