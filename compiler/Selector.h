@@ -21,19 +21,8 @@ public:
 		virtual  int getTypesSize() const = 0;
 		virtual Type* getTypeAt(int i)const = 0;
 
-		bool operator==(const Selector &b){
-			if (name != b.name)
-				return false;
-			if (getTypesSize() != b.getTypesSize())
-				return false;
-			for (int i = 0; i < getTypesSize(); i++)
-			{
-				if (b.getTypeAt(i) != getTypeAt(i))
-					return false;
-			}
-			return true;
-
-		}
+		bool operator==(const Selector &b);
+		bool operator>=(const Selector &b);
 		bool operator<(const Selector &b)const;
 	~Selector(void);
 };

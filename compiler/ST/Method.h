@@ -75,7 +75,8 @@ public:
 	void set_final();
 	bool get_final();
 	void Do_attr(vector<string>);*/
-	bool static compare(Method*,Method*);
+	bool static compare(Method*, Method*);
+	int static compareOverload(Method*, Method*);
 	void set_variables(vector<DeclerationSelector*>);
 	vector<DeclerationSelector*> get_variables();
 

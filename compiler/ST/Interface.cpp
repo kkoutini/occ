@@ -13,7 +13,7 @@ Interface::Interface(string name, bool is_static_twin) :Type(name)
 	varItems=new VariableItems();
 	methodsItem=new MethodItems();
 	classNode = new ClassNode(globalScoop, this);
-
+	children_ids.insert(getId());
 	if (!is_static_twin){
 		static_twin = new Interface(name, true);
 	}
@@ -89,6 +89,7 @@ string Interface::getStaticPointerStr(){
 
 	void Interface ::setInheritInterface(Interface* interf)
 	{
+		interf->addChild(children_ids);
 		this->inherit_interface=interf;
 	//	this->static_twin->inherit_interface = interf->static_twin;
 		classNode->_scoop = interf->classNode;
@@ -151,18 +152,22 @@ Variable* Interface::getVariableByName(string name)
 string Interface::getVtableLabel(){
 	return string("vt_") + std::to_string(getId());
 }
+string Interface::getIsALabel(){
+	return string("isa_") + std::to_string(getId());
+}
 string Interface::getVtableString(){
 	string res;
 	for (auto i = this->methodsItem->methods.begin(); i != this->methodsItem->methods.end(); i++)
 	{
-		string ins1="li $t0,";
+		string ins1 = "li $t0,";
 		ins1 += std::to_string(i->second->getId());
-		string ins2="beq $t0,$a1, ";
+		string ins2 = "beq $t0,$a1, ";
 		ins2 += i->second->getLabel();
-		res += ins1 + "\n" + ins2+"\n";
+		res += ins1 + "\n" + ins2 + "\n";
 	}
 	return res;
 }
+
 
 void Interface::generateCode(){
 	MIPS_ASM::printComment("#########################################");
@@ -195,6 +200,7 @@ void Interface::generateCode(){
 
 	MIPS_ASM::jump("method_not_found");
 
+
 	for (auto i = this->methodsItem->methods.begin(); i != this->methodsItem->methods.end(); i++)
 	{
 		MIPS_ASM::add_instruction("\n\n");
@@ -216,6 +222,23 @@ void Interface::generateCode(){
 
 		static_twin->generateCode();
 		MIPS_ASM::printComment("###End STATIC");
+
+
+		MIPS_ASM::printComment(string("is aaa: "));
+		MIPS_ASM::add_instruction("\n\n");
+		MIPS_ASM::label(getIsALabel());
+		MIPS_ASM::li("v0", 0);
+
+		for (auto i : children_ids){
+			MIPS_ASM::li("t0", i);
+
+			MIPS_ASM::beq("a0", "t0", getIsALabel() + "yes");
+		}
+		MIPS_ASM::jr();
+		MIPS_ASM::label(getIsALabel() + "yes");
+		MIPS_ASM::li("v0", 1);
+		MIPS_ASM::jr();
+
 
 	}
 	MIPS_ASM::add_instruction("\n\n\n");

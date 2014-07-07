@@ -150,7 +150,28 @@ bool Method::compare(Method* method1, Method* method2){
 				return false;
 			j++;
 		}
-		return method1-> get_name()==method2->get_name();
+		return method1->get_name() == method2->get_name();
+	}
+	return false;
+}
+int Method::compareOverload(Method* method1, Method* method2){
+	if (method1->parameters.size() == method2->parameters.size() && method1->get_static() == method2->get_static())
+	{
+		int j = 0;
+		if (method1->get_name() != method2->get_name())
+			return 0;
+		int ok = 1;
+		for (int i = 0; i < method1->parameters.size(); i++)
+		{
+
+			if (!Selector::compareSelector(method1->parameters.at(i), method2->parameters.at(j)))
+			if (*(method1->parameters.at(i)) >= *(method2->parameters.at(j)))
+				ok = 2;
+			else
+				return false;
+			j++;
+		}
+		return ok; 
 	}
 	return false;
 }

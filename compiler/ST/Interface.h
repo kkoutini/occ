@@ -3,6 +3,7 @@
 #include "Type.h"
 #include <hash_map>
 #include <map>
+#include <set>
 #include "Symbol.h"
 #include "Protocol.h"
 #include "../VariableItems.h"
@@ -17,6 +18,7 @@ private:
 	VariableItems* varItems;
 	MethodItems* methodsItem;
 	hash_map< string, Protocol*> son_protocols;
+	set<int> children_ids ;
 	ClassNode *classNode;
 	Interface* inherit_interface;
 	int _id=-1;
@@ -30,9 +32,16 @@ public:
 		return classNode;
 	}
 	string Interface::getVtableLabel();
+	string Interface::getIsALabel();
 	string Interface::getVtableString();
 	bool isDescendentOf(Interface* i);
-
+	void addChild(set<int> &s){
+		for (auto i : s){
+			children_ids.insert(i);
+		}
+		if (inherit_interface)
+			inherit_interface->addChild(children_ids);
+	}
 	int Interface::getObjectIdentifiersSize();
 
 	string Interface::getStaticPointerStr();

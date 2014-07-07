@@ -58,8 +58,22 @@ public:
 		if (method == -1){
 			//khaled
 			//ERROR no method found
-			
-			return;
+			Method* mm = sender_interface->getMethodsItem()->getOverloadedMethod(_message, _selcs);
+
+			if (mm == NULL){
+				//khaled
+				//ERROR no method
+				string error = "ERROR no matching method found";
+				addError(error);
+				
+
+				return;
+			}
+			else{
+				method = mm->getId();
+				///TODo runtime overloading
+				//todo after selecting method add warnings
+			}
 		}
 
 		MIPS_ASM::printComment(string("Dynamically CALLING A METHOD ") + std::to_string( method));
@@ -104,11 +118,14 @@ public:
 			string error = "ERROR Sender isn't Interface ";
 			addError(error);
 		}
-		Method* method = sender_interface->getMethod(_message, _selcs);
+		Method* method = sender_interface->getMethodsItem()->getOverloadedMethod(_message, _selcs);
 
 		if (method == NULL){
 			//khaled
 			//ERROR no method
+			string error = "ERROR no overloaded method found";
+			addError(error);
+
 			return;
 		}
 
@@ -148,7 +165,7 @@ public:
 			Program::addError(new SemanticError(error));
 			return false;
 		}
-		Method* method = sender_interface->getMethod(_message, _selcs);
+		Method* method = sender_interface->getMethodsItem()->getOverloadedMethod(_message, _selcs);
 		; //sender_interface->getMethod(_message, _params, _types, false);
 		if (method == NULL)
 		{

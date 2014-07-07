@@ -119,8 +119,24 @@ void SymbolTable::generateStatics()
 			 fs->addNode(new AsmNode(fs, "li $v0,9"));
 			 fs->addNode(new AsmNode(fs, string("li $a0,") + std::to_string(ifs->getObjectSize())));
 			 fs->addNode(new AsmNode(fs, "syscall"));
-			 fs->addNode(new AsmNode(fs, "li $t0,"+std::to_string(ifs->getId())));
+			 fs->addNode(new AsmNode(fs, "li $t0," + std::to_string(ifs->getId())));
 			 fs->addNode(new AsmNode(fs, "sw $t0,0($v0)"));
+
+			 ifs->static_twin->getMethodsItem()->addMethod(method);
+			 method = new Method("", getType("bool"));
+			 method->addSelector(new DeclerationSelector("isA", { new Variable("obj", getType("NSObject")) }));
+			 fs = ScoopHelper::createNewFunctionNode(method, ifs->static_twin);
+			 fs->addNode(new AsmNode(fs, "sub $sp,$sp,8"));
+			 fs->addNode(new AsmNode(fs, "sw $ra,0($sp)"));
+			 fs->addNode(new AsmNode(fs, "sw $fp,4($sp)"));
+			 fs->addNode(new IdentifierNode("obj",fs));
+
+			 fs->addNode(new AsmNode(fs, "lw $t0,-4($sp)"));
+			 fs->addNode(new AsmNode(fs, "lw $a0,0($t0)"));
+			 fs->addNode(new AsmNode(fs, "jal " + ifs->getIsALabel()));
+			 fs->addNode(new AsmNode(fs, "lw $ra,0($sp)"));
+			 fs->addNode(new AsmNode(fs, "lw $fp,4($sp)"));
+			 fs->addNode(new AsmNode(fs, "add $sp,$sp,8"));
 
 			 ifs->static_twin->getMethodsItem()->addMethod(method);
 
