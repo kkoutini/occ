@@ -3539,7 +3539,7 @@ yyreduce:
   case 179:
 #line 968 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* yacc.c:1646  */
     {Streams::verbose()<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P\n";
-										(yyval.r.node)=new ForNode(NULL,(yyvsp[-1].r.node),NULL,NULL,scoop);
+										(yyval.r.node)=new ForNode(NULL,(yyvsp[-2].r.node),NULL,NULL,scoop);
 										}
 #line 3545 "yacc.cpp" /* yacc.c:1646  */
     break;

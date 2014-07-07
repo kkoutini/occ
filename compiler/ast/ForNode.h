@@ -24,44 +24,59 @@ public:
 
 	virtual bool typeCheck()
 	{
-		if (_condition->getType()==NULL)
+		Type* boolType = symbolTable->getType("bool");
+		if (_condition != NULL)
 		{
-			return false;
-		}
-		else{
-			Type* boolType = symbolTable->getType("bool");
-			if (_increment->typeCheck() == true)
+
+
+			if (_condition->getType() == NULL)
+				return false;
+			else if (_condition->getType() == boolType)
 			{
-				if (_condition->getType() == boolType)
+				if (_increment == NULL)
+					return	_initlizer->typeCheck();
+				else	if (_initlizer == NULL)
 				{
-					return true;
+					return _increment->typeCheck();
 				}
 				else
-				{
-					/////////// error 
-					string error = "ERROR Cannot implicitly convert type " + _condition->getType()->get_name() + " to 'bool' ";
-					addError(error);
-				}
+					return _initlizer->typeCheck()  && _increment->typeCheck();
+
 			}
 			else
 			{
+				/////////// error 
+				string error = "ERROR Cannot implicitly convert type " + _condition->getType()->get_name() + " to 'bool' ";
+				addError(error);
 				return false;
 			}
-			/////////// error 	
-				//string error = "ERROR Cannot implicitly convert type " + _condition->getType()->get_name() + " to 'bool'  AT Line Number :" + std::to_string(_line) + " Column Number :" + std::to_string(_col);
-				//Program::addError(new SemanticError(error));
-			
+
 		}
 		
+		else if (_increment==NULL)
+		{
+			return _initlizer->typeCheck();
+		}
+		else if (_initlizer == NULL)
+		{
+			return _increment->typeCheck();
+		}
+		else
+		{
+			return true && _initlizer->typeCheck() && _increment->typeCheck();
+		}
+
+
 	}
-
-
 	void setStatement(Node* statement){
 		if(statement!=NULL)
 			this->_statment=statement;
 	}
 	virtual void generateCode (){
-		typeCheck();
+		if (!typeCheck())
+		{
+			return;
+		}
 		string cc  = "";
 		cc=std::to_string(ForNode::for_label++);
 
@@ -82,12 +97,16 @@ public:
 		MIPS_ASM::label(ccc);
 
 		MIPS_ASM::printComment("Begin Condition\n");
-		if(_condition!=NULL)
+		if (_condition != NULL)
+		{
 			_condition->generateCode();
+			MIPS_ASM::pop("t0");
+			MIPS_ASM::beq("t0", "0", ccc2);
+		}
+			
 			MIPS_ASM::printComment("End Condition\n");
 
-		MIPS_ASM::pop("t0");
-		MIPS_ASM::beq("t0","0",ccc2);
+	
 
 		MIPS_ASM::printComment("Begin Statement\n");
 		if(_statment!=NULL)

@@ -966,7 +966,7 @@ for_loop_header:
 										}
 	|FOR OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P	
 										{Streams::verbose()<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P\n";
-										$<r.node>$=new ForNode(NULL,$<r.node>5,NULL,NULL,scoop);
+										$<r.node>$=new ForNode(NULL,$<r.node>4,NULL,NULL,scoop);
 										}
 	|FOR OPEN_P 				SEMI_COMA			 SEMI_COMA expr			CLOSE_P	
 										{Streams::verbose()<<"for_loop_header: FOR OPEN_P 				SEMI_COMA			 SEMI_COMA expr			CLOSE_P";
