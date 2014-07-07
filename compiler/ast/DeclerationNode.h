@@ -1,6 +1,5 @@
 #pragma once
 #include "../voidnode.h"
-
 #include "string"
 #include<list>
 #include<map>
@@ -16,18 +15,10 @@ public:
 	void add(string name,Node* node){
 		_identifires.push_back(make_pair(name,node));
 	}
-	void generateCode(){
-		/*for(auto i=_identifires.begin();i!=_identifires.end();i++){
-		(*i).second->generateCode();
-		}*/
-	}
+	virtual void generateCode();
 	DeclerationNode(list<pair<string, Node*> > identifires, ScoopNode* scoop, string typeName) :VoidNode(scoop), _identifires(identifires)
 	{
 		_typename=typeName;
-	}
-	DeclerationNode(DeclerationNode* temp) :VoidNode(temp->_scoop), _identifires(temp->_identifires), _typename(temp->_typename)
-	{
-	
 	}
 	void toString(){
 		cout<<"DeclarationNode\n";

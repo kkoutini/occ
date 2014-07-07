@@ -87,5 +87,3 @@ public:
 	{
 	}
 };
-bool TypeChecker::isInit=0;
-map<Type * ,map<Type *,int > > TypeChecker::_castTable; 

@@ -37,7 +37,7 @@ public:
 
 			 MIPS_ASM::printComment("Assign node poping old val:");
 
-			 MIPS_ASM::pop(t0);
+			 MIPS_ASM::pop();
 			 MIPS_ASM::printComment("Assign node getting RHS val:");
 
 			 MIPS_ASM::top(t0);// not poping in order to keep value in stack
@@ -78,9 +78,15 @@ public:
 	 }
 	virtual bool typeCheck()
 	{
+		if (!_rightExp || !_leftExp){
+			string error = "missing assign operand";
+			addError((error));
+			return false;
+
+		}
 		if (_rightExp->getType() == NULL || _leftExp->getType()==NULL)
 		{
-			string error = "ERROR some type in assign Node is null  ";
+			string error = "ERROR some type in assign is null  ";
 			addError((error));
 			return false;
 		}
