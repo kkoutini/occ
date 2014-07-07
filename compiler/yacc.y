@@ -170,6 +170,7 @@ Method* nodeXX;
 %token DOUBLEMINUS //--
 %token TRY //try
 %token CATCH //catch
+%token THROW //catch
 %token FINALLY //finally
 %token AT_ASM  //@asm
 %token SELF   //self pointer
