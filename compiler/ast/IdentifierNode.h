@@ -61,7 +61,7 @@ virtual void generateCode(){
 		
 	  if (this->_scoop->get_variable(_name) == NULL)
 		{
-		  Program::addError(new SemanticError("undeclare variable "+_name+" ", lineNum, colNum, sourceFile));
+		  addError("undeclare variable "+_name+" ");
 		  return symbolTable->getType("error_type");
 		}
 		else
