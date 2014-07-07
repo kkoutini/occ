@@ -40,30 +40,32 @@ MethodItems::MethodItems(MethodItems* methodItems){
 }
 
 Method* MethodItems::getMethod(string name, Type* type, vector<DeclerationSelector*>parameter, bool isStatic)
-	{
-		multimap<const string, Method*>::iterator it = this->methods.find(name);
-		Method* tempMethod=new Method(name,type);
-		tempMethod->set_variables(parameter);
-		tempMethod->set_static(isStatic);
+{
+	multimap<const string, Method*>::iterator it = this->methods.find(name);
+	Method* tempMethod = new Method(name, type);
+	tempMethod->set_variables(parameter);
+	tempMethod->set_static(isStatic);
 	while (it != this->methods.end()){
-			if (Method::compare(tempMethod,(Method*)it->second)){
+		if (Method::compare(tempMethod, (Method*)it->second)){
 			return (Method*)it->second;
-		}else{
+		}
+		else{
 			it++;
 		}
 	}
-	if (it==this->methods.end()){
+	if (it == this->methods.end()){
 		return NULL;
 	}
 }
 
-Method* MethodItems::getMethod(string message, vector<CallSelector*> selectors )
+
+Method* MethodItems::getMethod(string message, vector<CallSelector*> selectors)
 {
 	auto it = this->methods.find(message);
 	while (it != this->methods.end()){
-		Method& m =*( it->second);
+		Method& m = *(it->second);
 		int i = 0;
-		if (m.parameters.size()==selectors.size())
+		if (m.parameters.size() == selectors.size())
 		{
 			bool match = true;
 			for (auto p : m.parameters){
@@ -75,9 +77,10 @@ Method* MethodItems::getMethod(string message, vector<CallSelector*> selectors )
 					match = false;
 					break;
 				}
-				
+
 
 			}
+			//todo advanced overloading
 			if (match)
 				return it->second;
 		}
@@ -86,6 +89,45 @@ Method* MethodItems::getMethod(string message, vector<CallSelector*> selectors )
 	if (it == this->methods.end()){
 		return NULL;
 	}
+
+}
+Method* MethodItems::getOverloadedMethod(string message, vector<CallSelector*> selectors)
+{
+	int res, tres = 0; Method* resm = 0;
+	resm = getMethod(message, selectors);
+	if (resm)
+		return resm;
+	auto it = this->methods.find(message);
+	while (it != this->methods.end()){
+		Method& m = *(it->second);
+		int i = 0;
+		if (m.parameters.size() == selectors.size())
+		{
+			bool match = true;
+			for (auto p : m.parameters){
+
+				if ((*p) >= (*selectors[i]))
+					++i;
+				else
+				{
+					match = false;
+					break;
+				}
+
+
+			}
+			//todo advanced overloading
+			if (match)
+			{
+				if (resm)
+					return (Method*)(-1);
+				else
+					resm = it->second;
+			}
+		}
+		++it;
+	}
+	return resm;
 
 }
 MethodItems::~MethodItems(void)
