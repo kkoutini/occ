@@ -3,7 +3,7 @@
 
 Protocol* ProtocolHelper ::createNewProtocol(string name,SymbolTable *symbolTable ){
 	Protocol * protocol=new Protocol(name);
-	if(!symbolTable->checkTypeExist(name))
+	if (!symbolTable->checkTypeProtocol(name))
 		symbolTable->add_type(protocol);
 
 	else {

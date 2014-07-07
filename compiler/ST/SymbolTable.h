@@ -38,6 +38,7 @@ public:
 	//void addSymbol(Type*);
 	//Type* getSymbol(string);
 	Type* getType(string name);
+	bool checkTypeProtocol(string name);
 	bool getInterfaceState(string name);
 	void add_interfaceState(string, bool);
 	void set_interfaceState(string, bool);
