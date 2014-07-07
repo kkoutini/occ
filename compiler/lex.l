@@ -25,6 +25,9 @@ FLOAT						("+"|"-")?({digit}+\.{digit}+)
 
 "@interface"		{colNum+=10;yylval.r.colNo=colNum;		yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);	return AT_INTERFACE;}
 "@protocol"			{colNum+=9;yylval.r.colNo=colNum;					    		return AT_PROTOCOL;}
+"@try"			{colNum+=4;yylval.r.colNo=colNum;					    		return TRY;}
+"@catch"			{colNum+=6;yylval.r.colNo=colNum;					    		return CATCH;}
+"@throw"			{colNum+=6;yylval.r.colNo=colNum;					    		return THROW;}
 ":"					{colNum+=1;yylval.r.colNo=colNum;									return SEMI_COLUMN;}
 "NSString"			{colNum+=8;yylval.r.colNo=colNum;			yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);						return NSSTRING;}
 "float"				{colNum+=5;yylval.r.colNo=colNum;				yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);					return FLOAT;}

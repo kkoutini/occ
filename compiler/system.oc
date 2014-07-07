@@ -127,3 +127,11 @@
 
 
 @end
+
+@interface NSException
+{
+NSString msg;
+}
+@end
+@implementation NSException
+@end

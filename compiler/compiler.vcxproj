@@ -182,6 +182,7 @@
     <ClInclude Include="ST\VariableHelper.h" />
     <ClInclude Include="SwitchNode.h" />
     <ClInclude Include="SyntaxError.h" />
+    <ClInclude Include="ThrowNode.h" />
     <ClInclude Include="VariableItems.h" />
     <ClInclude Include="VoidNode.h" />
     <ClInclude Include="Warning.h" />
