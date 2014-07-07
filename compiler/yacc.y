@@ -941,22 +941,22 @@ for_loop:
 											}
 ;
 for_loop_header:
-	FOR OPEN_P for_initializer	SEMI_COMA logic_expr SEMI_COMA expr  			CLOSE_P	
-										{Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer	SEMI_COMA logic_expr SEMI_COMA expr			CLOSE_P\n";
+	FOR OPEN_P for_initializer	SEMI_COMA logic_expr1 SEMI_COMA expr  			CLOSE_P	
+										{Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer	SEMI_COMA logic_expr1 SEMI_COMA expr			CLOSE_P\n";
 										$<r.node>$=new ForNode($<r.node>3,$<r.node>5,$<r.node>7,NULL,scoop);
 										//nodeXX=$<r.node>5;
 										}
 	
-	|FOR OPEN_P					SEMI_COMA logic_expr SEMI_COMA expr			CLOSE_P	
-										{Streams::verbose()<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr SEMI_COMA expr			CLOSE_P\n";
+	|FOR OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA expr			CLOSE_P	
+										{Streams::verbose()<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA expr			CLOSE_P\n";
 										$<r.node>$=new ForNode(NULL,$<r.node>4,$<r.node>6,NULL,scoop);
 										}
 	|FOR OPEN_P for_initializer SEMI_COMA			 SEMI_COMA expr			CLOSE_P	
 										{Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer SEMI_COMA			 SEMI_COMA expr			CLOSE_P\n";
 										$<r.node>$=new ForNode($<r.node>3,NULL,$<r.node>6,NULL,scoop);
 										}
-	|FOR OPEN_P for_initializer SEMI_COMA logic_expr SEMI_COMA				CLOSE_P	
-										{Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer SEMI_COMA logic_expr SEMI_COMA				CLOSE_P	\n";
+	|FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P	
+										{Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P	\n";
 										$<r.node>$=new ForNode($<r.node>3,$<r.node>5,NULL,NULL,scoop);
 										}
 	
@@ -964,9 +964,9 @@ for_loop_header:
 										{Streams::verbose()<<"for_loop_header: FOR OPEN_P	for_initializer	SEMI_COMA			 SEMI_COMA				CLOSE_P	\n";
 										$<r.node>$=new ForNode($<r.node>3,NULL,NULL,NULL,scoop);
 										}
-	|FOR OPEN_P					SEMI_COMA logic_expr SEMI_COMA				CLOSE_P	
-										{Streams::verbose()<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr SEMI_COMA				CLOSE_P\n";
-										$<r.node>$=new ForNode(NULL,$<r.node>5,NULL,NULL,scoop);
+	|FOR OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P	
+										{Streams::verbose()<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P\n";
+										$<r.node>$=new ForNode(NULL,$<r.node>4,NULL,NULL,scoop);
 										}
 	|FOR OPEN_P 				SEMI_COMA			 SEMI_COMA expr			CLOSE_P	
 										{Streams::verbose()<<"for_loop_header: FOR OPEN_P 				SEMI_COMA			 SEMI_COMA expr			CLOSE_P";
@@ -997,6 +997,18 @@ for_initializer:
 										$<r.node>$=new IdentifierNode($<r.text>1,scoop);
 										}
 ;
+logic_expr1:
+	 logic_expr1 AND_AND logic_expr				{Streams::verbose()<<"logic_expr:expr AND! expr\n";
+										$<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,AND_AND,scoop);
+										}
+	|logic_expr1 OR_OR logic_expr		{Streams::verbose()<<"logic_expr:logic_expr OR_OR logic_expr\n";
+										$<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,OR_OR,scoop);
+										}
+	| logic_expr						{$<r.node>$=$<r.node>1;
+										
+										}
+	
+
 logic_expr:
 	 expr LESS_THAN expr				{Streams::verbose()<<"logic_expr:expr LESS_THAN expr\n";
 										$<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,LESS_THAN,scoop);
@@ -1022,19 +1034,17 @@ logic_expr:
 	|OPEN_P logic_expr CLOSE_P			{Streams::verbose()<<"logic_expr:OPEN_P logic_expr CLOSE_P\n";
 										 $<r.node>$=$<r.node>2;
 										}
-	|logic_expr AND_AND logic_expr		{
-											Streams::verbose()<<"logic_expr:logic_expr AND_AND logic_expr\n";
-											$<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,AND_AND,scoop);
-										}
-	|logic_expr OR_OR logic_expr		{Streams::verbose()<<"logic_expr:logic_expr OR_OR logic_expr\n";
-										$<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,OR_OR,scoop);
-										}
+	
 	|TRUE								{Streams::verbose()<<"logic_expr:TRUE\n";
 										 $<r.node>$=new ConstantNode(true,scoop);
 										}
 	|FALSE								{Streams::verbose()<<"logic_expr:FALSE\n";
 											 $<r.node>$=new ConstantNode(false,scoop);
 										}
+	|long_id								{Streams::verbose()<<"logic_expr:long id\n";
+											 $<r.node>$=$<r.node>1;
+										}
+
 ;
 expr:
 	assign_expr							{Streams::verbose()<<"expr:assign_expr\n";
@@ -1216,7 +1226,7 @@ while_loop:
 										}
 ;
 while_loop_header:
-	WHILE OPEN_P logic_expr CLOSE_P			{Streams::verbose()<<"while_loop_header: WHILE OPEN_P logic_expr CLOSE_P\n";
+	WHILE OPEN_P logic_expr1 CLOSE_P			{Streams::verbose()<<"while_loop_header: WHILE OPEN_P logic_expr CLOSE_P\n";
 											$<r.node>$=$<r.node>3;
 											}
 ;
@@ -1233,7 +1243,7 @@ conditional_statement:
 										}
 ;
 if_header:
-	IF OPEN_P logic_expr CLOSE_P			{Streams::verbose()<<"if_header: IF OPEN_P logic_expr CLOSE_P\n";
+	IF OPEN_P logic_expr1 CLOSE_P			{Streams::verbose()<<"if_header: IF OPEN_P logic_expr CLOSE_P\n";
 											$<r.node>$=$<r.node>3;
 											}
 ;

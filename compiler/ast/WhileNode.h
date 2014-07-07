@@ -19,30 +19,43 @@ public:
 	virtual bool typeCheck()
 	{
 		Type* boolType = symbolTable->getType("bool");
-		if (_condition->getType() == NULL)
+		if (_condition != NULL)
 		{
-			string error = "ERROR in condition in While NULL ERROR ";
-			addError((error));
-		}
-		else{
-			if (_condition->getType() == boolType)
-			{
-				return true;
-			}
-			else
-			{
-				/////////// error 	
-				string error = "ERROR Cannot implicitly convert type " + _condition->getType()->get_name() + " to 'bool' ";
-				addError(error);
-				return false;
-			}
 
+
+			if (_condition->getType() == NULL)
+			{
+				string error = "ERROR in condition in While NULL ERROR ";
+				addError((error));
+			}
+			else{
+				if (_condition->getType() == boolType)
+				{
+					return true;
+				}
+				else
+				{
+					/////////// error 	
+					string error = "ERROR Cannot implicitly convert type " + _condition->getType()->get_name() + " to 'bool' ";
+					addError(error);
+					return false;
+				}
+
+			}
+		}
+		else
+		{
+			return false;
 		}
 	}
 
 	 	 virtual void generateCode (){
 		
 		// 	strcpy(this->loop_end,"");
+			 if (!typeCheck())
+			 {
+				 return;
+			 }
 
 	string cc  = "";
 	cc=std::to_string(WhileNode::while_label++);
