@@ -12,7 +12,7 @@ private:
 
 public:
 
-	static	void printWarning();
+	
 	static void printErrors();
 	static void addError(Error*);
 	static void addWarning(Error*);
