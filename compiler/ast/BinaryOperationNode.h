@@ -172,9 +172,9 @@ public:
 			{
 
 
-				MIPS_ASM::printComment("LESS_THAN opf");
+				MIPS_ASM::printComment("MORE_THAN opf");
 				MIPS_ASM::add_instruction("li $t0,1\n");
-				MIPS_ASM::add_instruction(string("c.lt.s $f0,$f1 \n"));
+				MIPS_ASM::add_instruction(string("c.le.s $f0,$f1 \n"));
 				MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
 				MIPS_ASM::add_instruction("li $t0,0\n");
 				MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
@@ -205,7 +205,7 @@ public:
 
 				MIPS_ASM::printComment("LESS_THAN opf");
 				MIPS_ASM::add_instruction("li $t0,1\n");
-				MIPS_ASM::add_instruction(string("c.le.s $f0,$f1 \n"));
+				MIPS_ASM::add_instruction(string("c.lt.s $f0,$f1 \n"));
 				MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
 				MIPS_ASM::add_instruction("li $t0,0\n");
 				MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
