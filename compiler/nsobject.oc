@@ -3,10 +3,15 @@
 @interface NSObject
 {
 }
+-(bool) isA: (NSObject*)a;
 
 
 
 
 @end
 @implementation NSObject
+-(bool) isA: (NSObject*)a
+{
+	return 1;
+}
 @end

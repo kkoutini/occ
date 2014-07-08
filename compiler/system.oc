@@ -132,6 +132,47 @@
 {
 NSString msg;
 }
++(NSException*) withMsg:(NSString)m;
+
 @end
 @implementation NSException
++(NSException*) withMsg:(NSString)m
+{
+	NSException* a=[self alloc];
+	a.msg=m;
+	return a;
+}
+@end
+@interface NSExceptionCatcher
+{
+NSObject* ex;
+NSExceptionCatcher* parent;
+int sp;
+int fp;
+int backl;
+}
+-(void) catch:(NSException*)e;
++(NSExceptionCatcher*) new:(NSException*)e;
+
+@end
+@implementation NSExceptionCatcher
+-(void) catch:(NSException*)e
+{
+	if([ex isA:e])
+	{
+		[System println:"catched"];
+	}
+	else{
+	[parent catch:e];
+	}
+}
++(NSExceptionCatcher*) new:(NSObject*)e:(NSExceptionCatcher*) p:(int)s :(int) f :(int)l{
+	NSExceptionCatcher* t=[self alloc];
+	t.ex=e;
+	t.sp=s;
+	t.parent=p;
+	t.fp=f;
+	t.backl=l;
+	return t;
+}
 @end

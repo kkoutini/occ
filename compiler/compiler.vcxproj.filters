@@ -329,6 +329,12 @@
     <ClInclude Include="ThrowNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TryNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CatchNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="codeold.txt">

@@ -149,6 +149,7 @@
     <ClInclude Include="ast\WhileNode.h" />
     <ClInclude Include="CallNode.h" />
     <ClInclude Include="CallSelector.h" />
+    <ClInclude Include="CatchNode.h" />
     <ClInclude Include="ClassNode.h" />
     <ClInclude Include="DeclerationSelector.h" />
     <ClInclude Include="DotNode.h" />
@@ -183,6 +184,7 @@
     <ClInclude Include="SwitchNode.h" />
     <ClInclude Include="SyntaxError.h" />
     <ClInclude Include="ThrowNode.h" />
+    <ClInclude Include="TryNode.h" />
     <ClInclude Include="VariableItems.h" />
     <ClInclude Include="VoidNode.h" />
     <ClInclude Include="Warning.h" />

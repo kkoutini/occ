@@ -36,6 +36,8 @@
 				#include "AsmNode.h"
 				#include "DotNode.h"
 				#include "ArrayAccessNode.h"
+				#include "CatchNode.h"
+#include "TryNode.h"
 
 				
 				#include <fstream>
@@ -242,7 +244,6 @@ class_interface_header:  AT_INTERFACE IDENTIFIER		SEMI_COLUMN IDENTIFIER	{Stream
 																				 interface=InterfaceHelper::createNewInterface($<r.text>2,"",symbolTable);
 
 																				}
-						|error IDENTIFIER								{Streams::verbose()<<"Error: Unknown type name '"<<$<r.text>1<<"' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
 						|AT_INTERFACE error					{Streams::verbose()<<"Error: Expected Identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
 						
 						|AT_INTERFACE IDENTIFIER SEMI_COLUMN 	error  		{Streams::verbose()<<"Error: Expected Identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}		
@@ -602,7 +603,7 @@ interface_declaration:
 class_method_declaration:
 	PLUS p_type		 method_selectors	SEMI_COMA				{
 																Streams::verbose()<<"class_method_declaration: PLUS p_type method_selectors	SEMI_COMA\n";
-																method=InterfaceHelper::createNewMethod(type,symbolTable,$<r.text>3,selectorsList,true);
+																method=InterfaceHelper::createNewMethod(symbolTable->getType($<r.text>2),symbolTable,$<r.text>3,selectorsList,true);
 															
 																 selectorsList.clear();
 																
@@ -614,7 +615,7 @@ class_method_declaration:
 instance_method_declaration:
 	MINUS p_type	method_selectors		SEMI_COMA			{
 															Streams::verbose()<<"instance_method_declaration: MINUS p_type	method_selectors		SEMI_COMA\n";
-															method=InterfaceHelper::createNewMethod(type,symbolTable,$<r.text>3,selectorsList,false);
+															method=InterfaceHelper::createNewMethod(symbolTable->getType($<r.text>2),symbolTable,$<r.text>3,selectorsList,false);
 																 selectorsList.clear();
 																
 																
@@ -733,7 +734,7 @@ class_implementation_definition:
 class_implementation_definition_header:
 	PLUS p_type		 method_selectors	{
 										Streams::verbose()<<"class_implementation_definition_header: PLUS p_type		 method_selectors\n";
-										method=InterfaceHelper:: createNewMethod(type,symbolTable,$<r.text>3,selectorsList,true);
+										method=InterfaceHelper:: createNewMethod(symbolTable->getType($<r.text>2),symbolTable,$<r.text>3,selectorsList,true);
 																 selectorsList.clear();
 									           functionNode= ScoopHelper::createNewFunctionNode(method,interface->static_twin);
 												scoop=functionNode;				
@@ -754,7 +755,7 @@ instance_implementation_definition:
 instance_implementation_definition_header:
 	MINUS p_type		method_selectors			{
 											     Streams::verbose()<<"instance_implementation_definition_header:MINUS p_type		method_selectors\n";
-												 method=InterfaceHelper:: createNewMethod(type,symbolTable,$<r.text>3,selectorsList,false);
+												 method=InterfaceHelper:: createNewMethod(symbolTable->getType($<r.text>2),symbolTable,$<r.text>3,selectorsList,false);
 																 selectorsList.clear();
 									           functionNode= ScoopHelper::createNewFunctionNode(method,interface);
 												scoop=functionNode;
@@ -838,7 +839,7 @@ statement:
 												$<r.text>$="return";
 												$<r.node>$=$<r.node>1;
 											}
-	|try_catch								{Streams::verbose()<<"statement: try_catch\n";}
+	|try_catch								{Streams::verbose()<<"statement: try_catch\n";$<r.node>$=$<r.node>1;}
 
 	|asm                                    {
 	                                            $<r.text>$="asm";
@@ -1361,14 +1362,25 @@ try_catch:
 												  Streams::verbose()<<"try_catch:TRY statement catch_list finally_statement \n";
 												}
 
-	| TRY statement catch_list %prec try_prec{				  
+	| TRY statement catch_list %prec try_prec{		
+	$<r.node>$=new TryNode(scoop,$<r.node>2,dynamic_cast<CatchNode*>($<r.node>3))		;		  
 								Streams::verbose()<<"try_catch:TRY statement catch_list \n";
 							  }
 ;
 catch_list:
-	CATCH OPEN_S type IDENTIFIER CLOSE_S statement {Streams::verbose()<<"catch_list:CATCH OPEN_S type IDENTIFIER CLOSE_S statement \n";}
-	|catch_list CATCH OPEN_S type IDENTIFIER CLOSE_S statement {Streams::verbose()<<"catch_list:catch_list CATCH OPEN_S type IDENTIFIER CLOSE_S statement \n";}
+	one_catch {Streams::verbose()<<"catch_list:one_catch \n";$<r.node>$=$<r.node>1;
+													}
+	|catch_list one_catch {Streams::verbose()<<"catch_list:catch_list CATCH OPEN_S type IDENTIFIER CLOSE_S statement \n";
+												$<r.node>$=$<r.node>2;
+												dynamic_cast<CatchNode*>($<r.node>$)->next=dynamic_cast<CatchNode*>($<r.node>1);
+												}
 ;
+one_catch: one_catch_header statement {Streams::verbose()<<"catch_list:CATCH OPEN_S type IDENTIFIER CLOSE_S statement \n";
+												$<r.node>$=$<r.node>1;dynamic_cast<CatchNode*>($<r.node>$)->_statement=$<r.node>1;	}
+
+													;
+one_catch_header: CATCH OPEN_P type IDENTIFIER CLOSE_P { $<r.node>$=new CatchNode(scoop,type,$<r.text>3);Streams::verbose()<<"now";}
+	
 finally_statement:
 	FINALLY statement
 ;

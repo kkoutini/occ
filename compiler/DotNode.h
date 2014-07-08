@@ -17,7 +17,6 @@ public:
 	virtual void generateCode(){
 		//	Interface* type=obj->getType();
 		//	type->getMethodByName
-		_sender->generateCode();
 		Type* senderType = _sender->getType();
 
 		//TODO: check if sender isn't interface
@@ -27,6 +26,7 @@ public:
 			//ERRor
 			string error = "ERROR Sender isn't Interface ";
 			addError(error);
+			return;
 		}
 		Variable* variable = sender_interface->getVariableByName(_member);
 		//khaled
@@ -40,13 +40,13 @@ public:
 		_sender->generateCode();
 		
 		// now the object address must be in stack
-		MIPS_ASM::pop("a0");
+		MIPS_ASM::pop("t1");
 
-		MIPS_ASM::lw("t0",variable->getOffset(),"a0");
+		MIPS_ASM::lw("t0",variable->getOffset(),"t1");
 
 		//v0 contains the address in memorry to be used later in assignment
 		
-		MIPS_ASM::add_instruction(string("addi $v0,$") + "a0"//var->getOffsetRegister()
+		MIPS_ASM::add_instruction(string("addi $v0,$") + "t1"//var->getOffsetRegister()
 			+ "," + std::to_string(variable->getOffset()) + "\n");
 
 		MIPS_ASM::push("t0");
@@ -59,18 +59,20 @@ public:
 		if (sender_interface == NULL)
 		{
 			//throw error
-			string error = "ERROR in . NODE generate type in  line number ";
+			string error = "ERROR in dot NODE sender is not ";
 			Program::addError(new SemanticError(error));
 			return false;
 		}
-		Method* variable = NULL; //sender_interface->getMethod(_message, _params, _types, false);
+		Variable* variable = sender_interface->getVariableByName(_member);
 		if (variable == NULL)
 		{
 			//throw error
-			string error = "ERROR in . NODE generate type in  line number ";
+			string error = "ERROR in dot NODE variable not found ";
 			Program::addError(new SemanticError(error));
+			return false;
+
 		}
-		return variable->getReturnType();
+		return variable->getType();
 	}
 	virtual ~DotNode()
 	{

@@ -95,6 +95,9 @@ bool SymbolTable::checkTypeExist(string name)
 }
 void SymbolTable::generateStatics()
 {
+	//MIPS_ASM::add_data("top_catcher:    .byte   0:4");
+	globalScoop->add_variable(new Variable("top_catcher", getType("NSExceptionCatcher"), 0));
+
 	for (auto i = this->types.begin(); i != this->types.end(); i++)
 	{
 		auto ifs = dynamic_cast<Interface*> (i->second);
