@@ -55,6 +55,8 @@ class TryNode :
 public:
 	Node* _statment;
 	CatchNode* catches;
+	int id = 0;
+	static int count;
 	TryNode(ScoopNode* scoop, Node* statment, CatchNode* c) :VoidNode(scoop), _statment(statment), catches(c)
 	{
 	}
@@ -78,10 +80,34 @@ public:
 			asn->generateCode();
 			cat = cat->next;
 		}
-	}
+		_statment->generateCode();
+		MIPS_ASM::jump("tryfree_" + getId());
+		cat = catches;
+		while (cat){
+			cat->try_id = getId();
+			cat->generateCode();
+			cat = cat->next;
+		}
 
+		MIPS_ASM::label("tryfree_"+getId());
+		cat = catches;
+		while (cat){
+
+			AssignNode* asn = new AssignNode(_scoop, new IdentifierNode("top_catcher", _scoop), new DotNode(_scoop, new IdentifierNode("top_catcher", _scoop), "parent"));
+			asn->generateCode();
+			cat = cat->next;
+		}
+		MIPS_ASM::label("tryend_" + getId());
+
+	}
+	int getId(){
+		if (id)
+			return id;
+		return id = ++count;
+	}
 	virtual ~TryNode()
 	{
 	}
 };
 
+int  TryNode::count = 0;
