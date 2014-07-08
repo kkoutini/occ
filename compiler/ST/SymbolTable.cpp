@@ -85,11 +85,22 @@ Type* SymbolTable::getType(string name)
 		}
 	}
 }
+bool SymbolTable::checkTypeProtocol(string name)
+{
+	if ((this != NULL))
+	{
+		if (types.find(name)==types.end())
+			return false;
+		else
+			return true;
+
+	}
+
+}
 bool SymbolTable::checkTypeExist(string name)
 {
 	Type *type = getType(name);
 	if (type != NULL)
-
 		return true;
 	return false;
 }
