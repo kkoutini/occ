@@ -1,6 +1,8 @@
 #include "ProtocolHelper.h"
 #include "SemanticError.h"
-
+extern int lineNum;
+extern int colNum;
+extern string sourceFile;
 Protocol* ProtocolHelper ::createNewProtocol(string name,SymbolTable *symbolTable ){
 	Protocol * protocol=new Protocol(name);
 	if (!symbolTable->checkTypeProtocol(name))
@@ -10,7 +12,7 @@ Protocol* ProtocolHelper ::createNewProtocol(string name,SymbolTable *symbolTabl
 		string error="Duplicate protocol difinition of '";
 		error.append(name);
 		error.append("' ignored.");
-		Program::addError(new SemanticError(error));
+		Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 	}
 	return protocol;
 }
@@ -21,7 +23,7 @@ void ProtocolHelper::addMethods(Protocol* protocol,vector<Method*>methodsList){
 			string error="Duplicate declaration of method '";
 			error.append(methodsList.at(i)->get_name());
 			error.append("'.");
-			Program::addError(new SemanticError(error));
+			Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 		}
 }
 void ProtocolHelper::addInheritedProtocol(Protocol* protocol,vector<string> idsList,SymbolTable* symbolTable){
@@ -37,7 +39,7 @@ void ProtocolHelper::addInheritedProtocol(Protocol* protocol,vector<string> idsL
 				string error="Can not find protocol declaration for '";
 				error.append(idsList.at(i));
 				error.append("'.");
-				Program::addError(new SemanticError(error));
+				Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 			}
 		}
 	

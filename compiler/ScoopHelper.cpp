@@ -5,6 +5,9 @@
 #include "ClassNode.h"
 #include "Streams.h"
 #include "ST\ArrayType.h"
+extern int lineNum;
+extern int colNum;
+extern string sourceFile;
 FunctionNode* ScoopHelper::createNewFunctionNode(Method* method, Interface* interface){
 	FunctionNode* scoop;
 
@@ -53,10 +56,10 @@ void ScoopHelper::addVariables(vector<string>identifierList, vector<Array*>array
 			if (isConst)
 				var->setIsConst(true);
 			if (!scoop->add_variable(var)){
-				string errorMessage = "Redifinition of '";
-				errorMessage.append(var->get_name());
-				errorMessage.append("'.");
-				Program::addError(new SemanticError(errorMessage));
+				string error = "Redifinition of '";
+				error.append(var->get_name());
+				error.append("'.");
+				Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 
 			}
 
@@ -81,7 +84,7 @@ void ScoopHelper::addVariables(vector<string>identifierList, vector<Array*>array
 				string error = "Redifinition of '";
 				error.append(arrayList.at(i)->get_name());
 				error.append("'.");
-				Program::addError(new SemanticError(error));
+				Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 			}
 		}
 	}

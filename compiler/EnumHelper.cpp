@@ -1,6 +1,8 @@
 #include "EnumHelper.h"
 #include "SemanticError.h"
-
+extern int lineNum;
+extern int colNum;
+extern string sourceFile;
 void EnumHelper::createNewEnum(string name,vector<string>idsList,SymbolTable* symbolTable){
 	EnumType *enumType=new EnumType(name);
 	for(int i=0;i<idsList.size();i++)
@@ -14,7 +16,7 @@ void EnumHelper::createNewEnum(string name,vector<string>idsList,SymbolTable* sy
 				string error="Redifinition of enumeratour '";
 		error.append(idsList.at(i));
 		error.append("'.");
-		Program::addError(new SemanticError(error));
+		Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 		}
 		else {
 			enumType->getVariableItems()->add_variable(var);
@@ -28,6 +30,6 @@ void EnumHelper::createNewEnum(string name,vector<string>idsList,SymbolTable* sy
 			string error="Use of '";
 		error.append(name);
 		error.append("' with tag type that does not match previous declaration.");
-		Program::addError(new SemanticError(error));
+		Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 	}
 }
