@@ -1376,7 +1376,7 @@ catch_list:
 												}
 ;
 one_catch: one_catch_header statement {Streams::verbose()<<"catch_list:CATCH OPEN_S type IDENTIFIER CLOSE_S statement \n";
-												$<r.node>$=$<r.node>1;dynamic_cast<CatchNode*>($<r.node>$)->_statement=$<r.node>1;	}
+												$<r.node>$=$<r.node>1;dynamic_cast<CatchNode*>($<r.node>$)->_statement=$<r.node>2;	}
 
 													;
 one_catch_header: CATCH OPEN_P type IDENTIFIER CLOSE_P { $<r.node>$=new CatchNode(scoop,type,$<r.text>3);Streams::verbose()<<"now";}
@@ -1462,6 +1462,10 @@ void main(int argc,      // Number of strings in array argv
 	
 	
 	MIPS_ASM::writeCode();
+	std::ifstream t_common("common.asm");
+std::string str_common((std::istreambuf_iterator<char>(t_common)),
+                 std::istreambuf_iterator<char>());
+	ofs<<str_common<<"\n";
 	std::ifstream t_common("common.asm");
 std::string str_common((std::istreambuf_iterator<char>(t_common)),
                  std::istreambuf_iterator<char>());

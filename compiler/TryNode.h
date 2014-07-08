@@ -81,7 +81,7 @@ public:
 			cat = cat->next;
 		}
 		_statment->generateCode();
-		MIPS_ASM::jump("tryfree_" + getId());
+		MIPS_ASM::jump("tryfree_" +std::to_string( getId()));
 		cat = catches;
 		while (cat){
 			cat->try_id = getId();
@@ -89,7 +89,7 @@ public:
 			cat = cat->next;
 		}
 
-		MIPS_ASM::label("tryfree_"+getId());
+		MIPS_ASM::label("tryfree_" + std::to_string(getId()));
 		cat = catches;
 		while (cat){
 
@@ -97,7 +97,7 @@ public:
 			asn->generateCode();
 			cat = cat->next;
 		}
-		MIPS_ASM::label("tryend_" + getId());
+		MIPS_ASM::label("tryend_" + std::to_string(getId()));
 
 	}
 	int getId(){

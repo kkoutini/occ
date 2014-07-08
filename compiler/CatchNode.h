@@ -19,6 +19,9 @@ public:
 	}
 	virtual void generateCode(){
 		MIPS_ASM::label(getCatchLabel());
+		_statement->generateCode();
+		MIPS_ASM::jump("tryfree_" + std::to_string(try_id));
+
 	}
 	string getCatchLabel(){
 		return "catch_" + std::to_string(getNumId());
