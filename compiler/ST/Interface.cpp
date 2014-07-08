@@ -16,7 +16,10 @@ Interface::Interface(string name, bool is_static_twin) :Type(name)
 	children_ids.insert(getId());
 	if (!is_static_twin){
 		static_twin = new Interface(name, true);
+		if (name!="NSObject")
+		static_twin->setInheritInterface(dynamic_cast<Interface*>( symbolTable->getType("NSObject")));
 	}
+	
 
 }
 /*
