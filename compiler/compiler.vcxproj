@@ -81,11 +81,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="ast\exception.asm" />
     <None Include="ClassDiagram.cd" />
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />
     <None Include="common.asm" />
+    <None Include="exception.asm" />
     <None Include="lex.l" />
     <None Include="yacc.output" />
     <None Include="yacc.y" />

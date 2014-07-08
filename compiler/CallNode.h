@@ -8,6 +8,7 @@
 extern SymbolTable* symbolTable;
 #include "ST/Type.h"
 #include "CallSelector.h"
+extern int Iskernal;
 class CallNode :
 	public Node
 {
@@ -97,8 +98,15 @@ public:
 		MIPS_ASM::lw("t0", sender_sh, "sp");
 		MIPS_ASM::lw("a0", 0, "t0");
 		MIPS_ASM::li("a1",method);
+		if (Iskernal)
+		{
+			MIPS_ASM::la("k0", "global_vtable");
+			MIPS_ASM::add_instruction("mtc0 $k0,$14\n");
 
-		MIPS_ASM::jal("global_vtable");
+			MIPS_ASM::add_instruction("eret\n");
+		}
+		else
+			MIPS_ASM::jal("global_vtable");
 
 		MIPS_ASM::pop("fp");
 		MIPS_ASM::pop("ra");

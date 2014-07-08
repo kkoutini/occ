@@ -61,6 +61,7 @@ void addFile(string s){
 }
     extern string sourceFile="";
 	
+extern int Iskernal;
 extern int lineNum;
 extern int colNum;
 	int yylex(void);
@@ -1379,7 +1380,7 @@ one_catch: one_catch_header statement {Streams::verbose()<<"catch_list:CATCH OPE
 												$<r.node>$=$<r.node>1;dynamic_cast<CatchNode*>($<r.node>$)->_statement=$<r.node>2;	}
 
 													;
-one_catch_header: CATCH OPEN_P type IDENTIFIER CLOSE_P { $<r.node>$=new CatchNode(scoop,type,$<r.text>3);Streams::verbose()<<"now";}
+one_catch_header: CATCH OPEN_P type IDENTIFIER CLOSE_P { $<r.node>$=new CatchNode(scoop,type,$<r.text>4);Streams::verbose()<<"now";}
 	
 finally_statement:
 	FINALLY statement
@@ -1452,8 +1453,8 @@ void main(int argc,      // Number of strings in array argv
 		}
 		symbolTable->generateStatics();
 		symbolTable->generateCode();
-	Program::printErrors();
 	ofs<<".data\n";
+	MIPS_ASM::add_data("\nnewline: .asciiz \"\\n\"\n");
 	MIPS_ASM::writeData();
 		ofs<<"\n.text\n";
 
@@ -1466,9 +1467,21 @@ void main(int argc,      // Number of strings in array argv
 std::string str_common((std::istreambuf_iterator<char>(t_common)),
                  std::istreambuf_iterator<char>());
 	ofs<<str_common<<"\n";
-	std::ifstream t_common("common.asm");
-std::string str_common((std::istreambuf_iterator<char>(t_common)),
+
+	Iskernal=1;
+	symbolTable->generateKernalCode();
+
+		ofs<<".ktext 0x80000180\n";
+
+ t_common =	std::ifstream("exception.asm");
+ str_common=string((std::istreambuf_iterator<char>(t_common)),
                  std::istreambuf_iterator<char>());
 	ofs<<str_common<<"\n";
-	
+	MIPS_ASM::writeCode();
+
+	MIPS_ASM::add_data("msg:   .asciiz \"Trap generated \\n\"\n");
+	ofs<<".kdata\n";
+	MIPS_ASM::writeData();
+		Program::printErrors();
+
 }

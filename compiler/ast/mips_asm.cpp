@@ -108,17 +108,18 @@ void MIPS_ASM::writeData()
 	//fputs("\nnewline: .asciiz \"\\n\"",MIPS_ASM::file);	
 	//fclose(MIPS_ASM::file);
 	ofs << data.str();
-	ofs << "\nnewline: .asciiz \"\\n\"\n";
+	data = stringstream();
 }
 
 void MIPS_ASM::writeCode()
 {
 	ofs << code.str();
-
+	code = stringstream();
 }
 void MIPS_ASM::writeMain()
 {
 	ofs << main.str();
+	main = stringstream();
 
 }
 void MIPS_ASM::operation(string reg1,string reg2,string reg3,int flag)

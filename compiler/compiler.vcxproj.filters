@@ -40,7 +40,7 @@
     <None Include="common.asm">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="ast\exception.asm">
+    <None Include="exception.asm">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

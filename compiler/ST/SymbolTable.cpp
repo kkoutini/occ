@@ -15,6 +15,23 @@ extern Method * mainMethod;
 extern int lineNum;
 extern int colNum;
 extern string sourceFile;
+extern int Iskernal = 0;
+
+class RegAccessNode :public Node
+{
+public:
+	string reg; Type* dt;
+	RegAccessNode(ScoopNode* scoop, string r, Type* t) :Node(scoop), reg(r), dt(t)
+	{
+
+	}
+	virtual void generateCode(){
+		MIPS_ASM::push(reg);
+	}
+	virtual Type* generateType(){
+		return dt;
+	}
+};
 
 SymbolTable::SymbolTable(void)
 {
@@ -160,6 +177,17 @@ void SymbolTable::generateStatics()
 
 	
 		
+}
+
+void SymbolTable::generateKernalCode(){
+	CallNode* cn = new CallNode(globalScoop, new IdentifierNode("top_catcher", globalScoop), "");
+	//+(NSExceptionCatcher*) new:(NSObject*)e:(NSExceptionCatcher*) p:(int)s :(int) f :(int)l{
+
+	auto cs = new CallSelector("catch");
+	cs->addArg(new RegAccessNode(globalScoop, "k0",getType("NSException")));
+
+	cn->addSelector(cs);
+	cn->generateCode();
 }
 void SymbolTable::generateStaticsCode()
 {

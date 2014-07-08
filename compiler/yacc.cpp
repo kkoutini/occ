@@ -109,6 +109,7 @@ void addFile(string s){
 }
     extern string sourceFile="";
 	
+extern int Iskernal;
 extern int lineNum;
 extern int colNum;
 	int yylex(void);
@@ -159,7 +160,7 @@ Method* nodeXX;
 		}
 	};
 
-#line 163 "yacc.cpp" /* glr.c:207  */
+#line 164 "yacc.cpp" /* glr.c:207  */
 
 # ifndef YY_NULL
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -187,7 +188,7 @@ static YYSTYPE yyval_default;
 
 /* Copy the second part of user declarations.  */
 
-#line 191 "yacc.cpp" /* glr.c:230  */
+#line 192 "yacc.cpp" /* glr.c:230  */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -340,34 +341,34 @@ static const unsigned char yytranslate[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const unsigned short int yyrline[] =
 {
-       0,   215,   215,   218,   219,   220,   222,   223,   224,   225,
-     226,   228,   237,   242,   247,   249,   251,   257,   261,   266,
-     271,   275,   277,   282,   283,   284,   285,   286,   287,   288,
-     289,   290,   291,   295,   302,   305,   309,   314,   315,   319,
-     320,   321,   322,   323,   324,   327,   328,   331,   332,   333,
-     336,   339,   347,   358,   359,   360,   365,   368,   371,   375,
-     379,   383,   384,   387,   393,   394,   395,   397,   405,   412,
-     416,   422,   423,   424,   425,   426,   427,   428,   429,   432,
-     433,   434,   438,   439,   440,   441,   445,   454,   465,   474,
-     485,   494,   502,   510,   518,   526,   536,   547,   552,   556,
-     557,   560,   564,   570,   573,   575,   580,   585,   591,   599,
-     600,   604,   612,   613,   616,   625,   634,   638,   640,   646,
-     654,   660,   664,   673,   686,   689,   694,   700,   706,   709,
-     715,   718,   719,   722,   723,   726,   735,   746,   756,   765,
-     772,   784,   788,   792,   798,   803,   812,   816,   820,   826,
-     835,   838,   842,   844,   847,   851,   853,   856,   861,   867,
-     873,   880,   884,   885,   888,   891,   898,   907,   910,   915,
-     918,   921,   926,   931,   934,   952,   958,   962,   966,   971,
-     975,   979,   984,   990,  1001,  1004,  1009,  1012,  1015,  1021,
-    1024,  1027,  1030,  1033,  1036,  1039,  1042,  1046,  1049,  1052,
-    1058,  1061,  1066,  1073,  1077,  1081,  1086,  1094,  1103,  1109,
-    1113,  1116,  1119,  1122,  1126,  1130,  1133,  1137,  1138,  1139,
-    1140,  1141,  1142,  1149,  1162,  1174,  1180,  1190,  1194,  1201,
-    1206,  1212,  1216,  1218,  1223,  1231,  1237,  1242,  1245,  1249,
-    1254,  1259,  1265,  1268,  1269,  1270,  1271,  1274,  1275,  1278,
-    1279,  1280,  1283,  1284,  1285,  1287,  1295,  1301,  1309,  1317,
-    1323,  1326,  1332,  1339,  1344,  1349,  1354,  1361,  1365,  1371,
-    1373,  1378,  1382,  1385
+       0,   216,   216,   219,   220,   221,   223,   224,   225,   226,
+     227,   229,   238,   243,   248,   250,   252,   258,   262,   267,
+     272,   276,   278,   283,   284,   285,   286,   287,   288,   289,
+     290,   291,   292,   296,   303,   306,   310,   315,   316,   320,
+     321,   322,   323,   324,   325,   328,   329,   332,   333,   334,
+     337,   340,   348,   359,   360,   361,   366,   369,   372,   376,
+     380,   384,   385,   388,   394,   395,   396,   398,   406,   413,
+     417,   423,   424,   425,   426,   427,   428,   429,   430,   433,
+     434,   435,   439,   440,   441,   442,   446,   455,   466,   475,
+     486,   495,   503,   511,   519,   527,   537,   548,   553,   557,
+     558,   561,   565,   571,   574,   576,   581,   586,   592,   600,
+     601,   605,   613,   614,   617,   626,   635,   639,   641,   647,
+     655,   661,   665,   674,   687,   690,   695,   701,   707,   710,
+     716,   719,   720,   723,   724,   727,   736,   747,   757,   766,
+     773,   785,   789,   793,   799,   804,   813,   817,   821,   827,
+     836,   839,   843,   845,   848,   852,   854,   857,   862,   868,
+     874,   881,   885,   886,   889,   892,   899,   908,   911,   916,
+     919,   922,   927,   932,   935,   953,   959,   963,   967,   972,
+     976,   980,   985,   991,  1002,  1005,  1010,  1013,  1016,  1022,
+    1025,  1028,  1031,  1034,  1037,  1040,  1043,  1047,  1050,  1053,
+    1059,  1062,  1067,  1074,  1078,  1082,  1087,  1095,  1104,  1110,
+    1114,  1117,  1120,  1123,  1127,  1131,  1134,  1138,  1139,  1140,
+    1141,  1142,  1143,  1150,  1163,  1175,  1181,  1191,  1195,  1202,
+    1207,  1213,  1217,  1219,  1224,  1232,  1238,  1243,  1246,  1250,
+    1255,  1260,  1266,  1269,  1270,  1271,  1272,  1275,  1276,  1279,
+    1280,  1281,  1284,  1285,  1286,  1288,  1296,  1302,  1310,  1318,
+    1324,  1327,  1333,  1340,  1345,  1350,  1355,  1362,  1366,  1372,
+    1374,  1379,  1383,  1386
 };
 #endif
 
@@ -1509,224 +1510,224 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
   switch (yyn)
     {
         case 2:
-#line 215 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 216 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"program: components\n"; 
 										 }
-#line 1516 "yacc.cpp" /* glr.c:788  */
+#line 1517 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 3:
-#line 218 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 219 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"components: components component\n";}
-#line 1522 "yacc.cpp" /* glr.c:788  */
+#line 1523 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 4:
-#line 219 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 220 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"components: component\n";}
-#line 1528 "yacc.cpp" /* glr.c:788  */
+#line 1529 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 5:
-#line 220 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 221 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {addFile(*(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.string_val));}
-#line 1534 "yacc.cpp" /* glr.c:788  */
+#line 1535 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 6:
-#line 222 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 223 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"class_interface \n";}
-#line 1540 "yacc.cpp" /* glr.c:788  */
+#line 1541 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 7:
-#line 223 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 224 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"class_implementation \n";}
-#line 1546 "yacc.cpp" /* glr.c:788  */
+#line 1547 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 8:
-#line 224 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 225 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"protocol \n";}
-#line 1552 "yacc.cpp" /* glr.c:788  */
+#line 1553 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 9:
-#line 225 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 226 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"struct \n";}
-#line 1558 "yacc.cpp" /* glr.c:788  */
+#line 1559 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 10:
-#line 226 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 227 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"enum \n";}
-#line 1564 "yacc.cpp" /* glr.c:788  */
+#line 1565 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 11:
-#line 228 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 229 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"class_interface: class_interface_header class_interface_body\n";
 																classNode=NULL;
 																 idsList.clear();
 																 methodsList.clear();
 																 method=NULL;
 																}
-#line 1575 "yacc.cpp" /* glr.c:788  */
+#line 1576 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 12:
-#line 237 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 238 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"class_interface_header:  AT_INTERFACE IDENTIFIER SEMI_COLUMN IDENTIFIER\n";
 																				interface=InterfaceHelper::createNewInterface((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),symbolTable);
 																				
 																				
 																				}
-#line 1585 "yacc.cpp" /* glr.c:788  */
+#line 1586 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 13:
-#line 242 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 243 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 																					Streams::verbose()<<"class_interface_header:  AT_INTERFACE IDENTIFIER\n";
 																				 interface=InterfaceHelper::createNewInterface((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),"",symbolTable);
 
 																				}
-#line 1595 "yacc.cpp" /* glr.c:788  */
+#line 1596 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 14:
-#line 247 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 248 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Expected Identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 1601 "yacc.cpp" /* glr.c:788  */
+#line 1602 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 15:
-#line 249 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 250 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Expected Identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 1607 "yacc.cpp" /* glr.c:788  */
+#line 1608 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 16:
-#line 252 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 253 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {	
 															
 														InterfaceHelper::addMethods(interface,methodsList);
 																Streams::verbose()<<"class_interface_body:	protocol_reference_list instance_variables	interface_declaration_list	AT_END\n";
 														}
-#line 1617 "yacc.cpp" /* glr.c:788  */
+#line 1618 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 17:
-#line 258 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 259 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 														Streams::verbose()<<"class_interface_body:	protocol_reference_list instance_variables AT_END\n";
 														}
-#line 1625 "yacc.cpp" /* glr.c:788  */
+#line 1626 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 18:
-#line 262 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 263 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {	
 																InterfaceHelper::addMethods(interface,methodsList);
 																Streams::verbose()<<"class_interface_body:	protocol_reference_list interface_declaration_list	AT_END\n";
 														}
-#line 1634 "yacc.cpp" /* glr.c:788  */
+#line 1635 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 19:
-#line 267 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 268 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {	
 																InterfaceHelper::addMethods(interface,methodsList);
 																Streams::verbose()<<"class_interface_body:	instance_variables	interface_declaration_list	AT_END\n";
 														}
-#line 1643 "yacc.cpp" /* glr.c:788  */
+#line 1644 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 20:
-#line 272 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 273 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 																Streams::verbose()<<"class_interface_body:	protocol_reference_list 	AT_END\n";
 														}
-#line 1651 "yacc.cpp" /* glr.c:788  */
+#line 1652 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 21:
-#line 276 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 277 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"class_interface_body:instance_variables		AT_END\n";}
-#line 1657 "yacc.cpp" /* glr.c:788  */
+#line 1658 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 22:
-#line 278 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 279 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {														
 																InterfaceHelper::addMethods(interface,methodsList);
 																Streams::verbose()<<"class_interface_body:interface_declaration_list	AT_END\n";
 														}
-#line 1666 "yacc.cpp" /* glr.c:788  */
+#line 1667 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 23:
-#line 282 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 283 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"class_interface_body:AT_END\n";}
-#line 1672 "yacc.cpp" /* glr.c:788  */
+#line 1673 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 24:
-#line 283 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 284 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Expected '}' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 1678 "yacc.cpp" /* glr.c:788  */
+#line 1679 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 25:
-#line 284 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 285 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Expected '}' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 1684 "yacc.cpp" /* glr.c:788  */
+#line 1685 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 26:
-#line 285 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 286 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 1690 "yacc.cpp" /* glr.c:788  */
+#line 1691 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 27:
-#line 286 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 287 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 1696 "yacc.cpp" /* glr.c:788  */
+#line 1697 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 28:
-#line 287 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 288 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 1702 "yacc.cpp" /* glr.c:788  */
+#line 1703 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 29:
-#line 288 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 289 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 1708 "yacc.cpp" /* glr.c:788  */
+#line 1709 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 30:
-#line 289 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 290 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 1714 "yacc.cpp" /* glr.c:788  */
+#line 1715 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 31:
-#line 290 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 291 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 1720 "yacc.cpp" /* glr.c:788  */
+#line 1721 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 32:
-#line 291 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 292 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Missing '@end' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 1726 "yacc.cpp" /* glr.c:788  */
+#line 1727 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 33:
-#line 295 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 296 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 													if(interface!=NULL){
 													InterfaceHelper::addInheritedProtocol(interface,idsList,symbolTable);
@@ -1734,120 +1735,120 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 													}
 													Streams::verbose()<<"protocol_reference_list: LESS_THAN ids_list_identifier MORE_THAN\n";
 												}
-#line 1738 "yacc.cpp" /* glr.c:788  */
+#line 1739 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 34:
-#line 302 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 303 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Expected '>' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 1744 "yacc.cpp" /* glr.c:788  */
+#line 1745 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 35:
-#line 305 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 306 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 													Streams::verbose()<<"ids_list:ids_list_identifier COMMA IDENTIFIER\n"; 
 													idsList.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
 													}
-#line 1753 "yacc.cpp" /* glr.c:788  */
+#line 1754 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 36:
-#line 309 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 310 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 													Streams::verbose()<<"ids_list_identifier:IDENTIFIER\n";
 													idsList.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
 												    }
-#line 1762 "yacc.cpp" /* glr.c:788  */
+#line 1763 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 37:
-#line 314 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 315 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"array with body";}
-#line 1768 "yacc.cpp" /* glr.c:788  */
+#line 1769 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 38:
-#line 315 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 316 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"array without elements";}
-#line 1774 "yacc.cpp" /* glr.c:788  */
+#line 1775 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 39:
-#line 319 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 320 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"array-element \n";}
-#line 1780 "yacc.cpp" /* glr.c:788  */
+#line 1781 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 40:
-#line 320 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 321 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"array-element \n";}
-#line 1786 "yacc.cpp" /* glr.c:788  */
+#line 1787 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 41:
-#line 321 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 322 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"empty element \n";}
-#line 1792 "yacc.cpp" /* glr.c:788  */
+#line 1793 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 42:
-#line 322 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 323 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"inside braces element \n";}
-#line 1798 "yacc.cpp" /* glr.c:788  */
+#line 1799 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 43:
-#line 323 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 324 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"inside braces element \n";}
-#line 1804 "yacc.cpp" /* glr.c:788  */
+#line 1805 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 44:
-#line 324 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 325 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"inside braces element \n";}
-#line 1810 "yacc.cpp" /* glr.c:788  */
+#line 1811 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 45:
-#line 327 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 328 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"instance_variables:OPEN_S	instance_variable_declaration	CLOSE_S\n";}
-#line 1816 "yacc.cpp" /* glr.c:788  */
+#line 1817 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 46:
-#line 328 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 329 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"instance_variables:OPEN_S	 CLOSE_S\n";}
-#line 1822 "yacc.cpp" /* glr.c:788  */
+#line 1823 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 47:
-#line 331 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 332 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"instance_variable_declarations:instance_variable_declarations instance_variable_declaration\n";}
-#line 1828 "yacc.cpp" /* glr.c:788  */
+#line 1829 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 48:
-#line 332 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 333 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"instance_variable_declarations:instance_variable_declaration\n";}
-#line 1834 "yacc.cpp" /* glr.c:788  */
+#line 1835 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 49:
-#line 333 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 334 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"instance_variable_declarations:variable_declaration_list\n";}
-#line 1840 "yacc.cpp" /* glr.c:788  */
+#line 1841 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 50:
-#line 336 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 337 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"instance_variable_declaration:visibility_specification variable_declaration_list\n";
 																	}
-#line 1847 "yacc.cpp" /* glr.c:788  */
+#line 1848 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 51:
-#line 340 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 341 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 										Streams::verbose()<<"variable_declaration_list: variable_declaration_list variable_declaration\n";
 										InterfaceHelper::addDataMembers(interface,idsList,type,arrayList,flag,symbolTable,visibility);
@@ -1855,11 +1856,11 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 												idsList.clear();
 												flag=false;
 										}
-#line 1859 "yacc.cpp" /* glr.c:788  */
+#line 1860 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 52:
-#line 348 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 349 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 										       InterfaceHelper::addDataMembers(interface,idsList,type,arrayList,flag,symbolTable,visibility);
 												arrayList.clear();
@@ -1867,108 +1868,108 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 												flag=false;
 										Streams::verbose()<<"variable_declaration_list: variable_declaration\n";
 										}
-#line 1871 "yacc.cpp" /* glr.c:788  */
+#line 1872 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 53:
-#line 358 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 359 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"visibility_specification:AT_PRIVATE\n";  visibility=new char[256]; visibility[0]='\0';strcat(visibility,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));}
-#line 1877 "yacc.cpp" /* glr.c:788  */
+#line 1878 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 54:
-#line 359 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 360 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"visibility_specification:AT_PROTECTED\n"; visibility=new char[256]; visibility[0]='\0';strcat(visibility,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));}
-#line 1883 "yacc.cpp" /* glr.c:788  */
+#line 1884 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 55:
-#line 360 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 361 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"visibility_specification:AT_PUBLIC\n"; visibility=new char[256]; visibility[0]='\0';strcat(visibility,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));}
-#line 1889 "yacc.cpp" /* glr.c:788  */
+#line 1890 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 56:
-#line 365 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 366 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"struct_variable_declaration:struct_declaration_list\n";}
-#line 1895 "yacc.cpp" /* glr.c:788  */
+#line 1896 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 57:
-#line 368 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 369 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"variable_declaration:type IDENTIFIER	SEMI_COMA\n";
 	                                           ((*yyvalp).r.text)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text);
 												}
-#line 1903 "yacc.cpp" /* glr.c:788  */
+#line 1904 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 58:
-#line 371 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 372 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"variable_declaration:CONST type IDENTIFIER	SEMI_COMA\n";
 														flag=true;
 														 ((*yyvalp).r.text)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text);
 													}
-#line 1912 "yacc.cpp" /* glr.c:788  */
+#line 1913 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 59:
-#line 375 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 376 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 1918 "yacc.cpp" /* glr.c:788  */
+#line 1919 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 60:
-#line 379 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 380 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 									Streams::verbose()<<"ids_list:ids_list COMMA id_dec\n"; 
 
 									}
-#line 1927 "yacc.cpp" /* glr.c:788  */
+#line 1928 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 61:
-#line 383 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 384 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"ids_list:id_dec\n"; }
-#line 1933 "yacc.cpp" /* glr.c:788  */
+#line 1934 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 62:
-#line 384 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 385 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 1939 "yacc.cpp" /* glr.c:788  */
+#line 1940 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 63:
-#line 387 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 388 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose() <<" data_member: IDENTIFIER array_tag \n";
 							 var=new Array((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),arrayAlloc.size(),NULL);
 					       ( dynamic_cast<Array*>(var))->set_alloc(arrayAlloc);
 						   arrayList.push_back( ( dynamic_cast<Array*>(var)));
 						      arrayAlloc.clear();
 							}
-#line 1950 "yacc.cpp" /* glr.c:788  */
+#line 1951 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 64:
-#line 393 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 394 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {idsList.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text)) ;Streams::verbose() <<" data_member: IDENTIFIER  \n";}
-#line 1956 "yacc.cpp" /* glr.c:788  */
+#line 1957 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 65:
-#line 394 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 395 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;arrayAlloc.clear();}
-#line 1962 "yacc.cpp" /* glr.c:788  */
+#line 1963 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 66:
-#line 395 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 396 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;arrayAlloc.clear();}
-#line 1968 "yacc.cpp" /* glr.c:788  */
+#line 1969 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 67:
-#line 397 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 398 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {  
 																												StructHelper::addDataMembers( myStruct,idsList,type,arrayList,flag, symbolTable);
 																												arrayList.clear();
@@ -1976,11 +1977,11 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 																												flag=false;
 																										  Streams::verbose()<<"struct_declaration_list: struct_declaration_list  variable_declarationxx\n";
 																										}
-#line 1980 "yacc.cpp" /* glr.c:788  */
+#line 1981 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 68:
-#line 405 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 406 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {	
 																												StructHelper::addDataMembers( myStruct,idsList,type,arrayList,flag, symbolTable);
 																												arrayList.clear();
@@ -1988,116 +1989,116 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 																															flag=false;
 																										Streams::verbose()<<"struct_declaration_list:  variable_declarationxx\n";
 																										}
-#line 1992 "yacc.cpp" /* glr.c:788  */
+#line 1993 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 69:
-#line 412 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 413 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Illigal visibility specification at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 1998 "yacc.cpp" /* glr.c:788  */
+#line 1999 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 70:
-#line 416 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 417 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 					myStruct=StructHelper::createNewStruct((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),symbolTable);
 					Streams::verbose()<<"struct_header: STRUCT  IDENTIFIER\n";
 					}
-#line 2007 "yacc.cpp" /* glr.c:788  */
+#line 2008 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 71:
-#line 422 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 423 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"struct: STRUCT IDENTIFIER OPEN_S   CLOSE_S  entity SEMI_COMA\n";}
-#line 2013 "yacc.cpp" /* glr.c:788  */
+#line 2014 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 72:
-#line 423 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 424 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"struct: STRUCT IDENTIFIER OPEN_S struct_variable_declaration  CLOSE_S enteity SEMI_COMA \n";}
-#line 2019 "yacc.cpp" /* glr.c:788  */
+#line 2020 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 73:
-#line 424 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 425 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"struct: STRUCT IDENTIFIER OPEN_S   CLOSE_S SEMI_COMA\n";}
-#line 2025 "yacc.cpp" /* glr.c:788  */
+#line 2026 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 74:
-#line 425 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 426 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"struct: STRUCT IDENTIFIER OPEN_S struct_variable_declaration  CLOSE_S  SEMI_COMA  \n";}
-#line 2031 "yacc.cpp" /* glr.c:788  */
+#line 2032 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 75:
-#line 426 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 427 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2037 "yacc.cpp" /* glr.c:788  */
+#line 2038 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 76:
-#line 427 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 428 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2043 "yacc.cpp" /* glr.c:788  */
+#line 2044 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 77:
-#line 428 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 429 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2049 "yacc.cpp" /* glr.c:788  */
+#line 2050 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 78:
-#line 429 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 430 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2055 "yacc.cpp" /* glr.c:788  */
+#line 2056 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 79:
-#line 432 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 433 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"entity: IDENTIFIER COMMA  entity\n";}
-#line 2061 "yacc.cpp" /* glr.c:788  */
+#line 2062 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 80:
-#line 433 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 434 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"entity:  IDENTIFIER \n";}
-#line 2067 "yacc.cpp" /* glr.c:788  */
+#line 2068 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 81:
-#line 434 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 435 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2073 "yacc.cpp" /* glr.c:788  */
+#line 2074 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 82:
-#line 438 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 439 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"type:simple type\n";}
-#line 2079 "yacc.cpp" /* glr.c:788  */
+#line 2080 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 83:
-#line 439 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 440 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"type: complex type\n";}
-#line 2085 "yacc.cpp" /* glr.c:788  */
+#line 2086 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 84:
-#line 440 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 441 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"type: struct_type\n";}
-#line 2091 "yacc.cpp" /* glr.c:788  */
+#line 2092 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 85:
-#line 441 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 442 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"type: enum_type\n";}
-#line 2097 "yacc.cpp" /* glr.c:788  */
+#line 2098 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 86:
-#line 445 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 446 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {	Streams::verbose()<<"struct_type: STRUCT IDENTIFIER   \n";
 													 type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
 																if(type==NULL){
@@ -2107,11 +2108,11 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 		Program::addError(new SemanticError(error));
 																}
 													}
-#line 2111 "yacc.cpp" /* glr.c:788  */
+#line 2112 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 87:
-#line 454 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 455 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"struct_type: STRUCT IDENTIFIER  MULTI \n";
 													 type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text));
 																if(type==NULL){
@@ -2121,11 +2122,11 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 		Program::addError(new SemanticError(error));
 																}
 													}
-#line 2125 "yacc.cpp" /* glr.c:788  */
+#line 2126 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 88:
-#line 465 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 466 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"enum_type: ENUM IDENTIFIER \n";
 													 type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
 																if(type==NULL){
@@ -2135,11 +2136,11 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 		Program::addError(new SemanticError(error));
 																}
 													}
-#line 2139 "yacc.cpp" /* glr.c:788  */
+#line 2140 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 89:
-#line 474 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 475 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"enum_type: ENUM IDENTIFIER  MULTI  \n";
 													 type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text));
 																if(type==NULL){
@@ -2149,11 +2150,11 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 		Program::addError(new SemanticError(error));
 																}
 													}
-#line 2153 "yacc.cpp" /* glr.c:788  */
+#line 2154 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 90:
-#line 485 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 486 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"int type \n";
 																type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
 																if(type==NULL){
@@ -2163,11 +2164,11 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 		Program::addError(new SemanticError(error));
 																}
 																}
-#line 2167 "yacc.cpp" /* glr.c:788  */
+#line 2168 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 91:
-#line 494 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 495 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"char type\n";
 	type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
 																if(type==NULL){
@@ -2176,11 +2177,11 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 		error.append("'.");
 		Program::addError(new SemanticError(error));
 																}}
-#line 2180 "yacc.cpp" /* glr.c:788  */
+#line 2181 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 92:
-#line 502 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 503 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"float type\n";
 	type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
 																if(type==NULL){
@@ -2189,11 +2190,11 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 		error.append("'.");
 		Program::addError(new SemanticError(error));
 																}}
-#line 2193 "yacc.cpp" /* glr.c:788  */
+#line 2194 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 93:
-#line 510 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 511 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"NSString type\n";
 	type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
 																if(type==NULL){
@@ -2202,11 +2203,11 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 		error.append("'.");
 		Program::addError(new SemanticError(error));
 																}}
-#line 2206 "yacc.cpp" /* glr.c:788  */
+#line 2207 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 94:
-#line 518 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 519 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"void type\n";
 	type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
 																if(type==NULL){
@@ -2215,11 +2216,11 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 		error.append("'.");
 		Program::addError(new SemanticError(error));
 																}}
-#line 2219 "yacc.cpp" /* glr.c:788  */
+#line 2220 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 95:
-#line 526 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 527 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"bool type\n";
 	type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
 																if(type==NULL){
@@ -2228,11 +2229,11 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 		error.append("'.");
 		Program::addError(new SemanticError(error));
 																}}
-#line 2232 "yacc.cpp" /* glr.c:788  */
+#line 2233 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 96:
-#line 536 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 537 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"complex_type:	IDENTIFIER	MULTI\n";
  {
 													 type=symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text));
@@ -2243,109 +2244,109 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 		Program::addError(new SemanticError(error));
 																}
 													}}
-#line 2247 "yacc.cpp" /* glr.c:788  */
+#line 2248 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 97:
-#line 547 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 548 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 											Streams::verbose()<<"array_tag: array_first_tag array_tag_list \n"; 
 										   }
-#line 2255 "yacc.cpp" /* glr.c:788  */
+#line 2256 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 98:
-#line 552 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 553 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 																Streams::verbose()<<"array_tag_list: array_tag_list OPEN_ARR INT_VAL CLOSE_ARR\n"; 
 																arrayAlloc.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.int_val));
 														   }
-#line 2264 "yacc.cpp" /* glr.c:788  */
+#line 2265 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 100:
-#line 557 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 558 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<" Error:missing  dimension in array tag  ";arrayAlloc.clear();}
-#line 2270 "yacc.cpp" /* glr.c:788  */
+#line 2271 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 101:
-#line 560 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 561 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 											Streams::verbose()<<"array_first_tag: OPEN_ARR INT_VAL CLOSE_ARR\n"; 
 											arrayAlloc.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.int_val));
 											}
-#line 2279 "yacc.cpp" /* glr.c:788  */
+#line 2280 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 102:
-#line 564 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 565 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 											Streams::verbose()<<"array_first_tag: OPEN_ARR  CLOSE_ARR\n"; 
 											arrayAlloc.push_back(-1);
 											}
-#line 2288 "yacc.cpp" /* glr.c:788  */
+#line 2289 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 103:
-#line 570 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 571 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"array with value\n";
 								((*yyvalp).r.node)=new AssignNode(scoop,NULL,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
 							   }
-#line 2296 "yacc.cpp" /* glr.c:788  */
+#line 2297 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 105:
-#line 575 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 576 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 								Streams::verbose() <<"with value\n";
 								((*yyvalp).r.node)=new AssignNode(scoop,NULL,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
 							 }
-#line 2305 "yacc.cpp" /* glr.c:788  */
+#line 2306 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 106:
-#line 580 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 581 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {((*yyvalp).r.node)=NULL;}
-#line 2311 "yacc.cpp" /* glr.c:788  */
+#line 2312 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 107:
-#line 585 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 586 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 																Streams::verbose()<<"interface_declaration_list:interface_declaration_list interface_declaration\n";
 															 methodsList.push_back(method);
 														
 															 
 																}
-#line 2322 "yacc.cpp" /* glr.c:788  */
+#line 2323 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 108:
-#line 591 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 592 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 																 Streams::verbose()<<"interface_declaration_list:interface_declaration\n";
 															 methodsList.push_back(method);
 															 
 																 	
 																 }
-#line 2333 "yacc.cpp" /* glr.c:788  */
+#line 2334 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 109:
-#line 599 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 600 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"interface_declaration: class_method_declaration\n";}
-#line 2339 "yacc.cpp" /* glr.c:788  */
+#line 2340 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 110:
-#line 600 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 601 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"interface_declaration: instance_method_declaration\n";}
-#line 2345 "yacc.cpp" /* glr.c:788  */
+#line 2346 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 111:
-#line 604 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 605 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 																Streams::verbose()<<"class_method_declaration: PLUS p_type method_selectors	SEMI_COMA\n";
 																method=InterfaceHelper::createNewMethod(symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text)),symbolTable,(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text),selectorsList,true);
@@ -2353,23 +2354,23 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 																 selectorsList.clear();
 																
 																}
-#line 2357 "yacc.cpp" /* glr.c:788  */
+#line 2358 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 112:
-#line 612 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 613 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2363 "yacc.cpp" /* glr.c:788  */
+#line 2364 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 113:
-#line 613 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 614 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2369 "yacc.cpp" /* glr.c:788  */
+#line 2370 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 114:
-#line 616 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 617 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 															Streams::verbose()<<"instance_method_declaration: MINUS p_type	method_selectors		SEMI_COMA\n";
 															method=InterfaceHelper::createNewMethod(symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text)),symbolTable,(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text),selectorsList,false);
@@ -2377,46 +2378,46 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 																
 																
 															}
-#line 2381 "yacc.cpp" /* glr.c:788  */
+#line 2382 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 115:
-#line 625 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 626 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 																Streams::verbose()<<"p_type : OPEN_P type CLOSE_P\n";
 																((*yyvalp).r.text)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text);
 																}
-#line 2390 "yacc.cpp" /* glr.c:788  */
+#line 2391 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 116:
-#line 634 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 635 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 																Streams::verbose()<<"method_selectors: selectors_list\n";
 																	((*yyvalp).r.text)="";
 																}
-#line 2399 "yacc.cpp" /* glr.c:788  */
+#line 2400 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 117:
-#line 638 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 639 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"method_selectors:IDENTIFIER \n";((*yyvalp).r.text)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text);}
-#line 2405 "yacc.cpp" /* glr.c:788  */
+#line 2406 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 118:
-#line 640 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 641 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 													Streams::verbose()<<"selectors_list:	selectors_list selector_decleration\n";
 																
 													selectorsList.push_back(tselector);
 													tselector=NULL;
 											}
-#line 2416 "yacc.cpp" /* glr.c:788  */
+#line 2417 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 119:
-#line 646 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 647 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 														Streams::verbose()<<"selectors_list:	 selector_decleration\n";
 												selectorsList.clear();
@@ -2424,29 +2425,29 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 												selectorsList.push_back(tselector);
 												tselector=NULL;
 }
-#line 2428 "yacc.cpp" /* glr.c:788  */
+#line 2429 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 120:
-#line 654 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 655 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 																				Streams::verbose()<<"selector_decleration:	IDENTIFIER	SEMI_COLUMN	parameter_list	\n";
 																				tselector=new DeclerationSelector((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text),selectorVarList);
 																			}
-#line 2437 "yacc.cpp" /* glr.c:788  */
+#line 2438 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 121:
-#line 660 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 661 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 														Streams::verbose()<<"parameter_list: parameter_list parameter\n";
 																	selectorVarList.push_back(var);		
 											}
-#line 2446 "yacc.cpp" /* glr.c:788  */
+#line 2447 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 122:
-#line 664 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 665 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 									selectorVarList.clear();
 										selectorVarList.push_back(var);		
@@ -2455,11 +2456,11 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 														Streams::verbose()<<"parameter_list:  parameter\n";
 						
 					}
-#line 2459 "yacc.cpp" /* glr.c:788  */
+#line 2460 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 123:
-#line 673 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 674 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 																Streams::verbose()<<"parameter:  p_type IDENTIFIER\n";
 																
@@ -2470,95 +2471,95 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 																Streams::verbose()<<"Error:Type not found.\n";
 																}
 																}
-#line 2474 "yacc.cpp" /* glr.c:788  */
+#line 2475 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 124:
-#line 686 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 687 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"class_implementation: class_implementation_header class_implementation_body\n";}
-#line 2480 "yacc.cpp" /* glr.c:788  */
+#line 2481 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 125:
-#line 689 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 690 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 																	Streams::verbose()<<"class_implementation_header: AT_IMPLEMENTATION IDENTIFIER SEMI_COLUMN IDENTIFIER\n";
 																	interface=InterfaceHelper::checkImplementation((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text),symbolTable,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
 																	
 																}
-#line 2490 "yacc.cpp" /* glr.c:788  */
+#line 2491 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 126:
-#line 694 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 695 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 																interface=InterfaceHelper::checkImplementation((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),symbolTable,"");
 																	
 																}
-#line 2499 "yacc.cpp" /* glr.c:788  */
+#line 2500 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 127:
-#line 700 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 701 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 																	Streams::verbose()<<"class_implementation_body: instance_variables	implementation_definition_list	AT_END\n";
 																			InterfaceHelper:: implementMethods(methodsList, interface);
 														methodsList.clear();
 														}
-#line 2509 "yacc.cpp" /* glr.c:788  */
+#line 2510 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 128:
-#line 706 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 707 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     { 
 																	Streams::verbose()<<"class_implementation_body: instance_variables									AT_END\n";
 																}
-#line 2517 "yacc.cpp" /* glr.c:788  */
+#line 2518 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 129:
-#line 709 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 710 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 																	Streams::verbose()<<"class_implementation_body:						implementation_definition_list	AT_END\n";
 																	InterfaceHelper:: implementMethods(methodsList, interface);
 														methodsList.clear();
 														
 																}
-#line 2528 "yacc.cpp" /* glr.c:788  */
+#line 2529 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 130:
-#line 715 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 716 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"class_implementation_body:	AT_END\n";}
-#line 2534 "yacc.cpp" /* glr.c:788  */
+#line 2535 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 131:
-#line 718 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 719 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {	 methodsList.push_back(method);Streams::verbose()<<"implementation_definition_list: implementation_definition_list implementation_definition\n";}
-#line 2540 "yacc.cpp" /* glr.c:788  */
+#line 2541 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 132:
-#line 719 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 720 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {	 methodsList.push_back(method);Streams::verbose()<<"implementation_definition_list: implementation_definition\n";}
-#line 2546 "yacc.cpp" /* glr.c:788  */
+#line 2547 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 133:
-#line 722 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 723 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"implementation_definition: class_implementation_definition	\n";}
-#line 2552 "yacc.cpp" /* glr.c:788  */
+#line 2553 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 134:
-#line 723 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 724 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"implementation_definition: instance_implementation_definition \n";}
-#line 2558 "yacc.cpp" /* glr.c:788  */
+#line 2559 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 135:
-#line 726 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 727 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 														Streams::verbose()<<"class_implementation_definition: class_implementation_definition_header block_body";
 														functionNode->addNode(cscoop);
@@ -2566,11 +2567,11 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 																scoop=NULL;
 															scoop=NULL;
 													}
-#line 2570 "yacc.cpp" /* glr.c:788  */
+#line 2571 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 136:
-#line 735 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 736 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 										Streams::verbose()<<"class_implementation_definition_header: PLUS p_type		 method_selectors\n";
 										method=InterfaceHelper:: createNewMethod(symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text)),symbolTable,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),selectorsList,true);
@@ -2579,11 +2580,11 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 												scoop=functionNode;				
 																
 										}
-#line 2583 "yacc.cpp" /* glr.c:788  */
+#line 2584 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 137:
-#line 746 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 747 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 															Streams::verbose()<<"instance_implementation_definition: instance_implementation_definition_header block_body\n";
 														functionNode->addNode(cscoop);
@@ -2592,11 +2593,11 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 															scoop=NULL;
 										
 															}
-#line 2596 "yacc.cpp" /* glr.c:788  */
+#line 2597 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 138:
-#line 756 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 757 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 											     Streams::verbose()<<"instance_implementation_definition_header:MINUS p_type		method_selectors\n";
 												 method=InterfaceHelper:: createNewMethod(symbolTable->getType((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text)),symbolTable,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),selectorsList,false);
@@ -2604,21 +2605,21 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 									           functionNode= ScoopHelper::createNewFunctionNode(method,interface);
 												scoop=functionNode;
 												}
-#line 2608 "yacc.cpp" /* glr.c:788  */
+#line 2609 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 139:
-#line 765 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 766 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 												
 												Streams::verbose()<<"block_body:OPEN_S  block_body_part \n";
 												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node);
 												}
-#line 2618 "yacc.cpp" /* glr.c:788  */
+#line 2619 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 140:
-#line 772 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 773 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 												
                                                 scoop=ScoopHelper::createNewScoop(scoop);
@@ -2628,88 +2629,88 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 												Streams::verbose()<<"block_body_header:OPEN_S	\n";
 												((*yyvalp).r.node)=scoop;
 												}
-#line 2632 "yacc.cpp" /* glr.c:788  */
+#line 2633 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 141:
-#line 784 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 785 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 												cscoop=scoop;scoop=scoop->getParent();
 												Streams::verbose()<<"block_body_statements:statement_list	CLOSE_S	\n";
 												}
-#line 2641 "yacc.cpp" /* glr.c:788  */
+#line 2642 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 142:
-#line 788 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 789 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 												cscoop=scoop;scoop=scoop->getParent();
 												Streams::verbose()<<"block_body_statements:CLOSE_S\n";
 												}
-#line 2650 "yacc.cpp" /* glr.c:788  */
+#line 2651 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 143:
-#line 792 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 793 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 											  cscoop=scoop; scoop=scoop->getParent();
 												Streams::verbose()<<"block_body_statements: error CLOSE_S\n";
 												}
-#line 2659 "yacc.cpp" /* glr.c:788  */
+#line 2660 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 144:
-#line 798 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 799 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"statement_list: statement_list statement\n";
 											((*yyvalp).r.text)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text);
 											scoop->addNode((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
 											
 											}
-#line 2669 "yacc.cpp" /* glr.c:788  */
+#line 2670 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 145:
-#line 803 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 804 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"statement_list: statement\n";
 											((*yyvalp).r.text)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text);
 											((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 											scoop->addNode((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
 											
 											}
-#line 2680 "yacc.cpp" /* glr.c:788  */
+#line 2681 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 146:
-#line 812 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 813 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"statement: loop_statement\n";
 											((*yyvalp).r.text)="loop";
 											((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 											}
-#line 2689 "yacc.cpp" /* glr.c:788  */
+#line 2690 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 147:
-#line 816 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 817 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"statement: conditional_statement\n";
 											((*yyvalp).r.text)="cond";
 											((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 											}
-#line 2698 "yacc.cpp" /* glr.c:788  */
+#line 2699 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 148:
-#line 820 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 821 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 												Streams::verbose()<<"statement: expr\n";
 												((*yyvalp).r.text)="expr";
 												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node);
 												//nodeXX=$<r.node>1;
 											}
-#line 2709 "yacc.cpp" /* glr.c:788  */
+#line 2710 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 149:
-#line 826 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 827 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 											Streams::verbose()<<"statement: variable_declaration\n";
 											
@@ -2719,90 +2720,90 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 												flag=false;
 												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 										    }
-#line 2723 "yacc.cpp" /* glr.c:788  */
+#line 2724 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 150:
-#line 835 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 836 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"statement: block_body\n";((*yyvalp).r.text)=new char[256];((*yyvalp).r.text)[0]='\0';strcat(((*yyvalp).r.text),"Block");
 												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 											}
-#line 2731 "yacc.cpp" /* glr.c:788  */
+#line 2732 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 151:
-#line 838 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 839 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"statement: return_statement\n";
 												((*yyvalp).r.text)="return";
 												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 											}
-#line 2740 "yacc.cpp" /* glr.c:788  */
+#line 2741 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 152:
-#line 842 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 843 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"statement: try_catch\n";((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);}
-#line 2746 "yacc.cpp" /* glr.c:788  */
+#line 2747 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 153:
-#line 844 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 845 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 	                                            ((*yyvalp).r.text)="asm";
 												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);}
-#line 2754 "yacc.cpp" /* glr.c:788  */
+#line 2755 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 154:
-#line 847 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 848 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 	 ((*yyvalp).r.text)="call";
 	((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node);
 	}
-#line 2763 "yacc.cpp" /* glr.c:788  */
+#line 2764 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 155:
-#line 851 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 852 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     { Streams::verbose()<<"statement: THROW\n";((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);}
-#line 2769 "yacc.cpp" /* glr.c:788  */
+#line 2770 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 156:
-#line 853 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 854 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     { Streams::verbose()<<"error SEMI_COMA \n";}
-#line 2775 "yacc.cpp" /* glr.c:788  */
+#line 2776 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 157:
-#line 856 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 857 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"statement: THROW\n";
 														((*yyvalp).r.node)=new ThrowNode(scoop,(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node));
 														}
-#line 2783 "yacc.cpp" /* glr.c:788  */
+#line 2784 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 158:
-#line 861 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 862 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"@asm command \n";
 	                                         ((*yyvalp).r.node)=new AsmNode(scoop,*(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.string_val));
 											 }
-#line 2791 "yacc.cpp" /* glr.c:788  */
+#line 2792 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 159:
-#line 867 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 868 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 														Streams::verbose()<<"variable_declaration:type IDENTIFIER	SEMI_COMA\n";
 														 ((*yyvalp).r.text)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text);
 														 ((*yyvalp).r.node)=new DeclerationNode(declarationList,scoop,type->get_name());
 														 declarationList.clear();
 														}
-#line 2802 "yacc.cpp" /* glr.c:788  */
+#line 2803 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 160:
-#line 873 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 874 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 														Streams::verbose()<<"variable_declaration:CONST type IDENTIFIER	SEMI_COMA\n";
 														flag=true;
@@ -2810,37 +2811,37 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 														  ((*yyvalp).r.node)=new DeclerationNode(declarationList,scoop,type->get_name());
 														 declarationList.clear();
 														}
-#line 2814 "yacc.cpp" /* glr.c:788  */
+#line 2815 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 161:
-#line 880 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 881 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"variable_declaration:enum\n";}
-#line 2820 "yacc.cpp" /* glr.c:788  */
+#line 2821 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 162:
-#line 884 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 885 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"variable_list:variable_list COMMA variable\n";}
-#line 2826 "yacc.cpp" /* glr.c:788  */
+#line 2827 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 163:
-#line 885 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 886 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"variable_list:variable\n";
 										
 										}
-#line 2834 "yacc.cpp" /* glr.c:788  */
+#line 2835 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 164:
-#line 888 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 889 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Expected ',' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2840 "yacc.cpp" /* glr.c:788  */
+#line 2841 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 165:
-#line 891 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 892 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 											Streams::verbose() <<"variable:  IDENTIFIER array_tag initializer \n";
 											 var=new Array((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text),arrayAlloc.size(),NULL);
@@ -2848,11 +2849,11 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 											 arrayList.push_back( ( dynamic_cast<Array*>(var)));
 											 arrayAlloc.clear();
 											}
-#line 2852 "yacc.cpp" /* glr.c:788  */
+#line 2853 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 166:
-#line 898 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 899 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     { 
 											Streams::verbose() <<"variable:  IDENTIFIER main_initializer \n";
 											idsList.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text)) ;
@@ -2862,63 +2863,63 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 											}
 											declarationList.push_back(make_pair((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node)));
 											}
-#line 2866 "yacc.cpp" /* glr.c:788  */
+#line 2867 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 167:
-#line 907 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 908 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"Error: Expected identifier at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}
-#line 2872 "yacc.cpp" /* glr.c:788  */
+#line 2873 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 168:
-#line 910 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 911 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"return_statement: RETURN expr\n";
 												 ((*yyvalp).r.node)=new ReturnNode(scoop,(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node));
 												}
-#line 2880 "yacc.cpp" /* glr.c:788  */
+#line 2881 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 169:
-#line 915 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 916 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"loop_statement: for_loop\n";
 												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 											}
-#line 2888 "yacc.cpp" /* glr.c:788  */
+#line 2889 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 170:
-#line 918 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 919 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"loop_statement: while_loop\n";
 												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 											}
-#line 2896 "yacc.cpp" /* glr.c:788  */
+#line 2897 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 171:
-#line 921 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 922 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"loop_statement: do_while_loop\n";
 												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 											}
-#line 2904 "yacc.cpp" /* glr.c:788  */
+#line 2905 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 172:
-#line 926 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 927 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"do_while: do_header   statement   while_loop_header   SEMI_COMMA\n";
 													((*yyvalp).r.node)=new DoWhileNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),scoop);
 													}
-#line 2912 "yacc.cpp" /* glr.c:788  */
+#line 2913 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 173:
-#line 931 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 932 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"do_header: DO\n";}
-#line 2918 "yacc.cpp" /* glr.c:788  */
+#line 2919 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 174:
-#line 934 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 935 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"for_loop: for_loop_header statement\n";
 												type=symbolTable->getType("int");
 											if(type==NULL){
@@ -2935,76 +2936,76 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 												(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node)->toString();
 												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node);
 											}
-#line 2939 "yacc.cpp" /* glr.c:788  */
+#line 2940 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 175:
-#line 953 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 954 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer	SEMI_COMA logic_expr1 SEMI_COMA expr			CLOSE_P\n";
 										((*yyvalp).r.node)=new ForNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-5)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node),NULL,scoop);
 										//nodeXX=$<r.node>5;
 										}
-#line 2948 "yacc.cpp" /* glr.c:788  */
+#line 2949 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 176:
-#line 959 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 960 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA expr			CLOSE_P\n";
 										((*yyvalp).r.node)=new ForNode(NULL,(((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node),NULL,scoop);
 										}
-#line 2956 "yacc.cpp" /* glr.c:788  */
+#line 2957 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 177:
-#line 963 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 964 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer SEMI_COMA			 SEMI_COMA expr			CLOSE_P\n";
 										((*yyvalp).r.node)=new ForNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-4)].yystate.yysemantics.yysval.r.node),NULL,(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node),NULL,scoop);
 										}
-#line 2964 "yacc.cpp" /* glr.c:788  */
+#line 2965 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 178:
-#line 967 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 968 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P	\n";
 										((*yyvalp).r.node)=new ForNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-4)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),NULL,NULL,scoop);
 										}
-#line 2972 "yacc.cpp" /* glr.c:788  */
+#line 2973 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 179:
-#line 972 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 973 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"for_loop_header: FOR OPEN_P	for_initializer	SEMI_COMA			 SEMI_COMA				CLOSE_P	\n";
 										((*yyvalp).r.node)=new ForNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.r.node),NULL,NULL,NULL,scoop);
 										}
-#line 2980 "yacc.cpp" /* glr.c:788  */
+#line 2981 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 180:
-#line 976 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 977 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P\n";
 										((*yyvalp).r.node)=new ForNode(NULL,(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),NULL,NULL,scoop);
 										}
-#line 2988 "yacc.cpp" /* glr.c:788  */
+#line 2989 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 181:
-#line 980 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 981 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"for_loop_header: FOR OPEN_P 				SEMI_COMA			 SEMI_COMA expr			CLOSE_P";
 										((*yyvalp).r.node)=new ForNode(NULL,NULL,(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node),NULL,scoop);
 										}
-#line 2996 "yacc.cpp" /* glr.c:788  */
+#line 2997 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 182:
-#line 985 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 986 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"for_loop_hearder: FOR OPEN_P 				SEMI_COMA			SEMI_COMA 				CLOSE_P	\n";
 											((*yyvalp).r.node)=new ForNode(NULL,NULL,NULL,NULL,scoop);
 											}
-#line 3004 "yacc.cpp" /* glr.c:788  */
+#line 3005 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 183:
-#line 990 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 991 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"for_initializer: INT IDENTIFIER EQUAL expr\n";
 											AssignNode * temp=new AssignNode(scoop,new IdentifierNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text),scoop),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
 											
@@ -3016,332 +3017,332 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 										 ((*yyvalp).r.node)=temp1; 
 										 idsList.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text));
 										}
-#line 3020 "yacc.cpp" /* glr.c:788  */
+#line 3021 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 184:
-#line 1001 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1002 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"for_initializer: IDENTIFIER EQUAL expr\n";
 										((*yyvalp).r.node)=new AssignNode(scoop,new IdentifierNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text),scoop),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
 										}
-#line 3028 "yacc.cpp" /* glr.c:788  */
+#line 3029 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 185:
-#line 1004 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1005 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"for_initializer: IDENTIFIER\n";
 										((*yyvalp).r.node)=new IdentifierNode((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),scoop);
 										}
-#line 3036 "yacc.cpp" /* glr.c:788  */
+#line 3037 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 186:
-#line 1009 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1010 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"logic_expr:expr AND! expr\n";
 										((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),AND_AND,scoop);
 										}
-#line 3044 "yacc.cpp" /* glr.c:788  */
+#line 3045 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 187:
-#line 1012 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1013 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"logic_expr:logic_expr OR_OR logic_expr\n";
 										((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),OR_OR,scoop);
 										}
-#line 3052 "yacc.cpp" /* glr.c:788  */
+#line 3053 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 188:
-#line 1015 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1016 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 										
 										}
-#line 3060 "yacc.cpp" /* glr.c:788  */
+#line 3061 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 189:
-#line 1021 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1022 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"logic_expr:expr LESS_THAN expr\n";
 										((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),LESS_THAN,scoop);
 										}
-#line 3068 "yacc.cpp" /* glr.c:788  */
+#line 3069 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 190:
-#line 1024 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1025 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"logic_expr:expr MORE_THAN expr\n";
 										 ((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),MORE_THAN,scoop);
 										}
-#line 3076 "yacc.cpp" /* glr.c:788  */
+#line 3077 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 191:
-#line 1027 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1028 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"logic_expr:expr LESS_OR_EQUAL expr\n";
 										 ((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),LESS_OR_EQUAL,scoop);
 										}
-#line 3084 "yacc.cpp" /* glr.c:788  */
+#line 3085 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 192:
-#line 1030 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1031 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"logic_expr:expr MORE_OR_EQUAL expr\n";
 										((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),MORE_OR_EQUAL,scoop);
 										}
-#line 3092 "yacc.cpp" /* glr.c:788  */
+#line 3093 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 193:
-#line 1033 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1034 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"logic_expr:expr EQUAL_EQUAL expr\n";
 										((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),EQUAL_EQUAL,scoop);
 										}
-#line 3100 "yacc.cpp" /* glr.c:788  */
+#line 3101 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 194:
-#line 1036 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1037 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"logic_expr:expr EQUAL_EQUAL expr\n";
 										((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),NOT_EQUAL,scoop);
 										}
-#line 3108 "yacc.cpp" /* glr.c:788  */
+#line 3109 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 195:
-#line 1039 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1040 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"logic_expr:NOT_EQUAL expr\n";
 										 ((*yyvalp).r.node)=new UnaryNode(scoop,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),NOT_EQUAL);
 										}
-#line 3116 "yacc.cpp" /* glr.c:788  */
+#line 3117 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 196:
-#line 1042 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1043 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"logic_expr:OPEN_P logic_expr CLOSE_P\n";
 										 ((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node);
 										}
-#line 3124 "yacc.cpp" /* glr.c:788  */
+#line 3125 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 197:
-#line 1046 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1047 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"logic_expr:TRUE\n";
 										 ((*yyvalp).r.node)=new ConstantNode(true,scoop);
 										}
-#line 3132 "yacc.cpp" /* glr.c:788  */
+#line 3133 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 198:
-#line 1049 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1050 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"logic_expr:FALSE\n";
 											 ((*yyvalp).r.node)=new ConstantNode(false,scoop);
 										}
-#line 3140 "yacc.cpp" /* glr.c:788  */
+#line 3141 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 199:
-#line 1052 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1053 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"logic_expr:long id\n";
 											 ((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 										}
-#line 3148 "yacc.cpp" /* glr.c:788  */
+#line 3149 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 200:
-#line 1058 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1059 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"expr:assign_expr\n";
 										 ((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 										}
-#line 3156 "yacc.cpp" /* glr.c:788  */
+#line 3157 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 201:
-#line 1061 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1062 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"expr:simple_expr\n";
 										((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 										}
-#line 3164 "yacc.cpp" /* glr.c:788  */
+#line 3165 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 202:
-#line 1066 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1067 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 										Streams::verbose()<<"assign_expr:long_id EQUAL simple_expr\n";
 										//LongIdHelper::checkIdenentifier( scoop, interface,"set1");
 										((*yyvalp).r.node)=new AssignNode(scoop,(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
 										}
-#line 3174 "yacc.cpp" /* glr.c:788  */
+#line 3175 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 203:
-#line 1073 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1074 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"long_id: long_id.IDENTIFIER\n";
 																((*yyvalp).r.node)=new DotNode(scoop,(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
 
 											;}
-#line 3183 "yacc.cpp" /* glr.c:788  */
+#line 3184 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 204:
-#line 1077 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1078 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 												Streams::verbose()<<"long_id: long_id.message_call\n";
 												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 											}
-#line 3192 "yacc.cpp" /* glr.c:788  */
+#line 3193 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 205:
-#line 1081 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1082 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 																LongIdHelper::addIdentifier((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text)); 
 																((*yyvalp).r.node)=new IdentifierNode((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),scoop);
 																Streams::verbose()<<"long_id:IDENTIFIER :"<<(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text)<<"\n";
 															   }
-#line 3202 "yacc.cpp" /* glr.c:788  */
+#line 3203 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 206:
-#line 1086 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1087 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 											Streams::verbose()<<"long_id: long_id.array_access\n";
 												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 											}
-#line 3211 "yacc.cpp" /* glr.c:788  */
+#line 3212 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 207:
-#line 1094 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1095 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 							Streams::verbose()<<"array_access: details\n";
 
 							((*yyvalp).r.node)=new ArrayAccessNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node),scoop);
 
 						}
-#line 3222 "yacc.cpp" /* glr.c:788  */
+#line 3223 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 208:
-#line 1103 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1104 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 										Streams::verbose()<<"simple_expr:STRING_VAL\n";
 									((*yyvalp).r.node)=new ConstantNode(*((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.string_val)),scoop);
 									Streams::verbose()<<"node typr"<<((*yyvalp).r.node)->generateType()->get_name()<<"\n";
 									((*yyvalp).r.string_val)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.string_val);
 									}
-#line 3233 "yacc.cpp" /* glr.c:788  */
+#line 3234 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 209:
-#line 1109 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1110 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 									Streams::verbose()<<"simple_expr:INT_VAL\n";
 									((*yyvalp).r.node)=new ConstantNode(yylval.r.int_val,scoop);
 									}
-#line 3242 "yacc.cpp" /* glr.c:788  */
+#line 3243 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 210:
-#line 1113 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1114 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"simple_expr:FLOAT_VAL\n";
 									((*yyvalp).r.node)=new ConstantNode(yylval.r.float_val,scoop);
 									}
-#line 3250 "yacc.cpp" /* glr.c:788  */
+#line 3251 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 211:
-#line 1116 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1117 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"simple_expr:CHAR_VAL\n";
 										((*yyvalp).r.node)=new ConstantNode(yylval.r.char_val,scoop);
 									}
-#line 3258 "yacc.cpp" /* glr.c:788  */
+#line 3259 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 212:
-#line 1119 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1120 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"simple_expr:long_id\n";
 									((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 									}
-#line 3266 "yacc.cpp" /* glr.c:788  */
+#line 3267 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 213:
-#line 1122 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1123 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 										Streams::verbose()<<"simple_expr:expr PLUS expr\n";
 										((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),PLUS,scoop);
 									}
-#line 3275 "yacc.cpp" /* glr.c:788  */
+#line 3276 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 214:
-#line 1126 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1127 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 										Streams::verbose()<<"simple_expr:expr MINUS expr\n";
 										((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),MINUS,scoop);
 									}
-#line 3284 "yacc.cpp" /* glr.c:788  */
+#line 3285 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 215:
-#line 1130 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1131 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"simple_expr:expr MULTI expr\n";
 											((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),MULTI,scoop);
 									}
-#line 3292 "yacc.cpp" /* glr.c:788  */
+#line 3293 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 216:
-#line 1133 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1134 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 									Streams::verbose()<<"simple_expr:expr DIV expr\n";
 									((*yyvalp).r.node)=new BinaryOperationNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),DIV,scoop);
 									}
-#line 3301 "yacc.cpp" /* glr.c:788  */
+#line 3302 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 217:
-#line 1137 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1138 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"simple_expr:OPEN_P expr CLOSE_P\n";((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node);}
-#line 3307 "yacc.cpp" /* glr.c:788  */
+#line 3308 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 218:
-#line 1138 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1139 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"simple_expr:ID++";}
-#line 3313 "yacc.cpp" /* glr.c:788  */
+#line 3314 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 219:
-#line 1139 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1140 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"simple_expr:ID--";}
-#line 3319 "yacc.cpp" /* glr.c:788  */
+#line 3320 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 220:
-#line 1140 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1141 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"simple_expr:++ID";}
-#line 3325 "yacc.cpp" /* glr.c:788  */
+#line 3326 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 221:
-#line 1141 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1142 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"simple_expr:--ID";}
-#line 3331 "yacc.cpp" /* glr.c:788  */
+#line 3332 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 222:
-#line 1142 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1143 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 																Streams::verbose()<<"expr:p_type expr\n";
 																if(type!=NULL)
 																((*yyvalp).r.node)=new CastNode(scoop,type,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
 															}
-#line 3341 "yacc.cpp" /* glr.c:788  */
+#line 3342 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 223:
-#line 1149 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1150 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {		
 			Streams::verbose()<<"message_call2\n";
 			if(callNode==NULL)
@@ -3353,11 +3354,11 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 			}
 			Streams::verbose()<<"mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm";
 			}
-#line 3357 "yacc.cpp" /* glr.c:788  */
+#line 3358 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 224:
-#line 1162 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1163 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 												Streams::verbose()<<"message_call: OPEN_ARR sender message CLOSE_ARR\n";
 												callNode->setMessage((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text));
@@ -3368,22 +3369,22 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 														callNodeStack.pop();
 														}
 												}
-#line 3372 "yacc.cpp" /* glr.c:788  */
+#line 3373 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 225:
-#line 1174 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1175 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"sender: message_call\n";
 											
 											callNode->setSender((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
 											 ((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 											 
 											}
-#line 3383 "yacc.cpp" /* glr.c:788  */
+#line 3384 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 226:
-#line 1180 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1181 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"sender: IDENTIFIER\n";
 											((*yyvalp).r.node)=new IdentifierNode((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),scoop);
 											
@@ -3392,242 +3393,242 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 											callNode->setSender(((*yyvalp).r.node));
 											
 											}
-#line 3396 "yacc.cpp" /* glr.c:788  */
+#line 3397 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 227:
-#line 1190 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1191 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"message: IDENTIFIER\n";
 											((*yyvalp).r.text)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text);
 												
 											}
-#line 3405 "yacc.cpp" /* glr.c:788  */
+#line 3406 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 228:
-#line 1194 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1195 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 											Streams::verbose()<<"message_selectors_list\n";
 											//$<r.node>$=$<r.text>1;
 											((*yyvalp).r.text)="";
 											}
-#line 3415 "yacc.cpp" /* glr.c:788  */
+#line 3416 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 229:
-#line 1201 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1202 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 											Streams::verbose()<<"message_selectors_list:message_selectors_list message_selector \n";
 												callNode->addSelector(cselector);
 											cselector=NULL;
 												}
-#line 3425 "yacc.cpp" /* glr.c:788  */
+#line 3426 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 230:
-#line 1206 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1207 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {	callNode->addSelector(cselector);
 							cselector=NULL;
 								Streams::verbose()<<"message_selectors_list: message_selector\n";
 											
 		}
-#line 3435 "yacc.cpp" /* glr.c:788  */
+#line 3436 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 231:
-#line 1212 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1213 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 									cselector->name=(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text);
 							}
-#line 3443 "yacc.cpp" /* glr.c:788  */
+#line 3444 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 232:
-#line 1216 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1217 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"argument_list: argument_list argument\n";
 												cselector->addArg((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));}
-#line 3450 "yacc.cpp" /* glr.c:788  */
+#line 3451 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 233:
-#line 1218 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1219 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"argument_list: argument\n";
 												cselector=new CallSelector("");
 											cselector->addArg((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));}
-#line 3458 "yacc.cpp" /* glr.c:788  */
+#line 3459 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 234:
-#line 1223 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1224 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 											Streams::verbose()<<"argument: SEMI_COLUMN expr\n";
 											((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 											//callNode->addArgument($<r.node>1,"");
 											
 											}
-#line 3469 "yacc.cpp" /* glr.c:788  */
+#line 3470 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 235:
-#line 1231 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1232 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 											Streams::verbose()<<"while_loop:while_loop_header statement\n";
 											 ((*yyvalp).r.node)=new WhileNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),scoop);
 										}
-#line 3478 "yacc.cpp" /* glr.c:788  */
+#line 3479 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 236:
-#line 1237 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1238 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"while_loop_header: WHILE OPEN_P logic_expr CLOSE_P\n";
 											((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node);
 											}
-#line 3486 "yacc.cpp" /* glr.c:788  */
+#line 3487 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 237:
-#line 1242 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1243 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"conditional_statement: if_header statement\n";
 												 ((*yyvalp).r.node)=new IfNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),scoop,NULL);
 												}
-#line 3494 "yacc.cpp" /* glr.c:788  */
+#line 3495 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 238:
-#line 1245 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1246 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 												Streams::verbose()<<"conditional_statement: if_header statement with else\n";
 												 ((*yyvalp).r.node)=new IfNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),scoop,new ElseNode((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node),scoop));
 												}
-#line 3503 "yacc.cpp" /* glr.c:788  */
+#line 3504 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 239:
-#line 1249 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1250 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"conditional_statement: switch_header switch_body statement\n";
 											((*yyvalp).r.node)=tempSwitch;
 										}
-#line 3511 "yacc.cpp" /* glr.c:788  */
+#line 3512 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 240:
-#line 1254 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1255 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"if_header: IF OPEN_P logic_expr CLOSE_P\n";
 											((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node);
 											}
-#line 3519 "yacc.cpp" /* glr.c:788  */
+#line 3520 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 241:
-#line 1259 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1260 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"switch_header: SWITCH OPEN_P IDENTIFIER CLOSE_P\n";
 										
 										tempSwitch->setExpr(new IdentifierNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text),scoop));
 									}
-#line 3528 "yacc.cpp" /* glr.c:788  */
+#line 3529 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 242:
-#line 1265 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1266 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {scoop=new ScoopNode(scoop);tempSwitch=new SwitchNode(NULL,std::list<pair<Node*,Node*>>(),scoop);}
-#line 3534 "yacc.cpp" /* glr.c:788  */
+#line 3535 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 243:
-#line 1268 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1269 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {;}
-#line 3540 "yacc.cpp" /* glr.c:788  */
+#line 3541 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 244:
-#line 1269 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1270 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {;}
-#line 3546 "yacc.cpp" /* glr.c:788  */
+#line 3547 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 245:
-#line 1270 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1271 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {;}
-#line 3552 "yacc.cpp" /* glr.c:788  */
+#line 3553 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 246:
-#line 1271 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1272 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {;}
-#line 3558 "yacc.cpp" /* glr.c:788  */
+#line 3559 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 247:
-#line 1274 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1275 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {;}
-#line 3564 "yacc.cpp" /* glr.c:788  */
+#line 3565 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 248:
-#line 1275 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1276 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {;}
-#line 3570 "yacc.cpp" /* glr.c:788  */
+#line 3571 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 249:
-#line 1278 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1279 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {tempSwitch->addCase((((yyGLRStackItem const *)yyvsp)[YYFILL (-4)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node));}
-#line 3576 "yacc.cpp" /* glr.c:788  */
+#line 3577 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 250:
-#line 1279 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1280 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {tempSwitch->addCase((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));}
-#line 3582 "yacc.cpp" /* glr.c:788  */
+#line 3583 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 251:
-#line 1280 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1281 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {tempSwitch->addCase((((yyGLRStackItem const *)yyvsp)[YYFILL (-3)].yystate.yysemantics.yysval.r.node),NULL);}
-#line 3588 "yacc.cpp" /* glr.c:788  */
+#line 3589 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 252:
-#line 1283 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1284 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {tempSwitch->addCase(NULL,(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node));}
-#line 3594 "yacc.cpp" /* glr.c:788  */
+#line 3595 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 253:
-#line 1284 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1285 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {tempSwitch->addCase(NULL,(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));}
-#line 3600 "yacc.cpp" /* glr.c:788  */
+#line 3601 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 254:
-#line 1285 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1286 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {tempSwitch->addCase(NULL,(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node));}
-#line 3606 "yacc.cpp" /* glr.c:788  */
+#line 3607 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 255:
-#line 1287 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1288 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 										Streams::verbose()<<"protocol: protocol_header protocol_body\n";
 										idsList.clear();
 										methodsList.clear();
 										method=NULL;
 										}
-#line 3617 "yacc.cpp" /* glr.c:788  */
+#line 3618 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 256:
-#line 1295 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1296 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 								Streams::verbose()<<"protocol_header: AT_PROTOCOL IDENTIFIER \n";
 								protocol=ProtocolHelper ::createNewProtocol((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text),symbolTable );
 								
 								}
-#line 3627 "yacc.cpp" /* glr.c:788  */
+#line 3628 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 257:
-#line 1302 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1303 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 								Streams::verbose()<<"protocol_body:	protocol_reference_list interface_declaration_list	AT_END\n";
 								ProtocolHelper::addInheritedProtocol( protocol, idsList,symbolTable);
@@ -3635,11 +3636,11 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 								methodsList.clear();
 								idsList.clear();
 								}
-#line 3639 "yacc.cpp" /* glr.c:788  */
+#line 3640 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 258:
-#line 1310 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1311 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 								Streams::verbose()<<"protocol_body:	interface_declaration_list	AT_END\n";
 									
@@ -3647,133 +3648,133 @@ yyuserAction (yyRuleNum yyn, size_t yyrhslen, yyGLRStackItem* yyvsp,
 								methodsList.clear();
 								
 								}
-#line 3651 "yacc.cpp" /* glr.c:788  */
+#line 3652 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 259:
-#line 1318 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1319 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 								Streams::verbose()<<"protocol_body:	protocol_reference_list AT_END	\n";
 											ProtocolHelper::addInheritedProtocol( protocol, idsList,symbolTable);
 								idsList.clear();
 								}
-#line 3661 "yacc.cpp" /* glr.c:788  */
+#line 3662 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 260:
-#line 1324 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1325 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"protocol_body:	AT_END\n";}
-#line 3667 "yacc.cpp" /* glr.c:788  */
+#line 3668 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 261:
-#line 1326 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1327 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 																Streams::verbose()<<"enum: ENUM IDENTIFIER  OPEN_S list_expr CLOSE_S SEMI_COMA  \n";
 																
 																EnumHelper::createNewEnum( (((yyGLRStackItem const *)yyvsp)[YYFILL (-4)].yystate.yysemantics.yysval.r.text),idsList, symbolTable);
 																idsList.clear();
 															 }
-#line 3678 "yacc.cpp" /* glr.c:788  */
+#line 3679 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 262:
-#line 1332 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1333 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 																Streams::verbose()<<"enum: ENUM IDENTIFIER SEMI_COMA\n";
 																EnumHelper::createNewEnum( (((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text),idsList, symbolTable);
 															  }
-#line 3687 "yacc.cpp" /* glr.c:788  */
+#line 3688 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 263:
-#line 1339 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1340 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 												Streams::verbose()<<"list_expr:IDENTIFIER EQUAL expr COMMA list_expr\n";
 												idsList.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (-4)].yystate.yysemantics.yysval.r.text));
 													((*yyvalp).r.node)=new AssignNode(scoop,new IdentifierNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-4)].yystate.yysemantics.yysval.r.text),scoop),(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.node));
 												}
-#line 3697 "yacc.cpp" /* glr.c:788  */
+#line 3698 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 264:
-#line 1344 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1345 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 												Streams::verbose()<<"list_expr:IDENTIFIER EQUAL expr\n";
 												idsList.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text));
 												((*yyvalp).r.node)=new AssignNode(scoop,new IdentifierNode((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text),scoop),(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node));
 												}
-#line 3707 "yacc.cpp" /* glr.c:788  */
+#line 3708 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 265:
-#line 1349 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1350 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 													Streams::verbose()<<"list_expr:IDENTIFIER \n";
 													idsList.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.text));
 													//??
 												}
-#line 3717 "yacc.cpp" /* glr.c:788  */
+#line 3718 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 266:
-#line 1354 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1355 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 												  Streams::verbose()<<"list_expr:IDENTIFIER  COMMA list_expr \n";
 												  idsList.push_back((((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text));
 												  //??
 												}
-#line 3727 "yacc.cpp" /* glr.c:788  */
+#line 3728 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 267:
-#line 1361 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1362 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {
 												  Streams::verbose()<<"try_catch:TRY statement catch_list finally_statement \n";
 												}
-#line 3735 "yacc.cpp" /* glr.c:788  */
+#line 3736 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 268:
-#line 1365 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1366 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {		
 	((*yyvalp).r.node)=new TryNode(scoop,(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node),dynamic_cast<CatchNode*>((((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node)))		;		  
 								Streams::verbose()<<"try_catch:TRY statement catch_list \n";
 							  }
-#line 3744 "yacc.cpp" /* glr.c:788  */
+#line 3745 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 269:
-#line 1371 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1372 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"catch_list:one_catch \n";((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 													}
-#line 3751 "yacc.cpp" /* glr.c:788  */
+#line 3752 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 270:
-#line 1373 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1374 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"catch_list:catch_list CATCH OPEN_S type IDENTIFIER CLOSE_S statement \n";
 												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);
 												dynamic_cast<CatchNode*>(((*yyvalp).r.node))->next=dynamic_cast<CatchNode*>((((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node));
 												}
-#line 3760 "yacc.cpp" /* glr.c:788  */
+#line 3761 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 271:
-#line 1378 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+#line 1379 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
     {Streams::verbose()<<"catch_list:CATCH OPEN_S type IDENTIFIER CLOSE_S statement \n";
 												((*yyvalp).r.node)=(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.node);dynamic_cast<CatchNode*>(((*yyvalp).r.node))->_statement=(((yyGLRStackItem const *)yyvsp)[YYFILL (0)].yystate.yysemantics.yysval.r.node);	}
-#line 3767 "yacc.cpp" /* glr.c:788  */
+#line 3768 "yacc.cpp" /* glr.c:788  */
     break;
 
   case 272:
-#line 1382 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
-    { ((*yyvalp).r.node)=new CatchNode(scoop,type,(((yyGLRStackItem const *)yyvsp)[YYFILL (-2)].yystate.yysemantics.yysval.r.text));Streams::verbose()<<"now";}
-#line 3773 "yacc.cpp" /* glr.c:788  */
+#line 1383 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:788  */
+    { ((*yyvalp).r.node)=new CatchNode(scoop,type,(((yyGLRStackItem const *)yyvsp)[YYFILL (-1)].yystate.yysemantics.yysval.r.text));Streams::verbose()<<"now";}
+#line 3774 "yacc.cpp" /* glr.c:788  */
     break;
 
 
-#line 3777 "yacc.cpp" /* glr.c:788  */
+#line 3778 "yacc.cpp" /* glr.c:788  */
       default: break;
     }
 
@@ -5448,7 +5449,7 @@ yypdumpstack (yyGLRStack* yystackp)
 
 
 
-#line 1387 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:2549  */
+#line 1388 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:2549  */
 
 void yyerror(const char *s) {
 
@@ -5517,8 +5518,8 @@ void main(int argc,      // Number of strings in array argv
 		}
 		symbolTable->generateStatics();
 		symbolTable->generateCode();
-	Program::printErrors();
 	ofs<<".data\n";
+	MIPS_ASM::add_data("\nnewline: .asciiz \"\\n\"\n");
 	MIPS_ASM::writeData();
 		ofs<<"\n.text\n";
 
@@ -5531,5 +5532,21 @@ void main(int argc,      // Number of strings in array argv
 std::string str_common((std::istreambuf_iterator<char>(t_common)),
                  std::istreambuf_iterator<char>());
 	ofs<<str_common<<"\n";
-	
+
+	Iskernal=1;
+	symbolTable->generateKernalCode();
+
+		ofs<<".ktext 0x80000180\n";
+
+ t_common =	std::ifstream("exception.asm");
+ str_common=string((std::istreambuf_iterator<char>(t_common)),
+                 std::istreambuf_iterator<char>());
+	ofs<<str_common<<"\n";
+	MIPS_ASM::writeCode();
+
+	MIPS_ASM::add_data("msg:   .asciiz \"Trap generated \\n\"\n");
+	ofs<<".kdata\n";
+	MIPS_ASM::writeData();
+		Program::printErrors();
+
 }
