@@ -9,9 +9,6 @@ void Program::printErrors(){
 		cout << endl;
 	}
 	cout << "\n";
-}
-
-void Program::printWarning(){
 	cout << "\nWarning:\n";
 	for (int i = 0; i<warningList.size(); i++){
 		warningList.at(i)->toString();
@@ -19,6 +16,8 @@ void Program::printWarning(){
 	}
 	cout << "\n";
 }
+
+
 vector<Error*> Program::errorsList;
 vector<Error*> Program::warningList;
 void Program::addError(Error* error){
