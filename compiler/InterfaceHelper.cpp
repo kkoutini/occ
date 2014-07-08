@@ -4,7 +4,9 @@
 #include "ClassNode.h"
 extern SymbolTable* symbolTable;
 extern Method * mainMethod ;
-
+extern int lineNum;
+extern int colNum;
+extern string sourceFile;
 void InterfaceHelper::addMethods(Interface* interface,vector<Method*>methodsList){
 	for (auto i : methodsList)
 	{
@@ -19,7 +21,7 @@ void InterfaceHelper::addMethods(Interface* interface,vector<Method*>methodsList
 						error.append(i->getSignature());
 
 						error.append("'.");
-						Program::addError(new SemanticError(error));
+						Program::addError(new SemanticError(error,colNum,lineNum,sourceFile));
 
 
 					}
@@ -37,7 +39,7 @@ void InterfaceHelper::addMethods(Interface* interface,vector<Method*>methodsList
 					error.append(i->getSignature());
 
 					error.append("'.");
-					Program::addError(new SemanticError(error));
+					Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 
 
 				}
@@ -61,14 +63,14 @@ void InterfaceHelper::addInheritedProtocol(Interface* interface,vector<string>id
 				string error="Can not find protocol declaration for '";
 				error.append(idsList.at(i));
 				error.append("'.");
-				Program::addError(new SemanticError(error));
+				Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 			}
 		}
 		else {
 			string error="Can not find protocol declaration for '";
 			error.append(idsList.at(i));
 			error.append("'.");
-			Program::addError(new SemanticError(error));
+			Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 		}
 	}
 
@@ -89,7 +91,7 @@ void InterfaceHelper::addDataMembers(Interface* interface,vector<string>idsList,
 				string error="Duplicate member '";
 				error.append(idsList.at(i));
 				error.append("'.");
-				Program::addError(new SemanticError(error));
+				Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 			}
 		}
 		for(int i=0;i<arrayList.size();i++)
@@ -106,7 +108,7 @@ void InterfaceHelper::addDataMembers(Interface* interface,vector<string>idsList,
 				string error="Duplicate member '";
 				error.append(arrayList.at(i)->get_name());
 				error.append("'.");
-				Program::addError(new SemanticError(error));
+				Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 			}
 		}
 	}
@@ -128,7 +130,7 @@ Method* InterfaceHelper::createNewMethod(Type* type, SymbolTable* symbolTable, s
 				string error="Redifinition of selector name '";
 				error.append(selectorsList.at(i)->get_name());
 				error.append("'.");
-				Program::addError(new SemanticError(error));
+				Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 			}
 		}
 	
@@ -156,7 +158,7 @@ void InterfaceHelper:: implementMethods(vector<Method*>methodsList,Interface* in
 			error.append(") vs (");
 				error.append(methodsList.at(i)->getReturnType()->get_name());
 				error.append(").");
-			Program::addError(new SemanticError(error));
+				Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 				}
 				Method::checkParameters(methodsList.at(i),tempMethod);
 				FunctionNode* fn = dynamic_cast<FunctionNode*>(methodsList.at(i)->get_Scoop());
@@ -191,7 +193,7 @@ void InterfaceHelper:: implementMethods(vector<Method*>methodsList,Interface* in
 						string error = " Duplicate method declaration'";
 						error.append(methodsList.at(i)->get_name());
 						error.append("'.");
-						Program::addError(new SemanticError(error));
+						Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 
 					}
 				}
@@ -218,7 +220,7 @@ Interface* InterfaceHelper:: checkImplementation(string typeS,SymbolTable* symbo
 						string error="Conflicting super class name '";
 			error.append(inheritedInterface);
 			error.append("'.");
-			Program::addError(new SemanticError(error));
+			Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 				}
 			}
 			else{
@@ -236,7 +238,7 @@ Interface* InterfaceHelper:: checkImplementation(string typeS,SymbolTable* symbo
 			string error="Reimplementation of class '";
 			error.append(typeS);
 			error.append("'.");
-			Program::addError(new SemanticError(error));
+			Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 		}
 	}
 	else{
@@ -246,7 +248,7 @@ Interface* InterfaceHelper:: checkImplementation(string typeS,SymbolTable* symbo
 		
 			
 			error.append("'.");
-			Program::addError(new SemanticError(error));
+			Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 	}
 	return interface;
 }
@@ -263,7 +265,7 @@ Interface* InterfaceHelper ::createNewInterface(string name,string inheritedInte
 			error.append("', superclass of '");
 			error.append(name);
 			error.append("'.");
-			Program::addError(new SemanticError(error));
+			Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 		}
 		bool interfaceState = false;
 		bool test = symbolTable->getInterfaceState(name);
@@ -286,7 +288,7 @@ Interface* InterfaceHelper ::createNewInterface(string name,string inheritedInte
 			string error="Duplicate interface difinition for class '";
 			error.append(name);
 			error.append("'.");
-			Program::addError(new SemanticError(error));
+			Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 		}
 		return interface;
 }

@@ -1,7 +1,9 @@
 #include "LongIdHelper.h"
 #include "Program.h"
 #include "SemanticError.h"
-
+extern int lineNum;
+extern int colNum;
+extern string sourceFile;
 
 vector<string> LongIdHelper::identifierList;
 
@@ -20,12 +22,12 @@ Variable* LongIdHelper::checkIdenentifier(ScoopNode* scoop,Interface* interf,str
 			var=interf->getInheretInterface()->getVariableItems()->  get_variable(identifier);
 		if(var==NULL){
 			string error = string("Error:undefined identifier : ") + identifier;
-		Program::addError(new SemanticError(error));
+			Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 		}
 		}
 		else{
 			string error = string("Error:undefined identifier : ") + identifier;
-		Program::addError(new SemanticError(error));
+			Program::addError(new SemanticError(error, colNum, lineNum, sourceFile));
 		}
 	}
 	else return var;
