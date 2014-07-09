@@ -162,16 +162,19 @@ int ra;
 	{
 		[System println:"catched exception:"];	
 		[System println:e.msg];
+		e;
+		@asm "lw $s0,-4($sp)";
+
 		sp;
 		@asm "lw $sp,-4($sp)";
 		ra;
 		@asm "lw $ra,-4($sp)";
 		backl;
-		@asm "lw $s0,-4($sp)";	
+		@asm "lw $s1,-4($sp)";	
 		fp;
 		@asm "lw $fp,-4($sp)";	
 
-		@asm "jr  $s0";	
+		@asm "jr  $s1";	
 			
 	}
 	else{

@@ -19,6 +19,10 @@ public:
 	}
 	virtual void generateCode(){
 		MIPS_ASM::label(getCatchLabel());
+		Variable *var = this->_scoop->get_variable(idn);
+		MIPS_ASM::add_instruction(string("addi $v0,$") + var->getOffsetRegister()
+			+ "," + std::to_string(-var->getOffset()) + "\n");
+		MIPS_ASM::sw("s0", 0, "v0");
 		_statement->generateCode();
 		MIPS_ASM::jump("tryfree_" + std::to_string(try_id));
 
