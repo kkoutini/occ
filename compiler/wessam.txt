@@ -1,4 +1,4 @@
-@interface Wesso
+@interface Wesso:NSException
 {
 @public
 int a;
@@ -7,9 +7,12 @@ int a;
 
 @end
 
-@implementation Wesso
+@implementation Wesso:NSException
 
-
+-(void)oo
+{
+msg;
+}
 
 
 @end

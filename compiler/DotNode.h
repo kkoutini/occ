@@ -28,7 +28,7 @@ public:
 			addError(error);
 			return;
 		}
-		Variable* variable = sender_interface->getVariableByName(_member);
+		Variable* variable = sender_interface->getScoop()->get_variable(_member);
 		//khaled
 		if (variable == NULL){
 			//ERROR no datamember with the name
@@ -63,7 +63,7 @@ public:
 			Program::addError(new SemanticError(error));
 			return false;
 		}
-		Variable* variable = sender_interface->getVariableByName(_member);
+		Variable* variable = sender_interface->getScoop()->get_variable(_member);
 		if (variable == NULL)
 		{
 			//throw error
