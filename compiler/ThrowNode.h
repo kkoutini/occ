@@ -9,6 +9,7 @@ public:
 	ThrowNode(ScoopNode* scoop, Node* exeption) :VoidNode(scoop), _exception(exeption)
 	{}
 	virtual void generateCode(){
+		MIPS_ASM::printComment("throw node");
 
 		CallNode* exp = dynamic_cast<CallNode*> (_exception);
 		if (!exp){

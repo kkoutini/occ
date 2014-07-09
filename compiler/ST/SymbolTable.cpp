@@ -8,7 +8,7 @@
 #include <set>
 #include "../Program.h";
 #include "../SemanticError.h";
-
+#include "../RegAccessNode.h"
 extern std::ofstream ofs;
 extern ScoopNode* globalScoop;
 extern Method * mainMethod;
@@ -16,22 +16,6 @@ extern int lineNum;
 extern int colNum;
 extern string sourceFile;
 extern int Iskernal = 0;
-
-class RegAccessNode :public Node
-{
-public:
-	string reg; Type* dt;
-	RegAccessNode(ScoopNode* scoop, string r, Type* t) :Node(scoop), reg(r), dt(t)
-	{
-
-	}
-	virtual void generateCode(){
-		MIPS_ASM::push(reg);
-	}
-	virtual Type* generateType(){
-		return dt;
-	}
-};
 
 SymbolTable::SymbolTable(void)
 {

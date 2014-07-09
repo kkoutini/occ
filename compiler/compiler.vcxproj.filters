@@ -338,6 +338,9 @@
     <ClInclude Include="CatchNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RegAccessNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="codeold.txt">

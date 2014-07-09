@@ -165,6 +165,7 @@
     <ClInclude Include="MethodsIndexer.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="ProtocolHelper.h" />
+    <ClInclude Include="RegAccessNode.h" />
     <ClInclude Include="ScoopHelper.h" />
     <ClInclude Include="Selector.h" />
     <ClInclude Include="SemanticError.h" />

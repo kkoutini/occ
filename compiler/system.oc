@@ -150,28 +150,42 @@ NSExceptionCatcher* parent;
 int sp;
 int fp;
 int backl;
+int ra;
 }
 -(void) catch:(NSException*)e;
-+(NSExceptionCatcher*) new:(NSObject*)e:(NSExceptionCatcher*) p:(int)s :(int) f :(int)l;
++(NSExceptionCatcher*) new:(NSObject*)e:(NSExceptionCatcher*) p:(int)s :(int) f :(int)l:(int)r;
 @end
 @implementation NSExceptionCatcher
 -(void) catch:(NSException*)e
 {
 	if([ex isA:e])
 	{
-		[System println:"catched"];
+		[System println:"catched exception:"];	
+		[System println:e.msg];
+		sp;
+		@asm "lw $sp,-4($sp)";
+		ra;
+		@asm "lw $ra,-4($sp)";
+		backl;
+		@asm "lw $s0,-4($sp)";	
+		fp;
+		@asm "lw $fp,-4($sp)";	
+
+		@asm "jr  $s0";	
+			
 	}
 	else{
 	[parent catch:e];
 	}
 }
-+(NSExceptionCatcher*) new:(NSObject*)e:(NSExceptionCatcher*) p:(int)s :(int) f :(int)l{
++(NSExceptionCatcher*) new:(NSObject*)e:(NSExceptionCatcher*) p:(int)s :(int) f :(int)l:(int)r{
 	NSExceptionCatcher* t=[self alloc];
 	t.ex=e;
 	t.sp=s;
 	t.parent=p;
 	t.fp=f;
 	t.backl=l;
+	t.ra=r;
 	return t;
 }
 @end

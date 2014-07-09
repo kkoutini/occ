@@ -3,6 +3,7 @@
 #include "CatchNode.h"
 #include "CallNode.h"
 #include "ast\IdentifierNode.h"
+#include "RegAccessNode.h"
 class FPNode :public Node
 {
 	public:
@@ -25,7 +26,7 @@ public:
 
 	}
 	virtual void generateCode(){
-		MIPS_ASM::add_instruction("addi $t0,$fp," + std::to_string(_scoop->getFrameSize() + _scoop->getVarsOffset()) + "\n");
+		MIPS_ASM::add_instruction("addi $t0,$fp,-" + std::to_string(_scoop->getFrameSize() + _scoop->getVarsOffset()-4) + "\n");
 		MIPS_ASM::push("t0");
 	}
 	virtual Type* generateType(){
@@ -73,12 +74,16 @@ public:
 			cs->addArg(new SPNode(_scoop));
 			cs->addArg(new FPNode(_scoop));
 			cs->addArg(new LabelValNode(_scoop, cat->getCatchLabel()));
+			cs->addArg(new RegAccessNode(_scoop,"ra",symbolTable->getType("int")));
 
 			cn->addSelector(cs);
 		//	cn->generateCode();
 			AssignNode* asn=new AssignNode(_scoop, new IdentifierNode("top_catcher", _scoop), cn);
 			asn->generateCode();
+			MIPS_ASM::pop();
+
 			cat = cat->next;
+
 		}
 		_statment->generateCode();
 		MIPS_ASM::jump("tryfree_" +std::to_string( getId()));
@@ -96,6 +101,7 @@ public:
 			AssignNode* asn = new AssignNode(_scoop, new IdentifierNode("top_catcher", _scoop), new DotNode(_scoop, new IdentifierNode("top_catcher", _scoop), "parent"));
 			asn->generateCode();
 			cat = cat->next;
+			MIPS_ASM::pop();
 		}
 		MIPS_ASM::label("tryend_" + std::to_string(getId()));
 
