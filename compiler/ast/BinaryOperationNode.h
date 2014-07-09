@@ -9,6 +9,7 @@
 using std::string;
 #include "../ST/SymbolTable.h"
 extern SymbolTable* symbolTable;
+extern int tt;
 class BinaryOperationNode :public Node
 {
 protected:
@@ -27,312 +28,440 @@ public:
 	virtual void generateCode(){
 		string t0 = "t0";
 		string t1 = "t1";
-		_leftExp->generateCode();
-		//MIPS_ASM::add_instruction("\nlw $t0, 0($sp)\n";
-		//MIPS_ASM::add_instruction("add $sp,$sp,4\n";
-		_rightExp->generateCode();
-		//MIPS_ASM::add_instruction("lw $t1, 0($sp)\n";
-		//MIPS_ASM::add_instruction("add $sp,$sp,4\n";
-		//
-		//// --- Arithmetic Operation
-		//// + - * / 
-		//
-		++labelCount;
-
-		Type* lefttype = _leftExp->getType();
-		Type* righttype = _rightExp->getType();
-		Type* intType = symbolTable->getType("int");
-		Type* boolType = symbolTable->getType("bool");
-		Type* floatType = symbolTable->getType("float");
-
-		string f0 = "f0";
-		string f1 = "f1";
-		if (getHypoType() == boolType)
+		static int s=0;
+		
+		if (_leftExp->value_int != 0 && _rightExp->value_int != 0)
 		{
-			if (_op == AND_AND || _op == OR_OR)
+
+			int x = _leftExp->value_int;
+			int y = _rightExp->value_int;
+
+			MIPS_ASM::printComment("hasson");
+			if (_op == PLUS)
 			{
+				MIPS_ASM::li("t0", (x + y));
+				MIPS_ASM::push("t0");
+			}
+
+			if (_op == MINUS)
+			{
+				MIPS_ASM::li("t0", (x - y));
+				MIPS_ASM::push("t0");
+			}
+
+			if (_op == MULTI)
+			{
+				MIPS_ASM::li("t0", (x * y));
+				MIPS_ASM::push("t0");
+			}
+
+			if (_op == DIV)
+			{
+				MIPS_ASM::li("t0", (x / y));
+				MIPS_ASM::push("t0");
+			}
+
+			if (_op == EQUAL_EQUAL || _op == NOT_EQUAL)
+			{
+
+				if (_op == EQUAL_EQUAL)
+				{
+					if (x==y)
+					{
+						MIPS_ASM::li("t0", 1);
+						MIPS_ASM::push("t0");
+					}
+					if (x != y)
+					{
+						MIPS_ASM::li("t0", 0);
+						MIPS_ASM::push("t0");
+					}
+				}
+				else{
+					if (x == y)
+					{
+						MIPS_ASM::li("t0", 0);
+						MIPS_ASM::push("t0");
+					}
+					if (x != y)
+					{
+						MIPS_ASM::li("t0", 1);
+						MIPS_ASM::push("t0");
+					}
+
+				}
+				//MIPS_ASM::add_instruction("move $t0,$t2\n");
+			}
+
+			if (_op == LESS_THAN)
+			{
+				if (x < y)
+				{
+					MIPS_ASM::li("t0", 1);
+					MIPS_ASM::push("t0");
+				}
+				else
+				{
+					MIPS_ASM::li("t0", 0);
+					MIPS_ASM::push("t0");
+				}
+			}
+
+			if (_op == MORE_THAN)
+			{
+				if (x > y)
+				{
+					MIPS_ASM::li("t0", 1);
+					MIPS_ASM::push("t0");
+				}
+				else
+				{
+					MIPS_ASM::li("t0", 0);
+					MIPS_ASM::push("t0");
+				}
+			}
+
+
+			if (_op == LESS_OR_EQUAL)
+			{
+				if (x <= y)
+				{
+					MIPS_ASM::li("t0", 1);
+					MIPS_ASM::push("t0");
+				}
+				else
+				{
+					MIPS_ASM::li("t0", 0);
+					MIPS_ASM::push("t0");
+				}
+			}
+
+			if (_op == MORE_OR_EQUAL)
+			{
+				if (x >= y)
+				{
+					MIPS_ASM::li("t0", 1);
+					MIPS_ASM::push("t0");
+				}
+				else
+				{
+					MIPS_ASM::li("t0", 0);
+					MIPS_ASM::push("t0");
+				}
+			}
+
+		
+		}
+		else
+		{
+
+			_leftExp->generateCode();
+			//MIPS_ASM::add_instruction("\nlw $t0, 0($sp)\n";
+			//MIPS_ASM::add_instruction("add $sp,$sp,4\n";
+			_rightExp->generateCode();
+			//MIPS_ASM::add_instruction("lw $t1, 0($sp)\n";
+			//MIPS_ASM::add_instruction("add $sp,$sp,4\n";
+			//
+			//// --- Arithmetic Operation
+			//// + - * / 
+			//
+
+			++labelCount;
+
+			Type* lefttype = _leftExp->getType();
+			Type* righttype = _rightExp->getType();
+			Type* intType = symbolTable->getType("int");
+			Type* boolType = symbolTable->getType("bool");
+			Type* floatType = symbolTable->getType("float");
+
+			string f0 = "f0";
+			string f1 = "f1";
+			if (getHypoType() == boolType)
+			{
+				if (_op == AND_AND || _op == OR_OR)
+				{
+
+					MIPS_ASM::pop(t1);
+					MIPS_ASM::pop(t0);
+					if (_op == AND_AND)
+						MIPS_ASM::add_instruction("and $t0,$t0,$t1\n");
+					else
+						MIPS_ASM::add_instruction("or $t0,$t0,$t1\n");
+
+					MIPS_ASM::push(t0);
+				}
+				else{
+					addError("Operator not defined for bool values");
+					return;
+				}
+			}
+			if (getHypoType() == floatType)
+			{
+				MIPS_ASM::popf(f1);
+				MIPS_ASM::popf(f0);
+
+				if (righttype == intType)
+				{
+					MIPS_ASM::add_instruction("cvt.s.w $f1,$f1\n");
+
+				}
+				if (lefttype == intType)
+				{
+					MIPS_ASM::add_instruction("cvt.s.w $f0,$f0\n");
+
+				}
+
+
+
+				if (_op == PLUS)
+				{
+					MIPS_ASM::operationf(f0, f0, f1, 1);
+					MIPS_ASM::pushf(f0);
+
+				}
+
+				if (_op == MINUS)
+				{
+
+					MIPS_ASM::operationf(f0, f0, f1, 2);
+					MIPS_ASM::pushf(f0);
+				}
+
+				if (_op == MULTI)
+				{
+
+					MIPS_ASM::operationf(f0, f0, f1, 3);
+					MIPS_ASM::pushf(f0);
+				}
+
+				if (_op == DIV)
+				{
+
+					MIPS_ASM::operationf(f0, f0, f1, 4);
+					MIPS_ASM::pushf(f0);
+				}
+
+
+				//if(_op== M)
+				//{
+				//	rem $t0,$t0,$t1
+				//	sub $sp,$sp,4
+				//	sw $t0, 0($sp)
+				//}
+				//
+				//// --- Boolean Operation
+				//// == > < <= >= !=
+				//
+				if (_op == EQUAL_EQUAL || _op == NOT_EQUAL)
+				{
+
+
+					if (_op == EQUAL_EQUAL)
+					{
+						MIPS_ASM::printComment("equal opf");
+						MIPS_ASM::add_instruction("li $t0,0\n");
+						MIPS_ASM::add_instruction(string("c.eq.s $f0,$f1 \n"));
+						MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
+						MIPS_ASM::add_instruction("li $t0,1\n");
+						MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
+					}
+					else{
+						MIPS_ASM::printComment("not equal opf");
+						MIPS_ASM::add_instruction("li $t0,1\n");
+						MIPS_ASM::add_instruction(string("c.eq.s $f0,$f1 \n"));
+						MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
+						MIPS_ASM::add_instruction("li $t0,0\n");
+						MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
+
+					}
+					MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
+					MIPS_ASM::add_instruction("sw $t0, 0($sp)\n");
+					//MIPS_ASM::add_instruction("move $t0,$t2\n");
+				}
+
+				if (_op == LESS_THAN)
+				{
+					//MIPS_ASM::slt("t2", "t0", "t1");
+
+
+
+					MIPS_ASM::printComment("LESS_THAN opf");
+					MIPS_ASM::add_instruction("li $t0,0\n");
+					MIPS_ASM::add_instruction(string("c.lt.s $f0,$f1 \n"));
+					MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
+					MIPS_ASM::add_instruction("li $t0,1\n");
+					MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
+					MIPS_ASM::push("t0");
+					/*MIPS_ASM::add_instruction("slt $t2,$t0,$t1\n");
+					MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
+					MIPS_ASM::add_instruction("sw $t2, 0($sp)\n");*/
+				}
+
+				if (_op == MORE_THAN)
+				{
+
+
+					MIPS_ASM::printComment("MORE_THAN opf");
+					MIPS_ASM::add_instruction("li $t0,1\n");
+					MIPS_ASM::add_instruction(string("c.le.s $f0,$f1 \n"));
+					MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
+					MIPS_ASM::add_instruction("li $t0,0\n");
+					MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
+					MIPS_ASM::push("t0");
+					//MIPS_ASM::operation("t0","0","t2",1);
+					/*MIPS_ASM::add_instruction("slt $t2,$t1,$t0\n");
+					MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
+					MIPS_ASM::add_instruction("sw $t2, 0($sp)\n");*/
+				}
+
+
+				if (_op == LESS_OR_EQUAL)
+				{
+
+
+					MIPS_ASM::printComment("LESS_THAN opf");
+					MIPS_ASM::add_instruction("li $t0,0\n");
+					MIPS_ASM::add_instruction(string("c.le.s $f0,$f1 \n"));
+					MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
+					MIPS_ASM::add_instruction("li $t0,1\n");
+					MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
+					MIPS_ASM::push("t0");
+				}
+
+				if (_op == MORE_OR_EQUAL)
+				{
+
+
+					MIPS_ASM::printComment("LESS_THAN opf");
+					MIPS_ASM::add_instruction("li $t0,1\n");
+					MIPS_ASM::add_instruction(string("c.lt.s $f0,$f1 \n"));
+					MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
+					MIPS_ASM::add_instruction("li $t0,0\n");
+					MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
+					MIPS_ASM::push("t0");
+				}
+			}
+
+
+
+			//khaled i change this because it is geting the whole expr type like bool for == and of course it is not int
+			if (getHypoType() == intType)
+			{
+
 
 				MIPS_ASM::pop(t1);
 				MIPS_ASM::pop(t0);
-				if (_op == AND_AND)
-					MIPS_ASM::add_instruction("and $t0,$t0,$t1\n");
-				else
-					MIPS_ASM::add_instruction("or $t0,$t0,$t1\n");
 
-				MIPS_ASM::push(t0);
-			}
-			else{
-				addError("Operator not defined for bool values");
-				return;
-			}
-		}
-		if (getHypoType() == floatType)
-		{
-			MIPS_ASM::popf(f1);
-			MIPS_ASM::popf(f0);
-
-			if (righttype == intType)
-			{
-				MIPS_ASM::add_instruction("cvt.s.w $f1,$f1\n");
-
-			}
-			if (lefttype == intType)
-			{
-				MIPS_ASM::add_instruction("cvt.s.w $f0,$f0\n");
-
-			}
-			
-
-
-			if (_op == PLUS)
-			{
-				MIPS_ASM::operationf(f0, f0, f1, 1);
-				MIPS_ASM::pushf(f0);
-
-			}
-
-			if (_op == MINUS)
-			{
-
-				MIPS_ASM::operationf(f0, f0, f1, 2);
-				MIPS_ASM::pushf(f0);
-			}
-
-			if (_op == MULTI)
-			{
-
-				MIPS_ASM::operationf(f0, f0, f1, 3);
-				MIPS_ASM::pushf(f0);
-			}
-
-			if (_op == DIV)
-			{
-
-				MIPS_ASM::operationf(f0, f0, f1, 4);
-				MIPS_ASM::pushf(f0);
-			}
-
-
-			//if(_op== M)
-			//{
-			//	rem $t0,$t0,$t1
-			//	sub $sp,$sp,4
-			//	sw $t0, 0($sp)
-			//}
-			//
-			//// --- Boolean Operation
-			//// == > < <= >= !=
-			//
-			if (_op == EQUAL_EQUAL || _op == NOT_EQUAL)
-			{
-
-
-				if (_op == EQUAL_EQUAL)
+				if (_op == PLUS)
 				{
-					MIPS_ASM::printComment("equal opf");
-					MIPS_ASM::add_instruction("li $t0,0\n");
-					MIPS_ASM::add_instruction(string("c.eq.s $f0,$f1 \n"));
-					MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
-					MIPS_ASM::add_instruction("li $t0,1\n");
-					MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
+					MIPS_ASM::operation(t0, t0, t1, 1);
+					MIPS_ASM::push(t0);
 				}
-				else{
-					MIPS_ASM::printComment("not equal opf");
-					MIPS_ASM::add_instruction("li $t0,1\n");
-					MIPS_ASM::add_instruction(string("c.eq.s $f0,$f1 \n"));
-					MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
-					MIPS_ASM::add_instruction("li $t0,0\n");
-					MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
 
-				}
-				MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
-				MIPS_ASM::add_instruction("sw $t0, 0($sp)\n");
-				//MIPS_ASM::add_instruction("move $t0,$t2\n");
-			}
-
-			if (_op == LESS_THAN)
-			{
-				//MIPS_ASM::slt("t2", "t0", "t1");
-
-
-
-				MIPS_ASM::printComment("LESS_THAN opf");
-				MIPS_ASM::add_instruction("li $t0,0\n");
-				MIPS_ASM::add_instruction(string("c.lt.s $f0,$f1 \n"));
-				MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
-				MIPS_ASM::add_instruction("li $t0,1\n");
-				MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
-				MIPS_ASM::push("t0");
-				/*MIPS_ASM::add_instruction("slt $t2,$t0,$t1\n");
-				MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
-				MIPS_ASM::add_instruction("sw $t2, 0($sp)\n");*/
-			}
-
-			if (_op == MORE_THAN)
-			{
-
-
-				MIPS_ASM::printComment("MORE_THAN opf");
-				MIPS_ASM::add_instruction("li $t0,1\n");
-				MIPS_ASM::add_instruction(string("c.le.s $f0,$f1 \n"));
-				MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
-				MIPS_ASM::add_instruction("li $t0,0\n");
-				MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
-				MIPS_ASM::push("t0");
-				//MIPS_ASM::operation("t0","0","t2",1);
-				/*MIPS_ASM::add_instruction("slt $t2,$t1,$t0\n");
-				MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
-				MIPS_ASM::add_instruction("sw $t2, 0($sp)\n");*/
-			}
-
-
-			if (_op == LESS_OR_EQUAL)
-			{
-
-
-				MIPS_ASM::printComment("LESS_THAN opf");
-				MIPS_ASM::add_instruction("li $t0,0\n");
-				MIPS_ASM::add_instruction(string("c.le.s $f0,$f1 \n"));
-				MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
-				MIPS_ASM::add_instruction("li $t0,1\n");
-				MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
-				MIPS_ASM::push("t0");
-			}
-
-			if (_op == MORE_OR_EQUAL)
-			{
-
-
-				MIPS_ASM::printComment("LESS_THAN opf");
-				MIPS_ASM::add_instruction("li $t0,1\n");
-				MIPS_ASM::add_instruction(string("c.lt.s $f0,$f1 \n"));
-				MIPS_ASM::add_instruction("bc1f eqop_temp" + std::to_string(labelCount) + "\n");
-				MIPS_ASM::add_instruction("li $t0,0\n");
-				MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
-				MIPS_ASM::push("t0");
-			}
-		}
-
-
-
-		//khaled i change this because it is geting the whole expr type like bool for == and of course it is not int
-		if (getHypoType() == intType)
-		{
-
-
-			MIPS_ASM::pop(t1);
-			MIPS_ASM::pop(t0);
-
-			if (_op == PLUS)
-			{
-				MIPS_ASM::operation(t0, t0, t1, 1);
-				MIPS_ASM::push(t0);
-			}
-
-			if (_op == MINUS)
-			{
-				MIPS_ASM::operation(t0, t0, t1, 2);
-				MIPS_ASM::push(t0);
-			}
-
-			if (_op == MULTI)
-			{
-				MIPS_ASM::operation(t0, t0, t1, 3);
-				MIPS_ASM::push(t0);
-			}
-
-			if (_op == DIV)
-			{
-				MIPS_ASM::operation(t0, t0, t1, 4);
-				MIPS_ASM::push(t0);
-			}
-
-
-			//if(_op== M)
-			//{
-			//	rem $t0,$t0,$t1
-			//	sub $sp,$sp,4
-			//	sw $t0, 0($sp)
-			//}
-			//
-			//// --- Boolean Operation
-			//// == > < <= >= !=
-			//
-			if (_op == EQUAL_EQUAL || _op == NOT_EQUAL)
-			{
-
-				if (_op == EQUAL_EQUAL)
+				if (_op == MINUS)
 				{
-					MIPS_ASM::printComment("equal op");
-					MIPS_ASM::add_instruction("li $t2,0\n");
-					MIPS_ASM::add_instruction(string("bne $t0,$t1,") + "eqop_temp" + std::to_string(labelCount) + "\n");
-					MIPS_ASM::add_instruction("li $t2,1\n");
-					MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
+					MIPS_ASM::operation(t0, t0, t1, 2);
+					MIPS_ASM::push(t0);
 				}
-				else{
-					MIPS_ASM::printComment("not equal op");
-					MIPS_ASM::add_instruction("li $t2,1\n");
-					MIPS_ASM::add_instruction(string("bne $t0,$t1,") + "eqop_temp" + std::to_string(labelCount) + "\n");
-					MIPS_ASM::add_instruction("li $t2,0\n");
-					MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
 
+				if (_op == MULTI)
+				{
+					MIPS_ASM::operation(t0, t0, t1, 3);
+					MIPS_ASM::push(t0);
 				}
-				MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
-				MIPS_ASM::add_instruction("sw $t2, 0($sp)\n");
-				//MIPS_ASM::add_instruction("move $t0,$t2\n");
-			}
 
-			if (_op == LESS_THAN)
-			{
-				MIPS_ASM::slt("t2", "t0", "t1");
-				MIPS_ASM::push("t2");
-				/*MIPS_ASM::add_instruction("slt $t2,$t0,$t1\n");
-				MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
-				MIPS_ASM::add_instruction("sw $t2, 0($sp)\n");*/
-			}
-
-			if (_op == MORE_THAN)
-			{
-				MIPS_ASM::slt("t2", "t1", "t0");
-				MIPS_ASM::push("t2");
-				//MIPS_ASM::operation("t0","0","t2",1);
-				/*MIPS_ASM::add_instruction("slt $t2,$t1,$t0\n");
-				MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
-				MIPS_ASM::add_instruction("sw $t2, 0($sp)\n");*/
-			}
+				if (_op == DIV)
+				{
+					MIPS_ASM::operation(t0, t0, t1, 4);
+					MIPS_ASM::push(t0);
+				}
 
 
-			if (_op == LESS_OR_EQUAL)
-			{
-				MIPS_ASM::operation("t2", "t1", "t0", 2);
-				MIPS_ASM::beq("t2", "0", "equalLabel");
-				MIPS_ASM::slt("t2", "t2", "0");
-				MIPS_ASM::bne("t2", "0", "trueLabel");
-				MIPS_ASM::label("equalLabel");
-				MIPS_ASM::add_instruction("addi $t2,$0,1\n");
-				MIPS_ASM::jump("saveLabel");
-				MIPS_ASM::label("trueLabel");
-				MIPS_ASM::operation("t2", "0", "0", 1);
-				MIPS_ASM::label("saveLabel");
-				MIPS_ASM::push("t2");
-			}
+				//if(_op== M)
+				//{
+				//	rem $t0,$t0,$t1
+				//	sub $sp,$sp,4
+				//	sw $t0, 0($sp)
+				//}
+				//
+				//// --- Boolean Operation
+				//// == > < <= >= !=
+				//
+				if (_op == EQUAL_EQUAL || _op == NOT_EQUAL)
+				{
 
-			if (_op == MORE_OR_EQUAL)
-			{
-				MIPS_ASM::operation("t2", "t0", "t1", 2);
-				MIPS_ASM::beq("t2", "0", "equalLabel");
-				MIPS_ASM::slt("t2", "t2", "0");
-				MIPS_ASM::bne("t2", "0", "trueLabel");
-				MIPS_ASM::label("equalLabel");
-				MIPS_ASM::add_instruction("addi $t2,$0,1\n");
-				MIPS_ASM::jump("saveLabel");
-				MIPS_ASM::label("trueLabel");
-				MIPS_ASM::operation("t2", "0", "0", 1);
-				MIPS_ASM::label("saveLabel");
-				MIPS_ASM::push("t2");
+					if (_op == EQUAL_EQUAL)
+					{
+						MIPS_ASM::printComment("equal op");
+						MIPS_ASM::add_instruction("li $t2,0\n");
+						MIPS_ASM::add_instruction(string("bne $t0,$t1,") + "eqop_temp" + std::to_string(labelCount) + "\n");
+						MIPS_ASM::add_instruction("li $t2,1\n");
+						MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
+					}
+					else{
+						MIPS_ASM::printComment("not equal op");
+						MIPS_ASM::add_instruction("li $t2,1\n");
+						MIPS_ASM::add_instruction(string("bne $t0,$t1,") + "eqop_temp" + std::to_string(labelCount) + "\n");
+						MIPS_ASM::add_instruction("li $t2,0\n");
+						MIPS_ASM::add_instruction("eqop_temp" + std::to_string(labelCount) + ":\n");
+
+					}
+					MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
+					MIPS_ASM::add_instruction("sw $t2, 0($sp)\n");
+					//MIPS_ASM::add_instruction("move $t0,$t2\n");
+				}
+
+				if (_op == LESS_THAN)
+				{
+					MIPS_ASM::slt("t2", "t0", "t1");
+					MIPS_ASM::push("t2");
+					/*MIPS_ASM::add_instruction("slt $t2,$t0,$t1\n");
+					MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
+					MIPS_ASM::add_instruction("sw $t2, 0($sp)\n");*/
+				}
+
+				if (_op == MORE_THAN)
+				{
+					MIPS_ASM::slt("t2", "t1", "t0");
+					MIPS_ASM::push("t2");
+					//MIPS_ASM::operation("t0","0","t2",1);
+					/*MIPS_ASM::add_instruction("slt $t2,$t1,$t0\n");
+					MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
+					MIPS_ASM::add_instruction("sw $t2, 0($sp)\n");*/
+				}
+
+
+				if (_op == LESS_OR_EQUAL)
+				{
+					MIPS_ASM::operation("t2", "t1", "t0", 2);
+					MIPS_ASM::beq("t2", "0", "equalLabel");
+					MIPS_ASM::slt("t2", "t2", "0");
+					MIPS_ASM::bne("t2", "0", "trueLabel");
+					MIPS_ASM::label("equalLabel");
+					MIPS_ASM::add_instruction("addi $t2,$0,1\n");
+					MIPS_ASM::jump("saveLabel");
+					MIPS_ASM::label("trueLabel");
+					MIPS_ASM::operation("t2", "0", "0", 1);
+					MIPS_ASM::label("saveLabel");
+					MIPS_ASM::push("t2");
+				}
+
+				if (_op == MORE_OR_EQUAL)
+				{
+					MIPS_ASM::operation("t2", "t0", "t1", 2);
+					MIPS_ASM::beq("t2", "0", "equalLabel");
+					MIPS_ASM::slt("t2", "t2", "0");
+					MIPS_ASM::bne("t2", "0", "trueLabel");
+					MIPS_ASM::label("equalLabel");
+					MIPS_ASM::add_instruction("addi $t2,$0,1\n");
+					MIPS_ASM::jump("saveLabel");
+					MIPS_ASM::label("trueLabel");
+					MIPS_ASM::operation("t2", "0", "0", 1);
+					MIPS_ASM::label("saveLabel");
+					MIPS_ASM::push("t2");
+				}
 			}
 		}
-
 		//MIPS_ASM::push(t0);
 	}
 

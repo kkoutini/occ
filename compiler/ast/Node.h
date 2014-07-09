@@ -15,8 +15,11 @@ protected:
 	int _col;
 	string _filename;
 	Type* type;
+	
 
 public:
+	int value_int;
+	float value_float;
 	ScoopNode* _scoop;
 	virtual void toString(){
 	}
