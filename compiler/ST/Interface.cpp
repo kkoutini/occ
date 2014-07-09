@@ -171,7 +171,18 @@ string Interface::getVtableString(){
 	return res;
 }
 
+Method* Interface::getMethodOverloaded (string message, vector<CallSelector*> selectors)
+{
+	Interface* vinter = this;
+	while (vinter != NULL)
+	{
 
+		Method* m= methodsItem->getOverloadedMethod(message, selectors);
+		if (m)return m;
+		vinter = vinter->getInheretInterface();
+			}
+	return NULL;
+}
 void Interface::generateCode(){
 	MIPS_ASM::printComment("#########################################");
 	MIPS_ASM::printComment(string("Generating code for class ") + this->get_name());

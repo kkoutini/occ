@@ -126,7 +126,7 @@ public:
 			string error = "ERROR Sender isn't Interface ";
 			addError(error);
 		}
-		Method* method = sender_interface->getMethodsItem()->getOverloadedMethod(_message, _selcs);
+		Method* method = sender_interface->getMethodOverloaded(_message, _selcs);
 
 		if (method == NULL){
 			//khaled
@@ -170,16 +170,16 @@ public:
 		{
 			//throw error
 			string error = "ERROR in call NODE generate type sender is null in  line number ";
-			Program::addError(new SemanticError(error));
+			addError(error);
 			return false;
 		}
-		Method* method = sender_interface->getMethodsItem()->getOverloadedMethod(_message, _selcs);
+		Method* method = sender_interface->getMethodOverloaded(_message, _selcs);
 		; //sender_interface->getMethod(_message, _params, _types, false);
 		if (method == NULL)
 		{
 			//throw error
 			string error = "ERROR in call NODE generate type null  line number ";
-			Program::addError(new SemanticError(error));
+			addError(error);
 		}
 		return method->getReturnType();
 	}

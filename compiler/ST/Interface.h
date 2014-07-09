@@ -65,6 +65,7 @@ public:
 	Variable* Interface::getVariableByName(string name);
 
 	Method* getMethodByName(string name, Type* type, vector<DeclerationSelector*> v, bool isStatic);
+	Method* Interface::getMethodOverloaded(string message, vector<CallSelector*> selectors);
 
 	Method* getMethod(string message, vector<CallSelector*> v);
 

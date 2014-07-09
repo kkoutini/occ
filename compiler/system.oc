@@ -142,6 +142,10 @@ NSString msg;
 	a.msg=m;
 	return a;
 }
+-(void) setMsg:(NSString)m
+{
+	msg=m;
+}
 @end
 @interface NSExceptionCatcher
 {

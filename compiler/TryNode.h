@@ -78,7 +78,8 @@ public:
 
 			cn->addSelector(cs);
 		//	cn->generateCode();
-			AssignNode* asn=new AssignNode(_scoop, new IdentifierNode("top_catcher", _scoop), cn);
+			AssignNode* asn = dynamic_cast<AssignNode*>
+				((new AssignNode(_scoop, new IdentifierNode("top_catcher", _scoop), cn))->copySourceInfo(this));
 			asn->generateCode();
 			MIPS_ASM::pop();
 

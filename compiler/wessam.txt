@@ -4,14 +4,17 @@
 int a;
 }
 
++(Wesso*)withMsg:(NSString)s;
 
 @end
 
 @implementation Wesso:NSException
 
--(void)oo
++(Wesso*)withMsg:(NSString)s
 {
-msg;
+	Wesso* m=[Wesso alloc];
+	[m setMsg:s];
+	return m;
 }
 
 
