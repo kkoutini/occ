@@ -20,6 +20,7 @@ public:
 		if (it && it->isDescendentOf(dynamic_cast<Interface*>(symbolTable->getType("NSException"))))
 		{
 			exp->generateCode();
+			MIPS_ASM::li("s7", 12);// turkey number for exception
 			MIPS_ASM::add_instruction("teq $t0,$t0");
 		}
 		else{

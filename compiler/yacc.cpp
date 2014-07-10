@@ -5527,6 +5527,7 @@ std::string str_common((std::istreambuf_iterator<char>(t_common)),
 	MIPS_ASM::writeCode();
 
 	MIPS_ASM::add_data("msg:   .asciiz \"Trap generated \\n\"\n");
+	MIPS_ASM::add_data("ure_msg:   .asciiz \"unhandled runtime error \\n\"\n");
 	ofs<<".kdata\n";
 	MIPS_ASM::writeData();
 		Program::printErrors();

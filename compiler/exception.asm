@@ -6,10 +6,18 @@
    la   $a0, msg  # address of string to print
    li   $v0, 4    # Print String service
    syscall
-   lw   $a0, 4($k0)  # address of string to print
+	
+	beq $s7,12,use_to_catcher
+
+	
+	li $s7,0
+	la   $a0, ure_msg  # address of string to print
    li   $v0, 4    # Print String service
    syscall
-   
+   li   $v0, 10    # Print String service
+   syscall
+   use_to_catcher:
+   li $s7,0
 #   move $v0,$k0   # Restore $v0
 #   move $a0,$k1   # Restore $a0
 #   lw $a0,-4($0)
