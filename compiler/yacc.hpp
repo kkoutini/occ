@@ -40,7 +40,7 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 184 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:2553  */
+#line 185 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:2553  */
 
 #include "ast\node.h"
 
@@ -91,37 +91,38 @@ extern int yydebug;
     FOR = 295,
     EQUAL = 296,
     DIV = 297,
-    WHILE = 298,
-    IF = 299,
-    DO = 300,
-    SWITCH = 301,
-    CASE = 302,
-    DEFAULT = 303,
-    BREAK = 304,
-    ENUM = 305,
-    OPEN_ARR = 306,
-    CLOSE_ARR = 307,
-    TRUE = 308,
-    FALSE = 309,
-    RETURN = 310,
-    AT_PROTOCOL = 311,
-    ELSE = 312,
-    STRUCT = 313,
-    DOT = 314,
-    DOUBLEPLUS = 315,
-    DOUBLEMINUS = 316,
-    TRY = 317,
-    CATCH = 318,
-    THROW = 319,
-    FINALLY = 320,
-    AT_ASM = 321,
-    SELF = 322,
-    IMPORT = 323,
-    if_h = 324,
-    expr_1 = 325,
-    p_type_expr_prec = 326,
-    long_id_prec = 327,
-    try_prec = 328
+    DIV_R = 298,
+    WHILE = 299,
+    IF = 300,
+    DO = 301,
+    SWITCH = 302,
+    CASE = 303,
+    DEFAULT = 304,
+    BREAK = 305,
+    ENUM = 306,
+    OPEN_ARR = 307,
+    CLOSE_ARR = 308,
+    TRUE = 309,
+    FALSE = 310,
+    RETURN = 311,
+    AT_PROTOCOL = 312,
+    ELSE = 313,
+    STRUCT = 314,
+    DOT = 315,
+    DOUBLEPLUS = 316,
+    DOUBLEMINUS = 317,
+    TRY = 318,
+    CATCH = 319,
+    THROW = 320,
+    FINALLY = 321,
+    AT_ASM = 322,
+    SELF = 323,
+    IMPORT = 324,
+    if_h = 325,
+    expr_1 = 326,
+    p_type_expr_prec = 327,
+    long_id_prec = 328,
+    try_prec = 329
   };
 #endif
 
@@ -130,7 +131,7 @@ extern int yydebug;
 typedef union YYSTYPE YYSTYPE;
 union YYSTYPE
 {
-#line 187 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:2553  */
+#line 188 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:2553  */
 
 	
 	struct R {
@@ -145,7 +146,7 @@ union YYSTYPE
 			      }r;
 	   
 
-#line 149 "yacc.hpp" /* glr.c:2553  */
+#line 150 "yacc.hpp" /* glr.c:2553  */
 };
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1

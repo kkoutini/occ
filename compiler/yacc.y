@@ -153,7 +153,8 @@ Method* nodeXX;
 %token	NOT_EQUAL		//!=
 %token	FOR				//for keyword
 %token	EQUAL			//=
-%token  DIV				//%
+%token  DIV				///
+%token  DIV_R			//%
 %token  WHILE			//while
 %token  IF				//if
 %token  DO              //do

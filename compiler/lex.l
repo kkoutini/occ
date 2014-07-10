@@ -59,12 +59,13 @@ FLOAT						("+"|"-")?({digit}+\.{digit}+)
 "<="				{colNum+=2;yylval.r.colNo=colNum;										return LESS_OR_EQUAL;}
 ">="				{colNum+=2;	yylval.r.colNo=colNum;										return MORE_OR_EQUAL;}
 "*"					{colNum++;yylval.r.colNo=colNum;											return MULTI;}
+"/"					{colNum++;yylval.r.colNo=colNum;										return DIV;}
 
 "=="				{colNum+=2;	yylval.r.colNo=colNum;										return EQUAL_EQUAL;}
 "!="				{colNum+=2;yylval.r.colNo=colNum;											return NOT_EQUAL;}
 "for"				{colNum+=3;	yylval.r.colNo=colNum;										return FOR;}
 "="					{	colNum++;yylval.r.colNo=colNum;									return EQUAL;}
-"%"					{colNum++;yylval.r.colNo=colNum;										return DIV;}
+"%"					{colNum++;yylval.r.colNo=colNum;										return DIV_R;}
 "while"			{		colNum+=5;yylval.r.colNo=colNum;								return WHILE;}
 "if"				{	colNum+=2;	yylval.r.colNo=colNum;									return IF;}
 "else"              {   colNum+=2;	yylval.r.colNo=colNum;									return ELSE;}

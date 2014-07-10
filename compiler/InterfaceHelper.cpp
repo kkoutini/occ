@@ -2,6 +2,7 @@
 #include "SemanticError.h"
 #include "ast\FunctionNode.h"
 #include "ClassNode.h"
+#include "ST\ArrayType.h"
 extern SymbolTable* symbolTable;
 extern Method * mainMethod ;
 extern int lineNum;
@@ -102,7 +103,21 @@ void InterfaceHelper::addDataMembers(Interface* interface,vector<string>idsList,
 			if(isConst)
 				arrayList.at(i)->setIsConst(true);
 			if(interface->getVariableItems()->  get_variable(arrayList.at(i)->get_name())==NULL){
-				interface->getVariableItems()->  add_variable(arrayList.at(i));
+				Type* t = type;
+				for (int j = (int)arrayList.at(i)->array_alloc.size() - 1; j >= 0; j--)
+				{
+					t = new ArrayType(t, arrayList.at(i)->array_alloc.at(j));
+				}
+				Variable * var = new Variable(arrayList.at(i)->get_name(), t);
+
+				//arrayList.at(i)->setType(type);
+
+				if (isConst)
+					var->setIsConst(true);
+
+				interface->getVariableItems()->add_variable(var);
+				interface->getScoop()->add_variable(var);
+
 			}
 			else {
 				string error="Duplicate member '";
