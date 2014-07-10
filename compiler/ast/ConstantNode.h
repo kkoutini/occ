@@ -34,6 +34,17 @@ public:
 		value.float_val=val;
 		type=symbolTable->getType("float");
 	}
+
+	ConstantNode(int val, ScoopNode* scoop, int value1) :Node(scoop){
+		value.int_val = val;
+		value_int = value1;
+		type = symbolTable->getType("int");
+	}
+	ConstantNode(float val, ScoopNode* scoop, float value1) :Node(scoop){
+		value.float_val = val;
+		value_float = value1;
+		type = symbolTable->getType("float");
+	}
 	ConstantNode(bool val, ScoopNode* scoop):Node(scoop){
 		value.bool_val=val;
 		type=symbolTable->getType("bool");
