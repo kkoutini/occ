@@ -207,7 +207,7 @@ Method* nodeXX;
 %nonassoc DOUBLEMINUS
 %left OR_OR AND_AND 
 %left PLUS MINUS
-%left MULTI DIV
+%left MULTI DIV DIV_R
 %nonassoc long_id_prec
 %nonassoc DOT
 %nonassoc try_prec
@@ -1137,6 +1137,10 @@ simple_expr:
 	|simple_expr DIV simple_expr	{
 									Streams::verbose()<<"simple_expr:expr DIV expr\n";
 									$<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,DIV,scoop);
+									}
+	|simple_expr DIV_R simple_expr	{
+									Streams::verbose()<<"simple_expr:expr DIV expr\n";
+									$<r.node>$=new BinaryOperationNode($<r.node>1,$<r.node>3,DIV_R,scoop);
 									}
 	|OPEN_P simple_expr CLOSE_P		{Streams::verbose()<<"simple_expr:OPEN_P expr CLOSE_P\n";$<r.node>$=$<r.node>2;}
 	|IDENTIFIER DOUBLEPLUS          {Streams::verbose()<<"simple_expr:ID++";}

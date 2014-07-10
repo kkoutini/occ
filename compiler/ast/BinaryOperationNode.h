@@ -61,6 +61,12 @@ public:
 				MIPS_ASM::push("t0");
 			}
 
+			if (_op == DIV_R)
+			{
+				MIPS_ASM::li("t0", (x % y));
+				MIPS_ASM::push("t0");
+			}
+
 			if (_op == EQUAL_EQUAL || _op == NOT_EQUAL)
 			{
 
@@ -240,6 +246,12 @@ public:
 					MIPS_ASM::operationf(f0, f0, f1, 4);
 					MIPS_ASM::pushf(f0);
 				}
+				if (_op == DIV_R)
+				{
+
+					addError("Operation % undefined for floats");
+					return;
+				}
 
 
 				//if(_op== M)
@@ -375,6 +387,11 @@ public:
 					MIPS_ASM::operation(t0, t0, t1, 4);
 					MIPS_ASM::push(t0);
 				}
+				if (_op == DIV_R)
+				{
+					MIPS_ASM::operation(t0, t0, t1, 5);
+					MIPS_ASM::push(t0);
+				}
 
 
 				//if(_op== M)
@@ -492,6 +509,7 @@ public:
 			}
 		case MULTI:
 		case DIV:
+		case DIV_R:
 		case PLUS:
 		case MINUS:
 
