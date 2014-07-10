@@ -40,7 +40,7 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 184 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* glr.c:2553  */
+#line 184 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:2553  */
 
 #include "ast\node.h"
 
@@ -130,7 +130,7 @@ extern int yydebug;
 typedef union YYSTYPE YYSTYPE;
 union YYSTYPE
 {
-#line 187 "C:\\Users\\toshiba\\Source\\Repos\\occ3\\compiler\\yacc.y" /* glr.c:2553  */
+#line 187 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\yacc.y" /* glr.c:2553  */
 
 	
 	struct R {

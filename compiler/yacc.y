@@ -1453,10 +1453,14 @@ void main(int argc,      // Number of strings in array argv
 			Program::printErrors();
 			return ;
 		}
+			MIPS_ASM::add_data("\nblock_head:    .byte   0:8\n");
+	MIPS_ASM::add_data("\nalign_to:  .word 4\n");
 		symbolTable->generateStatics();
 		symbolTable->generateCode();
 	ofs<<".data\n";
 	MIPS_ASM::add_data("\nnewline: .asciiz \"\\n\"\n");
+
+	
 	MIPS_ASM::writeData();
 		ofs<<"\n.text\n";
 
