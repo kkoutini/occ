@@ -5,6 +5,7 @@
 #include "../Warning.h";
 #include "../Program.h";
 
+extern bool Garbage_Collect ;
 
 class ScoopNode;
 class Type;

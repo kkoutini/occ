@@ -107,7 +107,7 @@ public:
 		}
 		else
 			MIPS_ASM::jal("global_vtable");
-
+		// todo add gc here for sender
 		MIPS_ASM::pop("fp");
 		MIPS_ASM::pop("ra");
 		MIPS_ASM::push("v0");
@@ -169,7 +169,7 @@ public:
 		if (sender_interface == NULL)
 		{
 			//throw error
-			string error = "ERROR in call NODE generate type sender is null in  line number ";
+			string error = "ERROR in call NODE generate type sender is null  ";
 			addError(error);
 			return false;
 		}
@@ -178,7 +178,7 @@ public:
 		if (method == NULL)
 		{
 			//throw error
-			string error = "ERROR in call NODE generate type null  line number ";
+			string error = "ERROR in call NODE generate type null  ";
 			addError(error);
 		}
 		return method->getReturnType();

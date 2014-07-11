@@ -75,3 +75,20 @@ jr $ra
 freed_already:
 li $v0,2 # 2 means it was previously freed
 jr $ra
+
+
+increase_rc:
+beq $a0,$0,increase_rc_end
+lw $t0,-4($a0)
+addi $t0,$t0,1
+sw $t0,-4($a0)
+increase_rc_end:
+jr $ra
+
+decrease_rc:
+beq $a0,$0,decrease_rc_end
+lw $t0,-4($a0)
+addi $t0,$t0,-1
+sw $t0,-4($a0)
+decrease_rc_end:
+jr $ra

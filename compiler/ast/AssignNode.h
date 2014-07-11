@@ -37,7 +37,7 @@ public:
 
 			 MIPS_ASM::printComment("Assign node poping old val:");
 
-			 MIPS_ASM::pop();
+			 MIPS_ASM::pop("t1");
 			 MIPS_ASM::printComment("Assign node getting RHS val:");
 
 			 MIPS_ASM::top(t0);// not poping in order to keep value in stack
@@ -68,7 +68,21 @@ public:
 
 			 }
 			 MIPS_ASM::sw(t0, 0, "v0");
+			 if (Garbage_Collect){
+				 MIPS_ASM::push("ra");
+				 MIPS_ASM::printComment("gc:");
+				 MIPS_ASM::printComment("increasing rc for the new object:");
+				 MIPS_ASM::move("a0","t0");
+				 MIPS_ASM::jal("increase_rc");//-4 is rc
 
+				 // Be careful increase_rc uses t0
+				 MIPS_ASM::move("a0", "t1");
+				 MIPS_ASM::jal("decrease_rc");//-4 is rc
+				 MIPS_ASM::jal("global_dispose");
+
+				 MIPS_ASM::pop("ra");
+
+			 }
 		 }
 	 }
 	 void toString(){

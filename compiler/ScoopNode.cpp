@@ -14,6 +14,9 @@
 		dispose(*i);
 	}
 	//TODO collecting garbage
+	if (Garbage_Collect){
+
+	}
 	//khaled
 	MIPS_ASM::releaseStack(getFrameSize());
 
@@ -34,5 +37,18 @@
 
  void ScoopNode::gcVars()
  {
+	 MIPS_ASM::printComment("gc vars");
+	 for (auto i : _variables){
+		 Interface* ifs = dynamic_cast<Interface*>(i.second->getType());
+		 if (ifs){
+			 MIPS_ASM::push("$ra");
+			 MIPS_ASM::lw("a0", -i.second->getOffset(), i.second->getOffsetRegister());
+			 MIPS_ASM::lw("t0", -4, "a0");//-4 is rc
+			 MIPS_ASM::add_instruction("addi $t0,$t0,-1\n");
+			 MIPS_ASM::sw("t0", -4, "a0");//-4 is rc
+			 MIPS_ASM::jal("global_dispose");
+		 }
+	 }
+	 MIPS_ASM::printComment("gc done");
 
  }
