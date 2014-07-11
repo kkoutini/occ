@@ -5493,6 +5493,11 @@ void main(int argc,      // Number of strings in array argv
 					f = false;
 				}
 			}
+		if (string(argv[i]) == "-gc")
+			{
+					Garbage_Collect=1;
+
+			}
 
 		}
 	globalScoop=new ScoopNode(NULL);
