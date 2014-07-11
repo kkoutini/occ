@@ -43,5 +43,8 @@ for(auto i=_nodes.begin();i!=_nodes.end();i++)
 	virtual ~ClassNode(void)
 	{
 	}
+	virtual void nullVars(){
+
+	}
 };
 

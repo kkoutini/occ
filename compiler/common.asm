@@ -23,7 +23,7 @@ syscall
 # a0 is the size , returns v0 as the space
 malloc:
 
-addi $a0,$a0,11 # 8 + 3 for alignment
+addi $a0,$a0,15 # 8 +  4 for rc + 3 for alignment
 
 #add allignment
 li  $t0,-4 # -4 is not 3
@@ -39,6 +39,10 @@ lw $t1,0($t0)
 sw $t1,0($t2)
 #this block in enough
 addi $v0,$t0,8
+li $t1,-1
+sw $t1,0($t0)
+li $t1,0
+sw $t1,8($t0)
 jr $ra
 #b malloc_return
 no_space_continue:
@@ -53,14 +57,21 @@ li $v0,9
 syscall
 sw $a0,4($v0)
 addi $v0,$v0,8
+li $t1,-1
+sw $t1,-8($v0)
 malloc_return:
 jr $ra
 
 
 free:
-lw $t0,block_head
 addi $t1,$a0,-8
+lw $t0,0($t1)
+bne $t0,-1,freed_already
+lw $t0,block_head
 sw $t0,0($t1)
 sw $t1,block_head
+li $v0,1 # 1 means it was freed
 jr $ra
-
+freed_already:
+li $v0,2 # 2 means it was previously freed
+jr $ra

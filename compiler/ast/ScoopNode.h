@@ -4,13 +4,13 @@
 class ScoopNode :
 	public VoidNode
 {
-protected:
+public:
 	map<string, Variable*> _variables;
 	list<Node *> _nodes;
 	int _currentInnerOffset;
 	string _offsetReg = "fp";
 
-public:
+
 	virtual string getOffsetRegister()
 	{
 		return _offsetReg;
@@ -116,6 +116,8 @@ cout<<"end scooooooooooooop\n";
 
 }
 	virtual void generateCode();
+	virtual void nullVars();
+	virtual void gcVars();
 	virtual bool typeCheck()
 	{
 		return 1;
