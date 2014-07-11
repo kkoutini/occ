@@ -68,7 +68,11 @@ virtual void generateCode(){
 			return  this->_scoop->get_variable(_name)->getType();;
 
   }
-	virtual ~IdentifierNode(void)
+  virtual Variable* getVar()
+  {
+	  return this->_scoop->get_variable(_name);
+  }
+  virtual ~IdentifierNode(void)
 	{
 	}
 };

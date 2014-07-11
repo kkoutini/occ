@@ -1,7 +1,7 @@
 #pragma once
 #include "Node.h"
 #include "TypeChecker.h"
-
+#include "../DotNode.h"
 #include "../Warning.h"
 
 class AssignNode: public Node
@@ -10,7 +10,7 @@ public:
 
 	Node* _rightExp;
 	Node* _leftExp;
-
+	bool _initializing=0;
 	AssignNode(ScoopNode* scoope,Node* leftExp,Node* rightexp):Node(scoope),_rightExp(rightexp),_leftExp(leftExp)
 	{
 
@@ -76,41 +76,70 @@ public:
 		 _rightExp->toString();
 		 _leftExp->toString();
 	 }
-	virtual bool typeCheck()
-	{
-		if (!_rightExp || !_leftExp){
-			string error = "missing assign operand";
-			addError((error));
-			return false;
+	 virtual bool typeCheck()
+	 {
+		 if (!_rightExp || !_leftExp){
+			 string error = "missing assign operand";
+			 addError((error));
+			 return false;
 
-		}
-		if (_rightExp->getType() == NULL || _leftExp->getType()==NULL)
-		{
-			string error = "ERROR some type in assign is null  ";
-			addError((error));
-			return false;
-		}
-		else{
-			if (TypeChecker::canCast(_rightExp->getType(), _leftExp->getType()) == 1)
-			{
-				return true;
-			}
-			else if (TypeChecker::canCast(_rightExp->getType(), _leftExp->getType()) == 2)
-			{
-				//////THROW WARNING	
-				string error = "WARNING in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name();
-				addWarning(error);
-				return true;
+		 }
+		 if (_rightExp->getType() == NULL || _leftExp->getType() == NULL)
+		 {
+			 string error = "ERROR some type in assign is null  ";
+			 addError((error));
+			 return false;
+		 }
 
-			}
-			else{
-				////// THROW ERROR
-				string error = "ERROR in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name();
-				addError(error);
-				return false;
-			}
-		}
-	}
+		 if (TypeChecker::canCast(_rightExp->getType(), _leftExp->getType()) == 1)
+		 {
+			 return true;
+		 }
+		 else if (TypeChecker::canCast(_rightExp->getType(), _leftExp->getType()) == 2)
+		 {
+			 //////THROW WARNING	
+			 string error = "WARNING in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name();
+			 addWarning(error);
+			 return true;
+
+		 }
+		 else{
+			 ////// THROW ERROR
+			 string error = "ERROR in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name();
+			 addError(error);
+			 return false;
+		 }
+		 if (!dynamic_cast<IdentifierNode*>(_leftExp) && !dynamic_cast<DotNode*>(_leftExp))
+		 {
+			 string error = "ERROR in assignement check the LHS";
+			 addError(error);
+			 return false;
+
+		 } 
+		 if (dynamic_cast<IdentifierNode*>(_leftExp))
+		 {
+			 auto idn = dynamic_cast<IdentifierNode*>(_leftExp)->getVar();
+			 if (!idn)
+				 return false;
+			 if (idn->getIsConst() && !_initializing)
+			 {
+				 string error = "ERROR in assignement, LHS cannot be const";
+				 addError(error);
+				 return false;
+			 }
+		 }if (dynamic_cast<DotNode*>(_leftExp))
+		 {
+			 auto idn = dynamic_cast<DotNode*>(_leftExp)->getVar();
+			 if (!idn)
+				 return false;
+			 //todo check access modifier
+			/* if (idn->getIsConst())
+			 {
+				 return false;
+			 }
+*/
+		 }
+	 }
 	virtual Type* generateType()
 	{
 

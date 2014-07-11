@@ -17,6 +17,8 @@ public:
 	virtual void generateCode(){
 		//	Interface* type=obj->getType();
 		//	type->getMethodByName
+		if (getType() == symbolTable->getType("error_type"))
+			return;
 		Type* senderType = _sender->getType();
 
 		//TODO: check if sender isn't interface
@@ -60,19 +62,32 @@ public:
 		{
 			//throw error
 			string error = "ERROR in dot NODE sender is not ";
-			Program::addError(new SemanticError(error));
-			return false;
+			addError((error));
+			return symbolTable->getType("error_type");;
 		}
 		Variable* variable = sender_interface->getScoop()->get_variable(_member);
 		if (variable == NULL)
 		{
 			//throw error
 			string error = "ERROR in dot NODE variable not found ";
-			Program::addError(new SemanticError(error));
-			return false;
+			addError((error));
+			return symbolTable->getType("error_type");;
 
 		}
 		return variable->getType();
+	}
+
+	virtual Variable* getVar()
+	{
+		Type* senderType = _sender->getType();
+		Interface* sender_interface = (dynamic_cast<Interface*>(senderType));
+		if (sender_interface == NULL)
+		{
+			return 0;
+		}
+		Variable* variable = sender_interface->getScoop()->get_variable(_member);
+		
+		return variable;
 	}
 	virtual ~DotNode()
 	{
