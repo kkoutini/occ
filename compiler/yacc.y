@@ -60,7 +60,7 @@ void addFile(string s){
 	}
 }
     extern string sourceFile="";
-	extern int tt=0;
+	extern int isconst=0;
 	
 extern int Iskernal;
 extern int lineNum;
@@ -1111,11 +1111,13 @@ simple_expr:
 									}
 	|INT_VAL						{
 									Streams::verbose()<<"simple_expr:INT_VAL\n";
-									$<r.node>$=new ConstantNode(yylval.r.int_val,scoop,yylval.r.int_val);
+									$<r.node>$=new ConstantNode(yylval.r.int_val,scoop);
+									isconst=1;
 									
 									}
 	|FLOAT_VAL						{Streams::verbose()<<"simple_expr:FLOAT_VAL\n";
 									$<r.node>$=new ConstantNode(yylval.r.float_val,scoop);
+										isconst=1;
 									}
 	|CHAR_VAL						{Streams::verbose()<<"simple_expr:CHAR_VAL\n";
 										$<r.node>$=new ConstantNode(yylval.r.char_val,scoop);
