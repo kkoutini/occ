@@ -229,8 +229,10 @@ void SymbolTable::generateStaticsCode()
 	MIPS_ASM::add_instruction("\n\n\n\n");
 	MIPS_ASM::printComment(string("Global dispose table: "));
 	MIPS_ASM::add_instruction("\n\n");
-	MIPS_ASM::label("global_dispose");
-	MIPS_ASM::add_instruction("beq $a0,$0,global_dispose_end\n");
+	MIPS_ASM::label("global_dispose"); 
+
+		MIPS_ASM::add_instruction("beq $a0,$0,global_dispose_end\n");
+	MIPS_ASM::add_instruction("blt $a0, 0x10040000,global_dispose_end\n");
 	MIPS_ASM::lw("t0", -4, "a0");
 	MIPS_ASM::add_instruction("bgt $t0,$0,global_dispose_end\n");
 

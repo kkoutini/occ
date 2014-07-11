@@ -12,10 +12,11 @@ void Node::dispose(Node* n){
 	{
 		if (Garbage_Collect){
 			if (dynamic_cast<Interface*>(n->getType())){
-				MIPS_ASM::pop("a0");
+				MIPS_ASM::top("a0");
 				MIPS_ASM::push("ra");
 				MIPS_ASM::jal("global_dispose");
 				MIPS_ASM::pop("ra");
+				MIPS_ASM::pop("a0");
 
 			}else
 				MIPS_ASM::pop();

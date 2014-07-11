@@ -226,6 +226,7 @@ void Interface::generateCode(){
 		if (ifs){
 			MIPS_ASM::lw("a0", i.second->getOffset(),"a0" );
 			MIPS_ASM::jal("global_dispose");
+			MIPS_ASM::printComment("checking rc ifs");
 			MIPS_ASM::top("a0");
 
 		}

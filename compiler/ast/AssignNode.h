@@ -68,7 +68,7 @@ public:
 
 			 }
 			 MIPS_ASM::sw(t0, 0, "v0");
-			 if (Garbage_Collect){
+			 if (Garbage_Collect && dynamic_cast<Interface*>(_leftExp->getType())){
 				 MIPS_ASM::push("ra");
 				 MIPS_ASM::printComment("gc:");
 				 MIPS_ASM::printComment("increasing rc for the new object:");
@@ -78,6 +78,8 @@ public:
 				 // Be careful increase_rc uses t0
 				 MIPS_ASM::move("a0", "t1");
 				 MIPS_ASM::jal("decrease_rc");//-4 is rc
+				 MIPS_ASM::printComment("checking rc for freeing:");
+
 				 MIPS_ASM::jal("global_dispose");
 
 				 MIPS_ASM::pop("ra");

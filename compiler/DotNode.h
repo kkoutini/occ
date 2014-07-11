@@ -55,6 +55,8 @@ public:
 			MIPS_ASM::push("ra");
 			MIPS_ASM::move("a0", "t1");
 			MIPS_ASM::jal("global_dispose");
+			MIPS_ASM::printComment("checking rc for freeing:");
+
 			MIPS_ASM::pop("ra");
 			MIPS_ASM::pop("v0");
 

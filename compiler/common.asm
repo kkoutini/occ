@@ -38,7 +38,7 @@ blt $t1,$a0,no_space_continue
 lw $t1,0($t0)
 sw $t1,0($t2)
 #this block in enough
-addi $v0,$t0,8
+addi $v0,$t0,12
 li $t1,-1
 sw $t1,0($t0)
 li $t1,0
@@ -56,15 +56,18 @@ block_head_null:
 li $v0,9 
 syscall
 sw $a0,4($v0)
-addi $v0,$v0,8
+addi $v0,$v0,12
 li $t1,-1
-sw $t1,-8($v0)
+sw $t1,-12($v0)
+li $t1,0
+sw $t1,-4($t0)
+
 malloc_return:
 jr $ra
 
 
 free:
-addi $t1,$a0,-8
+addi $t1,$a0,-12
 lw $t0,0($t1)
 bne $t0,-1,freed_already
 lw $t0,block_head
@@ -79,6 +82,7 @@ jr $ra
 
 increase_rc:
 beq $a0,$0,increase_rc_end
+blt $a0,0x10040000,increase_rc_end
 lw $t0,-4($a0)
 addi $t0,$t0,1
 sw $t0,-4($a0)
@@ -87,6 +91,7 @@ jr $ra
 
 decrease_rc:
 beq $a0,$0,decrease_rc_end
+blt $a0,0x10040000,increase_rc_end
 lw $t0,-4($a0)
 addi $t0,$t0,-1
 sw $t0,-4($a0)
