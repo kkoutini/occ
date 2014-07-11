@@ -177,7 +177,7 @@ Method* Interface::getMethodOverloaded (string message, vector<CallSelector*> se
 	while (vinter != NULL)
 	{
 
-		Method* m= methodsItem->getOverloadedMethod(message, selectors);
+		Method* m = vinter->methodsItem->getOverloadedMethod(message, selectors);
 		if (m)return m;
 		vinter = vinter->getInheretInterface();
 			}
