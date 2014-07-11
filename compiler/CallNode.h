@@ -86,7 +86,11 @@ public:
 		if (Garbage_Collect && !Iskernal){
 
 			MIPS_ASM::top("a0");
+			MIPS_ASM::push("ra");
+
 			MIPS_ASM::jal("increase_rc");//-4 is rc
+			MIPS_ASM::pop("ra");
+
 		}
 		MIPS_ASM::printComment("generating code for Args");
 		int sender_sh = 0;
@@ -100,7 +104,11 @@ public:
 				arg->generateCode();
 				if (Garbage_Collect && dynamic_cast<Interface*>(arg->getType()) && ! Iskernal){
 					MIPS_ASM::top("a0");
+					MIPS_ASM::push("ra");
+
 					MIPS_ASM::jal("increase_rc");//-4 is rc
+					MIPS_ASM::pop("ra");
+
 		//			MIPS_ASM::top("a0");
 			//		MIPS_ASM::jal("increase_rc");//-4 is rc
 
