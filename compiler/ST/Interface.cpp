@@ -177,7 +177,7 @@ Method* Interface::getMethodOverloaded (string message, vector<CallSelector*> se
 	while (vinter != NULL)
 	{
 
-		Method* m= methodsItem->getOverloadedMethod(message, selectors);
+		Method* m = vinter->methodsItem->getOverloadedMethod(message, selectors);
 		if (m)return m;
 		vinter = vinter->getInheretInterface();
 			}
@@ -187,12 +187,12 @@ void Interface::generateCode(){
 	MIPS_ASM::printComment("#########################################");
 	MIPS_ASM::printComment(string("Generating code for class ") + this->get_name());
 	MIPS_ASM::add_instruction("\n\n\n\n");
-	MIPS_ASM::printComment(string("vtable: ") );
+	MIPS_ASM::printComment(string("vtable: "));
 	MIPS_ASM::add_instruction("\n\n");
-	MIPS_ASM::label(getVtableLabel() );
+	MIPS_ASM::label(getVtableLabel());
 	//MIPS_ASM::add_instruction(getVtableString());
-	Interface* vinter=this;
-	while (vinter!=NULL)
+	Interface* vinter = this;
+	while (vinter != NULL)
 	{
 		for (auto i = vinter->methodsItem->methods.begin(); i != vinter->methodsItem->methods.end(); i++)
 		{
@@ -206,7 +206,7 @@ void Interface::generateCode(){
 
 		vinter = vinter->getInheretInterface();
 		MIPS_ASM::printComment("super");
-		if (vinter!=NULL)
+		if (vinter != NULL)
 			MIPS_ASM::printComment(vinter->get_name());
 
 	}
@@ -214,6 +214,29 @@ void Interface::generateCode(){
 
 	MIPS_ASM::jump("method_not_found");
 
+	MIPS_ASM::label("dispose_" + to_string(getId()));
+	MIPS_ASM::push("ra");
+	MIPS_ASM::push("a0");
+	MIPS_ASM::jal("free");
+	MIPS_ASM::add_instruction("bne $v0,1,""dispose_end_" + to_string(getId())+"\n");
+	for (auto i : varItems->variables)
+	{
+		auto ifs = dynamic_cast<Interface*> (i.second->getType());
+
+		if (ifs){
+			MIPS_ASM::lw("a0", i.second->getOffset(),"a0" );
+			MIPS_ASM::jal("global_dispose");
+			MIPS_ASM::printComment("checking rc ifs");
+			MIPS_ASM::top("a0");
+
+		}
+	}
+	MIPS_ASM::label("dispose_end_" + to_string(getId()));
+
+	MIPS_ASM::pop();
+	MIPS_ASM::pop("ra");
+	MIPS_ASM::jr();
+	MIPS_ASM::add_instruction("\n\n");
 
 	for (auto i = this->methodsItem->methods.begin(); i != this->methodsItem->methods.end(); i++)
 	{

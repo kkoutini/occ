@@ -51,7 +51,7 @@ public:
 			//ERRor
 			string error = "ERROR Sender isn't Interface " ;
 			addError(error);
-			
+			return;
 		}
 		
 		int method = MethodsIndexer::getMethodIndex(_message, _selcs);
@@ -83,6 +83,15 @@ public:
 		MIPS_ASM::push("fp");
 		MIPS_ASM::printComment("generating code for the sender");
 		_sender->generateCode();
+		if (Garbage_Collect && !Iskernal){
+
+			MIPS_ASM::top("a0");
+			MIPS_ASM::push("ra");
+
+			MIPS_ASM::jal("increase_rc");//-4 is rc
+			MIPS_ASM::pop("ra");
+
+		}
 		MIPS_ASM::printComment("generating code for Args");
 		int sender_sh = 0;
 		for (auto selector : _selcs){
@@ -93,6 +102,17 @@ public:
 				MIPS_ASM::printComment(string("generating  for var #") + std::to_string(argcount++));
 
 				arg->generateCode();
+				if (Garbage_Collect && dynamic_cast<Interface*>(arg->getType()) && ! Iskernal){
+					MIPS_ASM::top("a0");
+					MIPS_ASM::push("ra");
+
+					MIPS_ASM::jal("increase_rc");//-4 is rc
+					MIPS_ASM::pop("ra");
+
+		//			MIPS_ASM::top("a0");
+			//		MIPS_ASM::jal("increase_rc");//-4 is rc
+
+				}
 			}
 		}
 		MIPS_ASM::lw("t0", sender_sh, "sp");
@@ -107,12 +127,14 @@ public:
 		}
 		else
 			MIPS_ASM::jal("global_vtable");
-
+		// todo add gc here for sender
 		MIPS_ASM::pop("fp");
 		MIPS_ASM::pop("ra");
 		MIPS_ASM::push("v0");
 	}
 	virtual void static_bind(){
+		//TODo
+		//all mistaken recheck
 		//	Interface* type=obj->getType();
 		//	type->getMethodByName
 		Type* senderType = _sender->getType();
@@ -169,7 +191,7 @@ public:
 		if (sender_interface == NULL)
 		{
 			//throw error
-			string error = "ERROR in call NODE generate type sender is null in  line number ";
+			string error = "ERROR in call NODE generate type sender is null  ";
 			addError(error);
 			return false;
 		}
@@ -178,7 +200,7 @@ public:
 		if (method == NULL)
 		{
 			//throw error
-			string error = "ERROR in call NODE generate type null  line number ";
+			string error = "ERROR in call NODE generate type null  ";
 			addError(error);
 		}
 		return method->getReturnType();

@@ -16,6 +16,7 @@ extern int lineNum;
 extern int colNum;
 extern string sourceFile;
 extern int Iskernal = 0;
+extern bool Garbage_Collect=0;
 
 SymbolTable::SymbolTable(void)
 {
@@ -137,7 +138,13 @@ void SymbolTable::generateStatics()
 			 fs->addNode(new AsmNode(fs, "move $ra,$s0"));
 			 fs->addNode(new AsmNode(fs, "li $t0," + std::to_string(ifs->getId())));
 			 fs->addNode(new AsmNode(fs, "sw $t0,0($v0)"));
+			 for (auto vm : ifs->getScoop()->_variables){
+				 auto vt = dynamic_cast<Interface*> (vm.second->getType());
+				 if (vt){
+					 fs->addNode(new AsmNode(fs, "sw $0," + std::to_string(vm.second->getOffset()) + "($v0)"));
 
+				 }
+			 }
 			 ifs->static_twin->getMethodsItem()->addMethod(method);
 			 method = new Method("", getType("bool"));
 			 method->addSelector(new DeclerationSelector("isA", { new Variable("obj", getType("NSObject")) }));
@@ -209,17 +216,40 @@ void SymbolTable::generateStaticsCode()
 		auto ifs = dynamic_cast<Interface*> (i->second);
 		if (ifs){
 			MIPS_ASM::printComment(ifs->get_name());
-			MIPS_ASM::add_instruction(string("li $t0,") + std::to_string(ifs->getId()) + "\n");
-			MIPS_ASM::add_instruction(string("beq $t0,$a0,") + ifs->getVtableLabel() + "\n");
+			MIPS_ASM::add_instruction("beq $a0," + std::to_string(ifs->getId()) + "," + ifs->getVtableLabel() + "\n");
 			ifs = ifs->static_twin;
-			MIPS_ASM::printComment(ifs->get_name()+" static");
+			MIPS_ASM::printComment(ifs->get_name() + " static");
 
-			MIPS_ASM::add_instruction(string("li $t0,") + std::to_string(ifs->getId()) + "\n");
-			MIPS_ASM::add_instruction(string("beq $t0,$a0,") + ifs->getVtableLabel() + "\n");
+			MIPS_ASM::add_instruction("beq $a0," + std::to_string(ifs->getId()) + "," + ifs->getVtableLabel() + "\n");
 
 		}
 	}
 	MIPS_ASM::jump("type_not_found");
+
+	MIPS_ASM::add_instruction("\n\n\n\n");
+	MIPS_ASM::printComment(string("Global dispose table: "));
+	MIPS_ASM::add_instruction("\n\n");
+	MIPS_ASM::label("global_dispose"); 
+
+		MIPS_ASM::add_instruction("beq $a0,$0,global_dispose_end\n");
+	MIPS_ASM::add_instruction("blt $a0, 0x10040000,global_dispose_end\n");
+	MIPS_ASM::lw("t0", -4, "a0");
+	MIPS_ASM::add_instruction("bgt $t0,$0,global_dispose_end\n");
+
+	MIPS_ASM::lw("t0",0, "a0");
+
+	for (auto i = this->types.begin(); i != this->types.end(); i++)
+	{
+		auto ifs = dynamic_cast<Interface*> (i->second);
+		if (ifs){
+			MIPS_ASM::printComment(ifs->get_name());
+			MIPS_ASM::add_instruction("beq $t0," + std::to_string(ifs->getId()) + ",dispose_" + std::to_string(ifs->getId()) + "\n");
+
+		}
+	}
+	MIPS_ASM::label("global_dispose_end");
+
+	MIPS_ASM::jr();
 }
 bool SymbolTable::checkInhertanceLoop()
 {

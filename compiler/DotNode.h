@@ -50,8 +50,21 @@ public:
 		
 		MIPS_ASM::add_instruction(string("addi $v0,$") + "t1"//var->getOffsetRegister()
 			+ "," + std::to_string(variable->getOffset()) + "\n");
-
 		MIPS_ASM::push("t0");
+		if (Garbage_Collect){
+
+			MIPS_ASM::push("v0");
+			MIPS_ASM::push("ra");
+			MIPS_ASM::move("a0", "t1");
+			MIPS_ASM::jal("global_dispose");
+			MIPS_ASM::printComment("checking rc for freeing:");
+
+			MIPS_ASM::pop("ra");
+			MIPS_ASM::pop("v0");
+
+
+		}
+
 
 	}
 	virtual Type* generateType()

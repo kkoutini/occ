@@ -65,6 +65,8 @@ void addFile(string s){
 extern int Iskernal;
 extern int lineNum;
 extern int colNum;
+extern bool Garbage_Collect;
+
 	int yylex(void);
 	int yyparse();
 	void yyerror(const char *);
@@ -1412,7 +1414,7 @@ void main(int argc,      // Number of strings in array argv
   //yydebug=1;
 	 	string input = "code.txt";
 	bool f = true;
-
+	Garbage_Collect=1;
 	   for(int i = 0; i < argc; i++) 
 		{
 			if(string(argv[i])=="-o")
@@ -1431,6 +1433,11 @@ void main(int argc,      // Number of strings in array argv
 					addFile(input);
 					f = false;
 				}
+			}
+		if (string(argv[i]) == "-gc")
+			{
+					Garbage_Collect=1;
+
 			}
 
 		}

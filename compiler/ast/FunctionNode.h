@@ -58,6 +58,9 @@ for(auto i=_nodes.begin();i!=_nodes.end();i++)
 	{
 		 _interface=i;
 	}
+	 virtual void nullVars(){
+
+	 }
 
 	virtual ~FunctionNode(void)
 	{
