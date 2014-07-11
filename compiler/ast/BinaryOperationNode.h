@@ -30,7 +30,7 @@ public:
 		string t1 = "t1";
 		static int s=0;
 		
-		if (_leftExp->value_int != 0 && _rightExp->value_int != 0)
+		if (_leftExp->constant == true && _rightExp->constant == true)
 		{
 
 			int x = _leftExp->value_int;

@@ -701,36 +701,6 @@ finally_statement (179)
 State 0
 
     0 $accept: . program $end
-    1 program: . components
-    2 components: . components component
-    3           | . component
-    4           | . IMPORT STRING_VAL SEMI_COMA
-    5 component: . class_interface
-    6          | . class_implementation
-    7          | . protocol
-    8          | . struct
-    9          | . enum
-   10 class_interface: . class_interface_header class_interface_body
-   11 class_interface_header: . AT_INTERFACE IDENTIFIER SEMI_COLUMN IDENTIFIER
-   12                       | . AT_INTERFACE IDENTIFIER
-   13                       | . AT_INTERFACE error
-   14                       | . AT_INTERFACE IDENTIFIER SEMI_COLUMN error
-   69 struct_header: . STRUCT IDENTIFIER
-   70 struct: . struct_header OPEN_S CLOSE_S entity SEMI_COMA
-   71       | . struct_header OPEN_S struct_variable_declaration CLOSE_S entity SEMI_COMA
-   72       | . struct_header OPEN_S CLOSE_S SEMI_COMA
-   73       | . struct_header OPEN_S struct_variable_declaration CLOSE_S SEMI_COMA
-   74       | . struct_header OPEN_S CLOSE_S entity error SEMI_COMA
-   75       | . struct_header OPEN_S struct_variable_declaration CLOSE_S entity error SEMI_COMA
-   76       | . struct_header OPEN_S CLOSE_S error SEMI_COMA
-   77       | . struct_header OPEN_S struct_variable_declaration CLOSE_S error SEMI_COMA
-  123 class_implementation: . class_implementation_header class_implementation_body
-  124 class_implementation_header: . AT_IMPLEMENTATION IDENTIFIER SEMI_COLUMN IDENTIFIER
-  125                            | . AT_IMPLEMENTATION IDENTIFIER
-  255 protocol: . protocol_header protocol_body
-  256 protocol_header: . AT_PROTOCOL IDENTIFIER
-  261 enum: . ENUM IDENTIFIER OPEN_S list_expr CLOSE_S SEMI_COMA
-  262     | . ENUM IDENTIFIER SEMI_COMA
 
     AT_INTERFACE       shift, and go to state 1
     AT_IMPLEMENTATION  shift, and go to state 2
@@ -810,34 +780,8 @@ State 7
 
 State 8
 
-    1 program: components .  [$end]
+    1 program: components .
     2 components: components . component
-    5 component: . class_interface
-    6          | . class_implementation
-    7          | . protocol
-    8          | . struct
-    9          | . enum
-   10 class_interface: . class_interface_header class_interface_body
-   11 class_interface_header: . AT_INTERFACE IDENTIFIER SEMI_COLUMN IDENTIFIER
-   12                       | . AT_INTERFACE IDENTIFIER
-   13                       | . AT_INTERFACE error
-   14                       | . AT_INTERFACE IDENTIFIER SEMI_COLUMN error
-   69 struct_header: . STRUCT IDENTIFIER
-   70 struct: . struct_header OPEN_S CLOSE_S entity SEMI_COMA
-   71       | . struct_header OPEN_S struct_variable_declaration CLOSE_S entity SEMI_COMA
-   72       | . struct_header OPEN_S CLOSE_S SEMI_COMA
-   73       | . struct_header OPEN_S struct_variable_declaration CLOSE_S SEMI_COMA
-   74       | . struct_header OPEN_S CLOSE_S entity error SEMI_COMA
-   75       | . struct_header OPEN_S struct_variable_declaration CLOSE_S entity error SEMI_COMA
-   76       | . struct_header OPEN_S CLOSE_S error SEMI_COMA
-   77       | . struct_header OPEN_S struct_variable_declaration CLOSE_S error SEMI_COMA
-  123 class_implementation: . class_implementation_header class_implementation_body
-  124 class_implementation_header: . AT_IMPLEMENTATION IDENTIFIER SEMI_COLUMN IDENTIFIER
-  125                            | . AT_IMPLEMENTATION IDENTIFIER
-  255 protocol: . protocol_header protocol_body
-  256 protocol_header: . AT_PROTOCOL IDENTIFIER
-  261 enum: . ENUM IDENTIFIER OPEN_S list_expr CLOSE_S SEMI_COMA
-  262     | . ENUM IDENTIFIER SEMI_COMA
 
     AT_INTERFACE       shift, and go to state 1
     AT_IMPLEMENTATION  shift, and go to state 2
@@ -876,35 +820,6 @@ State 10
 State 11
 
    10 class_interface: class_interface_header . class_interface_body
-   15 class_interface_body: . protocol_reference_list instance_variables interface_declaration_list AT_END
-   16                     | . protocol_reference_list instance_variables AT_END
-   17                     | . protocol_reference_list interface_declaration_list AT_END
-   18                     | . instance_variables interface_declaration_list AT_END
-   19                     | . protocol_reference_list AT_END
-   20                     | . instance_variables AT_END
-   21                     | . interface_declaration_list AT_END
-   22                     | . AT_END
-   23                     | . protocol_reference_list error AT_END
-   24                     | . protocol_reference_list error interface_declaration_list AT_END
-   25                     | . protocol_reference_list error
-   26                     | . protocol_reference_list instance_variables interface_declaration_list error
-   27                     | . protocol_reference_list instance_variables error
-   28                     | . protocol_reference_list interface_declaration_list error
-   29                     | . instance_variables interface_declaration_list error
-   30                     | . instance_variables error
-   31                     | . interface_declaration_list error
-   32 protocol_reference_list: . LESS_THAN ids_list_identifier MORE_THAN
-   33                        | . LESS_THAN ids_list_identifier error
-   44 instance_variables: . OPEN_S instance_variable_declarations CLOSE_S
-   45                   | . OPEN_S CLOSE_S
-  106 interface_declaration_list: . interface_declaration_list interface_declaration
-  107                           | . interface_declaration
-  108 interface_declaration: . class_method_declaration
-  109                      | . instance_method_declaration
-  110 class_method_declaration: . PLUS p_type method_selectors SEMI_COMA
-  111                         | . PLUS p_type method_selectors error
-  112                         | . PLUS method_selectors error
-  113 instance_method_declaration: . MINUS p_type method_selectors SEMI_COMA
 
     OPEN_S     shift, and go to state 28
     LESS_THAN  shift, and go to state 29
@@ -951,21 +866,7 @@ State 14
 
 State 15
 
-   44 instance_variables: . OPEN_S instance_variable_declarations CLOSE_S
-   45                   | . OPEN_S CLOSE_S
   123 class_implementation: class_implementation_header . class_implementation_body
-  126 class_implementation_body: . instance_variables implementation_definition_list AT_END
-  127                          | . instance_variables AT_END
-  128                          | . implementation_definition_list AT_END
-  129                          | . AT_END
-  130 implementation_definition_list: . implementation_definition_list implementation_definition
-  131                               | . implementation_definition
-  132 implementation_definition: . class_implementation_definition
-  133                          | . instance_implementation_definition
-  134 class_implementation_definition: . class_implementation_definition_header block_body
-  135 class_implementation_definition_header: . PLUS p_type method_selectors
-  136 instance_implementation_definition: . instance_implementation_definition_header block_body
-  137 instance_implementation_definition_header: . MINUS p_type method_selectors
 
     OPEN_S  shift, and go to state 28
     AT_END  shift, and go to state 41
@@ -991,21 +892,7 @@ State 16
 
 State 17
 
-   32 protocol_reference_list: . LESS_THAN ids_list_identifier MORE_THAN
-   33                        | . LESS_THAN ids_list_identifier error
-  106 interface_declaration_list: . interface_declaration_list interface_declaration
-  107                           | . interface_declaration
-  108 interface_declaration: . class_method_declaration
-  109                      | . instance_method_declaration
-  110 class_method_declaration: . PLUS p_type method_selectors SEMI_COMA
-  111                         | . PLUS p_type method_selectors error
-  112                         | . PLUS method_selectors error
-  113 instance_method_declaration: . MINUS p_type method_selectors SEMI_COMA
   255 protocol: protocol_header . protocol_body
-  257 protocol_body: . protocol_reference_list interface_declaration_list AT_END
-  258              | . interface_declaration_list AT_END
-  259              | . protocol_reference_list AT_END
-  260              | . AT_END
 
     LESS_THAN  shift, and go to state 29
     AT_END     shift, and go to state 52
@@ -1037,7 +924,7 @@ State 19
 State 20
 
    11 class_interface_header: AT_INTERFACE IDENTIFIER . SEMI_COLUMN IDENTIFIER
-   12                       | AT_INTERFACE IDENTIFIER .  [OPEN_S, LESS_THAN, AT_END, PLUS, MINUS]
+   12                       | AT_INTERFACE IDENTIFIER .
    14                       | AT_INTERFACE IDENTIFIER . SEMI_COLUMN error
 
     SEMI_COLUMN  shift, and go to state 56
@@ -1048,7 +935,7 @@ State 20
 State 21
 
   124 class_implementation_header: AT_IMPLEMENTATION IDENTIFIER . SEMI_COLUMN IDENTIFIER
-  125                            | AT_IMPLEMENTATION IDENTIFIER .  [OPEN_S, AT_END, PLUS, MINUS]
+  125                            | AT_IMPLEMENTATION IDENTIFIER .
 
     SEMI_COLUMN  shift, and go to state 57
 
@@ -1103,33 +990,6 @@ State 28
 
    44 instance_variables: OPEN_S . instance_variable_declarations CLOSE_S
    45                   | OPEN_S . CLOSE_S
-   46 instance_variable_declarations: . instance_variable_declarations instance_variable_declaration
-   47                               | . instance_variable_declaration
-   48                               | . variable_declaration_list
-   49 instance_variable_declaration: . visibility_specification variable_declaration_list
-   50 variable_declaration_list: . variable_declaration_list variable_declarationxx
-   51                          | . variable_declarationxx
-   52 visibility_specification: . AT_PRIVATE
-   53                         | . AT_PROTECTED
-   54                         | . AT_PUBLIC
-   56 variable_declarationxx: . type ids_list SEMI_COMA
-   57                       | . CONST type ids_list SEMI_COMA
-   58                       | . type IDENTIFIER array_tag error
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
 
     IDENTIFIER    shift, and go to state 61
     NSSTRING      shift, and go to state 62
@@ -1162,8 +1022,6 @@ State 29
 
    32 protocol_reference_list: LESS_THAN . ids_list_identifier MORE_THAN
    33                        | LESS_THAN . ids_list_identifier error
-   34 ids_list_identifier: . ids_list_identifier COMMA IDENTIFIER
-   35                    | . IDENTIFIER
 
     IDENTIFIER  shift, and go to state 85
 
@@ -1182,12 +1040,6 @@ State 31
   110 class_method_declaration: PLUS . p_type method_selectors SEMI_COMA
   111                         | PLUS . p_type method_selectors error
   112                         | PLUS . method_selectors error
-  114 p_type: . OPEN_P type CLOSE_P
-  115 method_selectors: . selectors_list
-  116                 | . IDENTIFIER
-  117 selectors_list: . selectors_list selector_decleration
-  118               | . selector_decleration
-  119 selector_decleration: . IDENTIFIER SEMI_COLUMN parameter_list
 
     IDENTIFIER  shift, and go to state 87
     OPEN_P      shift, and go to state 88
@@ -1201,7 +1053,6 @@ State 31
 State 32
 
   113 instance_method_declaration: MINUS . p_type method_selectors SEMI_COMA
-  114 p_type: . OPEN_P type CLOSE_P
 
     OPEN_P  shift, and go to state 88
 
@@ -1227,16 +1078,6 @@ State 34
    26                     | protocol_reference_list . instance_variables interface_declaration_list error
    27                     | protocol_reference_list . instance_variables error
    28                     | protocol_reference_list . interface_declaration_list error
-   44 instance_variables: . OPEN_S instance_variable_declarations CLOSE_S
-   45                   | . OPEN_S CLOSE_S
-  106 interface_declaration_list: . interface_declaration_list interface_declaration
-  107                           | . interface_declaration
-  108 interface_declaration: . class_method_declaration
-  109                      | . instance_method_declaration
-  110 class_method_declaration: . PLUS p_type method_selectors SEMI_COMA
-  111                         | . PLUS p_type method_selectors error
-  112                         | . PLUS method_selectors error
-  113 instance_method_declaration: . MINUS p_type method_selectors SEMI_COMA
 
     error   shift, and go to state 94
     OPEN_S  shift, and go to state 28
@@ -1257,14 +1098,6 @@ State 35
    20                     | instance_variables . AT_END
    29                     | instance_variables . interface_declaration_list error
    30                     | instance_variables . error
-  106 interface_declaration_list: . interface_declaration_list interface_declaration
-  107                           | . interface_declaration
-  108 interface_declaration: . class_method_declaration
-  109                      | . instance_method_declaration
-  110 class_method_declaration: . PLUS p_type method_selectors SEMI_COMA
-  111                         | . PLUS p_type method_selectors error
-  112                         | . PLUS method_selectors error
-  113 instance_method_declaration: . MINUS p_type method_selectors SEMI_COMA
 
     error   shift, and go to state 98
     AT_END  shift, and go to state 99
@@ -1282,12 +1115,6 @@ State 36
    21 class_interface_body: interface_declaration_list . AT_END
    31                     | interface_declaration_list . error
   106 interface_declaration_list: interface_declaration_list . interface_declaration
-  108 interface_declaration: . class_method_declaration
-  109                      | . instance_method_declaration
-  110 class_method_declaration: . PLUS p_type method_selectors SEMI_COMA
-  111                         | . PLUS p_type method_selectors error
-  112                         | . PLUS method_selectors error
-  113 instance_method_declaration: . MINUS p_type method_selectors SEMI_COMA
 
     error   shift, and go to state 101
     AT_END  shift, and go to state 102
@@ -1322,13 +1149,6 @@ State 39
 
 State 40
 
-   55 struct_variable_declaration: . struct_declaration_list
-   56 variable_declarationxx: . type ids_list SEMI_COMA
-   57                       | . CONST type ids_list SEMI_COMA
-   58                       | . type IDENTIFIER array_tag error
-   66 struct_declaration_list: . struct_declaration_list variable_declarationxx
-   67                        | . variable_declarationxx
-   68                        | . error variable_declarationxx
    70 struct: struct_header OPEN_S . CLOSE_S entity SEMI_COMA
    71       | struct_header OPEN_S . struct_variable_declaration CLOSE_S entity SEMI_COMA
    72       | struct_header OPEN_S . CLOSE_S SEMI_COMA
@@ -1337,21 +1157,6 @@ State 40
    75       | struct_header OPEN_S . struct_variable_declaration CLOSE_S entity error SEMI_COMA
    76       | struct_header OPEN_S . CLOSE_S error SEMI_COMA
    77       | struct_header OPEN_S . struct_variable_declaration CLOSE_S error SEMI_COMA
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
 
     error       shift, and go to state 104
     IDENTIFIER  shift, and go to state 61
@@ -1385,7 +1190,6 @@ State 41
 
 State 42
 
-  114 p_type: . OPEN_P type CLOSE_P
   135 class_implementation_definition_header: PLUS . p_type method_selectors
 
     OPEN_P  shift, and go to state 88
@@ -1395,7 +1199,6 @@ State 42
 
 State 43
 
-  114 p_type: . OPEN_P type CLOSE_P
   137 instance_implementation_definition_header: MINUS . p_type method_selectors
 
     OPEN_P  shift, and go to state 88
@@ -1407,14 +1210,6 @@ State 44
 
   126 class_implementation_body: instance_variables . implementation_definition_list AT_END
   127                          | instance_variables . AT_END
-  130 implementation_definition_list: . implementation_definition_list implementation_definition
-  131                               | . implementation_definition
-  132 implementation_definition: . class_implementation_definition
-  133                          | . instance_implementation_definition
-  134 class_implementation_definition: . class_implementation_definition_header block_body
-  135 class_implementation_definition_header: . PLUS p_type method_selectors
-  136 instance_implementation_definition: . instance_implementation_definition_header block_body
-  137 instance_implementation_definition_header: . MINUS p_type method_selectors
 
     AT_END  shift, and go to state 111
     PLUS    shift, and go to state 42
@@ -1439,12 +1234,6 @@ State 46
 
   128 class_implementation_body: implementation_definition_list . AT_END
   130 implementation_definition_list: implementation_definition_list . implementation_definition
-  132 implementation_definition: . class_implementation_definition
-  133                          | . instance_implementation_definition
-  134 class_implementation_definition: . class_implementation_definition_header block_body
-  135 class_implementation_definition_header: . PLUS p_type method_selectors
-  136 instance_implementation_definition: . instance_implementation_definition_header block_body
-  137 instance_implementation_definition_header: . MINUS p_type method_selectors
 
     AT_END  shift, and go to state 113
     PLUS    shift, and go to state 42
@@ -1474,8 +1263,6 @@ State 48
 State 49
 
   134 class_implementation_definition: class_implementation_definition_header . block_body
-  138 block_body: . block_body_header block_body_statements
-  139 block_body_header: . OPEN_S
 
     OPEN_S  shift, and go to state 115
 
@@ -1493,8 +1280,6 @@ State 50
 State 51
 
   136 instance_implementation_definition: instance_implementation_definition_header . block_body
-  138 block_body: . block_body_header block_body_statements
-  139 block_body_header: . OPEN_S
 
     OPEN_S  shift, and go to state 115
 
@@ -1511,14 +1296,6 @@ State 52
 
 State 53
 
-  106 interface_declaration_list: . interface_declaration_list interface_declaration
-  107                           | . interface_declaration
-  108 interface_declaration: . class_method_declaration
-  109                      | . instance_method_declaration
-  110 class_method_declaration: . PLUS p_type method_selectors SEMI_COMA
-  111                         | . PLUS p_type method_selectors error
-  112                         | . PLUS method_selectors error
-  113 instance_method_declaration: . MINUS p_type method_selectors SEMI_COMA
   257 protocol_body: protocol_reference_list . interface_declaration_list AT_END
   259              | protocol_reference_list . AT_END
 
@@ -1535,12 +1312,6 @@ State 53
 State 54
 
   106 interface_declaration_list: interface_declaration_list . interface_declaration
-  108 interface_declaration: . class_method_declaration
-  109                      | . instance_method_declaration
-  110 class_method_declaration: . PLUS p_type method_selectors SEMI_COMA
-  111                         | . PLUS p_type method_selectors error
-  112                         | . PLUS method_selectors error
-  113 instance_method_declaration: . MINUS p_type method_selectors SEMI_COMA
   258 protocol_body: interface_declaration_list . AT_END
 
     AT_END  shift, and go to state 121
@@ -1585,10 +1356,6 @@ State 58
 State 59
 
   261 enum: ENUM IDENTIFIER OPEN_S . list_expr CLOSE_S SEMI_COMA
-  263 list_expr: . IDENTIFIER EQUAL expr COMMA list_expr
-  264          | . IDENTIFIER EQUAL expr
-  265          | . IDENTIFIER
-  266          | . IDENTIFIER COMMA list_expr
 
     IDENTIFIER  shift, and go to state 125
 
@@ -1675,21 +1442,6 @@ State 70
 State 71
 
    57 variable_declarationxx: CONST . type ids_list SEMI_COMA
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
 
     IDENTIFIER  shift, and go to state 61
     NSSTRING    shift, and go to state 62
@@ -1735,10 +1487,6 @@ State 75
 
    44 instance_variables: OPEN_S instance_variable_declarations . CLOSE_S
    46 instance_variable_declarations: instance_variable_declarations . instance_variable_declaration
-   49 instance_variable_declaration: . visibility_specification variable_declaration_list
-   52 visibility_specification: . AT_PRIVATE
-   53                         | . AT_PROTECTED
-   54                         | . AT_PUBLIC
 
     AT_PUBLIC     shift, and go to state 67
     AT_PROTECTED  shift, and go to state 68
@@ -1758,26 +1506,8 @@ State 76
 
 State 77
 
-   48 instance_variable_declarations: variable_declaration_list .  [AT_PUBLIC, AT_PROTECTED, AT_PRIVATE, CLOSE_S]
+   48 instance_variable_declarations: variable_declaration_list .
    50 variable_declaration_list: variable_declaration_list . variable_declarationxx
-   56 variable_declarationxx: . type ids_list SEMI_COMA
-   57                       | . CONST type ids_list SEMI_COMA
-   58                       | . type IDENTIFIER array_tag error
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
 
     IDENTIFIER  shift, and go to state 61
     NSSTRING    shift, and go to state 62
@@ -1803,26 +1533,6 @@ State 77
 State 78
 
    49 instance_variable_declaration: visibility_specification . variable_declaration_list
-   50 variable_declaration_list: . variable_declaration_list variable_declarationxx
-   51                          | . variable_declarationxx
-   56 variable_declarationxx: . type ids_list SEMI_COMA
-   57                       | . CONST type ids_list SEMI_COMA
-   58                       | . type IDENTIFIER array_tag error
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
 
     IDENTIFIER  shift, and go to state 61
     NSSTRING    shift, and go to state 62
@@ -1855,13 +1565,6 @@ State 80
 
    56 variable_declarationxx: type . ids_list SEMI_COMA
    58                       | type . IDENTIFIER array_tag error
-   59 ids_list: . ids_list COMMA data_member
-   60         | . data_member
-   61         | . error
-   62 data_member: . IDENTIFIER array_tag
-   63            | . IDENTIFIER
-   64            | . error array_tag
-   65            | . IDENTIFIER error
 
     error       shift, and go to state 135
     IDENTIFIER  shift, and go to state 136
@@ -1918,7 +1621,7 @@ State 86
 
 State 87
 
-  116 method_selectors: IDENTIFIER .  [error, SEMI_COMA, OPEN_S]
+  116 method_selectors: IDENTIFIER .
   119 selector_decleration: IDENTIFIER . SEMI_COLUMN parameter_list
 
     SEMI_COLUMN  shift, and go to state 142
@@ -1928,21 +1631,6 @@ State 87
 
 State 88
 
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
   114 p_type: OPEN_P . type CLOSE_P
 
     IDENTIFIER  shift, and go to state 61
@@ -1966,11 +1654,6 @@ State 89
 
   110 class_method_declaration: PLUS p_type . method_selectors SEMI_COMA
   111                         | PLUS p_type . method_selectors error
-  115 method_selectors: . selectors_list
-  116                 | . IDENTIFIER
-  117 selectors_list: . selectors_list selector_decleration
-  118               | . selector_decleration
-  119 selector_decleration: . IDENTIFIER SEMI_COLUMN parameter_list
 
     IDENTIFIER  shift, and go to state 87
 
@@ -1988,9 +1671,8 @@ State 90
 
 State 91
 
-  115 method_selectors: selectors_list .  [error, SEMI_COMA, OPEN_S]
+  115 method_selectors: selectors_list .
   117 selectors_list: selectors_list . selector_decleration
-  119 selector_decleration: . IDENTIFIER SEMI_COLUMN parameter_list
 
     IDENTIFIER  shift, and go to state 146
 
@@ -2009,11 +1691,6 @@ State 92
 State 93
 
   113 instance_method_declaration: MINUS p_type . method_selectors SEMI_COMA
-  115 method_selectors: . selectors_list
-  116                 | . IDENTIFIER
-  117 selectors_list: . selectors_list selector_decleration
-  118               | . selector_decleration
-  119 selector_decleration: . IDENTIFIER SEMI_COLUMN parameter_list
 
     IDENTIFIER  shift, and go to state 87
 
@@ -2026,15 +1703,7 @@ State 94
 
    23 class_interface_body: protocol_reference_list error . AT_END
    24                     | protocol_reference_list error . interface_declaration_list AT_END
-   25                     | protocol_reference_list error .  [$end, AT_INTERFACE, AT_IMPLEMENTATION, ENUM, AT_PROTOCOL, STRUCT]
-  106 interface_declaration_list: . interface_declaration_list interface_declaration
-  107                           | . interface_declaration
-  108 interface_declaration: . class_method_declaration
-  109                      | . instance_method_declaration
-  110 class_method_declaration: . PLUS p_type method_selectors SEMI_COMA
-  111                         | . PLUS p_type method_selectors error
-  112                         | . PLUS method_selectors error
-  113 instance_method_declaration: . MINUS p_type method_selectors SEMI_COMA
+   25                     | protocol_reference_list error .
 
     AT_END  shift, and go to state 149
     PLUS    shift, and go to state 31
@@ -2061,14 +1730,6 @@ State 96
    16                     | protocol_reference_list instance_variables . AT_END
    26                     | protocol_reference_list instance_variables . interface_declaration_list error
    27                     | protocol_reference_list instance_variables . error
-  106 interface_declaration_list: . interface_declaration_list interface_declaration
-  107                           | . interface_declaration
-  108 interface_declaration: . class_method_declaration
-  109                      | . instance_method_declaration
-  110 class_method_declaration: . PLUS p_type method_selectors SEMI_COMA
-  111                         | . PLUS p_type method_selectors error
-  112                         | . PLUS method_selectors error
-  113 instance_method_declaration: . MINUS p_type method_selectors SEMI_COMA
 
     error   shift, and go to state 151
     AT_END  shift, and go to state 152
@@ -2086,12 +1747,6 @@ State 97
    17 class_interface_body: protocol_reference_list interface_declaration_list . AT_END
    28                     | protocol_reference_list interface_declaration_list . error
   106 interface_declaration_list: interface_declaration_list . interface_declaration
-  108 interface_declaration: . class_method_declaration
-  109                      | . instance_method_declaration
-  110 class_method_declaration: . PLUS p_type method_selectors SEMI_COMA
-  111                         | . PLUS p_type method_selectors error
-  112                         | . PLUS method_selectors error
-  113 instance_method_declaration: . MINUS p_type method_selectors SEMI_COMA
 
     error   shift, and go to state 154
     AT_END  shift, and go to state 155
@@ -2122,12 +1777,6 @@ State 100
    18 class_interface_body: instance_variables interface_declaration_list . AT_END
    29                     | instance_variables interface_declaration_list . error
   106 interface_declaration_list: interface_declaration_list . interface_declaration
-  108 interface_declaration: . class_method_declaration
-  109                      | . instance_method_declaration
-  110 class_method_declaration: . PLUS p_type method_selectors SEMI_COMA
-  111                         | . PLUS p_type method_selectors error
-  112                         | . PLUS method_selectors error
-  113 instance_method_declaration: . MINUS p_type method_selectors SEMI_COMA
 
     error   shift, and go to state 156
     AT_END  shift, and go to state 157
@@ -2162,25 +1811,7 @@ State 103
 
 State 104
 
-   56 variable_declarationxx: . type ids_list SEMI_COMA
-   57                       | . CONST type ids_list SEMI_COMA
-   58                       | . type IDENTIFIER array_tag error
    68 struct_declaration_list: error . variable_declarationxx
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
 
     IDENTIFIER  shift, and go to state 61
     NSSTRING    shift, and go to state 62
@@ -2207,9 +1838,6 @@ State 105
    72       | struct_header OPEN_S CLOSE_S . SEMI_COMA
    74       | struct_header OPEN_S CLOSE_S . entity error SEMI_COMA
    76       | struct_header OPEN_S CLOSE_S . error SEMI_COMA
-   78 entity: . IDENTIFIER COMMA entity
-   79       | . IDENTIFIER
-   80       | . error COMMA
 
     error       shift, and go to state 159
     IDENTIFIER  shift, and go to state 160
@@ -2237,26 +1865,8 @@ State 107
 
 State 108
 
-   55 struct_variable_declaration: struct_declaration_list .  [CLOSE_S]
-   56 variable_declarationxx: . type ids_list SEMI_COMA
-   57                       | . CONST type ids_list SEMI_COMA
-   58                       | . type IDENTIFIER array_tag error
+   55 struct_variable_declaration: struct_declaration_list .
    66 struct_declaration_list: struct_declaration_list . variable_declarationxx
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
 
     IDENTIFIER  shift, and go to state 61
     NSSTRING    shift, and go to state 62
@@ -2281,11 +1891,6 @@ State 108
 
 State 109
 
-  115 method_selectors: . selectors_list
-  116                 | . IDENTIFIER
-  117 selectors_list: . selectors_list selector_decleration
-  118               | . selector_decleration
-  119 selector_decleration: . IDENTIFIER SEMI_COLUMN parameter_list
   135 class_implementation_definition_header: PLUS p_type . method_selectors
 
     IDENTIFIER  shift, and go to state 87
@@ -2297,11 +1902,6 @@ State 109
 
 State 110
 
-  115 method_selectors: . selectors_list
-  116                 | . IDENTIFIER
-  117 selectors_list: . selectors_list selector_decleration
-  118               | . selector_decleration
-  119 selector_decleration: . IDENTIFIER SEMI_COLUMN parameter_list
   137 instance_implementation_definition_header: MINUS p_type . method_selectors
 
     IDENTIFIER  shift, and go to state 87
@@ -2322,12 +1922,6 @@ State 112
 
   126 class_implementation_body: instance_variables implementation_definition_list . AT_END
   130 implementation_definition_list: implementation_definition_list . implementation_definition
-  132 implementation_definition: . class_implementation_definition
-  133                          | . instance_implementation_definition
-  134 class_implementation_definition: . class_implementation_definition_header block_body
-  135 class_implementation_definition_header: . PLUS p_type method_selectors
-  136 instance_implementation_definition: . instance_implementation_definition_header block_body
-  137 instance_implementation_definition_header: . MINUS p_type method_selectors
 
     AT_END  shift, and go to state 167
     PLUS    shift, and go to state 42
@@ -2370,79 +1964,7 @@ State 116
 
 State 117
 
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
-  138 block_body: . block_body_header block_body_statements
-  138           | block_body_header . block_body_statements
-  139 block_body_header: . OPEN_S
-  140 block_body_statements: . statement_list CLOSE_S
-  141                      | . CLOSE_S
-  142                      | . error CLOSE_S
-  143 statement_list: . statement_list statement
-  144               | . statement
-  145 statement: . loop_statement
-  146          | . conditional_statement
-  147          | . assign_expr SEMI_COMA
-  148          | . variable_declaration_block
-  149          | . block_body
-  150          | . return_statement
-  151          | . try_catch
-  152          | . asm
-  153          | . long_id SEMI_COMA
-  154          | . throw_statement
-  155          | . error SEMI_COMA
-  156 throw_statement: . THROW OPEN_P message_call CLOSE_P SEMI_COMA
-  157 asm: . AT_ASM STRING_VAL SEMI_COMA
-  158 variable_declaration_block: . type variable_list SEMI_COMA
-  159                           | . CONST type variable_list SEMI_COMA
-  160                           | . enum
-  167 return_statement: . RETURN expr SEMI_COMA
-  168 loop_statement: . for_loop
-  169               | . while_loop
-  170               | . do_while
-  171 do_while: . do_header statement while_loop_header SEMI_COMA
-  172 do_header: . DO
-  173 for_loop: . for_loop_header statement
-  174 for_loop_header: . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  175                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  176                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA expr CLOSE_P
-  177                | . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  178                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA CLOSE_P
-  179                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  180                | . FOR OPEN_P SEMI_COMA SEMI_COMA expr CLOSE_P
-  181                | . FOR OPEN_P SEMI_COMA SEMI_COMA CLOSE_P
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
-  235 while_loop: . while_loop_header statement
-  236 while_loop_header: . WHILE OPEN_P logic_expr1 CLOSE_P
-  237 conditional_statement: . if_header statement
-  238                      | . if_header statement ELSE statement
-  239                      | . switch_header switch_body
-  240 if_header: . IF OPEN_P logic_expr1 CLOSE_P
-  241 switch_header: . SWITCH OPEN_P IDENTIFIER CLOSE_P switch_body_block
-  261 enum: . ENUM IDENTIFIER OPEN_S list_expr CLOSE_S SEMI_COMA
-  262     | . ENUM IDENTIFIER SEMI_COMA
-  267 try_catch: . TRY statement catch_list finally_statement
-  268          | . TRY statement catch_list
+  138 block_body: block_body_header . block_body_statements
 
     error       shift, and go to state 168
     IDENTIFIER  shift, and go to state 169
@@ -2518,12 +2040,6 @@ State 119
 State 120
 
   106 interface_declaration_list: interface_declaration_list . interface_declaration
-  108 interface_declaration: . class_method_declaration
-  109                      | . instance_method_declaration
-  110 class_method_declaration: . PLUS p_type method_selectors SEMI_COMA
-  111                         | . PLUS p_type method_selectors error
-  112                         | . PLUS method_selectors error
-  113 instance_method_declaration: . MINUS p_type method_selectors SEMI_COMA
   257 protocol_body: protocol_reference_list interface_declaration_list . AT_END
 
     AT_END  shift, and go to state 209
@@ -2567,7 +2083,7 @@ State 125
 
   263 list_expr: IDENTIFIER . EQUAL expr COMMA list_expr
   264          | IDENTIFIER . EQUAL expr
-  265          | IDENTIFIER .  [CLOSE_S]
+  265          | IDENTIFIER .
   266          | IDENTIFIER . COMMA list_expr
 
     COMMA  shift, and go to state 210
@@ -2593,13 +2109,6 @@ State 127
 State 128
 
    57 variable_declarationxx: CONST type . ids_list SEMI_COMA
-   59 ids_list: . ids_list COMMA data_member
-   60         | . data_member
-   61         | . error
-   62 data_member: . IDENTIFIER array_tag
-   63            | . IDENTIFIER
-   64            | . error array_tag
-   65            | . IDENTIFIER error
 
     error       shift, and go to state 135
     IDENTIFIER  shift, and go to state 213
@@ -2610,7 +2119,7 @@ State 128
 
 State 129
 
-   87 enum_type: ENUM IDENTIFIER .  [error, IDENTIFIER, CLOSE_P]
+   87 enum_type: ENUM IDENTIFIER .
    88          | ENUM IDENTIFIER . MULTI
 
     MULTI  shift, and go to state 215
@@ -2620,7 +2129,7 @@ State 129
 
 State 130
 
-   85 struct_type: STRUCT IDENTIFIER .  [error, IDENTIFIER, CLOSE_P]
+   85 struct_type: STRUCT IDENTIFIER .
    86            | STRUCT IDENTIFIER . MULTI
 
     MULTI  shift, and go to state 216
@@ -2651,26 +2160,8 @@ State 133
 
 State 134
 
-   49 instance_variable_declaration: visibility_specification variable_declaration_list .  [AT_PUBLIC, AT_PROTECTED, AT_PRIVATE, CLOSE_S]
+   49 instance_variable_declaration: visibility_specification variable_declaration_list .
    50 variable_declaration_list: variable_declaration_list . variable_declarationxx
-   56 variable_declarationxx: . type ids_list SEMI_COMA
-   57                       | . CONST type ids_list SEMI_COMA
-   58                       | . type IDENTIFIER array_tag error
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
 
     IDENTIFIER  shift, and go to state 61
     NSSTRING    shift, and go to state 62
@@ -2695,11 +2186,8 @@ State 134
 
 State 135
 
-   61 ids_list: error .  [SEMI_COMA, COMMA]
+   61 ids_list: error .
    64 data_member: error . array_tag
-   96 array_tag: . array_first_tag array_tag_list
-  100 array_first_tag: . OPEN_ARR INT_VAL CLOSE_ARR
-  101                | . OPEN_ARR CLOSE_ARR
 
     OPEN_ARR  shift, and go to state 217
 
@@ -2713,11 +2201,8 @@ State 136
 
    58 variable_declarationxx: type IDENTIFIER . array_tag error
    62 data_member: IDENTIFIER . array_tag
-   63            | IDENTIFIER .  [SEMI_COMA, COMMA]
+   63            | IDENTIFIER .
    65            | IDENTIFIER . error
-   96 array_tag: . array_first_tag array_tag_list
-  100 array_first_tag: . OPEN_ARR INT_VAL CLOSE_ARR
-  101                | . OPEN_ARR CLOSE_ARR
 
     error     shift, and go to state 220
     OPEN_ARR  shift, and go to state 217
@@ -2768,11 +2253,7 @@ State 141
 
 State 142
 
-  114 p_type: . OPEN_P type CLOSE_P
   119 selector_decleration: IDENTIFIER SEMI_COLUMN . parameter_list
-  120 parameter_list: . parameter_list SEMI_COLUMN parameter
-  121               | . parameter
-  122 parameter: . p_type IDENTIFIER
 
     OPEN_P  shift, and go to state 88
 
@@ -2836,12 +2317,6 @@ State 150
 
    24 class_interface_body: protocol_reference_list error interface_declaration_list . AT_END
   106 interface_declaration_list: interface_declaration_list . interface_declaration
-  108 interface_declaration: . class_method_declaration
-  109                      | . instance_method_declaration
-  110 class_method_declaration: . PLUS p_type method_selectors SEMI_COMA
-  111                         | . PLUS p_type method_selectors error
-  112                         | . PLUS method_selectors error
-  113 instance_method_declaration: . MINUS p_type method_selectors SEMI_COMA
 
     AT_END  shift, and go to state 232
     PLUS    shift, and go to state 31
@@ -2871,12 +2346,6 @@ State 153
    15 class_interface_body: protocol_reference_list instance_variables interface_declaration_list . AT_END
    26                     | protocol_reference_list instance_variables interface_declaration_list . error
   106 interface_declaration_list: interface_declaration_list . interface_declaration
-  108 interface_declaration: . class_method_declaration
-  109                      | . instance_method_declaration
-  110 class_method_declaration: . PLUS p_type method_selectors SEMI_COMA
-  111                         | . PLUS p_type method_selectors error
-  112                         | . PLUS method_selectors error
-  113 instance_method_declaration: . MINUS p_type method_selectors SEMI_COMA
 
     error   shift, and go to state 233
     AT_END  shift, and go to state 234
@@ -2935,7 +2404,7 @@ State 159
 State 160
 
    78 entity: IDENTIFIER . COMMA entity
-   79       | IDENTIFIER .  [error, SEMI_COMA]
+   79       | IDENTIFIER .
 
     COMMA  shift, and go to state 237
 
@@ -2964,9 +2433,6 @@ State 163
    73       | struct_header OPEN_S struct_variable_declaration CLOSE_S . SEMI_COMA
    75       | struct_header OPEN_S struct_variable_declaration CLOSE_S . entity error SEMI_COMA
    77       | struct_header OPEN_S struct_variable_declaration CLOSE_S . error SEMI_COMA
-   78 entity: . IDENTIFIER COMMA entity
-   79       | . IDENTIFIER
-   80       | . error COMMA
 
     error       shift, and go to state 240
     IDENTIFIER  shift, and go to state 160
@@ -3015,7 +2481,7 @@ State 168
 State 169
 
    95 complex_type: IDENTIFIER . MULTI
-  204 long_id: IDENTIFIER .  [SEMI_COMA, EQUAL, OPEN_ARR, DOT]
+  204 long_id: IDENTIFIER .
 
     MULTI  shift, and go to state 127
 
@@ -3031,21 +2497,6 @@ State 170
 
 State 171
 
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
   159 variable_declaration_block: CONST . type variable_list SEMI_COMA
 
     IDENTIFIER  shift, and go to state 61
@@ -3126,34 +2577,7 @@ State 178
 
 State 179
 
-  114 p_type: . OPEN_P type CLOSE_P
   167 return_statement: RETURN . expr SEMI_COMA
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -3177,74 +2601,7 @@ State 179
 
 State 180
 
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
-  138 block_body: . block_body_header block_body_statements
-  139 block_body_header: . OPEN_S
-  145 statement: . loop_statement
-  146          | . conditional_statement
-  147          | . assign_expr SEMI_COMA
-  148          | . variable_declaration_block
-  149          | . block_body
-  150          | . return_statement
-  151          | . try_catch
-  152          | . asm
-  153          | . long_id SEMI_COMA
-  154          | . throw_statement
-  155          | . error SEMI_COMA
-  156 throw_statement: . THROW OPEN_P message_call CLOSE_P SEMI_COMA
-  157 asm: . AT_ASM STRING_VAL SEMI_COMA
-  158 variable_declaration_block: . type variable_list SEMI_COMA
-  159                           | . CONST type variable_list SEMI_COMA
-  160                           | . enum
-  167 return_statement: . RETURN expr SEMI_COMA
-  168 loop_statement: . for_loop
-  169               | . while_loop
-  170               | . do_while
-  171 do_while: . do_header statement while_loop_header SEMI_COMA
-  172 do_header: . DO
-  173 for_loop: . for_loop_header statement
-  174 for_loop_header: . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  175                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  176                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA expr CLOSE_P
-  177                | . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  178                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA CLOSE_P
-  179                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  180                | . FOR OPEN_P SEMI_COMA SEMI_COMA expr CLOSE_P
-  181                | . FOR OPEN_P SEMI_COMA SEMI_COMA CLOSE_P
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
-  235 while_loop: . while_loop_header statement
-  236 while_loop_header: . WHILE OPEN_P logic_expr1 CLOSE_P
-  237 conditional_statement: . if_header statement
-  238                      | . if_header statement ELSE statement
-  239                      | . switch_header switch_body
-  240 if_header: . IF OPEN_P logic_expr1 CLOSE_P
-  241 switch_header: . SWITCH OPEN_P IDENTIFIER CLOSE_P switch_body_block
-  261 enum: . ENUM IDENTIFIER OPEN_S list_expr CLOSE_S SEMI_COMA
-  262     | . ENUM IDENTIFIER SEMI_COMA
-  267 try_catch: . TRY statement catch_list finally_statement
-  267          | TRY . statement catch_list finally_statement
-  268          | . TRY statement catch_list
+  267 try_catch: TRY . statement catch_list finally_statement
   268          | TRY . statement catch_list
 
     error       shift, and go to state 264
@@ -3318,12 +2675,6 @@ State 182
 State 183
 
   158 variable_declaration_block: type . variable_list SEMI_COMA
-  161 variable_list: . variable_list COMMA variable
-  162              | . variable
-  163              | . variable_list error variable
-  164 variable: . IDENTIFIER array_tag initializer
-  165         | . IDENTIFIER main_initializer
-  166         | . error array_tag initializer
 
     error       shift, and go to state 268
     IDENTIFIER  shift, and go to state 269
@@ -3348,75 +2699,8 @@ State 185
 
 State 186
 
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
-  138 block_body: . block_body_header block_body_statements
-  139 block_body_header: . OPEN_S
   140 block_body_statements: statement_list . CLOSE_S
   143 statement_list: statement_list . statement
-  145 statement: . loop_statement
-  146          | . conditional_statement
-  147          | . assign_expr SEMI_COMA
-  148          | . variable_declaration_block
-  149          | . block_body
-  150          | . return_statement
-  151          | . try_catch
-  152          | . asm
-  153          | . long_id SEMI_COMA
-  154          | . throw_statement
-  155          | . error SEMI_COMA
-  156 throw_statement: . THROW OPEN_P message_call CLOSE_P SEMI_COMA
-  157 asm: . AT_ASM STRING_VAL SEMI_COMA
-  158 variable_declaration_block: . type variable_list SEMI_COMA
-  159                           | . CONST type variable_list SEMI_COMA
-  160                           | . enum
-  167 return_statement: . RETURN expr SEMI_COMA
-  168 loop_statement: . for_loop
-  169               | . while_loop
-  170               | . do_while
-  171 do_while: . do_header statement while_loop_header SEMI_COMA
-  172 do_header: . DO
-  173 for_loop: . for_loop_header statement
-  174 for_loop_header: . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  175                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  176                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA expr CLOSE_P
-  177                | . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  178                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA CLOSE_P
-  179                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  180                | . FOR OPEN_P SEMI_COMA SEMI_COMA expr CLOSE_P
-  181                | . FOR OPEN_P SEMI_COMA SEMI_COMA CLOSE_P
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
-  235 while_loop: . while_loop_header statement
-  236 while_loop_header: . WHILE OPEN_P logic_expr1 CLOSE_P
-  237 conditional_statement: . if_header statement
-  238                      | . if_header statement ELSE statement
-  239                      | . switch_header switch_body
-  240 if_header: . IF OPEN_P logic_expr1 CLOSE_P
-  241 switch_header: . SWITCH OPEN_P IDENTIFIER CLOSE_P switch_body_block
-  261 enum: . ENUM IDENTIFIER OPEN_S list_expr CLOSE_S SEMI_COMA
-  262     | . ENUM IDENTIFIER SEMI_COMA
-  267 try_catch: . TRY statement catch_list finally_statement
-  268          | . TRY statement catch_list
 
     error       shift, and go to state 264
     IDENTIFIER  shift, and go to state 169
@@ -3524,74 +2808,7 @@ State 193
 
 State 194
 
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
-  138 block_body: . block_body_header block_body_statements
-  139 block_body_header: . OPEN_S
-  145 statement: . loop_statement
-  146          | . conditional_statement
-  147          | . assign_expr SEMI_COMA
-  148          | . variable_declaration_block
-  149          | . block_body
-  150          | . return_statement
-  151          | . try_catch
-  152          | . asm
-  153          | . long_id SEMI_COMA
-  154          | . throw_statement
-  155          | . error SEMI_COMA
-  156 throw_statement: . THROW OPEN_P message_call CLOSE_P SEMI_COMA
-  157 asm: . AT_ASM STRING_VAL SEMI_COMA
-  158 variable_declaration_block: . type variable_list SEMI_COMA
-  159                           | . CONST type variable_list SEMI_COMA
-  160                           | . enum
-  167 return_statement: . RETURN expr SEMI_COMA
-  168 loop_statement: . for_loop
-  169               | . while_loop
-  170               | . do_while
-  171 do_while: . do_header statement while_loop_header SEMI_COMA
-  171         | do_header . statement while_loop_header SEMI_COMA
-  172 do_header: . DO
-  173 for_loop: . for_loop_header statement
-  174 for_loop_header: . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  175                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  176                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA expr CLOSE_P
-  177                | . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  178                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA CLOSE_P
-  179                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  180                | . FOR OPEN_P SEMI_COMA SEMI_COMA expr CLOSE_P
-  181                | . FOR OPEN_P SEMI_COMA SEMI_COMA CLOSE_P
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
-  235 while_loop: . while_loop_header statement
-  236 while_loop_header: . WHILE OPEN_P logic_expr1 CLOSE_P
-  237 conditional_statement: . if_header statement
-  238                      | . if_header statement ELSE statement
-  239                      | . switch_header switch_body
-  240 if_header: . IF OPEN_P logic_expr1 CLOSE_P
-  241 switch_header: . SWITCH OPEN_P IDENTIFIER CLOSE_P switch_body_block
-  261 enum: . ENUM IDENTIFIER OPEN_S list_expr CLOSE_S SEMI_COMA
-  262     | . ENUM IDENTIFIER SEMI_COMA
-  267 try_catch: . TRY statement catch_list finally_statement
-  268          | . TRY statement catch_list
+  171 do_while: do_header . statement while_loop_header SEMI_COMA
 
     error       shift, and go to state 264
     IDENTIFIER  shift, and go to state 169
@@ -3656,74 +2873,7 @@ State 195
 
 State 196
 
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
-  138 block_body: . block_body_header block_body_statements
-  139 block_body_header: . OPEN_S
-  145 statement: . loop_statement
-  146          | . conditional_statement
-  147          | . assign_expr SEMI_COMA
-  148          | . variable_declaration_block
-  149          | . block_body
-  150          | . return_statement
-  151          | . try_catch
-  152          | . asm
-  153          | . long_id SEMI_COMA
-  154          | . throw_statement
-  155          | . error SEMI_COMA
-  156 throw_statement: . THROW OPEN_P message_call CLOSE_P SEMI_COMA
-  157 asm: . AT_ASM STRING_VAL SEMI_COMA
-  158 variable_declaration_block: . type variable_list SEMI_COMA
-  159                           | . CONST type variable_list SEMI_COMA
-  160                           | . enum
-  167 return_statement: . RETURN expr SEMI_COMA
-  168 loop_statement: . for_loop
-  169               | . while_loop
-  170               | . do_while
-  171 do_while: . do_header statement while_loop_header SEMI_COMA
-  172 do_header: . DO
-  173 for_loop: . for_loop_header statement
-  173         | for_loop_header . statement
-  174 for_loop_header: . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  175                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  176                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA expr CLOSE_P
-  177                | . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  178                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA CLOSE_P
-  179                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  180                | . FOR OPEN_P SEMI_COMA SEMI_COMA expr CLOSE_P
-  181                | . FOR OPEN_P SEMI_COMA SEMI_COMA CLOSE_P
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
-  235 while_loop: . while_loop_header statement
-  236 while_loop_header: . WHILE OPEN_P logic_expr1 CLOSE_P
-  237 conditional_statement: . if_header statement
-  238                      | . if_header statement ELSE statement
-  239                      | . switch_header switch_body
-  240 if_header: . IF OPEN_P logic_expr1 CLOSE_P
-  241 switch_header: . SWITCH OPEN_P IDENTIFIER CLOSE_P switch_body_block
-  261 enum: . ENUM IDENTIFIER OPEN_S list_expr CLOSE_S SEMI_COMA
-  262     | . ENUM IDENTIFIER SEMI_COMA
-  267 try_catch: . TRY statement catch_list finally_statement
-  268          | . TRY statement catch_list
+  173 for_loop: for_loop_header . statement
 
     error       shift, and go to state 264
     IDENTIFIER  shift, and go to state 169
@@ -3808,11 +2958,7 @@ State 199
 
 State 200
 
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
-  224             | message_call2 . sender message CLOSE_ARR
-  225 sender: . message_call
-  226       | . IDENTIFIER
+  224 message_call: message_call2 . sender message CLOSE_ARR
 
     IDENTIFIER  shift, and go to state 281
     OPEN_ARR    shift, and go to state 178
@@ -3838,74 +2984,7 @@ State 202
 
 State 203
 
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
-  138 block_body: . block_body_header block_body_statements
-  139 block_body_header: . OPEN_S
-  145 statement: . loop_statement
-  146          | . conditional_statement
-  147          | . assign_expr SEMI_COMA
-  148          | . variable_declaration_block
-  149          | . block_body
-  150          | . return_statement
-  151          | . try_catch
-  152          | . asm
-  153          | . long_id SEMI_COMA
-  154          | . throw_statement
-  155          | . error SEMI_COMA
-  156 throw_statement: . THROW OPEN_P message_call CLOSE_P SEMI_COMA
-  157 asm: . AT_ASM STRING_VAL SEMI_COMA
-  158 variable_declaration_block: . type variable_list SEMI_COMA
-  159                           | . CONST type variable_list SEMI_COMA
-  160                           | . enum
-  167 return_statement: . RETURN expr SEMI_COMA
-  168 loop_statement: . for_loop
-  169               | . while_loop
-  170               | . do_while
-  171 do_while: . do_header statement while_loop_header SEMI_COMA
-  172 do_header: . DO
-  173 for_loop: . for_loop_header statement
-  174 for_loop_header: . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  175                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  176                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA expr CLOSE_P
-  177                | . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  178                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA CLOSE_P
-  179                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  180                | . FOR OPEN_P SEMI_COMA SEMI_COMA expr CLOSE_P
-  181                | . FOR OPEN_P SEMI_COMA SEMI_COMA CLOSE_P
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
-  235 while_loop: . while_loop_header statement
-  235           | while_loop_header . statement
-  236 while_loop_header: . WHILE OPEN_P logic_expr1 CLOSE_P
-  237 conditional_statement: . if_header statement
-  238                      | . if_header statement ELSE statement
-  239                      | . switch_header switch_body
-  240 if_header: . IF OPEN_P logic_expr1 CLOSE_P
-  241 switch_header: . SWITCH OPEN_P IDENTIFIER CLOSE_P switch_body_block
-  261 enum: . ENUM IDENTIFIER OPEN_S list_expr CLOSE_S SEMI_COMA
-  262     | . ENUM IDENTIFIER SEMI_COMA
-  267 try_catch: . TRY statement catch_list finally_statement
-  268          | . TRY statement catch_list
+  235 while_loop: while_loop_header . statement
 
     error       shift, and go to state 264
     IDENTIFIER  shift, and go to state 169
@@ -3970,75 +3049,8 @@ State 204
 
 State 205
 
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
-  138 block_body: . block_body_header block_body_statements
-  139 block_body_header: . OPEN_S
-  145 statement: . loop_statement
-  146          | . conditional_statement
-  147          | . assign_expr SEMI_COMA
-  148          | . variable_declaration_block
-  149          | . block_body
-  150          | . return_statement
-  151          | . try_catch
-  152          | . asm
-  153          | . long_id SEMI_COMA
-  154          | . throw_statement
-  155          | . error SEMI_COMA
-  156 throw_statement: . THROW OPEN_P message_call CLOSE_P SEMI_COMA
-  157 asm: . AT_ASM STRING_VAL SEMI_COMA
-  158 variable_declaration_block: . type variable_list SEMI_COMA
-  159                           | . CONST type variable_list SEMI_COMA
-  160                           | . enum
-  167 return_statement: . RETURN expr SEMI_COMA
-  168 loop_statement: . for_loop
-  169               | . while_loop
-  170               | . do_while
-  171 do_while: . do_header statement while_loop_header SEMI_COMA
-  172 do_header: . DO
-  173 for_loop: . for_loop_header statement
-  174 for_loop_header: . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  175                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  176                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA expr CLOSE_P
-  177                | . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  178                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA CLOSE_P
-  179                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  180                | . FOR OPEN_P SEMI_COMA SEMI_COMA expr CLOSE_P
-  181                | . FOR OPEN_P SEMI_COMA SEMI_COMA CLOSE_P
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
-  235 while_loop: . while_loop_header statement
-  236 while_loop_header: . WHILE OPEN_P logic_expr1 CLOSE_P
-  237 conditional_statement: . if_header statement
-  237                      | if_header . statement
-  238                      | . if_header statement ELSE statement
+  237 conditional_statement: if_header . statement
   238                      | if_header . statement ELSE statement
-  239                      | . switch_header switch_body
-  240 if_header: . IF OPEN_P logic_expr1 CLOSE_P
-  241 switch_header: . SWITCH OPEN_P IDENTIFIER CLOSE_P switch_body_block
-  261 enum: . ENUM IDENTIFIER OPEN_S list_expr CLOSE_S SEMI_COMA
-  262     | . ENUM IDENTIFIER SEMI_COMA
-  267 try_catch: . TRY statement catch_list finally_statement
-  268          | . TRY statement catch_list
 
     error       shift, and go to state 264
     IDENTIFIER  shift, and go to state 169
@@ -4097,18 +3109,6 @@ State 205
 State 206
 
   239 conditional_statement: switch_header . switch_body
-  243 switch_body: . list_of_case default_case CLOSE_S
-  244            | . list_of_case CLOSE_S
-  245            | . default_case CLOSE_S
-  246            | . CLOSE_S
-  247 list_of_case: . list_of_case case_body
-  248             | . case_body
-  249 case_body: . CASE expr SEMI_COLUMN statement BREAK SEMI_COMA
-  250          | . CASE expr SEMI_COLUMN statement
-  251          | . CASE expr SEMI_COLUMN BREAK SEMI_COMA
-  252 default_case: . DEFAULT SEMI_COLUMN statement BREAK SEMI_COMA
-  253             | . DEFAULT SEMI_COLUMN statement
-  254             | . DEFAULT SEMI_COLUMN BREAK SEMI_COMA
 
     CLOSE_S  shift, and go to state 286
     CASE     shift, and go to state 287
@@ -4143,11 +3143,7 @@ State 209
 
 State 210
 
-  263 list_expr: . IDENTIFIER EQUAL expr COMMA list_expr
-  264          | . IDENTIFIER EQUAL expr
-  265          | . IDENTIFIER
-  266          | . IDENTIFIER COMMA list_expr
-  266          | IDENTIFIER COMMA . list_expr
+  266 list_expr: IDENTIFIER COMMA . list_expr
 
     IDENTIFIER  shift, and go to state 125
 
@@ -4156,33 +3152,6 @@ State 210
 
 State 211
 
-  114 p_type: . OPEN_P type CLOSE_P
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
   263 list_expr: IDENTIFIER EQUAL . expr COMMA list_expr
   264          | IDENTIFIER EQUAL . expr
 
@@ -4216,11 +3185,8 @@ State 212
 State 213
 
    62 data_member: IDENTIFIER . array_tag
-   63            | IDENTIFIER .  [SEMI_COMA, COMMA]
+   63            | IDENTIFIER .
    65            | IDENTIFIER . error
-   96 array_tag: . array_first_tag array_tag_list
-  100 array_first_tag: . OPEN_ARR INT_VAL CLOSE_ARR
-  101                | . OPEN_ARR CLOSE_ARR
 
     error     shift, and go to state 220
     OPEN_ARR  shift, and go to state 217
@@ -4274,9 +3240,6 @@ State 218
 State 219
 
    96 array_tag: array_first_tag . array_tag_list
-   97 array_tag_list: . array_tag_list OPEN_ARR INT_VAL CLOSE_ARR
-   98               | .
-   99               | . array_tag_list OPEN_ARR error CLOSE_ARR
 
     $default  reduce using rule 98 (array_tag_list)
 
@@ -4293,7 +3256,7 @@ State 220
 State 221
 
    58 variable_declarationxx: type IDENTIFIER array_tag . error
-   62 data_member: IDENTIFIER array_tag .  [SEMI_COMA, COMMA]
+   62 data_member: IDENTIFIER array_tag .
 
     error  shift, and go to state 301
 
@@ -4311,10 +3274,6 @@ State 222
 State 223
 
    59 ids_list: ids_list COMMA . data_member
-   62 data_member: . IDENTIFIER array_tag
-   63            | . IDENTIFIER
-   64            | . error array_tag
-   65            | . IDENTIFIER error
 
     error       shift, and go to state 302
     IDENTIFIER  shift, and go to state 213
@@ -4338,7 +3297,7 @@ State 225
 
 State 226
 
-  119 selector_decleration: IDENTIFIER SEMI_COLUMN parameter_list .  [error, IDENTIFIER, SEMI_COMA, OPEN_S]
+  119 selector_decleration: IDENTIFIER SEMI_COLUMN parameter_list .
   120 parameter_list: parameter_list . SEMI_COLUMN parameter
 
     SEMI_COLUMN  shift, and go to state 305
@@ -4418,10 +3377,7 @@ State 236
 
 State 237
 
-   78 entity: . IDENTIFIER COMMA entity
-   78       | IDENTIFIER COMMA . entity
-   79       | . IDENTIFIER
-   80       | . error COMMA
+   78 entity: IDENTIFIER COMMA . entity
 
     error       shift, and go to state 306
     IDENTIFIER  shift, and go to state 160
@@ -4485,12 +3441,6 @@ State 244
 State 245
 
   159 variable_declaration_block: CONST type . variable_list SEMI_COMA
-  161 variable_list: . variable_list COMMA variable
-  162              | . variable
-  163              | . variable_list error variable
-  164 variable: . IDENTIFIER array_tag initializer
-  165         | . IDENTIFIER main_initializer
-  166         | . error array_tag initializer
 
     error       shift, and go to state 268
     IDENTIFIER  shift, and go to state 269
@@ -4509,9 +3459,6 @@ State 246
   179                | FOR OPEN_P . SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
   180                | FOR OPEN_P . SEMI_COMA SEMI_COMA expr CLOSE_P
   181                | FOR OPEN_P . SEMI_COMA SEMI_COMA CLOSE_P
-  182 for_initializer: . INT IDENTIFIER EQUAL expr
-  183                | . IDENTIFIER EQUAL expr
-  184                | . IDENTIFIER
 
     IDENTIFIER  shift, and go to state 313
     INT         shift, and go to state 314
@@ -4522,47 +3469,6 @@ State 246
 
 State 247
 
-  114 p_type: . OPEN_P type CLOSE_P
-  185 logic_expr1: . logic_expr1 AND_AND logic_expr
-  186            | . logic_expr1 OR_OR logic_expr
-  187            | . logic_expr
-  188 logic_expr: . expr LESS_THAN expr
-  189           | . expr MORE_THAN expr
-  190           | . expr LESS_OR_EQUAL expr
-  191           | . expr MORE_OR_EQUAL expr
-  192           | . expr EQUAL_EQUAL expr
-  193           | . expr NOT_EQUAL expr
-  194           | . NOT_EQUAL expr
-  195           | . OPEN_P logic_expr CLOSE_P
-  196           | . TRUE
-  197           | . FALSE
-  198           | . long_id
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
   236 while_loop_header: WHILE OPEN_P . logic_expr1 CLOSE_P
 
     IDENTIFIER   shift, and go to state 251
@@ -4592,47 +3498,6 @@ State 247
 
 State 248
 
-  114 p_type: . OPEN_P type CLOSE_P
-  185 logic_expr1: . logic_expr1 AND_AND logic_expr
-  186            | . logic_expr1 OR_OR logic_expr
-  187            | . logic_expr
-  188 logic_expr: . expr LESS_THAN expr
-  189           | . expr MORE_THAN expr
-  190           | . expr LESS_OR_EQUAL expr
-  191           | . expr MORE_OR_EQUAL expr
-  192           | . expr EQUAL_EQUAL expr
-  193           | . expr NOT_EQUAL expr
-  194           | . NOT_EQUAL expr
-  195           | . OPEN_P logic_expr CLOSE_P
-  196           | . TRUE
-  197           | . FALSE
-  198           | . long_id
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
   240 if_header: IF OPEN_P . logic_expr1 CLOSE_P
 
     IDENTIFIER   shift, and go to state 251
@@ -4669,7 +3534,7 @@ State 249
 
 State 250
 
-   87 enum_type: ENUM IDENTIFIER .  [error, IDENTIFIER]
+   87 enum_type: ENUM IDENTIFIER .
    88          | ENUM IDENTIFIER . MULTI
   261 enum: ENUM IDENTIFIER . OPEN_S list_expr CLOSE_S SEMI_COMA
   262     | ENUM IDENTIFIER . SEMI_COMA
@@ -4683,7 +3548,7 @@ State 250
 
 State 251
 
-  204 long_id: IDENTIFIER .  [error, IDENTIFIER, SEMI_COLUMN, SEMI_COMA, CLOSE_S, COMMA, LESS_THAN, MORE_THAN, PLUS, MINUS, CLOSE_P, AND_AND, OR_OR, LESS_OR_EQUAL, MORE_OR_EQUAL, MULTI, EQUAL_EQUAL, NOT_EQUAL, EQUAL, DIV, DIV_R, OPEN_ARR, CLOSE_ARR, DOT]
+  204 long_id: IDENTIFIER .
   218 simple_expr: IDENTIFIER . DOUBLEPLUS
   219            | IDENTIFIER . DOUBLEMINUS
 
@@ -4695,47 +3560,8 @@ State 251
 
 State 252
 
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
-  114 p_type: . OPEN_P type CLOSE_P
-  114       | OPEN_P . type CLOSE_P
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  217            | OPEN_P . simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
+  114 p_type: OPEN_P . type CLOSE_P
+  217 simple_expr: OPEN_P . simple_expr CLOSE_P
 
     IDENTIFIER   shift, and go to state 329
     NSSTRING     shift, and go to state 62
@@ -4812,31 +3638,7 @@ State 258
 
 State 259
 
-  114 p_type: . OPEN_P type CLOSE_P
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  222            | p_type . simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
+  222 simple_expr: p_type . simple_expr
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -4875,7 +3677,7 @@ State 262
   201 assign_expr: long_id . EQUAL simple_expr
   202 long_id: long_id . DOT IDENTIFIER
   206 array_access: long_id . OPEN_ARR simple_expr CLOSE_ARR
-  211 simple_expr: long_id .  [error, IDENTIFIER, SEMI_COLUMN, SEMI_COMA, CLOSE_S, COMMA, PLUS, MINUS, CLOSE_P, AND_AND, OR_OR, MULTI, DIV, DIV_R, CLOSE_ARR]
+  211 simple_expr: long_id .
 
     EQUAL     shift, and go to state 278
     OPEN_ARR  shift, and go to state 279
@@ -4886,7 +3688,7 @@ State 262
 
 State 263
 
-  200 expr: simple_expr .  [error, IDENTIFIER, SEMI_COLUMN, SEMI_COMA, CLOSE_S, COMMA, LESS_THAN, MORE_THAN, CLOSE_P, AND_AND, OR_OR, LESS_OR_EQUAL, MORE_OR_EQUAL, EQUAL_EQUAL, NOT_EQUAL, CLOSE_ARR]
+  200 expr: simple_expr .
   212 simple_expr: simple_expr . PLUS simple_expr
   213            | simple_expr . MINUS simple_expr
   214            | simple_expr . MULTI simple_expr
@@ -4913,10 +3715,6 @@ State 265
 
   267 try_catch: TRY statement . catch_list finally_statement
   268          | TRY statement . catch_list
-  269 catch_list: . one_catch
-  270           | . catch_list one_catch
-  271 one_catch: . one_catch_header statement
-  272 one_catch_header: . CATCH OPEN_P type IDENTIFIER CLOSE_P
 
     CATCH  shift, and go to state 341
 
@@ -4928,8 +3726,6 @@ State 265
 State 266
 
   156 throw_statement: THROW OPEN_P . message_call CLOSE_P SEMI_COMA
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     OPEN_ARR  shift, and go to state 178
 
@@ -4946,9 +3742,6 @@ State 267
 
 State 268
 
-   96 array_tag: . array_first_tag array_tag_list
-  100 array_first_tag: . OPEN_ARR INT_VAL CLOSE_ARR
-  101                | . OPEN_ARR CLOSE_ARR
   166 variable: error . array_tag initializer
 
     OPEN_ARR  shift, and go to state 217
@@ -4959,11 +3752,6 @@ State 268
 
 State 269
 
-   96 array_tag: . array_first_tag array_tag_list
-  100 array_first_tag: . OPEN_ARR INT_VAL CLOSE_ARR
-  101                | . OPEN_ARR CLOSE_ARR
-  104 main_initializer: . EQUAL expr
-  105                 | .  [error, SEMI_COMA, COMMA]
   164 variable: IDENTIFIER . array_tag initializer
   165         | IDENTIFIER . main_initializer
 
@@ -5012,7 +3800,6 @@ State 273
 State 274
 
   171 do_while: do_header statement . while_loop_header SEMI_COMA
-  236 while_loop_header: . WHILE OPEN_P logic_expr1 CLOSE_P
 
     WHILE  shift, and go to state 173
 
@@ -5042,31 +3829,7 @@ State 277
 
 State 278
 
-  114 p_type: . OPEN_P type CLOSE_P
   201 assign_expr: long_id EQUAL . simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -5088,31 +3851,7 @@ State 278
 
 State 279
 
-  114 p_type: . OPEN_P type CLOSE_P
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  206             | long_id OPEN_ARR . simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
+  206 array_access: long_id OPEN_ARR . simple_expr CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -5156,11 +3895,6 @@ State 282
 State 283
 
   224 message_call: message_call2 sender . message CLOSE_ARR
-  227 message: . IDENTIFIER
-  228        | . message_selectors_list
-  229 message_selectors_list: . message_selectors_list message_selector
-  230                       | . message_selector
-  231 message_selector: . IDENTIFIER SEMI_COLUMN argument_list
 
     IDENTIFIER  shift, and go to state 358
 
@@ -5178,14 +3912,12 @@ State 284
 
 State 285
 
-  237 conditional_statement: if_header statement .  [error, IDENTIFIER, NSSTRING, FLOAT, CHAR, BOOL, INT, OPEN_S, CLOSE_S, CONST, VOID, FOR, WHILE, IF, DO, SWITCH, CASE, DEFAULT, BREAK, ENUM, OPEN_ARR, RETURN, STRUCT, TRY, CATCH, THROW, FINALLY, AT_ASM]
+  237 conditional_statement: if_header statement .
   238                      | if_header statement . ELSE statement
 
     ELSE  shift, and go to state 362
 
     $default  reduce using rule 237 (conditional_statement)
-
-    Conflict between rule 237 and token ELSE resolved as shift (if_h < ELSE).
 
 
 State 286
@@ -5197,33 +3929,6 @@ State 286
 
 State 287
 
-  114 p_type: . OPEN_P type CLOSE_P
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
   249 case_body: CASE . expr SEMI_COLUMN statement BREAK SEMI_COMA
   250          | CASE . expr SEMI_COLUMN statement
   251          | CASE . expr SEMI_COLUMN BREAK SEMI_COMA
@@ -5269,12 +3974,6 @@ State 290
   243 switch_body: list_of_case . default_case CLOSE_S
   244            | list_of_case . CLOSE_S
   247 list_of_case: list_of_case . case_body
-  249 case_body: . CASE expr SEMI_COLUMN statement BREAK SEMI_COMA
-  250          | . CASE expr SEMI_COLUMN statement
-  251          | . CASE expr SEMI_COLUMN BREAK SEMI_COMA
-  252 default_case: . DEFAULT SEMI_COLUMN statement BREAK SEMI_COMA
-  253             | . DEFAULT SEMI_COLUMN statement
-  254             | . DEFAULT SEMI_COLUMN BREAK SEMI_COMA
 
     CLOSE_S  shift, and go to state 365
     CASE     shift, and go to state 287
@@ -5308,7 +4007,7 @@ State 293
 State 294
 
   263 list_expr: IDENTIFIER EQUAL expr . COMMA list_expr
-  264          | IDENTIFIER EQUAL expr .  [CLOSE_S]
+  264          | IDENTIFIER EQUAL expr .
 
     COMMA  shift, and go to state 369
 
@@ -5352,7 +4051,7 @@ State 299
 
 State 300
 
-   96 array_tag: array_first_tag array_tag_list .  [error, SEMI_COMA, COMMA, EQUAL]
+   96 array_tag: array_first_tag array_tag_list .
    97 array_tag_list: array_tag_list . OPEN_ARR INT_VAL CLOSE_ARR
    99               | array_tag_list . OPEN_ARR error CLOSE_ARR
 
@@ -5371,9 +4070,6 @@ State 301
 State 302
 
    64 data_member: error . array_tag
-   96 array_tag: . array_first_tag array_tag_list
-  100 array_first_tag: . OPEN_ARR INT_VAL CLOSE_ARR
-  101                | . OPEN_ARR CLOSE_ARR
 
     OPEN_ARR  shift, and go to state 217
 
@@ -5397,9 +4093,7 @@ State 304
 
 State 305
 
-  114 p_type: . OPEN_P type CLOSE_P
   120 parameter_list: parameter_list SEMI_COLUMN . parameter
-  122 parameter: . p_type IDENTIFIER
 
     OPEN_P  shift, and go to state 88
 
@@ -5463,7 +4157,7 @@ State 312
 State 313
 
   183 for_initializer: IDENTIFIER . EQUAL expr
-  184                | IDENTIFIER .  [SEMI_COMA]
+  184                | IDENTIFIER .
 
     EQUAL  shift, and go to state 375
 
@@ -5479,51 +4173,10 @@ State 314
 
 State 315
 
-  114 p_type: . OPEN_P type CLOSE_P
   175 for_loop_header: FOR OPEN_P SEMI_COMA . logic_expr1 SEMI_COMA expr CLOSE_P
   179                | FOR OPEN_P SEMI_COMA . logic_expr1 SEMI_COMA CLOSE_P
   180                | FOR OPEN_P SEMI_COMA . SEMI_COMA expr CLOSE_P
   181                | FOR OPEN_P SEMI_COMA . SEMI_COMA CLOSE_P
-  185 logic_expr1: . logic_expr1 AND_AND logic_expr
-  186            | . logic_expr1 OR_OR logic_expr
-  187            | . logic_expr
-  188 logic_expr: . expr LESS_THAN expr
-  189           | . expr MORE_THAN expr
-  190           | . expr LESS_OR_EQUAL expr
-  191           | . expr MORE_OR_EQUAL expr
-  192           | . expr EQUAL_EQUAL expr
-  193           | . expr NOT_EQUAL expr
-  194           | . NOT_EQUAL expr
-  195           | . OPEN_P logic_expr CLOSE_P
-  196           | . TRUE
-  197           | . FALSE
-  198           | . long_id
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     SEMI_COMA    shift, and go to state 377
@@ -5563,62 +4216,9 @@ State 316
 
 State 317
 
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
-  114 p_type: . OPEN_P type CLOSE_P
-  114       | OPEN_P . type CLOSE_P
-  188 logic_expr: . expr LESS_THAN expr
-  189           | . expr MORE_THAN expr
-  190           | . expr LESS_OR_EQUAL expr
-  191           | . expr MORE_OR_EQUAL expr
-  192           | . expr EQUAL_EQUAL expr
-  193           | . expr NOT_EQUAL expr
-  194           | . NOT_EQUAL expr
-  195           | . OPEN_P logic_expr CLOSE_P
-  195           | OPEN_P . logic_expr CLOSE_P
-  196           | . TRUE
-  197           | . FALSE
-  198           | . long_id
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  217            | OPEN_P . simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
+  114 p_type: OPEN_P . type CLOSE_P
+  195 logic_expr: OPEN_P . logic_expr CLOSE_P
+  217 simple_expr: OPEN_P . simple_expr CLOSE_P
 
     IDENTIFIER   shift, and go to state 329
     NSSTRING     shift, and go to state 62
@@ -5659,34 +4259,7 @@ State 317
 
 State 318
 
-  114 p_type: . OPEN_P type CLOSE_P
   194 logic_expr: NOT_EQUAL . expr
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -5759,11 +4332,11 @@ State 323
 
 State 324
 
-  198 logic_expr: long_id .  [SEMI_COMA, CLOSE_P, AND_AND, OR_OR]
+  198 logic_expr: long_id .
   201 assign_expr: long_id . EQUAL simple_expr
   202 long_id: long_id . DOT IDENTIFIER
   206 array_access: long_id . OPEN_ARR simple_expr CLOSE_ARR
-  211 simple_expr: long_id .  [LESS_THAN, MORE_THAN, PLUS, MINUS, CLOSE_P, LESS_OR_EQUAL, MORE_OR_EQUAL, MULTI, EQUAL_EQUAL, NOT_EQUAL, DIV, DIV_R]
+  211 simple_expr: long_id .
 
     EQUAL     shift, and go to state 278
     OPEN_ARR  shift, and go to state 279
@@ -5812,7 +4385,7 @@ State 328
 State 329
 
    95 complex_type: IDENTIFIER . MULTI
-  204 long_id: IDENTIFIER .  [LESS_THAN, MORE_THAN, PLUS, MINUS, CLOSE_P, LESS_OR_EQUAL, MORE_OR_EQUAL, MULTI, EQUAL_EQUAL, NOT_EQUAL, EQUAL, DIV, DIV_R, OPEN_ARR, DOT]
+  204 long_id: IDENTIFIER .
   218 simple_expr: IDENTIFIER . DOUBLEPLUS
   219            | IDENTIFIER . DOUBLEMINUS
 
@@ -5821,14 +4394,12 @@ State 329
 
     $default  reduce using rule 204 (long_id)
 
-    Conflict between rule 204 and token MULTI resolved as reduce (MULTI < long_id_prec).
-
 
 State 330
 
   202 long_id: long_id . DOT IDENTIFIER
   206 array_access: long_id . OPEN_ARR simple_expr CLOSE_ARR
-  211 simple_expr: long_id .  [error, IDENTIFIER, SEMI_COLUMN, SEMI_COMA, CLOSE_S, COMMA, LESS_THAN, MORE_THAN, PLUS, MINUS, CLOSE_P, AND_AND, OR_OR, LESS_OR_EQUAL, MORE_OR_EQUAL, MULTI, EQUAL_EQUAL, NOT_EQUAL, DIV, DIV_R, CLOSE_ARR]
+  211 simple_expr: long_id .
 
     OPEN_ARR  shift, and go to state 279
     DOT       shift, and go to state 280
@@ -5874,7 +4445,7 @@ State 334
   214            | simple_expr . MULTI simple_expr
   215            | simple_expr . DIV simple_expr
   216            | simple_expr . DIV_R simple_expr
-  222            | p_type simple_expr .  [error, IDENTIFIER, SEMI_COLUMN, SEMI_COMA, CLOSE_S, COMMA, LESS_THAN, MORE_THAN, CLOSE_P, AND_AND, OR_OR, LESS_OR_EQUAL, MORE_OR_EQUAL, EQUAL_EQUAL, NOT_EQUAL, CLOSE_ARR]
+  222            | p_type simple_expr .
 
     PLUS   shift, and go to state 336
     MINUS  shift, and go to state 337
@@ -5883,12 +4454,6 @@ State 334
     DIV_R  shift, and go to state 340
 
     $default  reduce using rule 222 (simple_expr)
-
-    Conflict between rule 222 and token PLUS resolved as shift (p_type_expr_prec < PLUS).
-    Conflict between rule 222 and token MINUS resolved as shift (p_type_expr_prec < MINUS).
-    Conflict between rule 222 and token MULTI resolved as shift (p_type_expr_prec < MULTI).
-    Conflict between rule 222 and token DIV resolved as shift (p_type_expr_prec < DIV).
-    Conflict between rule 222 and token DIV_R resolved as shift (p_type_expr_prec < DIV_R).
 
 
 State 335
@@ -5900,31 +4465,7 @@ State 335
 
 State 336
 
-  114 p_type: . OPEN_P type CLOSE_P
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  212            | simple_expr PLUS . simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
+  212 simple_expr: simple_expr PLUS . simple_expr
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -5946,31 +4487,7 @@ State 336
 
 State 337
 
-  114 p_type: . OPEN_P type CLOSE_P
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  213            | simple_expr MINUS . simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
+  213 simple_expr: simple_expr MINUS . simple_expr
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -5992,31 +4509,7 @@ State 337
 
 State 338
 
-  114 p_type: . OPEN_P type CLOSE_P
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  214            | simple_expr MULTI . simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
+  214 simple_expr: simple_expr MULTI . simple_expr
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -6038,31 +4531,7 @@ State 338
 
 State 339
 
-  114 p_type: . OPEN_P type CLOSE_P
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  215            | simple_expr DIV . simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
+  215 simple_expr: simple_expr DIV . simple_expr
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -6084,31 +4553,7 @@ State 339
 
 State 340
 
-  114 p_type: . OPEN_P type CLOSE_P
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  216            | simple_expr DIV_R . simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
+  216 simple_expr: simple_expr DIV_R . simple_expr
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -6138,11 +4583,8 @@ State 341
 State 342
 
   267 try_catch: TRY statement catch_list . finally_statement
-  268          | TRY statement catch_list .  [error, IDENTIFIER, NSSTRING, FLOAT, CHAR, BOOL, INT, OPEN_S, CLOSE_S, CONST, VOID, FOR, WHILE, IF, DO, SWITCH, CASE, DEFAULT, BREAK, ENUM, OPEN_ARR, RETURN, ELSE, STRUCT, TRY, THROW, AT_ASM]
+  268          | TRY statement catch_list .
   270 catch_list: catch_list . one_catch
-  271 one_catch: . one_catch_header statement
-  272 one_catch_header: . CATCH OPEN_P type IDENTIFIER CLOSE_P
-  273 finally_statement: . FINALLY statement
 
     CATCH    shift, and go to state 341
     FINALLY  shift, and go to state 401
@@ -6152,9 +4594,6 @@ State 342
     one_catch          go to state 402
     one_catch_header   go to state 344
     finally_statement  go to state 403
-
-    Conflict between rule 268 and token CATCH resolved as shift (try_prec < CATCH).
-    Conflict between rule 268 and token FINALLY resolved as shift (try_prec < FINALLY).
 
 
 State 343
@@ -6166,73 +4605,6 @@ State 343
 
 State 344
 
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
-  138 block_body: . block_body_header block_body_statements
-  139 block_body_header: . OPEN_S
-  145 statement: . loop_statement
-  146          | . conditional_statement
-  147          | . assign_expr SEMI_COMA
-  148          | . variable_declaration_block
-  149          | . block_body
-  150          | . return_statement
-  151          | . try_catch
-  152          | . asm
-  153          | . long_id SEMI_COMA
-  154          | . throw_statement
-  155          | . error SEMI_COMA
-  156 throw_statement: . THROW OPEN_P message_call CLOSE_P SEMI_COMA
-  157 asm: . AT_ASM STRING_VAL SEMI_COMA
-  158 variable_declaration_block: . type variable_list SEMI_COMA
-  159                           | . CONST type variable_list SEMI_COMA
-  160                           | . enum
-  167 return_statement: . RETURN expr SEMI_COMA
-  168 loop_statement: . for_loop
-  169               | . while_loop
-  170               | . do_while
-  171 do_while: . do_header statement while_loop_header SEMI_COMA
-  172 do_header: . DO
-  173 for_loop: . for_loop_header statement
-  174 for_loop_header: . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  175                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  176                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA expr CLOSE_P
-  177                | . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  178                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA CLOSE_P
-  179                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  180                | . FOR OPEN_P SEMI_COMA SEMI_COMA expr CLOSE_P
-  181                | . FOR OPEN_P SEMI_COMA SEMI_COMA CLOSE_P
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
-  235 while_loop: . while_loop_header statement
-  236 while_loop_header: . WHILE OPEN_P logic_expr1 CLOSE_P
-  237 conditional_statement: . if_header statement
-  238                      | . if_header statement ELSE statement
-  239                      | . switch_header switch_body
-  240 if_header: . IF OPEN_P logic_expr1 CLOSE_P
-  241 switch_header: . SWITCH OPEN_P IDENTIFIER CLOSE_P switch_body_block
-  261 enum: . ENUM IDENTIFIER OPEN_S list_expr CLOSE_S SEMI_COMA
-  262     | . ENUM IDENTIFIER SEMI_COMA
-  267 try_catch: . TRY statement catch_list finally_statement
-  268          | . TRY statement catch_list
   271 one_catch: one_catch_header . statement
 
     error       shift, and go to state 264
@@ -6305,8 +4677,6 @@ State 346
 
 State 347
 
-  102 initializer: . EQUAL array_body
-  103            | .  [error, SEMI_COMA, COMMA]
   166 variable: error array_tag . initializer
 
     EQUAL  shift, and go to state 406
@@ -6319,33 +4689,6 @@ State 347
 State 348
 
   104 main_initializer: EQUAL . expr
-  114 p_type: . OPEN_P type CLOSE_P
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -6369,8 +4712,6 @@ State 348
 
 State 349
 
-  102 initializer: . EQUAL array_body
-  103            | .  [error, SEMI_COMA, COMMA]
   164 variable: IDENTIFIER array_tag . initializer
 
     EQUAL  shift, and go to state 406
@@ -6390,9 +4731,6 @@ State 350
 State 351
 
   163 variable_list: variable_list error . variable
-  164 variable: . IDENTIFIER array_tag initializer
-  165         | . IDENTIFIER main_initializer
-  166         | . error array_tag initializer
 
     error       shift, and go to state 268
     IDENTIFIER  shift, and go to state 269
@@ -6410,9 +4748,6 @@ State 352
 State 353
 
   161 variable_list: variable_list COMMA . variable
-  164 variable: . IDENTIFIER array_tag initializer
-  165         | . IDENTIFIER main_initializer
-  166         | . error array_tag initializer
 
     error       shift, and go to state 268
     IDENTIFIER  shift, and go to state 269
@@ -6429,7 +4764,7 @@ State 354
 
 State 355
 
-  201 assign_expr: long_id EQUAL simple_expr .  [error, IDENTIFIER, SEMI_COLUMN, SEMI_COMA, CLOSE_S, COMMA, LESS_THAN, MORE_THAN, CLOSE_P, AND_AND, OR_OR, LESS_OR_EQUAL, MORE_OR_EQUAL, EQUAL_EQUAL, NOT_EQUAL, CLOSE_ARR]
+  201 assign_expr: long_id EQUAL simple_expr .
   212 simple_expr: simple_expr . PLUS simple_expr
   213            | simple_expr . MINUS simple_expr
   214            | simple_expr . MULTI simple_expr
@@ -6471,7 +4806,7 @@ State 357
 
 State 358
 
-  227 message: IDENTIFIER .  [CLOSE_ARR]
+  227 message: IDENTIFIER .
   231 message_selector: IDENTIFIER . SEMI_COLUMN argument_list
 
     SEMI_COLUMN  shift, and go to state 414
@@ -6488,9 +4823,8 @@ State 359
 
 State 360
 
-  228 message: message_selectors_list .  [CLOSE_ARR]
+  228 message: message_selectors_list .
   229 message_selectors_list: message_selectors_list . message_selector
-  231 message_selector: . IDENTIFIER SEMI_COLUMN argument_list
 
     IDENTIFIER  shift, and go to state 416
 
@@ -6508,74 +4842,7 @@ State 361
 
 State 362
 
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
-  138 block_body: . block_body_header block_body_statements
-  139 block_body_header: . OPEN_S
-  145 statement: . loop_statement
-  146          | . conditional_statement
-  147          | . assign_expr SEMI_COMA
-  148          | . variable_declaration_block
-  149          | . block_body
-  150          | . return_statement
-  151          | . try_catch
-  152          | . asm
-  153          | . long_id SEMI_COMA
-  154          | . throw_statement
-  155          | . error SEMI_COMA
-  156 throw_statement: . THROW OPEN_P message_call CLOSE_P SEMI_COMA
-  157 asm: . AT_ASM STRING_VAL SEMI_COMA
-  158 variable_declaration_block: . type variable_list SEMI_COMA
-  159                           | . CONST type variable_list SEMI_COMA
-  160                           | . enum
-  167 return_statement: . RETURN expr SEMI_COMA
-  168 loop_statement: . for_loop
-  169               | . while_loop
-  170               | . do_while
-  171 do_while: . do_header statement while_loop_header SEMI_COMA
-  172 do_header: . DO
-  173 for_loop: . for_loop_header statement
-  174 for_loop_header: . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  175                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  176                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA expr CLOSE_P
-  177                | . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  178                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA CLOSE_P
-  179                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  180                | . FOR OPEN_P SEMI_COMA SEMI_COMA expr CLOSE_P
-  181                | . FOR OPEN_P SEMI_COMA SEMI_COMA CLOSE_P
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
-  235 while_loop: . while_loop_header statement
-  236 while_loop_header: . WHILE OPEN_P logic_expr1 CLOSE_P
-  237 conditional_statement: . if_header statement
-  238                      | . if_header statement ELSE statement
-  238                      | if_header statement ELSE . statement
-  239                      | . switch_header switch_body
-  240 if_header: . IF OPEN_P logic_expr1 CLOSE_P
-  241 switch_header: . SWITCH OPEN_P IDENTIFIER CLOSE_P switch_body_block
-  261 enum: . ENUM IDENTIFIER OPEN_S list_expr CLOSE_S SEMI_COMA
-  262     | . ENUM IDENTIFIER SEMI_COMA
-  267 try_catch: . TRY statement catch_list finally_statement
-  268          | . TRY statement catch_list
+  238 conditional_statement: if_header statement ELSE . statement
 
     error       shift, and go to state 264
     IDENTIFIER  shift, and go to state 169
@@ -6642,76 +4909,9 @@ State 363
 
 State 364
 
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
-  138 block_body: . block_body_header block_body_statements
-  139 block_body_header: . OPEN_S
-  145 statement: . loop_statement
-  146          | . conditional_statement
-  147          | . assign_expr SEMI_COMA
-  148          | . variable_declaration_block
-  149          | . block_body
-  150          | . return_statement
-  151          | . try_catch
-  152          | . asm
-  153          | . long_id SEMI_COMA
-  154          | . throw_statement
-  155          | . error SEMI_COMA
-  156 throw_statement: . THROW OPEN_P message_call CLOSE_P SEMI_COMA
-  157 asm: . AT_ASM STRING_VAL SEMI_COMA
-  158 variable_declaration_block: . type variable_list SEMI_COMA
-  159                           | . CONST type variable_list SEMI_COMA
-  160                           | . enum
-  167 return_statement: . RETURN expr SEMI_COMA
-  168 loop_statement: . for_loop
-  169               | . while_loop
-  170               | . do_while
-  171 do_while: . do_header statement while_loop_header SEMI_COMA
-  172 do_header: . DO
-  173 for_loop: . for_loop_header statement
-  174 for_loop_header: . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  175                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  176                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA expr CLOSE_P
-  177                | . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  178                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA CLOSE_P
-  179                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  180                | . FOR OPEN_P SEMI_COMA SEMI_COMA expr CLOSE_P
-  181                | . FOR OPEN_P SEMI_COMA SEMI_COMA CLOSE_P
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
-  235 while_loop: . while_loop_header statement
-  236 while_loop_header: . WHILE OPEN_P logic_expr1 CLOSE_P
-  237 conditional_statement: . if_header statement
-  238                      | . if_header statement ELSE statement
-  239                      | . switch_header switch_body
-  240 if_header: . IF OPEN_P logic_expr1 CLOSE_P
-  241 switch_header: . SWITCH OPEN_P IDENTIFIER CLOSE_P switch_body_block
   252 default_case: DEFAULT SEMI_COLUMN . statement BREAK SEMI_COMA
   253             | DEFAULT SEMI_COLUMN . statement
   254             | DEFAULT SEMI_COLUMN . BREAK SEMI_COMA
-  261 enum: . ENUM IDENTIFIER OPEN_S list_expr CLOSE_S SEMI_COMA
-  262     | . ENUM IDENTIFIER SEMI_COMA
-  267 try_catch: . TRY statement catch_list finally_statement
-  268          | . TRY statement catch_list
 
     error       shift, and go to state 264
     IDENTIFIER  shift, and go to state 169
@@ -6798,11 +4998,7 @@ State 368
 
 State 369
 
-  263 list_expr: . IDENTIFIER EQUAL expr COMMA list_expr
-  263          | IDENTIFIER EQUAL expr COMMA . list_expr
-  264          | . IDENTIFIER EQUAL expr
-  265          | . IDENTIFIER
-  266          | . IDENTIFIER COMMA list_expr
+  263 list_expr: IDENTIFIER EQUAL expr COMMA . list_expr
 
     IDENTIFIER  shift, and go to state 125
 
@@ -6848,34 +5044,7 @@ State 374
 
 State 375
 
-  114 p_type: . OPEN_P type CLOSE_P
   183 for_initializer: IDENTIFIER EQUAL . expr
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -6906,35 +5075,8 @@ State 376
 
 State 377
 
-  114 p_type: . OPEN_P type CLOSE_P
   180 for_loop_header: FOR OPEN_P SEMI_COMA SEMI_COMA . expr CLOSE_P
   181                | FOR OPEN_P SEMI_COMA SEMI_COMA . CLOSE_P
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -6971,51 +5113,10 @@ State 378
 
 State 379
 
-  114 p_type: . OPEN_P type CLOSE_P
   174 for_loop_header: FOR OPEN_P for_initializer SEMI_COMA . logic_expr1 SEMI_COMA expr CLOSE_P
   176                | FOR OPEN_P for_initializer SEMI_COMA . SEMI_COMA expr CLOSE_P
   177                | FOR OPEN_P for_initializer SEMI_COMA . logic_expr1 SEMI_COMA CLOSE_P
   178                | FOR OPEN_P for_initializer SEMI_COMA . SEMI_COMA CLOSE_P
-  185 logic_expr1: . logic_expr1 AND_AND logic_expr
-  186            | . logic_expr1 OR_OR logic_expr
-  187            | . logic_expr
-  188 logic_expr: . expr LESS_THAN expr
-  189           | . expr MORE_THAN expr
-  190           | . expr LESS_OR_EQUAL expr
-  191           | . expr MORE_OR_EQUAL expr
-  192           | . expr EQUAL_EQUAL expr
-  193           | . expr NOT_EQUAL expr
-  194           | . NOT_EQUAL expr
-  195           | . OPEN_P logic_expr CLOSE_P
-  196           | . TRUE
-  197           | . FALSE
-  198           | . long_id
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     SEMI_COMA    shift, and go to state 431
@@ -7052,7 +5153,7 @@ State 380
 
 State 381
 
-  200 expr: simple_expr .  [LESS_THAN, MORE_THAN, LESS_OR_EQUAL, MORE_OR_EQUAL, EQUAL_EQUAL, NOT_EQUAL]
+  200 expr: simple_expr .
   212 simple_expr: simple_expr . PLUS simple_expr
   213            | simple_expr . MINUS simple_expr
   214            | simple_expr . MULTI simple_expr
@@ -7086,45 +5187,7 @@ State 383
 
 State 384
 
-  114 p_type: . OPEN_P type CLOSE_P
   185 logic_expr1: logic_expr1 AND_AND . logic_expr
-  188 logic_expr: . expr LESS_THAN expr
-  189           | . expr MORE_THAN expr
-  190           | . expr LESS_OR_EQUAL expr
-  191           | . expr MORE_OR_EQUAL expr
-  192           | . expr EQUAL_EQUAL expr
-  193           | . expr NOT_EQUAL expr
-  194           | . NOT_EQUAL expr
-  195           | . OPEN_P logic_expr CLOSE_P
-  196           | . TRUE
-  197           | . FALSE
-  198           | . long_id
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 317
@@ -7152,45 +5215,7 @@ State 384
 
 State 385
 
-  114 p_type: . OPEN_P type CLOSE_P
   186 logic_expr1: logic_expr1 OR_OR . logic_expr
-  188 logic_expr: . expr LESS_THAN expr
-  189           | . expr MORE_THAN expr
-  190           | . expr LESS_OR_EQUAL expr
-  191           | . expr MORE_OR_EQUAL expr
-  192           | . expr EQUAL_EQUAL expr
-  193           | . expr NOT_EQUAL expr
-  194           | . NOT_EQUAL expr
-  195           | . OPEN_P logic_expr CLOSE_P
-  196           | . TRUE
-  197           | . FALSE
-  198           | . long_id
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 317
@@ -7218,34 +5243,7 @@ State 385
 
 State 386
 
-  114 p_type: . OPEN_P type CLOSE_P
   188 logic_expr: expr LESS_THAN . expr
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -7269,34 +5267,7 @@ State 386
 
 State 387
 
-  114 p_type: . OPEN_P type CLOSE_P
   189 logic_expr: expr MORE_THAN . expr
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -7320,34 +5291,7 @@ State 387
 
 State 388
 
-  114 p_type: . OPEN_P type CLOSE_P
   190 logic_expr: expr LESS_OR_EQUAL . expr
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -7371,34 +5315,7 @@ State 388
 
 State 389
 
-  114 p_type: . OPEN_P type CLOSE_P
   191 logic_expr: expr MORE_OR_EQUAL . expr
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -7422,34 +5339,7 @@ State 389
 
 State 390
 
-  114 p_type: . OPEN_P type CLOSE_P
   192 logic_expr: expr EQUAL_EQUAL . expr
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -7473,34 +5363,7 @@ State 390
 
 State 391
 
-  114 p_type: . OPEN_P type CLOSE_P
   193 logic_expr: expr NOT_EQUAL . expr
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -7532,7 +5395,6 @@ State 392
 State 393
 
   241 switch_header: SWITCH OPEN_P IDENTIFIER CLOSE_P . switch_body_block
-  242 switch_body_block: . OPEN_S
 
     OPEN_S  shift, and go to state 442
 
@@ -7549,7 +5411,7 @@ State 394
 State 395
 
   212 simple_expr: simple_expr . PLUS simple_expr
-  212            | simple_expr PLUS simple_expr .  [error, IDENTIFIER, SEMI_COLUMN, SEMI_COMA, CLOSE_S, COMMA, LESS_THAN, MORE_THAN, PLUS, MINUS, CLOSE_P, AND_AND, OR_OR, LESS_OR_EQUAL, MORE_OR_EQUAL, EQUAL_EQUAL, NOT_EQUAL, CLOSE_ARR]
+  212            | simple_expr PLUS simple_expr .
   213            | simple_expr . MINUS simple_expr
   214            | simple_expr . MULTI simple_expr
   215            | simple_expr . DIV simple_expr
@@ -7561,18 +5423,12 @@ State 395
 
     $default  reduce using rule 212 (simple_expr)
 
-    Conflict between rule 212 and token PLUS resolved as reduce (%left PLUS).
-    Conflict between rule 212 and token MINUS resolved as reduce (%left MINUS).
-    Conflict between rule 212 and token MULTI resolved as shift (PLUS < MULTI).
-    Conflict between rule 212 and token DIV resolved as shift (PLUS < DIV).
-    Conflict between rule 212 and token DIV_R resolved as shift (PLUS < DIV_R).
-
 
 State 396
 
   212 simple_expr: simple_expr . PLUS simple_expr
   213            | simple_expr . MINUS simple_expr
-  213            | simple_expr MINUS simple_expr .  [error, IDENTIFIER, SEMI_COLUMN, SEMI_COMA, CLOSE_S, COMMA, LESS_THAN, MORE_THAN, PLUS, MINUS, CLOSE_P, AND_AND, OR_OR, LESS_OR_EQUAL, MORE_OR_EQUAL, EQUAL_EQUAL, NOT_EQUAL, CLOSE_ARR]
+  213            | simple_expr MINUS simple_expr .
   214            | simple_expr . MULTI simple_expr
   215            | simple_expr . DIV simple_expr
   216            | simple_expr . DIV_R simple_expr
@@ -7583,29 +5439,17 @@ State 396
 
     $default  reduce using rule 213 (simple_expr)
 
-    Conflict between rule 213 and token PLUS resolved as reduce (%left PLUS).
-    Conflict between rule 213 and token MINUS resolved as reduce (%left MINUS).
-    Conflict between rule 213 and token MULTI resolved as shift (MINUS < MULTI).
-    Conflict between rule 213 and token DIV resolved as shift (MINUS < DIV).
-    Conflict between rule 213 and token DIV_R resolved as shift (MINUS < DIV_R).
-
 
 State 397
 
   212 simple_expr: simple_expr . PLUS simple_expr
   213            | simple_expr . MINUS simple_expr
   214            | simple_expr . MULTI simple_expr
-  214            | simple_expr MULTI simple_expr .  [error, IDENTIFIER, SEMI_COLUMN, SEMI_COMA, CLOSE_S, COMMA, LESS_THAN, MORE_THAN, PLUS, MINUS, CLOSE_P, AND_AND, OR_OR, LESS_OR_EQUAL, MORE_OR_EQUAL, MULTI, EQUAL_EQUAL, NOT_EQUAL, DIV, DIV_R, CLOSE_ARR]
+  214            | simple_expr MULTI simple_expr .
   215            | simple_expr . DIV simple_expr
   216            | simple_expr . DIV_R simple_expr
 
     $default  reduce using rule 214 (simple_expr)
-
-    Conflict between rule 214 and token PLUS resolved as reduce (PLUS < MULTI).
-    Conflict between rule 214 and token MINUS resolved as reduce (MINUS < MULTI).
-    Conflict between rule 214 and token MULTI resolved as reduce (%left MULTI).
-    Conflict between rule 214 and token DIV resolved as reduce (%left DIV).
-    Conflict between rule 214 and token DIV_R resolved as reduce (%left DIV_R).
 
 
 State 398
@@ -7614,16 +5458,10 @@ State 398
   213            | simple_expr . MINUS simple_expr
   214            | simple_expr . MULTI simple_expr
   215            | simple_expr . DIV simple_expr
-  215            | simple_expr DIV simple_expr .  [error, IDENTIFIER, SEMI_COLUMN, SEMI_COMA, CLOSE_S, COMMA, LESS_THAN, MORE_THAN, PLUS, MINUS, CLOSE_P, AND_AND, OR_OR, LESS_OR_EQUAL, MORE_OR_EQUAL, MULTI, EQUAL_EQUAL, NOT_EQUAL, DIV, DIV_R, CLOSE_ARR]
+  215            | simple_expr DIV simple_expr .
   216            | simple_expr . DIV_R simple_expr
 
     $default  reduce using rule 215 (simple_expr)
-
-    Conflict between rule 215 and token PLUS resolved as reduce (PLUS < DIV).
-    Conflict between rule 215 and token MINUS resolved as reduce (MINUS < DIV).
-    Conflict between rule 215 and token MULTI resolved as reduce (%left MULTI).
-    Conflict between rule 215 and token DIV resolved as reduce (%left DIV).
-    Conflict between rule 215 and token DIV_R resolved as reduce (%left DIV_R).
 
 
 State 399
@@ -7633,34 +5471,13 @@ State 399
   214            | simple_expr . MULTI simple_expr
   215            | simple_expr . DIV simple_expr
   216            | simple_expr . DIV_R simple_expr
-  216            | simple_expr DIV_R simple_expr .  [error, IDENTIFIER, SEMI_COLUMN, SEMI_COMA, CLOSE_S, COMMA, LESS_THAN, MORE_THAN, PLUS, MINUS, CLOSE_P, AND_AND, OR_OR, LESS_OR_EQUAL, MORE_OR_EQUAL, MULTI, EQUAL_EQUAL, NOT_EQUAL, DIV, DIV_R, CLOSE_ARR]
+  216            | simple_expr DIV_R simple_expr .
 
     $default  reduce using rule 216 (simple_expr)
-
-    Conflict between rule 216 and token PLUS resolved as reduce (PLUS < DIV_R).
-    Conflict between rule 216 and token MINUS resolved as reduce (MINUS < DIV_R).
-    Conflict between rule 216 and token MULTI resolved as reduce (%left MULTI).
-    Conflict between rule 216 and token DIV resolved as reduce (%left DIV).
-    Conflict between rule 216 and token DIV_R resolved as reduce (%left DIV_R).
 
 
 State 400
 
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
   272 one_catch_header: CATCH OPEN_P . type IDENTIFIER CLOSE_P
 
     IDENTIFIER  shift, and go to state 61
@@ -7682,73 +5499,6 @@ State 400
 
 State 401
 
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
-  138 block_body: . block_body_header block_body_statements
-  139 block_body_header: . OPEN_S
-  145 statement: . loop_statement
-  146          | . conditional_statement
-  147          | . assign_expr SEMI_COMA
-  148          | . variable_declaration_block
-  149          | . block_body
-  150          | . return_statement
-  151          | . try_catch
-  152          | . asm
-  153          | . long_id SEMI_COMA
-  154          | . throw_statement
-  155          | . error SEMI_COMA
-  156 throw_statement: . THROW OPEN_P message_call CLOSE_P SEMI_COMA
-  157 asm: . AT_ASM STRING_VAL SEMI_COMA
-  158 variable_declaration_block: . type variable_list SEMI_COMA
-  159                           | . CONST type variable_list SEMI_COMA
-  160                           | . enum
-  167 return_statement: . RETURN expr SEMI_COMA
-  168 loop_statement: . for_loop
-  169               | . while_loop
-  170               | . do_while
-  171 do_while: . do_header statement while_loop_header SEMI_COMA
-  172 do_header: . DO
-  173 for_loop: . for_loop_header statement
-  174 for_loop_header: . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  175                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  176                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA expr CLOSE_P
-  177                | . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  178                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA CLOSE_P
-  179                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  180                | . FOR OPEN_P SEMI_COMA SEMI_COMA expr CLOSE_P
-  181                | . FOR OPEN_P SEMI_COMA SEMI_COMA CLOSE_P
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
-  235 while_loop: . while_loop_header statement
-  236 while_loop_header: . WHILE OPEN_P logic_expr1 CLOSE_P
-  237 conditional_statement: . if_header statement
-  238                      | . if_header statement ELSE statement
-  239                      | . switch_header switch_body
-  240 if_header: . IF OPEN_P logic_expr1 CLOSE_P
-  241 switch_header: . SWITCH OPEN_P IDENTIFIER CLOSE_P switch_body_block
-  261 enum: . ENUM IDENTIFIER OPEN_S list_expr CLOSE_S SEMI_COMA
-  262     | . ENUM IDENTIFIER SEMI_COMA
-  267 try_catch: . TRY statement catch_list finally_statement
-  268          | . TRY statement catch_list
   273 finally_statement: FINALLY . statement
 
     error       shift, and go to state 264
@@ -7835,8 +5585,6 @@ State 405
 
 State 406
 
-   36 array_body: . OPEN_S array_ele CLOSE_S
-   37           | . OPEN_S CLOSE_S
   102 initializer: EQUAL . array_body
 
     OPEN_S  shift, and go to state 447
@@ -7895,37 +5643,7 @@ State 413
 
 State 414
 
-  114 p_type: . OPEN_P type CLOSE_P
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
   231 message_selector: IDENTIFIER SEMI_COLUMN . argument_list
-  232 argument_list: . argument_list SEMI_COLUMN argument
-  233              | . argument
-  234 argument: . expr
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -7979,76 +5697,9 @@ State 418
 
 State 419
 
-   81 type: . simple_type
-   82     | . complex_type
-   83     | . struct_type
-   84     | . enum_type
-   85 struct_type: . STRUCT IDENTIFIER
-   86            | . STRUCT IDENTIFIER MULTI
-   87 enum_type: . ENUM IDENTIFIER
-   88          | . ENUM IDENTIFIER MULTI
-   89 simple_type: . INT
-   90            | . CHAR
-   91            | . FLOAT
-   92            | . NSSTRING
-   93            | . VOID
-   94            | . BOOL
-   95 complex_type: . IDENTIFIER MULTI
-  138 block_body: . block_body_header block_body_statements
-  139 block_body_header: . OPEN_S
-  145 statement: . loop_statement
-  146          | . conditional_statement
-  147          | . assign_expr SEMI_COMA
-  148          | . variable_declaration_block
-  149          | . block_body
-  150          | . return_statement
-  151          | . try_catch
-  152          | . asm
-  153          | . long_id SEMI_COMA
-  154          | . throw_statement
-  155          | . error SEMI_COMA
-  156 throw_statement: . THROW OPEN_P message_call CLOSE_P SEMI_COMA
-  157 asm: . AT_ASM STRING_VAL SEMI_COMA
-  158 variable_declaration_block: . type variable_list SEMI_COMA
-  159                           | . CONST type variable_list SEMI_COMA
-  160                           | . enum
-  167 return_statement: . RETURN expr SEMI_COMA
-  168 loop_statement: . for_loop
-  169               | . while_loop
-  170               | . do_while
-  171 do_while: . do_header statement while_loop_header SEMI_COMA
-  172 do_header: . DO
-  173 for_loop: . for_loop_header statement
-  174 for_loop_header: . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  175                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA expr CLOSE_P
-  176                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA expr CLOSE_P
-  177                | . FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  178                | . FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA CLOSE_P
-  179                | . FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA CLOSE_P
-  180                | . FOR OPEN_P SEMI_COMA SEMI_COMA expr CLOSE_P
-  181                | . FOR OPEN_P SEMI_COMA SEMI_COMA CLOSE_P
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
-  235 while_loop: . while_loop_header statement
-  236 while_loop_header: . WHILE OPEN_P logic_expr1 CLOSE_P
-  237 conditional_statement: . if_header statement
-  238                      | . if_header statement ELSE statement
-  239                      | . switch_header switch_body
-  240 if_header: . IF OPEN_P logic_expr1 CLOSE_P
-  241 switch_header: . SWITCH OPEN_P IDENTIFIER CLOSE_P switch_body_block
   249 case_body: CASE expr SEMI_COLUMN . statement BREAK SEMI_COMA
   250          | CASE expr SEMI_COLUMN . statement
   251          | CASE expr SEMI_COLUMN . BREAK SEMI_COMA
-  261 enum: . ENUM IDENTIFIER OPEN_S list_expr CLOSE_S SEMI_COMA
-  262     | . ENUM IDENTIFIER SEMI_COMA
-  267 try_catch: . TRY statement catch_list finally_statement
-  268          | . TRY statement catch_list
 
     error       shift, and go to state 264
     IDENTIFIER  shift, and go to state 169
@@ -8115,7 +5766,7 @@ State 420
 State 421
 
   252 default_case: DEFAULT SEMI_COLUMN statement . BREAK SEMI_COMA
-  253             | DEFAULT SEMI_COLUMN statement .  [CLOSE_S]
+  253             | DEFAULT SEMI_COLUMN statement .
 
     BREAK  shift, and go to state 455
 
@@ -8159,34 +5810,7 @@ State 426
 
 State 427
 
-  114 p_type: . OPEN_P type CLOSE_P
   182 for_initializer: INT IDENTIFIER EQUAL . expr
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -8224,35 +5848,8 @@ State 429
 
 State 430
 
-  114 p_type: . OPEN_P type CLOSE_P
   175 for_loop_header: FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA . expr CLOSE_P
   179                | FOR OPEN_P SEMI_COMA logic_expr1 SEMI_COMA . CLOSE_P
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -8277,35 +5874,8 @@ State 430
 
 State 431
 
-  114 p_type: . OPEN_P type CLOSE_P
   176 for_loop_header: FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA . expr CLOSE_P
   178                | FOR OPEN_P for_initializer SEMI_COMA SEMI_COMA . CLOSE_P
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -8442,39 +6012,6 @@ State 447
 
    36 array_body: OPEN_S . array_ele CLOSE_S
    37           | OPEN_S . CLOSE_S
-   38 array_ele: . expr COMMA array_ele
-   39          | . expr
-   40          | . OPEN_S CLOSE_S
-   41          | . OPEN_S array_ele CLOSE_S COMMA array_ele
-   42          | . OPEN_S array_ele CLOSE_S
-   43          | . OPEN_S CLOSE_S COMMA array_ele
-  114 p_type: . OPEN_P type CLOSE_P
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_S       shift, and go to state 466
@@ -8515,7 +6052,7 @@ State 449
 
 State 450
 
-  231 message_selector: IDENTIFIER SEMI_COLUMN argument_list .  [IDENTIFIER, CLOSE_ARR]
+  231 message_selector: IDENTIFIER SEMI_COLUMN argument_list .
   232 argument_list: argument_list . SEMI_COLUMN argument
 
     SEMI_COLUMN  shift, and go to state 470
@@ -8540,7 +6077,7 @@ State 452
 State 453
 
   249 case_body: CASE expr SEMI_COLUMN statement . BREAK SEMI_COMA
-  250          | CASE expr SEMI_COLUMN statement .  [CLOSE_S, CASE, DEFAULT]
+  250          | CASE expr SEMI_COLUMN statement .
 
     BREAK  shift, and go to state 472
 
@@ -8619,35 +6156,8 @@ State 463
 
 State 464
 
-  114 p_type: . OPEN_P type CLOSE_P
   174 for_loop_header: FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA . expr CLOSE_P
   177                | FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA . CLOSE_P
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -8679,43 +6189,10 @@ State 465
 
 State 466
 
-   38 array_ele: . expr COMMA array_ele
-   39          | . expr
-   40          | . OPEN_S CLOSE_S
-   40          | OPEN_S . CLOSE_S
-   41          | . OPEN_S array_ele CLOSE_S COMMA array_ele
+   40 array_ele: OPEN_S . CLOSE_S
    41          | OPEN_S . array_ele CLOSE_S COMMA array_ele
-   42          | . OPEN_S array_ele CLOSE_S
    42          | OPEN_S . array_ele CLOSE_S
-   43          | . OPEN_S CLOSE_S COMMA array_ele
    43          | OPEN_S . CLOSE_S COMMA array_ele
-  114 p_type: . OPEN_P type CLOSE_P
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
 
     IDENTIFIER   shift, and go to state 251
     OPEN_S       shift, and go to state 466
@@ -8757,7 +6234,7 @@ State 468
 State 469
 
    38 array_ele: expr . COMMA array_ele
-   39          | expr .  [CLOSE_S]
+   39          | expr .
 
     COMMA  shift, and go to state 482
 
@@ -8766,35 +6243,7 @@ State 469
 
 State 470
 
-  114 p_type: . OPEN_P type CLOSE_P
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
   232 argument_list: argument_list SEMI_COLUMN . argument
-  234 argument: . expr
 
     IDENTIFIER   shift, and go to state 251
     OPEN_P       shift, and go to state 252
@@ -8875,7 +6324,7 @@ State 478
 
 State 479
 
-   40 array_ele: OPEN_S CLOSE_S .  [CLOSE_S]
+   40 array_ele: OPEN_S CLOSE_S .
    43          | OPEN_S CLOSE_S . COMMA array_ele
 
     COMMA  shift, and go to state 486
@@ -8900,40 +6349,7 @@ State 481
 
 State 482
 
-   38 array_ele: . expr COMMA array_ele
-   38          | expr COMMA . array_ele
-   39          | . expr
-   40          | . OPEN_S CLOSE_S
-   41          | . OPEN_S array_ele CLOSE_S COMMA array_ele
-   42          | . OPEN_S array_ele CLOSE_S
-   43          | . OPEN_S CLOSE_S COMMA array_ele
-  114 p_type: . OPEN_P type CLOSE_P
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
+   38 array_ele: expr COMMA . array_ele
 
     IDENTIFIER   shift, and go to state 251
     OPEN_S       shift, and go to state 466
@@ -8980,40 +6396,7 @@ State 485
 
 State 486
 
-   38 array_ele: . expr COMMA array_ele
-   39          | . expr
-   40          | . OPEN_S CLOSE_S
-   41          | . OPEN_S array_ele CLOSE_S COMMA array_ele
-   42          | . OPEN_S array_ele CLOSE_S
-   43          | . OPEN_S CLOSE_S COMMA array_ele
-   43          | OPEN_S CLOSE_S COMMA . array_ele
-  114 p_type: . OPEN_P type CLOSE_P
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
+   43 array_ele: OPEN_S CLOSE_S COMMA . array_ele
 
     IDENTIFIER   shift, and go to state 251
     OPEN_S       shift, and go to state 466
@@ -9040,7 +6423,7 @@ State 486
 State 487
 
    41 array_ele: OPEN_S array_ele CLOSE_S . COMMA array_ele
-   42          | OPEN_S array_ele CLOSE_S .  [CLOSE_S]
+   42          | OPEN_S array_ele CLOSE_S .
 
     COMMA  shift, and go to state 490
 
@@ -9063,40 +6446,7 @@ State 489
 
 State 490
 
-   38 array_ele: . expr COMMA array_ele
-   39          | . expr
-   40          | . OPEN_S CLOSE_S
-   41          | . OPEN_S array_ele CLOSE_S COMMA array_ele
-   41          | OPEN_S array_ele CLOSE_S COMMA . array_ele
-   42          | . OPEN_S array_ele CLOSE_S
-   43          | . OPEN_S CLOSE_S COMMA array_ele
-  114 p_type: . OPEN_P type CLOSE_P
-  199 expr: . assign_expr
-  200     | . simple_expr
-  201 assign_expr: . long_id EQUAL simple_expr
-  202 long_id: . long_id DOT IDENTIFIER
-  203        | . message_call
-  204        | . IDENTIFIER
-  205        | . array_access
-  206 array_access: . long_id OPEN_ARR simple_expr CLOSE_ARR
-  207 simple_expr: . STRING_VAL
-  208            | . INT_VAL
-  209            | . FLOAT_VAL
-  210            | . CHAR_VAL
-  211            | . long_id
-  212            | . simple_expr PLUS simple_expr
-  213            | . simple_expr MINUS simple_expr
-  214            | . simple_expr MULTI simple_expr
-  215            | . simple_expr DIV simple_expr
-  216            | . simple_expr DIV_R simple_expr
-  217            | . OPEN_P simple_expr CLOSE_P
-  218            | . IDENTIFIER DOUBLEPLUS
-  219            | . IDENTIFIER DOUBLEMINUS
-  220            | . DOUBLEPLUS IDENTIFIER
-  221            | . DOUBLEMINUS IDENTIFIER
-  222            | . p_type simple_expr
-  223 message_call2: . OPEN_ARR
-  224 message_call: . message_call2 sender message CLOSE_ARR
+   41 array_ele: OPEN_S array_ele CLOSE_S COMMA . array_ele
 
     IDENTIFIER   shift, and go to state 251
     OPEN_S       shift, and go to state 466
