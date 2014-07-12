@@ -26,6 +26,9 @@ SymbolTable::SymbolTable(void)
 	this->add_type(new Type("float"));
 	this->add_type(new Type("void"));
 	this->add_type(new Type("char"));
+	this->add_type(new Type("id"));
+	this->add_type(new Type("error_type"));
+
 }
 SymbolTable::~SymbolTable(void)
 {
@@ -276,6 +279,12 @@ void SymbolTable::generateCode()
 	generateStaticsCode();
 	for (auto i = this->types.begin(); i != this->types.end(); i++)
 	{
+		auto ifs = dynamic_cast<Interface*> (i->second);
+		if (ifs){
+			if (ifs->status != completness::implemented){
+				Program::addError(new SemanticError("Class "+ifs->get_name()+" referenced but never implemented",0,0,""));
+			}
+		}
 		i->second->generateCode();
 	}
 }
