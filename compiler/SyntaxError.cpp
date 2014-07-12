@@ -21,5 +21,5 @@ SyntaxError::~SyntaxError()
 void SyntaxError::toString(){
 	cout << "Syntax Error: ";
 	Error::toString();
-	cout << "file:" << file << " line:" << lineNo << " col:" << colNo;
+//	cout << "file:" << file << " line:" << lineNo << " col:" << colNo;
 }
