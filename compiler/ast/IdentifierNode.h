@@ -29,8 +29,20 @@ virtual void generateCode(){
 		MIPS_ASM::printComment("identifier "+_name);
 		Variable *var = this->_scoop->get_variable(_name);
 		ClassNode* cn = dynamic_cast<ClassNode*>(var->_scoop);
+		
 		if (cn!=NULL){
 			Variable* self = this->_scoop->get_variable("self");
+
+			if (var->getAccessModifier() == "private")
+			{
+				if (var->_scoop != self->_scoop){
+					string error = "cannot access " + var->getAccessModifier() + " data memeber from a child class! ";
+					addError((error));
+					return;
+				}
+
+			}
+
 			MIPS_ASM::lw("t0", -self->getOffset(), self->getOffsetRegister());
 			//v0 contains the address in memorry to be used later in assignment
 			MIPS_ASM::add_instruction(string("addi $v0,$") + "t0"
