@@ -87,6 +87,30 @@ public:
 			return symbolTable->getType("error_type");;
 
 		}
+		if (variable->getAccessModifier() == "private" || variable->getAccessModifier() == "protected"){
+			if (!dynamic_cast<IdentifierNode*>(_sender)){
+				string error = "cannot access " + variable->getAccessModifier() + " data memeber ";
+				addError((error));
+				return symbolTable->getType("error_type");;
+
+			}
+			if (dynamic_cast<IdentifierNode*>(_sender)->getVar()!=_scoop->get_variable("self")){
+				string error = "cannot access " + variable->getAccessModifier() + " data memeber! ";
+				addError((error));
+				return symbolTable->getType("error_type");;
+
+			}
+			if (variable->getAccessModifier() == "private")
+			{
+				if (variable->_scoop != sender_interface->getScoop()){
+					string error = "cannot access " + variable->getAccessModifier() + " data memeber from a child class! ";
+					addError((error));
+					return symbolTable->getType("error_type");;
+
+				}
+
+			}
+		}
 		return variable->getType();
 	}
 
