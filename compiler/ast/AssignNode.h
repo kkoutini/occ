@@ -2,6 +2,7 @@
 #include "Node.h"
 #include "TypeChecker.h"
 #include "../DotNode.h"
+#include "../ArrayAccessNode.h"
 #include "../Warning.h"
 
 class AssignNode: public Node
@@ -94,6 +95,7 @@ public:
 	 }
 	 virtual bool typeCheck()
 	 {
+
 		 if (!_rightExp || !_leftExp){
 			 string error = "missing assign operand";
 			 addError((error));
@@ -105,6 +107,37 @@ public:
 			 string error = "ERROR some type in assign is null  ";
 			 addError((error));
 			 return false;
+		 }
+		 if (!dynamic_cast<IdentifierNode*>(_leftExp) && !dynamic_cast<DotNode*>(_leftExp) 
+			 && !dynamic_cast<ArrayAccessNode*>(_leftExp))
+		 {
+			 string error = "ERROR in assignement check the LHS";
+			 addError(error);
+			 return false;
+
+		 }
+		 if (dynamic_cast<IdentifierNode*>(_leftExp))
+		 {
+			 auto idn = dynamic_cast<IdentifierNode*>(_leftExp)->getVar();
+			 if (!idn)
+				 return false;
+			 if (idn->getIsConst() && !_initializing)
+			 {
+				 string error = "ERROR in assignement, LHS cannot be const";
+				 addError(error);
+				 return false;
+			 }
+		 }if (dynamic_cast<DotNode*>(_leftExp))
+		 {
+			 auto idn = dynamic_cast<DotNode*>(_leftExp)->getVar();
+			 if (!idn)
+				 return false;
+			 //todo check access modifier
+			 /* if (idn->getIsConst())
+			 {
+			 return false;
+			 }
+			 */
 		 }
 
 		 if (TypeChecker::canCast(_rightExp->getType(), _leftExp->getType()) == 1)
@@ -124,36 +157,6 @@ public:
 			 string error = "ERROR in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name();
 			 addError(error);
 			 return false;
-		 }
-		 if (!dynamic_cast<IdentifierNode*>(_leftExp) && !dynamic_cast<DotNode*>(_leftExp))
-		 {
-			 string error = "ERROR in assignement check the LHS";
-			 addError(error);
-			 return false;
-
-		 } 
-		 if (dynamic_cast<IdentifierNode*>(_leftExp))
-		 {
-			 auto idn = dynamic_cast<IdentifierNode*>(_leftExp)->getVar();
-			 if (!idn)
-				 return false;
-			 if (idn->getIsConst() && !_initializing)
-			 {
-				 string error = "ERROR in assignement, LHS cannot be const";
-				 addError(error);
-				 return false;
-			 }
-		 }if (dynamic_cast<DotNode*>(_leftExp))
-		 {
-			 auto idn = dynamic_cast<DotNode*>(_leftExp)->getVar();
-			 if (!idn)
-				 return false;
-			 //todo check access modifier
-			/* if (idn->getIsConst())
-			 {
-				 return false;
-			 }
-*/
 		 }
 	 }
 	virtual Type* generateType()

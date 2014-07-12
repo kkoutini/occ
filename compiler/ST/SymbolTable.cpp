@@ -115,7 +115,7 @@ void SymbolTable::generateStatics()
 	{
 		auto ifs = dynamic_cast<Interface*> (i->second);
 		if (ifs){
-			 globalScoop->add_variable(new Variable(ifs->get_name(),ifs->static_twin,0));
+			 globalScoop->add_variable(new Variable(ifs->get_name(),ifs->static_twin,1));
 			 globalScoop->addNode(new AsmNode(globalScoop, "la $t0," + ifs->getStaticPointerStr() + "\n"));
 			 globalScoop->addNode(new AsmNode(globalScoop, "li $t1," + std::to_string(ifs->static_twin->getId()) + "\n"));
 

@@ -18,7 +18,7 @@ Variable::Variable(string name, Type* type,string accessModifier):Symbol(name){
 	}
 Variable::Variable(string name, Type* type, bool isConst) :Symbol(name){
 	this->type = type;
-	this->isConst = true;
+	this->isConst = isConst;
 	this->setAccessModifier("@public");
 	_offset = -1;
 }
