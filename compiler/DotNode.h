@@ -40,7 +40,10 @@ public:
 		MIPS_ASM::printComment(string("getting a datamember ") + variable->to_string());
 		MIPS_ASM::printComment("generating code for the sender");
 		_sender->generateCode();
-		
+		MIPS_ASM::printComment("checking for sender");
+		MIPS_ASM::top("t0");
+		MIPS_ASM::beq("t0", "0", "nullpointer_exp");
+
 		// now the object address must be in stack
 		MIPS_ASM::pop("t1");
 

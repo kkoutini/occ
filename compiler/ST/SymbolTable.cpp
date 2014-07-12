@@ -2,6 +2,7 @@
 #include"Symbol.h"
 #include "../Streams.h"
 #include "../CallNode.h"
+#include "../ast/ConstantNode.h"
 #include "../AsmNode.h"
 #include "../ast/FunctionNode.h"
 #include "../ast/IdentifierNode.h"
@@ -254,6 +255,19 @@ void SymbolTable::generateStaticsCode()
 	MIPS_ASM::label("global_dispose_end");
 
 	MIPS_ASM::jr();
+	{
+		MIPS_ASM::label("nullpointer_exp");
+		CallNode* cn = new CallNode(globalScoop, new IdentifierNode("NSException", globalScoop), "");
+		//+(NSExceptionCatcher*) new:(NSObject*)e:(NSExceptionCatcher*) p:(int)s :(int) f :(int)l{
+
+		auto cs = new CallSelector("withMsg");
+		cs->addArg(new ConstantNode(string("Null pointer exception"), globalScoop));
+		cn->addSelector(cs);
+		cn->generateCode();
+		MIPS_ASM::li("s7", 12);// turkey number for exception
+		MIPS_ASM::add_instruction("teq $t0,$t0");
+	}
+
 }
 bool SymbolTable::checkInhertanceLoop()
 {

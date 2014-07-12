@@ -77,6 +77,10 @@ public:
 		MIPS_ASM::push("fp");
 		MIPS_ASM::printComment("generating code for the sender");
 		_sender->generateCode();
+		/// checking for null pointer exception
+		MIPS_ASM::top("t0");
+		MIPS_ASM::beq("t0", "0", "nullpointer_exp");
+
 		if (Garbage_Collect && !Iskernal){
 
 			MIPS_ASM::top("a0");
@@ -159,7 +163,9 @@ public:
 		MIPS_ASM::push("fp");
 		MIPS_ASM::printComment("generating code for the sender");
 		_sender->generateCode();
-
+		/// checking for null pointer exception
+		MIPS_ASM::top("t0");
+		MIPS_ASM::beq("t0", "0", "nullpointer_exp");
 		MIPS_ASM::printComment("generating code for Args");
 
 		for (auto selector : _selcs){

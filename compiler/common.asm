@@ -97,3 +97,6 @@ addi $t0,$t0,-1
 sw $t0,-4($a0)
 decrease_rc_end:
 jr $ra
+
+
+
