@@ -75,6 +75,7 @@ FLOAT						("+"|"-")?({digit}+\.{digit}+)
 "default"           {   colNum+=7;  yylval.r.colNo=colNum;                                 return DEFAULT;}
 "break"             {   colNum+=5;  yylval.r.colNo=colNum;                               return BREAK;}
 "enum"              {   colNum+=4;    yylval.r.colNo=colNum;                             return ENUM;}
+"null"              {   colNum+=4;    yylval.r.colNo=colNum;                             return NULL_TOK;}
 "["					{	colNum++;yylval.r.colNo=colNum;										return OPEN_ARR;}
 "]"					{	colNum++;yylval.r.colNo=colNum;									return CLOSE_ARR;}
 "true"				{	colNum+=4;yylval.r.colNo=colNum;									return TRUE;}

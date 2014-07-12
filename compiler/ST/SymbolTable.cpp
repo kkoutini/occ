@@ -27,6 +27,7 @@ SymbolTable::SymbolTable(void)
 	this->add_type(new Type("void"));
 	this->add_type(new Type("char"));
 	this->add_type(new Type("id"));
+	this->add_type(new Type("null"));
 	this->add_type(new Type("error_type"));
 
 }

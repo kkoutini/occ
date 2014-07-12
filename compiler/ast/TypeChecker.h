@@ -77,8 +77,11 @@ public:
 			return 1;
 		if (to == symbolTable->getType("id") && ifsf)
 			return 1;
-		if (from == symbolTable->getType("id") )
+		if (from == symbolTable->getType("id"))
 			return 2;
+		if (from == symbolTable->getType("null"))
+			return 1;
+
 		return _castTable[from][to];
 	}
 

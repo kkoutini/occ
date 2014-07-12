@@ -34,6 +34,7 @@
 				#include "ElseNode.h"
 				#include "ClassNode.h"
 				#include "AsmNode.h"
+				#include "NullNode.h"
 				#include "DotNode.h"
 				#include "ArrayAccessNode.h"
 				#include "CatchNode.h"
@@ -183,7 +184,8 @@ Method* nodeXX;
 %token FINALLY //finally
 %token AT_ASM  //@asm
 %token SELF   //self pointer
-%token IMPORT //import file
+%token IMPORT //import file 
+%token NULL_TOK // NULL_TOK
 %code requires {
 #include "ast\node.h"
 }
@@ -1122,6 +1124,12 @@ simple_expr:
 	|INT_VAL						{
 									Streams::verbose()<<"simple_expr:INT_VAL\n";
 									$<r.node>$=new ConstantNode(yylval.r.int_val,scoop);
+									isconst=1;
+									
+									}
+	|NULL_TOK						{
+									Streams::verbose()<<"simple_expr:NULL\n";
+									$<r.node>$=new NullNode(scoop);
 									isconst=1;
 									
 									}

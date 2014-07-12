@@ -163,6 +163,7 @@
     <ClInclude Include="LongIdHelper.h" />
     <ClInclude Include="MethodItems.h" />
     <ClInclude Include="MethodsIndexer.h" />
+    <ClInclude Include="NullNode.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="ProtocolHelper.h" />
     <ClInclude Include="RegAccessNode.h" />
