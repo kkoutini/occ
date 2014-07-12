@@ -117,4 +117,3 @@ public:
 	}
 };
 
-int  TryNode::count = 0;

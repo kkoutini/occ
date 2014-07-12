@@ -40,4 +40,3 @@ public:
 	}
 };
 
-int CatchNode::lbl_count = 0;

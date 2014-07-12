@@ -4,12 +4,15 @@
 #include "../CallNode.h"
 #include "../ast/ConstantNode.h"
 #include "../AsmNode.h"
+#include "../ast/AssignNode.h"
+#include "../TryNode.h"
 #include "../ast/FunctionNode.h"
 #include "../ast/IdentifierNode.h"
 #include <set>
 #include "../Program.h";
 #include "../SemanticError.h";
 #include "../RegAccessNode.h"
+
 extern std::ofstream ofs;
 extern ScoopNode* globalScoop;
 extern Method * mainMethod;
@@ -18,6 +21,8 @@ extern int colNum;
 extern string sourceFile;
 extern int Iskernal = 0;
 extern bool Garbage_Collect=0;
+int  TryNode::count = 0;
+int CatchNode::lbl_count = 0;
 
 SymbolTable::SymbolTable(void)
 {
@@ -191,13 +196,30 @@ void SymbolTable::generateStaticsCode()
 	if (mainMethod)
 	{
 		
+		{
+			CallNode* cn = new CallNode(globalScoop, new IdentifierNode("NSExceptionCatcher", globalScoop), "");
+		//+(NSExceptionCatcher*) new:(NSObject*)e:(NSExceptionCatcher*) p:(int)s :(int) f :(int)l{
+		
+			auto cs = new CallSelector("new");
+			cs->addArg(new IdentifierNode("NSException", globalScoop));
+			cs->addArg(new IdentifierNode("top_catcher", globalScoop));
+			cs->addArg(new SPNode(globalScoop));
+			cs->addArg(new FPNode(globalScoop));
+			cs->addArg(new LabelValNode(globalScoop, "global_catch"));
+			cs->addArg(new RegAccessNode(globalScoop, "ra", symbolTable->getType("int")));
+
+			cn->addSelector(cs);
+			//	cn->generateCode();
+			AssignNode* asn = dynamic_cast<AssignNode*>
+				((new AssignNode(globalScoop, new IdentifierNode("top_catcher", globalScoop), cn)));
+			globalScoop->addNode(asn);
+		}
 		Variable* var = globalScoop->get_variable(mainMethod->getInterface()->get_name());
-		globalScoop->addNode(new IdentifierNode(mainMethod->getInterface()->get_name(),globalScoop));
+		globalScoop->addNode(new IdentifierNode(mainMethod->getInterface()->get_name(), globalScoop));
 		globalScoop->addNode(new AsmNode(globalScoop, "sub $sp,$sp,4"));
 		globalScoop->addNode(new AsmNode(globalScoop, string("jal ") + mainMethod->getLabel()));
 		globalScoop->addNode(new AsmNode(globalScoop, "li $v0,10"));
 		globalScoop->addNode(new AsmNode(globalScoop, "syscall"));
-
 
 	}
 	else{
@@ -208,6 +230,7 @@ void SymbolTable::generateStaticsCode()
 
 		
 	}
+
 	globalScoop->generateCode();
 
 
@@ -265,7 +288,19 @@ void SymbolTable::generateStaticsCode()
 		cn->addSelector(cs);
 		cn->generateCode();
 		MIPS_ASM::li("s7", 12);// turkey number for exception
-		MIPS_ASM::add_instruction("teq $t0,$t0");
+		MIPS_ASM::add_instruction("teq $t0,$t0\n");
+	}
+	{
+		MIPS_ASM::label("global_catch");
+		MIPS_ASM::add_instruction("addi $a0,$s0,"+
+			std::to_string(dynamic_cast<Interface*>(getType("NSException"))
+			->getScoop()->get_variable("msg")->getOffset())+"\n");
+
+		MIPS_ASM::add_instruction("li $v0,4\n");
+		MIPS_ASM::add_instruction("syscall\n");
+		MIPS_ASM::add_instruction("li $v0,10\n");
+		MIPS_ASM::add_instruction("syscall\n");
+
 	}
 
 }

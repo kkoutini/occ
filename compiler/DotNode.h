@@ -1,8 +1,9 @@
 #pragma once
 #include "ast/Node.h"
+#include "ast/IdentifierNode.h"
 
 #include "Selector.h"
-#include "ST\Interface.h"
+#include "ST/Interface.h"
 
 #include "ST/SymbolTable.h"
 extern SymbolTable* symbolTable;
