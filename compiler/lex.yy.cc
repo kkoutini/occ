@@ -831,7 +831,7 @@ YY_RULE_SETUP
 case 18:
 YY_RULE_SETUP
 #line 38 "C:\\Users\\Khaled Kuteini\\Source\\Repos\\occ\\compiler\\lex.l"
-{colNum+=2;yylval.r.colNo=colNum;											return ID;}
+{colNum+=2;yylval.r.colNo=colNum;				yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext	);						return ID;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP

@@ -35,7 +35,7 @@ FLOAT						("+"|"-")?({digit}+\.{digit}+)
 "bool"				{colNum+=4;yylval.r.colNo=colNum;     			yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);					return BOOL;}
 "int"				{colNum+=3;yylval.r.colNo=colNum;			yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);						return INT;}
 ";"					{colNum+=1;yylval.r.colNo=colNum;										return SEMI_COMA;}
-"id"				{colNum+=2;yylval.r.colNo=colNum;											return ID;}
+"id"				{colNum+=2;yylval.r.colNo=colNum;				yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext	);						return ID;}
 "@public"			{colNum+=7;yylval.r.colNo=colNum;					yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);				return AT_PUBLIC;}
 "@protected"		{colNum+=10;yylval.r.colNo=colNum;				yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);					return AT_PROTECTED;}
 "@private"			{colNum+=8;yylval.r.colNo=colNum;					yylval.r.text=new char[265];yylval.r.text[0]='\0'; strcat(yylval.r.text,yytext);				return AT_PRIVATE;}

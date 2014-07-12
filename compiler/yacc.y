@@ -504,6 +504,14 @@ simple_type:
 		error.append("'.");
 		Program::addError(new SemanticError(error));
 																}}
+	|ID											{Streams::verbose()<<"id type\n";
+	type=symbolTable->getType($<r.text>1);
+																if(type==NULL){
+																										string error="Unknown type name '";
+		error.append($<r.text>1);
+		error.append("'.");
+		Program::addError(new SemanticError(error));
+																}}
 	|FLOAT											{Streams::verbose()<<"float type\n";
 	type=symbolTable->getType($<r.text>1);
 																if(type==NULL){

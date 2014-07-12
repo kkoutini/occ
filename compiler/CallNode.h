@@ -40,20 +40,14 @@ public:
 		dynamic_bind();
 	}
 	virtual void dynamic_bind(){
-
+		if (getType()==symbolTable->getType("error_type"))
+			return;
 		Type* senderType = _sender->getType();
 		
 		//TODO: check if sender isn't interface
 		Interface* sender_interface = (dynamic_cast<Interface*>(senderType));
-		if (sender_interface == NULL)
-		{
-			//todo
-			//ERRor
-			string error = "ERROR Sender isn't Interface " ;
-			addError(error);
-			return;
-		}
-		
+	
+
 		int method = MethodsIndexer::getMethodIndex(_message, _selcs);
 
 		if (method == -1){
@@ -187,21 +181,24 @@ public:
 	virtual Type* generateType()
 	{
 		Type* senderType = _sender->getType();
+		if (_sender->getType() == symbolTable->getType("id"))
+			return symbolTable->getType("id");
 		Interface* sender_interface = (dynamic_cast<Interface*>(senderType));
 		if (sender_interface == NULL)
 		{
 			//throw error
-			string error = "ERROR in call NODE generate type sender is null  ";
+			string error = "ERROR in method call, sender is not compatible  ";
 			addError(error);
-			return false;
+			return symbolTable->getType("error_type");
 		}
 		Method* method = sender_interface->getMethodOverloaded(_message, _selcs);
 		; //sender_interface->getMethod(_message, _params, _types, false);
 		if (method == NULL)
 		{
 			//throw error
-			string error = "ERROR in call NODE generate type null  ";
+			string error = "ERROR in method call method not found ";
 			addError(error);
+			return symbolTable->getType("error_type");
 		}
 		return method->getReturnType();
 	}
