@@ -5462,8 +5462,8 @@ void yyerror(const char *s) {
 
 Program::addError(new SyntaxError(s));
 
-	fprintf (stderr, "%s\n", s);
-	;
+	//fprintf (stderr, "%s\n", s);
+	
 }
 
 int yylex(){
