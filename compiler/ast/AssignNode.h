@@ -154,7 +154,7 @@ public:
 		 }
 		 else{
 			 ////// THROW ERROR
-			 string error = "ERROR in convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name();
+			 string error = "cannot convert convert from " + (_rightExp->getType()->get_name()) + " To " + _leftExp->getType()->get_name();
 			 addError(error);
 			 return false;
 		 }

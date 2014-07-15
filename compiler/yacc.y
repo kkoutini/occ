@@ -934,7 +934,7 @@ variable:
 ;
 return_statement:
 	RETURN expr SEMI_COMA						{Streams::verbose()<<"return_statement: RETURN expr\n";
-												 $<r.node>$=new ReturnNode(scoop,$<r.node>2);
+												 $<r.node>$=new ReturnNode(scoop,$<r.node>2,method);
 												}
 ;
 loop_statement:
