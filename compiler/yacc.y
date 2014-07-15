@@ -61,12 +61,13 @@ void addFile(string s){
 	}
 }
     extern string sourceFile="";
-	extern int isconst=0;
+//	extern int isconst=0;
 	
 extern int Iskernal;
 extern int lineNum;
 extern int colNum;
 extern bool Garbage_Collect;
+extern bool Optimize;
 
 	int yylex(void);
 	int yyparse();
@@ -1159,18 +1160,15 @@ simple_expr:
 	|INT_VAL						{
 									Streams::verbose()<<"simple_expr:INT_VAL\n";
 									$<r.node>$=new ConstantNode(yylval.r.int_val,scoop);
-									isconst=1;
 									
 									}
 	|NULL_TOK						{
 									Streams::verbose()<<"simple_expr:NULL\n";
 									$<r.node>$=new NullNode(scoop);
-									isconst=1;
 									
 									}
 	|FLOAT_VAL						{Streams::verbose()<<"simple_expr:FLOAT_VAL\n";
 									$<r.node>$=new ConstantNode(yylval.r.float_val,scoop);
-										isconst=1;
 									}
 	|CHAR_VAL						{Streams::verbose()<<"simple_expr:CHAR_VAL\n";
 										$<r.node>$=new ConstantNode(yylval.r.char_val,scoop);
@@ -1469,6 +1467,8 @@ void main(int argc,      // Number of strings in array argv
 		dir_path="";
 	bool f = true;
 	Garbage_Collect=0;
+	 Optimize=0;
+
 	   for(int i = 0; i < argc; i++) 
 		{
 			if(string(argv[i])=="-o")
@@ -1491,6 +1491,11 @@ void main(int argc,      // Number of strings in array argv
 	    	if (string(argv[i]) == "-gc")
 			{
 					Garbage_Collect=1;
+
+			}
+			if (string(argv[i]) == "-op")
+			{
+					Optimize=1;
 
 			}
 			if (string(argv[i])=="-d")

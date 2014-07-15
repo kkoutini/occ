@@ -8,7 +8,8 @@ class SymbolTable;
 class Node;
 extern SymbolTable* symbolTable;
 extern std::ofstream ofs;
-extern int isconst ;
+extern bool Optimize;
+
 typedef struct primitive
 {
 int int_val;
@@ -30,7 +31,7 @@ public:
 	ConstantNode(int val, ScoopNode* scoop):Node(scoop){
 		value.int_val=val;
 		type=symbolTable->getType("int");
-		if (isconst)
+		if (Optimize)
 		{
 			value_int = val;
 			constant = 1;

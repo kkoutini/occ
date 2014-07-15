@@ -2,6 +2,7 @@
 #include "ast/ScoopNode.h"
 #include "ast/DeclerationNode.h"
 #include "ast/IfNode.h"
+extern bool Optimize ;
 
  void ScoopNode::generateCode()
 {
@@ -11,8 +12,11 @@
 		MIPS_ASM::printComment((*i)->getDebugString());
 		(*i)->generateCode();
 		if ((*i)->_has_return)
-			 _has_return=true;
-
+		{
+			_has_return = true;
+			if (Optimize)
+				break;
+		}
 		// pop the result of the last statement from stack
 		dispose(*i);
 	}

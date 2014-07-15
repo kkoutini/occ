@@ -24,6 +24,7 @@ extern int Iskernal = 0;
 extern bool Garbage_Collect=0;
 int  TryNode::count = 0;
 int CastNode::count=0;
+extern bool Optimize=0;
 
 int CatchNode::lbl_count = 0;
 
