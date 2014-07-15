@@ -76,17 +76,19 @@ void InterfaceHelper::addInheritedProtocol(Interface* interface,vector<string>id
 	}
 
 }
-void InterfaceHelper::addDataMembers(Interface* interface,vector<string>idsList,Type* type,vector<Array*>arrayList,bool isConst,SymbolTable* symbolTable,string visibility){
-
+void InterfaceHelper::addDataMembers(Interface* interface, vector<string>idsList, Type* type, vector<Array*>arrayList, bool isConst, SymbolTable* symbolTable, string visibility,bool is_static_member){
+	auto t_interface = interface;
+	if (is_static_member)
+		t_interface = interface->static_twin;
 	if(type !=NULL){
 		for(int i=0;i<idsList.size();i++)
 		{
 			Variable* var=new Variable (idsList.at(i),type,visibility);
 			if(isConst)
 				var->setIsConst(true);
-			if(interface->getVariableItems()-> get_variable(var->get_name())==NULL){
-				interface-> getVariableItems()-> add_variable(var);
-				interface->getScoop()->add_variable(var);
+			if(t_interface->getVariableItems()-> get_variable(var->get_name())==NULL){
+				t_interface->getVariableItems()->add_variable(var);
+				t_interface->getScoop()->add_variable(var);
 			}
 			else {
 				string error="Duplicate member '";
@@ -102,7 +104,7 @@ void InterfaceHelper::addDataMembers(Interface* interface,vector<string>idsList,
 			arrayList.at(i)->setAccessModifier(visibility);
 			if(isConst)
 				arrayList.at(i)->setIsConst(true);
-			if(interface->getVariableItems()->  get_variable(arrayList.at(i)->get_name())==NULL){
+			if (t_interface->getVariableItems()->get_variable(arrayList.at(i)->get_name()) == NULL){
 				Type* t = type;
 				for (int j = (int)arrayList.at(i)->array_alloc.size() - 1; j >= 0; j--)
 				{
@@ -115,8 +117,8 @@ void InterfaceHelper::addDataMembers(Interface* interface,vector<string>idsList,
 				if (isConst)
 					var->setIsConst(true);
 
-				interface->getVariableItems()->add_variable(var);
-				interface->getScoop()->add_variable(var);
+				t_interface->getVariableItems()->add_variable(var);
+				t_interface->getScoop()->add_variable(var);
 
 			}
 			else {

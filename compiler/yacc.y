@@ -94,6 +94,7 @@ extern bool Garbage_Collect;
 	ScoopNode* scoop=NULL;
 	ScoopNode* cscoop=NULL;
 	bool flag=false;
+	bool is_static_member=false;
 	Node* tempNode;
 	Method * method=NULL;
 	DeclerationSelector* tselector=NULL;
@@ -357,14 +358,14 @@ instance_variable_declaration:
 variable_declaration_list: variable_declaration_list variable_declarationxx		
 										{
 										Streams::verbose()<<"variable_declaration_list: variable_declaration_list variable_declaration\n";
-										InterfaceHelper::addDataMembers(interface,idsList,type,arrayList,flag,symbolTable,visibility);
+										InterfaceHelper::addDataMembers(interface,idsList,type,arrayList,flag,symbolTable,visibility,is_static_member);
 											arrayList.clear();
 												idsList.clear();
 												flag=false;
 										}
 						|variable_declarationxx									
 										{
-										       InterfaceHelper::addDataMembers(interface,idsList,type,arrayList,flag,symbolTable,visibility);
+										       InterfaceHelper::addDataMembers(interface,idsList,type,arrayList,flag,symbolTable,visibility,is_static_member);
 												arrayList.clear();
 												idsList.clear();
 												flag=false;
@@ -385,12 +386,23 @@ struct_variable_declaration:
 variable_declarationxx:
 	type ids_list	SEMI_COMA					{Streams::verbose()<<"variable_declaration:type IDENTIFIER	SEMI_COMA\n";
 	                                           $<r.text>$=$<r.text>1;
+											  	flag=false;
+												is_static_member=0;
+
 												}
 	|CONST type ids_list	SEMI_COMA				{Streams::verbose()<<"variable_declaration:CONST type IDENTIFIER	SEMI_COMA\n";
 														flag=true;
 														 $<r.text>$=$<r.text>2;
+														 is_static_member=0;
 													}
-	|type IDENTIFIER array_tag error{Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
+
+	|PLUS type ids_list	SEMI_COMA				{Streams::verbose()<<"variable_declaration:CONST type IDENTIFIER	SEMI_COMA\n";
+														flag=true;
+														 $<r.text>$=$<r.text>2;
+														 is_static_member=1;
+													}
+
+//	|type IDENTIFIER array_tag error{Streams::verbose()<<"Error: Expected ';' at Line No:"<<yylval.r.lineNo<<" Column No:"<<yylval.r.colNo<<endl;}	
 
 ;
 ids_list:
@@ -1513,6 +1525,7 @@ void main(int argc,      // Number of strings in array argv
 			return ;
 		}
 			MIPS_ASM::add_data("\nblock_head:    .byte   0:8\n");
+			MIPS_ASM::add_data("\nglob_tmp:    .byte   0:4\n");
 	MIPS_ASM::add_data("\nalign_to:  .word 4\n");
 		symbolTable->generateStatics();
 		symbolTable->generateCode();

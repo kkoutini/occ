@@ -108,6 +108,8 @@
         
         @asm "li $v0, 6";
         @asm "syscall";
+		@asm "s.s $f0,glob_tmp ";
+		@asm "lw $v0,glob_tmp ";
 }
 +(NSString) readstring
 {
