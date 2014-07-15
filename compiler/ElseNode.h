@@ -28,6 +28,9 @@ ElseNode(Node* statment, ScoopNode* scoop) :VoidNode(scoop), _statment(statment)
 	end+=i;
 	
 	_statment->generateCode();
+	if (_statment->_has_return)
+		_has_return = 1;
+	
 	}
 	 virtual Type* generateType()
 	 {

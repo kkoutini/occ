@@ -49,6 +49,7 @@ public:
 
 	void generateCode()
 	{
+
 		if (!typeCheck())
 		{
 			return;
@@ -66,10 +67,13 @@ public:
 
 		MIPS_ASM::pop("t0");
 		MIPS_ASM::beq("t0", "0", endif);
+		int st_count = 0;
 		if (_statment!=NULL)
 		{
 			MIPS_ASM::printComment("ifstatment");
 			_statment->generateCode();
+			if (_statment->_has_return)
+				++st_count;
 			dispose(_statment);
 		}
 		
@@ -77,9 +81,14 @@ public:
 		MIPS_ASM::label(endif);
 		if (_elseNode != NULL){
 			_elseNode->generateCode();
+			if (_elseNode->_has_return)
+				++st_count;
+
 			dispose(_elseNode);
 
 		}
+		if (st_count == 2)
+			_has_return = true;
 		MIPS_ASM::label(end);
 	}
 	virtual Type* generateType()

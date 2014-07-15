@@ -53,6 +53,7 @@ public:
 	void setMethodsItem(MethodItems*);
 	VariableItems* getVariableItems();
 	void setVariableItems(VariableItems*);
+	Method* Interface::getMethodByNameWithInhertance(string name, Type* type, vector<DeclerationSelector*> v, bool isStatic);
 
 	void setInheritInterface(Interface*);
 	Interface* getInheretInterface();

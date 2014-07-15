@@ -142,6 +142,7 @@ void SymbolTable::generateStatics()
 			 MIPS_ASM::add_data(ifs->getStaticPointerStr() + ":    .byte   0:" + std::to_string(ifs->static_twin->getObjectSize()) + "\n");
 			 Method* method = new Method("alloc", ifs);
 			 auto fs = ScoopHelper::createNewFunctionNode(method, ifs->static_twin);
+			 fs->_has_return = true;
 			 fs->addNode(new AsmNode(fs, "move $s0,$ra"));
 			 fs->addNode(new AsmNode(fs, string("li $a0,") + std::to_string(ifs->getObjectSize())));
 			 fs->addNode(new AsmNode(fs, "jal malloc"));
@@ -159,6 +160,8 @@ void SymbolTable::generateStatics()
 			 method = new Method("", getType("bool"));
 			 method->addSelector(new DeclerationSelector("isA", { new Variable("obj", getType("NSObject")) }));
 			 fs = ScoopHelper::createNewFunctionNode(method, ifs->static_twin);
+			 fs->_has_return = true;
+
 			 fs->addNode(new AsmNode(fs, "sub $sp,$sp,8"));
 			 fs->addNode(new AsmNode(fs, "sw $ra,0($sp)"));
 			 fs->addNode(new AsmNode(fs, "sw $fp,4($sp)"));

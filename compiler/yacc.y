@@ -965,64 +965,75 @@ for_loop:
 												error.append("'.");
 												Program::addError(new SemanticError(error));
 											}	
-											ScoopHelper::addVariables(idsList,arrayList,type,flag,scoop);
-												arrayList.clear();
-												idsList.clear();
+										//	ScoopHelper::addVariables(idsList,arrayList,type,flag,scoop);
+											//	arrayList.clear();
+												//idsList.clear();
 												flag=false;
 												(dynamic_cast<ForNode*>($<r.node>1))->setStatement($<r.node>2);
-												$<r.node>2->toString();
-												$<r.node>$=$<r.node>1;
+											//	$<r.node>2->toString();
+												scoop->addNode($<r.node>1);
+												$<r.node>$=scoop;
+
+										cscoop=scoop;scoop=scoop->getParent();
+
 											}
 ;
 for_loop_header:
-	FOR OPEN_P for_initializer	SEMI_COMA logic_expr1 SEMI_COMA expr  			CLOSE_P	
-										{Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer	SEMI_COMA logic_expr1 SEMI_COMA expr			CLOSE_P\n";
-										$<r.node>$=new ForNode($<r.node>3,$<r.node>5,$<r.node>7,NULL,scoop);
+	fOR_OPEN_P for_initializer	SEMI_COMA logic_expr1 SEMI_COMA expr  			CLOSE_P	
+										{Streams::verbose()<<"for_loop_header: fOR_OPEN_P for_initializer	SEMI_COMA logic_expr1 SEMI_COMA expr			CLOSE_P\n";
+										$<r.node>$=new ForNode($<r.node>2,$<r.node>4,$<r.node>6,NULL,scoop);
 										//nodeXX=$<r.node>5;
 										}
 	
-	|FOR OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA expr			CLOSE_P	
-										{Streams::verbose()<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA expr			CLOSE_P\n";
-										$<r.node>$=new ForNode(NULL,$<r.node>4,$<r.node>6,NULL,scoop);
+	|fOR_OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA expr			CLOSE_P	
+										{Streams::verbose()<<"for_loop_header: fOR_OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA expr			CLOSE_P\n";
+										$<r.node>$=new ForNode(NULL,$<r.node>3,$<r.node>5,NULL,scoop);
 										}
-	|FOR OPEN_P for_initializer SEMI_COMA			 SEMI_COMA expr			CLOSE_P	
-										{Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer SEMI_COMA			 SEMI_COMA expr			CLOSE_P\n";
-										$<r.node>$=new ForNode($<r.node>3,NULL,$<r.node>6,NULL,scoop);
+	|fOR_OPEN_P for_initializer SEMI_COMA			 SEMI_COMA expr			CLOSE_P	
+										{Streams::verbose()<<"for_loop_header: fOR_OPEN_P for_initializer SEMI_COMA			 SEMI_COMA expr			CLOSE_P\n";
+										$<r.node>$=new ForNode($<r.node>2,NULL,$<r.node>5,NULL,scoop);
 										}
-	|FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P	
-										{Streams::verbose()<<"for_loop_header: FOR OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P	\n";
-										$<r.node>$=new ForNode($<r.node>3,$<r.node>5,NULL,NULL,scoop);
-										}
-	
-	|FOR OPEN_P	for_initializer	SEMI_COMA			 SEMI_COMA				CLOSE_P	
-										{Streams::verbose()<<"for_loop_header: FOR OPEN_P	for_initializer	SEMI_COMA			 SEMI_COMA				CLOSE_P	\n";
-										$<r.node>$=new ForNode($<r.node>3,NULL,NULL,NULL,scoop);
-										}
-	|FOR OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P	
-										{Streams::verbose()<<"for_loop_header: FOR OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P\n";
-										$<r.node>$=new ForNode(NULL,$<r.node>4,NULL,NULL,scoop);
-										}
-	|FOR OPEN_P 				SEMI_COMA			 SEMI_COMA expr			CLOSE_P	
-										{Streams::verbose()<<"for_loop_header: FOR OPEN_P 				SEMI_COMA			 SEMI_COMA expr			CLOSE_P";
-										$<r.node>$=new ForNode(NULL,NULL,$<r.node>5,NULL,scoop);
+	|fOR_OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P	
+										{Streams::verbose()<<"for_loop_header: fOR_OPEN_P for_initializer SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P	\n";
+										$<r.node>$=new ForNode($<r.node>2,$<r.node>4,NULL,NULL,scoop);
 										}
 	
-	|FOR OPEN_P 				SEMI_COMA			SEMI_COMA 				CLOSE_P	
-											{Streams::verbose()<<"for_loop_hearder: FOR OPEN_P 				SEMI_COMA			SEMI_COMA 				CLOSE_P	\n";
+	|fOR_OPEN_P	for_initializer	SEMI_COMA			 SEMI_COMA				CLOSE_P	
+										{Streams::verbose()<<"for_loop_header: fOR_OPEN_P	for_initializer	SEMI_COMA			 SEMI_COMA				CLOSE_P	\n";
+										$<r.node>$=new ForNode($<r.node>2,NULL,NULL,NULL,scoop);
+										}
+	|fOR_OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P	
+										{Streams::verbose()<<"for_loop_header: fOR_OPEN_P					SEMI_COMA logic_expr1 SEMI_COMA				CLOSE_P\n";
+										$<r.node>$=new ForNode(NULL,$<r.node>3,NULL,NULL,scoop);
+										}
+	|fOR_OPEN_P 				SEMI_COMA			 SEMI_COMA expr			CLOSE_P	
+										{Streams::verbose()<<"for_loop_header: fOR_OPEN_P 				SEMI_COMA			 SEMI_COMA expr			CLOSE_P";
+										$<r.node>$=new ForNode(NULL,NULL,$<r.node>4,NULL,scoop);
+										}
+	
+	|fOR_OPEN_P 				SEMI_COMA			SEMI_COMA 				CLOSE_P	
+											{Streams::verbose()<<"for_loop_hearder: fOR_OPEN_P 				SEMI_COMA			SEMI_COMA 				CLOSE_P	\n";
 											$<r.node>$=new ForNode(NULL,NULL,NULL,NULL,scoop);
 											}
 ;
+fOR_OPEN_P: FOR OPEN_P {    
+    scoop=ScoopHelper::createNewScoop(scoop);
+
+}
+;
 for_initializer:
 	INT IDENTIFIER EQUAL expr			{Streams::verbose()<<"for_initializer: INT IDENTIFIER EQUAL expr\n";
-											AssignNode * temp=new AssignNode(scoop,new IdentifierNode($<r.text>2,scoop),$<r.node>4);
 											
+											AssignNode * temp1=new AssignNode(scoop,new IdentifierNode($<r.text>2,scoop),$<r.node>4);
+											scoop->add_variable(new Variable($<r.text>2, symbolTable->getType("int")));
+											 
 											//temp->add($<r.text>2,);
 											
 											//temp.push_back(make_pair($<r.text>2,$<r.node>4));
-											DeclerationNode* temp1=new DeclerationNode(list<pair<string,Node*>>(),scoop,"int");
-											temp1->add($<r.text>2,temp);
+									//		DeclerationNode* temp1=new DeclerationNode(list<pair<string,Node*>>(),scoop,"int");
+								//			temp1->add($<r.text>2,temp);
 										 $<r.node>$=temp1; 
-										 idsList.push_back($<r.text>2);
+									//	 idsList.push_back($<r.text>2);
 										}
 	|IDENTIFIER EQUAL expr				{Streams::verbose()<<"for_initializer: IDENTIFIER EQUAL expr\n";
 										$<r.node>$=new AssignNode(scoop,new IdentifierNode($<r.text>1,scoop),$<r.node>3);
@@ -1269,7 +1280,9 @@ argument:
 while_loop:
 	while_loop_header statement			{
 											Streams::verbose()<<"while_loop:while_loop_header statement\n";
-											 $<r.node>$=new WhileNode($<r.node>1,$<r.node>2,scoop);
+											auto temp=new ScoopNode(scoop);
+											temp->addNode($<r.node>2);
+											 $<r.node>$=new WhileNode($<r.node>1,temp,scoop);
 										}
 ;
 while_loop_header:

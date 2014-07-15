@@ -147,6 +147,20 @@ Method* Interface::getMethodByName(string name, Type* type, vector<DeclerationSe
 {
 	return methodsItem->getMethod(name, type, v, isStatic);
 }
+Method* Interface::getMethodByNameWithInhertance(string name, Type* type, vector<DeclerationSelector*> v, bool isStatic)
+{
+	Interface* vinter = this;
+	while (vinter != NULL)
+	{
+
+		Method* m = vinter->methodsItem->getMethod(name, type, v, isStatic);
+		;
+		if (m)return m;
+		vinter = vinter->getInheretInterface();
+	}
+	return NULL;
+	
+}
 Variable* Interface::getVariableByName(string name)
 {
 	return varItems->get_variable(name);
@@ -244,7 +258,18 @@ void Interface::generateCode(){
 
 		MIPS_ASM::printComment(string("generating code for Method:") + i->second->to_string());
 		MIPS_ASM::add_instruction("\n");
-
+		if (getInheretInterface()){
+			auto tm = getInheretInterface()->getMethodByName(i->second->get_name(), i->second->getReturnType(), i->second->get_variables(), i->second->get_static());
+			if (tm != NULL)
+			{
+				if (tm->getReturnType() != i->second->getReturnType())
+				{
+					if (i->second->getFunctionNode() != NULL){
+						i->second->getFunctionNode()->addError("inherted method should keep the same return type");
+					}
+				}
+			}
+		}
 		if (i->second->getFunctionNode() != NULL){
 			i->second->getFunctionNode()->generateCode();
 		}

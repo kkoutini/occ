@@ -45,6 +45,8 @@ for(auto i=_nodes.begin();i!=_nodes.end();i++)
 		////deal with params
 		ScoopNode::generateCode();
 		MIPS_ASM::jr();
+		if (!_has_return&&_method->getReturnType() != symbolTable->getType("void") && _method->getInterface()->get_name()!="System")
+			addWarning(_method->to_string()+" no all paths return value");
 	};
 	virtual Type* generateType()
 	{

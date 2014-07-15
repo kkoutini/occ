@@ -13,6 +13,7 @@ public:
 
 	ReturnNode(ScoopNode* scope, Node* returnexp, Method* method) :VoidNode(scope), _returnexp(returnexp), _method(method)
 	{
+		_has_return = true;
 	}
 		 void generateCode (){
 			 if (!typeCheck())

@@ -16,9 +16,11 @@ protected:
 	int _col;
 	string _filename;
 	Type* type;
-	
+
 
 public:
+	bool _has_return;
+
 	int value_int;
 	float value_float;
 	bool constant;

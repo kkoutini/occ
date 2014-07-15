@@ -10,6 +10,9 @@
 	for (auto i = _nodes.begin(); i != _nodes.end(); i++){
 		MIPS_ASM::printComment((*i)->getDebugString());
 		(*i)->generateCode();
+		if ((*i)->_has_return)
+			 _has_return=true;
+
 		// pop the result of the last statement from stack
 		dispose(*i);
 	}
