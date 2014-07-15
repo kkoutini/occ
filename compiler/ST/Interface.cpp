@@ -265,15 +265,18 @@ void Interface::generateCode(){
 				if (tm->getReturnType() != i->second->getReturnType())
 				{
 					if (i->second->getFunctionNode() != NULL){
-						i->second->getFunctionNode()->addError("inherted method should keep the same return type");
+						i->second->getFunctionNode()->addError("inherted"  + i->second->to_string() +  "in interface "+get_name()+ " method should keep the same return type");
 					}
 				}
+			//todo not here
+				tm->hasBeenInhereted = true;
 			}
 		}
 		if (i->second->getFunctionNode() != NULL){
 			i->second->getFunctionNode()->generateCode();
 		}
 		else{
+			Program::addError(new SemanticError("method " + i->second->to_string() +  "in interface "+get_name()+" not implemented", 0, 0, " "));
 			MIPS_ASM::printComment(string("Something wrong this method's node is NULL :") + i->first);
 
 		}

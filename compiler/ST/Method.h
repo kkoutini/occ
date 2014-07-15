@@ -15,7 +15,7 @@ class Interface;
 class FunctionNode;
 class Method:public Symbol{
 public:
-
+	bool hasBeenInhereted = 0;
 	Type* return_type;
 	//ScoopNode* scoopBody;
 	bool is_static;
