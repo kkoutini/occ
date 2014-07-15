@@ -9,6 +9,7 @@ class CastNode :
 {
 	Type* _toType;
 	Node* _node;
+	static int count;
 public:
 
 	CastNode(ScoopNode* scoop,Type* toType,Node* node):Node(scoop),_toType(toType),_node(node)
@@ -16,8 +17,14 @@ public:
 	}
 	virtual void generateCode()
 	{
+		
 		if (getType()== symbolTable->getType("error_type"))
 			return;
+		MIPS_ASM::printComment("cast node");
+		MIPS_ASM::printComment("code for node");
+		_node->generateCode();
+		MIPS_ASM::printComment("casting");
+
 		Type* intType = symbolTable->getType("int");
 		Type* boolType = symbolTable->getType("bool");
 		Type* floatType = symbolTable->getType("float");
@@ -27,16 +34,29 @@ public:
 			MIPS_ASM::popf("f1");
 			MIPS_ASM::add_instruction("cvt.w.s $f1,$f1\n");
 			MIPS_ASM::pushf("f1");
-
+			return;
 		}
 		if (_toType == floatType && fromt == intType)
 		{
 			MIPS_ASM::popf("f1");
 			MIPS_ASM::add_instruction("cvt.s.w $f1,$f1\n");
 			MIPS_ASM::pushf("f1");
+			return;
+		}
+		auto ifs = dynamic_cast<Interface*>(fromt);
+		auto its = dynamic_cast<Interface*>(_toType);
+		++count;
+		if (ifs){
+			MIPS_ASM::top("t0");
+			MIPS_ASM::beq("t0", "0", "cast_label" + std::to_string(count));
+			MIPS_ASM::lw("t0", 0, "t0");
+			MIPS_ASM::add_instruction("beq $t0," + std::to_string(its->getId()) + ",cast_label" + std::to_string(count));
+			MIPS_ASM::pop("t0");
+			MIPS_ASM::push("0");
+
+			MIPS_ASM::label("cast_label" + std::to_string(count));
 
 		}
-
 	}
 	virtual Type* generateType()
 	{
@@ -60,6 +80,10 @@ public:
 				addWarning(error);
 				return _toType;
 
+			}
+			else if (dynamic_cast<Interface*>(_node->getType()) && dynamic_cast<Interface*>(_toType))
+			{
+				return _toType;
 			}
 			else
 			{

@@ -210,7 +210,6 @@ Method* nodeXX;
 %nonassoc ELSE
 %nonassoc expr_1
 %nonassoc STRING_VAL INT_VAL FLOAT_VAL CLOSE_ARR CHAR_VAL
-%nonassoc p_type_expr_prec
 %nonassoc DOUBLEPLUS
 %nonassoc DOUBLEMINUS
 %left OR_OR AND_AND 
@@ -221,6 +220,7 @@ Method* nodeXX;
 %nonassoc try_prec
 %nonassoc CATCH
 %nonassoc FINALLY
+%nonassoc p_type_expr_prec
 
 %%
 program: components	                     {Streams::verbose()<<"program: components\n"; 

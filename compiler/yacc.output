@@ -475,9 +475,9 @@ IMPORT (324) 4
 NULL_TOK (325) 210
 if_h (326)
 expr_1 (327)
-p_type_expr_prec (328)
-long_id_prec (329)
-try_prec (330)
+long_id_prec (328)
+try_prec (329)
+p_type_expr_prec (330)
 
 
 Nonterminals, with rules where they appear
@@ -5920,21 +5920,15 @@ State 337
   216            | simple_expr . MULTI simple_expr
   217            | simple_expr . DIV simple_expr
   218            | simple_expr . DIV_R simple_expr
-  224            | p_type simple_expr .  [error, IDENTIFIER, SEMI_COLUMN, SEMI_COMA, CLOSE_S, COMMA, LESS_THAN, MORE_THAN, CLOSE_P, AND_AND, OR_OR, LESS_OR_EQUAL, MORE_OR_EQUAL, EQUAL_EQUAL, NOT_EQUAL, CLOSE_ARR]
-
-    PLUS   shift, and go to state 339
-    MINUS  shift, and go to state 340
-    MULTI  shift, and go to state 341
-    DIV    shift, and go to state 342
-    DIV_R  shift, and go to state 343
+  224            | p_type simple_expr .  [error, IDENTIFIER, SEMI_COLUMN, SEMI_COMA, CLOSE_S, COMMA, LESS_THAN, MORE_THAN, PLUS, MINUS, CLOSE_P, AND_AND, OR_OR, LESS_OR_EQUAL, MORE_OR_EQUAL, MULTI, EQUAL_EQUAL, NOT_EQUAL, DIV, DIV_R, CLOSE_ARR]
 
     $default  reduce using rule 224 (simple_expr)
 
-    Conflict between rule 224 and token PLUS resolved as shift (p_type_expr_prec < PLUS).
-    Conflict between rule 224 and token MINUS resolved as shift (p_type_expr_prec < MINUS).
-    Conflict between rule 224 and token MULTI resolved as shift (p_type_expr_prec < MULTI).
-    Conflict between rule 224 and token DIV resolved as shift (p_type_expr_prec < DIV).
-    Conflict between rule 224 and token DIV_R resolved as shift (p_type_expr_prec < DIV_R).
+    Conflict between rule 224 and token PLUS resolved as reduce (PLUS < p_type_expr_prec).
+    Conflict between rule 224 and token MINUS resolved as reduce (MINUS < p_type_expr_prec).
+    Conflict between rule 224 and token MULTI resolved as reduce (MULTI < p_type_expr_prec).
+    Conflict between rule 224 and token DIV resolved as reduce (DIV < p_type_expr_prec).
+    Conflict between rule 224 and token DIV_R resolved as reduce (DIV_R < p_type_expr_prec).
 
 
 State 338

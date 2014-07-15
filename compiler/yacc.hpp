@@ -121,9 +121,9 @@ extern int yydebug;
     NULL_TOK = 325,
     if_h = 326,
     expr_1 = 327,
-    p_type_expr_prec = 328,
-    long_id_prec = 329,
-    try_prec = 330
+    long_id_prec = 328,
+    try_prec = 329,
+    p_type_expr_prec = 330
   };
 #endif
 

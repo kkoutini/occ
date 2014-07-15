@@ -12,6 +12,7 @@
 #include "../Program.h";
 #include "../SemanticError.h";
 #include "../RegAccessNode.h"
+#include "../ast/CastNode.h"
 
 extern std::ofstream ofs;
 extern ScoopNode* globalScoop;
@@ -22,6 +23,8 @@ extern string sourceFile;
 extern int Iskernal = 0;
 extern bool Garbage_Collect=0;
 int  TryNode::count = 0;
+int CastNode::count=0;
+
 int CatchNode::lbl_count = 0;
 
 SymbolTable::SymbolTable(void)
