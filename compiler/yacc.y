@@ -348,7 +348,7 @@ instance_variables:
 instance_variable_declarations:
 	instance_variable_declarations instance_variable_declaration		{Streams::verbose()<<"instance_variable_declarations:instance_variable_declarations instance_variable_declaration\n";}
 	|instance_variable_declaration										{Streams::verbose()<<"instance_variable_declarations:instance_variable_declaration\n";}
-	|variable_declaration_list											{Streams::verbose()<<"instance_variable_declarations:variable_declaration_list\n";}
+//	|variable_declaration_list											{Streams::verbose()<<"instance_variable_declarations:variable_declaration_list\n";}
 ;
 instance_variable_declaration:
 	visibility_specification variable_declaration_list				{Streams::verbose()<<"instance_variable_declaration:visibility_specification variable_declaration_list\n";
@@ -1455,7 +1455,7 @@ void main(int argc,      // Number of strings in array argv
 	 	string input = "code.txt";
 		dir_path="";
 	bool f = true;
-	Garbage_Collect=1;
+	Garbage_Collect=0;
 	   for(int i = 0; i < argc; i++) 
 		{
 			if(string(argv[i])=="-o")
