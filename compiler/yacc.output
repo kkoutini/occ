@@ -2,9 +2,11 @@ Terminals unused in grammar
 
    SELF
    expr_1
+   long_id_prec
 
 
 State 327 conflicts: 1 reduce/reduce
+State 332 conflicts: 1 shift/reduce
 
 
 Grammar
@@ -5862,12 +5864,12 @@ State 332
   220 simple_expr: IDENTIFIER . DOUBLEPLUS
   221            | IDENTIFIER . DOUBLEMINUS
 
+    MULTI        shift, and go to state 151
     DOUBLEPLUS   shift, and go to state 330
     DOUBLEMINUS  shift, and go to state 331
 
+    MULTI     [reduce using rule 205 (long_id)]
     $default  reduce using rule 205 (long_id)
-
-    Conflict between rule 205 and token MULTI resolved as reduce (MULTI < long_id_prec).
 
 
 State 333

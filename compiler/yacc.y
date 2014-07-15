@@ -1127,7 +1127,8 @@ long_id:
 												Streams::verbose()<<"long_id: long_id.message_call\n";
 												$<r.node>$=$<r.node>1;
 											}
-	|IDENTIFIER								%prec long_id_prec{
+//	|IDENTIFIER								%prec long_id_prec{
+	|IDENTIFIER								{
 																LongIdHelper::addIdentifier($<r.text>1); 
 																$<r.node>$=new IdentifierNode($<r.text>1,scoop);
 																Streams::verbose()<<"long_id:IDENTIFIER :"<<$<r.text>1<<"\n";

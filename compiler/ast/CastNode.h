@@ -50,7 +50,7 @@ public:
 			MIPS_ASM::top("t0");
 			MIPS_ASM::beq("t0", "0", "cast_label" + std::to_string(count));
 			MIPS_ASM::lw("t0", 0, "t0");
-			MIPS_ASM::add_instruction("beq $t0," + std::to_string(its->getId()) + ",cast_label" + std::to_string(count));
+			MIPS_ASM::add_instruction("beq $t0," + std::to_string(its->getId()) + ",cast_label" + std::to_string(count)+"\n");
 			MIPS_ASM::pop("t0");
 			MIPS_ASM::push("0");
 
@@ -88,7 +88,7 @@ public:
 			else
 			{
 				//throw error
-				string error = "ERROR in convert from " + (_node->getType()->get_name()) + " To " + _toType->get_name();
+				string error = "ERROR in cast cannot convert from " + (_node->getType()->get_name()) + " To " + _toType->get_name();
 				addError(error);
 				symbolTable->getType("error_type");
 			}
