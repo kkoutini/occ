@@ -88,7 +88,9 @@ extern bool Garbage_Collect;
 	vector <ScoopNode*>scoopVector;
 	extern ScoopNode* globalScoop=NULL;
 	extern Method * mainMethod=NULL;
-
+	//dir var
+	string dir_path="";
+	////////////
 	ScoopNode* scoop=NULL;
 	ScoopNode* cscoop=NULL;
 	bool flag=false;
@@ -189,6 +191,7 @@ Method* nodeXX;
 %code requires {
 #include "ast\node.h"
 }
+
 %union {
 	
 	struct R {
@@ -224,7 +227,15 @@ program: components	                     {Streams::verbose()<<"program: componen
 ;
 components: components component		 {Streams::verbose()<<"components: components component\n";}
 			|component				   	{Streams::verbose()<<"components: component\n";}
-			|IMPORT STRING_VAL SEMI_COMA {addFile(*$<r.string_val>2);} 
+			|IMPORT STRING_VAL SEMI_COMA {
+			string importstring=*$<r.string_val>2;
+			if(importstring.size()>2){
+			if(importstring[1]==':')
+			addFile(*$<r.string_val>2);
+			else
+			addFile(dir_path+*$<r.string_val>2);
+			}
+			} 
 ;
 component:	class_interface				{Streams::verbose()<<"class_interface \n";}
 			|class_implementation		{Streams::verbose()<<"class_implementation \n";}
@@ -1429,6 +1440,7 @@ void main(int argc,      // Number of strings in array argv
           char *argv[]){
   //yydebug=1;
 	 	string input = "code.txt";
+		dir_path="";
 	bool f = true;
 	Garbage_Collect=1;
 	   for(int i = 0; i < argc; i++) 
@@ -1450,10 +1462,14 @@ void main(int argc,      // Number of strings in array argv
 					f = false;
 				}
 			}
-		if (string(argv[i]) == "-gc")
+	    	if (string(argv[i]) == "-gc")
 			{
 					Garbage_Collect=1;
 
+			}
+			if (string(argv[i])=="-d")
+			{
+			        dir_path=string(argv[i+1]);
 			}
 
 		}
