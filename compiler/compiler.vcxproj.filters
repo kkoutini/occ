@@ -379,5 +379,8 @@
     <Text Include="test1.txt">
       <Filter>Resource Files\tests</Filter>
     </Text>
+    <Text Include="test2.txt">
+      <Filter>Resource Files\tests</Filter>
+    </Text>
   </ItemGroup>
 </Project>
