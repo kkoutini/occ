@@ -130,6 +130,7 @@
 
 @interface NSException
 {
+@public
 NSString msg;
 }
 +(NSException*) withMsg:(NSString)m;
@@ -149,6 +150,7 @@ NSString msg;
 @end
 @interface NSExceptionCatcher
 {
+@public
 NSObject* ex;
 NSExceptionCatcher* parent;
 int sp;
