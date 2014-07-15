@@ -202,6 +202,7 @@
     <Text Include="external tool.txt" />
     <Text Include="nsobject.oc" />
     <Text Include="inhertance overriding.txt" />
+    <Text Include="test1.txt" />
     <Text Include="verbose.txt" />
     <Text Include="wessam.txt" />
   </ItemGroup>
