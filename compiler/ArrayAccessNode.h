@@ -35,6 +35,11 @@ public:
 		MIPS_ASM::printComment("doing index:  ");
 
 		MIPS_ASM::pop("t0");
+		//exception
+		MIPS_ASM::add_instruction("bge $t0," + std::to_string(dynamic_cast<ArrayType*> (_array->getType())->_count)
+			+ ", arrayout_exp\n");
+
+		////
 		MIPS_ASM::pop("t1");
 		MIPS_ASM::add_instruction("mul $t0, $t0," + std::to_string(getType()->getTypeSize())+"\n");
 

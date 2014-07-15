@@ -294,6 +294,18 @@ void SymbolTable::generateStaticsCode()
 		MIPS_ASM::add_instruction("teq $t0,$t0\n");
 	}
 	{
+		MIPS_ASM::label("arrayout_exp");
+		CallNode* cn = new CallNode(globalScoop, new IdentifierNode("NSException", globalScoop), "");
+		//+(NSExceptionCatcher*) new:(NSObject*)e:(NSExceptionCatcher*) p:(int)s :(int) f :(int)l{
+
+		auto cs = new CallSelector("withMsg");
+		cs->addArg(new ConstantNode(string("array out of boundry exception"), globalScoop));
+		cn->addSelector(cs);
+		cn->generateCode();
+		MIPS_ASM::li("s7", 12);// turkey number for exception
+		MIPS_ASM::add_instruction("teq $t0,$t0\n");
+	}
+	{
 		MIPS_ASM::label("global_catch");
 		MIPS_ASM::add_instruction("addi $a0,$s0,"+
 			std::to_string(dynamic_cast<Interface*>(getType("NSException"))
