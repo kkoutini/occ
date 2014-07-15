@@ -26,8 +26,11 @@ public:
 virtual void generateCode(){
 	if (getType() == symbolTable->getType("error_type"))
 		return;
-		MIPS_ASM::printComment("identifier "+_name);
-		Variable *var = this->_scoop->get_variable(_name);
+	string vname = _name;
+	if (vname == "super")
+		vname = "self";
+		MIPS_ASM::printComment("identifier "+vname);
+		Variable *var = this->_scoop->get_variable(vname);
 		ClassNode* cn = dynamic_cast<ClassNode*>(var->_scoop);
 		
 		if (cn!=NULL){
@@ -62,14 +65,26 @@ virtual void generateCode(){
 
 		MIPS_ASM::push("t0");
 
-		//for(int i=0;i<=(this->_scoop->offset+this->_scoop->get_variable(_name)->offset)/4;i++)
+		//for(int i=0;i<=(this->_scoop->offset+this->_scoop->get_variable(vname)->offset)/4;i++)
 		//MIPS_ASM::add_instruction("sub $sp,$sp,4\n");
 
 		//MIPS_ASM::sw("t0",0,"sp");
 	}
   virtual Type* generateType()
   {
-	
+		
+	  if (_name == "super"){
+		  if (this->_scoop->get_variable("self") && dynamic_cast<Interface*>(this->_scoop->get_variable("self")->getType())&&
+			  dynamic_cast<Interface*>(this->_scoop->get_variable("self")->getType())->getInheretInterface()
+			  ){
+			  return dynamic_cast<Interface*>(this->_scoop->get_variable("self")->getType())->getInheretInterface();
+		  }
+		  else{
+			  addError("this interface has no super interface  ");
+			  return symbolTable->getType("error_type");
+
+		  }
+	  }
 		
 	  if (this->_scoop->get_variable(_name) == NULL)
 		{
@@ -79,6 +94,9 @@ virtual void generateCode(){
 		else
 			return  this->_scoop->get_variable(_name)->getType();;
 
+  }
+  virtual bool isSuper(){
+	  return _name == "super";
   }
   virtual Variable* getVar()
   {

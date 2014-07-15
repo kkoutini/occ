@@ -8,6 +8,7 @@
 extern SymbolTable* symbolTable;
 #include "ST/Type.h"
 #include "CallSelector.h"
+#include "ast\IdentifierNode.h"
 extern int Iskernal;
 class CallNode :
 	public Node
@@ -114,7 +115,14 @@ public:
 			}
 		}
 		MIPS_ASM::lw("t0", sender_sh, "sp");
-		MIPS_ASM::lw("a0", 0, "t0");
+		if (dynamic_cast<IdentifierNode*>(_sender) && dynamic_cast<IdentifierNode*>(_sender)->isSuper())
+		{
+			MIPS_ASM::li("a0", sender_interface->getId());
+
+		}
+		else{
+			MIPS_ASM::lw("a0", 0, "t0");
+		}
 		MIPS_ASM::li("a1",method);
 		if (Iskernal)
 		{
