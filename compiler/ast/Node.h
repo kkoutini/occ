@@ -23,6 +23,7 @@ public:
 
 	int value_int;
 	float value_float;
+	bool value_bool;
 	bool constant;
 	ScoopNode* _scoop;
 	virtual void toString(){

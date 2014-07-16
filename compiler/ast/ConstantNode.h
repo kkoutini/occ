@@ -48,6 +48,11 @@ public:
 	ConstantNode(bool val, ScoopNode* scoop):Node(scoop){
 		value.bool_val=val;
 		type=symbolTable->getType("bool");
+		if (Optimize)
+		{
+			value_bool = val;
+			constant = 1;
+		}
 	}
 	ConstantNode(string  val, ScoopNode* scoop):Node(scoop){
 		value.string_val=val;

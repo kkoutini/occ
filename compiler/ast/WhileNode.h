@@ -56,6 +56,13 @@ public:
 			 {
 				 return;
 			 }
+			 if (Optimize && this->_condition->constant == true)
+			 {
+				 if (value_bool == false)
+				 {
+					 return;
+				 }
+			 }
 
 	string cc  = "";
 	cc=std::to_string(WhileNode::while_label++);
@@ -73,6 +80,7 @@ ccc+=cc;
 
 	MIPS_ASM::label(ccc);
 
+	
 	if(this->_condition != NULL)
 		this->_condition->generateCode();
 
