@@ -59,6 +59,7 @@ public:
 	Interface* getInheretInterface();
 
 	virtual void generateCode();
+	void Interface::preprocess();
 
 
 	void add_son_protocol(Protocol*);

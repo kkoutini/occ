@@ -197,8 +197,24 @@ Method* Interface::getMethodOverloaded (string message, vector<CallSelector*> se
 			}
 	return NULL;
 }
-void Interface::generateCode(){
-	MIPS_ASM::printComment("#########################################");
+void Interface::preprocess(){
+	for (auto i = this->methodsItem->methods.begin(); i != this->methodsItem->methods.end(); i++)
+	{
+		if (getInheretInterface()){
+			auto tm = getInheretInterface()->getMethodByName(i->second->get_name(), i->second->getReturnType(), i->second->get_variables(), i->second->get_static());
+			if (tm != NULL)
+			{
+				
+				//todo not here
+				tm->hasBeenInhereted = true;
+			}
+		}
+
+	}
+}
+
+	void Interface::generateCode(){
+		MIPS_ASM::printComment("#########################################");
 	MIPS_ASM::printComment(string("Generating code for class ") + this->get_name());
 	MIPS_ASM::add_instruction("\n\n\n\n");
 	MIPS_ASM::printComment(string("vtable: "));

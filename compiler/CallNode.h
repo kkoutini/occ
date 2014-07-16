@@ -10,6 +10,8 @@ extern SymbolTable* symbolTable;
 #include "CallSelector.h"
 #include "ast\IdentifierNode.h"
 extern int Iskernal;
+extern bool Optimize;
+
 class CallNode :
 	public Node
 {
@@ -37,8 +39,26 @@ public:
 		_selcs.push_back(c);
 	}
 	virtual void generateCode(){
+		if (getType() == symbolTable->getType("error_type"))
+			return;
+		if (getType() == symbolTable->getType("id")||!Optimize)
+		{
+			dynamic_bind();
+			return;
+
+		}Type* senderType = _sender->getType();
+		Interface* sender_interface = (dynamic_cast<Interface*>(senderType));
+		Method* method = sender_interface->getMethodOverloaded(_message, _selcs);
+		; //sender_interface->getMethod(_message, _params, _types, false);
+		if (method->hasBeenInhereted){
+			dynamic_bind();
+
+		}
+		else{
+			static_bind();
+		}
+
 	//	static_bind();
-		dynamic_bind();
 	}
 	virtual void dynamic_bind(){
 		if (getType()==symbolTable->getType("error_type"))
@@ -139,33 +159,17 @@ public:
 		MIPS_ASM::push("v0");
 	}
 	virtual void static_bind(){
-		//TODo
-		//all mistaken recheck
-		//	Interface* type=obj->getType();
-		//	type->getMethodByName
+		if (getType() == symbolTable->getType("error_type"))
+			return;
 		Type* senderType = _sender->getType();
 
 		//TODO: check if sender isn't interface
 		Interface* sender_interface = (dynamic_cast<Interface*>(senderType));
-		if (sender_interface == NULL)
-		{
-			//todo
-			//ERRor
-			string error = "ERROR Sender isn't Interface ";
-			addError(error);
-		}
+
 		Method* method = sender_interface->getMethodOverloaded(_message, _selcs);
 
-		if (method == NULL){
-			//khaled
-			//ERROR no method
-			string error = "ERROR no overloaded method found";
-			addError(error);
 
-			return;
-		}
-
-		MIPS_ASM::printComment(string("CALLING A METHOD ") + method->to_string());
+		MIPS_ASM::printComment(string("Static CALLING A METHOD ") +(method->to_string()));
 		MIPS_ASM::printComment("preserving registers");
 		MIPS_ASM::push("ra");
 		MIPS_ASM::push("fp");
@@ -174,20 +178,59 @@ public:
 		/// checking for null pointer exception
 		MIPS_ASM::top("t0");
 		MIPS_ASM::beq("t0", "0", "nullpointer_exp");
-		MIPS_ASM::printComment("generating code for Args");
 
+		if (Garbage_Collect && !Iskernal){
+
+			MIPS_ASM::top("a0");
+			MIPS_ASM::push("ra");
+
+			MIPS_ASM::jal("increase_rc");//-4 is rc
+			MIPS_ASM::pop("ra");
+
+		}
+		MIPS_ASM::printComment("generating code for Args");
+		int sender_sh = 0;
 		for (auto selector : _selcs){
 			MIPS_ASM::printComment(string("generating code for selector:") + selector->get_name());
 			int argcount = 0;
 			for (auto arg : selector->_args){
-				;
+				sender_sh += 4;
 				MIPS_ASM::printComment(string("generating  for var #") + std::to_string(argcount++));
 
 				arg->generateCode();
+				if (Garbage_Collect && dynamic_cast<Interface*>(arg->getType()) && !Iskernal){
+					MIPS_ASM::top("a0");
+					MIPS_ASM::push("ra");
+
+					MIPS_ASM::jal("increase_rc");//-4 is rc
+					MIPS_ASM::pop("ra");
+
+					//			MIPS_ASM::top("a0");
+					//		MIPS_ASM::jal("increase_rc");//-4 is rc
+
+				}
 			}
 		}
-		MIPS_ASM::jal(method->getLabel());
+		MIPS_ASM::lw("t0", sender_sh, "sp");
+		if (dynamic_cast<IdentifierNode*>(_sender) && dynamic_cast<IdentifierNode*>(_sender)->isSuper())
+		{
+			MIPS_ASM::li("a0", sender_interface->getId());
 
+		}
+		else{
+			MIPS_ASM::lw("a0", 0, "t0");
+		}
+		//MIPS_ASM::li("a1", method);
+		if (Iskernal)
+		{
+			MIPS_ASM::la("k0", method->getLabel());
+			MIPS_ASM::add_instruction("mtc0 $k0,$14\n");
+
+			MIPS_ASM::add_instruction("eret\n");
+		}
+		else
+			MIPS_ASM::jal(method->getLabel());
+		// todo add gc here for sender
 		MIPS_ASM::pop("fp");
 		MIPS_ASM::pop("ra");
 		MIPS_ASM::push("v0");

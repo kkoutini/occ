@@ -345,6 +345,13 @@ bool SymbolTable::checkInhertanceLoop()
 }
 void SymbolTable::generateCode()
 {
+	for (auto i = this->types.begin(); i != this->types.end(); i++)
+	{
+		auto ifs = dynamic_cast<Interface*> (i->second);
+		if (ifs){
+			ifs->preprocess();
+		}
+	}
 	generateStaticsCode();
 	for (auto i = this->types.begin(); i != this->types.end(); i++)
 	{
