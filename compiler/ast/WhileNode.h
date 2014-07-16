@@ -58,7 +58,7 @@ public:
 			 }
 			 if (Optimize && this->_condition->constant == true)
 			 {
-				 if (value_bool == false)
+				 if (_condition->value_bool == false)
 				 {
 					 return;
 				 }
