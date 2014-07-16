@@ -38,7 +38,7 @@ virtual void generateCode(){
 
 			if (var->getAccessModifier() == "private")
 			{
-				if (var->_scoop != self->_scoop){
+				if (var->_scoop != dynamic_cast<Interface*>( self->getType())->getScoop()){
 					string error = "cannot access " + var->getAccessModifier() + " data memeber from a child class! ";
 					addError((error));
 					return;
