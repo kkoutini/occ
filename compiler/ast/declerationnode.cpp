@@ -8,8 +8,10 @@ void DeclerationNode::generateCode(){
 	for (auto i : _identifires){
 		MIPS_ASM::printComment("initilizing : " + i.first);
 		if (i.second)
-		 i.second->generateCode();
-		
+		{
+			i.second->generateCode();
+			dispose(i.second);
+		}
 		else
 		{
 			MIPS_ASM::printComment("nothing to initilize : " + i.first);

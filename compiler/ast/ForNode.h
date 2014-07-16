@@ -90,9 +90,11 @@ public:
 		
 
 		MIPS_ASM::printComment("Begin Initializer\n");
-		if(_initlizer!=NULL)
+		if (_initlizer != NULL)
+		{
 			_initlizer->generateCode();
-		MIPS_ASM::printComment("End Initializer\n");
+			dispose(_initlizer);
+		}MIPS_ASM::printComment("End Initializer\n");
 
 		MIPS_ASM::label(ccc);
 
@@ -109,13 +111,19 @@ public:
 	
 
 		MIPS_ASM::printComment("Begin Statement\n");
-		if(_statment!=NULL)
+		if (_statment != NULL)
+		{
 			_statment->generateCode();
+			dispose(_statment);
+		}
+
 			MIPS_ASM::printComment("End Statement\n");
 				MIPS_ASM::printComment("Begin Increment\n");
-		if(_increment!=NULL)
-			_increment->generateCode();
-			MIPS_ASM::printComment("End Increment\n");
+				if (_increment != NULL)
+				{
+					_increment->generateCode();
+					dispose(_increment);
+				}	MIPS_ASM::printComment("End Increment\n");
 		MIPS_ASM::jump(ccc);
 		MIPS_ASM::label(ccc2);
 
