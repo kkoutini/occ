@@ -41,7 +41,7 @@ public:
 	virtual void generateCode(){
 		if (getType() == symbolTable->getType("error_type"))
 			return;
-		if (getType() == symbolTable->getType("id")||!Optimize)
+		if (getType() == symbolTable->getType("id")||!Optimize||Garbage_Collect)
 		{
 			dynamic_bind();
 			return;
