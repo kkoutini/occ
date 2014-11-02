@@ -1,9 +1,12 @@
-occ
+OCC
 ===
 
 Objective C educational compiler
+fourth year compiler project in Damascus University.
 
-main features:
+Main Features
+===
+
 
 1-duck typing
 
